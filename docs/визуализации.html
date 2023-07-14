@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Тема 3 Визуализации | A Minimal Book Example</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Тема 3 Визуализации | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Тема 3 Визуализации | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="John Doe" />
+
+
+<meta name="date" content="2023-07-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="начало-работы-с-r.html"/>
+<link rel="next" href="опрятные-данные.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Компьютерный анализ текста в R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html"><i class="fa fa-check"></i><b>2</b> Начало работы с R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#что-такое-r"><i class="fa fa-check"></i><b>2.1</b> Что такое R?</a></li>
+<li class="chapter" data-level="2.2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#пакеты-и-виньетки"><i class="fa fa-check"></i><b>2.2</b> Пакеты и виньетки</a></li>
+<li class="chapter" data-level="2.3" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#если-не-хватает-пакетов"><i class="fa fa-check"></i><b>2.3</b> Если не хватает пакетов</a></li>
+<li class="chapter" data-level="2.4" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#о-воспроизводимости"><i class="fa fa-check"></i><b>2.4</b> О воспроизводимости</a></li>
+<li class="chapter" data-level="2.5" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#что-мы-не-будем-делать"><i class="fa fa-check"></i><b>2.5</b> Что мы (не) будем делать?</a></li>
+<li class="chapter" data-level="2.6" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#rstudio"><i class="fa fa-check"></i><b>2.6</b> RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#установка"><i class="fa fa-check"></i><b>2.7</b> Установка</a></li>
+<li class="chapter" data-level="2.8" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#начало-работы"><i class="fa fa-check"></i><b>2.8</b> Начало работы</a></li>
+<li class="chapter" data-level="2.9" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#r-как-калькулятор"><i class="fa fa-check"></i><b>2.9</b> R как калькулятор</a></li>
+<li class="chapter" data-level="2.10" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#операторы-присваивания"><i class="fa fa-check"></i><b>2.10</b> Операторы присваивания</a></li>
+<li class="chapter" data-level="2.11" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#векторы"><i class="fa fa-check"></i><b>2.11</b> Векторы</a></li>
+<li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
+<li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
+<li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
+<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#шорткаты"><i class="fa fa-check"></i><b>2.15</b> Шорткаты</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="визуализации.html"><a href="визуализации.html#базовый-r"><i class="fa fa-check"></i><b>3.1</b> Базовый R</a></li>
+<li class="chapter" data-level="3.2" data-path="визуализации.html"><a href="визуализации.html#lattice"><i class="fa fa-check"></i><b>3.2</b> Lattice</a></li>
+<li class="chapter" data-level="3.3" data-path="визуализации.html"><a href="визуализации.html#ggplot2"><i class="fa fa-check"></i><b>3.3</b> Ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="визуализации.html"><a href="визуализации.html#быстрое-решение-qplot"><i class="fa fa-check"></i><b>3.3.1</b> Быстрое решение: qplot()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="визуализации.html"><a href="визуализации.html#слой-за-слоем-ggplot"><i class="fa fa-check"></i><b>3.3.2</b> Слой за слоем: ggplot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="визуализации.html"><a href="визуализации.html#экспорт-графиков-из-среды-r"><i class="fa fa-check"></i><b>3.4</b> Экспорт графиков из среды R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="опрятные-данные.html"><a href="опрятные-данные.html"><i class="fa fa-check"></i><b>4</b> Опрятные данные</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#синтаксис-tidyverse"><i class="fa fa-check"></i><b>4.1</b> Синтаксис tidyverse</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#tibble"><i class="fa fa-check"></i><b>4.1.1</b> Tibble</a></li>
+<li class="chapter" data-level="4.1.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#dplyr"><i class="fa fa-check"></i><b>4.1.2</b> Dplyr</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#опрятные-данные-1"><i class="fa fa-check"></i><b>4.2</b> Опрятные данные</a></li>
+<li class="chapter" data-level="4.3" data-path="опрятные-данные.html"><a href="опрятные-данные.html#пример-буккроссинг"><i class="fa fa-check"></i><b>4.3</b> Пример: буккроссинг</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#смотрим-на-данные"><i class="fa fa-check"></i><b>4.3.1</b> Смотрим на данные</a></li>
+<li class="chapter" data-level="4.3.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#трансформируем-данные"><i class="fa fa-check"></i><b>4.3.2</b> Трансформируем данные</a></li>
+<li class="chapter" data-level="4.3.3" data-path="опрятные-данные.html"><a href="опрятные-данные.html#объединяем-данные"><i class="fa fa-check"></i><b>4.3.3</b> Объединяем данные</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html"><i class="fa fa-check"></i><b>5</b> Функциональное программирование</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#написание-функций"><i class="fa fa-check"></i><b>5.1</b> Написание функций</a></li>
+<li class="chapter" data-level="5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#векторизируй-это"><i class="fa fa-check"></i><b>5.2</b> Векторизируй это</a></li>
+<li class="chapter" data-level="5.3" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#зачем-писать-функции"><i class="fa fa-check"></i><b>5.3</b> Зачем писать функции?</a></li>
+<li class="chapter" data-level="5.4" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#векторизованные-конструкции"><i class="fa fa-check"></i><b>5.4</b> Векторизованные конструкции</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#циклы"><i class="fa fa-check"></i><b>5.4.1</b> Циклы</a></li>
+<li class="chapter" data-level="5.4.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#условия"><i class="fa fa-check"></i><b>5.4.2</b> Условия</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#семейство-функций-_apply-из-базового-r"><i class="fa fa-check"></i><b>5.5</b> Семейство функций _apply из базового R</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#tapply"><i class="fa fa-check"></i><b>5.5.1</b> tapply()</a></li>
+<li class="chapter" data-level="5.5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#apply"><i class="fa fa-check"></i><b>5.5.2</b> apply()</a></li>
+<li class="chapter" data-level="5.5.3" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#lapply-и-sapply"><i class="fa fa-check"></i><b>5.5.3</b> lapply() и sapply()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.6</b> Purrr</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#map_df-и-map_dbl"><i class="fa fa-check"></i><b>5.6.1</b> map_df() и map_dbl()</a></li>
+<li class="chapter" data-level="5.6.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#map2"><i class="fa fa-check"></i><b>5.6.2</b> map2()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#furrr"><i class="fa fa-check"></i><b>5.7</b> Furrr</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>6</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>6.1</b> Equations</a></li>
+<li class="chapter" data-level="6.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>6.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="6.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>6.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>7</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>7.1</b> Publishing</a></li>
+<li class="chapter" data-level="7.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>7.2</b> 404 pages</a></li>
+<li class="chapter" data-level="7.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>7.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="визуализации" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Тема 3</span> Визуализации<a href="визуализации.html#визуализации" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="базовый-r" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Базовый R<a href="визуализации.html#базовый-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>В R существуют три основные системы построения графиков, которые могут быть полезны для достижения разных целей. Базовый R – это самая старая система, и в ее основе лежит идея палитры художника<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p>Идея заключается в том, что у вас есть чистый холст, на который вы добавляете что-то одно за другим: например, сначала вы создаете <strong>диаграмму рассеяния</strong> с несколькими точками, затем вы добавляете метки, линию регрессии, заголовки и т.п. Каждая деталь графика занимает еще одну строчку кода.</p>
+<p>Это интуитивно понятная модель, потому что часто в самом начале, исследуя данные, мы часто не знаем, какой график мы хотим построить. Обычно мы начинаем это построение с функции <code>plot()</code>, а затем добавляем функции, которые аннотируют график. Вот простой пример на данных о гапаксах у Платона, которые мы видели раньше.</p>
+<p>Чтобы построить диаграмму рассеяния (scatter plot), нужно передать функции <code>plot()</code> в качестве аргументов названия тех столбцов, которые мы хотим изобразить по осям x и y. Это можно записать так: <code>plot(x, y)</code>. Или так: <code>plot(y ~ x)</code>. Знак <code>~</code> (тильда) указывает на функцию.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="визуализации.html#cb124-1" tabindex="-1"></a><span class="fu">attach</span>(hapax_plato)</span>
+<span id="cb124-2"><a href="визуализации.html#cb124-2" tabindex="-1"></a><span class="fu">plot</span>(hapax <span class="sc">~</span> words)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p>Это можно записать и иначе: <code>plot(hapax_plato$hapax ~ hapax_plato$words)</code>. Результат будет одинаковый.</p>
+<p>Теперь беремся за палитру. Данные скучились в левом нижнем углу и потому плохо читаются. Мы можем пожертвовать двумя очень длинными диалогами (это “Государство” и “Законы”) и “приблизить” картинку, указав вручную границы осей.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="визуализации.html#cb125-1" tabindex="-1"></a><span class="fu">attach</span>(hapax_plato) </span>
+<span id="cb125-2"><a href="визуализации.html#cb125-2" tabindex="-1"></a><span class="fu">plot</span>(hapax <span class="sc">~</span> words, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30000</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>))  </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p>Но так мы все-таки теряем какую-то информацию – а вдруг она важная? Еще один способ справиться со слипшимися данными – преобразовать их. Применим логарифмическое преобразование. Обратите внимание, как меняются значения на осях.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="визуализации.html#cb126-1" tabindex="-1"></a><span class="fu">attach</span>(hapax_plato)</span>
+<span id="cb126-2"><a href="визуализации.html#cb126-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>) <span class="co"># избавляет от научной нотации</span></span>
+<span id="cb126-3"><a href="визуализации.html#cb126-3" tabindex="-1"></a><span class="fu">plot</span>(words, hapax, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>)  </span>
+<span id="cb126-4"><a href="визуализации.html#cb126-4" tabindex="-1"></a><span class="co"># добавим текст</span></span>
+<span id="cb126-5"><a href="визуализации.html#cb126-5" tabindex="-1"></a><span class="fu">text</span>(hapax <span class="sc">~</span> words, <span class="at">labels =</span> dialogue, <span class="at">pos =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p>Уже гораздо интереснее! Попробуем обозначить цветом и формой пересказанные и прямые диалоги. Форма задается внутри функции <code>plot()</code> при помощи атрибута <code>pch</code>. Числовые значения этого атрибута соответствуют следующим значкам. Мы используем 2, 3 и 5.</p>
+<p><strong>Добавить картинку: значения атрибута pch</strong></p>
+<p>Перестраиваем наш график.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="визуализации.html#cb127-1" tabindex="-1"></a><span class="fu">attach</span>(hapax_plato)</span>
+<span id="cb127-2"><a href="визуализации.html#cb127-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>) <span class="co"># избавляет от научной нотации</span></span>
+<span id="cb127-3"><a href="визуализации.html#cb127-3" tabindex="-1"></a><span class="fu">plot</span>(words, hapax, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkblue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;darkred&quot;</span>)[group], </span>
+<span id="cb127-4"><a href="визуализации.html#cb127-4" tabindex="-1"></a>     <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>)[group])</span>
+<span id="cb127-5"><a href="визуализации.html#cb127-5" tabindex="-1"></a><span class="fu">text</span>(hapax <span class="sc">~</span> words, <span class="at">labels =</span> dialogue, </span>
+<span id="cb127-6"><a href="визуализации.html#cb127-6" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.7</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkblue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;darkred&quot;</span>)[group])</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p>Некоторые названия перекрываютcя, но все равно намного понятнее. Теперь можем поменять шрифт и, например, добавить линию регрессии (не хватает легенды, но что-то уже нет сил).</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="визуализации.html#cb128-1" tabindex="-1"></a><span class="fu">attach</span>(hapax_plato)</span>
+<span id="cb128-2"><a href="визуализации.html#cb128-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>) <span class="co"># избавляет от научной нотации</span></span>
+<span id="cb128-3"><a href="визуализации.html#cb128-3" tabindex="-1"></a><span class="fu">plot</span>(words, hapax, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkblue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;darkred&quot;</span>)[group], <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>)[group], <span class="at">family =</span> <span class="st">&quot;serif&quot;</span>)</span>
+<span id="cb128-4"><a href="визуализации.html#cb128-4" tabindex="-1"></a><span class="fu">text</span>(hapax <span class="sc">~</span> words, <span class="at">labels =</span> dialogue, </span>
+<span id="cb128-5"><a href="визуализации.html#cb128-5" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.7</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkblue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;darkred&quot;</span>)[group], <span class="at">family =</span> <span class="st">&quot;serif&quot;</span>)</span>
+<span id="cb128-6"><a href="визуализации.html#cb128-6" tabindex="-1"></a></span>
+<span id="cb128-7"><a href="визуализации.html#cb128-7" tabindex="-1"></a><span class="co"># добавим линию регрессии</span></span>
+<span id="cb128-8"><a href="визуализации.html#cb128-8" tabindex="-1"></a>my_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(hapax_plato<span class="sc">$</span>hapax <span class="sc">~</span> hapax_plato<span class="sc">$</span>words)</span>
+<span id="cb128-9"><a href="визуализации.html#cb128-9" tabindex="-1"></a><span class="fu">abline</span>(my_lm, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkgrey&quot;</span>, <span class="at">untf =</span> T)</span>
+<span id="cb128-10"><a href="визуализации.html#cb128-10" tabindex="-1"></a></span>
+<span id="cb128-11"><a href="визуализации.html#cb128-11" tabindex="-1"></a><span class="co"># и заголовок</span></span>
+<span id="cb128-12"><a href="визуализации.html#cb128-12" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;Число гапаксов в зависимости от длины диалога&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p>При помощи <strong>графических параметров</strong><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> можно контролировать множество настроек. Но в этом и недостаток базовой графики. Не всем хватает терпения и вкуса этим заниматься, поэтому эта система сейчас не очень употребительна.</p>
+<div class="infobox">
+<p>Мы построили только диаграмму рассеяния, но в базовом R можно делать и гистограммы, и диаграмму размаха, и другие графики.</p>
+</div>
+<p>Попробуйте интерпретировать график, который у нас получился. Прав ли был профессор Кэмпбелл, утверждая, что высокая доля гапаксов характерна для “поздних” текстов? Исходите из того, что ни для одного текста мы не знаем дату написания.</p>
+<p><span class="spoiler"><em>Судя по графику, количество гапаксов зависит от количества слов в тексте. Чем длиннее текст, тем больше вероятность встретить там редкое слово.</em></span></p>
+</div>
+<div id="lattice" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Lattice<a href="визуализации.html#lattice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Система Lattice (букв. “Решетка”) была разработана специально для анализа многомерных данных <span class="citation">(<a href="#ref-sarkar2008"><strong>sarkar2008?</strong></a>)</span>.</p>
+<p><strong>Тут должны быть <del>графики</del> цветочки</strong></p>
+<p>Например, мы сравниваем точность классификации текстов в зависимости от длины отрывка и количества слов-предикторов. Это уже три переменные (длина – количество слов – точность). Система решеток, или панелей, позволяет представить такие многомерные данные. <strong>Добавить ссылку</strong></p>
+<p>В базовом R это тоже можно сделать, изменив графические параметры:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="визуализации.html#cb129-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">10</span>)</span>
+<span id="cb129-2"><a href="визуализации.html#cb129-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x  <span class="sc">-</span> <span class="dv">5</span></span>
+<span id="cb129-3"><a href="визуализации.html#cb129-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># вот тут указываем число рядов и столбцов</span></span>
+<span id="cb129-4"><a href="визуализации.html#cb129-4" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span>
+<span id="cb129-5"><a href="визуализации.html#cb129-5" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p>Но видно, что пространство при этом расходуется неэффективно. Кроме того, к таким графикам сложно создавать заголовки и подзаголовки, подбирать подписи и т.п. Все эти задачи решает Lattice.</p>
+<p>Идея этой системы в том, что каждый график строится с помощью одного вызова функции. При этом необходимо сразу указать большое количество информации, чтобы у фунцкии было достаточно данных для построения графика.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="визуализации.html#cb130-1" tabindex="-1"></a><span class="fu">library</span>(lattice)</span>
+<span id="cb130-2"><a href="визуализации.html#cb130-2" tabindex="-1"></a><span class="fu">attach</span>(hapax_plato)</span>
+<span id="cb130-3"><a href="визуализации.html#cb130-3" tabindex="-1"></a></span>
+<span id="cb130-4"><a href="визуализации.html#cb130-4" tabindex="-1"></a><span class="co"># после вертикальной черты указана переменная, которая используется для группировки данных; в нашем случае номер группы (по Кэмпбеллу)</span></span>
+<span id="cb130-5"><a href="визуализации.html#cb130-5" tabindex="-1"></a></span>
+<span id="cb130-6"><a href="визуализации.html#cb130-6" tabindex="-1"></a><span class="fu">xyplot</span>(hapax <span class="sc">~</span> words <span class="sc">|</span> group, <span class="at">data =</span> hapax_plato,</span>
+<span id="cb130-7"><a href="визуализации.html#cb130-7" tabindex="-1"></a>       <span class="at">scales=</span><span class="fu">list</span>(<span class="at">x=</span><span class="fu">list</span>(<span class="at">log=</span><span class="dv">10</span>))) <span class="co"># трансформация по одной оси</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>Недостаток Lattice, однако, в том, что бывает сложно аннотировать отдельные панели, а также приходится сразу задавать весь график в одном вызове функции. Это не всегда удобно. После создания графика уже ничего нельзя добавить или убавить.</p>
+</div>
+<div id="ggplot2" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Ggplot2<a href="визуализации.html#ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Но настоящая графическая сила R – это пакет ggplot2. В его основе лежит идея “грамматики графических элементов” Лиланда Уилкинсона <span class="citation">(<a href="#ref-мастицкий2017"><strong>мастицкий2017?</strong></a>)</span>, и он позволяет объединить достоинства базовой графики R и Lattice. С одной стороны, вы можете постепенно достраивать график, добавляя элемент за элементом; с другой стороны, множество параметров подбираются автоматически, как в Lattice.</p>
+<div id="быстрое-решение-qplot" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Быстрое решение: qplot()<a href="визуализации.html#быстрое-решение-qplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Настройки по умолчанию хорошо видно на графике ниже; их легко перенастроить.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="визуализации.html#cb131-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># загружается сразу с tidyverse</span></span>
+<span id="cb131-2"><a href="визуализации.html#cb131-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb131-3"><a href="визуализации.html#cb131-3" tabindex="-1"></a><span class="fu">qplot</span>(words, hapax, <span class="at">data =</span> hapax_plato, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: `qplot()` was deprecated in ggplot2 3.4.0.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p>Функция <code>qplot()</code> – это быстрое решение для задач визуализации.</p>
+<div class="infobox">
+<p>В современных версиях ggplot использование функции <code>qplot()</code> не рекомендуется (deprecated), чтобы побудить пользователей изучать <code>ggplot()</code> как более совершенный инструмент для визуализаций.</p>
+</div>
+<p>В данном случае мы построили диаграмму рассеяния, используя логарифмическую трансформацию по двум осям. Можно также выделить цветом различные типы диалогов, изменить размер точек, их прозначность и т.п.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="визуализации.html#cb133-1" tabindex="-1"></a><span class="fu">qplot</span>(words, hapax, <span class="at">data =</span> hapax_plato, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="at">col =</span> group, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p><strong>Линия тренда</strong> (сглаживающая линия) добавляется следующим образом:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="визуализации.html#cb134-1" tabindex="-1"></a><span class="fu">qplot</span>(words, hapax, <span class="at">data =</span> hapax_plato, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="at">geom =</span> <span class="fu">c</span>(<span class="st">&quot;point&quot;</span>, <span class="st">&quot;smooth&quot;</span>))</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p><strong>Диаграмма размаха</strong> (о ней подробнее можно посмотреть <a href="https://vk.com/video_ext.php?oid=-211800158&amp;id=456239229&amp;hash=7e1bc800e53df22c&amp;hd=2">здесь</a>) удобна в тех случаях, когда необходимо представить обобщенную статиситческую информацию о распределении значений количественной переменной в разных группах.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="визуализации.html#cb136-1" tabindex="-1"></a><span class="fu">attach</span>(hapax_plato)</span>
+<span id="cb136-2"><a href="визуализации.html#cb136-2" tabindex="-1"></a><span class="fu">qplot</span>(group, ratio, <span class="at">data =</span> hapax_plato, <span class="at">geom =</span> <span class="st">&quot;boxplot&quot;</span>, <span class="at">color =</span> group)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p>Диаграмму размаха можно совместить с <strong>одномерной диаграммой рассеяния</strong>.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="визуализации.html#cb137-1" tabindex="-1"></a><span class="fu">qplot</span>(group, ratio, <span class="at">data =</span> hapax_plato, <span class="at">geom =</span> <span class="fu">c</span>(<span class="st">&quot;boxplot&quot;</span>, <span class="st">&quot;jitter&quot;</span>), <span class="at">color =</span> group) <span class="co"># вместо color можно использовать shape, который отвечает за форму элементов</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+</div>
+<div id="слой-за-слоем-ggplot" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Слой за слоем: ggplot()<a href="визуализации.html#слой-за-слоем-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Для более детальной настройки графика рекомендууется использовать функцию <code>ggplot()</code>, которая имеет два основных аргумента: <code>data</code> и <code>aes</code> (англ. <em>aesthetics</em>); последняя присваивает эстетические атрибуты геометрическим объектам, которые используются на графике. Эти объекты могут слоями накладываться друг на друга <span class="citation">(<a href="#ref-wickham2016"><strong>wickham2016?</strong></a>)</span>.</p>
+<p>Посмотрим, как это работает, на примере, <strong>столбиковой диаграммы</strong>. Такая позволяет представить распределение как количественных, так и качественных переменных. Для примера возьмем датасет <code>diorisis_meta</code>, который хранит данные о древнегреческих текстах, доступных в репозитории Diorisis<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="визуализации.html#cb138-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./datasets/DiorisisMeta.Rdata&quot;</span>)</span>
+<span id="cb138-2"><a href="визуализации.html#cb138-2" tabindex="-1"></a>diorisis_meta</span></code></pre></div>
+<pre><code>## # A tibble: 784 × 5
+##    name            title                      date genre     subgenre       
+##    &lt;chr&gt;           &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;          
+##  1 Achilles Tatius Leucippe and Clitophon      120 Narrative Novel          
+##  2 Aelian          De Natura Animalium         230 Technical Natural History
+##  3 Aelian          Epistulae Rusticae          230 Letters   Letters        
+##  4 Aelian          Varia Historia              200 Essays    Miscellanea    
+##  5 Aeneas Tacticus Poliorcetica               -350 Technical Military       
+##  6 Aeschines       Against Ctesiphon          -330 Oratory   Oratory        
+##  7 Aeschines       Against Timarchus          -347 Oratory   Oratory        
+##  8 Aeschines       The Speech on the Embassy  -336 Oratory   Oratory        
+##  9 Aeschylus       Agamemnon                  -458 Tragedy   Tragedy        
+## 10 Aeschylus       Eumenides                  -458 Tragedy   Tragedy        
+## # ℹ 774 more rows</code></pre>
+<p>Столбиковая диаграмма позволяет увидеть, тексты каких жанров чаще всего встречаются в этом корпусе.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="визуализации.html#cb140-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb140-2"><a href="визуализации.html#cb140-2" tabindex="-1"></a>diorisis_meta <span class="sc">%&gt;%</span></span>
+<span id="cb140-3"><a href="визуализации.html#cb140-3" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span> </span>
+<span id="cb140-4"><a href="визуализации.html#cb140-4" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb140-5"><a href="визуализации.html#cb140-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder</span>(genre, n), n, <span class="at">fill =</span> genre)) <span class="sc">+</span> </span>
+<span id="cb140-6"><a href="визуализации.html#cb140-6" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb140-7"><a href="визуализации.html#cb140-7" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p><strong>Точечная диаграмма</strong>, или dotplot, подходит для тех случаев, когда мы исследуем распределение наблюдений для разных групп данных, причем наблюдений не очень много. Например, мы можем отразить распределение текстов в корпусе по годам. Категориальную переменную (например, жанр) можно дополнительно закодировать цветом (<a href="https://t.me/antibarbari/109">Подробнее</a>).</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="визуализации.html#cb141-1" tabindex="-1"></a>diorisis_meta <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(date, <span class="at">fill =</span> <span class="fu">factor</span>(genre))) <span class="sc">+</span> </span>
+<span id="cb141-2"><a href="визуализации.html#cb141-2" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">stackdir =</span> <span class="st">&quot;centerwhole&quot;</span>, <span class="at">binpositions =</span> <span class="st">&quot;all&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb141-3"><a href="визуализации.html#cb141-3" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb141-4"><a href="визуализации.html#cb141-4" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> scales<span class="sc">::</span><span class="fu">pretty_breaks</span>(<span class="at">n =</span> <span class="dv">10</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>Различные группы данных можно выделять не только цветом и формой, но <strong>Категоризованный график</strong> – отдельный график для разных групп. Попробуем выяснить: сколько поджанров в каждом жанре?</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="визуализации.html#cb142-1" tabindex="-1"></a>diorisis_meta <span class="sc">%&gt;%</span> </span>
+<span id="cb142-2"><a href="визуализации.html#cb142-2" tabindex="-1"></a>  <span class="fu">group_by</span>(genre, subgenre) <span class="sc">%&gt;%</span> </span>
+<span id="cb142-3"><a href="визуализации.html#cb142-3" tabindex="-1"></a>  count <span class="sc">%&gt;%</span></span>
+<span id="cb142-4"><a href="визуализации.html#cb142-4" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Poetry&quot;</span>, <span class="st">&quot;Technical&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb142-5"><a href="визуализации.html#cb142-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder</span>(subgenre, n), n, <span class="at">fill =</span> subgenre)) <span class="sc">+</span> </span>
+<span id="cb142-6"><a href="визуализации.html#cb142-6" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb142-7"><a href="визуализации.html#cb142-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>genre, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span> <span class="co"># вот здесь задаем  группы</span></span>
+<span id="cb142-8"><a href="визуализации.html#cb142-8" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p>Подробнее с разными видами графиков мы познакомимся дальше.</p>
+</div>
+</div>
+<div id="экспорт-графиков-из-среды-r" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Экспорт графиков из среды R<a href="визуализации.html#экспорт-графиков-из-среды-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Способы:</p>
+<ul>
+<li>реализованные в R драйверы стандартных графических устройств;</li>
+<li>функция <code>ggsave()</code></li>
+<li>меню программы RStudio.</li>
+</ul>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="визуализации.html#cb143-1" tabindex="-1"></a><span class="co"># код сохранит pdf в рабочую директорию </span></span>
+<span id="cb143-2"><a href="визуализации.html#cb143-2" tabindex="-1"></a><span class="fu">pdf</span>(<span class="at">file =</span> <span class="st">&quot;Diorisis.pdf&quot;</span>)</span>
+<span id="cb143-3"><a href="визуализации.html#cb143-3" tabindex="-1"></a>diorisis_meta <span class="sc">%&gt;%</span> </span>
+<span id="cb143-4"><a href="визуализации.html#cb143-4" tabindex="-1"></a>  <span class="fu">group_by</span>(genre, subgenre) <span class="sc">%&gt;%</span> </span>
+<span id="cb143-5"><a href="визуализации.html#cb143-5" tabindex="-1"></a>  count <span class="sc">%&gt;%</span></span>
+<span id="cb143-6"><a href="визуализации.html#cb143-6" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Poetry&quot;</span>, <span class="st">&quot;Technical&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb143-7"><a href="визуализации.html#cb143-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder</span>(subgenre, n), n, <span class="at">fill =</span> subgenre)) <span class="sc">+</span> </span>
+<span id="cb143-8"><a href="визуализации.html#cb143-8" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb143-9"><a href="визуализации.html#cb143-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>genre, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb143-10"><a href="визуализации.html#cb143-10" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span>
+<span id="cb143-11"><a href="визуализации.html#cb143-11" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb143-12"><a href="визуализации.html#cb143-12" tabindex="-1"></a></span>
+<span id="cb143-13"><a href="визуализации.html#cb143-13" tabindex="-1"></a><span class="co"># еще один способ сохранить последний график</span></span>
+<span id="cb143-14"><a href="визуализации.html#cb143-14" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb143-15"><a href="визуализации.html#cb143-15" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">&quot;Diorisis.png&quot;</span>,</span>
+<span id="cb143-16"><a href="визуализации.html#cb143-16" tabindex="-1"></a>  <span class="at">plot =</span> <span class="fu">last_plot</span>(),</span>
+<span id="cb143-17"><a href="визуализации.html#cb143-17" tabindex="-1"></a>  <span class="at">device =</span> <span class="st">&quot;png&quot;</span>,</span>
+<span id="cb143-18"><a href="визуализации.html#cb143-18" tabindex="-1"></a>  <span class="at">scale =</span> <span class="dv">1</span>,</span>
+<span id="cb143-19"><a href="визуализации.html#cb143-19" tabindex="-1"></a>  <span class="at">width =</span> <span class="cn">NA</span>,</span>
+<span id="cb143-20"><a href="визуализации.html#cb143-20" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">500</span>,</span>
+<span id="cb143-21"><a href="визуализации.html#cb143-21" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">&quot;px&quot;</span>,</span>
+<span id="cb143-22"><a href="визуализации.html#cb143-22" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="cb143-23"><a href="визуализации.html#cb143-23" tabindex="-1"></a>)</span></code></pre></div>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p><a href="https://youtu.be/a4mvbyNGdBA" class="uri">https://youtu.be/a4mvbyNGdBA</a><a href="визуализации.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/par" class="uri">https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/par</a><a href="визуализации.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://figshare.com/articles/dataset/The_Diorisis_Ancient_Greek_Corpus/6187256" class="uri">https://figshare.com/articles/dataset/The_Diorisis_Ancient_Greek_Corpus/6187256</a><a href="визуализации.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="начало-работы-с-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="опрятные-данные.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-plot.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -12,3 +12,25 @@ pre {
 pre code {
   white-space: inherit;
 }
+.infobox {
+  padding: 1em;
+  background: #ededed;
+  color: black;
+}
+
+.spoiler {
+  visibility: hidden;
+}
+
+.spoiler::before {
+  visibility: visible;
+  content: "🔍 Наведите курсив, чтобы увидеть ответ"
+}
+
+.spoiler:hover {
+  visibility: visible;
+}
+
+.spoiler:hover::before {
+  display: none;
+}

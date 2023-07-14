@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Тема 2 Начало работы с R | A Minimal Book Example</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Тема 2 Начало работы с R | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Тема 2 Начало работы с R | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="John Doe" />
+
+
+<meta name="date" content="2023-07-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="визуализации.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Компьютерный анализ текста в R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html"><i class="fa fa-check"></i><b>2</b> Начало работы с R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#что-такое-r"><i class="fa fa-check"></i><b>2.1</b> Что такое R?</a></li>
+<li class="chapter" data-level="2.2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#пакеты-и-виньетки"><i class="fa fa-check"></i><b>2.2</b> Пакеты и виньетки</a></li>
+<li class="chapter" data-level="2.3" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#если-не-хватает-пакетов"><i class="fa fa-check"></i><b>2.3</b> Если не хватает пакетов</a></li>
+<li class="chapter" data-level="2.4" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#о-воспроизводимости"><i class="fa fa-check"></i><b>2.4</b> О воспроизводимости</a></li>
+<li class="chapter" data-level="2.5" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#что-мы-не-будем-делать"><i class="fa fa-check"></i><b>2.5</b> Что мы (не) будем делать?</a></li>
+<li class="chapter" data-level="2.6" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#rstudio"><i class="fa fa-check"></i><b>2.6</b> RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#установка"><i class="fa fa-check"></i><b>2.7</b> Установка</a></li>
+<li class="chapter" data-level="2.8" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#начало-работы"><i class="fa fa-check"></i><b>2.8</b> Начало работы</a></li>
+<li class="chapter" data-level="2.9" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#r-как-калькулятор"><i class="fa fa-check"></i><b>2.9</b> R как калькулятор</a></li>
+<li class="chapter" data-level="2.10" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#операторы-присваивания"><i class="fa fa-check"></i><b>2.10</b> Операторы присваивания</a></li>
+<li class="chapter" data-level="2.11" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#векторы"><i class="fa fa-check"></i><b>2.11</b> Векторы</a></li>
+<li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
+<li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
+<li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
+<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#шорткаты"><i class="fa fa-check"></i><b>2.15</b> Шорткаты</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="визуализации.html"><a href="визуализации.html#базовый-r"><i class="fa fa-check"></i><b>3.1</b> Базовый R</a></li>
+<li class="chapter" data-level="3.2" data-path="визуализации.html"><a href="визуализации.html#lattice"><i class="fa fa-check"></i><b>3.2</b> Lattice</a></li>
+<li class="chapter" data-level="3.3" data-path="визуализации.html"><a href="визуализации.html#ggplot2"><i class="fa fa-check"></i><b>3.3</b> Ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="визуализации.html"><a href="визуализации.html#быстрое-решение-qplot"><i class="fa fa-check"></i><b>3.3.1</b> Быстрое решение: qplot()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="визуализации.html"><a href="визуализации.html#слой-за-слоем-ggplot"><i class="fa fa-check"></i><b>3.3.2</b> Слой за слоем: ggplot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="визуализации.html"><a href="визуализации.html#экспорт-графиков-из-среды-r"><i class="fa fa-check"></i><b>3.4</b> Экспорт графиков из среды R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="опрятные-данные.html"><a href="опрятные-данные.html"><i class="fa fa-check"></i><b>4</b> Опрятные данные</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#синтаксис-tidyverse"><i class="fa fa-check"></i><b>4.1</b> Синтаксис tidyverse</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#tibble"><i class="fa fa-check"></i><b>4.1.1</b> Tibble</a></li>
+<li class="chapter" data-level="4.1.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#dplyr"><i class="fa fa-check"></i><b>4.1.2</b> Dplyr</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#опрятные-данные-1"><i class="fa fa-check"></i><b>4.2</b> Опрятные данные</a></li>
+<li class="chapter" data-level="4.3" data-path="опрятные-данные.html"><a href="опрятные-данные.html#пример-буккроссинг"><i class="fa fa-check"></i><b>4.3</b> Пример: буккроссинг</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#смотрим-на-данные"><i class="fa fa-check"></i><b>4.3.1</b> Смотрим на данные</a></li>
+<li class="chapter" data-level="4.3.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#трансформируем-данные"><i class="fa fa-check"></i><b>4.3.2</b> Трансформируем данные</a></li>
+<li class="chapter" data-level="4.3.3" data-path="опрятные-данные.html"><a href="опрятные-данные.html#объединяем-данные"><i class="fa fa-check"></i><b>4.3.3</b> Объединяем данные</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html"><i class="fa fa-check"></i><b>5</b> Функциональное программирование</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#написание-функций"><i class="fa fa-check"></i><b>5.1</b> Написание функций</a></li>
+<li class="chapter" data-level="5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#векторизируй-это"><i class="fa fa-check"></i><b>5.2</b> Векторизируй это</a></li>
+<li class="chapter" data-level="5.3" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#зачем-писать-функции"><i class="fa fa-check"></i><b>5.3</b> Зачем писать функции?</a></li>
+<li class="chapter" data-level="5.4" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#векторизованные-конструкции"><i class="fa fa-check"></i><b>5.4</b> Векторизованные конструкции</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#циклы"><i class="fa fa-check"></i><b>5.4.1</b> Циклы</a></li>
+<li class="chapter" data-level="5.4.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#условия"><i class="fa fa-check"></i><b>5.4.2</b> Условия</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#семейство-функций-_apply-из-базового-r"><i class="fa fa-check"></i><b>5.5</b> Семейство функций _apply из базового R</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#tapply"><i class="fa fa-check"></i><b>5.5.1</b> tapply()</a></li>
+<li class="chapter" data-level="5.5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#apply"><i class="fa fa-check"></i><b>5.5.2</b> apply()</a></li>
+<li class="chapter" data-level="5.5.3" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#lapply-и-sapply"><i class="fa fa-check"></i><b>5.5.3</b> lapply() и sapply()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.6</b> Purrr</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#map_df-и-map_dbl"><i class="fa fa-check"></i><b>5.6.1</b> map_df() и map_dbl()</a></li>
+<li class="chapter" data-level="5.6.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#map2"><i class="fa fa-check"></i><b>5.6.2</b> map2()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#furrr"><i class="fa fa-check"></i><b>5.7</b> Furrr</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>6</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>6.1</b> Equations</a></li>
+<li class="chapter" data-level="6.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>6.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="6.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>6.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>7</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>7.1</b> Publishing</a></li>
+<li class="chapter" data-level="7.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>7.2</b> 404 pages</a></li>
+<li class="chapter" data-level="7.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>7.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="начало-работы-с-r" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Тема 2</span> Начало работы с R<a href="начало-работы-с-r.html#начало-работы-с-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="что-такое-r" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Что такое R?<a href="начало-работы-с-r.html#что-такое-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R — это язык программирования для статистической обработки данных и работы с графикой. Он создан в 90-х гг. на факультете статистики Оклендского университета. Иными словами, его делали статистики и для статистиков. Поэтому он прекрасно подходит для анализа данных, статистических вычислений и машинного обучения, а значит востребован в науке.</p>
+<blockquote>
+<p>Язык R — один из самых распространённых в научной среде. Им пользуются математики, биологи, генетики и другие учёные, которым нужно проводить статистические исследования и строить модели. Поэтому язык R нужно изучать тем, кто планирует заниматься научными исследованиями.</p>
+<p>— Яндекс Практикум <a href="https://practicum.yandex.ru/blog/chto-takoe-yazyk-r/#chto-takoe">Блог</a></p>
+</blockquote>
+<p>После установки R вы получите доступ к уже готовым методам статистического анализа и инструментам для визуализации. Но за счет того, что R распространяется свободно, постоянно появляются новые алгоритмы, созданные внутри экспертного сообщества и тоже доступные для всех. Как и любой язык, R растет и развивается.</p>
+</div>
+<div id="пакеты-и-виньетки" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Пакеты и виньетки<a href="начало-работы-с-r.html#пакеты-и-виньетки" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Если в базовой инсталляции R нет нужного решения – имеет смысл поискать в библиотеке <strong>пакетов</strong>. Пакет – это <strong>набор функций</strong> и иногда датасетов, созданный пользователями. На 1 июля 2023 г. в репозитории <a href="https://cran.r-project.org/">CRAN</a> доступно 19789 пакетов. И это далеко не все: многие пакеты доступны только на GitHub, например <a href="https://rdrr.io/github/dracor-org/rdracor/f/README.md">пакет Dracor</a>, к которому я буду обращаться в рамках этого курса.</p>
+<div class="infobox">
+<p>Некоторые функции, которые вы найдете в пакетах, частично дублируют друг друга – это нормально, как и в естественном языке, “сказать” что-то можно разными способами.</p>
+</div>
+<p>Несмотря на то, что R создавался изначально для работы со статистикой, система свободно распространяемых модулей значительно расширяет круг задач, которые можно решать на этом языке. Например, благодаря модулю Shiny можно создавать <a href="https://locusclassicus.shinyapps.io/myshinyapp/">приложения</a> и встраивать их в веб-страницы, а модуль Leaflet позволяет создавать интерактивные карты. <a href="http://antibarbari.ru/2023/03/01/cicero_villas/">Одну из них</a> мы сделали в рамках проекта Antibarbari HSE. В рамках этого курса мы познакомимся и с модулями для машинного обучения. Нейросети в R тоже можно строить, но мы пока не будем.</p>
+<p>По технической документации и так называемым “виньеткам” можно понять, какой пакет вам нужен. Например, вот так выглядит <a href="https://docs.ropensci.org/rperseus/articles/rperseus-vignette.html">виньетка</a> пакета <code>RPerseus</code>, при помощи которого можно получить доступ к корпусу греческой и латинской литературы.</p>
+<p>Бывают еще <strong>“пакеты пакетов”</strong>, то есть очень большие семейства функций, своего рода “диалекты” R. Таково, например, семейство <code>tidyverse</code>, объединяемое идеологией “опрятных” данных. Про него мы еще будем говорить.</p>
+</div>
+<div id="если-не-хватает-пакетов" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Если не хватает пакетов<a href="начало-работы-с-r.html#если-не-хватает-пакетов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Это самое интересное. Если вы работаете в программе с графическим интерфейсом (SPSS, Minitab), то вы вынуждены формулировать свою задачу так, чтобы “вписаться” в набор кнопок, предусмотренных разработчиком. В R, столкнувшись с особой задачей, вы просто пишете под нее особую функцию.</p>
+<p>Новую функцию не обязательно публиковать в составе пакета – можно сохранить в рабочую директорию (с расширением <code>.R</code>) и наслаждаться самому. По мере того, как развиваются ваши навыки программирования, вы можете ставить и решать все более сложные и интересные задачи.</p>
+</div>
+<div id="о-воспроизводимости" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> О воспроизводимости<a href="начало-работы-с-r.html#о-воспроизводимости" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Когда вы решите опубликовать свое исследование, то и код к нему придется опубликовать (как правило, для этого используется GitHub) – поэтому надо сразу привыкать кодить так, чтобы ваш код был понятен другим. Например, добавлять пояснения при помощи знака <code>#</code> (как в Python)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="начало-работы-с-r.html#cb3-1" tabindex="-1"></a><span class="co"># случайный набор чисел из нормального распределения</span></span>
+<span id="cb3-2"><a href="начало-работы-с-r.html#cb3-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb3-3"><a href="начало-работы-с-r.html#cb3-3" tabindex="-1"></a><span class="co"># случайная выборка из этого набора</span></span>
+<span id="cb3-4"><a href="начало-работы-с-r.html#cb3-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sample</span>(x, <span class="dv">100</span>)</span></code></pre></div>
+<p>В идеале, впрочем, вы поясняете не то, <em>что</em> код делает (при грамотном кодинге это должно быть самоочевидо), а <em>зачем</em>.</p>
+<p>В этом примере код, правда, настолько простой, что не требует особых пояснений. Но в больших проектах от “читабельности” кода зависит не только то, поймет ли вас потенциальный рецензент, но и сможете ли вы сами вспомнить, какая строчка за что отвечает. Также это позволит вернуться к проекту через некоторое время и быстро вспомнить, что там происходит.</p>
+<p>Если вы получите интересные результаты и решите их опубликовать, то выложить в открытый доступ придется не только код, но и данные (если они не защищены копирайтом или другими ограничениями). Таким образом рецензент или другие ученые, которые будут читать вашу статью, сможет перепроверить ваши выводы. Ученые так делают!</p>
+<p>И это еще один довод в пользу того, чтобы научиться программировать, а не полагаться на ПО с графическим интерфейсом.</p>
+</div>
+<div id="что-мы-не-будем-делать" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Что мы (не) будем делать?<a href="начало-работы-с-r.html#что-мы-не-будем-делать" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Хотя возможности R очень широки, мы будем заниматься в основном анализом текстовых данных. “Текст” в данном случае можно понимать как зафиксированную (в машиночитаемом виде) речь: от отзыва на товар до романа. Но в основном данные я подбираю таким образом, чтобы они были интересны гуманитариям.</p>
+<p>Мы <em>не будем</em> анализировать звучащую речь (хотя это тоже <a href="https://ling.hse.ru/news/671710245.html">можно делать</a> в R). И мы не будем заниматься распознаванием рукописных символов, для этого есть гораздо другие <a href="https://vk.com/video-211800158_456239315">мощные инструменты</a>. Веб-скрапинг и нейронные сети тоже не входят в число тем этого курса.</p>
+<p>Курс включает в себя три основных блока и 24 урока:</p>
+<ul>
+<li>общее введение в R (темы 1-6)</li>
+<li>text-mining (темы 7-13)</li>
+<li>статистика и статистическое обучение (14-22)</li>
+</ul>
+<p>Еще два урока посвящены модулям Plotly и Leaflet.</p>
+<p>Если вы плохо представляете, на что вообще способны количественные методы в гуманитаристике, посмотрите видео панельной дискуссии <a href="https://vk.com/video-211800158_456239307">“Цифровые инструменты и методы: в чем их польза и как им обучить гуманитария?”</a> (НИУ ВШЭ, 2023 г.). Это видео о том, зачем. О том, как – дальше.</p>
+</div>
+<div id="rstudio" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> RStudio<a href="начало-работы-с-r.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Работать в R мы будем с использованием RStudio, которая представляет собой свободную среду разработки (IDE) программного обеспечения с открытым исходным кодом для языка программирования R.</p>
+<p>Наша задача в этом уроке – установить R и R Studio и убедиться, что все работает; научиться самостоятельно находить помощь, совершать несложные вычисления.</p>
+</div>
+<div id="установка" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Установка<a href="начало-работы-с-r.html#установка" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Установить R</li>
+</ol>
+<ul>
+<li>Скачать R для Windows: <a href="https://cran.r-project.org/bin/windows/" class="uri">https://cran.r-project.org/bin/windows/</a></li>
+<li>Скачать R для Mac: <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Установить R Studio</li>
+</ol>
+<ul>
+<li>Скачать: <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a> (достаточно бесплатной версии)</li>
+</ul>
+<div class="infobox">
+<p>На MacOS для работы библиотеки Stylo также понадобится установить XQuartz: <a href="https://www.xquartz.org/" class="uri">https://www.xquartz.org/</a></p>
+</div>
+</div>
+<div id="начало-работы" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Начало работы<a href="начало-работы-с-r.html#начало-работы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>После установки и запуска RStudio вы увидите вот такие четыре панели (их названия подписаны на картинке):</p>
+<div class="float">
+<img src="images/panes.jpeg" alt="RStudio Panes" />
+<div class="figcaption">RStudio Panes</div>
+</div>
+<p>По <a href="https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html">ссылке</a> можно подробнее прочитать, что за что отвечает (и как это поменять).</p>
+<p>Для начала попробуйте получить информацию о сессии, введя в <strong>консоли</strong> такую команду:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="начало-работы-с-r.html#cb4-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<p><code>sessionInfo()</code> – это <strong>функция</strong>. За названием функции всегда следуют круглые скобки, внутри которых могут находиться <strong>аргументы функции</strong>. О функциях можно думать как о глаголах (“сделай то-то!”). Аргументы – это что-то вроде дополнений и обстоятельств. (Кстати, в “диалекте” tidyverse есть функции-наречия, так что аналогия законная.) Аргументы могут быть обязательные и необязательные.</p>
+<div class="infobox">
+<p>Чтобы узнать, каких аргументов требует функция, надо вызывать <strong>help</strong>: <code>?mean()</code>. Также можно (и нужно) читать техническую документацию к пакетам.</p>
+</div>
+<p>Уточнить свою <strong>рабочую директорию</strong> (в которой R будет искать и сохранять файлы) можно при помощи функции <code>getwd()</code> без аргументов. Установить рабочую директорию можно при помощи функции <code>setwd()</code>, указав в качестве аргумента путь к рабочей директории на вашем компьютере (в кавычках, так как это символьный вектор). В моем случае это выглядит так:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="начало-работы-с-r.html#cb5-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/olga/R_Workflow/&quot;</span>)</span></code></pre></div>
+<p>Также для выбора рабочей директории можно использовать меню R <code>Session &gt; Set Working Directory</code>.</p>
+<p>Пакеты для работы устанавливаются один раз, однако подключать их надо во время каждой сессии. Чтобы установить новый пакет, можно воспользоваться меню <code>Tools &gt; Install Packages</code>. Также можно устанавливать пакеты из консоли. Установим пакет для анализа лингвистических данных:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="начало-работы-с-r.html#cb6-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;languageR&quot;</span>)</span></code></pre></div>
+<p>Для подключения используем функцию <code>library()</code>, которой передаем в качестве аргумента название пакета без кавычек:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="начало-работы-с-r.html#cb7-1" tabindex="-1"></a><span class="fu">library</span>(languageR)</span></code></pre></div>
+<p>Что еще надо знать:</p>
+<ul>
+<li>как создавать проекты в R и почему это удобно <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+<li>как создавать и хранить файлы с кодом</li>
+</ul>
+</div>
+<div id="r-как-калькулятор" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> R как калькулятор<a href="начало-работы-с-r.html#r-как-калькулятор" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Можно использовать . Для этого вводим данные рядом с символом приглашения <code>&gt;</code>, который называется <strong>prompt</strong>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="начало-работы-с-r.html#cb8-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">4</span>) <span class="co"># квадратный корень</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="начало-работы-с-r.html#cb10-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span> <span class="co"># степень</span></span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="начало-работы-с-r.html#cb12-1" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">100</span>) <span class="co">#логарифм</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Если в начале консольной строки стоит <code>+</code>, значит предыдущий код не завершен. Например, вы забыли закрыть скобку функции. Ее можно дописать на следующей строке. Попробуйте набрать <code>sqrt(2</code> в консоли.</p>
+</div>
+<div id="операторы-присваивания" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> Операторы присваивания<a href="начало-работы-с-r.html#операторы-присваивания" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Чтобы в окружении появился новый объект, надо присвоить результат вычислений какой-нибудь переменной при помощи <strong>оператора присваивания</strong> <code>&lt;-</code> (<code>Alt</code> + <code>-</code> (Windows) или <code>Option</code> + <code>-</code> (Mac)). Знак <code>=</code> также работает как оператор присваивания, но не во всех контекстах, поэтому им лучше не пользоваться.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="начало-работы-с-r.html#cb14-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="co"># создаем переменную</span></span>
+<span id="cb14-2"><a href="начало-работы-с-r.html#cb14-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co"># создаем еще одну переменную</span></span>
+<span id="cb14-3"><a href="начало-работы-с-r.html#cb14-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> y <span class="co"># переназначаем значение </span></span>
+<span id="cb14-4"><a href="начало-работы-с-r.html#cb14-4" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
+<pre><code>## [1] 0.2</code></pre>
+<p><strong>Имя переменной</strong>, как и имя функции, может содержать прописные и строчные буквы, точку и знак подчеркивания. Функция <code>c()</code> (concatenation) позволяет собрать несколько элементов в единый вектор:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="начало-работы-с-r.html#cb16-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb16-2"><a href="начало-работы-с-r.html#cb16-2" tabindex="-1"></a>x_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="co"># также возможно x.mean или xMean</span></span>
+<span id="cb16-3"><a href="начало-работы-с-r.html#cb16-3" tabindex="-1"></a>x_mean</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>В диалекте tidyverse предпочтение отдается подчеркиванию, а не точке; здесь сказывается влияние синтаксиса Python, где через точку получают доступ к методам объекта. Будьте внимательны: R чувствительна к регистру!</p>
+<div class="infobox">
+<p><strong>Объекты, предназначенные для хранения данных</strong>, – это отдельные переменные, векторы, матрицы и массивы, списки, факторы, таблицы данных. <strong>Функции</strong> – это поименованные программы, предназначенные для создания новых объектов или выполнения определенных действий над ними <span class="citation">(<a href="#ref-мастицкий2015"><strong>мастицкий2015?</strong></a>)</span></p>
+</div>
+<p>Чтобы получить список всех объектов в окружении, используется функция <code>ls()</code>. Удалять объекты можно при помощи <code>rm()</code>. Функции можно вкладывать друг в друга:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="начало-работы-с-r.html#cb18-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># удаляет все объекты в окружении</span></span></code></pre></div>
+</div>
+<div id="векторы" class="section level2 hasAnchor" number="2.11">
+<h2><span class="header-section-number">2.11</span> Векторы<a href="начало-работы-с-r.html#векторы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>В языке R нет скаляров (отдельных чисел). Числа считаются векторами из одного элемента.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="начало-работы-с-r.html#cb19-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb19-2"><a href="начало-работы-с-r.html#cb19-2" tabindex="-1"></a><span class="fu">class</span>(x) <span class="co"># числовой вектор</span></span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="начало-работы-с-r.html#cb21-1" tabindex="-1"></a><span class="fu">length</span>(x) <span class="co"># длина вектора</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="начало-работы-с-r.html#cb23-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>() <span class="co"># создадим пустой вектор</span></span>
+<span id="cb23-2"><a href="начало-работы-с-r.html#cb23-2" tabindex="-1"></a>y <span class="co"># при попытке распечатать получаем NULL </span></span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="начало-работы-с-r.html#cb25-1" tabindex="-1"></a><span class="fu">length</span>(y) <span class="co"># длина равна 0</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="infobox">
+<p><code>NULL</code> означает, что значение не существует; <code>NA</code> (not available) – что оно существует, но неизвестно. Поэтому <code>mean(c(1, NA, 2))</code> выдаст ошибку, а <code>mean(c(1, NULL, 2))</code> вернет среднее. В первом случае можно использовать дополнительный аргумент: <code>mean(c(1, NA, 2), na.rm=T)</code>. Подробнее см. <span class="citation">(<a href="#ref-мэтлофф2019"><strong>мэтлофф2019?</strong></a>)</span>.</p>
+</div>
+<p>Основные типы данных, с которыми мы будем работать, следующие:</p>
+<ul>
+<li>целое число (integer)</li>
+<li>число с плавающей точкой (numeric, также называются double, то есть число двойной точности)</li>
+<li>строка (character)</li>
+<li>логическая переменная (logical)</li>
+<li>категориальная переменная, или фактор (factor)</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="начало-работы-с-r.html#cb27-1" tabindex="-1"></a><span class="co"># проверить тип данных </span></span>
+<span id="cb27-2"><a href="начало-работы-с-r.html#cb27-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)</span>
+<span id="cb27-3"><a href="начало-работы-с-r.html#cb27-3" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="начало-работы-с-r.html#cb29-1" tabindex="-1"></a><span class="fu">is.integer</span>(x)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="начало-работы-с-r.html#cb31-1" tabindex="-1"></a><span class="fu">is.numeric</span>(x)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>При попытке объединить в единый вектор данные разных типов, они будут принудительно приведены к одному типу:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="начало-работы-с-r.html#cb33-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb33-2"><a href="начало-работы-с-r.html#cb33-2" tabindex="-1"></a>x <span class="co"># логические значения переработаны в числовые</span></span></code></pre></div>
+<pre><code>## [1] 1 1 3 0</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="начало-работы-с-r.html#cb35-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="dv">2</span>, <span class="st">&quot;лукоморье&quot;</span>) <span class="co"># строки всегда в кавычках</span></span>
+<span id="cb35-2"><a href="начало-работы-с-r.html#cb35-2" tabindex="-1"></a>y <span class="co"># числа превратились в строки</span></span></code></pre></div>
+<pre><code>## [1] &quot;1&quot;         &quot;a&quot;         &quot;2&quot;         &quot;лукоморье&quot;</code></pre>
+<p><strong>Добавить ссылку: Типы векторов в R</strong></p>
+<p>Логические векторы можно получить в результате применения <strong>логических выражений</strong> (<code>==</code> “равно”, <code>!=</code> “не равно”, <code>&lt;=</code> “меньше или равно”) к данным других типов:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="начало-работы-с-r.html#cb37-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># числа от 1 до 10</span></span>
+<span id="cb37-2"><a href="начало-работы-с-r.html#cb37-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">&gt;</span> <span class="dv">5</span></span>
+<span id="cb37-3"><a href="начало-работы-с-r.html#cb37-3" tabindex="-1"></a>y <span class="co"># значения TRUE соответствуют единице, поэтому их можно складывать</span></span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="начало-работы-с-r.html#cb39-1" tabindex="-1"></a><span class="fu">sum</span>(y)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>Функции <code>all()</code> и <code>any()</code> также возвращают логические значения:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="начало-работы-с-r.html#cb41-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span> </span>
+<span id="cb41-2"><a href="начало-работы-с-r.html#cb41-2" tabindex="-1"></a><span class="fu">any</span>(x <span class="sc">==</span> <span class="dv">15</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="начало-работы-с-r.html#cb43-1" tabindex="-1"></a><span class="fu">all</span>(x <span class="sc">&gt;</span> <span class="dv">9</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Существуют различные способы сгенерировать векторы:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="начало-работы-с-r.html#cb45-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="начало-работы-с-r.html#cb47-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="st">&quot;foo&quot;</span>, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;foo&quot; &quot;foo&quot; &quot;foo&quot; &quot;foo&quot; &quot;foo&quot;</code></pre>
+<p>Векторы можно индексировать, то есть забирать из них какие-то элементы:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="начало-работы-с-r.html#cb49-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb49-2"><a href="начало-работы-с-r.html#cb49-2" tabindex="-1"></a>x[<span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># индексы начинаются с 1 (в отличие от Python)</span></span></code></pre></div>
+<pre><code>## [1] 2.5 3.0</code></pre>
+<p>Над векторами можно совершать арифметические операции, но будьте внимательны, применяя операции к векторам разной длины: в этом случае более короткий вектор будет <strong>переработан</strong>, то есть повторен до тех пор, пока его длина не сравняется с длиной вектора большей длины.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="начало-работы-с-r.html#cb51-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span>; y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>); z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb51-2"><a href="начало-работы-с-r.html#cb51-2" tabindex="-1"></a>y <span class="sc">/</span> x </span></code></pre></div>
+<pre><code>## [1]  5 10 15</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="начало-работы-с-r.html#cb53-1" tabindex="-1"></a>x <span class="sc">+</span> y </span></code></pre></div>
+<pre><code>## [1] 12 22 32</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="начало-работы-с-r.html#cb55-1" tabindex="-1"></a>y <span class="sc">+</span> z</span></code></pre></div>
+<pre><code>## [1] 15 26 37</code></pre>
+<p>Отдельно несколько слов про <strong>факторы</strong>. Факторы внешне похожи на строки, но в отличие от них хранят информацию об <em>уровнях</em> категориальных переменных. Уровень может обозначаться как числом (например, 1 и 0), так и строкой.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="начало-работы-с-r.html#cb57-1" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</span>
+<span id="cb57-2"><a href="начало-работы-с-r.html#cb57-2" tabindex="-1"></a>t</span></code></pre></div>
+<pre><code>## [1] A B C
+## Levels: A B C</code></pre>
+</div>
+<div id="списки" class="section level2 hasAnchor" number="2.12">
+<h2><span class="header-section-number">2.12</span> Списки<a href="начало-работы-с-r.html#списки" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Списки, или рекурсивные векторы (в отличие от атомарных векторов), могут хранить данные разных типов.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="начало-работы-с-r.html#cb59-1" tabindex="-1"></a>list <span class="ot">=</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="at">b =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">c =</span> <span class="fu">c</span>(T, F, T))</span>
+<span id="cb59-2"><a href="начало-работы-с-r.html#cb59-2" tabindex="-1"></a>list</span></code></pre></div>
+<pre><code>## $a
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+## 
+## $b
+## [1] 1 2 3
+## 
+## $c
+## [1]  TRUE FALSE  TRUE</code></pre>
+<p>Можно получить доступ как к элементам списка целиком, так и к их содержимому.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="начало-работы-с-r.html#cb61-1" tabindex="-1"></a>list<span class="sc">$</span>a <span class="co"># обращение к поименованным элементам </span></span></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="начало-работы-с-r.html#cb63-1" tabindex="-1"></a>list[<span class="dv">2</span>] <span class="co"># одинарные квадратные скобки извлекают элемент списка целиком</span></span></code></pre></div>
+<pre><code>## $b
+## [1] 1 2 3</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="начало-работы-с-r.html#cb65-1" tabindex="-1"></a><span class="fu">class</span>(list[<span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="начало-работы-с-r.html#cb67-1" tabindex="-1"></a>list[[<span class="dv">2</span>]] <span class="co">#  элементы второго элемента </span></span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="начало-работы-с-r.html#cb69-1" tabindex="-1"></a><span class="fu">class</span>(list[[<span class="dv">2</span>]])</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="начало-работы-с-r.html#cb71-1" tabindex="-1"></a>list<span class="sc">$</span>c[<span class="dv">1</span>]<span class="co"># первый элемент второго элемента</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Обратите внимание, что <code>list[2]</code> и <code>list[[2]]</code> возвращают объекты разных классов. Нам это еще понадобится при работе с XML.</p>
+<p><strong>Добавить картинку: Индексирование списка в R</strong></p>
+<p>Если пройти по ссылке под картинкой, можно увидеть еще несколько замечательных иллюстраций этой мысли🧂.</p>
+</div>
+<div id="матрицы" class="section level2 hasAnchor" number="2.13">
+<h2><span class="header-section-number">2.13</span> Матрицы<a href="начало-работы-с-r.html#матрицы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Матрица – это вектор, который имеет два дополнительных атрибута: количество строк и количество столбцов. Из этого следует, что матрица, как и вектор, может хранить данные одного типа. Проверим.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="начало-работы-с-r.html#cb73-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb73-2"><a href="начало-работы-с-r.html#cb73-2" tabindex="-1"></a>M <span class="co"># все ок</span></span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="начало-работы-с-r.html#cb75-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&quot;a&quot;</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb75-2"><a href="начало-работы-с-r.html#cb75-2" tabindex="-1"></a>M <span class="co"># все превратилось в строку! </span></span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,] &quot;1&quot;  &quot;3&quot; 
+## [2,] &quot;2&quot;  &quot;a&quot;</code></pre>
+<p>В матрице есть строки и столбцы. Их количество определяет размер (порядок) матрицы. Выше мы создали матрицу 2 x 2. Элементы матрицы, как и элементы вектора, можно извлекать по индексу. Сначала указывается номер строки, потом номер столбца.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="начало-работы-с-r.html#cb77-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb77-2"><a href="начало-работы-с-r.html#cb77-2" tabindex="-1"></a>M[<span class="dv">1</span>, ] <span class="co"># первая строка полностью</span></span></code></pre></div>
+<pre><code>## [1] 1 3</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="начало-работы-с-r.html#cb79-1" tabindex="-1"></a>M[,<span class="dv">2</span>] <span class="co"># второй столбец полностью</span></span></code></pre></div>
+<pre><code>## [1] 3 4</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="начало-работы-с-r.html#cb81-1" tabindex="-1"></a>M[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># одно значение</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Обратите внимание, как меняется размерность при индексировании.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="начало-работы-с-r.html#cb83-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb83-2"><a href="начало-работы-с-r.html#cb83-2" tabindex="-1"></a><span class="fu">class</span>(M)</span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="начало-работы-с-r.html#cb85-1" tabindex="-1"></a><span class="fu">dim</span>(M) <span class="co"># функция для извлечения измерений</span></span></code></pre></div>
+<pre><code>## [1] 2 2</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="начало-работы-с-r.html#cb87-1" tabindex="-1"></a><span class="fu">class</span>(M[<span class="dv">1</span>, ]) <span class="co"># первая строка полностью</span></span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="начало-работы-с-r.html#cb89-1" tabindex="-1"></a><span class="fu">dim</span>(M[<span class="dv">1</span>, ]) </span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<p>Попытка узнать измерения вектора возвращает <code>NULL</code>, потому что с точки зрения R векторы не являются матрицами из одного столбца или одной строки, и потому не имеют измерений. С другой стороны, можно создать матрицу, в которой будет одна строка или один столбцец. При выводе они выглядят не так, как обычные векторы. Хотя казалось бы.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="начало-работы-с-r.html#cb91-1" tabindex="-1"></a><span class="co"># вектор-строка</span></span>
+<span id="cb91-2"><a href="начало-работы-с-r.html#cb91-2" tabindex="-1"></a>C <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb91-3"><a href="начало-работы-с-r.html#cb91-3" tabindex="-1"></a>C</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="начало-работы-с-r.html#cb93-1" tabindex="-1"></a><span class="co"># вектор-столбец</span></span>
+<span id="cb93-2"><a href="начало-работы-с-r.html#cb93-2" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb93-3"><a href="начало-работы-с-r.html#cb93-3" tabindex="-1"></a>D</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    1
+## [2,]    2
+## [3,]    3</code></pre>
+<p>Над числовыми матрицами в R можно совершать разные операции из линейной алгебры; многие из них нам понадобятся, когда мы будем говорить о латентно-семантическом анализе.</p>
+<p>Пока лишь несколько полезных функций.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="начало-работы-с-r.html#cb95-1" tabindex="-1"></a><span class="co"># в квадратной матрице есть главная и побочная диагонали</span></span>
+<span id="cb95-2"><a href="начало-работы-с-r.html#cb95-2" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>) <span class="co"># ее мы распечатывали выше</span></span>
+<span id="cb95-3"><a href="начало-работы-с-r.html#cb95-3" tabindex="-1"></a><span class="fu">diag</span>(M)</span></code></pre></div>
+<pre><code>## [1] 1 4</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="начало-работы-с-r.html#cb97-1" tabindex="-1"></a><span class="co"># если поставить матрицу на бок, то получится транспонированная матрица</span></span>
+<span id="cb97-2"><a href="начало-работы-с-r.html#cb97-2" tabindex="-1"></a><span class="fu">t</span>(M)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="начало-работы-с-r.html#cb99-1" tabindex="-1"></a><span class="co"># матрицу можно умножить на скаляр, то есть на обычное число. </span></span>
+<span id="cb99-2"><a href="начало-работы-с-r.html#cb99-2" tabindex="-1"></a>M <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    3    9
+## [2,]    6   12</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="начало-работы-с-r.html#cb101-1" tabindex="-1"></a><span class="co"># матрицы одного размера можно складывать</span></span>
+<span id="cb101-2"><a href="начало-работы-с-r.html#cb101-2" tabindex="-1"></a>M <span class="sc">+</span> M</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    2    6
+## [2,]    4    8</code></pre>
+<p>Матрицы также можно умножать на другие матрицы и на векторы. Но это уже линан, и мы вернемся к этому в другой раз. Пока, если хотите, можете посмотреть видео.</p>
+<p><a href="https://vk.com/video-211800158_456239317">Операции с матрицами: сложение и умножение, транспонирование. Диагональная матрица</a></p>
+<p>Подробнее об элементах линейной алгебры в R см. <span class="citation">(<a href="#ref-буховец2015"><strong>буховец2015?</strong></a>)</span>.</p>
+</div>
+<div id="таблицы" class="section level2 hasAnchor" number="2.14">
+<h2><span class="header-section-number">2.14</span> Таблицы<a href="начало-работы-с-r.html#таблицы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Таблицы (кадры данных, data frames) – это двумерные объекты (как и матрицы). Датафреймы отличаются от матриц тем, что их столбцы могут хранить данные разного типа.</p>
+<blockquote>
+<p>Если списки являются разнородными аналогами векторов в одном измерении, кадры данных являются разнородными аналогами матриц для двухмерных данных.</p>
+<p>— <span class="citation">(<a href="#ref-мэтлофф2019"><strong>мэтлофф2019?</strong></a>)</span>.</p>
+</blockquote>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="начало-работы-с-r.html#cb103-1" tabindex="-1"></a><span class="co"># создание датафрейма</span></span>
+<span id="cb103-2"><a href="начало-работы-с-r.html#cb103-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>))</span>
+<span id="cb103-3"><a href="начало-работы-с-r.html#cb103-3" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##   names age
+## 1     A  10
+## 2     B  11</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="начало-работы-с-r.html#cb105-1" tabindex="-1"></a><span class="co"># извлечение элементов</span></span>
+<span id="cb105-2"><a href="начало-работы-с-r.html#cb105-2" tabindex="-1"></a>df<span class="sc">$</span>names <span class="co"># забирает весь столбец</span></span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot;</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="начало-работы-с-r.html#cb107-1" tabindex="-1"></a>df[,<span class="st">&quot;names&quot;</span>] <span class="co"># то же самое, другой способ</span></span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot;</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="начало-работы-с-r.html#cb109-1" tabindex="-1"></a>df[<span class="dv">1</span>, ] <span class="co"># забирает ряд</span></span></code></pre></div>
+<pre><code>##   names age
+## 1     A  10</code></pre>
+<p>Потренируемся на датасете с данными о гапаксах в диалогах Платона.</p>
+<div class="infobox">
+<p>Гапакс – это слово, которое встречается один раз в корпусе.</p>
+</div>
+<p>Этот датасет позволяет перепроверить выводы Льюиса Кэмпбелла, профессора Сент-Эндрюсского университета в Шотландии. Еще 1867 г., впервые применив количественный метод для датировки диалогов Платона, он пришел к выводу, что для “позднего” стиля Платона, среди прочего, характерно обилие редкой лексики <span class="citation">(<a href="#ref-campbell1867"><strong>campbell1867?</strong></a>, xxxi)</span>.</p>
+<p>В корпус подлинных диалогов Кэмпбелл включал 26 текстов, которые делил на три хронологические группы. Свои вычисления он делал вручную, а мы можем попробовать все пересчитать в R.</p>
+<pre><code>##        dialogue  words hapax ratio group
+## 1       Apology   8745    36 0.004     1
+## 2     Charmides   8311    31 0.004     1
+## 3      Cratylus  17944   122 0.007     1
+## 4       Critias   4950   104 0.021     3
+## 5         Crito   4169    19 0.005     1
+## 6    Euthydemus  12453    87 0.007     1
+## 7     Euthyphro   5181    15 0.003     1
+## 8       Gorgias  26337   125 0.005     1
+## 9  HippiasMinor   4360    12 0.003     1
+## 10          Ion   4024    32 0.008     1
+## 11       Laches   7674    27 0.004     1
+## 12         Laws 103193   914 0.009     3
+## 13        Lysis   6980    49 0.007     1
+## 14    Menexenus   4808    43 0.009     1
+## 15         Meno   9791    30 0.003     1
+## 16   Parmenides  15155    20 0.001     2
+## 17       Phaedo  21825   140 0.006     1
+## 18     Phaedrus  16645   228 0.014     2
+## 19     Philebus  17668    64 0.004     3
+## 20   Protagoras  17795   102 0.006     1
+## 21     Republic  88878   668 0.008     2
+## 22      Sophist  16024   107 0.007     3
+## 23    Statesman  16953   180 0.011     3
+## 24    Symposium  17461   127 0.007     1
+## 25   Theaetetus  22489   162 0.007     2
+## 26      Timaeus  23662   370 0.016     3</code></pre>
+<p>Вот так выглядят наши данные. Функция <code>class()</code> позволяет убедиться, что это датафрейм.</p>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<p>Потренируемся работать с данными в таблицах.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="начало-работы-с-r.html#cb113-1" tabindex="-1"></a><span class="co"># узнать имена столбцов</span></span>
+<span id="cb113-2"><a href="начало-работы-с-r.html#cb113-2" tabindex="-1"></a><span class="fu">colnames</span>(hapax_plato) </span></code></pre></div>
+<pre><code>## [1] &quot;dialogue&quot; &quot;words&quot;    &quot;hapax&quot;    &quot;ratio&quot;    &quot;group&quot;</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="начало-работы-с-r.html#cb115-1" tabindex="-1"></a><span class="co"># извлечь ряд(ы) по значению</span></span>
+<span id="cb115-2"><a href="начало-работы-с-r.html#cb115-2" tabindex="-1"></a>hapax_plato[hapax_plato<span class="sc">$</span>dialogue <span class="sc">==</span> <span class="st">&quot;Parmenides&quot;</span>, ] </span></code></pre></div>
+<pre><code>##      dialogue words hapax ratio group
+## 16 Parmenides 15155    20 0.001     2</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="начало-работы-с-r.html#cb117-1" tabindex="-1"></a><span class="co"># узнать тип данных в столбцах</span></span>
+<span id="cb117-2"><a href="начало-работы-с-r.html#cb117-2" tabindex="-1"></a><span class="fu">str</span>(hapax_plato) </span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    26 obs. of  5 variables:
+##  $ dialogue: chr  &quot;Apology&quot; &quot;Charmides&quot; &quot;Cratylus&quot; &quot;Critias&quot; ...
+##  $ words   : chr  &quot;8745&quot; &quot;8311&quot; &quot;17944&quot; &quot;4950&quot; ...
+##  $ hapax   : chr  &quot;36&quot; &quot;31&quot; &quot;122&quot; &quot;104&quot; ...
+##  $ ratio   : chr  &quot;0.004&quot; &quot;0.004&quot; &quot;0.007&quot; &quot;0.021&quot; ...
+##  $ group   : num  1 1 1 3 1 1 1 1 1 1 ...</code></pre>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="начало-работы-с-r.html#cb119-1" tabindex="-1"></a><span class="co"># отобрать ряды по количеству слов</span></span>
+<span id="cb119-2"><a href="начало-работы-с-r.html#cb119-2" tabindex="-1"></a>hapax_plato[hapax_plato<span class="sc">$</span>words <span class="sc">&gt;</span> <span class="dv">10000</span>, ]</span></code></pre></div>
+<pre><code>##        dialogue  words hapax ratio group
+## 1       Apology   8745    36 0.004     1
+## 2     Charmides   8311    31 0.004     1
+## 3      Cratylus  17944   122 0.007     1
+## 4       Critias   4950   104 0.021     3
+## 5         Crito   4169    19 0.005     1
+## 6    Euthydemus  12453    87 0.007     1
+## 7     Euthyphro   5181    15 0.003     1
+## 8       Gorgias  26337   125 0.005     1
+## 9  HippiasMinor   4360    12 0.003     1
+## 10          Ion   4024    32 0.008     1
+## 11       Laches   7674    27 0.004     1
+## 12         Laws 103193   914 0.009     3
+## 13        Lysis   6980    49 0.007     1
+## 14    Menexenus   4808    43 0.009     1
+## 15         Meno   9791    30 0.003     1
+## 16   Parmenides  15155    20 0.001     2
+## 17       Phaedo  21825   140 0.006     1
+## 18     Phaedrus  16645   228 0.014     2
+## 19     Philebus  17668    64 0.004     3
+## 20   Protagoras  17795   102 0.006     1
+## 21     Republic  88878   668 0.008     2
+## 22      Sophist  16024   107 0.007     3
+## 23    Statesman  16953   180 0.011     3
+## 24    Symposium  17461   127 0.007     1
+## 25   Theaetetus  22489   162 0.007     2
+## 26      Timaeus  23662   370 0.016     3</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="начало-работы-с-r.html#cb121-1" tabindex="-1"></a><span class="co"># преобразовать тип данных в столбцах</span></span>
+<span id="cb121-2"><a href="начало-работы-с-r.html#cb121-2" tabindex="-1"></a>hapax_plato<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(hapax_plato<span class="sc">$</span>group)</span>
+<span id="cb121-3"><a href="начало-работы-с-r.html#cb121-3" tabindex="-1"></a>hapax_plato[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">sapply</span>(hapax_plato[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>],as.numeric)</span></code></pre></div>
+<p>И еще с датафреймами полезна функция <code>summary()</code>:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="начало-работы-с-r.html#cb122-1" tabindex="-1"></a><span class="fu">summary</span>(hapax_plato)</span></code></pre></div>
+<pre><code>##    dialogue             words            hapax            ratio          group 
+##  Length:26          Min.   :  4024   Min.   : 12.00   Min.   :0.001000   1:16  
+##  Class :character   1st Qu.:  7154   1st Qu.: 31.25   1st Qu.:0.004000   2: 4  
+##  Mode  :character   Median : 15590   Median : 94.50   Median :0.007000   3: 6  
+##                     Mean   : 19364   Mean   :146.69   Mean   :0.007154         
+##                     3rd Qu.: 17907   3rd Qu.:136.75   3rd Qu.:0.008000         
+##                     Max.   :103193   Max.   :914.00   Max.   :0.021000</code></pre>
+</div>
+<div id="шорткаты" class="section level2 hasAnchor" number="2.15">
+<h2><span class="header-section-number">2.15</span> Шорткаты<a href="начало-работы-с-r.html#шорткаты" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Этот раздел я допишу позже.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><a href="https://intro2r.com/rsprojs.html" class="uri">https://intro2r.com/rsprojs.html</a><a href="начало-работы-с-r.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="визуализации.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
