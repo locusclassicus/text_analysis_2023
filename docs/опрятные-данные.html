@@ -4,29 +4,23 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Тема 4 Опрятные данные | A Minimal Book Example</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <title>Тема 4 Опрятные данные | Компьютерный анализ текста в R</title>
+  <meta name="description" content="Все прекрасное трудно." />
   <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Тема 4 Опрятные данные | A Minimal Book Example" />
+  <meta property="og:title" content="Тема 4 Опрятные данные | Компьютерный анализ текста в R" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta property="og:description" content="Все прекрасное трудно." />
+  <meta name="github-repo" content="https://github.com/locusclassicus/text_analysis_r_bookdown_2023/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Тема 4 Опрятные данные | A Minimal Book Example" />
+  <meta name="twitter:title" content="Тема 4 Опрятные данные | Компьютерный анализ текста в R" />
   
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta name="twitter:description" content="Все прекрасное трудно." />
   
 
-<meta name="author" content="John Doe" />
+<meta name="author" content="Ольга Алиева" />
 
 
 <meta name="date" content="2023-07-14" />
@@ -125,6 +119,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -142,11 +158,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Компьютерный анализ текста в R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> О курсе</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#благодарности"><i class="fa fa-check"></i><b>1.1</b> Благодарности</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html"><i class="fa fa-check"></i><b>2</b> Начало работы с R</a>
 <ul>
@@ -240,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Компьютерный анализ текста в R</a>
           </h1>
         </div>
 
@@ -256,9 +270,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <div id="синтаксис-tidyverse" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Синтаксис tidyverse<a href="опрятные-данные.html#синтаксис-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Существуют два основных “диалекта” R, один из которых опирается главным образом на функции и структуры данных базового R, а другой пользуется синтаксисом tidyverse <span class="citation">(<a href="#ref-winter2020"><strong>winter2020?</strong></a>)</span>. Tidyverse – это семейство пакетов (<strong>метапакет</strong>), разработанных Хадли Уикхемом и др., которое включает в себя в том числе пакеты <code>dplyr</code>, <code>ggplot2</code> и многие другие.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="опрятные-данные.html#cb144-1" tabindex="-1"></a><span class="co"># загрузить все семейство</span></span>
-<span id="cb144-2"><a href="опрятные-данные.html#cb144-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>Существуют два основных “диалекта” R, один из которых опирается главным образом на функции и структуры данных базового R, а другой пользуется синтаксисом tidyverse <span class="citation">(<a href="#ref-winter2020">Winter 2020</a>)</span>. Tidyverse – это семейство пакетов (<strong>метапакет</strong>), разработанных Хадли Уикхемом и др., которое включает в себя в том числе пакеты <code>dplyr</code>, <code>ggplot2</code> и многие другие.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="опрятные-данные.html#cb142-1" tabindex="-1"></a><span class="co"># загрузить все семейство</span></span>
+<span id="cb142-2"><a href="опрятные-данные.html#cb142-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <div id="tibble" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Tibble<a href="опрятные-данные.html#tibble" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Основная структура данных в tidyverse – это tibble, современный вариант датафрейма<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. Тиббл, как говорят его разработчики, это ленивые и недовольные датафреймы: они делают меньше и жалуются больше<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. Это позволяет решать проблемы на более ранних этапах, что, как правило, приводит к созданию более чистого и выразительного кода.</p>
@@ -270,10 +284,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>допускает синтаксически “неправильные” имена столбцов;</li>
 <li>при индексировании не меняет тип данных на вектор и др.</li>
 </ul>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="опрятные-данные.html#cb145-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./datasets/DiorisisMeta.Rdata&quot;</span>)</span>
-<span id="cb145-2"><a href="опрятные-данные.html#cb145-2" tabindex="-1"></a></span>
-<span id="cb145-3"><a href="опрятные-данные.html#cb145-3" tabindex="-1"></a><span class="co"># распечатывает только первые 10 рядов, для каждого столбца указан тип данных, строки пронумерованы</span></span>
-<span id="cb145-4"><a href="опрятные-данные.html#cb145-4" tabindex="-1"></a><span class="fu">as_tibble</span>(diorisis_meta)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="опрятные-данные.html#cb143-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./datasets/DiorisisMeta.Rdata&quot;</span>)</span>
+<span id="cb143-2"><a href="опрятные-данные.html#cb143-2" tabindex="-1"></a></span>
+<span id="cb143-3"><a href="опрятные-данные.html#cb143-3" tabindex="-1"></a><span class="co"># распечатывает только первые 10 рядов, для каждого столбца указан тип данных, строки пронумерованы</span></span>
+<span id="cb143-4"><a href="опрятные-данные.html#cb143-4" tabindex="-1"></a><span class="fu">as_tibble</span>(diorisis_meta)</span></code></pre></div>
 <pre><code>## # A tibble: 784 × 5
 ##    name            title                      date genre     subgenre       
 ##    &lt;chr&gt;           &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;          
@@ -288,11 +302,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 Aeschylus       Agamemnon                  -458 Tragedy   Tragedy        
 ## 10 Aeschylus       Eumenides                  -458 Tragedy   Tragedy        
 ## # ℹ 774 more rows</code></pre>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="опрятные-данные.html#cb147-1" tabindex="-1"></a><span class="co"># индексирование </span></span>
-<span id="cb147-2"><a href="опрятные-данные.html#cb147-2" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(diorisis_meta)[, <span class="dv">1</span>])  <span class="co"># возвращает вектор</span></span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="опрятные-данные.html#cb145-1" tabindex="-1"></a><span class="co"># индексирование </span></span>
+<span id="cb145-2"><a href="опрятные-данные.html#cb145-2" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(diorisis_meta)[, <span class="dv">1</span>])  <span class="co"># возвращает вектор</span></span></code></pre></div>
 <pre><code>## [1] &quot;Achilles Tatius&quot; &quot;Aelian&quot;          &quot;Aelian&quot;          &quot;Aelian&quot;         
 ## [5] &quot;Aeneas Tacticus&quot; &quot;Aeschines&quot;</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="опрятные-данные.html#cb149-1" tabindex="-1"></a><span class="fu">as_tibble</span>(diorisis_meta)[,<span class="dv">1</span>] <span class="co"># возвращает тиббл</span></span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="опрятные-данные.html#cb147-1" tabindex="-1"></a><span class="fu">as_tibble</span>(diorisis_meta)[,<span class="dv">1</span>] <span class="co"># возвращает тиббл</span></span></code></pre></div>
 <pre><code>## # A tibble: 784 × 1
 ##    name           
 ##    &lt;chr&gt;          
@@ -307,14 +321,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 Aeschylus      
 ## 10 Aeschylus      
 ## # ℹ 774 more rows</code></pre>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="опрятные-данные.html#cb151-1" tabindex="-1"></a><span class="co"># имена столбцов</span></span>
-<span id="cb151-2"><a href="опрятные-данные.html#cb151-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&#39;var 1&#39;</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">two =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>)</span>
-<span id="cb151-3"><a href="опрятные-данные.html#cb151-3" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="опрятные-данные.html#cb149-1" tabindex="-1"></a><span class="co"># имена столбцов</span></span>
+<span id="cb149-2"><a href="опрятные-данные.html#cb149-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&#39;var 1&#39;</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">two =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb149-3"><a href="опрятные-данные.html#cb149-3" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   var.1 two
 ## 1     1   3
 ## 2     2   4</code></pre>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="опрятные-данные.html#cb153-1" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&#39;var 1&#39;</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">two =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>)</span>
-<span id="cb153-2"><a href="опрятные-данные.html#cb153-2" tabindex="-1"></a>tbl</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="опрятные-данные.html#cb151-1" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&#39;var 1&#39;</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">two =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb151-2"><a href="опрятные-данные.html#cb151-2" tabindex="-1"></a>tbl</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##   `var 1`   two
 ##     &lt;int&gt; &lt;int&gt;
@@ -333,12 +347,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Все эти глаголы естественным образом сочетаются с функцией <code>group_by()</code>, которая позволяет выполнять любые операции “по группам”, и с оператором <strong>pipe</strong> <code>%&gt;%</code> из пакета <code>magrittr</code>.</p>
 <p>В итоге получается более лаконичный и читаемый код, что можно показать на примере.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="опрятные-данные.html#cb155-1" tabindex="-1"></a>diorisis_meta <span class="sc">%&gt;%</span> </span>
-<span id="cb155-2"><a href="опрятные-данные.html#cb155-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>subgenre) <span class="sc">%&gt;%</span> </span>
-<span id="cb155-3"><a href="опрятные-данные.html#cb155-3" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">==</span> <span class="st">&quot;Narrative&quot;</span>) <span class="sc">%&gt;%</span>  <span class="co"># не нужны кавычки!</span></span>
-<span id="cb155-4"><a href="опрятные-данные.html#cb155-4" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> </span>
-<span id="cb155-5"><a href="опрятные-данные.html#cb155-5" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb155-6"><a href="опрятные-данные.html#cb155-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="опрятные-данные.html#cb153-1" tabindex="-1"></a>diorisis_meta <span class="sc">%&gt;%</span> </span>
+<span id="cb153-2"><a href="опрятные-данные.html#cb153-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>subgenre) <span class="sc">%&gt;%</span> </span>
+<span id="cb153-3"><a href="опрятные-данные.html#cb153-3" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">==</span> <span class="st">&quot;Narrative&quot;</span>) <span class="sc">%&gt;%</span>  <span class="co"># не нужны кавычки!</span></span>
+<span id="cb153-4"><a href="опрятные-данные.html#cb153-4" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> </span>
+<span id="cb153-5"><a href="опрятные-данные.html#cb153-5" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb153-6"><a href="опрятные-данные.html#cb153-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
 <pre><code>## # A tibble: 20 × 2
 ## # Groups:   name [20]
 ##    name                           n
@@ -364,13 +378,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 19 Thucydides                     1
 ## 20 Xenophon of Ephesus            1</code></pre>
 <p>В базовом R мы бы делали то же самое вот так:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="опрятные-данные.html#cb157-1" tabindex="-1"></a>diorisis_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(diorisis_meta)</span>
-<span id="cb157-2"><a href="опрятные-данные.html#cb157-2" tabindex="-1"></a>diorisis_select <span class="ot">&lt;-</span> diorisis_df[,<span class="sc">-</span><span class="dv">5</span>] <span class="co"># remove column</span></span>
-<span id="cb157-3"><a href="опрятные-данные.html#cb157-3" tabindex="-1"></a>diorisis_filter <span class="ot">&lt;-</span> diorisis_select[diorisis_select<span class="sc">$</span>genre <span class="sc">==</span> <span class="st">&quot;Narrative&quot;</span>, ]</span>
-<span id="cb157-4"><a href="опрятные-данные.html#cb157-4" tabindex="-1"></a>diorisis_names <span class="ot">&lt;-</span> diorisis_filter<span class="sc">$</span>name</span>
-<span id="cb157-5"><a href="опрятные-данные.html#cb157-5" tabindex="-1"></a>diorisis_count <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(diorisis_names))</span>
-<span id="cb157-6"><a href="опрятные-данные.html#cb157-6" tabindex="-1"></a>diorisis_sort <span class="ot">&lt;-</span> diorisis_count[<span class="fu">order</span>(diorisis_count<span class="sc">$</span>Freq, <span class="at">decreasing =</span>T),]</span>
-<span id="cb157-7"><a href="опрятные-данные.html#cb157-7" tabindex="-1"></a>diorisis_sort</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="опрятные-данные.html#cb155-1" tabindex="-1"></a>diorisis_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(diorisis_meta)</span>
+<span id="cb155-2"><a href="опрятные-данные.html#cb155-2" tabindex="-1"></a>diorisis_select <span class="ot">&lt;-</span> diorisis_df[,<span class="sc">-</span><span class="dv">5</span>] <span class="co"># remove column</span></span>
+<span id="cb155-3"><a href="опрятные-данные.html#cb155-3" tabindex="-1"></a>diorisis_filter <span class="ot">&lt;-</span> diorisis_select[diorisis_select<span class="sc">$</span>genre <span class="sc">==</span> <span class="st">&quot;Narrative&quot;</span>, ]</span>
+<span id="cb155-4"><a href="опрятные-данные.html#cb155-4" tabindex="-1"></a>diorisis_names <span class="ot">&lt;-</span> diorisis_filter<span class="sc">$</span>name</span>
+<span id="cb155-5"><a href="опрятные-данные.html#cb155-5" tabindex="-1"></a>diorisis_count <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(diorisis_names))</span>
+<span id="cb155-6"><a href="опрятные-данные.html#cb155-6" tabindex="-1"></a>diorisis_sort <span class="ot">&lt;-</span> diorisis_count[<span class="fu">order</span>(diorisis_count<span class="sc">$</span>Freq, <span class="at">decreasing =</span>T),]</span>
+<span id="cb155-7"><a href="опрятные-данные.html#cb155-7" tabindex="-1"></a>diorisis_sort</span></code></pre></div>
 <pre><code>##                diorisis_names Freq
 ## 15                   Plutarch   71
 ## 2                      Appian   14
@@ -407,8 +421,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><strong>Добавить картинку: принципы опрятных данных.</strong></p>
 <p>Посмотрите на эти данные из пакета <code>tidyr</code> и подумайте, какое из этих правил нарушено в каждом случае.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="опрятные-данные.html#cb159-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;table2&quot;</span>)</span>
-<span id="cb159-2"><a href="опрятные-данные.html#cb159-2" tabindex="-1"></a>table2</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="опрятные-данные.html#cb157-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;table2&quot;</span>)</span>
+<span id="cb157-2"><a href="опрятные-данные.html#cb157-2" tabindex="-1"></a>table2</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 4
 ##    country      year type            count
 ##    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
@@ -424,8 +438,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 China        1999 population 1272915272
 ## 11 China        2000 cases          213766
 ## 12 China        2000 population 1280428583</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="опрятные-данные.html#cb161-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;table3&quot;</span>)</span>
-<span id="cb161-2"><a href="опрятные-данные.html#cb161-2" tabindex="-1"></a>table3</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="опрятные-данные.html#cb159-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;table3&quot;</span>)</span>
+<span id="cb159-2"><a href="опрятные-данные.html#cb159-2" tabindex="-1"></a>table3</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   country      year rate             
 ##   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            
@@ -435,16 +449,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 Brazil       2000 80488/174504898  
 ## 5 China        1999 212258/1272915272
 ## 6 China        2000 213766/1280428583</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="опрятные-данные.html#cb163-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;table4a&quot;</span>)</span>
-<span id="cb163-2"><a href="опрятные-данные.html#cb163-2" tabindex="-1"></a>table4a</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="опрятные-данные.html#cb161-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;table4a&quot;</span>)</span>
+<span id="cb161-2"><a href="опрятные-данные.html#cb161-2" tabindex="-1"></a>table4a</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##   country     `1999` `2000`
 ##   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
 ## 1 Afghanistan    745   2666
 ## 2 Brazil       37737  80488
 ## 3 China       212258 213766</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="опрятные-данные.html#cb165-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;table4b&quot;</span>)</span>
-<span id="cb165-2"><a href="опрятные-данные.html#cb165-2" tabindex="-1"></a>table4b</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="опрятные-данные.html#cb163-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;table4b&quot;</span>)</span>
+<span id="cb163-2"><a href="опрятные-данные.html#cb163-2" tabindex="-1"></a>table4b</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##   country         `1999`     `2000`
 ##   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;
@@ -467,11 +481,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="смотрим-на-данные" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Смотрим на данные<a href="опрятные-данные.html#смотрим-на-данные" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Загрузим пример неопрятных данных и попробуем их преобразовать для анализа. <a href="http://www2.informatik.uni-freiburg.de/~cziegler/BX/">Book-Crossing</a> – датасет с рейтингами миллионов книг и обезличенными демографическими данными о более 250 тысячах их читателей. Этот датасет хранится в трех разных таблицах.</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="опрятные-данные.html#cb167-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./datasets/BooksBX.Rdata&quot;</span>)</span>
-<span id="cb167-2"><a href="опрятные-данные.html#cb167-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./datasets/RatingsBX.Rdata&quot;</span>)</span>
-<span id="cb167-3"><a href="опрятные-данные.html#cb167-3" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./datasets/UsersBX.Rdata&quot;</span>)</span>
-<span id="cb167-4"><a href="опрятные-данные.html#cb167-4" tabindex="-1"></a></span>
-<span id="cb167-5"><a href="опрятные-данные.html#cb167-5" tabindex="-1"></a>ratings</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="опрятные-данные.html#cb165-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./datasets/BooksBX.Rdata&quot;</span>)</span>
+<span id="cb165-2"><a href="опрятные-данные.html#cb165-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./datasets/RatingsBX.Rdata&quot;</span>)</span>
+<span id="cb165-3"><a href="опрятные-данные.html#cb165-3" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./datasets/UsersBX.Rdata&quot;</span>)</span>
+<span id="cb165-4"><a href="опрятные-данные.html#cb165-4" tabindex="-1"></a></span>
+<span id="cb165-5"><a href="опрятные-данные.html#cb165-5" tabindex="-1"></a>ratings</span></code></pre></div>
 <pre><code>## # A tibble: 493,813 × 3
 ##    `User-ID` ISBN       `Book-Rating`
 ##        &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
@@ -486,7 +500,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    276744 038550120X             7
 ## 10    276745 342310538             10
 ## # ℹ 493,803 more rows</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="опрятные-данные.html#cb169-1" tabindex="-1"></a>users</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="опрятные-данные.html#cb167-1" tabindex="-1"></a>users</span></code></pre></div>
 <pre><code>## # A tibble: 246,666 × 3
 ##    `User-ID` Location                           Age  
 ##        &lt;dbl&gt; &lt;chr&gt;                              &lt;chr&gt;
@@ -501,7 +515,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9         9 germantown, tennessee, usa         NULL 
 ## 10        10 albacete, wisconsin, spain         26   
 ## # ℹ 246,656 more rows</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="опрятные-данные.html#cb171-1" tabindex="-1"></a>books</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="опрятные-данные.html#cb169-1" tabindex="-1"></a>books</span></code></pre></div>
 <pre><code>## # A tibble: 270,760 × 8
 ##    ISBN       `Book-Title`         `Book-Author` `Year-Of-Publication` Publisher
 ##    &lt;chr&gt;      &lt;chr&gt;                &lt;chr&gt;                         &lt;dbl&gt; &lt;chr&gt;    
@@ -549,12 +563,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="трансформируем-данные" class="section level3 hasAnchor" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Трансформируем данные<a href="опрятные-данные.html#трансформируем-данные" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Начнем с пользователей.</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="опрятные-данные.html#cb173-1" tabindex="-1"></a>users_separated <span class="ot">&lt;-</span> users <span class="sc">%&gt;%</span> </span>
-<span id="cb173-2"><a href="опрятные-данные.html#cb173-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Age =</span> <span class="fu">as.numeric</span>(Age)) <span class="sc">%&gt;%</span></span>
-<span id="cb173-3"><a href="опрятные-данные.html#cb173-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Age))  <span class="sc">%&gt;%</span> <span class="co"># drop_na(Age) тоже решил бы нашу задачу</span></span>
-<span id="cb173-4"><a href="опрятные-данные.html#cb173-4" tabindex="-1"></a>  <span class="fu">separate</span>(Location, <span class="at">into =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&quot;country&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb173-5"><a href="опрятные-данные.html#cb173-5" tabindex="-1"></a></span>
-<span id="cb173-6"><a href="опрятные-данные.html#cb173-6" tabindex="-1"></a>users_separated <span class="co"># можно было бы не сохранять, но так нагляднее</span></span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="опрятные-данные.html#cb171-1" tabindex="-1"></a>users_separated <span class="ot">&lt;-</span> users <span class="sc">%&gt;%</span> </span>
+<span id="cb171-2"><a href="опрятные-данные.html#cb171-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Age =</span> <span class="fu">as.numeric</span>(Age)) <span class="sc">%&gt;%</span></span>
+<span id="cb171-3"><a href="опрятные-данные.html#cb171-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Age))  <span class="sc">%&gt;%</span> <span class="co"># drop_na(Age) тоже решил бы нашу задачу</span></span>
+<span id="cb171-4"><a href="опрятные-данные.html#cb171-4" tabindex="-1"></a>  <span class="fu">separate</span>(Location, <span class="at">into =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&quot;country&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb171-5"><a href="опрятные-данные.html#cb171-5" tabindex="-1"></a></span>
+<span id="cb171-6"><a href="опрятные-данные.html#cb171-6" tabindex="-1"></a>users_separated <span class="co"># можно было бы не сохранять, но так нагляднее</span></span></code></pre></div>
 <pre><code>## # A tibble: 148,869 × 3
 ##    `User-ID` country        Age
 ##        &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;
@@ -570,10 +584,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10        21 &quot; spain&quot;        46
 ## # ℹ 148,859 more rows</code></pre>
 <p>Здесь можно сразу посмотреть, из каких стран и какого возраста пользователи.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="опрятные-данные.html#cb175-1" tabindex="-1"></a>users_separated <span class="sc">%&gt;%</span> </span>
-<span id="cb175-2"><a href="опрятные-данные.html#cb175-2" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
-<span id="cb175-3"><a href="опрятные-данные.html#cb175-3" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb175-4"><a href="опрятные-данные.html#cb175-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="опрятные-данные.html#cb173-1" tabindex="-1"></a>users_separated <span class="sc">%&gt;%</span> </span>
+<span id="cb173-2"><a href="опрятные-данные.html#cb173-2" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb173-3"><a href="опрятные-данные.html#cb173-3" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb173-4"><a href="опрятные-данные.html#cb173-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
 <pre><code>## # A tibble: 543 × 2
 ## # Groups:   country [543]
 ##    country               n
@@ -590,10 +604,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 &quot; portugal&quot;        2175
 ## # ℹ 533 more rows</code></pre>
 <p>Последние ряды этого тибла выглядят достаточно причудливо:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="опрятные-данные.html#cb177-1" tabindex="-1"></a>users_separated <span class="sc">%&gt;%</span> </span>
-<span id="cb177-2"><a href="опрятные-данные.html#cb177-2" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
-<span id="cb177-3"><a href="опрятные-данные.html#cb177-3" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb177-4"><a href="опрятные-данные.html#cb177-4" tabindex="-1"></a>  <span class="fu">arrange</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="опрятные-данные.html#cb175-1" tabindex="-1"></a>users_separated <span class="sc">%&gt;%</span> </span>
+<span id="cb175-2"><a href="опрятные-данные.html#cb175-2" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb175-3"><a href="опрятные-данные.html#cb175-3" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb175-4"><a href="опрятные-данные.html#cb175-4" tabindex="-1"></a>  <span class="fu">arrange</span>(n)</span></code></pre></div>
 <pre><code>## # A tibble: 543 × 2
 ## # Groups:   country [543]
 ##    country                    n
@@ -610,14 +624,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 &quot; alabama&quot;                 1
 ## # ℹ 533 more rows</code></pre>
 <p>Здесь возможно несколько стратегий. Можно выбрать все ряды с названиями реальных стран либо (если это соответствует исследовательской задаче) какую-то одну страну. Можно и проигнорировать, если происхождение пользователей не так важно. Допустим, мы решаем сосредоточиться на Испании. Обратите внимание, что в название страны после разделения функцией <code>separate()</code> попали пробелы, и от них надо избавиться. Это делается при помощи регулярных выражений (о них в другой раз) и функции <code>mutate()</code>.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="опрятные-данные.html#cb179-1" tabindex="-1"></a>spain_data <span class="ot">&lt;-</span> users_separated <span class="sc">%&gt;%</span></span>
-<span id="cb179-2"><a href="опрятные-данные.html#cb179-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">str_replace_all</span>(country, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># это означает, что пробел мы меняем на &quot;ничто&quot;, т.е. убираем</span></span>
-<span id="cb179-3"><a href="опрятные-данные.html#cb179-3" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;spain&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb179-4"><a href="опрятные-данные.html#cb179-4" tabindex="-1"></a>  <span class="fu">group_by</span>(Age) <span class="sc">%&gt;%</span></span>
-<span id="cb179-5"><a href="опрятные-данные.html#cb179-5" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb179-6"><a href="опрятные-данные.html#cb179-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span>
-<span id="cb179-7"><a href="опрятные-данные.html#cb179-7" tabindex="-1"></a></span>
-<span id="cb179-8"><a href="опрятные-данные.html#cb179-8" tabindex="-1"></a>spain_data </span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="опрятные-данные.html#cb177-1" tabindex="-1"></a>spain_data <span class="ot">&lt;-</span> users_separated <span class="sc">%&gt;%</span></span>
+<span id="cb177-2"><a href="опрятные-данные.html#cb177-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">str_replace_all</span>(country, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># это означает, что пробел мы меняем на &quot;ничто&quot;, т.е. убираем</span></span>
+<span id="cb177-3"><a href="опрятные-данные.html#cb177-3" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;spain&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb177-4"><a href="опрятные-данные.html#cb177-4" tabindex="-1"></a>  <span class="fu">group_by</span>(Age) <span class="sc">%&gt;%</span></span>
+<span id="cb177-5"><a href="опрятные-данные.html#cb177-5" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb177-6"><a href="опрятные-данные.html#cb177-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span>
+<span id="cb177-7"><a href="опрятные-данные.html#cb177-7" tabindex="-1"></a></span>
+<span id="cb177-8"><a href="опрятные-данные.html#cb177-8" tabindex="-1"></a>spain_data </span></code></pre></div>
 <pre><code>## # A tibble: 86 × 2
 ## # Groups:   Age [86]
 ##      Age     n
@@ -634,30 +648,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10    21   351
 ## # ℹ 76 more rows</code></pre>
 <p>Столбиковая диаграмма подходит для визуализации подобных данных:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="опрятные-данные.html#cb181-1" tabindex="-1"></a>spain_data <span class="sc">%&gt;%</span> </span>
-<span id="cb181-2"><a href="опрятные-данные.html#cb181-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Age, n)) <span class="sc">+</span> </span>
-<span id="cb181-3"><a href="опрятные-данные.html#cb181-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
-<span id="cb181-4"><a href="опрятные-данные.html#cb181-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="опрятные-данные.html#cb179-1" tabindex="-1"></a>spain_data <span class="sc">%&gt;%</span> </span>
+<span id="cb179-2"><a href="опрятные-данные.html#cb179-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Age, n)) <span class="sc">+</span> </span>
+<span id="cb179-3"><a href="опрятные-данные.html#cb179-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb179-4"><a href="опрятные-данные.html#cb179-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p>Какие целеустремленные испанцы! Читают от 0 до 183 лет 😵</p>
 <p>После того, как мы убрали лишние пробелы из названий стран, можно фильтровать:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="опрятные-данные.html#cb182-1" tabindex="-1"></a>spain_id <span class="ot">&lt;-</span> users_separated <span class="sc">%&gt;%</span></span>
-<span id="cb182-2"><a href="опрятные-данные.html#cb182-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">str_replace_all</span>(country, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb182-3"><a href="опрятные-данные.html#cb182-3" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;spain&quot;</span>) <span class="co"># на этот раз мы не считаем число наблюдений в группе, а забираем все ряды, которые отвечают условию</span></span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="опрятные-данные.html#cb180-1" tabindex="-1"></a>spain_id <span class="ot">&lt;-</span> users_separated <span class="sc">%&gt;%</span></span>
+<span id="cb180-2"><a href="опрятные-данные.html#cb180-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">str_replace_all</span>(country, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb180-3"><a href="опрятные-данные.html#cb180-3" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;spain&quot;</span>) <span class="co"># на этот раз мы не считаем число наблюдений в группе, а забираем все ряды, которые отвечают условию</span></span></code></pre></div>
 </div>
 <div id="объединяем-данные" class="section level3 hasAnchor" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> Объединяем данные<a href="опрятные-данные.html#объединяем-данные" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Мы уже выяснили, что <code>ratings</code> и <code>users</code> связаны через переменную <code>User-ID</code>, и в <code>ratings</code> хотели бы оставить только те id, которые отвечают заданному условию (страна, возраст и т.п.). Для такого рода объединений как раз подходят функции <code>_join</code><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>.</p>
 <p><strong>Добавить картинку на джойны.</strong></p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="опрятные-данные.html#cb183-1" tabindex="-1"></a>spain_ratings <span class="ot">&lt;-</span> spain_id <span class="sc">%&gt;%</span> </span>
-<span id="cb183-2"><a href="опрятные-данные.html#cb183-2" tabindex="-1"></a>  <span class="fu">left_join</span>(ratings) <span class="sc">%&gt;%</span> </span>
-<span id="cb183-3"><a href="опрятные-данные.html#cb183-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ISBN)) <span class="sc">%&gt;%</span> </span>
-<span id="cb183-4"><a href="опрятные-данные.html#cb183-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Book-Rating</span><span class="st">`</span> <span class="sc">&gt;</span> <span class="dv">7</span>) <span class="sc">%&gt;%</span> <span class="co"># имена синтаксически неправильные, поэтому требуется знак &quot;`&quot;</span></span>
-<span id="cb183-5"><a href="опрятные-данные.html#cb183-5" tabindex="-1"></a>  <span class="fu">group_by</span>(ISBN) <span class="sc">%&gt;%</span> </span>
-<span id="cb183-6"><a href="опрятные-данные.html#cb183-6" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb183-7"><a href="опрятные-данные.html#cb183-7" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="опрятные-данные.html#cb181-1" tabindex="-1"></a>spain_ratings <span class="ot">&lt;-</span> spain_id <span class="sc">%&gt;%</span> </span>
+<span id="cb181-2"><a href="опрятные-данные.html#cb181-2" tabindex="-1"></a>  <span class="fu">left_join</span>(ratings) <span class="sc">%&gt;%</span> </span>
+<span id="cb181-3"><a href="опрятные-данные.html#cb181-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ISBN)) <span class="sc">%&gt;%</span> </span>
+<span id="cb181-4"><a href="опрятные-данные.html#cb181-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Book-Rating</span><span class="st">`</span> <span class="sc">&gt;</span> <span class="dv">7</span>) <span class="sc">%&gt;%</span> <span class="co"># имена синтаксически неправильные, поэтому требуется знак &quot;`&quot;</span></span>
+<span id="cb181-5"><a href="опрятные-данные.html#cb181-5" tabindex="-1"></a>  <span class="fu">group_by</span>(ISBN) <span class="sc">%&gt;%</span> </span>
+<span id="cb181-6"><a href="опрятные-данные.html#cb181-6" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb181-7"><a href="опрятные-данные.html#cb181-7" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
 <pre><code>## Joining with `by = join_by(`User-ID`)`</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="опрятные-данные.html#cb185-1" tabindex="-1"></a>spain_ratings</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="опрятные-данные.html#cb183-1" tabindex="-1"></a>spain_ratings</span></code></pre></div>
 <pre><code>## # A tibble: 1,281 × 2
 ## # Groups:   ISBN [1,281]
 ##    ISBN           n
@@ -674,13 +688,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 8432215007     3
 ## # ℹ 1,271 more rows</code></pre>
 <p>Осталось выяснить, что это за книги. Для этого объединяем <code>spain_ratings</code> и <code>books</code>.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="опрятные-данные.html#cb187-1" tabindex="-1"></a>spain_books <span class="ot">&lt;-</span> spain_ratings <span class="sc">%&gt;%</span> </span>
-<span id="cb187-2"><a href="опрятные-данные.html#cb187-2" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb187-3"><a href="опрятные-данные.html#cb187-3" tabindex="-1"></a>  <span class="fu">left_join</span>(books) <span class="sc">%&gt;%</span> </span>
-<span id="cb187-4"><a href="опрятные-данные.html#cb187-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="st">`</span><span class="at">Book-Title</span><span class="st">`</span>), <span class="sc">!</span><span class="fu">is.na</span>(<span class="st">`</span><span class="at">Book-Author</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb187-5"><a href="опрятные-данные.html#cb187-5" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="опрятные-данные.html#cb185-1" tabindex="-1"></a>spain_books <span class="ot">&lt;-</span> spain_ratings <span class="sc">%&gt;%</span> </span>
+<span id="cb185-2"><a href="опрятные-данные.html#cb185-2" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb185-3"><a href="опрятные-данные.html#cb185-3" tabindex="-1"></a>  <span class="fu">left_join</span>(books) <span class="sc">%&gt;%</span> </span>
+<span id="cb185-4"><a href="опрятные-данные.html#cb185-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="st">`</span><span class="at">Book-Title</span><span class="st">`</span>), <span class="sc">!</span><span class="fu">is.na</span>(<span class="st">`</span><span class="at">Book-Author</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb185-5"><a href="опрятные-данные.html#cb185-5" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
 <pre><code>## Joining with `by = join_by(ISBN)`</code></pre>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="опрятные-данные.html#cb189-1" tabindex="-1"></a>spain_books</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="опрятные-данные.html#cb187-1" tabindex="-1"></a>spain_books</span></code></pre></div>
 <pre><code>## # A tibble: 15 × 9
 ##    ISBN           n `Book-Title`   `Book-Author` `Year-Of-Publication` Publisher
 ##    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;                         &lt;dbl&gt; &lt;chr&gt;    
@@ -703,9 +717,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   `Image-URL-L` &lt;chr&gt;</code></pre>
 <p>Как минимум мы выяснили, что испанцы предпочитают читать по испански! (Здесь снова можно подумать. Возможно, у одной книги разные ISBN, и стоило группировать не по ISBN, а по названию или автору?)</p>
 <p>Осталось избавиться от неинформативных столбцов (это ссылки, часто битые, на изображения обложки). Если мы знаем номера этих столбцов, то это можно сделать по индексу:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="опрятные-данные.html#cb191-1" tabindex="-1"></a>spain_books <span class="sc">%&gt;%</span> </span>
-<span id="cb191-2"><a href="опрятные-данные.html#cb191-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb191-3"><a href="опрятные-данные.html#cb191-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">title =</span> <span class="st">`</span><span class="at">Book-Title</span><span class="st">`</span>, <span class="at">author =</span> <span class="st">`</span><span class="at">Book-Author</span><span class="st">`</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="опрятные-данные.html#cb189-1" tabindex="-1"></a>spain_books <span class="sc">%&gt;%</span> </span>
+<span id="cb189-2"><a href="опрятные-данные.html#cb189-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb189-3"><a href="опрятные-данные.html#cb189-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">title =</span> <span class="st">`</span><span class="at">Book-Title</span><span class="st">`</span>, <span class="at">author =</span> <span class="st">`</span><span class="at">Book-Author</span><span class="st">`</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 15 × 3
 ##    title                                            author `Year-Of-Publication`
 ##    &lt;chr&gt;                                            &lt;chr&gt;                  &lt;dbl&gt;
@@ -732,11 +746,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>matches()</code></li>
 <li><code>num_range()</code></li>
 </ul>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="опрятные-данные.html#cb193-1" tabindex="-1"></a>spain_books <span class="sc">%&gt;%</span> </span>
-<span id="cb193-2"><a href="опрятные-данные.html#cb193-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;URL&quot;</span>), <span class="sc">-</span><span class="fu">matches</span>(<span class="st">&quot;Publisher&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># удалим заодно и издателя</span></span>
-<span id="cb193-3"><a href="опрятные-данные.html#cb193-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">title =</span> <span class="st">`</span><span class="at">Book-Title</span><span class="st">`</span>, </span>
-<span id="cb193-4"><a href="опрятные-данные.html#cb193-4" tabindex="-1"></a>         <span class="at">author =</span> <span class="st">`</span><span class="at">Book-Author</span><span class="st">`</span>,</span>
-<span id="cb193-5"><a href="опрятные-данные.html#cb193-5" tabindex="-1"></a>         <span class="at">published =</span> <span class="st">`</span><span class="at">Year-Of-Publication</span><span class="st">`</span>) <span class="co"># чиним имена</span></span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="опрятные-данные.html#cb191-1" tabindex="-1"></a>spain_books <span class="sc">%&gt;%</span> </span>
+<span id="cb191-2"><a href="опрятные-данные.html#cb191-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;URL&quot;</span>), <span class="sc">-</span><span class="fu">matches</span>(<span class="st">&quot;Publisher&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># удалим заодно и издателя</span></span>
+<span id="cb191-3"><a href="опрятные-данные.html#cb191-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">title =</span> <span class="st">`</span><span class="at">Book-Title</span><span class="st">`</span>, </span>
+<span id="cb191-4"><a href="опрятные-данные.html#cb191-4" tabindex="-1"></a>         <span class="at">author =</span> <span class="st">`</span><span class="at">Book-Author</span><span class="st">`</span>,</span>
+<span id="cb191-5"><a href="опрятные-данные.html#cb191-5" tabindex="-1"></a>         <span class="at">published =</span> <span class="st">`</span><span class="at">Year-Of-Publication</span><span class="st">`</span>) <span class="co"># чиним имена</span></span></code></pre></div>
 <pre><code>## # A tibble: 15 × 5
 ##    ISBN           n title                                       author published
 ##    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;                                       &lt;chr&gt;      &lt;dbl&gt;
@@ -758,6 +772,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Возможно, сюда стоит добавить что-то про работу с факторами.</p>
 
 </div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-winter2020" class="csl-entry">
+Winter, Bodo. 2020. <em><span class="nocase">Statistics for Linguists: An Introduction Using R</span></em>. Routledge.
 </div>
 </div>
 <div class="footnotes">

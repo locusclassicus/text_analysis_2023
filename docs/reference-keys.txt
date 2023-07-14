@@ -1,8 +1,6 @@
 eq:binom
-about
-usage
-render-book
-preview-book
+о-курсе
+благодарности
 начало-работы-с-r
 что-такое-r
 пакеты-и-виньетки

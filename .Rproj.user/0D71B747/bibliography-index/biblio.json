@@ -285,10 +285,210 @@
             "publisher-place": "Boca Raton, Florida",
             "title": "R markdown cookbook",
             "type": "book"
+        },
+        {
+            "URL": "http://www.tidytextmining.com",
+            "author": [
+                {
+                    "family": "Sigle",
+                    "given": "Julia"
+                },
+                {
+                    "family": "Robinson",
+                    "given": "David"
+                }
+            ],
+            "id": "textmining2017",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "publisher": "O’Reilly",
+            "title": "Text mining with r",
+            "type": "book"
+        },
+        {
+            "URL": "https://r4ds.had.co.nz/index.html",
+            "author": [
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                },
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                }
+            ],
+            "id": "wickham2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "publisher": "O’Reilly",
+            "title": "R for Data Science",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Winter",
+                    "given": "Bodo"
+                }
+            ],
+            "id": "winter2020",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "publisher": "Routledge",
+            "title": "Statistics for Linguists: An Introduction Using R",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "literal": "С. Мастицкий и В. Шитиков"
+                }
+            ],
+            "id": "мастицкий2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "publisher": "ДМК",
+            "title": "Статистический анализ и визуализация данных с помощью R",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Мэтлофф",
+                    "given": "Норман"
+                }
+            ],
+            "id": "мэтлофф2019",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "publisher": "Питер",
+            "title": "Искусство программирования на R",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Baayen",
+                    "given": "R. H."
+                }
+            ],
+            "id": "Baayen2008",
+            "issued": {
+                "date-parts": [
+                    [
+                        2008
+                    ]
+                ]
+            },
+            "publisher": "Cambridge University Press",
+            "title": "Analyzing Linguistic Data: A Practical Introduction to Statistics using R",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "literal": "А. Буховец и П. Москалев"
+                }
+            ],
+            "id": "буховец2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "publisher": "Лань",
+            "title": "Алгоритмы вычислительной статистики в системе R: Учебное пособие",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Campbell",
+                    "given": "Lewis"
+                }
+            ],
+            "id": "campbell1867",
+            "issued": {
+                "date-parts": [
+                    [
+                        1867
+                    ]
+                ]
+            },
+            "publisher": "Clarendon Press",
+            "title": "The Sophistes and Politicus of Plato with a Revised Text and English Notes",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Sarkar",
+                    "given": "Deepayan"
+                }
+            ],
+            "id": "sarkar2008",
+            "issued": {
+                "date-parts": [
+                    [
+                        2008
+                    ]
+                ]
+            },
+            "publisher": "Springer",
+            "title": "Lattice: Multivariate data visualization with r",
+            "title-short": "Lattice",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Мастицкий",
+                    "given": "Сергей"
+                }
+            ],
+            "id": "мастицкий2017",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "publisher": "ДМК",
+            "title": "Визуализация данных с помощью ggplot2",
+            "type": "book"
         }
     ],
     "project_biblios": [
         "book.bib",
-        "packages.bib"
+        "packages.bib",
+        "bibliography.bib"
     ]
 }
