@@ -349,9 +349,13 @@ div.csl-indent {
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="визуализации.html#cb129-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># загружается сразу с tidyverse</span></span>
 <span id="cb129-2"><a href="визуализации.html#cb129-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
 <span id="cb129-3"><a href="визуализации.html#cb129-3" tabindex="-1"></a><span class="fu">qplot</span>(words, hapax, <span class="at">data =</span> hapax_plato, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: `qplot()` was deprecated in ggplot2 3.4.0.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+<pre><code>## Warning: `qplot()` was deprecated in ggplot2
+## 3.4.0.
+## This warning is displayed once every
+## 8 hours.
+## Call
+## `lifecycle::last_lifecycle_warnings()`
+## to see where this warning was
 ## generated.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>Функция <code>qplot()</code> – это быстрое решение для задач визуализации.</p>
@@ -363,7 +367,8 @@ div.csl-indent {
 <p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
 <p><strong>Линия тренда</strong> (сглаживающая линия) добавляется следующим образом:</p>
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="визуализации.html#cb132-1" tabindex="-1"></a><span class="fu">qplot</span>(words, hapax, <span class="at">data =</span> hapax_plato, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="at">geom =</span> <span class="fu">c</span>(<span class="st">&quot;point&quot;</span>, <span class="st">&quot;smooth&quot;</span>))</span></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
+<pre><code>## `geom_smooth()` using method =
+## &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <p><strong>Диаграмма размаха</strong> (о ней подробнее можно посмотреть <a href="https://vk.com/video_ext.php?oid=-211800158&amp;id=456239229&amp;hash=7e1bc800e53df22c&amp;hd=2">здесь</a>) удобна в тех случаях, когда необходимо представить обобщенную статиситческую информацию о распределении значений количественной переменной в разных группах.</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="визуализации.html#cb134-1" tabindex="-1"></a><span class="fu">attach</span>(hapax_plato)</span>
@@ -523,7 +528,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null

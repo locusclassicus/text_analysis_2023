@@ -414,7 +414,7 @@ div.csl-indent {
 ##     y = dist(x, method = &quot;manhattan&quot;)/length(x[1, ])
 ##     return(y)
 ## }
-## &lt;bytecode: 0x11b639a50&gt;
+## &lt;bytecode: 0x1586faa20&gt;
 ## &lt;environment: namespace:stylo&gt;</code></pre>
 </div>
 <div id="векторизованные-конструкции" class="section level2 hasAnchor" number="5.4">
@@ -631,12 +631,12 @@ div.csl-indent {
 <p>Функция <code>sapply()</code> ведет себя так же, но упрощает результат до вектора или матрицы (s = simplify).</p>
 <div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="функциональное-программирование.html#cb277-1" tabindex="-1"></a>s_sample <span class="ot">&lt;-</span> <span class="fu">sapply</span>(corpus[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], sample, <span class="dv">5</span>, <span class="at">replace =</span> F)</span>
 <span id="cb277-2"><a href="функциональное-программирование.html#cb277-2" tabindex="-1"></a>s_sample</span></code></pre></div>
-<pre><code>##      Apology  Charmides
-## [1,] &quot;χρόνος&quot; &quot;ὡσαύτως&quot;
-## [2,] &quot;τάχα&quot;   &quot;σύ&quot;     
-## [3,] &quot;οὗτος&quot;  &quot;λέγω&quot;   
-## [4,] &quot;οὗτος&quot;  &quot;ὁ&quot;      
-## [5,] &quot;σύ&quot;     &quot;γάρ&quot;</code></pre>
+<pre><code>##      Apology    Charmides
+## [1,] &quot;τοι&quot;      &quot;ἀλλά&quot;   
+## [2,] &quot;γάρ&quot;      &quot;καί&quot;    
+## [3,] &quot;ἀνήρ&quot;     &quot;οὐκοῦν&quot; 
+## [4,] &quot;οἴομαι&quot;   &quot;εἰμί&quot;   
+## [5,] &quot;ἀθηναῖος&quot; &quot;γάρ&quot;</code></pre>
 <p>Поскольку это список, то применить грамматику <code>dplyr</code> не очень удобно, но корпус stylo легко превращается в тиббл:</p>
 <div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="функциональное-программирование.html#cb279-1" tabindex="-1"></a>corpus_df <span class="ot">&lt;-</span> <span class="fu">stack</span>(corpus)</span>
 <span id="cb279-2"><a href="функциональное-программирование.html#cb279-2" tabindex="-1"></a><span class="fu">head</span>(corpus_df)</span></code></pre></div>
@@ -738,13 +738,13 @@ div.csl-indent {
 <span id="cb290-2"><a href="функциональное-программирование.html#cb290-2" tabindex="-1"></a>sd <span class="ot">=</span> <span class="fu">list</span>(<span class="fl">0.5</span>, <span class="dv">5</span>, <span class="dv">50</span>)</span>
 <span id="cb290-3"><a href="функциональное-программирование.html#cb290-3" tabindex="-1"></a><span class="fu">map2</span>(mean, sd, rnorm, <span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [[1]]
-## [1] 0.8036023 1.1695639 1.3159849
+## [1] 0.9945444 1.6204459 1.1363440
 ## 
 ## [[2]]
-## [1] 13.06155 18.72343 11.96964
+## [1]  6.520457 14.280254 11.498783
 ## 
 ## [[3]]
-## [1]  45.47171  86.16003 148.96834</code></pre>
+## [1] 221.19499 128.52485  91.48276</code></pre>
 <div class="infobox">
 <p>Аргументы, которые меняются при каждом вызове, пишутся до функции; аргументы, которые остаются неизменны, – после.</p>
 </div>
@@ -845,7 +845,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null

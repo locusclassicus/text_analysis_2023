@@ -90,7 +90,7 @@ y <- sample(x, 100)
 
 После установки и запуска RStudio вы увидите вот такие четыре панели (их названия подписаны на картинке):
 
-![RStudio Panes](images/panes.jpeg)
+![RStudio Panes](https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.jpeg)
 
 По [ссылке](https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html) можно подробнее прочитать, что за что отвечает (и как это поменять).
 
