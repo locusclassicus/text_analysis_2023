@@ -1,5 +1,6 @@
-h1:blocks Blocks
-h2:equations Equations
+h1:импорт-данных Импорт данных
+h2:чтение-локальных-файлов Чтение локальных файлов
+h2:чтение-файлов-из-интернета Чтение файлов из интернета
 h2:theorems-and-proofs Theorems and proofs
 h2:callout-blocks Callout blocks
 
