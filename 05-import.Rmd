@@ -1,32 +1,298 @@
-# Импорт данных
+# Импорт и экспорт данных
 
-## Чтение локальных файлов
+## Рабочая директория
+Любой анализ данных начинается с импорта данных. Прежде чем что-то делать, проверьте свою рабочую директорию при помощи `getwd()` ([подробнее](https://youtu.be/z7pOxe6dDG0)). Для смены можно использовать как **абсолютный**, так и **относительный** путь:
+
+```{r eval=FALSE}
+setwd("/Users/olga/R_Workflow/Text_Analysis_2023")
+
+# искать в текущей директории
+setwd("./Text_Analysis_2023")
+
+# перейти на уровень вверх
+setwd("../")
+```
 
 ## Чтение файлов из интернета
 
-Here is an equation.
+Основная функция для скачивания файлов из Сети -- `download.file()`, которой необходимо задать в качестве аргументов url, название сохраняемого файла, иногда также метод.
 
-\begin{equation} 
-  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
-  (\#eq:binom)
-\end{equation} 
+Попробуем скачать датасет из [Репозитория открытых данных по русской литературе и фольклору](https://dataverse.pushdom.ru/dataverse/openlit) под названием ["Байрон в русских переводах 1810–1860-х годов"](https://dataverse.pushdom.ru/dataset.xhtml?persistentId=doi:10.31860/openlit-2019.11-R002).
 
-You may refer to using `\@ref(eq:binom)`, like see Equation \@ref(eq:binom).
+```{r eval=FALSE}
+url <- "https://dataverse.pushdom.ru/api/access/datafile/:persistentId?persistentId=doi:10.5072/openlit-2019.11-R002/VQRXXK"
+
+# если url начинается с https, на Mac _может_ потребоваться указать method = "curl"
+download.file(url, destfile = "files/Byron.tab") 
+```
+
+После этого в папке files появится новый файл. Получить список скачанных файлов можно при помощи `list.files()`.
+
+```{r}
+list.files("./files")
+```
+
+## Чтение локальных файлов
+
+Основные функции для чтения локальных файлов в базовом R:
+
+- `read.table()`
+- `read.csv()``
+
+### csv и tsv
+
+Файл, который мы скачали, имеет расширение .tab. Такие файлы по структуре аналогичны файлам .tsv (tab separated values). Чтобы его прочитать, используем `read.table()`, указав тип разделителя:
+
+```{r eval=F}
+Byron <- read.table("files/Byron.tab", sep = "\t", header = TRUE)
+head(Byron)
+```
+
+Функция `read.csv()` отличается лишь тем, что автоматически выставляет значения аргументов `sep = ","`, header = TRUE. 
+
+В диалекте tidyverse для импорта подобных файлов используется пакет `readr`^[https://r4ds.had.co.nz/data-import.html]. 
 
 
-## Theorems and proofs
+Вернемся к нашему датасету про буккроссинг, файлы которого имеют расширение csv. К сожалению, это не всегда гарантия того, что перед вами действительно csv:
 
-Labeled theorems can be referenced in text using `\@ref(thm:tri)`, for example, check out this smart theorem \@ref(thm:tri).
+```{r warning=FALSE}
+library(readr)
+users <- read_csv("files/BX-CSV-Dump/BX-Users.csv")
+head(users)
+```
 
-::: {.theorem #tri}
-For a right triangle, if $c$ denotes the *length* of the hypotenuse
-and $a$ and $b$ denote the lengths of the **other** two sides, we have
-$$a^2 + b^2 = c^2$$
+Чтобы исправить дело, воспользуемся другой функцией из того же пакета:
+
+```{r warning=FALSE}
+users <- read_delim("files/BX-CSV-Dump/BX-Users.csv", delim = ";")
+users
+```
+
+Очевидно, это не решает всех проблем, но как справиться с оставшимися, мы рассказывали в уроке об опрятных данных.
+
+### xls и xlsx
+
+Не самый любимый аналитиками, но очень распространенный тип файлов. Чтобы с ним работать, нужно установить пакет `readxl ` из семейства tidyverse^[https://readxl.tidyverse.org/]. Это не единственный пакет для работы с Excel, но, пожалуй, самый удобный. Файл с самыми популярными на Amazon книгами можно взять [здесь](https://www.kaggle.com/datasets/palanjali007/amazons-top-50-bestselling-novels-20092020).
+
+```{r}
+library(readxl)
+amazon <- read_excel("files/AmazonBooks.xlsx")
+head(amazon)
+```
+
+### txt
+
+Для чтения текстовых файлов в базовом R есть функция `readlines()`. 
+
+```{r}
+# readLines(con = "corpora/plato/Apology.txt", n = 10)
+readLines(con = "files/karamzin_liza.txt", n = 1) 
+```
+
+### doc
+
+Если есть возможность конвертировать документ Word в простой текстовый формат, то лучше так и сделать. Если нет, то устанавливаем пакет `officer`. 
+
+```{r message=FALSE}
+library(officer)
+files <- list.files(path = "files", pattern = "docx") 
+files[1]
+
+# read file
+doc <- read_docx(paste0("files/", files[1]))
+content <- docx_summary(doc) 
+head(content, 2) # весь текст доступен в столбце text
+```
+
+Таким образом, однако, мы теряем все сноски. Следующий код позволяет их достать:
+
+```{r eval=F}
+library(xml2)
+xml_text(xml_find_all(doc$footnotes$get(), "*"))
+```
+
+Тут уже применяются функции для работы с xml. Поэтому лишний раз подумайте, не проще ли конвертировать документ Word в .txt. 
+
+### pdf
+
+С pdf тоже без нужды лучше не иметь дела. Но если все-таки пришлось читать pdf, для этого есть пакет `pdftools`^[https://rpubs.com/kbodwin/pdftools].
+
+```{r}
+library(pdftools)
+
+# длинющий вектор, который придется очищать от \n (новая строка)
+liza <- pdf_text(pdf = "files/karamzin_liza.pdf")
+
+# метаданные в виде списка
+meta <- pdf_info(pdf = "files/karamzin_liza.pdf")
+meta$created
+```
+
+Разработчики утверждают, что пакет справится и с распознаванием текста, но установка нужных для этого зависимостей может быть сопряжена с такими трудостями, что вы, вероятно, захотите решить эту задачу за пределами R. Например, [тут](https://rescribe.xyz/rescribe/).
+
+### zip
+
+Для работы с архивами есть функция `unzip()`. Полезно помнить, что большой архив не обязательно распечатывать полностью. Если выставить аргумент `list = TRUE`, то функция вернет список всех файлов в архиве, из которых можно прочитать в память лишь избранные:
+
+```{r}
+archive <- unzip("files/archive.zip", files = NULL, list = TRUE) 
+archive
+```
+
+Код ниже позволяет извлечь из архива только нужный файл:
+
+```{r eval=F}
+unzip("files/archive.zip", files = "AmazonBooks.xlsx")
+```
+
+После этого файл можно прочитать в R, как указано выше.
+
+## xml и html
+
+XML и HTML -- это языки разметки. 
+
+Язык **HTML** применяется для создания стандартных веб-страниц, поэтому если вы хотите достать некий текст из Интернета, то скорее всего вместе с текстом утащите еще так называемые **теги** (в треугольных скобках), то есть элементы этой самой разметки:
+
+```{r}
+url <- "https://www.thelatinlibrary.com/cicero/off1.shtml"
+doc_html <- scan(url, what = "character", sep = "\n")
+head(doc_html)
+```
+
+Для анализа текста эти, как правило, не нужны, так как отвечают за оформление. Они "сообщают" браузеру, как отображать тот или иной контент. Пакет `stylo` дает возможность легко от них избавиться. Текст возвращается без тегов и уже разделенным на слова.
+
+```{r message=FALSE}
+library(stylo)
+# download.file(url, destfile = "files/CiceroOff.txt")
+
+doc_text <- load.corpus.and.parse(files = "CiceroOff.txt", corpus.dir = "files", markup.type = "html", encoding = "UTF-8")
+
+doc_vec <- unlist(doc_text, use.names = FALSE)
+doc_vec[1:10]
+```
+
+**XML** (от англ. eXtensible Markup Language) — расширяемый язык разметки. Слово "расширяемый" значит, что список тегов не зафиксирован раз и навсегда: пользователи могут вводить свои собственные теги и создавать так называемые **настраиваемые языки разметки**. Один из таких настраиваемых языков -- это **TEI** (Text Encoding Initiative). 
+
+Большая часть размеченных литературных корпусов хранится именно в таком виде. Это очень удобно, и вот почему: документы в формате XML, как и документы в формате HTML, содержат данные, заключенные в теги, но если в формате HTML теги определяют оформление данных, то в формате XML теги нередко _определяют структуру и смысл данных_. С их помощью мы можем достать из документа именно то, что нам интересно: определенную главу, речи конкретных персонажей, слова на иностранных языках и т.п. Добавлять и удалять разметку может любой пользователь в редакторе XML кода. По сути, это просто текст, хотя и причудливо (на первый взгляд) оформленный.
+
+Подбробнее о структуре XML документов и способах работы с ними вы можете прочитать в книгах: [@nolan2014] и [@xml2004]. Здесь мы лишь кратко затронем вопрос о том, как **парсить** XML документ в R, то есть извлекать из него нужную нам информацию.
+
+Главное, что надо понимать: любой XML документ представляет собой иерархически организованное дерево, у которого есть один и только один корневой элемент, из которого расходятся ветви. 
+
+С этим деревом в R можно работать двумя способами: либо как со списком, который содержит другие вложенные в него списки, либо при помощи синтаксиса XPath. В видео по [ссылке](https://vk.com/video/playlist/-211800158_1) вы можете ближе познакомиться и с тем, и с другим подходом. 
+
+В качестве примера загрузим еще один датасет "Пушкинсого дома", подготовленный Д.А. Скоринкиным: ["Персонажи «Войны и мира» Л. Н. Толстого: вхождения в тексте, прямая речь и семантические роли"](https://dataverse.pushdom.ru/dataset.xhtml?persistentId=doi:10.31860/openlit-2022.1-C005). Функция `xmlTreeParse()` разбирает XML-файл и генерирует R-структуру, представляющую дерево XML. Парсинг xml начинается с поиска корневого элемента.
+
+```{r}
+library(XML)
+filename = "files/War_and_Peace.xml"
+doc <- xmlTreeParse(filename, useInternalNodes = T)
+rootnode <- xmlRoot(doc)
+```
+
+После этого можно внимательнее взглянуть на структуру xml. Корневой элемент расходится на две ветви. Полностью они нам пока не нужны, узнаем только имена:
+
+```{r}
+names(xmlChildren(rootnode)) 
+```
+Очевидно, что что-то для нас интересное будет спрятано в ветке text, глядим на нее (индексирование как для списков):
+
+```{r}
+names(xmlChildren(rootnode[["text"]])) 
+```
+Итак, текст делится на какие-то пять частей. Функция `xmlGetAttr()` позволяет узнать значение атрибута `type`: как выясняется, это том. 
+
+```{r}
+# это список
+divs_1 <-  rootnode[["text"]][["div"]] 
+xmlGetAttr(divs_1, "type")
+```
+
+Добраться до определенного узла можно не только путем индексирования, но и -- гораздо удобнее -- пр помощи синтаксиса XPath. Для этого просто указываем путь до узла. Попробуем спуститься на уровень ниже:
+
+```{r}
+divs_2 <- getNodeSet(doc, "/tei:TEI//tei:text//tei:div//tei:div", namespaces = c(tei = "http://www.tei-c.org/ns/1.0")) 
+
+length(divs_2)
+```
+
+Теперь мы получили довольно длинный список (375 элементов), к которому снова можем применить `xmlGetAttr()`. Выясняем, что это, в основном, главы:
+
+```{r}
+unique(sapply(divs_2, xmlGetAttr, "type"))
+```
+
+Чтобы извлечь текст из конкретного узла, нужна функция `xmlValue`. 
+
+```{r}
+# забираем 2, т.к. 1 -- это часть, а не глава
+chapter_1 <- xmlValue(divs_2[[2]])
+```
+
+Распечатывать весь текст первой главы не будем (это очень длинный вектор); разобъем текст на строки и выведем первую и последнюю:
+
+```{r}
+library(stringr)
+chapter_lines <- str_split(chapter_1, pattern = "\n")
+
+chapter_lines[[1]][[5]]
+chapter_lines[[1]][[838]]
+```
+
+Первая и последняя реплика по-французски: все правильно!
+
+Для работы с XML также подходит пакет `xml2`^[ https://xml2.r-lib.org/]. 
+
+## GutenbergR
+
+Для R существуют пакеты, позволяющие извлекать тексты из онлайн-библиотек. Пакет `GutenbergR`^[https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html] поможет достать тексты из библиотеки [Gutenberg](https://www.gutenberg.org/ebooks/), но будьте осторожны: распознаны они не всегда хорошо и порой содержат много разного шума, например примечания редактора, номера страниц и т.п. В билингвах источник и перевод могут идти вперемешку. И если в XML подобные элементы будут окружены соответствующими тегами, которые позволят их легко отбросить при анализе, то Gutenberg дает вам сырой текст. Часто его надо хорошенько чистить при помощи регулярных выражений или даже вручную. Поиск нужного текста лучше начать с изучения метаданных:
+
+```{r}
+library(gutenbergr)
+
+## метаданные содержат множество NA 
+gutenberg_authors
+gutenberg_metadata
+```
+
+Функция `gutenberg_works()` позволяет уточнить, какие столбцы необходимо вернуть:
+
+```{r}
+latin_works <- gutenberg_works(languages = "la") 
+
+latin_works
+```
+
+Беглый взгляд на эту таблицу говорит о том, что в галактике Гутенберга царит полный хаос: например, в поле "название" хранится имя автора. Но после того, как нужный автор или нужное сочинение найдены, можно сделать так:
+
+```{r}
+caesar <- gutenberg_works(author == "Caesar, Julius", languages = "la") 
+caesar 
+```
+
+Чтобы извлечь отдельный текст (тексты):
+
+```{r}
+de_bello_gallico <- gutenberg_download(218, meta_fields = "title", mirror = "ftp://mirrors.xmission.com/gutenberg/")
+de_bello_gallico
+```
+
+:::infobox
+Существует несколько зеркал библиотеки Gutenberg, и, если при выполнении функции `gutenberg_download()` возникает ошибка "could not download a book at http://aleph.gutenberg.org/", то следует использовать аргумент mirror. Список зеркал доступен по ссылке: https://www.gutenberg.org/MIRRORS.ALL
 :::
 
-Read more here <https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html>.
+## RPerseus
 
-## Callout blocks
+To be supplied.
 
+## Чтение нескольких файлов
 
-The R Markdown Cookbook provides more help on how to use custom blocks to design your own callouts: https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html
+To be supplied.
+
+## Экспорт 
+
+To be supplied.
+
+### Rdata
+
+To be supplied.

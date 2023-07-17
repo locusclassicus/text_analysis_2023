@@ -30,7 +30,7 @@ library(tidyverse)
 -   при индексировании не меняет тип данных на вектор и др.
 
 ```{r}
-load("./datasets/DiorisisMeta.Rdata")
+load("./data/DiorisisMeta.Rdata")
 
 # распечатывает только первые 10 рядов, для каждого столбца указан тип данных, строки пронумерованы
 as_tibble(diorisis_meta)
@@ -135,7 +135,7 @@ table4b
 Загрузим пример неопрятных данных и попробуем их преобразовать для анализа. [Book-Crossing](http://www2.informatik.uni-freiburg.de/~cziegler/BX/) -- датасет с рейтингами миллионов книг и обезличенными демографическими данными о более 250 тысячах их читателей. Этот датасет хранится в трех разных таблицах.
 
 ```{r echo=F}
-# ratings <- read_delim("data_files/BX-CSV-Dump/BX-Book-Ratings.csv", delim = ";")
+# ratings <- read_delim("files/BX-CSV-Dump/BX-Book-Ratings.csv", delim = ";")
 # ratings
 # 
 # books <- read_delim("data_files/BX-CSV-Dump/BX-Books.csv", delim = ";")
@@ -144,13 +144,13 @@ table4b
 # users <- read_delim("data_files/BX-CSV-Dump/BX-Users.csv", delim = ";")
 # users
 # 
-# save(users, file = "datasets/UsersBX.Rdata")
-# save(books, file = "datasets/BooksBX.Rdata")
-# save(ratings, file = "datasets/RatingsBX.Rdata")
+# save(users, file = "data/UsersBX.Rdata")
+# save(books, file = "data/BooksBX.Rdata")
+# save(ratings, file = "data/RatingsBX.Rdata")
 
-load("./datasets/BooksBX.Rdata")
-load("./datasets/RatingsBX.Rdata")
-load("./datasets/UsersBX.Rdata")
+load("./data/BooksBX.Rdata")
+load("./data/RatingsBX.Rdata")
+load("./data/UsersBX.Rdata")
 ```
 
 ```{r}
@@ -262,7 +262,7 @@ spain_id <- users_separated %>%
 #          published = `Year-Of-Publication`,
 #          rating = `Book-Rating`)
 
-#save(book_crossing, file = "datasets/Bookcrossing.Rdata")
+#save(book_crossing, file = "data/Bookcrossing.Rdata")
 ```
 
 ### Объединяем данные

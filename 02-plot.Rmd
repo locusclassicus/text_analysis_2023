@@ -13,7 +13,7 @@
 Чтобы построить диаграмму рассеяния (scatter plot), нужно передать функции `plot()` в качестве аргументов названия тех столбцов, которые мы хотим изобразить по осям x и y. Это можно записать так: `plot(x, y)`. Или так: `plot(y ~ x)`. Знак `~` (тильда) указывает на функцию.
 
 ```{r echo=F}
-load(file = "datasets/HapaxPlato.Rdata")
+load(file = "data/HapaxPlato.Rdata")
 hapax_plato$group <- as.factor(hapax_plato$group)
 hapax_plato[,2:4] <- sapply(hapax_plato[,2:4],as.numeric)
 ```
@@ -164,7 +164,7 @@ qplot(group, ratio, data = hapax_plato, geom = c("boxplot", "jitter"), color = g
 [^02-plot-3]: <https://figshare.com/articles/dataset/The_Diorisis_Ancient_Greek_Corpus/6187256>
 
 ```{r warning=FALSE, echo=F}
-load("./datasets/DiorisisMeta.Rdata")
+load("./data/DiorisisMeta.Rdata")
 head(diorisis_meta)
 ```
 

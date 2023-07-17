@@ -209,7 +209,7 @@ nchar(y)
 
 ```{r echo=FALSE, message=F}
 library(tidyverse)
-load("./datasets/HapaxPlato.Rdata")
+load("./data/HapaxPlato.Rdata")
 ```
 
 ```{r}
@@ -355,7 +355,7 @@ x < 3 || x > 7
 Функция **`tapply()`** из базового R принимает на входе вектор, фактор (или список факторов) и функцию. Каждый фактор должен быть той же длины, что и вектор. Код ниже считает средний процент гапаксов по группам диалогов:
 
 ```{r}
-load("./datasets/HapaxPlato.Rdata")
+load("./data/HapaxPlato.Rdata")
 ```
 
 ```{r}
@@ -391,7 +391,7 @@ toc()
 
 Сравните со скростью цикла, который мы написали выше:
 ```{r}
-load("./datasets/HapaxPlato.Rdata")
+load("./data/HapaxPlato.Rdata")
 # избавляемся от факторов и строк
 rownames(hapax_plato) <- hapax_plato$dialogue
 hapax_plato <- subset(hapax_plato, select = -c(dialogue, group)) 
@@ -450,6 +450,8 @@ as_tibble(hapax_plato) %>%
 :::infobox
 При анализе текста со списками приходится иметь дело достаточно часто: объекты типа `stylo.corpus`, которые создает пакет [`stylo`](https://rdrr.io/cran/stylo), по сути являются списками.
 :::
+
+Создадим игрушечный корпус из двух игрушечных текстов.
 
 ```{r}
 x <- c("гнев", "богиня", "воспой")
@@ -532,7 +534,7 @@ map2(mean, sd, rnorm, n = 5)
 
 ![Как работает `map2()`](https://d33wubrfki0l68.cloudfront.net/68a21c4a103426c3b311c9dcfad8fe379d4892f1/55c9d/diagrams/lists-map2.png){ width=60% }
 
-Это можно обобщить следующим образом ([источник](https://adv-r.hadley.nz/functionals.html#map2)){ width=70% }:
+Это можно обобщить следующим образом ([источник](https://adv-r.hadley.nz/functionals.html#map2)){ width=60% }:
 
 ![](https://d33wubrfki0l68.cloudfront.net/7a545699ff7069a98329fcfbe6e42b734507eb16/211a5/diagrams/functionals/map2-arg.png)
 

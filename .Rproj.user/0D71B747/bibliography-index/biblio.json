@@ -484,6 +484,48 @@
             "publisher": "ДМК",
             "title": "Визуализация данных с помощью ggplot2",
             "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Nolan",
+                    "given": "D."
+                },
+                {
+                    "family": "Lang",
+                    "given": "D. T."
+                }
+            ],
+            "id": "nolan2014",
+            "issued": {
+                "date-parts": [
+                    [
+                        2014
+                    ]
+                ]
+            },
+            "publisher": "Springer",
+            "title": "XML and web technologies for data science with r",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Холзнер",
+                    "given": "Стивен"
+                }
+            ],
+            "id": "xml2004",
+            "issued": {
+                "date-parts": [
+                    [
+                        2004
+                    ]
+                ]
+            },
+            "publisher": "Питер",
+            "title": "Энциклопедия XML",
+            "type": "book"
         }
     ],
     "project_biblios": [
