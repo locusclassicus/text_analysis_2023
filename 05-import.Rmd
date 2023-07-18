@@ -239,9 +239,13 @@ chapter_lines[[1]][[5]]
 chapter_lines[[1]][[838]]
 ```
 
-Первая и последняя реплика по-французски: все правильно!
+Первая и последняя реплика по-французски: все правильно! Подробнее о работе с XML (и HTML) стоит посмотреть [вот это](https://www.coursera.org/lecture/data-cleaning/reading-xml-cieIu) видео.
 
-Для работы с XML также подходит пакет `xml2`^[ https://xml2.r-lib.org/]. 
+P.S. Для работы с XML также подходит пакет `xml2`^[ https://xml2.r-lib.org/]. 
+
+## json 
+
+To be supplied.
 
 ## GutenbergR
 
