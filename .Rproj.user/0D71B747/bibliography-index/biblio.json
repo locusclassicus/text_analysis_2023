@@ -290,7 +290,7 @@
             "URL": "http://www.tidytextmining.com",
             "author": [
                 {
-                    "family": "Sigle",
+                    "family": "Silge",
                     "given": "Julia"
                 },
                 {
@@ -525,6 +525,48 @@
             },
             "publisher": "Питер",
             "title": "Энциклопедия XML",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Jockers",
+                    "given": "Matthew L."
+                }
+            ],
+            "id": "jockers2014",
+            "issued": {
+                "date-parts": [
+                    [
+                        2014
+                    ]
+                ]
+            },
+            "publisher": "Springer",
+            "title": "Text analysis with r for students of literature",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Hvitfeldt",
+                    "given": "Emil"
+                },
+                {
+                    "family": "Silge",
+                    "given": "Julia"
+                }
+            ],
+            "id": "hvitfeldt2022",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "publisher": "Taylor; Francis",
+            "title": "Supervised Machine Learning for Text Analysis in R",
             "type": "book"
         }
     ],

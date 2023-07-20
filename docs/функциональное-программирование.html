@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-07-19" />
+<meta name="date" content="2023-07-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -299,10 +299,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9" data-path="токенизация.html"><a href="токенизация.html"><i class="fa fa-check"></i><b>9</b> Токенизация</a>
 <ul>
-<li class="chapter" data-level="9.0.1" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-базовом-r"><i class="fa fa-check"></i><b>9.0.1</b> Токенизация в базовом R</a></li>
-<li class="chapter" data-level="9.0.2" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-stringr"><i class="fa fa-check"></i><b>9.0.2</b> Токенизация в stringr</a></li>
-<li class="chapter" data-level="9.0.3" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-tidytext"><i class="fa fa-check"></i><b>9.0.3</b> Токенизация в tidytext</a></li>
-<li class="chapter" data-level="9.0.4" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-tokenize"><i class="fa fa-check"></i><b>9.0.4</b> Токенизация в tokenize</a></li>
+<li class="chapter" data-level="9.1" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-tidytext"><i class="fa fa-check"></i><b>9.1</b> Токенизация в tidytext</a></li>
+<li class="chapter" data-level="9.2" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-tokenizers"><i class="fa fa-check"></i><b>9.2</b> Токенизация в tokenizers</a></li>
+<li class="chapter" data-level="9.3" data-path="токенизация.html"><a href="токенизация.html#скипграмы"><i class="fa fa-check"></i><b>9.3</b> Скипграмы</a></li>
+<li class="chapter" data-level="9.4" data-path="токенизация.html"><a href="токенизация.html#лемматизация-и-частеречная-разметка"><i class="fa fa-check"></i><b>9.4</b> Лемматизация и частеречная разметка</a></li>
+<li class="chapter" data-level="9.5" data-path="токенизация.html"><a href="токенизация.html#морфологическая-разметка"><i class="fa fa-check"></i><b>9.5</b> Морфологическая разметка</a></li>
+<li class="chapter" data-level="9.6" data-path="токенизация.html"><a href="токенизация.html#распределение-частей-речи"><i class="fa fa-check"></i><b>9.6</b> Распределение частей речи</a></li>
+<li class="chapter" data-level="9.7" data-path="токенизация.html"><a href="токенизация.html#совместная-встречаемость-слов"><i class="fa fa-check"></i><b>9.7</b> Совместная встречаемость слов</a></li>
+<li class="chapter" data-level="9.8" data-path="токенизация.html"><a href="токенизация.html#синтаксическая-разметка"><i class="fa fa-check"></i><b>9.8</b> Синтаксическая разметка</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
@@ -509,7 +513,7 @@ div.csl-indent {
 <span id="cb222-7"><a href="функциональное-программирование.html#cb222-7" tabindex="-1"></a>  medians <span class="ot">&lt;-</span> <span class="fu">c</span>(medians, m)</span>
 <span id="cb222-8"><a href="функциональное-программирование.html#cb222-8" tabindex="-1"></a>}</span>
 <span id="cb222-9"><a href="функциональное-программирование.html#cb222-9" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.003 sec elapsed</code></pre>
+<pre><code>## 0.002 sec elapsed</code></pre>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="функциональное-программирование.html#cb224-1" tabindex="-1"></a>medians</span></code></pre></div>
 <pre><code>## [1] 15589.500    94.500     0.007</code></pre>
 <p>Мы сохранили результат, инициировав пустой вектор, к которому затем привязали данные по каждому столбцу. Это не всегда хорошая идея, поскольку для больших данных может сильно замедлить цикл<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>. Еще один способ – сразу инициировать вектор нужной длины. Сравнить скорость можно при помощи пакета <code>tictoc</code>.</p>

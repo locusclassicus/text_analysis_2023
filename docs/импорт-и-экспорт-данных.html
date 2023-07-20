@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-07-19" />
+<meta name="date" content="2023-07-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -299,10 +299,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9" data-path="токенизация.html"><a href="токенизация.html"><i class="fa fa-check"></i><b>9</b> Токенизация</a>
 <ul>
-<li class="chapter" data-level="9.0.1" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-базовом-r"><i class="fa fa-check"></i><b>9.0.1</b> Токенизация в базовом R</a></li>
-<li class="chapter" data-level="9.0.2" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-stringr"><i class="fa fa-check"></i><b>9.0.2</b> Токенизация в stringr</a></li>
-<li class="chapter" data-level="9.0.3" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-tidytext"><i class="fa fa-check"></i><b>9.0.3</b> Токенизация в tidytext</a></li>
-<li class="chapter" data-level="9.0.4" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-tokenize"><i class="fa fa-check"></i><b>9.0.4</b> Токенизация в tokenize</a></li>
+<li class="chapter" data-level="9.1" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-tidytext"><i class="fa fa-check"></i><b>9.1</b> Токенизация в tidytext</a></li>
+<li class="chapter" data-level="9.2" data-path="токенизация.html"><a href="токенизация.html#токенизация-в-tokenizers"><i class="fa fa-check"></i><b>9.2</b> Токенизация в tokenizers</a></li>
+<li class="chapter" data-level="9.3" data-path="токенизация.html"><a href="токенизация.html#скипграмы"><i class="fa fa-check"></i><b>9.3</b> Скипграмы</a></li>
+<li class="chapter" data-level="9.4" data-path="токенизация.html"><a href="токенизация.html#лемматизация-и-частеречная-разметка"><i class="fa fa-check"></i><b>9.4</b> Лемматизация и частеречная разметка</a></li>
+<li class="chapter" data-level="9.5" data-path="токенизация.html"><a href="токенизация.html#морфологическая-разметка"><i class="fa fa-check"></i><b>9.5</b> Морфологическая разметка</a></li>
+<li class="chapter" data-level="9.6" data-path="токенизация.html"><a href="токенизация.html#распределение-частей-речи"><i class="fa fa-check"></i><b>9.6</b> Распределение частей речи</a></li>
+<li class="chapter" data-level="9.7" data-path="токенизация.html"><a href="токенизация.html#совместная-встречаемость-слов"><i class="fa fa-check"></i><b>9.7</b> Совместная встречаемость слов</a></li>
+<li class="chapter" data-level="9.8" data-path="токенизация.html"><a href="токенизация.html#синтаксическая-разметка"><i class="fa fa-check"></i><b>9.8</b> Синтаксическая разметка</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
@@ -371,7 +375,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="импорт-и-экспорт-данных.html#cb293-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb293-2"><a href="импорт-и-экспорт-данных.html#cb293-2" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Users.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 278858 Columns: 1
-## ── Column specification ──────
+## ── Column specification ───────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): User-ID;Location;Age
 ## 
@@ -390,7 +394,7 @@ div.csl-indent {
 <p>Чтобы исправить дело, воспользуемся другой функцией из того же пакета:</p>
 <div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="импорт-и-экспорт-данных.html#cb297-1" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Users.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 246666 Columns: 3
-## ── Column specification ──────
+## ── Column specification ───────────────────────────────────────────────
 ## Delimiter: &quot;;&quot;
 ## chr (2): Location, Age
 ## dbl (1): User-ID
@@ -433,8 +437,7 @@ div.csl-indent {
 <div id="txt" class="section level3 hasAnchor" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> txt<a href="импорт-и-экспорт-данных.html#txt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Для чтения текстовых файлов в базовом R есть функция <code>readlines()</code>.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="импорт-и-экспорт-данных.html#cb303-1" tabindex="-1"></a><span class="co"># readLines(con = &quot;corpora/plato/Apology.txt&quot;, n = 10)</span></span>
-<span id="cb303-2"><a href="импорт-и-экспорт-данных.html#cb303-2" tabindex="-1"></a><span class="fu">readLines</span>(<span class="at">con =</span> <span class="st">&quot;files/karamzin_liza.txt&quot;</span>, <span class="at">n =</span> <span class="dv">1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="импорт-и-экспорт-данных.html#cb303-1" tabindex="-1"></a><span class="fu">readLines</span>(<span class="at">con =</span> <span class="st">&quot;files/karamzin_liza.txt&quot;</span>, <span class="at">n =</span> <span class="dv">1</span>) </span></code></pre></div>
 <pre><code>## [1] &quot;    Может быть, никто из живущих в Москве не знает так хорошо окрестностей города сего, как я, потому что никто чаще моего не бывает в поле, никто более моего не бродит пешком, без плана, без цели -- куда глаза глядят -- по лугам и рощам, по холмам и равнинам. Всякое лето нахожу новые приятные места или в старых новые красоты. Но всего приятнее для меня то место, на котором возвышаются мрачные, готические башни Си...нова монастыря. Стоя на сей горе, видишь на правой стороне почти всю Москву, сию ужасную громаду домов и церквей, которая представляется глазам в образе величественного амфитеатра: великолепная картина, особливо когда светит на нее солнце, когда вечерние лучи его пылают на бесчисленных златых куполах, на бесчисленных крестах, к небу возносящихся! Внизу расстилаются тучные, густо-зеленые цветущие луга, а за ними, по желтым пескам, течет светлая река, волнуемая легкими веслами рыбачьих лодок или шумящая под рулем грузных стругов, которые плывут от плодоноснейших стран Российской империи и наделяют алчную Москву хлебом. &quot;</code></pre>
 </div>
 <div id="doc" class="section level3 hasAnchor" number="6.3.4">

@@ -85,7 +85,6 @@ head(amazon)
 Для чтения текстовых файлов в базовом R есть функция `readlines()`. 
 
 ```{r}
-# readLines(con = "corpora/plato/Apology.txt", n = 10)
 readLines(con = "files/karamzin_liza.txt", n = 1) 
 ```
 

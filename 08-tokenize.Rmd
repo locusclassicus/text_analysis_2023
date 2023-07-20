@@ -4,14 +4,374 @@
 
 Визуально процесс токенизации можно представить так^[https://smltar.com/tokenization.html#what-is-a-token]:
 
-![](https://smltar.com/diagram-files/tokenization-black-box.png)
+![](https://smltar.com/diagram-files/tokenization-black-box.png){ width=60% }
 
-### Токенизация в базовом R
+Токенизировать можно в базовом R, и @jockers2014 прекрасно показывает, как это можно делать. Но вы воспользуемся двумя пакетами, которые предназначены специально для работы с текстовыми данными и разделяют идеологию `tidyverse`. Оба пакета придется загрузить отдельно.
 
-### Токенизация в stringr
+```{r message=FALSE}
+library(tidyverse) 
+library(tidytext)
+library(tokenizers)
+```
 
-### Токенизация в tidytext
+Для их освоения рекомендую изучить две книги: @textmining2017 и @ Обе доступны бесплатно онлайн. Обе содержат множество примеров для английских текстов. Для разнообразия я покажу, как это работает, на русских текстах (потому что латинские и древнегреческие никому не интересны).
 
-### Токенизация в tokenize
+Для анализа я снова (ср. урок 6) загружу "Бедную Лизу" Карамзина, на этот раз полностью.
 
-To be supplied.
+```{r warning=FALSE}
+liza <- readLines(con = "files/karamzin_liza.txt") 
+class(liza)
+length(liza)
+nchar(liza)
+liza[1]
+```
+
+
+## Токенизация в tidytext
+
+Прежде чем передать текст пакету `tidytext`, его следует трансформировать в тиббл -- этого требуют функции на входе. По умолчанию столбец будет называться value, и я его сразу переименую.
+
+```{r}
+liza_tbl <- as_tibble(liza) %>% rename(text = value)
+liza_tbl
+```
+
+Этот текст мы передаем функции `unnest_tokens()`, которая принимает следующие аргументы:
+
+```{}
+unnest_tokens(
+  tbl,
+  output,
+  input,
+  token = "words",
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
+```
+
+Атрибут `token` принимает следующие значения:
+
+- "words" (default), 
+- "characters", 
+- "character_shingles", 
+- "ngrams", 
+- "skip_ngrams", 
+- "sentences", 
+- "lines", 
+- "paragraphs", 
+- "regex", 
+- "ptb" (Penn Treebank). 
+
+Используя уже знакомую функцию `map`, можно запустить `unnest_tokens()` с разными аргументами:
+
+
+```{r message=FALSE}
+params <- tribble(
+  ~tbl, ~output, ~input, ~token,
+  liza_tbl[1,], "word", "text", "words", 
+  liza_tbl[1,], "sentence", "text", "sentences",
+  liza_tbl[1,], "char", "text", "characters", 
+)
+
+params %>% pmap(unnest_tokens) %>% head()
+```
+
+Следующие значения атрибута `token` требуют также аргумента `n`:
+
+```{r message=FALSE}
+params <- tribble(
+  ~tbl, ~output, ~input, ~token, ~n,
+  liza_tbl[1,], "ngram", "text", "ngrams", 3,
+  liza_tbl[1,], "shingles", "text", "character_shingles", 3
+)
+
+params %>% pmap(unnest_tokens) %>% head()
+```
+
+## Токенизация в tokenizers
+
+При работе с данными в текстовом формате `unnest_tokens()` опирается на пакет `tokenizers`,  но `tokenize_words` требует на входе вектор, а не тиббл. Несколько полезных аргументов, о которых стоит помнить: `strip_non_alphanum` (удаляет пробельные символы и пунктуацию), `strip_punct` (удаляет пунктуацию), `strip_numeric` (удаляет числа).
+
+```{r}
+words_no_punct <- tokenize_words(liza[1], strip_punct = T)
+words_no_punct[[1]][25:40]
+```
+
+```{r}
+words_punct <- tokenize_words(liza[1], strip_punct = F)
+words_punct[[1]][25:40]
+```
+
+## Скипграмы
+
+Скипграмы, или скользящие окна, применяются в некоторых языковых моделях.
+
+```{r}
+skipgrams <- tokenize_skip_ngrams(liza[1], n=3) 
+skipgrams[[1]][1:10]
+```
+Функция считает все скипграмы длиной до трех включительно; это можно поправить:
+
+```{r}
+skipgrams <- tokenize_skip_ngrams(liza[1], n=3, n_min = 3) 
+skipgrams[[1]][1:10]
+```
+
+Важно выбрать правильное значение n при использовании энграм. Использование униграм быстрее и эффективнее, но мы не получаем информации о порядке слов. Чем выше n, тем  больше сохраняется информации, но при этом резко увеличивается векторное пространство, а встречаемость отдельных токенов уменьшается^[https://smltar.com/tokenization.html#tokenizingngrams]. 
+
+Уже на этапе токенизации можно удалить стоп-слова (используя аргумент `stopwords`), но это имеет смысл, если текст изначально лемматизирован (то есть слова даны в начальной форме): это возможно, если леммы хранились, например, в исходном xml. Наша "Лиза" не лемматизирована, поэтому удалять стоп-слова мы не будем.
+
+## Лемматизация и частеречная разметка
+
+Помимо деления на токены, предварительная обработка текста может включать в себя лемматизацию, то есть приведение слов к начальной форме (лемме) и синтаксическую разметку.  
+
+
+Для аннотации мы воспользуемся морфологическим и синтаксическим анализатором UDPipe (Universal Dependencies Pipeline), который существует в виде одноименного пакета в R. В отличие от других анализаторов, доступных в R, он позволяет работать со множеством языков (всего 65), для многих из которых представлено несколько моделей, обученных на разных данных.
+
+Прежде всего нужно выбрать и загрузить модель для  ([список](https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-annotation.html)). Модель GSD-Russian^[https://universaldependencies.org/treebanks/ru_gsd/index.html], с которой мы начнем работу, обучена на статьях в Википедии, и, вероятно, не очень подойдет для наших задач -- но можно попробовать.
+
+
+```{r message=FALSE}
+library(udpipe)
+
+# скачиваем модель в рабочую директорию
+# udpipe_download_model(language = "russian-gsd")
+
+# загружаем модель
+russian_gsd <- udpipe_load_model(file = "russian-gsd-ud-2.5-191206.udpipe")
+```
+
+Модели передается вектор с текстом.
+
+```{r}
+liza_ann <- udpipe_annotate(russian_gsd, liza)
+```
+
+Результат возвращается в формате CONLL-U; это широко применяемый формат
+представления результат морфологического и синтаксического анализа текстов. Формат разбора предложения в Conll-U выглядит так:
+
+![](https://www.researchgate.net/publication/341522061/figure/fig1/AS:893293068046336@1589989072121/1-CONLL-U-format-example.ppm)
+
+Cтроки слов содержат следующие поля:
+1. ID: индекс слова, целое число, начиная с 1 для каждого нового
+предложения; может быть диапазоном токенов с несколькими словами.
+2. FORM: словоформа или знак препинания.
+3. LEMMA: Лемма или основа словоформы.
+4. UPOSTAG: универсальный тег части речи.
+5. XPOSTAG: тег части речи для конкретного языка.
+6. FEATS: список морфологических характеристик.
+7. HEAD: заголовок текущего токена, который является либо
+значением ID, либо нулем (0).
+8. DEPREL: Universal Stanford dependency relation к (root iff HEAD
+= 0) или определенному зависящему от языка подтипу.
+9. DEPS: Список вторичных зависимостей.
+10. MISC: любая другая аннотация.
+
+Для работы данные удобнее трансформировать в прямоугольный формат.
+
+```{r}
+liza_df <- as_tibble(liza_ann) %>% 
+  select(-sentence, -paragraph_id)
+
+str(liza_df)
+```
+
+Выведем часть (!) столбцов для первого предложения:
+
+```{r}
+liza_df %>% 
+  filter(doc_id == "doc1") %>% 
+  select(-sentence_id, -head_token_id, -deps, -dep_rel, -misc) %>% 
+  DT::datatable()
+```
+
+Если полистать эту таблицу, можно заметить несколько ошибок, например странное существительное "пешко" (наречие "пешком" понято как форма творительного падежа). Но, как уже говорилось, для некоторых языков, в том числе русского, в uppide представлено несколько моделей, некоторые из которых лучше справляются с текстами определенных жанров. Попробуем использовать другую модель, обученную на корпусе **СинТагРус** (сокр. от англ. [Syntactically Tagged Russian text corpus](https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BD%D0%A2%D0%B0%D0%B3%D0%A0%D1%83%D1%81), «синтаксически аннотированный корпус русских текстов»)^[https://universaldependencies.org/treebanks/ru_syntagrus/index.html]. 
+
+```{r}
+#  скачиваем модель в рабочую директорию
+# udpipe_download_model(language = "russian-syntagrus")
+
+# загружаем модель
+russian_syntagrus <- udpipe_load_model(file = "russian-syntagrus-ud-2.5-191206.udpipe")
+
+liza_ann <- udpipe_annotate(russian_syntagrus, liza)
+```
+
+```{r}
+liza_df <- as_tibble(liza_ann) %>% 
+  select(-paragraph_id, -sentence, -xpos)
+
+liza_df %>% 
+  filter(doc_id == "doc1") %>% 
+  select(-sentence_id, -head_token_id, -deps, -dep_rel, -misc) %>% 
+  DT::datatable()
+```
+
+Здесь "пешком" корректно обозначено как наречие; в целом, кажется, вторая модель лучше справилась с задачей.
+
+## Морфологическая разметка
+
+Морфологическая разметка, которую мы получили, дает возможность выбирать и группировать различные части речи. Например, имена и названия: в первом параграфе, который мы проанализировали, их всего 4, причем  правильно опознано в качестве собственного имени название Симонова монастыря.
+
+```{r}
+propn <- liza_df %>% 
+  filter(upos == "PROPN") 
+
+propn[,2:6]
+```
+
+С помощью функции `str_detect()` можно выбрать конкретные формы, например, винительный падеж. 
+
+```{r}
+liza_df %>% filter(str_detect(feats, "Case=Acc"))
+```
+
+## Распределение частей речи
+
+Литературоведам может быть интересно распределение различных частей речи в повести: так, Бен Блатт задался целью проверить, применительно к англоязычной прозе, знаменитый афоризм Стивена Кинга о том, что «дорога в ад вымощена наречиями». Правда ли, что великие писатели реже используют наречия на -ly? Он получил достаточно любопытные результаты, в частности выяснилось, что Генри Мелвилл и Джейн Остин представляют собой скорее исключение из этого правила, но с двумя важными оговорками: во-первых, в 19 в. наречия в целом используют чаще, чем 20-м; а во-вторых, в признанных шедеврах отдельных авторов наречий, действительно, бывает меньше. Например, в романе Стейнбека «Зима тревоги нашей» их меньше всего. Больше всего наречий у авторов фанфиков, непрофессиональных писателей. 
+
+Посчитать части речи (расшифровка тегов UPOS по [ссылке](https://universaldependencies.org/u/pos/)) можно так:
+
+```{r}
+liza_df %>% 
+  group_by(upos) %>% 
+  count() %>% 
+  filter(upos != "PUNCT") %>% 
+  arrange(-n)
+```
+
+Столбиковая диаграмма позволяет наглядно представить такого рода данные:
+
+```{r}
+liza_df %>% 
+  group_by(upos) %>% 
+  count() %>% 
+  filter(upos != "PUNCT") %>% 
+  ggplot(aes(x = reorder(upos, n), y = n, fill = upos)) +
+  geom_bar(stat = "identity", show.legend = F) +
+  coord_flip() +
+  theme_bw()
+```
+
+Обратите внимание на некоторое заметное число междометий. Какое междометие встречается здесь чаще всего, можно догадаться `r emo::ji("blush")`
+
+Можно отобрать наиболее частотные слова для любой части речи. 
+
+```{r}
+liza_df %>%
+  filter(upos == "NOUN") %>% 
+  count(lemma) %>% 
+  arrange(-n)
+```
+
+## Совместная встречаемость слов
+
+Функция `cooccurence()` из пакета `udpipe` позволяет 
+выяснить, сколько раз некий термин встречается совместно с другим термином, например:
+
+ - слова встречаются в одном и том же документе/предложении/параграфе;
+
+- слова следуют за другим словом;
+
+- слова находятся по соседству с другим словом на расстоянии n слов. 
+
+Код ниже позволяет выяснить, какие слова встречаются в одном предложении:
+
+```{r warning=FALSE}
+x <-  subset(liza_df, upos %in% c("NOUN", "ADJ"))
+cooc <- cooccurrence(x, term = "lemma", group = c("doc_id", "sentence_id"))
+head(cooc)
+```
+
+Этот результат легко визуализировать, используя пакет `ggraph`:
+
+```{r message=FALSE, warning=FALSE}
+library(igraph)
+library(ggraph)
+
+wordnetwork <- head(cooc, 30)
+wordnetwork <- graph_from_data_frame(wordnetwork)
+ggraph(wordnetwork, layout = "fr") +
+  geom_edge_link(aes(width = cooc, edge_alpha = cooc), edge_colour = "pink") +
+  geom_node_text(aes(label = name), col = "darkblue", size = 4) +
+  theme_graph(base_family = "Arial Narrow") +
+  theme(legend.position = "none") +
+  labs(title = "Совместная встречаемость слов", subtitle = "Существительные и прилагательные")
+```
+
+Милый друг, глубокий пруд. Грустная история!
+
+Чтобы узнать, какие слова чаще стоят рядом, используем ту же функцию, но с другими аргументами^[https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-usecase-postagging-lemmatisation.html]:
+
+```{r}
+cooc <- cooccurrence(x$lemma, relevant = x$upos %in% c("NOUN", "ADJ"), skipgram = 1)
+head(cooc)
+
+wordnetwork <- head(cooc, 30)
+wordnetwork <- graph_from_data_frame(wordnetwork)
+
+ggraph(wordnetwork, layout = "fr") +
+  geom_edge_link(aes(width = cooc, edge_colour = "salmon", edge_alpha=0.7), show.legend = F) +
+  geom_node_text(aes(label = name), col = "darkgreen", size = 4, angle=15, repel = T) +
+  theme_graph(base_family = "Arial Narrow") +
+  labs(title = "Слова, стоящие рядом в тексте", subtitle = "Существительные и прилагательные")
+```
+
+## Синтаксическая разметка
+
+Для анализа выберем одно предложение.
+
+```{r}
+liza_synt <- liza_ann %>% 
+  as.data.frame() 
+```
+
+
+```{r}
+liza_synt_sel <- liza_synt %>% 
+  filter(doc_id == "doc17", sentence_id == 15) %>% 
+  filter(token != "-")
+
+liza_synt_sel[,c("token", "token_id", "head_token_id", "dep_rel")]
+```
+
+Связь между токенами определяется в полях token_id и head_token_id, отношение зависимости определено в dep_rel. Корневой токен имеет значение 0, то есть ни от чего не зависит. Графически изобразить связи поможет пакет `textplot`.
+
+```{r warning=FALSE}
+library(textplot)
+textplot_dependencyparser(liza_synt_sel)
+```
+
+
+Построить граф можно и при помощи библиотек igraph и ggraph:
+
+```{r}
+liza_synt_sel <- liza_synt %>% 
+  filter(doc_id == "doc17", sentence_id == 1)
+
+e <- subset(liza_synt_sel, head_token_id != 0, select = c("token_id", "head_token_id", "dep_rel"))
+e
+
+e$label <- e$dep_rel
+```
+
+```{r}
+gr <- graph_from_data_frame(e, vertices = liza_synt_sel[, c("token_id", "token", "lemma", "upos", "xpos", "feats")], directed = TRUE)
+
+a <- grid::arrow(type = "closed", length = unit(.1, "inches"))
+
+ggraph(gr, layout = "fr") + 
+  geom_edge_link(aes(edge_alpha=0.7, label = dep_rel), 
+                 arrow = a, 
+                 end_cap = circle(0.07, 'inches'), 
+                 show.legend = F,
+                 label_colour = "grey30",
+                 edge_color = "grey") + 
+  geom_node_point(color = "lightblue", size = 4) +
+  theme_void(base_family = "") +
+  geom_node_text(ggplot2::aes(label = token), nudge_y = 0.2)
+```
+
