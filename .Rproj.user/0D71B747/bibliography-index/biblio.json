@@ -568,6 +568,44 @@
             "publisher": "Taylor; Francis",
             "title": "Supervised Machine Learning for Text Analysis in R",
             "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Chen",
+                    "given": "Y."
+                },
+                {
+                    "family": "Skiena",
+                    "given": "S."
+                }
+            ],
+            "container-title": "Proceedings of 52nd Annual Meeting of the Association for Computational Linguistics",
+            "id": "skiena2014",
+            "issued": {
+                "date-parts": [
+                    [
+                        2014
+                    ]
+                ]
+            },
+            "page": "383-389",
+            "title": "Building sentiment lexicons for all major languages",
+            "type": "article-journal"
+        },
+        {
+            "container-title": "Труды конференции OSTIS-2016",
+            "id": "lukashevich2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "page": "377-382",
+            "title": "Создание лексикона оценочных слов русского языка РуСентилекс",
+            "type": "article-journal"
         }
     ],
     "project_biblios": [

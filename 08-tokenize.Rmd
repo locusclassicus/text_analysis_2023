@@ -1,4 +1,4 @@
-# Токенизация 
+# Токенизация и лемматизация
 
 Токенизация — процесс разделения текста на составляющие (их называют «токенами»). Токенами могут быть слова, символьные или словесные **энграмы** (n-grams), то есть сочетания символов или слов, даже предложения или параграфы. Все зависит от того, какие единицы вам нужны для анализа. 
 
@@ -52,7 +52,7 @@ unnest_tokens(
 )
 ```
 
-Атрибут `token` принимает следующие значения:
+Аргумент `token` принимает следующие значения:
 
 - "words" (default), 
 - "characters", 
@@ -79,7 +79,7 @@ params <- tribble(
 params %>% pmap(unnest_tokens) %>% head()
 ```
 
-Следующие значения атрибута `token` требуют также аргумента `n`:
+Следующие значения аргумента `token` требуют также аргумента `n`:
 
 ```{r message=FALSE}
 params <- tribble(
@@ -306,7 +306,7 @@ ggraph(wordnetwork, layout = "fr") +
 
 Чтобы узнать, какие слова чаще стоят рядом, используем ту же функцию, но с другими аргументами^[https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-usecase-postagging-lemmatisation.html]:
 
-```{r}
+```{r warning=FALSE}
 cooc <- cooccurrence(x$lemma, relevant = x$upos %in% c("NOUN", "ADJ"), skipgram = 1)
 head(cooc)
 
