@@ -606,6 +606,25 @@
             "page": "377-382",
             "title": "Создание лексикона оценочных слов русского языка РуСентилекс",
             "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Savoy",
+                    "given": "Jacques"
+                }
+            ],
+            "id": "savoy2020",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "publisher": "Springer",
+            "title": "Machine learning methods for stylometry",
+            "type": "book"
         }
     ],
     "project_biblios": [

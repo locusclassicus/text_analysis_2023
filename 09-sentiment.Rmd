@@ -251,7 +251,7 @@ liza_sent_class %>%
 
 Для языков, которые используют латиницу, в R есть отличный пакет под названием `syuzhet`. Его разработал известный цифровой литературовед Мэтью Джокерс^[https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html]. Название пакета, как говорит его разработчик, подсмотрено у русских формалистов Виктора Шкловского и Владимира Проппа. Возможности и ограничения этого пакета обсуждались в специальной литературе^[http://www.digitalhumanities.org/dhq/vol/16/2/000612/000612.html]. 
 
-Для анализа возьмем стихотворение Роберта Фроста "Медведи".
+Для анализа возьмем стихотворение Роберта Фроста "Медведи" ([перевод](https://t.me/antibarbari/1098)).
 
 ```{r}
 library(syuzhet)
@@ -269,11 +269,11 @@ Such is the uncaged progress of the bear.
 The world has room to make a bear feel free;
 The universe seems cramped to you and me.
 Man acts more like the poor bear in a cage
-That all day fights a nervous inward rage~
+That all day fights a nervous inward rage - 
 His mood rejecting all his mind suggests.
 He paces back and forth and never rests
-The me-nail click and shuffle of his feet,
-The telescope at one end of his beat~
+The toe-nail click and shuffle of his feet,
+The telescope at one end of his beat -
 And at the other end the microscope,
 Two instruments of nearly equal hope,
 And in conjunction giving quite a spread.
@@ -283,9 +283,9 @@ Through ninety odd degrees of arc, it seems,
 Between two metaphysical extremes.
 He sits back on his fundamental butt
 With lifted snout and eyes (if any) shut,
-(lie almost looks religious but he's not),
+(he almost looks religious but he's not),
 And back and forth he sways from cheek to cheek,
-At one extreme agreeing with one Greek~
+At one extreme agreeing with one Greek -
 At the other agreeing with another Greek
 Which may be thought, but only so to speak.
 A baggy figure, equally pathetic
