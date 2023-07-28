@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-07-28" />
+<meta name="date" content="2023-07-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -354,18 +354,7 @@ div.csl-indent {
 <li class="chapter" data-level="12.7" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#слова-и-темы"><i class="fa fa-check"></i><b>12.7</b> Слова и темы</a></li>
 <li class="chapter" data-level="12.8" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#темы-и-документы"><i class="fa fa-check"></i><b>12.8</b> Темы и документы</a></li>
 <li class="chapter" data-level="12.9" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#распределения-вероятности-для-топиков"><i class="fa fa-check"></i><b>12.9</b> Распределения вероятности для топиков</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html"><i class="fa fa-check"></i><b>13</b> Тематическое моделирование</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#что-такое-lda-1"><i class="fa fa-check"></i><b>13.1</b> Что такое LDA</a></li>
-<li class="chapter" data-level="13.2" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#распределение-дирихле-1"><i class="fa fa-check"></i><b>13.2</b> Распределение Дирихле</a></li>
-<li class="chapter" data-level="13.3" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#подготовка-данных-1"><i class="fa fa-check"></i><b>13.3</b> Подготовка данных</a></li>
-<li class="chapter" data-level="13.4" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#матрица-встречаемости-1"><i class="fa fa-check"></i><b>13.4</b> Матрица встречаемости</a></li>
-<li class="chapter" data-level="13.5" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#число-тем-1"><i class="fa fa-check"></i><b>13.5</b> Число тем</a></li>
-<li class="chapter" data-level="13.6" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#модель-lda-1"><i class="fa fa-check"></i><b>13.6</b> Модель LDA</a></li>
-<li class="chapter" data-level="13.7" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#слова-и-темы-1"><i class="fa fa-check"></i><b>13.7</b> Слова и темы</a></li>
-<li class="chapter" data-level="13.8" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#темы-и-документы-1"><i class="fa fa-check"></i><b>13.8</b> Темы и документы</a></li>
-<li class="chapter" data-level="13.9" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#распределения-вероятности-для-топиков-1"><i class="fa fa-check"></i><b>13.9</b> Распределения вероятности для топиков</a></li>
+<li class="chapter" data-level="12.10" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#интерактивные-визуализации"><i class="fa fa-check"></i><b>12.10</b> Интерактивные визуализации</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
@@ -601,7 +590,7 @@ div.csl-indent {
 <span id="cb228-8"><a href="функциональное-программирование.html#cb228-8" tabindex="-1"></a>y[k]</span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="функциональное-программирование.html#cb230-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.004 sec elapsed</code></pre>
+<pre><code>## 0.055 sec elapsed</code></pre>
 <p>То же самое можно сделать без цикла, причем быстрее!</p>
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="функциональное-программирование.html#cb232-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb232-2"><a href="функциональное-программирование.html#cb232-2" tabindex="-1"></a>y[<span class="fu">nchar</span>(y) <span class="sc">==</span> <span class="dv">6</span>][<span class="dv">1</span>] </span></code></pre></div>
@@ -684,7 +673,7 @@ div.csl-indent {
 <span id="cb257-6"><a href="функциональное-программирование.html#cb257-6" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb257-7"><a href="функциональное-программирование.html#cb257-7" tabindex="-1"></a>hapax_plato<span class="ot">&lt;-</span> <span class="fu">apply</span>(hapax_plato, <span class="dv">2</span>, as.numeric)</span>
 <span id="cb257-8"><a href="функциональное-программирование.html#cb257-8" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.001 sec elapsed</code></pre>
+<pre><code>## 0 sec elapsed</code></pre>
 <p>Сравните со скростью цикла, который мы написали выше:</p>
 <div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="функциональное-программирование.html#cb259-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/HapaxPlato.Rdata&quot;</span>)</span>
 <span id="cb259-2"><a href="функциональное-программирование.html#cb259-2" tabindex="-1"></a><span class="co"># избавляемся от факторов и строк</span></span>

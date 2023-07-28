@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-07-28" />
+<meta name="date" content="2023-07-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="распределения-слов-и-анализ-частотностей.html"/>
-<link rel="next" href="тематическое-моделирование-1.html"/>
+<link rel="next" href="литература.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -354,18 +354,7 @@ div.csl-indent {
 <li class="chapter" data-level="12.7" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#слова-и-темы"><i class="fa fa-check"></i><b>12.7</b> Слова и темы</a></li>
 <li class="chapter" data-level="12.8" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#темы-и-документы"><i class="fa fa-check"></i><b>12.8</b> Темы и документы</a></li>
 <li class="chapter" data-level="12.9" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#распределения-вероятности-для-топиков"><i class="fa fa-check"></i><b>12.9</b> Распределения вероятности для топиков</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html"><i class="fa fa-check"></i><b>13</b> Тематическое моделирование</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#что-такое-lda-1"><i class="fa fa-check"></i><b>13.1</b> Что такое LDA</a></li>
-<li class="chapter" data-level="13.2" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#распределение-дирихле-1"><i class="fa fa-check"></i><b>13.2</b> Распределение Дирихле</a></li>
-<li class="chapter" data-level="13.3" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#подготовка-данных-1"><i class="fa fa-check"></i><b>13.3</b> Подготовка данных</a></li>
-<li class="chapter" data-level="13.4" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#матрица-встречаемости-1"><i class="fa fa-check"></i><b>13.4</b> Матрица встречаемости</a></li>
-<li class="chapter" data-level="13.5" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#число-тем-1"><i class="fa fa-check"></i><b>13.5</b> Число тем</a></li>
-<li class="chapter" data-level="13.6" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#модель-lda-1"><i class="fa fa-check"></i><b>13.6</b> Модель LDA</a></li>
-<li class="chapter" data-level="13.7" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#слова-и-темы-1"><i class="fa fa-check"></i><b>13.7</b> Слова и темы</a></li>
-<li class="chapter" data-level="13.8" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#темы-и-документы-1"><i class="fa fa-check"></i><b>13.8</b> Темы и документы</a></li>
-<li class="chapter" data-level="13.9" data-path="тематическое-моделирование-1.html"><a href="тематическое-моделирование-1.html#распределения-вероятности-для-топиков-1"><i class="fa fa-check"></i><b>13.9</b> Распределения вероятности для топиков</a></li>
+<li class="chapter" data-level="12.10" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#интерактивные-визуализации"><i class="fa fa-check"></i><b>12.10</b> Интерактивные визуализации</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
@@ -407,10 +396,10 @@ div.csl-indent {
 <p><img src="https://static.wixstatic.com/media/2e7c6c_d8971b4da7634773b42b55e6d5b15fe0~mv2.png/v1/fill/w_691,h_342,al_c,lg_1,q_85,enc_auto/2e7c6c_d8971b4da7634773b42b55e6d5b15fe0~mv2.png" /></p>
 <p>Альфа и бета на этой схеме - <strong>гиперпараметры</strong> распределения. Гиперпараметры регулируют распределения тем по документам и слов по темам. Наглядно это можно представить так:</p>
 <p><img src="https://static.wixstatic.com/media/2e7c6c_edcbe922b9f6493cb21b8a73a430b898~mv2.gif" /></p>
-<p>При α = 1 получается равномерное распределение: темы распределены равномерно (заметим, что α также называют “параметром концентрации”). При значениях α &gt; 1 выборки начинают концентрироваться в центре треугольника, представляя собой равномерную смесь всех тем. При низких значениях альфа α &lt; 1 большинство наблюдений находится в углах – скорее всего, в в этом случае в документах будет меньше смешения тем<a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a>. Распределение документов по топикам θ зависит от значения α, где θ ~ Dir(α). Из θ выбирается конкретная тему Z на основе распределения.</p>
+<p>При α = 1 получается равномерное распределение: темы распределены равномерно (заметим, что α также называют “параметром концентрации”). При значениях α &gt; 1 выборки начинают концентрироваться в центре треугольника, представляя собой равномерную смесь всех тем. При низких значениях альфа α &lt; 1 большинство наблюдений находится в углах – скорее всего, в в этом случае в документах будет меньше смешения тем<a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a>. Распределение документов по топикам θ зависит от значения α, поскольку θ ~ Dir(α). Из θ выбирается конкретная тема Z.</p>
 <p>Аналогичным образом гиперпараметр 𝛽 управляет распределением слов по темам. При меньших значениях 𝛽 темы, скорее всего, будут больше различаться. Распределение слов φ темы Z ~ Dir(β). Конкретное слово W выбирается уже из этого распределения.</p>
 <p>Можно представить себе банкетный зал со столами: если их несколько, и они стоят по углам, то вероятность встретить вашего знакомого в углу выше, чем в центре зала. Если он при этом вегетарианец, вы его будете искать у стола с овощами, а не с котлетами.</p>
-<p>Метафору можно понимать двояко. С одной стороны, ваш знакомый – это слово, а стол – тема, или топик. Он может нечаянно прибиться к другому углу, как и слово “футбол” может оказаться в финансовых новостях. Но это сближение не будет таким устойчивым, как, например, связь слова “банк” с финансовым топиком.</p>
+<p>Метафору можно понимать двояко. С одной стороны, ваш знакомый – это слово, а стол – тема, или топик. Он может нечаянно прибиться к столу с котлетами, как и слово “футбол” может оказаться в финансовых новостях. Но это сближение не будет таким устойчивым, как, например, связь слова “банк” с финансовым топиком.</p>
 <p>С другой стороны, сами “документы” склонны прибиваться к определенным топикам: открыв газету, вы не ожидаете увидеть в одной статье новости вирусологии, педагогики и финансового регулирования <del>такое бывает только в блогах</del>.</p>
 </div>
 <div id="подготовка-данных" class="section level2 hasAnchor" number="12.3">
@@ -418,28 +407,23 @@ div.csl-indent {
 <p>Чтобы понять возможности алгоритма, мы попробуем передать ему архив телеграм-канала Antibarbari. Он хранится в репозитории этого курса на GitHub, откуда его можно скачать и повторить эксперимент. Но любому моделированию всегда предшествует подготовка данных, согласно древней мудрости garbage in - garbage out.</p>
 <p>Нужные мне html уже лежат в рабочей директории (2 файла); но при парсинге сайтов, в принципе, действует похожая логика.</p>
 <div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="тематическое-моделирование.html#cb654-1" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
-<span id="cb654-2"><a href="тематическое-моделирование.html#cb654-2" tabindex="-1"></a><span class="fu">library</span>(rvest)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;rvest&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:readr&#39;:
-## 
-##     guess_encoding</code></pre>
-<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="тематическое-моделирование.html#cb657-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb657-2"><a href="тематическое-моделирование.html#cb657-2" tabindex="-1"></a></span>
-<span id="cb657-3"><a href="тематическое-моделирование.html#cb657-3" tabindex="-1"></a>messages <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;./files/antibarbari_archive/messages.html&quot;</span>)</span>
-<span id="cb657-4"><a href="тематическое-моделирование.html#cb657-4" tabindex="-1"></a>messages2 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;./files/antibarbari_archive/messages2.html&quot;</span>)</span></code></pre></div>
+<span id="cb654-2"><a href="тематическое-моделирование.html#cb654-2" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb654-3"><a href="тематическое-моделирование.html#cb654-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb654-4"><a href="тематическое-моделирование.html#cb654-4" tabindex="-1"></a></span>
+<span id="cb654-5"><a href="тематическое-моделирование.html#cb654-5" tabindex="-1"></a>messages <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;./files/antibarbari_archive/messages.html&quot;</span>)</span>
+<span id="cb654-6"><a href="тематическое-моделирование.html#cb654-6" tabindex="-1"></a>messages2 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;./files/antibarbari_archive/messages2.html&quot;</span>)</span></code></pre></div>
 <p>Cледующий код позволяет достать только те узлы div, у которых значение атрибута class = text.</p>
-<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="тематическое-моделирование.html#cb658-1" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">html_elements</span>(messages, <span class="st">&quot;div.text&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb658-2"><a href="тематическое-моделирование.html#cb658-2" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb658-3"><a href="тематическое-моделирование.html#cb658-3" tabindex="-1"></a>text2 <span class="ot">&lt;-</span> <span class="fu">html_elements</span>(messages2, <span class="st">&quot;div.text&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb658-4"><a href="тематическое-моделирование.html#cb658-4" tabindex="-1"></a>  <span class="fu">html_text</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="тематическое-моделирование.html#cb655-1" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">html_elements</span>(messages, <span class="st">&quot;div.text&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb655-2"><a href="тематическое-моделирование.html#cb655-2" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb655-3"><a href="тематическое-моделирование.html#cb655-3" tabindex="-1"></a>text2 <span class="ot">&lt;-</span> <span class="fu">html_elements</span>(messages2, <span class="st">&quot;div.text&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb655-4"><a href="тематическое-моделирование.html#cb655-4" tabindex="-1"></a>  <span class="fu">html_text</span>()</span></code></pre></div>
 <p>Сшиваем и смотрим, что получилось.</p>
-<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="тематическое-моделирование.html#cb659-1" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(text)</span>
-<span id="cb659-2"><a href="тематическое-моделирование.html#cb659-2" tabindex="-1"></a>text2 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(text2)</span>
-<span id="cb659-3"><a href="тематическое-моделирование.html#cb659-3" tabindex="-1"></a>text <span class="ot">&lt;-</span> text <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(text2)</span>
-<span id="cb659-4"><a href="тематическое-моделирование.html#cb659-4" tabindex="-1"></a><span class="fu">dim</span>(text)</span></code></pre></div>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="тематическое-моделирование.html#cb656-1" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(text)</span>
+<span id="cb656-2"><a href="тематическое-моделирование.html#cb656-2" tabindex="-1"></a>text2 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(text2)</span>
+<span id="cb656-3"><a href="тематическое-моделирование.html#cb656-3" tabindex="-1"></a>text <span class="ot">&lt;-</span> text <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(text2)</span>
+<span id="cb656-4"><a href="тематическое-моделирование.html#cb656-4" tabindex="-1"></a><span class="fu">dim</span>(text)</span></code></pre></div>
 <pre><code>## [1] 780   1</code></pre>
-<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="тематическое-моделирование.html#cb661-1" tabindex="-1"></a>text</span></code></pre></div>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="тематическое-моделирование.html#cb658-1" tabindex="-1"></a>text</span></code></pre></div>
 <pre><code>## # A tibble: 780 × 1
 ##    value                                                                        
 ##    &lt;chr&gt;                                                                        
@@ -454,83 +438,103 @@ div.csl-indent {
 ##  9 &quot;\nФилеб. Семинар 3 марта 2022. Сократ и Протарх решают следовать за логосом…
 ## 10 &quot;\nВышка вернулась в аудитории, поэтому  теперь у нас театральная акустика. …
 ## # ℹ 770 more rows</code></pre>
-<p>Обычная рутина: удаляем сноски, переносы строки, числа, имейлы, хэштеги и т.п. Для подобной работы нужно уверенное знание regex; если забыли, можно вернуться к уроку выше и повторить.</p>
-<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="тематическое-моделирование.html#cb663-1" tabindex="-1"></a>text_clean <span class="ot">&lt;-</span> text <span class="sc">%&gt;%</span> </span>
-<span id="cb663-2"><a href="тематическое-моделирование.html#cb663-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value, <span class="st">&quot;(http|https)(</span><span class="sc">\\</span><span class="st">S+)&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb663-3"><a href="тематическое-моделирование.html#cb663-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{2}</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">d{2}</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">d{4}&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb663-4"><a href="тематическое-моделирование.html#cb663-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb663-5"><a href="тематическое-моделирование.html#cb663-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">W[-A-Za-z0-9_.%]+</span><span class="sc">\\</span><span class="st">@[-A-Za-z0-9_.%]+</span><span class="sc">\\</span><span class="st">.[A-Za-z]+&quot;</span>, <span class="st">&quot; &quot;</span>))</span>
-<span id="cb663-6"><a href="тематическое-моделирование.html#cb663-6" tabindex="-1"></a></span>
-<span id="cb663-7"><a href="тематическое-моделирование.html#cb663-7" tabindex="-1"></a>text_clean</span></code></pre></div>
+<p>Здесь должна следовать обычная рутина: удаление сносок, переносов строки, чисел, имейлов, хэштегов и т.п. Код мог бы выглядеть, например, вот так:</p>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="тематическое-моделирование.html#cb660-1" tabindex="-1"></a>text_clean <span class="ot">&lt;-</span> text <span class="sc">%&gt;%</span> </span>
+<span id="cb660-2"><a href="тематическое-моделирование.html#cb660-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value, <span class="st">&quot;(http|https)(</span><span class="sc">\\</span><span class="st">S+)&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb660-3"><a href="тематическое-моделирование.html#cb660-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{2}</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">d{2}</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">d{4}&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb660-4"><a href="тематическое-моделирование.html#cb660-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb660-5"><a href="тематическое-моделирование.html#cb660-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">W[-A-Za-z0-9_.%]+</span><span class="sc">\\</span><span class="st">@[-A-Za-z0-9_.%]+</span><span class="sc">\\</span><span class="st">.[A-Za-z]+&quot;</span>, <span class="st">&quot; &quot;</span>))</span></code></pre></div>
+<p>Но некоторые предварительные эксперименты показали, что в исходном html очень много латинского и греческого текста, разного рода смайлов и т.п., и все это плохо сказывается на модели. Поэтому я применю радикальное средство и удалю все, что не написано кириллицей:</p>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="тематическое-моделирование.html#cb661-1" tabindex="-1"></a>text_clean <span class="ot">&lt;-</span> text <span class="sc">%&gt;%</span> </span>
+<span id="cb661-2"><a href="тематическое-моделирование.html#cb661-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value,</span>
+<span id="cb661-3"><a href="тематическое-моделирование.html#cb661-3" tabindex="-1"></a>                                 <span class="st">&quot;[Сс]ылка|[Чч]асть&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb661-4"><a href="тематическое-моделирование.html#cb661-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value, </span>
+<span id="cb661-5"><a href="тематическое-моделирование.html#cb661-5" tabindex="-1"></a>                                <span class="st">&quot;[[^\u0400-\u04FF]]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb661-6"><a href="тематическое-моделирование.html#cb661-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace_all</span>(value, </span>
+<span id="cb661-7"><a href="тематическое-моделирование.html#cb661-7" tabindex="-1"></a>                                 <span class="st">&quot; </span><span class="sc">\\</span><span class="st">w{1,2} &quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb661-8"><a href="тематическое-моделирование.html#cb661-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_remove_all</span>(value,</span>
+<span id="cb661-9"><a href="тематическое-моделирование.html#cb661-9" tabindex="-1"></a>                                 <span class="st">&quot; лат &quot;</span> )) <span class="sc">%&gt;%</span> </span>
+<span id="cb661-10"><a href="тематическое-моделирование.html#cb661-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_remove_all</span>(value,</span>
+<span id="cb661-11"><a href="тематическое-моделирование.html#cb661-11" tabindex="-1"></a>                                 <span class="st">&quot; гр &quot;</span> ))</span>
+<span id="cb661-12"><a href="тематическое-моделирование.html#cb661-12" tabindex="-1"></a></span>
+<span id="cb661-13"><a href="тематическое-моделирование.html#cb661-13" tabindex="-1"></a>text_clean</span></code></pre></div>
 <pre><code>## # A tibble: 780 × 1
 ##    value                                                                        
 ##    &lt;chr&gt;                                                                        
-##  1 &quot; Antibarbari HSE       &quot;                                                    
-##  2 &quot; Latin never sleeps. Новое видео на канале Antibarbari (фрагмент семинара  …
-##  3 &quot; Подборка видео семинара по медленному чтению \&quot;О философии\&quot; Аристотеля; р…
-##  4 &quot; Новое видео в плейлисте \&quot;Латинский язык\&quot;. Фрагмент семинара           &quot;  
-##  5 &quot; 🤖 ОТКРЫТА ЗАПИСЬ НА ПРОЕКТВ рамках проекта участники овладеют навыками па…
-##  6 &quot; Желающие присоединиться к группе, читающей \&quot;Филеба\&quot; Платона, пишите руко…
-##  7 &quot;          &quot;                                                                 
-##  8 &quot; В клубе Antibarbari продолжается семинар по чтению и обсуждению фрагментов…
-##  9 &quot; Филеб. Семинар 3 марта 2022. Сократ и Протарх решают следовать за логосом,…
-## 10 &quot; Вышка вернулась в аудитории, поэтому  теперь у нас театральная акустика. Н…
+##  1 &quot;                       &quot;                                                    
+##  2 &quot;                     Новое видео канале              фрагмент семинара     …
+##  3 &quot; Подборка видео семинара медленному чтению  философии  Аристотеля  руководи…
+##  4 &quot; Новое видео плейлисте  Латинский язык   Фрагмент семинара                 …
+##  5 &quot;   ОТКРЫТА ЗАПИСЬ ПРОЕКТВ рамках проекта участники овладеют навыками парсин…
+##  6 &quot; Желающие присоединиться группе  читающей  Филеба  Платона  пишите руководи…
+##  7 &quot;                                     &quot;                                      
+##  8 &quot; клубе             продолжается семинар чтению обсуждению фрагментов утраче…
+##  9 &quot; Филеб  Семинар   марта       Сократ Протарх решают следовать логосом  кото…
+## 10 &quot; Вышка вернулась аудитории  поэтому  теперь нас театральная акустика  доска…
 ## # ℹ 770 more rows</code></pre>
 <p>Каждому документу (посту в Telegram) следует добавить id, иначе при разделении на слова мы потеряем данные об их происхождении.</p>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="тематическое-моделирование.html#cb665-1" tabindex="-1"></a>text_clean <span class="ot">&lt;-</span> text_clean <span class="sc">%&gt;%</span> </span>
-<span id="cb665-2"><a href="тематическое-моделирование.html#cb665-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">paste0</span>(<span class="st">&quot;doc_&quot;</span>, <span class="fu">row_number</span>()), <span class="at">.before =</span> value)</span></code></pre></div>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="тематическое-моделирование.html#cb663-1" tabindex="-1"></a>text_clean <span class="ot">&lt;-</span> text_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb663-2"><a href="тематическое-моделирование.html#cb663-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">paste0</span>(<span class="st">&quot;doc_&quot;</span>, <span class="fu">row_number</span>()), <span class="at">.before =</span> value)</span></code></pre></div>
 <p>Теперь можно лемматизировать. Как это делать, мы уже знаем.</p>
-<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="тематическое-моделирование.html#cb666-1" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
-<span id="cb666-2"><a href="тематическое-моделирование.html#cb666-2" tabindex="-1"></a>russian_syntagrus <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(<span class="at">file =</span> <span class="st">&quot;russian-syntagrus-ud-2.5-191206.udpipe&quot;</span>)</span>
-<span id="cb666-3"><a href="тематическое-моделирование.html#cb666-3" tabindex="-1"></a></span>
-<span id="cb666-4"><a href="тематическое-моделирование.html#cb666-4" tabindex="-1"></a>text_ann <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(russian_syntagrus, text_clean<span class="sc">$</span>value)</span>
-<span id="cb666-5"><a href="тематическое-моделирование.html#cb666-5" tabindex="-1"></a></span>
-<span id="cb666-6"><a href="тематическое-моделирование.html#cb666-6" tabindex="-1"></a>text_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(text_ann) <span class="sc">%&gt;%</span> </span>
-<span id="cb666-7"><a href="тематическое-моделирование.html#cb666-7" tabindex="-1"></a>  <span class="fu">select</span>(doc_id, lemma)</span></code></pre></div>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="тематическое-моделирование.html#cb667-1" tabindex="-1"></a>text_tbl</span></code></pre></div>
-<pre><code>## # A tibble: 104,910 × 2
-##    doc_id lemma      
-##    &lt;chr&gt;  &lt;chr&gt;      
-##  1 doc1   antibarbari
-##  2 doc1   HSE        
-##  3 doc2   Latin      
-##  4 doc2   never      
-##  5 doc2   sleeps     
-##  6 doc2   .          
-##  7 doc2   новый      
-##  8 doc2   видео      
-##  9 doc2   на         
-## 10 doc2   канал      
-## # ℹ 104,900 more rows</code></pre>
-<p>Загружаем список стоп-слов для русского языка: возвращаясь к метафоре с банкетом, это салфетки. Они лежат на всех столах и нам не интересны.</p>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="тематическое-моделирование.html#cb669-1" tabindex="-1"></a><span class="fu">library</span>(stopwords)</span>
-<span id="cb669-2"><a href="тематическое-моделирование.html#cb669-2" tabindex="-1"></a>stop <span class="ot">&lt;-</span> <span class="fu">stopwords</span>(<span class="at">language =</span> <span class="st">&quot;ru&quot;</span>, <span class="at">source =</span> <span class="st">&quot;stopwords-iso&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb669-3"><a href="тематическое-моделирование.html#cb669-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb669-4"><a href="тематическое-моделирование.html#cb669-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">lemma =</span> value)</span></code></pre></div>
-<p>Помимо стоп-слов, в нашем тиббле осталось много лишнего: смыйлы, пунктуцация, латинские и греческие слова, и т.п. Я решила оставить только кириллицу, чтобы немного снизить разреженность матрицы.</p>
-<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="тематическое-моделирование.html#cb670-1" tabindex="-1"></a>text_tidy <span class="ot">&lt;-</span> text_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb670-2"><a href="тематическое-моделирование.html#cb670-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">str_replace_all</span>(lemma, <span class="st">&quot;[Сс]ылка|[Чч]асть&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb670-3"><a href="тематическое-моделирование.html#cb670-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">tolower</span>(lemma)) <span class="sc">%&gt;%</span> </span>
-<span id="cb670-4"><a href="тематическое-моделирование.html#cb670-4" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop) <span class="sc">%&gt;%</span> </span>
-<span id="cb670-5"><a href="тематическое-моделирование.html#cb670-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">str_replace_all</span>(lemma, </span>
-<span id="cb670-6"><a href="тематическое-моделирование.html#cb670-6" tabindex="-1"></a>                                <span class="st">&quot;[[^\u0400-\u04FF]]&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># только кириллица</span></span>
-<span id="cb670-7"><a href="тематическое-моделирование.html#cb670-7" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">nchar</span>(lemma) <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb670-8"><a href="тематическое-моделирование.html#cb670-8" tabindex="-1"></a></span>
-<span id="cb670-9"><a href="тематическое-моделирование.html#cb670-9" tabindex="-1"></a>text_tidy</span></code></pre></div>
-<pre><code>## # A tibble: 42,184 × 2
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="тематическое-моделирование.html#cb664-1" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
+<span id="cb664-2"><a href="тематическое-моделирование.html#cb664-2" tabindex="-1"></a>russian_syntagrus <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(<span class="at">file =</span> <span class="st">&quot;russian-syntagrus-ud-2.5-191206.udpipe&quot;</span>)</span>
+<span id="cb664-3"><a href="тематическое-моделирование.html#cb664-3" tabindex="-1"></a></span>
+<span id="cb664-4"><a href="тематическое-моделирование.html#cb664-4" tabindex="-1"></a>text_ann <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(russian_syntagrus, text_clean<span class="sc">$</span>value)</span></code></pre></div>
+<p>Разный остаточный мусор.</p>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="тематическое-моделирование.html#cb665-1" tabindex="-1"></a>text_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(text_ann) <span class="sc">%&gt;%</span> </span>
+<span id="cb665-2"><a href="тематическое-моделирование.html#cb665-2" tabindex="-1"></a>  <span class="fu">select</span>(doc_id, lemma) <span class="sc">%&gt;%</span> </span>
+<span id="cb665-3"><a href="тематическое-моделирование.html#cb665-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>lemma <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;нный&quot;</span>, <span class="st">&quot;ный&quot;</span>, <span class="st">&quot;кнь&quot;</span>, <span class="st">&quot;ся&quot;</span>, <span class="st">&quot;ть&quot;</span>, <span class="st">&quot;ние&quot;</span>, <span class="st">&quot;вие&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="тематическое-моделирование.html#cb666-1" tabindex="-1"></a>text_tbl</span></code></pre></div>
+<pre><code>## # A tibble: 62,609 × 2
 ##    doc_id lemma    
 ##    &lt;chr&gt;  &lt;chr&gt;    
-##  1 doc2   видео    
-##  2 doc2   канал    
-##  3 doc2   фрагмент 
-##  4 doc2   семинар  
-##  5 doc3   подборка 
-##  6 doc3   видео    
-##  7 doc3   семинар  
-##  8 doc3   медленный
-##  9 doc3   чтение   
-## 10 doc3   философия
-## # ℹ 42,174 more rows</code></pre>
+##  1 doc2   новый    
+##  2 doc2   видео    
+##  3 doc2   канал    
+##  4 doc2   фрагмент 
+##  5 doc2   семинар  
+##  6 doc3   подборка 
+##  7 doc3   видео    
+##  8 doc3   семинар  
+##  9 doc3   медленный
+## 10 doc3   чтение   
+## # ℹ 62,599 more rows</code></pre>
+<p>Загружаем список стоп-слов для русского языка: возвращаясь к метафоре с банкетом, это салфетки. Они лежат на всех столах и нам не интересны.</p>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="тематическое-моделирование.html#cb668-1" tabindex="-1"></a><span class="fu">library</span>(stopwords)</span>
+<span id="cb668-2"><a href="тематическое-моделирование.html#cb668-2" tabindex="-1"></a>stop <span class="ot">&lt;-</span> <span class="fu">stopwords</span>(<span class="at">language =</span> <span class="st">&quot;ru&quot;</span>, <span class="at">source =</span> <span class="st">&quot;stopwords-iso&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb668-3"><a href="тематическое-моделирование.html#cb668-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb668-4"><a href="тематическое-моделирование.html#cb668-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">lemma =</span> value)</span></code></pre></div>
+<p>Очень короткие слова и очень короткие посты удаляем.</p>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="тематическое-моделирование.html#cb669-1" tabindex="-1"></a>text_tidy <span class="ot">&lt;-</span> text_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb669-2"><a href="тематическое-моделирование.html#cb669-2" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop) <span class="sc">%&gt;%</span> </span>
+<span id="cb669-3"><a href="тематическое-моделирование.html#cb669-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">nchar</span>(lemma) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb669-4"><a href="тематическое-моделирование.html#cb669-4" tabindex="-1"></a>  <span class="fu">group_by</span>(doc_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb669-5"><a href="тематическое-моделирование.html#cb669-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb669-6"><a href="тематическое-моделирование.html#cb669-6" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>lemma <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;ибо&quot;</span>, <span class="st">&quot;либо&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb669-7"><a href="тематическое-моделирование.html#cb669-7" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb669-8"><a href="тематическое-моделирование.html#cb669-8" tabindex="-1"></a></span>
+<span id="cb669-9"><a href="тематическое-моделирование.html#cb669-9" tabindex="-1"></a>text_tidy</span></code></pre></div>
+<pre><code>## # A tibble: 39,737 × 2
+##    doc_id lemma      
+##    &lt;chr&gt;  &lt;chr&gt;      
+##  1 doc5   открыто    
+##  2 doc5   запись     
+##  3 doc5   Проектвый  
+##  4 doc5   рамка      
+##  5 doc5   проект     
+##  6 doc5   участник   
+##  7 doc5   овладеть   
+##  8 doc5   навык      
+##  9 doc5   парсинг    
+## 10 doc5   подготовить
+## # ℹ 39,727 more rows</code></pre>
+<p>Исправим некоторые ошибки лемматизации.</p>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="тематическое-моделирование.html#cb671-1" tabindex="-1"></a>text_tidy <span class="ot">&lt;-</span> text_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb671-2"><a href="тематическое-моделирование.html#cb671-2" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(lemma), <span class="sc">~</span></span>
+<span id="cb671-3"><a href="тематическое-моделирование.html#cb671-3" tabindex="-1"></a>       <span class="fu">case_when</span>(lemma <span class="sc">==</span> <span class="st">&quot;мят&quot;</span> <span class="sc">~</span>  <span class="st">&quot;мята&quot;</span>,</span>
+<span id="cb671-4"><a href="тематическое-моделирование.html#cb671-4" tabindex="-1"></a>                 lemma <span class="sc">==</span> <span class="st">&quot;Мят&quot;</span> <span class="sc">~</span>  <span class="st">&quot;мята&quot;</span>,</span>
+<span id="cb671-5"><a href="тематическое-моделирование.html#cb671-5" tabindex="-1"></a>                 <span class="cn">TRUE</span> <span class="sc">~</span> .)) <span class="sc">%&gt;%</span> </span>
+<span id="cb671-6"><a href="тематическое-моделирование.html#cb671-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">tolower</span>(lemma))</span></code></pre></div>
 </div>
 <div id="матрица-встречаемости" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> Матрица встречаемости<a href="тематическое-моделирование.html#матрица-встречаемости" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -539,22 +543,17 @@ div.csl-indent {
 <span id="cb672-2"><a href="тематическое-моделирование.html#cb672-2" tabindex="-1"></a>  <span class="fu">group_by</span>(doc_id, lemma) <span class="sc">%&gt;%</span> </span>
 <span id="cb672-3"><a href="тематическое-моделирование.html#cb672-3" tabindex="-1"></a>  <span class="fu">count</span>(lemma)</span>
 <span id="cb672-4"><a href="тематическое-моделирование.html#cb672-4" tabindex="-1"></a></span>
-<span id="cb672-5"><a href="тематическое-моделирование.html#cb672-5" tabindex="-1"></a>text_count</span></code></pre></div>
-<pre><code>## # A tibble: 35,104 × 3
-## # Groups:   doc_id, lemma [35,104]
-##    doc_id lemma              n
-##    &lt;chr&gt;  &lt;chr&gt;          &lt;int&gt;
-##  1 doc10  акустика           1
-##  2 doc10  аудитория          1
-##  3 doc10  воспротивиться     1
-##  4 doc10  вышка              1
-##  5 doc10  гибридный          1
-##  6 doc10  грамматика         1
-##  7 doc10  доска              1
-##  8 doc10  записывать         1
-##  9 doc10  март               1
-## 10 doc10  объяснение         1
-## # ℹ 35,094 more rows</code></pre>
+<span id="cb672-5"><a href="тематическое-моделирование.html#cb672-5" tabindex="-1"></a><span class="fu">head</span>(text_count)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+## # Groups:   doc_id, lemma [6]
+##   doc_id lemma              n
+##   &lt;chr&gt;  &lt;chr&gt;          &lt;int&gt;
+## 1 doc10  акустика           1
+## 2 doc10  аудитория          1
+## 3 doc10  воспротивиться     1
+## 4 doc10  вышка              1
+## 5 doc10  гибридный          1
+## 6 doc10  грамматика         1</code></pre>
 <p>Для работы с LDA в R устанавливаем пакет <code>topicmodels</code>. На входе нужная нам функция этого пакета принимает такую структуру данных, как <em>document-term matrix</em> (dtm), которая используется для хранения сильно разреженных данных и происходит из популярного пакета для текст-майнинга <code>tm</code>.</p>
 <p>Поэтому “тайдифицированный” текст придется для моделирования преобразовать в этот формат, а полученный результат вернуть в опрятный формат для визуализаций<a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a>.</p>
 <p>Для преобразования подготовленного корпуса в формат dtm воспользуемся возможностями пакета <code>tidytext</code>:</p>
@@ -564,12 +563,12 @@ div.csl-indent {
 <span id="cb674-4"><a href="тематическое-моделирование.html#cb674-4" tabindex="-1"></a>  <span class="fu">cast_dtm</span>(doc_id, <span class="at">term =</span> lemma, <span class="at">value =</span> n)</span>
 <span id="cb674-5"><a href="тематическое-моделирование.html#cb674-5" tabindex="-1"></a></span>
 <span id="cb674-6"><a href="тематическое-моделирование.html#cb674-6" tabindex="-1"></a>text_dtm</span></code></pre></div>
-<pre><code>## &lt;&lt;DocumentTermMatrix (documents: 750, terms: 11892)&gt;&gt;
-## Non-/sparse entries: 35104/8883896
-## Sparsity           : 100%
-## Maximal term length: 28
+<pre><code>## &lt;&lt;DocumentTermMatrix (documents: 538, terms: 11296)&gt;&gt;
+## Non-/sparse entries: 32720/6044528
+## Sparsity           : 99%
+## Maximal term length: 27
 ## Weighting          : term frequency (tf)</code></pre>
-<p>Убеждаемся, что почти все ячейки в нашей матрице – нули (100% разреженность).</p>
+<p>Убеждаемся, что почти все ячейки в нашей матрице – нули (99% разреженность).</p>
 </div>
 <div id="число-тем" class="section level2 hasAnchor" number="12.5">
 <h2><span class="header-section-number">12.5</span> Число тем<a href="тематическое-моделирование.html#число-тем" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -589,17 +588,17 @@ div.csl-indent {
 <span id="cb678-7"><a href="тематическое-моделирование.html#cb678-7" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Оптимальное количество топиков&quot;</span>,</span>
 <span id="cb678-8"><a href="тематическое-моделирование.html#cb678-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Число топиков&quot;</span>,</span>
 <span id="cb678-9"><a href="тематическое-моделирование.html#cb678-9" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Perplexity&quot;</span>)</span></code></pre></div>
-<p><img src="%22images/lda.png%22" /></p>
+<p><img src="images/lda.png" /></p>
 <p>Если верить графику, предпочтительны 64 темы (на самом деле, если подогнать еще больше моделей, то и все 200). Но спешить не стоит.</p>
 <blockquote>
 <p>Если эксперт задаст в параметрах своей программы слишком мало тем, то разные самостоятельные топики сольются в один и станут неразличимы для взгляда исследователя. Если будет задано слишком большое число топиков, то помимо реальных тем, присутствующих в корпусе, появятся «паразитные», которые с точки зрения математического аппарата показывают совместно встречающиеся слова, однако на практике эти слова не будут образовывать тематически самостоятельных контекстов. Поэтому процесс тематического моделирования включает этап подбора нужного количества топиков и соизмерение получившихся результатов с разноплановыми соображениями.</p>
 <p><a href="https://shagi.ranepa.ru/files/shagi22_2/shagi22_2_11.pdf">Источник</a></p>
 </blockquote>
-<p>Мои разноплановые соображения говорят, что реально больше 10 топиков выделять непродуктивно. Однако на график все же стоит обратить внимание: будем готовы к тому, что тексты действительно не группируются по понятным темам (рубрикам).</p>
+<p>Мои разноплановые соображения говорят, что больше 10 топиков выделять непродуктивно.</p>
 </div>
 <div id="модель-lda" class="section level2 hasAnchor" number="12.6">
 <h2><span class="header-section-number">12.6</span> Модель LDA<a href="тематическое-моделирование.html#модель-lda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="тематическое-моделирование.html#cb679-1" tabindex="-1"></a>text_lda <span class="ot">&lt;-</span> <span class="fu">LDA</span>(text_dtm, <span class="at">k =</span> <span class="dv">10</span>, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">seed =</span> <span class="dv">0211</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="тематическое-моделирование.html#cb679-1" tabindex="-1"></a>text_lda <span class="ot">&lt;-</span> <span class="fu">LDA</span>(text_dtm, <span class="at">k =</span> <span class="dv">10</span>, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">seed =</span> <span class="dv">1111</span>))</span></code></pre></div>
 <p>Итак, наша тематическая модель готова. Осталось понять, что с ней делать.</p>
 </div>
 <div id="слова-и-темы" class="section level2 hasAnchor" number="12.7">
@@ -608,98 +607,87 @@ div.csl-indent {
 <div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="тематическое-моделирование.html#cb680-1" tabindex="-1"></a>text_topics <span class="ot">&lt;-</span> <span class="fu">tidy</span>(text_lda, <span class="at">matrix =</span> <span class="st">&quot;beta&quot;</span>)</span>
 <span id="cb680-2"><a href="тематическое-моделирование.html#cb680-2" tabindex="-1"></a></span>
 <span id="cb680-3"><a href="тематическое-моделирование.html#cb680-3" tabindex="-1"></a>text_topics <span class="sc">%&gt;%</span> </span>
-<span id="cb680-4"><a href="тематическое-моделирование.html#cb680-4" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">&quot;огурец&quot;</span>)</span></code></pre></div>
+<span id="cb680-4"><a href="тематическое-моделирование.html#cb680-4" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">&quot;огурец&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb680-5"><a href="тематическое-моделирование.html#cb680-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>beta)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 3
-##    topic term       beta
-##    &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;
-##  1     1 огурец 3.72e-44
-##  2     2 огурец 3.72e-44
-##  3     3 огурец 6.60e-41
-##  4     4 огурец 1.03e- 3
-##  5     5 огурец 3.72e-44
-##  6     6 огурец 3.72e-44
-##  7     7 огурец 3.72e-44
-##  8     8 огурец 3.72e-44
-##  9     9 огурец 1.98e- 3
-## 10    10 огурец 3.72e-44</code></pre>
-<p>Например, слово “огурец” с вероятностью <span class="math inline">\(3.72 \cdot 10^{-44}\)</span> “порождено” темой 1, и с вероятностью <span class="math inline">\(1.98 \cdot 10^{-3}\)</span> – темой 9 (похожие значения для темы 4). Ура, мы нашли огуречную тему.</p>
-<p>Посмотрим на главные термины в первых четырех топиках.</p>
+##    topic term        beta
+##    &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
+##  1     2 огурец 2.36e-  3
+##  2     5 огурец 1.20e-  3
+##  3     9 огурец 2.10e-253
+##  4     8 огурец 1.00e-271
+##  5    10 огурец 3.88e-273
+##  6     4 огурец 1.93e-274
+##  7     1 огурец 1.70e-274
+##  8     6 огурец 4.58e-275
+##  9     7 огурец 5.83e-276
+## 10     3 огурец 3.39e-277</code></pre>
+<p>Например, слово “огурец” с большей вероятностью порождено темой 2 или 5, чем остальными темами. Кажется, мы нашли огуречные темы 🥒🥒🥒</p>
+<p>Посмотрим на главные термины в топиках.</p>
 <div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="тематическое-моделирование.html#cb682-1" tabindex="-1"></a>text_top_terms <span class="ot">&lt;-</span> text_topics <span class="sc">%&gt;%</span> </span>
 <span id="cb682-2"><a href="тематическое-моделирование.html#cb682-2" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span> </span>
 <span id="cb682-3"><a href="тематическое-моделирование.html#cb682-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>beta) <span class="sc">%&gt;%</span> </span>
 <span id="cb682-4"><a href="тематическое-моделирование.html#cb682-4" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb682-5"><a href="тематическое-моделирование.html#cb682-5" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
 <span id="cb682-6"><a href="тематическое-моделирование.html#cb682-6" tabindex="-1"></a></span>
-<span id="cb682-7"><a href="тематическое-моделирование.html#cb682-7" tabindex="-1"></a>text_top_terms</span></code></pre></div>
-<pre><code>## # A tibble: 120 × 3
-##    topic term          beta
-##    &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
-##  1     1 язык       0.00711
-##  2     1 греческий  0.00614
-##  3     1 мальва     0.00561
-##  4     1 автор      0.00508
-##  5     1 текст      0.00478
-##  6     1 древний    0.00476
-##  7     1 феодор     0.00459
-##  8     1 интересный 0.00429
-##  9     1 латинский  0.00411
-## 10     1 труд       0.00408
-## # ℹ 110 more rows</code></pre>
+<span id="cb682-7"><a href="тематическое-моделирование.html#cb682-7" tabindex="-1"></a><span class="fu">head</span>(text_top_terms)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   topic term         beta
+##   &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;
+## 1     1 месяц     0.0121 
+## 2     1 язык      0.00691
+## 3     1 цицерон   0.00591
+## 4     1 образ     0.00443
+## 5     1 являться  0.00395
+## 6     1 отношение 0.00354</code></pre>
 <div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="тематическое-моделирование.html#cb684-1" tabindex="-1"></a>text_top_terms <span class="sc">%&gt;%</span> </span>
-<span id="cb684-2"><a href="тематическое-моделирование.html#cb684-2" tabindex="-1"></a>  <span class="fu">filter</span>(topic <span class="sc">&lt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb684-2"><a href="тематическое-моделирование.html#cb684-2" tabindex="-1"></a>  <span class="fu">filter</span>(topic <span class="sc">&lt;</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb684-3"><a href="тематическое-моделирование.html#cb684-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">reorder</span>(term, beta)) <span class="sc">%&gt;%</span> </span>
 <span id="cb684-4"><a href="тематическое-моделирование.html#cb684-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(term, beta, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
 <span id="cb684-5"><a href="тематическое-моделирование.html#cb684-5" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb684-6"><a href="тематическое-моделирование.html#cb684-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">ncol=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb684-6"><a href="тематическое-моделирование.html#cb684-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">ncol=</span><span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb684-7"><a href="тематическое-моделирование.html#cb684-7" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-295-1.png" width="672" /></p>
-<p>В “огуречной” теме обнаружились также “тыква” и “растения”. Видимо, наш алгоритм вполне адекватно “узнал” плодово-овощную рубрику Ирины Макаровой, в которой она рассказывает, как и зачем выращивали древние греки и римляне. Слово “месяц” в этом контексте тоже вполне осмысленно: ведь садовод следит за календарем!</p>
-<p>Тем не менее, “мальва” убежала в топик 1. Это может быть связано с тем, что в постах про мальву упоминаются Пифагора и древние пифагорейцы. Возможно, что от садовой-огородной тематики “мальва” прибивается к философской.</p>
-<p>Чтобы проверить это допущение, сравним топик 1 и топик 4 по формуле: <span class="math inline">\(log_2\left(\frac{β_2}{β_1}\right)\)</span>.</p>
-<p>Если <span class="math inline">\(β_2\)</span> в 2 раза больше <span class="math inline">\(β_1\)</span>, то логарифм будет равен 1; если наоборот, то -1.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-299-1.png" width="672" /></p>
+<p>В “огуречной” теме 5 обнаружились также “тыква” и “каштан”. Видимо, наш алгоритм вполне “узнал” плодово-овощную рубрику Ирины Макаровой, в которой она рассказывает, что и зачем выращивали древние греки и римляне. Однако “мята” прибилась к более философскому топику 4.</p>
+<p>Сравним топики 4 и 5 по формуле: <span class="math inline">\(log_2\left(\frac{β_2}{β_1}\right)\)</span>.
+Если <span class="math inline">\(β_2\)</span> в 2 раза больше <span class="math inline">\(β_1\)</span>, то логарифм будет равен 1; если наоборот, то -1.</p>
 <div class="infobox">
 <p>На всякий случай: <span class="math inline">\(\frac{1}{2} = 2^{-1}\)</span>.</p>
 </div>
 <p>Для подсчетов снова придется трансформировать данные.</p>
 <div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="тематическое-моделирование.html#cb685-1" tabindex="-1"></a>beta_spread <span class="ot">&lt;-</span> text_topics <span class="sc">%&gt;%</span> </span>
-<span id="cb685-2"><a href="тематическое-моделирование.html#cb685-2" tabindex="-1"></a>  <span class="fu">filter</span>(topic <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb685-2"><a href="тематическое-моделирование.html#cb685-2" tabindex="-1"></a>  <span class="fu">filter</span>(topic <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb685-3"><a href="тематическое-моделирование.html#cb685-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">topic =</span> <span class="fu">paste0</span>(<span class="st">&quot;topic_&quot;</span>, topic)) <span class="sc">%&gt;%</span> </span>
 <span id="cb685-4"><a href="тематическое-моделирование.html#cb685-4" tabindex="-1"></a>  <span class="fu">spread</span>(topic, beta) <span class="sc">%&gt;%</span> </span>
-<span id="cb685-5"><a href="тематическое-моделирование.html#cb685-5" tabindex="-1"></a>  <span class="fu">filter</span>(topic_1 <span class="sc">&gt;</span> .<span class="dv">001</span> <span class="sc">|</span> topic_4 <span class="sc">&gt;</span> .<span class="dv">001</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb685-6"><a href="тематическое-моделирование.html#cb685-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_ratio =</span> <span class="fu">log2</span>(topic_4 <span class="sc">/</span> topic_1))</span>
+<span id="cb685-5"><a href="тематическое-моделирование.html#cb685-5" tabindex="-1"></a>  <span class="fu">filter</span>(topic_4 <span class="sc">&gt;</span> .<span class="dv">001</span> <span class="sc">|</span> topic_5 <span class="sc">&gt;</span> .<span class="dv">001</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb685-6"><a href="тематическое-моделирование.html#cb685-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_ratio =</span> <span class="fu">log2</span>(topic_5 <span class="sc">/</span> topic_4))</span>
 <span id="cb685-7"><a href="тематическое-моделирование.html#cb685-7" tabindex="-1"></a></span>
-<span id="cb685-8"><a href="тематическое-моделирование.html#cb685-8" tabindex="-1"></a>beta_spread </span></code></pre></div>
-<pre><code>## # A tibble: 314 × 4
-##    term            topic_1  topic_4 log_ratio
-##    &lt;chr&gt;             &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-##  1 август        4.76e-320 0.00102    Inf    
-##  2 автор         5.08e-  3 0.00155     -1.72 
-##  3 анемон        3.72e- 44 0.00181    135.   
-##  4 античный      1.65e-  3 0.000995    -0.730
-##  5 аристотель    7.65e-  4 0.00181      1.24 
-##  6 афиня         7.65e-  4 0.00103      0.435
-##  7 беседовать    1.02e-  3 0.000259    -1.98 
-##  8 бесконечность 3.72e- 44 0.00129    135.   
-##  9 библиотека    1.27e-  3 0.00201      0.658
-## 10 благодаря     2.55e-  4 0.00109      2.10 
-## # ℹ 304 more rows</code></pre>
+<span id="cb685-8"><a href="тематическое-моделирование.html#cb685-8" tabindex="-1"></a><span class="fu">head</span>(beta_spread)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##   term         topic_4   topic_5 log_ratio
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 абрикос    8.46e-285 2.40e-  3   935.   
+## 2 автор      2.48e-  3 3.89e-  3     0.650
+## 3 аида       1.38e-  3 2.68e-269  -883.   
+## 4 анализ     1.14e-  3 4.43e- 12   -27.9  
+## 5 английский 1.91e-  3 1.18e-  3    -0.692
+## 6 аполлон    1.11e-  3 1.59e-252  -827.</code></pre>
 <p>На графике выглядит понятнее:</p>
 <div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="тематическое-моделирование.html#cb687-1" tabindex="-1"></a>beta_log_ratio <span class="ot">&lt;-</span> beta_spread <span class="sc">%&gt;%</span></span>
-<span id="cb687-2"><a href="тематическое-моделирование.html#cb687-2" tabindex="-1"></a>  <span class="fu">filter</span>(log_ratio <span class="sc">!=</span> <span class="cn">Inf</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb687-3"><a href="тематическое-моделирование.html#cb687-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sign =</span> <span class="fu">case_when</span>(log_ratio <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;pos&quot;</span>,</span>
-<span id="cb687-4"><a href="тематическое-моделирование.html#cb687-4" tabindex="-1"></a>                          log_ratio <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;neg&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb687-5"><a href="тематическое-моделирование.html#cb687-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>topic_1, <span class="sc">-</span>topic_4) <span class="sc">%&gt;%</span> </span>
-<span id="cb687-6"><a href="тематическое-моделирование.html#cb687-6" tabindex="-1"></a>  <span class="fu">group_by</span>(sign) <span class="sc">%&gt;%</span> </span>
-<span id="cb687-7"><a href="тематическое-моделирование.html#cb687-7" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(log_ratio))) <span class="sc">%&gt;%</span> </span>
-<span id="cb687-8"><a href="тематическое-моделирование.html#cb687-8" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<span id="cb687-2"><a href="тематическое-моделирование.html#cb687-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sign =</span> <span class="fu">case_when</span>(log_ratio <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;pos&quot;</span>,</span>
+<span id="cb687-3"><a href="тематическое-моделирование.html#cb687-3" tabindex="-1"></a>                          log_ratio <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;neg&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb687-4"><a href="тематическое-моделирование.html#cb687-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>topic_5, <span class="sc">-</span>topic_4) <span class="sc">%&gt;%</span> </span>
+<span id="cb687-5"><a href="тематическое-моделирование.html#cb687-5" tabindex="-1"></a>  <span class="fu">group_by</span>(sign) <span class="sc">%&gt;%</span> </span>
+<span id="cb687-6"><a href="тематическое-моделирование.html#cb687-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(log_ratio))) <span class="sc">%&gt;%</span> </span>
+<span id="cb687-7"><a href="тематическое-моделирование.html#cb687-7" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="тематическое-моделирование.html#cb688-1" tabindex="-1"></a>beta_log_ratio <span class="sc">%&gt;%</span> </span>
 <span id="cb688-2"><a href="тематическое-моделирование.html#cb688-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder</span>(term, log_ratio), log_ratio, <span class="at">fill =</span> sign)) <span class="sc">+</span></span>
 <span id="cb688-3"><a href="тематическое-моделирование.html#cb688-3" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb688-4"><a href="тематическое-моделирование.html#cb688-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;термин&quot;</span>) <span class="sc">+</span></span>
-<span id="cb688-5"><a href="тематическое-моделирование.html#cb688-5" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;log2 beta_4 / beta_1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb688-5"><a href="тематическое-моделирование.html#cb688-5" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;log2 (beta_5 / beta_4)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb688-6"><a href="тематическое-моделирование.html#cb688-6" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-298-1.png" width="672" /></p>
-<p>Слова в теме 1 достаточно общие (кроме слова “Ленин”), но видно, что больше технической терминологии, в то время как в теме 4 присутствуют “весна” и “июнь”.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-302-1.png" width="672" /></p>
+<p>В теме 5 видим и других обитателей садов и огородов: “слива”, “саранка”. В теме 4 больше лексики, связанной с мифологией.</p>
 </div>
 <div id="темы-и-документы" class="section level2 hasAnchor" number="12.8">
 <h2><span class="header-section-number">12.8</span> Темы и документы<a href="тематическое-моделирование.html#темы-и-документы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -707,30 +695,29 @@ div.csl-indent {
 <div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="тематическое-моделирование.html#cb689-1" tabindex="-1"></a>text_documents <span class="ot">&lt;-</span> <span class="fu">tidy</span>(text_lda, <span class="at">matrix =</span> <span class="st">&quot;gamma&quot;</span>)</span>
 <span id="cb689-2"><a href="тематическое-моделирование.html#cb689-2" tabindex="-1"></a></span>
 <span id="cb689-3"><a href="тематическое-моделирование.html#cb689-3" tabindex="-1"></a>text_documents <span class="sc">%&gt;%</span> </span>
-<span id="cb689-4"><a href="тематическое-моделирование.html#cb689-4" tabindex="-1"></a>  <span class="fu">filter</span>(topic <span class="sc">==</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb689-4"><a href="тематическое-моделирование.html#cb689-4" tabindex="-1"></a>  <span class="fu">filter</span>(topic <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb689-5"><a href="тематическое-моделирование.html#cb689-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>gamma)</span></code></pre></div>
-<pre><code>## # A tibble: 750 × 3
+<pre><code>## # A tibble: 538 × 3
 ##    document topic gamma
 ##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt;
-##  1 doc288       4 0.999
-##  2 doc648       4 0.999
-##  3 doc635       4 0.999
-##  4 doc272       4 0.999
-##  5 doc239       4 0.999
-##  6 doc774       4 0.999
-##  7 doc398       4 0.999
-##  8 doc704       4 0.999
-##  9 doc639       4 0.999
-## 10 doc658       4 0.999
-## # ℹ 740 more rows</code></pre>
-<p>Значение gamma можно понимать как долю слов в документе, происходящую из данного топика. Например, тема 4 представлена в документе 288. Посмотрим на него:</p>
+##  1 doc288       5 0.999
+##  2 doc519       5 0.999
+##  3 doc186       5 0.999
+##  4 doc620       5 0.999
+##  5 doc682       5 0.999
+##  6 doc774       5 0.999
+##  7 doc398       5 0.999
+##  8 doc165       5 0.999
+##  9 doc160       5 0.999
+## 10 doc634       5 0.998
+## # ℹ 528 more rows</code></pre>
+<p>Значение gamma можно понимать как долю слов в документе, происходящую из данного топика. Например, тема 4 представлена в документе 288 Посмотрим на него:</p>
 <div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="тематическое-моделирование.html#cb691-1" tabindex="-1"></a>doc_288 <span class="ot">&lt;-</span> text_clean <span class="sc">%&gt;%</span> </span>
 <span id="cb691-2"><a href="тематическое-моделирование.html#cb691-2" tabindex="-1"></a>  <span class="fu">filter</span>(id <span class="sc">==</span> <span class="st">&quot;doc_288&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb691-3"><a href="тематическое-моделирование.html#cb691-3" tabindex="-1"></a>  <span class="fu">pull</span>(value) </span>
 <span id="cb691-4"><a href="тематическое-моделирование.html#cb691-4" tabindex="-1"></a></span>
 <span id="cb691-5"><a href="тематическое-моделирование.html#cb691-5" tabindex="-1"></a><span class="fu">paste0</span>(<span class="fu">substr</span>(doc_288, <span class="dv">1</span>, <span class="dv">279</span>), <span class="st">&quot;...&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot; Тыква/cucurbita/κολοκύνθη.Закончилось лето, подходит к завершению и наша сезонная плодово-ягодная рубрика. Сегодня мы вспомним о тыкве, ведь греки охотно ее выращивали. Но привычная нам тыква и те, что были у греков и римлян, не одно и то же, хотя все они относятся к семейству ...&quot;</code></pre>
-<p>Заметим, однако, что в документах 648 и 635 овощи и фрукты не упоминаются. Тема включает в себя не только съедобные слова.</p>
+<pre><code>## [1] &quot; Тыква                     Закончилось лето  подходит завершению наша сезонная плодово ягодная рубрика  Сегодня вспомним тыкве  ведь греки охотно выращивали  привычная нам тыква те  что были греков римлян  одно то  хотя все они относятся семейству тыквенных  Тыквы прилавка супер...&quot;</code></pre>
 <p>Каждый документ в рамках LDA рассматривается как собрание тем. Значит, сумма всех гамм для текста должна быть равна единице. Проверим.</p>
 <div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="тематическое-моделирование.html#cb693-1" tabindex="-1"></a>text_documents <span class="sc">%&gt;%</span> </span>
 <span id="cb693-2"><a href="тематическое-моделирование.html#cb693-2" tabindex="-1"></a>  <span class="fu">filter</span>(document <span class="sc">==</span> <span class="st">&quot;doc288&quot;</span>) <span class="sc">%&gt;%</span> </span>
@@ -749,49 +736,79 @@ div.csl-indent {
 <span id="cb695-6"><a href="тематическое-моделирование.html#cb695-6" tabindex="-1"></a></span>
 <span id="cb695-7"><a href="тематическое-моделирование.html#cb695-7" tabindex="-1"></a>long_posts <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(long_posts, <span class="st">&quot;_&quot;</span>)</span>
 <span id="cb695-8"><a href="тематическое-моделирование.html#cb695-8" tabindex="-1"></a>long_posts</span></code></pre></div>
-<pre><code>## [1] &quot;doc731&quot; &quot;doc216&quot; &quot;doc624&quot; &quot;doc740&quot; &quot;doc332&quot; &quot;doc563&quot;</code></pre>
+<pre><code>## [1] &quot;doc731&quot; &quot;doc216&quot; &quot;doc740&quot; &quot;doc332&quot; &quot;doc624&quot; &quot;doc563&quot;</code></pre>
 <div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="тематическое-моделирование.html#cb697-1" tabindex="-1"></a>text_documents <span class="sc">%&gt;%</span> </span>
 <span id="cb697-2"><a href="тематическое-моделирование.html#cb697-2" tabindex="-1"></a>  <span class="fu">filter</span>(document <span class="sc">%in%</span> long_posts) <span class="sc">%&gt;%</span> </span>
 <span id="cb697-3"><a href="тематическое-моделирование.html#cb697-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>gamma) <span class="sc">%&gt;%</span> </span>
 <span id="cb697-4"><a href="тематическое-моделирование.html#cb697-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">as.factor</span>(topic), gamma, <span class="at">color =</span> document)) <span class="sc">+</span> </span>
 <span id="cb697-5"><a href="тематическое-моделирование.html#cb697-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
 <span id="cb697-6"><a href="тематическое-моделирование.html#cb697-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>document)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-303-1.png" width="672" /></p>
-<p>Из длинных постов 332 и 731 относятся к топику 2. Первый из них посвящен понятию “даймон” у греков, а второй – рецепции образа Иксиона у Шекспира. %63 (тоже топик 2) – о переписке Цицерона и Аттика. Оба этих слова мы видели выше на графике.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-307-1.png" width="672" /></p>
+<p>Документы 624 и 563 относятся к топику 10. Проверим, насколько эти документы тематически близки.</p>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="тематическое-моделирование.html#cb698-1" tabindex="-1"></a>doc_624 <span class="ot">&lt;-</span> text_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb698-2"><a href="тематическое-моделирование.html#cb698-2" tabindex="-1"></a>  <span class="fu">filter</span>(id <span class="sc">==</span> <span class="st">&quot;doc_624&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb698-3"><a href="тематическое-моделирование.html#cb698-3" tabindex="-1"></a>  <span class="fu">pull</span>(value) </span>
+<span id="cb698-4"><a href="тематическое-моделирование.html#cb698-4" tabindex="-1"></a></span>
+<span id="cb698-5"><a href="тематическое-моделирование.html#cb698-5" tabindex="-1"></a><span class="fu">paste0</span>(<span class="fu">substr</span>(doc_624, <span class="dv">1</span>, <span class="dv">279</span>), <span class="st">&quot;...&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot; Цицерон географ продолжаем наши цицеронианские четверги  сегодня расскажем том  как Цицерон чуть было стал географом   цицерон    Как видно письма           Аттик предложил своему другу задуматься адаптации монументальной   Географии  Эратосфена  трех книгах этого труда Эра сфе...&quot;</code></pre>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="тематическое-моделирование.html#cb700-1" tabindex="-1"></a>doc_563 <span class="ot">&lt;-</span> text_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb700-2"><a href="тематическое-моделирование.html#cb700-2" tabindex="-1"></a>  <span class="fu">filter</span>(id <span class="sc">==</span> <span class="st">&quot;doc_563&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb700-3"><a href="тематическое-моделирование.html#cb700-3" tabindex="-1"></a>  <span class="fu">pull</span>(value)</span>
+<span id="cb700-4"><a href="тематическое-моделирование.html#cb700-4" tabindex="-1"></a></span>
+<span id="cb700-5"><a href="тематическое-моделирование.html#cb700-5" tabindex="-1"></a><span class="fu">paste0</span>(<span class="fu">substr</span>(doc_563, <span class="dv">1</span>, <span class="dv">279</span>), <span class="st">&quot;...&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot; Цицерона любовью  нескольких письмах Цицерон обсуждает Аттиком автобиографические сочинения  посвященные событиям      есть заговору Катилины            говорит латинских  греческих   записках   также упоминает планах написать поэму    чтобы никакой жанр восхваления был самим м...&quot;</code></pre>
 </div>
 <div id="распределения-вероятности-для-топиков" class="section level2 hasAnchor" number="12.9">
 <h2><span class="header-section-number">12.9</span> Распределения вероятности для топиков<a href="тематическое-моделирование.html#распределения-вероятности-для-топиков" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="тематическое-моделирование.html#cb698-1" tabindex="-1"></a>text_documents <span class="sc">%&gt;%</span> </span>
-<span id="cb698-2"><a href="тематическое-моделирование.html#cb698-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(gamma, <span class="at">fill =</span> <span class="fu">as.factor</span>(topic))) <span class="sc">+</span></span>
-<span id="cb698-3"><a href="тематическое-моделирование.html#cb698-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb698-4"><a href="тематическое-моделирование.html#cb698-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">ncol =</span> <span class="dv">5</span>) <span class="sc">+</span> </span>
-<span id="cb698-5"><a href="тематическое-моделирование.html#cb698-5" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
-<span id="cb698-6"><a href="тематическое-моделирование.html#cb698-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Распределение вероятностей для каждого топика&quot;</span>, </span>
-<span id="cb698-7"><a href="тематическое-моделирование.html#cb698-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Число документов&quot;</span>,</span>
-<span id="cb698-8"><a href="тематическое-моделирование.html#cb698-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">expression</span>(gamma))</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-304-1.png" width="672" />
-Почти ни одна тема не распределена равномерно: гамма чаще всего принимает значения либо около нуля, либо в районе единицы. Тема 8 немного отклоняется от этого правила.</p>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="тематическое-моделирование.html#cb700-1" tabindex="-1"></a>text_top_terms <span class="sc">%&gt;%</span> </span>
-<span id="cb700-2"><a href="тематическое-моделирование.html#cb700-2" tabindex="-1"></a>  <span class="fu">filter</span>(topic <span class="sc">==</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="тематическое-моделирование.html#cb702-1" tabindex="-1"></a>text_documents <span class="sc">%&gt;%</span> </span>
+<span id="cb702-2"><a href="тематическое-моделирование.html#cb702-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(gamma, <span class="at">fill =</span> <span class="fu">as.factor</span>(topic))) <span class="sc">+</span></span>
+<span id="cb702-3"><a href="тематическое-моделирование.html#cb702-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb702-4"><a href="тематическое-моделирование.html#cb702-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">ncol =</span> <span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb702-5"><a href="тематическое-моделирование.html#cb702-5" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
+<span id="cb702-6"><a href="тематическое-моделирование.html#cb702-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Распределение вероятностей для каждого топика&quot;</span>, </span>
+<span id="cb702-7"><a href="тематическое-моделирование.html#cb702-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Число документов&quot;</span>,</span>
+<span id="cb702-8"><a href="тематическое-моделирование.html#cb702-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">expression</span>(gamma))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-309-1.png" width="672" />
+Почти ни одна тема не распределена равномерно: гамма чаще всего принимает значения либо около нуля, либо в районе единицы. Тема 3, однако, отклоняется от этого правила.</p>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="тематическое-моделирование.html#cb703-1" tabindex="-1"></a>text_top_terms <span class="sc">%&gt;%</span> </span>
+<span id="cb703-2"><a href="тематическое-моделирование.html#cb703-2" tabindex="-1"></a>  <span class="fu">filter</span>(topic <span class="sc">==</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 3
 ##    topic term           beta
 ##    &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;
-##  1    10 цицерон     0.0116 
-##  2    10 греческий   0.0104 
-##  3    10 платон      0.00927
-##  4    10 аттика      0.00839
-##  5    10 письмо      0.00835
-##  6    10 латинский   0.00735
-##  7    10 текст       0.00706
-##  8    10 издание     0.00667
-##  9    10 язык        0.00577
-## 10    10 цифровой    0.00482
-## 11    10 понедельник 0.00475
-## 12    10 лейбниц     0.00300</code></pre>
-<p>Действительно, здесь встречаются слова, которые возможны почти в любом посте: “древнегреческий” и “латынь”. Можно сказать, что это своего рода метатопик, характеризующий тематику канала в целом.</p>
-<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="тематическое-моделирование.html#cb702-1" tabindex="-1"></a><span class="fu">save</span>(text_documents, <span class="at">file =</span> <span class="st">&quot;./data/Gamma.Rdata&quot;</span>)</span></code></pre></div>
+##  1     3 философия   0.0181 
+##  2     3 проект      0.00944
+##  3     3 платон      0.00863
+##  4     3 латинский   0.00754
+##  5     3 философский 0.00742
+##  6     3 античность  0.00726
+##  7     3 семинар     0.00720
+##  8     3 научный     0.00707
+##  9     3 текст       0.00700
+## 10     3 язык        0.00688
+## 11     3 студент     0.00681
+## 12     3 курс        0.00674</code></pre>
+<p>Действительно, здесь встречаются слова, связанные с изучением античности в целом и потому возможные в разных контекстах. Можно сказать, что это своего рода метатопик, характеризующий тематику канала в целом.</p>
+</div>
+<div id="интерактивные-визуализации" class="section level2 hasAnchor" number="12.10">
+<h2><span class="header-section-number">12.10</span> Интерактивные визуализации<a href="тематическое-моделирование.html#интерактивные-визуализации" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Более подробно изучить полученную модель можно при помощи интерактивной визуализации. Функция ниже заимстовована <a href="https://gist.github.com/trinker/477d7ae65ff6ca73cace">отсюда</a>.</p>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="тематическое-моделирование.html#cb705-1" tabindex="-1"></a>topicmodels2LDAvis <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...){</span>
+<span id="cb705-2"><a href="тематическое-моделирование.html#cb705-2" tabindex="-1"></a>  post <span class="ot">&lt;-</span> topicmodels<span class="sc">::</span><span class="fu">posterior</span>(x)</span>
+<span id="cb705-3"><a href="тематическое-моделирование.html#cb705-3" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">ncol</span>(post[[<span class="st">&quot;topics&quot;</span>]]) <span class="sc">&lt;</span> <span class="dv">3</span>) <span class="fu">stop</span>(<span class="st">&quot;The model must contain &gt; 2 topics&quot;</span>)</span>
+<span id="cb705-4"><a href="тематическое-моделирование.html#cb705-4" tabindex="-1"></a>  mat <span class="ot">&lt;-</span> x<span class="sc">@</span>wordassignments</span>
+<span id="cb705-5"><a href="тематическое-моделирование.html#cb705-5" tabindex="-1"></a>  LDAvis<span class="sc">::</span><span class="fu">createJSON</span>(</span>
+<span id="cb705-6"><a href="тематическое-моделирование.html#cb705-6" tabindex="-1"></a>    <span class="at">phi =</span> post[[<span class="st">&quot;terms&quot;</span>]], </span>
+<span id="cb705-7"><a href="тематическое-моделирование.html#cb705-7" tabindex="-1"></a>    <span class="at">theta =</span> post[[<span class="st">&quot;topics&quot;</span>]],</span>
+<span id="cb705-8"><a href="тематическое-моделирование.html#cb705-8" tabindex="-1"></a>    <span class="at">vocab =</span> <span class="fu">colnames</span>(post[[<span class="st">&quot;terms&quot;</span>]]),</span>
+<span id="cb705-9"><a href="тематическое-моделирование.html#cb705-9" tabindex="-1"></a>    <span class="at">doc.length =</span> slam<span class="sc">::</span><span class="fu">row_sums</span>(mat, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb705-10"><a href="тематическое-моделирование.html#cb705-10" tabindex="-1"></a>    <span class="at">term.frequency =</span> slam<span class="sc">::</span><span class="fu">col_sums</span>(mat, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb705-11"><a href="тематическое-моделирование.html#cb705-11" tabindex="-1"></a>  )</span>
+<span id="cb705-12"><a href="тематическое-моделирование.html#cb705-12" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="тематическое-моделирование.html#cb706-1" tabindex="-1"></a><span class="fu">library</span>(LDAvis)</span>
+<span id="cb706-2"><a href="тематическое-моделирование.html#cb706-2" tabindex="-1"></a></span>
+<span id="cb706-3"><a href="тематическое-моделирование.html#cb706-3" tabindex="-1"></a>LDAvis<span class="sc">::</span><span class="fu">serVis</span>(<span class="fu">topicmodels2LDAvis</span>(text_lda), <span class="at">out.dir =</span> <span class="st">&quot;ldavis&quot;</span>)</span></code></pre></div>
+<p><a href="https://locusclassicus.github.io/ldavis_antibarbari/">Ссылка на интерактивную визуализацию топиков</a>.</p>
+
 
 </div>
 </div>
@@ -809,7 +826,7 @@ div.csl-indent {
         </div>
       </div>
 <a href="распределения-слов-и-анализ-частотностей.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="тематическое-моделирование-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="литература.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
