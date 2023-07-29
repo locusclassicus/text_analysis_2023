@@ -1,4 +1,4 @@
-# Латентно-семантический анализ
+# Латентно-семантический анализ (Часть 1)
 
 ## Что это такое
 
@@ -50,7 +50,7 @@
 - Σ — диагональная матрица сингулярных чисел матрицы A,
 - V — матрица правых сингулярных векторов матрицы A.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/1024px-Singular_value_decomposition_visualisation.svg.png)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/1024px-Singular_value_decomposition_visualisation.svg.png){ width=60% }
 
 2. Сингулярные значения в диагональной матрице всегда упорядочены по убыванию, и можно без больших потерь отсечь малоинформативные ряды или столбцы. Как правило,  так и делают, и такое SVD называется **усеченным**.
 
@@ -161,7 +161,9 @@ q_doc <-  colSums(word_emb[rownames(word_emb) %in% q, ]) / 2
 q_doc
 ```
 Объединяем все в единый датафрейм.
-```{r warning=FALSE}
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+
 all_df <- rbind(word_emb, t(doc_emb), q_doc)
 all_df <- as_tibble(all_df, rownames = "names") 
 
@@ -190,7 +192,6 @@ lm2 = summary(lm(data=line2, dim2 ~ dim1))
 Теперь строим график.
 
 ```{r message=FALSE}
-library(tidyverse)
 library(ggrepel)
 
 all_df %>% 
@@ -225,7 +226,190 @@ colnames(dist_mx) <- c("d1", "d2", "d3", "d4", "d5", "q")
 
 dist_mx
 ```
-## Пример посложнее
+## Делаем это опрятно 
+
+```{r}
+library(tidyr)
+
+tidy_corpus <- df %>% 
+  as_tibble(rownames = "word") %>% 
+  pivot_longer(d1:d5, names_to = "doc")
+
+tidy_corpus
+
+```
+
+```{r}
+library(widyr)
+
+tidy_u <- tidy_corpus %>% 
+  widely_svd(word, doc, value,
+             nv = 2, maxit = 100) %>% 
+  pivot_wider(names_from = dimension, values_from = value) 
+
+tidy_u[, 2:3] <- round(tidy_u[, 2:3], 3)
+
+tidy_u
+```
+
+Сравним с тем, что у нас получилось выше.
+
+```{r}
+near(as.data.frame(U_truncated), tidy_u[,2:3])
+```
+
+Итак, мы получили только матрицу правых сингулярных векторов. Чтобы получить word_emb, используем аргумент `weight_d`:
+
+```{r}
+tidy_word_emb <- tidy_corpus %>% 
+  widely_svd(word, doc, value, 
+             nv = 2, maxit = 100, 
+             weight_d = T) %>% 
+  pivot_wider(names_from = dimension, values_from = value) %>% 
+  rename(item = word, dim1 = `1`, dim2 = `2`)
+
+tidy_word_emb[, 2:3] <- round(tidy_word_emb[, 2:3], 3)
+
+tidy_word_emb
+```
+Снова сравним. Округление не всегда с точностью до тысячных совпадает, но в целом результат такой же.
+
+```{r}
+word_emb
+```
+
+Осталось понять, как _опрятно_ получить doc_emb. Нам нужна частотность слов в каждом документе, она хранится в объекте `tidy_corpus`.
+
+```{r}
+library(tidytext)
+
+word_mx <- tidy_corpus %>% 
+  cast_sparse(doc, word, value)
+
+word_mx
+```
+
+Эмбеддинги слов преобразуем в тот же формат. 
+
+```{r}
+embedding_mx <- tidy_word_emb %>%
+  pivot_longer(2:3, names_to = "dimension") %>% 
+  cast_sparse(item, dimension, value)
+
+embedding_mx
+```
+Перемножаем частотности слов в документе и эмбеддингов слов. 
+
+```{r}
+doc_mx <- word_mx %*% embedding_mx
+
+doc_mx <- as.data.frame(as.matrix(doc_mx))
+
+tidy_doc_emb <- doc_mx %>% 
+  as_tibble(rownames = "item")
+
+tidy_doc_emb 
+```
+
+Значения отличаются от того, что мы видели выше, поскольку мы рассматриваем каждый документ как набор слов^[Подход, предлагаемый здесь: https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself]. Посмотрим на графике, как это скажется на результате.
+
+```{r}
+all_df <- tidy_word_emb %>% 
+  bind_rows(tidy_doc_emb) %>% 
+  mutate(type = c(rep("word", 8), rep("doc", 5)))
+
+all_df
+```
+
+Теперь строим график.
+
+```{r echo=FALSE}
+zero = tibble(dim1 = 0, dim2 = 0)
+line1 = all_df %>% 
+  filter(item == "d1") %>% 
+  select(-item, -type) %>% 
+  bind_rows(zero)
+line2 = all_df %>% 
+  filter(item == "d5") %>% 
+  select(-item, -type) %>% 
+  bind_rows(zero)
+lm1 = summary(lm(data=line1, dim2 ~ dim1))
+lm2 = summary(lm(data=line2, dim2 ~ dim1))
+```
+
+
+```{r message=FALSE}
+library(tidyverse)
+library(ggrepel)
+
+all_df %>% 
+  ggplot(aes(dim1, dim2, 
+             color = as.factor(type), label = item)) +
+  geom_point(show.legend = F) + 
+  geom_text_repel(aes(fontface = "bold"), show.legend = F) +
+  theme_bw() + 
+  xlab(NULL) + 
+  ylab(NULL) +
+  geom_abline(slope = 0, intercept = 0, linetype = "dotted") +
+  geom_abline(slope = lm1$coefficients[2], 
+              intercept = lm1$coefficients[1], linetype = "dotted") + 
+  geom_abline(slope = lm2$coefficients[2], 
+              intercept = lm2$coefficients[1], linetype = "dotted") +
+  coord_cartesian(xlim = c(-3.5, 0.2), ylim = c(-4, 3))
+  
+```
+
+Картинка похожа на то, что мы видели выше, кроме того, что документы "уехали" влево (что, впрочем, при использовании косинусного сходства не важно, т.к. оно оценивает угол между векторами). Это связано с тем, что мы суммировали эмбединги для документов; как вариант, можно взять среднее, т.е. разделить на число слов в каждом документе.
+
+```{r}
+doc_length <-  colSums(df)
+
+tidy_doc_emb <- tidy_doc_emb %>% 
+  mutate(length = doc_length) %>% 
+  mutate(dim1 = dim1 / doc_length, 
+         dim2 = dim2 / doc_length) %>% 
+  select(-length)
+```
+
+```{r}
+all_df <- tidy_word_emb %>% 
+  bind_rows(tidy_doc_emb) %>% 
+  mutate(type = c(rep("word", 8), rep("doc", 5)))
+```
+
+```{r echo=FALSE}
+zero = tibble(dim1 = 0, dim2 = 0)
+line1 = all_df %>% 
+  filter(item == "d1") %>% 
+  select(-item, -type) %>% 
+  bind_rows(zero)
+line2 = all_df %>% 
+  filter(item == "d5") %>% 
+  select(-item, -type) %>% 
+  bind_rows(zero)
+lm1 = summary(lm(data=line1, dim2 ~ dim1))
+lm2 = summary(lm(data=line2, dim2 ~ dim1))
+```
+
+
+```{r echo=FALSE}
+all_df %>% 
+  ggplot(aes(dim1, dim2, 
+             color = as.factor(type), label = item)) +
+  geom_point(show.legend = F) + 
+  geom_text_repel(aes(fontface = "bold"), show.legend = F) +
+  theme_bw() + 
+  xlab(NULL) + 
+  ylab(NULL) +
+  geom_abline(slope = 0, intercept = 0, linetype = "dotted") +
+  geom_abline(slope = lm1$coefficients[2], 
+              intercept = lm1$coefficients[1], linetype = "dotted") + 
+  geom_abline(slope = lm2$coefficients[2], 
+              intercept = lm2$coefficients[1], linetype = "dotted") +
+  coord_cartesian(xlim = c(-3.5, 0.2), ylim = c(-4, 3))
+
+```
+
 
 LSA, в отличие от LDA, -- это не вероятностная, а алгебраическая модель. Это значит, что термдокументная матрица может хранить не только данные об абсолютной встречаемости слова в документе (как это требует LDA), выраженные целыми числами, но и любые реальные числа. Как правило, используется tf_idf, о которой шла речь в одном из предыдущих уроков.
 
