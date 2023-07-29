@@ -423,7 +423,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="импорт-и-экспорт-данных.html#cb293-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb293-2"><a href="импорт-и-экспорт-данных.html#cb293-2" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Users.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 278858 Columns: 1
-## ── Column specification ─────────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): User-ID;Location;Age
 ## 
@@ -442,7 +442,7 @@ div.csl-indent {
 <p>Чтобы исправить дело, воспользуемся другой функцией из того же пакета:</p>
 <div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="импорт-и-экспорт-данных.html#cb297-1" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Users.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 246666 Columns: 3
-## ── Column specification ─────────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;;&quot;
 ## chr (2): Location, Age
 ## dbl (1): User-ID

@@ -590,7 +590,7 @@ div.csl-indent {
 <span id="cb228-8"><a href="функциональное-программирование.html#cb228-8" tabindex="-1"></a>y[k]</span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="функциональное-программирование.html#cb230-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.055 sec elapsed</code></pre>
+<pre><code>## 0.003 sec elapsed</code></pre>
 <p>То же самое можно сделать без цикла, причем быстрее!</p>
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="функциональное-программирование.html#cb232-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb232-2"><a href="функциональное-программирование.html#cb232-2" tabindex="-1"></a>y[<span class="fu">nchar</span>(y) <span class="sc">==</span> <span class="dv">6</span>][<span class="dv">1</span>] </span></code></pre></div>
@@ -673,7 +673,7 @@ div.csl-indent {
 <span id="cb257-6"><a href="функциональное-программирование.html#cb257-6" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb257-7"><a href="функциональное-программирование.html#cb257-7" tabindex="-1"></a>hapax_plato<span class="ot">&lt;-</span> <span class="fu">apply</span>(hapax_plato, <span class="dv">2</span>, as.numeric)</span>
 <span id="cb257-8"><a href="функциональное-программирование.html#cb257-8" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0 sec elapsed</code></pre>
+<pre><code>## 0.001 sec elapsed</code></pre>
 <p>Сравните со скростью цикла, который мы написали выше:</p>
 <div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="функциональное-программирование.html#cb259-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/HapaxPlato.Rdata&quot;</span>)</span>
 <span id="cb259-2"><a href="функциональное-программирование.html#cb259-2" tabindex="-1"></a><span class="co"># избавляемся от факторов и строк</span></span>
