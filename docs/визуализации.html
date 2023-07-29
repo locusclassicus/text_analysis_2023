@@ -356,6 +356,15 @@ div.csl-indent {
 <li class="chapter" data-level="12.9" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#распределения-вероятности-для-топиков"><i class="fa fa-check"></i><b>12.9</b> Распределения вероятности для топиков</a></li>
 <li class="chapter" data-level="12.10" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#интерактивные-визуализации"><i class="fa fa-check"></i><b>12.10</b> Интерактивные визуализации</a></li>
 </ul></li>
+<li class="chapter" data-level="13" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html"><i class="fa fa-check"></i><b>13</b> Латентно-семантический анализ</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#что-это-такое"><i class="fa fa-check"></i><b>13.1</b> Что это такое</a></li>
+<li class="chapter" data-level="13.2" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#векторное-представление-слов"><i class="fa fa-check"></i><b>13.2</b> Векторное представление слов</a></li>
+<li class="chapter" data-level="13.3" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#проклятие-размерности"><i class="fa fa-check"></i><b>13.3</b> Проклятие размерности</a></li>
+<li class="chapter" data-level="13.4" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#сингулярное-разложение-матрицы"><i class="fa fa-check"></i><b>13.4</b> Сингулярное разложение матрицы</a></li>
+<li class="chapter" data-level="13.5" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#простой-пример"><i class="fa fa-check"></i><b>13.5</b> Простой пример</a></li>
+<li class="chapter" data-level="13.6" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#пример-посложнее"><i class="fa fa-check"></i><b>13.6</b> Пример посложнее</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -469,9 +478,13 @@ div.csl-indent {
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="визуализации.html#cb129-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># загружается сразу с tidyverse</span></span>
 <span id="cb129-2"><a href="визуализации.html#cb129-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
 <span id="cb129-3"><a href="визуализации.html#cb129-3" tabindex="-1"></a><span class="fu">qplot</span>(words, hapax, <span class="at">data =</span> hapax_plato, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: `qplot()` was deprecated in ggplot2 3.4.0.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+<pre><code>## Warning: `qplot()` was deprecated in
+## ggplot2 3.4.0.
+## This warning is displayed
+## once every 8 hours.
+## Call
+## `lifecycle::last_lifecycle_warnings()`
+## to see where this warning was
 ## generated.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>Функция <code>qplot()</code> – это быстрое решение для задач визуализации.</p>
