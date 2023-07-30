@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-07-29" />
+<meta name="date" content="2023-07-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -360,10 +360,13 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="13.1" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#что-это-такое"><i class="fa fa-check"></i><b>13.1</b> Что это такое</a></li>
 <li class="chapter" data-level="13.2" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#векторное-представление-слов"><i class="fa fa-check"></i><b>13.2</b> Векторное представление слов</a></li>
-<li class="chapter" data-level="13.3" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#проклятие-размерности"><i class="fa fa-check"></i><b>13.3</b> Проклятие размерности</a></li>
-<li class="chapter" data-level="13.4" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#сингулярное-разложение-матрицы"><i class="fa fa-check"></i><b>13.4</b> Сингулярное разложение матрицы</a></li>
-<li class="chapter" data-level="13.5" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#простой-пример"><i class="fa fa-check"></i><b>13.5</b> Простой пример</a></li>
-<li class="chapter" data-level="13.6" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#делаем-это-опрятно"><i class="fa fa-check"></i><b>13.6</b> Делаем это опрятно</a></li>
+<li class="chapter" data-level="13.3" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#сингулярное-разложение-матрицы"><i class="fa fa-check"></i><b>13.3</b> Сингулярное разложение матрицы</a></li>
+<li class="chapter" data-level="13.4" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#простой-пример"><i class="fa fa-check"></i><b>13.4</b> Простой пример</a></li>
+<li class="chapter" data-level="13.5" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#векторы-слов-опрятно"><i class="fa fa-check"></i><b>13.5</b> Векторы слов: опрятно</a></li>
+<li class="chapter" data-level="13.6" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#векторы-документов-опрятно"><i class="fa fa-check"></i><b>13.6</b> Векторы документов: опрятно</a></li>
+<li class="chapter" data-level="13.7" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#пакет-lsa"><i class="fa fa-check"></i><b>13.7</b> Пакет LSA</a></li>
+<li class="chapter" data-level="13.8" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#кластеризация"><i class="fa fa-check"></i><b>13.8</b> Кластеризация</a></li>
+<li class="chapter" data-level="13.9" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#визуализации-1"><i class="fa fa-check"></i><b>13.9</b> Визуализации</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
@@ -983,15 +986,10 @@ div.csl-indent {
 <p>Но можно обойтись и без регулярных выражений.</p>
 <div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="регулярные-выражения.html#cb476-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;This is a sentence.  This is another sentence.&quot;</span></span>
 <span id="cb476-2"><a href="регулярные-выражения.html#cb476-2" tabindex="-1"></a><span class="fu">str_view_all</span>(x, <span class="fu">boundary</span>(<span class="st">&quot;word&quot;</span>))</span></code></pre></div>
-<pre><code>## Warning: `str_view()` was deprecated
-## in stringr 1.5.0.
-## ℹ Please use `str_view_all()`
-##   instead.
-## This warning is displayed
-## once every 8 hours.
-## Call
-## `lifecycle::last_lifecycle_warnings()`
-## to see where this warning was
+<pre><code>## Warning: `str_view()` was deprecated in stringr 1.5.0.
+## ℹ Please use `str_view_all()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
 ## generated.</code></pre>
 <pre><code>## [1] │ &lt;This&gt; &lt;is&gt; &lt;a&gt; &lt;sentence&gt;.  &lt;This&gt; &lt;is&gt; &lt;another&gt; &lt;sentence&gt;.</code></pre>
 <div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="регулярные-выражения.html#cb479-1" tabindex="-1"></a><span class="fu">str_view_all</span>(x, <span class="fu">boundary</span>(<span class="st">&quot;sentence&quot;</span>))</span></code></pre></div>

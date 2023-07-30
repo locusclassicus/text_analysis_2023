@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-07-29" />
+<meta name="date" content="2023-07-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -360,10 +360,13 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="13.1" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#что-это-такое"><i class="fa fa-check"></i><b>13.1</b> Что это такое</a></li>
 <li class="chapter" data-level="13.2" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#векторное-представление-слов"><i class="fa fa-check"></i><b>13.2</b> Векторное представление слов</a></li>
-<li class="chapter" data-level="13.3" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#проклятие-размерности"><i class="fa fa-check"></i><b>13.3</b> Проклятие размерности</a></li>
-<li class="chapter" data-level="13.4" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#сингулярное-разложение-матрицы"><i class="fa fa-check"></i><b>13.4</b> Сингулярное разложение матрицы</a></li>
-<li class="chapter" data-level="13.5" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#простой-пример"><i class="fa fa-check"></i><b>13.5</b> Простой пример</a></li>
-<li class="chapter" data-level="13.6" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#делаем-это-опрятно"><i class="fa fa-check"></i><b>13.6</b> Делаем это опрятно</a></li>
+<li class="chapter" data-level="13.3" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#сингулярное-разложение-матрицы"><i class="fa fa-check"></i><b>13.3</b> Сингулярное разложение матрицы</a></li>
+<li class="chapter" data-level="13.4" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#простой-пример"><i class="fa fa-check"></i><b>13.4</b> Простой пример</a></li>
+<li class="chapter" data-level="13.5" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#векторы-слов-опрятно"><i class="fa fa-check"></i><b>13.5</b> Векторы слов: опрятно</a></li>
+<li class="chapter" data-level="13.6" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#векторы-документов-опрятно"><i class="fa fa-check"></i><b>13.6</b> Векторы документов: опрятно</a></li>
+<li class="chapter" data-level="13.7" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#пакет-lsa"><i class="fa fa-check"></i><b>13.7</b> Пакет LSA</a></li>
+<li class="chapter" data-level="13.8" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#кластеризация"><i class="fa fa-check"></i><b>13.8</b> Кластеризация</a></li>
+<li class="chapter" data-level="13.9" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#визуализации-1"><i class="fa fa-check"></i><b>13.9</b> Визуализации</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
@@ -390,34 +393,30 @@ div.csl-indent {
 <h1><span class="header-section-number">Тема 13</span> Латентно-семантический анализ (Часть 1)<a href="латентно-семантический-анализ-часть-1.html#латентно-семантический-анализ-часть-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="что-это-такое" class="section level2 hasAnchor" number="13.1">
 <h2><span class="header-section-number">13.1</span> Что это такое<a href="латентно-семантический-анализ-часть-1.html#что-это-такое" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>В этом уроке речь пойдет о таком методе, как <strong>латентно-семантический анализ</strong>, или LSA (в области информационного поиска называемый также LSI, Latent Semantic Indexing).</p>
+<p>В этом уроке речь пойдет о таком методе <strong>тематического моделирования</strong>, как <strong>латентно-семантический анализ</strong>, или LSA (в области информационного поиска называемый также LSI, Latent Semantic Indexing).</p>
 <p>Как и LDA, это метод метод обработки информации на естественном языке, который позволяет находить взаимосвязь между коллекцией документов и встречающимися в них терминами за счет сопоставления этих документов и терминов с некоторыми <strong>темами</strong>.</p>
-<p>То есть LSA – это тоже метод <strong>тематического моделирования</strong>. Скрытым такое моделирование называется потому, что <strong>семантические взаимосвязи</strong> между документами и терминами, как правило, заранее не известны. В исходной термдокументной матрице, которую мы скармливаем алгоритму, не видно никаких закономерностей. Как раз задача аналитика – их обнаружить, как это показывает анимация ниже.</p>
+<p>Слово “скрытый” в названии указывает на то, что <strong>семантические взаимосвязи</strong> между документами и терминами, как правило, заранее не известны. В исходной термдокументной матрице, которую мы передаем алгоритму, не видно закономерностей. Как раз задача аналитика – их обнаружить, сгруппировав по темам, с одной стороны, термины, а с другой – документы.</p>
 <p><img src="https://sysblok.ru/wp-content/uploads/2019/07/image16.gif" /></p>
 </div>
 <div id="векторное-представление-слов" class="section level2 hasAnchor" number="13.2">
 <h2><span class="header-section-number">13.2</span> Векторное представление слов<a href="латентно-семантический-анализ-часть-1.html#векторное-представление-слов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Как вообще машина может обнаружить “близкие” слова и документы? При помощи векторизации: каждый документ или слово можно представить в виде вектора частотностей, где каждое значение будет некой координатой в многомерном пространстве.
-Мы исходим из того, что в похожих документах употребляются одни и те же слова, а похожие слова встречаются в похожих документах. В 1957 британский лингвист Джон Руперт Фёрс сформулировал это так: you shall know a word by the company it keeps.</p>
-<p>Можно сказать, что это основополагающий принцип векторной семантики. Мы не пытаемся заглянуть в голову носителю языка (в случае с древнегреческим это было бы затруднительно), а смотрим на цифры.</p>
-<p>Как только документ или термин представлены в виде вектора, в дело вступает простая (или не очень простая) геометрия: под <em>расстоянием</em> между документами или терминами имеется в виду именно геометрическое расстояние (или сходство). Как правило, в алгоритме LSA используется <strong>косинусное сходство</strong> (о том, что это такое, я рассказывала в видео: <a href="https://vk.com/video-211800158_456239261">часть 1</a> и <a href="https://vk.com/video-211800158_456239263">часть 2</a>).</p>
-<p>В англоязычной литературе векторные представления называют <strong>эмбеддингами</strong>. По-английски embedding означает «вложение». Представляя объект в виде вектора, мы как бы «вкладываем» его в векторное пространство, где действуют геометрические законы.</p>
+<p>Как вообще машина может обнаружить “близкие” слова и документы? В 1957 британский лингвист Джон Руперт Фёрс сформулировал это так: you shall know a word by the company it keeps.</p>
+<p>Мы можем представить термин в виде вектора, который хранит информацию о его встречаемости в документах. Каждый элемент вектора будет координатой в многомерном пространстве. В англоязычной литературе векторные представления называют <strong>эмбеддингами</strong> (embedding, т.е. «вложение»). Представляя объект в виде вектора, мы как бы «вкладываем» его в векторное пространство, где действуют геометрические законы.</p>
+<p>Дальше дело за вычислением <strong>расстояния</strong> (или сходства) между векторами – это уже задача из области линейной алгебры. Как правило, в алгоритме LSA используется <strong>косинусное сходство</strong> (о том, что это такое, см. видео: <a href="https://vk.com/video-211800158_456239261">часть 1</a> и <a href="https://vk.com/video-211800158_456239263">часть 2</a>).</p>
+<p><img src="images/dist.png" /></p>
+<p>Трудность в том, что даже для небольших коллекций документов термдокументная матрица является очень <strong>разреженной</strong> (даже в небольшом примере из предыдущего урока разреженность составляла почти 100%). Чем больше ваш корпус, тем более разреженной будет матрица: это естественно, поскольку в каждом документе встречается лишь небольшая часть всех слов.</p>
+<p>Любые действия над такими матрицами требуют больших вычислительных затрат, при этом результат не обязательно будет точным из-за проблемы синонимии: слово apple можно встретить как в плодово-овощной рубрике, так и в заметке об IT. Справиться с этим помогают методы <strong>снижения размерности</strong>.</p>
 </div>
-<div id="проклятие-размерности" class="section level2 hasAnchor" number="13.3">
-<h2><span class="header-section-number">13.3</span> Проклятие размерности<a href="латентно-семантический-анализ-часть-1.html#проклятие-размерности" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Идея хорошая, но она сразу же наталкивается на трудность: даже для небольших коллекций документов термдокументная матрица является очень <strong>разреженной</strong> (даже в небольшом примере из предыдущего урока разреженность составляла почти 100%). Чем больше ваш корпус, тем более разреженной будет матрица: это естественно, поскольку в каждом документе встречается лишь небольшая часть всех слов.</p>
-<p>Любые действия над такими матрицами требуют больших вычислительных затрат, а результат не обязательно будет точным из-за проблемы синонимии: слово apple можно встретить как в плодово-овощной рубрике, так и в заметке об IT. Латентно-семантическое индексирование частично решает обе проблемы.</p>
-</div>
-<div id="сингулярное-разложение-матрицы" class="section level2 hasAnchor" number="13.4">
-<h2><span class="header-section-number">13.4</span> Сингулярное разложение матрицы<a href="латентно-семантический-анализ-часть-1.html#сингулярное-разложение-матрицы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>В основе LSA лежит метод <strong>малоранговой аппроксимации</strong> термдокументной матрицы, позволяющий “спроецировать” исходную матрицу C в пространство меньшей размерности при помощи алгоритма SVD (Singular Value Decomposition, или <strong>сингулярное разложение матрицы</strong>). Подробнее об этом алгоритме см. <a href="https://vk.com/video-211800158_456239325">видео</a>.</p>
+<div id="сингулярное-разложение-матрицы" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Сингулярное разложение матрицы<a href="латентно-семантический-анализ-часть-1.html#сингулярное-разложение-матрицы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Мы можем “спроецировать” исходную матрицу <span class="math inline">\(C_r\)</span> в пространство меньшей размерности. Если r – ранг исходной матрицы, а k – ранг новой матрицы, при этом k значительно ниже r, то матрица <span class="math inline">\(C_k\)</span> называется <strong>малоранговой аппроксимацией</strong>.</p>
 <div class="infobox">
 <p>Рангом системы строк (столбцов) матрицы A с m строками и n столбцами называется максимальное число линейно независимых строк (столбцов). Несколько строк (столбцов) называются линейно независимыми, если ни одна из них не выражается линейно через другие. Ранг системы строк всегда равен рангу системы столбцов, и это число называется рангом матрицы.</p>
 </div>
-<p>Если r – ранг исходной матрицы, а k – ранг новой матрицы, при этом k значительно ниже r, то матрица C_k называется малоранговой аппроксимацией. Для ее получения применяется трехэтапная процедура:</p>
+<p>Для ее получения новой матрицы применяется трехэтапная процедура:</p>
 <ol style="list-style-type: decimal">
-<li><p>для заданной матрицы строится ее <strong>сингулярное разложение</strong> по формуле: <span class="math inline">\(C = UΣV^t\)</span>;</p></li>
-<li><p>по матрице Σ строится <span class="math inline">\(Σ_k\)</span>: r - k наименьших сингулярных значений на диагонали матрицы заменяются нулями;</p></li>
+<li><p>для <span class="math inline">\(C_r\)</span> строится ее <strong>сингулярное разложение</strong> (SVD (Singular Value Decomposition) по формуле: <span class="math inline">\(C = UΣV^t\)</span> (подробнее см. <a href="https://vk.com/video-211800158_456239325">видео</a>);</p></li>
+<li><p>по матрице Σ строится <span class="math inline">\(Σ_k\)</span>: <span class="math inline">\(r - k\)</span> наименьших сингулярных значений на диагонали матрицы заменяются нулями;</p></li>
 <li><p>вычисляется новая матрица <span class="math inline">\(C_k = UΣ_kV^t\)</span>.</p></li>
 </ol>
 <p>Теперь подробнее.</p>
@@ -429,20 +428,19 @@ div.csl-indent {
 <li>Σ — диагональная матрица сингулярных чисел матрицы A,</li>
 <li>V — матрица правых сингулярных векторов матрицы A.</li>
 </ul>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/1024px-Singular_value_decomposition_visualisation.svg.png" style="width:60.0%" /></p>
-<ol start="2" style="list-style-type: decimal">
-<li>Сингулярные значения в диагональной матрице всегда упорядочены по убыванию, и можно без больших потерь отсечь малоинформативные ряды или столбцы. Как правило, так и делают, и такое SVD называется <strong>усеченным</strong>.</li>
-</ol>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Reduced_Singular_Value_Decompositions.svg/220px-Reduced_Singular_Value_Decompositions.svg.png" /></p>
-<p>Сингулярные векторы (они выделены цветом) в матрицах U и V соответствуют темам в тексте, которых в общей сложности k штук. Чему равно k — человек задает вручную при вычислении разложения, а значит, всегда есть возможность найти ровно k тем. Математически это представлено так, что алгоритм разложения выбирает из исходной матрицы k самых больших сингулярных чисел и формирует из них среднюю матрицу Σ, элементы которой идут по диагонали. (<a href="https://sysblok.ru/knowhow/kak-ponjat-o-chem-tekst-ne-chitaja-ego/">Отсюда</a>).</p>
+<p><img src="https://www.askpython.com/wp-content/uploads/2020/11/SVD-1.jpg.webp" /></p>
 <p>Строки матрицы U соответствуют словам; а в V^t столбцы соответствуют отдельным документам. Следовательно, первая строка матрицы U показывает, в каких документах встречается слово, а первый столбец V^T показывает, какие темы встречаются в документе.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Сингулярные значения</strong> в диагональной матрице всегда упорядочены по убыванию, и можно без больших потерь отсечь малоинформативные ряды или столбцы. Такое SVD называется <strong>усеченным</strong>.</li>
+</ol>
+<p><strong>Сингулярные векторы</strong> (они выделены цветом) в матрицах U и V соответствуют темам в тексте, которых в общей сложности k штук. Чему равно k — человек задает вручную при вычислении разложения. Математически это выражается в том, что в диагональной матрице остается k самых больших сингулярных чисел, а остальные становятся нулями. При перемножении матриц это приведет к отсечению <span class="math inline">\(r - k\)</span> столбцов в U и <span class="math inline">\(r - k\)</span> рядов в <span class="math inline">\(V^t\)</span>. (<a href="https://sysblok.ru/knowhow/kak-ponjat-o-chem-tekst-ne-chitaja-ego/">Подробнее</a>).</p>
 <ol start="3" style="list-style-type: decimal">
-<li>Умножение U на Σ дает векторное представление слов; умножение Σ на V – векторное представление документов. Часто пространство слов объединяют с пространством документов, что позволяет находить ближайшие документы по поисковому запросу.</li>
+<li>Умножение U на Σ дает векторное представление слов; умножение Σ на V – векторное представление документов. Объединяя пространство слов с пространством документов, можно находить ближайшие документы по поисковому запросу.</li>
 </ol>
 <p>Все это будет понятнее на простом примере.</p>
 </div>
-<div id="простой-пример" class="section level2 hasAnchor" number="13.5">
-<h2><span class="header-section-number">13.5</span> Простой пример<a href="латентно-семантический-анализ-часть-1.html#простой-пример" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="простой-пример" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Простой пример<a href="латентно-семантический-анализ-часть-1.html#простой-пример" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Рассморим это на простом примере (<a href="https://www.engr.uvic.ca/~seng474/svd.pdf">отсюда</a>).</p>
 <p>Допустим, у нас есть пять документов.</p>
 <p><em>d1 : Romeo and Juliet.</em></p>
@@ -469,7 +467,7 @@ div.csl-indent {
 ## die            0  0  1  1  0
 ## free           0  0  0  1  0
 ## new-hampshire  0  0  0  1  1</code></pre>
-<p>И применим SVD.</p>
+<p>И применим SVD. В R для этого есть специальная функция.</p>
 <div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="латентно-семантический-анализ-часть-1.html#cb708-1" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">svd</span>(df)</span>
 <span id="cb708-2"><a href="латентно-семантический-анализ-часть-1.html#cb708-2" tabindex="-1"></a>S <span class="ot">=</span> <span class="fu">round</span>((<span class="fu">diag</span>(result<span class="sc">$</span>d, <span class="at">nrow =</span> <span class="fu">length</span>(result<span class="sc">$</span>d))), <span class="dv">3</span>)</span>
 <span id="cb708-3"><a href="латентно-семантический-анализ-часть-1.html#cb708-3" tabindex="-1"></a></span>
@@ -480,7 +478,7 @@ div.csl-indent {
 ## [3,] 0.000 0.00 1.361 0.000 0.000
 ## [4,] 0.000 0.00 0.000 1.118 0.000
 ## [5,] 0.000 0.00 0.000 0.000 0.797</code></pre>
-<p>Сингулярные значения меньше двух усекаем, остается два сингулярных значения.</p>
+<p>Сингулярные значения меньше двух убираем, остается два сингулярных значения.</p>
 <div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="латентно-семантический-анализ-часть-1.html#cb710-1" tabindex="-1"></a>S_truncated <span class="ot">&lt;-</span> S[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
 <span id="cb710-2"><a href="латентно-семантический-анализ-часть-1.html#cb710-2" tabindex="-1"></a></span>
 <span id="cb710-3"><a href="латентно-семантический-анализ-часть-1.html#cb710-3" tabindex="-1"></a>S_truncated</span></code></pre></div>
@@ -500,7 +498,7 @@ div.csl-indent {
 ## [6,] -0.524 -0.246 -0.339 -0.273  0.155
 ## [7,] -0.264 -0.346  0.146  0.047  0.417
 ## [8,] -0.326 -0.460  0.317  0.237 -0.725</code></pre>
-<p>От нее отсекаются все столбцы, кроме первых двух; каждый ряд в этой матрице отвечает за определенный термин:</p>
+<p>От нее отсекаем все столбцы, кроме первых двух:</p>
 <div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="латентно-семантический-анализ-часть-1.html#cb714-1" tabindex="-1"></a>U_truncated <span class="ot">&lt;-</span> U[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
 <span id="cb714-2"><a href="латентно-семантический-анализ-часть-1.html#cb714-2" tabindex="-1"></a></span>
 <span id="cb714-3"><a href="латентно-семантический-анализ-часть-1.html#cb714-3" tabindex="-1"></a>U_truncated</span></code></pre></div>
@@ -513,7 +511,7 @@ div.csl-indent {
 ## [6,] -0.524 -0.246
 ## [7,] -0.264 -0.346
 ## [8,] -0.326 -0.460</code></pre>
-<p>Матрица правых сингулярных векторов тоже усекается:</p>
+<p>Матрица правых сингулярных векторов тоже усекается; не забудем ее транспонировать.</p>
 <div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="латентно-семантический-анализ-часть-1.html#cb716-1" tabindex="-1"></a>Vt_truncated <span class="ot">&lt;-</span> <span class="fu">round</span>((<span class="fu">t</span>(result<span class="sc">$</span>v[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])), <span class="dv">3</span>)</span>
 <span id="cb716-2"><a href="латентно-семантический-анализ-часть-1.html#cb716-2" tabindex="-1"></a></span>
 <span id="cb716-3"><a href="латентно-семантический-анализ-часть-1.html#cb716-3" tabindex="-1"></a>Vt_truncated</span></code></pre></div>
@@ -521,21 +519,13 @@ div.csl-indent {
 ## [1,] -0.311 -0.407 -0.594 -0.603 -0.143
 ## [2,]  0.363  0.541  0.200 -0.695 -0.229</code></pre>
 <p>Каждый столбец в этой матрице соответствует одному документу.</p>
-<p>Умножим U на S_truncated (усеченную сигму), и S_truncated – на V_t, мы объединяем документы и термины в единое векторное пространство.</p>
-<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="латентно-семантический-анализ-часть-1.html#cb718-1" tabindex="-1"></a><span class="co"># эмбеддинги документов</span></span>
-<span id="cb718-2"><a href="латентно-семантический-анализ-часть-1.html#cb718-2" tabindex="-1"></a>doc_emb <span class="ot">&lt;-</span> <span class="fu">round</span>((S_truncated <span class="sc">%*%</span> Vt_truncated), <span class="dv">3</span>)</span>
-<span id="cb718-3"><a href="латентно-семантический-анализ-часть-1.html#cb718-3" tabindex="-1"></a><span class="fu">colnames</span>(doc_emb) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;d1&quot;</span>, <span class="st">&quot;d2&quot;</span>, <span class="st">&quot;d3&quot;</span>, <span class="st">&quot;d4&quot;</span>, <span class="st">&quot;d5&quot;</span>)</span>
-<span id="cb718-4"><a href="латентно-семантический-анализ-часть-1.html#cb718-4" tabindex="-1"></a></span>
-<span id="cb718-5"><a href="латентно-семантический-анализ-часть-1.html#cb718-5" tabindex="-1"></a>doc_emb </span></code></pre></div>
-<pre><code>##          d1     d2     d3     d4     d5
-## [1,] -0.711 -0.930 -1.357 -1.378 -0.327
-## [2,]  0.730  1.087  0.402 -1.397 -0.460</code></pre>
-<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="латентно-семантический-анализ-часть-1.html#cb720-1" tabindex="-1"></a><span class="co"># эмбеддинги слов</span></span>
-<span id="cb720-2"><a href="латентно-семантический-анализ-часть-1.html#cb720-2" tabindex="-1"></a>word_emb <span class="ot">&lt;-</span> <span class="fu">round</span>((U_truncated <span class="sc">%*%</span> S_truncated), <span class="dv">3</span>)</span>
-<span id="cb720-3"><a href="латентно-семантический-анализ-часть-1.html#cb720-3" tabindex="-1"></a></span>
-<span id="cb720-4"><a href="латентно-семантический-анализ-часть-1.html#cb720-4" tabindex="-1"></a><span class="fu">rownames</span>(word_emb) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;romeo&quot;</span>, <span class="st">&quot;juliet&quot;</span>, <span class="st">&quot;happy&quot;</span>, <span class="st">&quot;dagger&quot;</span>, <span class="st">&quot;live&quot;</span>, <span class="st">&quot;die&quot;</span>, <span class="st">&quot;free&quot;</span>, <span class="st">&quot;new-hampshire&quot;</span>) </span>
-<span id="cb720-5"><a href="латентно-семантический-анализ-часть-1.html#cb720-5" tabindex="-1"></a></span>
-<span id="cb720-6"><a href="латентно-семантический-анализ-часть-1.html#cb720-6" tabindex="-1"></a>word_emb</span></code></pre></div>
+<p>Умножим U на S_truncated (усеченную сигму), и S_truncated – на V_t.</p>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="латентно-семантический-анализ-часть-1.html#cb718-1" tabindex="-1"></a><span class="co"># эмбеддинги слов</span></span>
+<span id="cb718-2"><a href="латентно-семантический-анализ-часть-1.html#cb718-2" tabindex="-1"></a>word_emb <span class="ot">&lt;-</span> <span class="fu">round</span>((U_truncated <span class="sc">%*%</span> S_truncated), <span class="dv">3</span>)</span>
+<span id="cb718-3"><a href="латентно-семантический-анализ-часть-1.html#cb718-3" tabindex="-1"></a></span>
+<span id="cb718-4"><a href="латентно-семантический-анализ-часть-1.html#cb718-4" tabindex="-1"></a><span class="fu">rownames</span>(word_emb) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;romeo&quot;</span>, <span class="st">&quot;juliet&quot;</span>, <span class="st">&quot;happy&quot;</span>, <span class="st">&quot;dagger&quot;</span>, <span class="st">&quot;live&quot;</span>, <span class="st">&quot;die&quot;</span>, <span class="st">&quot;free&quot;</span>, <span class="st">&quot;new-hampshire&quot;</span>) </span>
+<span id="cb718-5"><a href="латентно-семантический-анализ-часть-1.html#cb718-5" tabindex="-1"></a></span>
+<span id="cb718-6"><a href="латентно-семантический-анализ-часть-1.html#cb718-6" tabindex="-1"></a>word_emb</span></code></pre></div>
 <pre><code>##                 [,1]   [,2]
 ## romeo         -0.905  0.563
 ## juliet        -0.717  0.904
@@ -545,43 +535,31 @@ div.csl-indent {
 ## die           -1.197 -0.494
 ## free          -0.603 -0.695
 ## new-hampshire -0.745 -0.925</code></pre>
-<p>Координаты поискового запроса (который рассматриваем как новый документ) считаем как центроид двух векторов его слов:</p>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="латентно-семантический-анализ-часть-1.html#cb720-1" tabindex="-1"></a><span class="co"># эмбеддинги документов</span></span>
+<span id="cb720-2"><a href="латентно-семантический-анализ-часть-1.html#cb720-2" tabindex="-1"></a>doc_emb <span class="ot">&lt;-</span> <span class="fu">round</span>((S_truncated <span class="sc">%*%</span> Vt_truncated), <span class="dv">3</span>)</span>
+<span id="cb720-3"><a href="латентно-семантический-анализ-часть-1.html#cb720-3" tabindex="-1"></a><span class="fu">colnames</span>(doc_emb) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;d1&quot;</span>, <span class="st">&quot;d2&quot;</span>, <span class="st">&quot;d3&quot;</span>, <span class="st">&quot;d4&quot;</span>, <span class="st">&quot;d5&quot;</span>)</span>
+<span id="cb720-4"><a href="латентно-семантический-анализ-часть-1.html#cb720-4" tabindex="-1"></a></span>
+<span id="cb720-5"><a href="латентно-семантический-анализ-часть-1.html#cb720-5" tabindex="-1"></a>doc_emb </span></code></pre></div>
+<pre><code>##          d1     d2     d3     d4     d5
+## [1,] -0.711 -0.930 -1.357 -1.378 -0.327
+## [2,]  0.730  1.087  0.402 -1.397 -0.460</code></pre>
+<p>Координаты поискового запроса (который рассматриваем как новый документ) считаем как среднее арифметическое координат:</p>
 <div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="латентно-семантический-анализ-часть-1.html#cb722-1" tabindex="-1"></a>q <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;die&quot;</span>, <span class="st">&quot;dagger&quot;</span>)</span>
 <span id="cb722-2"><a href="латентно-семантический-анализ-часть-1.html#cb722-2" tabindex="-1"></a>q_doc <span class="ot">&lt;-</span>  <span class="fu">colSums</span>(word_emb[<span class="fu">rownames</span>(word_emb) <span class="sc">%in%</span> q, ]) <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb722-3"><a href="латентно-семантический-анализ-часть-1.html#cb722-3" tabindex="-1"></a>q_doc</span></code></pre></div>
 <pre><code>## [1] -1.099  0.124</code></pre>
-<p>Объединяем все в единый датафрейм.</p>
+<p>Объединив все в единый датафрейм, можем визуализировать.</p>
 <div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="латентно-семантический-анализ-часть-1.html#cb724-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb724-2"><a href="латентно-семантический-анализ-часть-1.html#cb724-2" tabindex="-1"></a></span>
-<span id="cb724-3"><a href="латентно-семантический-анализ-часть-1.html#cb724-3" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(word_emb, <span class="fu">t</span>(doc_emb), q_doc)</span>
-<span id="cb724-4"><a href="латентно-семантический-анализ-часть-1.html#cb724-4" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(all_df, <span class="at">rownames =</span> <span class="st">&quot;names&quot;</span>) </span>
-<span id="cb724-5"><a href="латентно-семантический-анализ-часть-1.html#cb724-5" tabindex="-1"></a></span>
-<span id="cb724-6"><a href="латентно-семантический-анализ-часть-1.html#cb724-6" tabindex="-1"></a>all_df</span></code></pre></div>
-<pre><code>## # A tibble: 14 × 3
-##    names             V1     V2
-##    &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;
-##  1 romeo         -0.905  0.563
-##  2 juliet        -0.717  0.904
-##  3 happy         -0.407  0.541
-##  4 dagger        -1.00   0.742
-##  5 live          -0.603 -0.695
-##  6 die           -1.20  -0.494
-##  7 free          -0.603 -0.695
-##  8 new-hampshire -0.745 -0.925
-##  9 d1            -0.711  0.73 
-## 10 d2            -0.93   1.09 
-## 11 d3            -1.36   0.402
-## 12 d4            -1.38  -1.40 
-## 13 d5            -0.327 -0.46 
-## 14 q_doc         -1.10   0.124</code></pre>
-<p>Добавим еще одну переменную.</p>
-<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="латентно-семантический-анализ-часть-1.html#cb726-1" tabindex="-1"></a>type <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;word&quot;</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">&quot;doc&quot;</span>, <span class="dv">6</span>))</span>
-<span id="cb726-2"><a href="латентно-семантический-анализ-часть-1.html#cb726-2" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> all_df <span class="sc">%&gt;%</span> <span class="fu">bind_cols</span>(type)</span>
-<span id="cb726-3"><a href="латентно-семантический-анализ-часть-1.html#cb726-3" tabindex="-1"></a><span class="fu">colnames</span>(all_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;dim1&quot;</span>, <span class="st">&quot;dim2&quot;</span>, <span class="st">&quot;type&quot;</span>)</span>
-<span id="cb726-4"><a href="латентно-семантический-анализ-часть-1.html#cb726-4" tabindex="-1"></a></span>
-<span id="cb726-5"><a href="латентно-семантический-анализ-часть-1.html#cb726-5" tabindex="-1"></a>all_df</span></code></pre></div>
+<span id="cb724-3"><a href="латентно-семантический-анализ-часть-1.html#cb724-3" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">rbind</span>(word_emb, <span class="fu">t</span>(doc_emb), q_doc))</span>
+<span id="cb724-4"><a href="латентно-семантический-анализ-часть-1.html#cb724-4" tabindex="-1"></a></span>
+<span id="cb724-5"><a href="латентно-семантический-анализ-часть-1.html#cb724-5" tabindex="-1"></a>all_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(all_df, <span class="at">rownames =</span> <span class="st">&quot;item&quot;</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb724-6"><a href="латентно-семантический-анализ-часть-1.html#cb724-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;word&quot;</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">&quot;doc&quot;</span>, <span class="dv">6</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb724-7"><a href="латентно-семантический-анализ-часть-1.html#cb724-7" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">dim1 =</span> V1, <span class="at">dim2 =</span> V2)</span>
+<span id="cb724-8"><a href="латентно-семантический-анализ-часть-1.html#cb724-8" tabindex="-1"></a></span>
+<span id="cb724-9"><a href="латентно-семантический-анализ-часть-1.html#cb724-9" tabindex="-1"></a>all_tbl</span></code></pre></div>
 <pre><code>## # A tibble: 14 × 4
-##    x               dim1   dim2 type 
+##    item            dim1   dim2 type 
 ##    &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
 ##  1 romeo         -0.905  0.563 word 
 ##  2 juliet        -0.717  0.904 word 
@@ -598,52 +576,32 @@ div.csl-indent {
 ## 13 d5            -0.327 -0.46  doc  
 ## 14 q_doc         -1.10   0.124 doc</code></pre>
 <p>Теперь строим график.</p>
-<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="латентно-семантический-анализ-часть-1.html#cb728-1" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb728-2"><a href="латентно-семантический-анализ-часть-1.html#cb728-2" tabindex="-1"></a></span>
-<span id="cb728-3"><a href="латентно-семантический-анализ-часть-1.html#cb728-3" tabindex="-1"></a>all_df <span class="sc">%&gt;%</span> </span>
-<span id="cb728-4"><a href="латентно-семантический-анализ-часть-1.html#cb728-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(dim1, dim2, </span>
-<span id="cb728-5"><a href="латентно-семантический-анализ-часть-1.html#cb728-5" tabindex="-1"></a>             <span class="at">color =</span> <span class="fu">as.factor</span>(type), <span class="at">label =</span> x)) <span class="sc">+</span></span>
-<span id="cb728-6"><a href="латентно-семантический-анализ-часть-1.html#cb728-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
-<span id="cb728-7"><a href="латентно-семантический-анализ-часть-1.html#cb728-7" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span>), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb728-8"><a href="латентно-семантический-анализ-часть-1.html#cb728-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb728-9"><a href="латентно-семантический-анализ-часть-1.html#cb728-9" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb728-10"><a href="латентно-семантический-анализ-часть-1.html#cb728-10" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb728-11"><a href="латентно-семантический-анализ-часть-1.html#cb728-11" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">0</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span></span>
-<span id="cb728-12"><a href="латентно-семантический-анализ-часть-1.html#cb728-12" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="sc">-</span><span class="fl">1.10</span>, <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span></span>
-<span id="cb728-13"><a href="латентно-семантический-анализ-часть-1.html#cb728-13" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.7</span>, <span class="fl">0.2</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>, <span class="fl">1.5</span>)) <span class="sc">+</span></span>
-<span id="cb728-14"><a href="латентно-семантический-анализ-часть-1.html#cb728-14" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> lm1<span class="sc">$</span>coefficients[<span class="dv">2</span>], </span>
-<span id="cb728-15"><a href="латентно-семантический-анализ-часть-1.html#cb728-15" tabindex="-1"></a>              <span class="at">intercept =</span> lm1<span class="sc">$</span>coefficients[<span class="dv">1</span>], <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb728-16"><a href="латентно-семантический-анализ-часть-1.html#cb728-16" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> lm2<span class="sc">$</span>coefficients[<span class="dv">2</span>], </span>
-<span id="cb728-17"><a href="латентно-семантический-анализ-часть-1.html#cb728-17" tabindex="-1"></a>              <span class="at">intercept =</span> lm2<span class="sc">$</span>coefficients[<span class="dv">1</span>], <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-327-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-326-1.png" width="672" /></p>
 <p>Как видно, поисковый запрос оказался ближе к d2, чем к d4, хотя в каждом из документов было одно слово из запроса. Более того: он оказался ближе к d1, в котором не было ни одного слова из запроса! Наш алгоритм оказался достаточно умен, чтобы понять, что d1 более релевантен, хотя и не содержит точных совпадений с поисковыми словами. Возможно, человек дал бы такую же рекомендацию.</p>
 <p>Мы исследовали наш небольшой корпус графически, теперь посчитаем косинусное расстояние.</p>
-<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="латентно-семантический-анализ-часть-1.html#cb729-1" tabindex="-1"></a>dist_mx <span class="ot">&lt;-</span> all_df <span class="sc">%&gt;%</span> </span>
-<span id="cb729-2"><a href="латентно-семантический-анализ-часть-1.html#cb729-2" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">&quot;doc&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb729-3"><a href="латентно-семантический-анализ-часть-1.html#cb729-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>type) <span class="sc">%&gt;%</span> </span>
-<span id="cb729-4"><a href="латентно-семантический-анализ-часть-1.html#cb729-4" tabindex="-1"></a>  philentropy<span class="sc">::</span><span class="fu">distance</span>(<span class="at">method =</span> <span class="st">&quot;cosine&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="латентно-семантический-анализ-часть-1.html#cb726-1" tabindex="-1"></a>dist_mx <span class="ot">&lt;-</span> all_df <span class="sc">%&gt;%</span> </span>
+<span id="cb726-2"><a href="латентно-семантический-анализ-часть-1.html#cb726-2" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">&quot;doc&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb726-3"><a href="латентно-семантический-анализ-часть-1.html#cb726-3" tabindex="-1"></a>  philentropy<span class="sc">::</span><span class="fu">distance</span>(<span class="at">method =</span> <span class="st">&quot;cosine&quot;</span>, <span class="at">use.row.names =</span> T) </span></code></pre></div>
 <pre><code>## Metric: &#39;cosine&#39;; comparing: 6 vectors.</code></pre>
-<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="латентно-семантический-анализ-часть-1.html#cb731-1" tabindex="-1"></a><span class="fu">rownames</span>(dist_mx) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;d1&quot;</span>, <span class="st">&quot;d2&quot;</span>, <span class="st">&quot;d3&quot;</span>, <span class="st">&quot;d4&quot;</span>, <span class="st">&quot;d5&quot;</span>, <span class="st">&quot;q&quot;</span>)</span>
-<span id="cb731-2"><a href="латентно-семантический-анализ-часть-1.html#cb731-2" tabindex="-1"></a><span class="fu">colnames</span>(dist_mx) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;d1&quot;</span>, <span class="st">&quot;d2&quot;</span>, <span class="st">&quot;d3&quot;</span>, <span class="st">&quot;d4&quot;</span>, <span class="st">&quot;d5&quot;</span>, <span class="st">&quot;q&quot;</span>)</span>
-<span id="cb731-3"><a href="латентно-семантический-анализ-часть-1.html#cb731-3" tabindex="-1"></a></span>
-<span id="cb731-4"><a href="латентно-семантический-анализ-часть-1.html#cb731-4" tabindex="-1"></a>dist_mx</span></code></pre></div>
-<pre><code>##             d1          d2        d3          d4         d5         q
-## d1  1.00000000  0.99792078 0.8724625 -0.02002992 -0.1796188 0.7736415
-## d2  0.99792078  1.00000000 0.8391517 -0.08442786 -0.2426496 0.7311943
-## d3  0.87246248  0.83915171 1.0000000  0.47110771  0.3240227 0.9846131
-## d4 -0.02002992 -0.08442786 0.4711077  1.00000000  0.9871367 0.6180004
-## d5 -0.17961877 -0.24264957 0.3240227  0.98713669  1.0000000 0.4843579
-## q   0.77364153  0.73119433 0.9846131  0.61800043  0.4843579 1.0000000</code></pre>
+<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="латентно-семантический-анализ-часть-1.html#cb728-1" tabindex="-1"></a>dist_mx</span></code></pre></div>
+<pre><code>##                d1          d2        d3          d4         d5     q_doc
+## d1     1.00000000  0.99792078 0.8724625 -0.02002992 -0.1796188 0.7736415
+## d2     0.99792078  1.00000000 0.8391517 -0.08442786 -0.2426496 0.7311943
+## d3     0.87246248  0.83915171 1.0000000  0.47110771  0.3240227 0.9846131
+## d4    -0.02002992 -0.08442786 0.4711077  1.00000000  0.9871367 0.6180004
+## d5    -0.17961877 -0.24264957 0.3240227  0.98713669  1.0000000 0.4843579
+## q_doc  0.77364153  0.73119433 0.9846131  0.61800043  0.4843579 1.0000000</code></pre>
 </div>
-<div id="делаем-это-опрятно" class="section level2 hasAnchor" number="13.6">
-<h2><span class="header-section-number">13.6</span> Делаем это опрятно<a href="латентно-семантический-анализ-часть-1.html#делаем-это-опрятно" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="латентно-семантический-анализ-часть-1.html#cb733-1" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb733-2"><a href="латентно-семантический-анализ-часть-1.html#cb733-2" tabindex="-1"></a></span>
-<span id="cb733-3"><a href="латентно-семантический-анализ-часть-1.html#cb733-3" tabindex="-1"></a>tidy_corpus <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb733-4"><a href="латентно-семантический-анализ-часть-1.html#cb733-4" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">&quot;word&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb733-5"><a href="латентно-семантический-анализ-часть-1.html#cb733-5" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(d1<span class="sc">:</span>d5, <span class="at">names_to =</span> <span class="st">&quot;doc&quot;</span>)</span>
-<span id="cb733-6"><a href="латентно-семантический-анализ-часть-1.html#cb733-6" tabindex="-1"></a></span>
-<span id="cb733-7"><a href="латентно-семантический-анализ-часть-1.html#cb733-7" tabindex="-1"></a>tidy_corpus</span></code></pre></div>
+<div id="векторы-слов-опрятно" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Векторы слов: опрятно<a href="латентно-семантический-анализ-часть-1.html#векторы-слов-опрятно" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Текст хранится в опрятном формате, если одному наблюдению (термину) соответствует один ряд:</p>
+<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="латентно-семантический-анализ-часть-1.html#cb730-1" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb730-2"><a href="латентно-семантический-анализ-часть-1.html#cb730-2" tabindex="-1"></a></span>
+<span id="cb730-3"><a href="латентно-семантический-анализ-часть-1.html#cb730-3" tabindex="-1"></a>tidy_corpus <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb730-4"><a href="латентно-семантический-анализ-часть-1.html#cb730-4" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">&quot;word&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb730-5"><a href="латентно-семантический-анализ-часть-1.html#cb730-5" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(d1<span class="sc">:</span>d5, <span class="at">names_to =</span> <span class="st">&quot;doc&quot;</span>)</span>
+<span id="cb730-6"><a href="латентно-семантический-анализ-часть-1.html#cb730-6" tabindex="-1"></a></span>
+<span id="cb730-7"><a href="латентно-семантический-анализ-часть-1.html#cb730-7" tabindex="-1"></a>tidy_corpus</span></code></pre></div>
 <pre><code>## # A tibble: 40 × 3
 ##    word   doc   value
 ##    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;
@@ -658,16 +616,16 @@ div.csl-indent {
 ##  9 juliet d4        0
 ## 10 juliet d5        0
 ## # ℹ 30 more rows</code></pre>
-<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="латентно-семантический-анализ-часть-1.html#cb735-1" tabindex="-1"></a><span class="fu">library</span>(widyr)</span>
-<span id="cb735-2"><a href="латентно-семантический-анализ-часть-1.html#cb735-2" tabindex="-1"></a></span>
-<span id="cb735-3"><a href="латентно-семантический-анализ-часть-1.html#cb735-3" tabindex="-1"></a>tidy_u <span class="ot">&lt;-</span> tidy_corpus <span class="sc">%&gt;%</span> </span>
-<span id="cb735-4"><a href="латентно-семантический-анализ-часть-1.html#cb735-4" tabindex="-1"></a>  <span class="fu">widely_svd</span>(word, doc, value,</span>
-<span id="cb735-5"><a href="латентно-семантический-анализ-часть-1.html#cb735-5" tabindex="-1"></a>             <span class="at">nv =</span> <span class="dv">2</span>, <span class="at">maxit =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb735-6"><a href="латентно-семантический-анализ-часть-1.html#cb735-6" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> dimension, <span class="at">values_from =</span> value) </span>
-<span id="cb735-7"><a href="латентно-семантический-анализ-часть-1.html#cb735-7" tabindex="-1"></a></span>
-<span id="cb735-8"><a href="латентно-семантический-анализ-часть-1.html#cb735-8" tabindex="-1"></a>tidy_u[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">round</span>(tidy_u[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>], <span class="dv">3</span>)</span>
-<span id="cb735-9"><a href="латентно-семантический-анализ-часть-1.html#cb735-9" tabindex="-1"></a></span>
-<span id="cb735-10"><a href="латентно-семантический-анализ-часть-1.html#cb735-10" tabindex="-1"></a>tidy_u</span></code></pre></div>
+<p>Чтобы вычислить svd, такой корпус надо преобразовать в широкий формат, произвести все вычисления, а затем “тайдифицировать”. Для подобных операций существует пакет <code>widyr</code>. Функцию <code>pivot_wider()</code> я добавляю лишь для удобства сравнения с тем, что мы получили выше.</p>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="латентно-семантический-анализ-часть-1.html#cb732-1" tabindex="-1"></a><span class="fu">library</span>(widyr)</span>
+<span id="cb732-2"><a href="латентно-семантический-анализ-часть-1.html#cb732-2" tabindex="-1"></a></span>
+<span id="cb732-3"><a href="латентно-семантический-анализ-часть-1.html#cb732-3" tabindex="-1"></a>tidy_u <span class="ot">&lt;-</span> tidy_corpus <span class="sc">%&gt;%</span> </span>
+<span id="cb732-4"><a href="латентно-семантический-анализ-часть-1.html#cb732-4" tabindex="-1"></a>  <span class="fu">widely_svd</span>(word, doc, value,</span>
+<span id="cb732-5"><a href="латентно-семантический-анализ-часть-1.html#cb732-5" tabindex="-1"></a>             <span class="at">nv =</span> <span class="dv">2</span>, <span class="at">maxit =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb732-6"><a href="латентно-семантический-анализ-часть-1.html#cb732-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">round</span>(value, <span class="dv">3</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb732-7"><a href="латентно-семантический-анализ-часть-1.html#cb732-7" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> dimension, <span class="at">values_from =</span> value) </span>
+<span id="cb732-8"><a href="латентно-семантический-анализ-часть-1.html#cb732-8" tabindex="-1"></a></span>
+<span id="cb732-9"><a href="латентно-семантический-анализ-часть-1.html#cb732-9" tabindex="-1"></a>tidy_u</span></code></pre></div>
 <pre><code>## # A tibble: 8 × 3
 ##   word             `1`    `2`
 ##   &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;
@@ -680,8 +638,8 @@ div.csl-indent {
 ## 7 free          -0.264 -0.346
 ## 8 new-hampshire -0.326 -0.46</code></pre>
 <p>Сравним с тем, что у нас получилось выше.</p>
-<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="латентно-семантический-анализ-часть-1.html#cb737-1" tabindex="-1"></a><span class="fu">near</span>(<span class="fu">as.data.frame</span>(U_truncated), tidy_u[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
-<pre><code>##        V1   V2
+<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="латентно-семантический-анализ-часть-1.html#cb734-1" tabindex="-1"></a>U_truncated <span class="sc">==</span> tidy_u[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>##         1    2
 ## [1,] TRUE TRUE
 ## [2,] TRUE TRUE
 ## [3,] TRUE TRUE
@@ -690,46 +648,46 @@ div.csl-indent {
 ## [6,] TRUE TRUE
 ## [7,] TRUE TRUE
 ## [8,] TRUE TRUE</code></pre>
-<p>Итак, мы получили только матрицу правых сингулярных векторов. Чтобы получить word_emb, используем аргумент <code>weight_d</code>:</p>
-<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="латентно-семантический-анализ-часть-1.html#cb739-1" tabindex="-1"></a>tidy_word_emb <span class="ot">&lt;-</span> tidy_corpus <span class="sc">%&gt;%</span> </span>
-<span id="cb739-2"><a href="латентно-семантический-анализ-часть-1.html#cb739-2" tabindex="-1"></a>  <span class="fu">widely_svd</span>(word, doc, value, </span>
-<span id="cb739-3"><a href="латентно-семантический-анализ-часть-1.html#cb739-3" tabindex="-1"></a>             <span class="at">nv =</span> <span class="dv">2</span>, <span class="at">maxit =</span> <span class="dv">100</span>, </span>
-<span id="cb739-4"><a href="латентно-семантический-анализ-часть-1.html#cb739-4" tabindex="-1"></a>             <span class="at">weight_d =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb739-5"><a href="латентно-семантический-анализ-часть-1.html#cb739-5" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> dimension, <span class="at">values_from =</span> value) <span class="sc">%&gt;%</span> </span>
-<span id="cb739-6"><a href="латентно-семантический-анализ-часть-1.html#cb739-6" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">item =</span> word, <span class="at">dim1 =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="at">dim2 =</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>)</span>
-<span id="cb739-7"><a href="латентно-семантический-анализ-часть-1.html#cb739-7" tabindex="-1"></a></span>
-<span id="cb739-8"><a href="латентно-семантический-анализ-часть-1.html#cb739-8" tabindex="-1"></a>tidy_word_emb[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">round</span>(tidy_word_emb[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>], <span class="dv">3</span>)</span>
-<span id="cb739-9"><a href="латентно-семантический-анализ-часть-1.html#cb739-9" tabindex="-1"></a></span>
-<span id="cb739-10"><a href="латентно-семантический-анализ-часть-1.html#cb739-10" tabindex="-1"></a>tidy_word_emb</span></code></pre></div>
-<pre><code>## # A tibble: 8 × 3
-##   item            dim1   dim2
-##   &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;
-## 1 romeo         -0.905  0.563
-## 2 juliet        -0.718  0.904
-## 3 happy         -0.407  0.541
-## 4 dagger        -1.00   0.741
-## 5 live          -0.603 -0.695
-## 6 die           -1.20  -0.495
-## 7 free          -0.603 -0.695
-## 8 new-hampshire -0.746 -0.924</code></pre>
-<p>Снова сравним. Округление не всегда с точностью до тысячных совпадает, но в целом результат такой же.</p>
-<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb741-1"><a href="латентно-семантический-анализ-часть-1.html#cb741-1" tabindex="-1"></a>word_emb</span></code></pre></div>
-<pre><code>##                 [,1]   [,2]
-## romeo         -0.905  0.563
-## juliet        -0.717  0.904
-## happy         -0.407  0.541
-## dagger        -1.001  0.742
-## live          -0.603 -0.695
-## die           -1.197 -0.494
-## free          -0.603 -0.695
-## new-hampshire -0.745 -0.925</code></pre>
-<p>Осталось понять, как <em>опрятно</em> получить doc_emb. Нам нужна частотность слов в каждом документе, она хранится в объекте <code>tidy_corpus</code>.</p>
-<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="латентно-семантический-анализ-часть-1.html#cb743-1" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb743-2"><a href="латентно-семантический-анализ-часть-1.html#cb743-2" tabindex="-1"></a></span>
-<span id="cb743-3"><a href="латентно-семантический-анализ-часть-1.html#cb743-3" tabindex="-1"></a>word_mx <span class="ot">&lt;-</span> tidy_corpus <span class="sc">%&gt;%</span> </span>
-<span id="cb743-4"><a href="латентно-семантический-анализ-часть-1.html#cb743-4" tabindex="-1"></a>  <span class="fu">cast_sparse</span>(doc, word, value)</span>
-<span id="cb743-5"><a href="латентно-семантический-анализ-часть-1.html#cb743-5" tabindex="-1"></a></span>
-<span id="cb743-6"><a href="латентно-семантический-анализ-часть-1.html#cb743-6" tabindex="-1"></a>word_mx</span></code></pre></div>
+<p>Итак, мы получили только матрицу левых сингулярных векторов. Чтобы получить word_emb, используем аргумент <code>weight_d</code>:</p>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="латентно-семантический-анализ-часть-1.html#cb736-1" tabindex="-1"></a>tidy_word_emb <span class="ot">&lt;-</span> tidy_corpus <span class="sc">%&gt;%</span> </span>
+<span id="cb736-2"><a href="латентно-семантический-анализ-часть-1.html#cb736-2" tabindex="-1"></a>  <span class="fu">widely_svd</span>(word, doc, value, </span>
+<span id="cb736-3"><a href="латентно-семантический-анализ-часть-1.html#cb736-3" tabindex="-1"></a>             <span class="at">nv =</span> <span class="dv">2</span>, <span class="at">maxit =</span> <span class="dv">100</span>, </span>
+<span id="cb736-4"><a href="латентно-семантический-анализ-часть-1.html#cb736-4" tabindex="-1"></a>             <span class="at">weight_d =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb736-5"><a href="латентно-семантический-анализ-часть-1.html#cb736-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">round</span>(value, <span class="dv">3</span>)) </span>
+<span id="cb736-6"><a href="латентно-семантический-анализ-часть-1.html#cb736-6" tabindex="-1"></a></span>
+<span id="cb736-7"><a href="латентно-семантический-анализ-часть-1.html#cb736-7" tabindex="-1"></a></span>
+<span id="cb736-8"><a href="латентно-семантический-анализ-часть-1.html#cb736-8" tabindex="-1"></a>tidy_word_emb</span></code></pre></div>
+<pre><code>## # A tibble: 16 × 3
+##    word          dimension  value
+##    &lt;chr&gt;             &lt;int&gt;  &lt;dbl&gt;
+##  1 romeo                 1 -0.905
+##  2 juliet                1 -0.718
+##  3 happy                 1 -0.407
+##  4 dagger                1 -1.00 
+##  5 live                  1 -0.603
+##  6 die                   1 -1.20 
+##  7 free                  1 -0.603
+##  8 new-hampshire         1 -0.746
+##  9 romeo                 2  0.563
+## 10 juliet                2  0.904
+## 11 happy                 2  0.541
+## 12 dagger                2  0.741
+## 13 live                  2 -0.695
+## 14 die                   2 -0.495
+## 15 free                  2 -0.695
+## 16 new-hampshire         2 -0.924</code></pre>
+<p>Сравнив с <code>word_emb</code> выше, видим, что округление не всегда с точностью до тысячных совпадает, но в остальном все ок.</p>
+</div>
+<div id="векторы-документов-опрятно" class="section level2 hasAnchor" number="13.6">
+<h2><span class="header-section-number">13.6</span> Векторы документов: опрятно<a href="латентно-семантический-анализ-часть-1.html#векторы-документов-опрятно" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Осталось понять, как <em>опрятно</em> получить doc_emb. Здесь есть достаточно элегантное решение, которое заключается в том, чтобы рассматривать каждый документ как набор слов<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>. Перемножив матрицу документ-термин, и матрицу с эмбеддингами слов, получаем искомые эмбеддинги документов.</p>
+<p>Частотность слов хранится в объекте <code>tidy_corpus</code>, преобразуем его.</p>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="латентно-семантический-анализ-часть-1.html#cb738-1" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb738-2"><a href="латентно-семантический-анализ-часть-1.html#cb738-2" tabindex="-1"></a></span>
+<span id="cb738-3"><a href="латентно-семантический-анализ-часть-1.html#cb738-3" tabindex="-1"></a>word_mx <span class="ot">&lt;-</span> tidy_corpus <span class="sc">%&gt;%</span> </span>
+<span id="cb738-4"><a href="латентно-семантический-анализ-часть-1.html#cb738-4" tabindex="-1"></a>  <span class="fu">cast_sparse</span>(doc, word, value)</span>
+<span id="cb738-5"><a href="латентно-семантический-анализ-часть-1.html#cb738-5" tabindex="-1"></a></span>
+<span id="cb738-6"><a href="латентно-семантический-анализ-часть-1.html#cb738-6" tabindex="-1"></a>word_mx</span></code></pre></div>
 <pre><code>## 5 x 8 sparse Matrix of class &quot;dgCMatrix&quot;
 ##    romeo juliet happy dagger live die free new-hampshire
 ## d1     1      1     0      0    0   0    0             0
@@ -738,13 +696,12 @@ div.csl-indent {
 ## d4     0      0     0      0    1   1    1             1
 ## d5     0      0     0      0    0   0    0             1</code></pre>
 <p>Эмбеддинги слов преобразуем в тот же формат.</p>
-<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="латентно-семантический-анализ-часть-1.html#cb745-1" tabindex="-1"></a>embedding_mx <span class="ot">&lt;-</span> tidy_word_emb <span class="sc">%&gt;%</span></span>
-<span id="cb745-2"><a href="латентно-семантический-анализ-часть-1.html#cb745-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">names_to =</span> <span class="st">&quot;dimension&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb745-3"><a href="латентно-семантический-анализ-часть-1.html#cb745-3" tabindex="-1"></a>  <span class="fu">cast_sparse</span>(item, dimension, value)</span>
-<span id="cb745-4"><a href="латентно-семантический-анализ-часть-1.html#cb745-4" tabindex="-1"></a></span>
-<span id="cb745-5"><a href="латентно-семантический-анализ-часть-1.html#cb745-5" tabindex="-1"></a>embedding_mx</span></code></pre></div>
+<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="латентно-семантический-анализ-часть-1.html#cb740-1" tabindex="-1"></a>embedding_mx <span class="ot">&lt;-</span> tidy_word_emb <span class="sc">%&gt;%</span></span>
+<span id="cb740-2"><a href="латентно-семантический-анализ-часть-1.html#cb740-2" tabindex="-1"></a>  <span class="fu">cast_sparse</span>(word, dimension, value)</span>
+<span id="cb740-3"><a href="латентно-семантический-анализ-часть-1.html#cb740-3" tabindex="-1"></a></span>
+<span id="cb740-4"><a href="латентно-семантический-анализ-часть-1.html#cb740-4" tabindex="-1"></a>embedding_mx</span></code></pre></div>
 <pre><code>## 8 x 2 sparse Matrix of class &quot;dgCMatrix&quot;
-##                 dim1   dim2
+##                    1      2
 ## romeo         -0.905  0.563
 ## juliet        -0.718  0.904
 ## happy         -0.407  0.541
@@ -754,14 +711,13 @@ div.csl-indent {
 ## free          -0.603 -0.695
 ## new-hampshire -0.746 -0.924</code></pre>
 <p>Перемножаем частотности слов в документе и эмбеддингов слов.</p>
-<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="латентно-семантический-анализ-часть-1.html#cb747-1" tabindex="-1"></a>doc_mx <span class="ot">&lt;-</span> word_mx <span class="sc">%*%</span> embedding_mx</span>
-<span id="cb747-2"><a href="латентно-семантический-анализ-часть-1.html#cb747-2" tabindex="-1"></a></span>
-<span id="cb747-3"><a href="латентно-семантический-анализ-часть-1.html#cb747-3" tabindex="-1"></a>doc_mx <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">as.matrix</span>(doc_mx))</span>
-<span id="cb747-4"><a href="латентно-семантический-анализ-часть-1.html#cb747-4" tabindex="-1"></a></span>
-<span id="cb747-5"><a href="латентно-семантический-анализ-часть-1.html#cb747-5" tabindex="-1"></a>tidy_doc_emb <span class="ot">&lt;-</span> doc_mx <span class="sc">%&gt;%</span> </span>
-<span id="cb747-6"><a href="латентно-семантический-анализ-часть-1.html#cb747-6" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">&quot;item&quot;</span>)</span>
-<span id="cb747-7"><a href="латентно-семантический-анализ-часть-1.html#cb747-7" tabindex="-1"></a></span>
-<span id="cb747-8"><a href="латентно-семантический-анализ-часть-1.html#cb747-8" tabindex="-1"></a>tidy_doc_emb </span></code></pre></div>
+<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb742-1"><a href="латентно-семантический-анализ-часть-1.html#cb742-1" tabindex="-1"></a>doc_mx <span class="ot">&lt;-</span> word_mx <span class="sc">%*%</span> embedding_mx</span>
+<span id="cb742-2"><a href="латентно-семантический-анализ-часть-1.html#cb742-2" tabindex="-1"></a></span>
+<span id="cb742-3"><a href="латентно-семантический-анализ-часть-1.html#cb742-3" tabindex="-1"></a>tidy_doc_emb <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">as.matrix</span>(doc_mx)) <span class="sc">%&gt;%</span> </span>
+<span id="cb742-4"><a href="латентно-семантический-анализ-часть-1.html#cb742-4" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">&quot;item&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb742-5"><a href="латентно-семантический-анализ-часть-1.html#cb742-5" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">dim1 =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="at">dim2 =</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>)</span>
+<span id="cb742-6"><a href="латентно-семантический-анализ-часть-1.html#cb742-6" tabindex="-1"></a></span>
+<span id="cb742-7"><a href="латентно-семантический-анализ-часть-1.html#cb742-7" tabindex="-1"></a>tidy_doc_emb</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ##   item    dim1   dim2
 ##   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -770,67 +726,108 @@ div.csl-indent {
 ## 3 d3    -3.10   0.809
 ## 4 d4    -3.15  -2.81 
 ## 5 d5    -0.746 -0.924</code></pre>
-<p>Значения отличаются от того, что мы видели выше, поскольку мы рассматриваем каждый документ как набор слов<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>. Посмотрим на графике, как это скажется на результате.</p>
-<div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb749-1"><a href="латентно-семантический-анализ-часть-1.html#cb749-1" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> tidy_word_emb <span class="sc">%&gt;%</span> </span>
-<span id="cb749-2"><a href="латентно-семантический-анализ-часть-1.html#cb749-2" tabindex="-1"></a>  <span class="fu">bind_rows</span>(tidy_doc_emb) <span class="sc">%&gt;%</span> </span>
-<span id="cb749-3"><a href="латентно-семантический-анализ-часть-1.html#cb749-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;word&quot;</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">&quot;doc&quot;</span>, <span class="dv">5</span>)))</span>
-<span id="cb749-4"><a href="латентно-семантический-анализ-часть-1.html#cb749-4" tabindex="-1"></a></span>
-<span id="cb749-5"><a href="латентно-семантический-анализ-часть-1.html#cb749-5" tabindex="-1"></a>all_df</span></code></pre></div>
-<pre><code>## # A tibble: 13 × 4
-##    item            dim1   dim2 type 
-##    &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
-##  1 romeo         -0.905  0.563 word 
-##  2 juliet        -0.718  0.904 word 
-##  3 happy         -0.407  0.541 word 
-##  4 dagger        -1.00   0.741 word 
-##  5 live          -0.603 -0.695 word 
-##  6 die           -1.20  -0.495 word 
-##  7 free          -0.603 -0.695 word 
-##  8 new-hampshire -0.746 -0.924 word 
-##  9 d1            -1.62   1.47  doc  
-## 10 d2            -2.13   2.19  doc  
-## 11 d3            -3.10   0.809 doc  
-## 12 d4            -3.15  -2.81  doc  
-## 13 d5            -0.746 -0.924 doc</code></pre>
-<p>Теперь строим график.</p>
-<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="латентно-семантический-анализ-часть-1.html#cb751-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb751-2"><a href="латентно-семантический-анализ-часть-1.html#cb751-2" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb751-3"><a href="латентно-семантический-анализ-часть-1.html#cb751-3" tabindex="-1"></a></span>
-<span id="cb751-4"><a href="латентно-семантический-анализ-часть-1.html#cb751-4" tabindex="-1"></a>all_df <span class="sc">%&gt;%</span> </span>
-<span id="cb751-5"><a href="латентно-семантический-анализ-часть-1.html#cb751-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(dim1, dim2, </span>
-<span id="cb751-6"><a href="латентно-семантический-анализ-часть-1.html#cb751-6" tabindex="-1"></a>             <span class="at">color =</span> <span class="fu">as.factor</span>(type), <span class="at">label =</span> item)) <span class="sc">+</span></span>
-<span id="cb751-7"><a href="латентно-семантический-анализ-часть-1.html#cb751-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
-<span id="cb751-8"><a href="латентно-семантический-анализ-часть-1.html#cb751-8" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span>), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb751-9"><a href="латентно-семантический-анализ-часть-1.html#cb751-9" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb751-10"><a href="латентно-семантический-анализ-часть-1.html#cb751-10" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb751-11"><a href="латентно-семантический-анализ-часть-1.html#cb751-11" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb751-12"><a href="латентно-семантический-анализ-часть-1.html#cb751-12" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">0</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span></span>
-<span id="cb751-13"><a href="латентно-семантический-анализ-часть-1.html#cb751-13" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> lm1<span class="sc">$</span>coefficients[<span class="dv">2</span>], </span>
-<span id="cb751-14"><a href="латентно-семантический-анализ-часть-1.html#cb751-14" tabindex="-1"></a>              <span class="at">intercept =</span> lm1<span class="sc">$</span>coefficients[<span class="dv">1</span>], <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb751-15"><a href="латентно-семантический-анализ-часть-1.html#cb751-15" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> lm2<span class="sc">$</span>coefficients[<span class="dv">2</span>], </span>
-<span id="cb751-16"><a href="латентно-семантический-анализ-часть-1.html#cb751-16" tabindex="-1"></a>              <span class="at">intercept =</span> lm2<span class="sc">$</span>coefficients[<span class="dv">1</span>], <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span></span>
-<span id="cb751-17"><a href="латентно-семантический-анализ-часть-1.html#cb751-17" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>, <span class="fl">0.2</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">3</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-339-1.png" width="672" /></p>
-<p>Картинка похожа на то, что мы видели выше, кроме того, что документы “уехали” влево (что, впрочем, при использовании косинусного сходства не важно, т.к. оно оценивает угол между векторами). Это связано с тем, что мы суммировали эмбединги для документов; как вариант, можно взять среднее, т.е. разделить на число слов в каждом документе.</p>
-<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb752-1"><a href="латентно-семантический-анализ-часть-1.html#cb752-1" tabindex="-1"></a>doc_length <span class="ot">&lt;-</span>  <span class="fu">colSums</span>(df)</span>
-<span id="cb752-2"><a href="латентно-семантический-анализ-часть-1.html#cb752-2" tabindex="-1"></a></span>
-<span id="cb752-3"><a href="латентно-семантический-анализ-часть-1.html#cb752-3" tabindex="-1"></a>tidy_doc_emb <span class="ot">&lt;-</span> tidy_doc_emb <span class="sc">%&gt;%</span> </span>
-<span id="cb752-4"><a href="латентно-семантический-анализ-часть-1.html#cb752-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">length =</span> doc_length) <span class="sc">%&gt;%</span> </span>
-<span id="cb752-5"><a href="латентно-семантический-анализ-часть-1.html#cb752-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dim1 =</span> dim1 <span class="sc">/</span> doc_length, </span>
-<span id="cb752-6"><a href="латентно-семантический-анализ-часть-1.html#cb752-6" tabindex="-1"></a>         <span class="at">dim2 =</span> dim2 <span class="sc">/</span> doc_length) <span class="sc">%&gt;%</span> </span>
-<span id="cb752-7"><a href="латентно-семантический-анализ-часть-1.html#cb752-7" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>length)</span></code></pre></div>
-<div class="sourceCode" id="cb753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb753-1"><a href="латентно-семантический-анализ-часть-1.html#cb753-1" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> tidy_word_emb <span class="sc">%&gt;%</span> </span>
-<span id="cb753-2"><a href="латентно-семантический-анализ-часть-1.html#cb753-2" tabindex="-1"></a>  <span class="fu">bind_rows</span>(tidy_doc_emb) <span class="sc">%&gt;%</span> </span>
-<span id="cb753-3"><a href="латентно-семантический-анализ-часть-1.html#cb753-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;word&quot;</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">&quot;doc&quot;</span>, <span class="dv">5</span>)))</span></code></pre></div>
+<p>Убедимся, что слова и документы расположились осмысленно:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-336-1.png" width="672" /></p>
+<p>Видно, что документы “уехали” влево, так как мы суммировали эмбединги для документов (можно взять среднее); однако при использовании косинусного сходства на результат это не влияет.</p>
+</div>
+<div id="пакет-lsa" class="section level2 hasAnchor" number="13.7">
+<h2><span class="header-section-number">13.7</span> Пакет LSA<a href="латентно-семантический-анализ-часть-1.html#пакет-lsa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Имея матрицу документ-термин, мы можем быстро построить модель, воспользовавшись функцией <code>lsa()</code> из одноименного пакета.</p>
+<div class="sourceCode" id="cb744"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb744-1"><a href="латентно-семантический-анализ-часть-1.html#cb744-1" tabindex="-1"></a><span class="fu">library</span>(lsa)</span>
+<span id="cb744-2"><a href="латентно-семантический-анализ-часть-1.html#cb744-2" tabindex="-1"></a></span>
+<span id="cb744-3"><a href="латентно-семантический-анализ-часть-1.html#cb744-3" tabindex="-1"></a>lsaSpace <span class="ot">&lt;-</span> <span class="fu">lsa</span>(word_mx, <span class="at">dims =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>Функция вернет список, в котором хранятся элементы под названием <code>tk</code>, <code>dk</code>, <code>sk</code>. Они соответствуют матрице правых сингулярных векторов V, матрице правых сингулярных векторов U, а также сингулярным значениям. Убедимся в этом.</p>
+<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="латентно-семантический-анализ-часть-1.html#cb745-1" tabindex="-1"></a><span class="fu">round</span>(lsaSpace<span class="sc">$</span>tk, <span class="dv">3</span>); <span class="fu">t</span>(Vt_truncated)</span></code></pre></div>
+<pre><code>##     [,1]   [,2]
+## d1 0.311  0.363
+## d2 0.407  0.541
+## d3 0.594  0.200
+## d4 0.603 -0.695
+## d5 0.143 -0.229</code></pre>
+<pre><code>##        [,1]   [,2]
+## [1,] -0.311  0.363
+## [2,] -0.407  0.541
+## [3,] -0.594  0.200
+## [4,] -0.603 -0.695
+## [5,] -0.143 -0.229</code></pre>
+<p>Для матрицы <span class="math inline">\(V^t\)</span> результаты совпадают за исключением знака в первом столбце; это явление известно как <a href="https://www.educative.io/blog/sign-ambiguity-in-singular-value-decomposition">sign ambiguity</a>. Первый столбец матрицы U тоже меняет знак, так что при перемножении мы вновь получаем исходную матрицу. Убедимся в этом.</p>
+<div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb748-1"><a href="латентно-семантический-анализ-часть-1.html#cb748-1" tabindex="-1"></a><span class="fu">round</span>(lsaSpace<span class="sc">$</span>dk, <span class="dv">3</span>); U_truncated</span></code></pre></div>
+<pre><code>##                [,1]   [,2]
+## romeo         0.396  0.280
+## juliet        0.314  0.450
+## happy         0.178  0.269
+## dagger        0.438  0.369
+## live          0.264 -0.346
+## die           0.524 -0.246
+## free          0.264 -0.346
+## new-hampshire 0.326 -0.460</code></pre>
+<pre><code>##        [,1]   [,2]
+## [1,] -0.396  0.280
+## [2,] -0.314  0.450
+## [3,] -0.178  0.269
+## [4,] -0.438  0.369
+## [5,] -0.264 -0.346
+## [6,] -0.524 -0.246
+## [7,] -0.264 -0.346
+## [8,] -0.326 -0.460</code></pre>
+<p>Чтобы построить эмбеддинги документов, перемножаем диагональную матрицу и <span class="math inline">\(V^t\)</span>:</p>
+<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="латентно-семантический-анализ-часть-1.html#cb751-1" tabindex="-1"></a><span class="fu">diag</span>(lsaSpace<span class="sc">$</span>sk) <span class="sc">%*%</span> <span class="fu">t</span>(lsaSpace<span class="sc">$</span>tk)</span></code></pre></div>
+<pre><code>##             d1        d2       d3        d4         d5
+## [1,] 0.7104208 0.9308713 1.358521  1.378139  0.3263732
+## [2,] 0.7295895 1.0870320 0.402161 -1.397916 -0.4596688</code></pre>
+<p>Это совпадает с тем результатом, который мы получали выше (за исключением знака, о чем было сказано выше):</p>
+<div class="sourceCode" id="cb753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb753-1"><a href="латентно-семантический-анализ-часть-1.html#cb753-1" tabindex="-1"></a>doc_emb</span></code></pre></div>
+<pre><code>##          d1     d2     d3     d4     d5
+## [1,] -0.711 -0.930 -1.357 -1.378 -0.327
+## [2,]  0.730  1.087  0.402 -1.397 -0.460</code></pre>
+<p>Дальше это можно транспонировать и посчитать расстояние между документами, как мы уже делали, и проделать то же самое со словами.</p>
+</div>
+<div id="кластеризация" class="section level2 hasAnchor" number="13.8">
+<h2><span class="header-section-number">13.8</span> Кластеризация<a href="латентно-семантический-анализ-часть-1.html#кластеризация" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Функция <code>cosine()</code> из пакета <code>lda</code> считает косинусное сходство между векторами или <em>столбцами</em> матрицы (будьте внимательны: многие функции для подсчета расстояния или сходства оперируют рядами!). Чтобы получить расстояние, вычитаем результат из единицы.</p>
+<div class="sourceCode" id="cb755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb755-1"><a href="латентно-семантический-анализ-часть-1.html#cb755-1" tabindex="-1"></a>dist_cos <span class="ot">&lt;-</span> <span class="fu">as.dist</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">cosine</span>(doc_emb))</span></code></pre></div>
+<p>Имея матрицу расстояния, можно найти кластеры документов:</p>
+<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb756-1"><a href="латентно-семантический-анализ-часть-1.html#cb756-1" tabindex="-1"></a>hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_cos)</span>
+<span id="cb756-2"><a href="латентно-семантический-анализ-часть-1.html#cb756-2" tabindex="-1"></a><span class="fu">plot</span>(hc)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-343-1.png" width="672" /></p>
-<p>LSA, в отличие от LDA, – это не вероятностная, а алгебраическая модель. Это значит, что термдокументная матрица может хранить не только данные об абсолютной встречаемости слова в документе (как это требует LDA), выраженные целыми числами, но и любые реальные числа. Как правило, используется tf_idf, о которой шла речь в одном из предыдущих уроков.</p>
+<p>“Бьютифицировать” это грустное деревце можно тысячью разных <a href="http://www.sthda.com/english/wiki/beautiful-dendrogram-visualizations-in-r-5-must-known-methods-unsupervised-machine-learning">способов</a>, в том числе с использованием специального пакета <a href="https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html"><code>ggdendro</code></a>.</p>
+<p>Если документов (или слов) много, то удобнее бывает обозначить кластеры цветом:</p>
+<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="латентно-семантический-анализ-часть-1.html#cb757-1" tabindex="-1"></a><span class="fu">t</span>(doc_emb) <span class="sc">%&gt;%</span> </span>
+<span id="cb757-2"><a href="латентно-семантический-анализ-часть-1.html#cb757-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">&quot;item&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb757-3"><a href="латентно-семантический-анализ-часть-1.html#cb757-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(V1, V2, <span class="at">label =</span> item, <span class="at">col =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(hc, <span class="dv">2</span>)))) <span class="sc">+</span></span>
+<span id="cb757-4"><a href="латентно-семантический-анализ-часть-1.html#cb757-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb757-5"><a href="латентно-семантический-анализ-часть-1.html#cb757-5" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">show.legend =</span> F)</span></code></pre></div>
+<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if
+## `.name_repair` is omitted as of tibble 2.0.0.
+## ℹ Using compatibility `.name_repair`.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-344-1.png" width="672" /></p>
+</div>
+<div id="визуализации-1" class="section level2 hasAnchor" number="13.9">
+<h2><span class="header-section-number">13.9</span> Визуализации<a href="латентно-семантический-анализ-часть-1.html#визуализации-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Для лучшей интерпретируемости модели бывает полезно визуализировать сами топики. У нас игрушечный пример, поэтому выглядит это не очень интересно, подробнее можно почитать <a href="https://smltar.com/embeddings.html#exploring-cfpb-word-embeddings">здесь</a>.</p>
+<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="латентно-семантический-анализ-часть-1.html#cb759-1" tabindex="-1"></a>tidy_word_emb <span class="sc">%&gt;%</span> </span>
+<span id="cb759-2"><a href="латентно-семантический-анализ-часть-1.html#cb759-2" tabindex="-1"></a>  <span class="fu">group_by</span>(dimension) <span class="sc">%&gt;%</span></span>
+<span id="cb759-3"><a href="латентно-семантический-анализ-часть-1.html#cb759-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">abs</span>(value)) <span class="sc">%&gt;%</span> </span>
+<span id="cb759-4"><a href="латентно-семантический-анализ-часть-1.html#cb759-4" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb759-5"><a href="латентно-семантический-анализ-часть-1.html#cb759-5" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb759-6"><a href="латентно-семантический-анализ-часть-1.html#cb759-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder_within</span>(word, value, dimension)) <span class="sc">%&gt;%</span> </span>
+<span id="cb759-7"><a href="латентно-семантический-анализ-часть-1.html#cb759-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, value, <span class="at">fill =</span> dimension)) <span class="sc">+</span></span>
+<span id="cb759-8"><a href="латентно-семантический-анализ-часть-1.html#cb759-8" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb759-9"><a href="латентно-семантический-анализ-часть-1.html#cb759-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dimension, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb759-10"><a href="латентно-семантический-анализ-часть-1.html#cb759-10" tabindex="-1"></a>  <span class="fu">scale_x_reordered</span>() <span class="sc">+</span></span>
+<span id="cb759-11"><a href="латентно-семантический-анализ-часть-1.html#cb759-11" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-345-1.png" width="672" /></p>
+<p>LSA, в отличие от LDA, – это не вероятностная, а алгебраическая модель. Это значит, что термдокументная матрица может хранить не только данные об абсолютной встречаемости слова в документе (как это требует LDA), выраженные целыми числами, но и любые реальные числа. Как показывает практика, использование tf_idf в большинстве случаев улучшает модель.</p>
 
 </div>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="52">
-<li id="fn52"><p>Подход, предлагаемый здесь: <a href="https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself" class="uri">https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself</a><a href="латентно-семантический-анализ-часть-1.html#fnref52" class="footnote-back">↩︎</a></p></li>
+<li id="fn52"><p><a href="https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself" class="uri">https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself</a><a href="латентно-семантический-анализ-часть-1.html#fnref52" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
