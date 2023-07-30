@@ -366,7 +366,7 @@ div.csl-indent {
 <li class="chapter" data-level="13.6" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#векторы-документов-опрятно"><i class="fa fa-check"></i><b>13.6</b> Векторы документов: опрятно</a></li>
 <li class="chapter" data-level="13.7" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#пакет-lsa"><i class="fa fa-check"></i><b>13.7</b> Пакет LSA</a></li>
 <li class="chapter" data-level="13.8" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#кластеризация"><i class="fa fa-check"></i><b>13.8</b> Кластеризация</a></li>
-<li class="chapter" data-level="13.9" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#визуализации-1"><i class="fa fa-check"></i><b>13.9</b> Визуализации</a></li>
+<li class="chapter" data-level="13.9" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#визуализации-топиков"><i class="fa fa-check"></i><b>13.9</b> Визуализации топиков</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
@@ -797,28 +797,22 @@ div.csl-indent {
 <span id="cb757-3"><a href="латентно-семантический-анализ-часть-1.html#cb757-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(V1, V2, <span class="at">label =</span> item, <span class="at">col =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(hc, <span class="dv">2</span>)))) <span class="sc">+</span></span>
 <span id="cb757-4"><a href="латентно-семантический-анализ-часть-1.html#cb757-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
 <span id="cb757-5"><a href="латентно-семантический-анализ-часть-1.html#cb757-5" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">show.legend =</span> F)</span></code></pre></div>
-<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if
-## `.name_repair` is omitted as of tibble 2.0.0.
-## ℹ Using compatibility `.name_repair`.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-344-1.png" width="672" /></p>
 </div>
-<div id="визуализации-1" class="section level2 hasAnchor" number="13.9">
-<h2><span class="header-section-number">13.9</span> Визуализации<a href="латентно-семантический-анализ-часть-1.html#визуализации-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="визуализации-топиков" class="section level2 hasAnchor" number="13.9">
+<h2><span class="header-section-number">13.9</span> Визуализации топиков<a href="латентно-семантический-анализ-часть-1.html#визуализации-топиков" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Для лучшей интерпретируемости модели бывает полезно визуализировать сами топики. У нас игрушечный пример, поэтому выглядит это не очень интересно, подробнее можно почитать <a href="https://smltar.com/embeddings.html#exploring-cfpb-word-embeddings">здесь</a>.</p>
-<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="латентно-семантический-анализ-часть-1.html#cb759-1" tabindex="-1"></a>tidy_word_emb <span class="sc">%&gt;%</span> </span>
-<span id="cb759-2"><a href="латентно-семантический-анализ-часть-1.html#cb759-2" tabindex="-1"></a>  <span class="fu">group_by</span>(dimension) <span class="sc">%&gt;%</span></span>
-<span id="cb759-3"><a href="латентно-семантический-анализ-часть-1.html#cb759-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">abs</span>(value)) <span class="sc">%&gt;%</span> </span>
-<span id="cb759-4"><a href="латентно-семантический-анализ-часть-1.html#cb759-4" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb759-5"><a href="латентно-семантический-анализ-часть-1.html#cb759-5" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb759-6"><a href="латентно-семантический-анализ-часть-1.html#cb759-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder_within</span>(word, value, dimension)) <span class="sc">%&gt;%</span> </span>
-<span id="cb759-7"><a href="латентно-семантический-анализ-часть-1.html#cb759-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, value, <span class="at">fill =</span> dimension)) <span class="sc">+</span></span>
-<span id="cb759-8"><a href="латентно-семантический-анализ-часть-1.html#cb759-8" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb759-9"><a href="латентно-семантический-анализ-часть-1.html#cb759-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dimension, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb759-10"><a href="латентно-семантический-анализ-часть-1.html#cb759-10" tabindex="-1"></a>  <span class="fu">scale_x_reordered</span>() <span class="sc">+</span></span>
-<span id="cb759-11"><a href="латентно-семантический-анализ-часть-1.html#cb759-11" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb758-1"><a href="латентно-семантический-анализ-часть-1.html#cb758-1" tabindex="-1"></a>tidy_word_emb <span class="sc">%&gt;%</span> </span>
+<span id="cb758-2"><a href="латентно-семантический-анализ-часть-1.html#cb758-2" tabindex="-1"></a>  <span class="fu">group_by</span>(dimension) <span class="sc">%&gt;%</span></span>
+<span id="cb758-3"><a href="латентно-семантический-анализ-часть-1.html#cb758-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">abs</span>(value)) <span class="sc">%&gt;%</span> </span>
+<span id="cb758-4"><a href="латентно-семантический-анализ-часть-1.html#cb758-4" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb758-5"><a href="латентно-семантический-анализ-часть-1.html#cb758-5" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb758-6"><a href="латентно-семантический-анализ-часть-1.html#cb758-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder_within</span>(word, value, dimension)) <span class="sc">%&gt;%</span> </span>
+<span id="cb758-7"><a href="латентно-семантический-анализ-часть-1.html#cb758-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, value, <span class="at">fill =</span> dimension)) <span class="sc">+</span></span>
+<span id="cb758-8"><a href="латентно-семантический-анализ-часть-1.html#cb758-8" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb758-9"><a href="латентно-семантический-анализ-часть-1.html#cb758-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dimension, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb758-10"><a href="латентно-семантический-анализ-часть-1.html#cb758-10" tabindex="-1"></a>  <span class="fu">scale_x_reordered</span>() <span class="sc">+</span></span>
+<span id="cb758-11"><a href="латентно-семантический-анализ-часть-1.html#cb758-11" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-345-1.png" width="672" /></p>
 <p>LSA, в отличие от LDA, – это не вероятностная, а алгебраическая модель. Это значит, что термдокументная матрица может хранить не только данные об абсолютной встречаемости слова в документе (как это требует LDA), выраженные целыми числами, но и любые реальные числа. Как показывает практика, использование tf_idf в большинстве случаев улучшает модель.</p>
 
