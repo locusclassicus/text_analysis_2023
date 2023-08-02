@@ -435,7 +435,7 @@ freq <- author_word_rf %>%
 freq
 ```
 
-```{r warning=FALSE}
+```{r warning=FALSE, message=FALSE}
 library(scales)
 
 freq %>% 
