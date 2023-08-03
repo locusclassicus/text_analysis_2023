@@ -1,0 +1,257 @@
+# Поисковик на основе LSA
+
+## Подготовка данных
+
+Снова смоделируем тематику постов из телеграм-канала Antibarbari. "Опрятный" текст был подготовлен ранее, сейчас просто загрузим его. 
+
+```{r message=FALSE}
+library(tidyverse)
+library(tidytext)
+library(lsa)
+library(widyr)
+
+load("data/antibarbari_words_tidy.Rdata")
+```
+
+И удалим слова, которые встречаются очень редко. 
+
+```{r}
+text_pruned <- text_tidy_nosw %>% 
+  add_count(lemma) %>% 
+  filter(n > 4) %>% 
+  select(-n)
+
+text_pruned
+```
+
+Посчитаем встречаемость слов (можно использовать tf-idf).
+
+```{r}
+text_pruned_count <- text_pruned %>% 
+  group_by(doc_id) %>% 
+  count(lemma) %>% 
+  rename(item1 = lemma) %>% 
+  ungroup()
+
+text_pruned_tfidf <- text_pruned_count %>%
+  bind_tf_idf(item1, doc_id, n) %>%
+  select(-tf, -idf, -n)
+
+# dtm <- text_pruned_count %>% 
+#   cast_sparse(doc_id, lemma, n)
+```
+
+
+## Эмбеддинги слов
+
+Вычисляем сингулярное разложение. Число главных компонент устанавливаем на 20 (так иногда называют новые [измерения](https://courses.engr.illinois.edu/cs440/fa2018/lectures/lect36.html)).
+
+
+```{r}
+tidy_word_emb <- text_pruned_tfidf %>%
+  widely_svd(item1, doc_id, tf_idf, 
+             weight_d = T, nv = 20)
+
+tidy_word_emb
+```
+
+Функция `nearest_neigbors()` ([отсюда](https://smltar.com/embeddings.html#exploring-cfpb-word-embeddings)) позволяет находить ближайшие слова (считает косинусное расстояние между векторами слов):
+
+```{r}
+nearest_neighbors <- function(df, token) {
+  df %>%
+    widely(
+      ~ {
+        y <- .[rep(token, nrow(.)), ]
+        res <- rowSums(. * y) / 
+          (sqrt(rowSums(. ^ 2)) * sqrt(sum(.[token, ] ^ 2)))
+        
+        matrix(res, ncol = 1, dimnames = list(x = names(res)))
+      },
+      sort = TRUE
+    )(item1, dimension, value) %>%
+    select(-item2)
+}
+```
+
+Проверим осмысленность наших эмбеддингов.
+
+```{r}
+tidy_word_emb %>% 
+  nearest_neighbors("платон")
+```
+
+```{r}
+tidy_word_emb %>% 
+  nearest_neighbors("цицерон")
+```
+
+## Эмбеддинги документов
+
+Чтобы посчитать эмбеддинги документов, перемножаем данные о частотность с эмбеддингами слов (см. предыдущий урок).
+
+
+```{r}
+dtm_mx <- text_pruned_count %>% 
+  cast_sparse(doc_id, item1, n)
+
+embedding_mx <- tidy_word_emb %>%
+  cast_sparse(item1, dimension, value)
+
+doc_mx <- dtm_mx %*% embedding_mx
+```
+
+Преобразуем в датафрейм. 
+
+```{r}
+tidy_doc_emb <- as.data.frame(as.matrix(doc_mx))
+
+tidy_doc_emb
+```
+
+Вычисляем косинусное расстояние между документами. 
+
+```{r}
+library(lsa)
+dist_mx <- as.data.frame(1 - cosine(t(tidy_doc_emb)))
+```
+
+Функция ниже ищет ближайшие документы. 
+
+```{r}
+nearest_doc <- function(dist_mx, doc, n) {
+  idx <- which(rownames(dist_mx) == doc) 
+  subset <- dist_mx[idx, -idx]
+  ord <- order(as.numeric(subset))[1:n]
+  names(subset[ , ord])
+}
+
+nearest <- nearest_doc(dist_mx, "doc31", 3)
+nearest
+```
+Распечатаем документы.
+
+```{r}
+load("~/R_Workflow/Text_Analysis_2023/data/AntibarbariTidy.Rdata")
+text_tidy %>% 
+  distinct(doc_id, sentence) %>% 
+  filter(doc_id %in% c("doc31", nearest)) %>% 
+  group_by(doc_id) %>% 
+  mutate(text = paste0(sentence, collapse = " ")) %>% 
+  distinct(doc_id, text) %>% 
+  DT::datatable()
+```
+
+Кажется, что все получилось неплохо. Попробуем с другим документом
+
+```{r}
+nearest <- nearest_doc(dist_mx, "doc115", 2)
+text_tidy %>% 
+  distinct(doc_id, sentence) %>% 
+  filter(doc_id %in% c("doc115", nearest)) %>% 
+  group_by(doc_id) %>% 
+  mutate(text = paste0(sentence, collapse = " ")) %>% 
+  distinct(doc_id, text) %>% 
+  DT::datatable()
+```
+
+## Документ по запросу: способ 1
+
+Поисковый запрос -- это по сути "псевдодокумент". Нам надо вычислить его координаты в k-векторном пространстве и найти ближайшие документы. Это можно сделать разными способами. Один из них -- соединить этот псевдодокумент с остальными и пересчитать tf_idf. 
+
+```{r}
+q = tibble(doc_id = rep("q", 2),
+           lemma = c("античный", "математика"))
+
+text_pruned_q <- text_pruned %>% 
+  bind_rows(q)
+
+text_pruned_count_q <- text_pruned_q %>% 
+  group_by(doc_id) %>% 
+  count(lemma) %>% 
+  rename(item1 = lemma) %>% 
+  ungroup()
+
+text_pruned_tfidf_q <- text_pruned_count_q %>%
+  bind_tf_idf(item1, doc_id, n) %>%
+  select(-tf, -idf, -n)
+
+dtm_mx_q <- text_pruned_count_q %>% 
+  cast_sparse(doc_id, item1, n)
+
+tidy_word_emb_q <- text_pruned_tfidf_q %>%
+  widely_svd(item1, doc_id, tf_idf, 
+             weight_d = T, nv = 20)
+
+embedding_mx_q <- tidy_word_emb_q %>%
+  cast_sparse(item1, dimension, value)
+
+doc_mx_q <- dtm_mx_q %*% embedding_mx_q
+
+tidy_doc_emb_q <- as.data.frame(as.matrix(doc_mx_q))
+
+dist_mx_q <- as.data.frame(1 - cosine(t(tidy_doc_emb_q)))
+```
+
+```{r}
+nearest_q <- nearest_doc(dist_mx_q, "q", 3)
+
+text_tidy %>% 
+  distinct(doc_id, sentence) %>% 
+  filter(doc_id %in% nearest_q) %>% 
+  group_by(doc_id) %>% 
+  mutate(text = paste0(sentence, collapse = " ")) %>% 
+  distinct(doc_id, text) %>% 
+  DT::datatable()
+```
+
+## Документ по запросу: способ 2
+
+Однако можно не пересчитывать tf_idf, и просто "встроить" новый документ в уже существующее векторное пространство. 
+
+```{r}
+q <- c("античный", "математика")
+
+q <- tidy_word_emb %>% 
+  filter(item1 %in% q ) %>% 
+  pivot_wider(names_from = dimension, values_from = value) %>% 
+  select(-1) %>% 
+  colSums()
+
+q
+```
+
+```{r}
+q_df <- t(as.data.frame(q))
+
+q_df
+```
+
+```{r}
+tidy_doc_emb_q <- tidy_doc_emb %>% 
+  rbind(q_df) 
+
+tail(tidy_doc_emb_q)
+```
+
+Теперь осталось посчитать расстояние. 
+
+```{r}
+dist_mx_q <- as.data.frame(1 - cosine(t(tidy_doc_emb_q)))
+
+nearest_q <- nearest_doc(dist_mx_q, "q", 3)
+```
+
+И посмотрим на выдачу:
+
+```{r}
+text_tidy %>% 
+  distinct(doc_id, sentence) %>% 
+  filter(doc_id %in% nearest_q) %>% 
+  group_by(doc_id) %>% 
+  mutate(text = paste0(sentence, collapse = " ")) %>% 
+  distinct(doc_id, text) %>% 
+  DT::datatable()
+```
+
+Дальше из этого можно сделать онлайн-приложение с архивом вашего любимого телеграм-канала, и такой поисковик справится лучше, чем простой поиск по словам. Но это уже тема совсем другого урока :)

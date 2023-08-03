@@ -58,11 +58,14 @@ stop <- stopwords(language = "ru", source = "stopwords-iso") %>%
 
 text_tidy_nosw <- text_tidy %>% 
   anti_join(stop) %>% 
-  filter(!str_detect(lemma, "либо")) %>% 
-  filter(!str_detect(lemma, "например")) %>% 
-  filter(lemma != "ибо")
+  filter(!str_detect(lemma, "либо")) %>%
+  filter(!lemma %in% c("ибо", "стр", "кр", "нить", "наверное", "например", "фиг")) %>% 
+  filter(!str_detect(lemma, "нибудь"))
+
 
 text_tidy_nosw
+
+# save(text_tidy_nosw, file = "data/antibarbari_words_tidy.Rdata")
 ```
 
 
@@ -92,9 +95,10 @@ text_count_long <- text_count_nchar %>%
   group_by(doc_id) %>% 
   mutate(sum = sum(n)) %>% 
   filter(sum > 10) %>% 
-  select(-sum)
+  select(-sum) %>% 
+  ungroup()
 
-# save(text_count_long, file = "data/ antibarbari_count.Rdata")
+# save(text_count_long, file = "data/antibarbari_count.Rdata")
 ```
 
 
