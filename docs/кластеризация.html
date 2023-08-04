@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Тема 16 Кластеризация | Компьютерный анализ текста в R</title>
+  <title>Тема 15 Кластеризация | Компьютерный анализ текста в R</title>
   <meta name="description" content="Все прекрасное трудно." />
   <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Тема 16 Кластеризация | Компьютерный анализ текста в R" />
+  <meta property="og:title" content="Тема 15 Кластеризация | Компьютерный анализ текста в R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Все прекрасное трудно." />
   <meta name="github-repo" content="https://github.com/locusclassicus/text_analysis_r_bookdown_2023/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Тема 16 Кластеризация | Компьютерный анализ текста в R" />
+  <meta name="twitter:title" content="Тема 15 Кластеризация | Компьютерный анализ текста в R" />
   
   <meta name="twitter:description" content="Все прекрасное трудно." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-03" />
+<meta name="date" content="2023-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="поисковик-на-основе-lsa.html"/>
+<link rel="prev" href="латентно-семантический-анализ-часть-1.html"/>
 <link rel="next" href="литература.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -377,20 +377,14 @@ div.csl-indent {
 <li class="chapter" data-level="14.3" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#сингулярное-разложение-матрицы"><i class="fa fa-check"></i><b>14.3</b> Сингулярное разложение матрицы</a></li>
 <li class="chapter" data-level="14.4" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#простой-пример"><i class="fa fa-check"></i><b>14.4</b> Простой пример</a></li>
 <li class="chapter" data-level="14.5" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#векторы-слов"><i class="fa fa-check"></i><b>14.5</b> Векторы слов</a></li>
-<li class="chapter" data-level="14.6" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#векторы-документов-опрятно"><i class="fa fa-check"></i><b>14.6</b> Векторы документов: опрятно</a></li>
-<li class="chapter" data-level="14.7" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#пакет-lsa"><i class="fa fa-check"></i><b>14.7</b> Пакет LSA</a></li>
-<li class="chapter" data-level="14.8" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#визуализации-топиков"><i class="fa fa-check"></i><b>14.8</b> Визуализации топиков</a></li>
-<li class="chapter" data-level="14.9" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#пакет-textminer"><i class="fa fa-check"></i><b>14.9</b> Пакет TextmineR</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="поисковик-на-основе-lsa.html"><a href="поисковик-на-основе-lsa.html"><i class="fa fa-check"></i><b>15</b> Поисковик на основе LSA</a>
+<li class="chapter" data-level="14.6" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#пакеты-для-работы-с-lsa"><i class="fa fa-check"></i><b>14.6</b> Пакеты для работы с LSA</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="поисковик-на-основе-lsa.html"><a href="поисковик-на-основе-lsa.html#подготовка-данных"><i class="fa fa-check"></i><b>15.1</b> Подготовка данных</a></li>
-<li class="chapter" data-level="15.2" data-path="поисковик-на-основе-lsa.html"><a href="поисковик-на-основе-lsa.html#эмбеддинги-слов"><i class="fa fa-check"></i><b>15.2</b> Эмбеддинги слов</a></li>
-<li class="chapter" data-level="15.3" data-path="поисковик-на-основе-lsa.html"><a href="поисковик-на-основе-lsa.html#эмбеддинги-документов"><i class="fa fa-check"></i><b>15.3</b> Эмбеддинги документов</a></li>
-<li class="chapter" data-level="15.4" data-path="поисковик-на-основе-lsa.html"><a href="поисковик-на-основе-lsa.html#документ-по-запросу-способ-1"><i class="fa fa-check"></i><b>15.4</b> Документ по запросу: способ 1</a></li>
-<li class="chapter" data-level="15.5" data-path="поисковик-на-основе-lsa.html"><a href="поисковик-на-основе-lsa.html#документ-по-запросу-способ-2"><i class="fa fa-check"></i><b>15.5</b> Документ по запросу: способ 2</a></li>
+<li class="chapter" data-level="14.6.1" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#lsa"><i class="fa fa-check"></i><b>14.6.1</b> lsa</a></li>
+<li class="chapter" data-level="14.6.2" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#textminer"><i class="fa fa-check"></i><b>14.6.2</b> TextmineR</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="кластеризация.html"><a href="кластеризация.html"><i class="fa fa-check"></i><b>16</b> Кластеризация</a></li>
+<li class="chapter" data-level="14.7" data-path="латентно-семантический-анализ-часть-1.html"><a href="латентно-семантический-анализ-часть-1.html#lsa-c-использованием-tidy-data"><i class="fa fa-check"></i><b>14.7</b> LSA c использованием Tidy Data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="кластеризация.html"><a href="кластеризация.html"><i class="fa fa-check"></i><b>15</b> Кластеризация</a></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -412,20 +406,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="кластеризация" class="section level1 hasAnchor" number="16">
-<h1><span class="header-section-number">Тема 16</span> Кластеризация<a href="кластеризация.html#кластеризация" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="кластеризация" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Тема 15</span> Кластеризация<a href="кластеризация.html#кластеризация" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>В прошлом уроке мы упомянули о том, что результаты тематического моделирования могут быть использованы для последующей кластеризации документов, и сегодня поговорим о кластеризации подробнее. Но прежде чем переходить к теории, подготовим данные для анализа.</p>
 <ul>
 <li><p>Поскольку алгоритм LDA мы испытывали на датасете с постами телеграм-канала Antibarbari, возьмем тот же датасет для модели LSA, а затем используем алгоритм кластеризации для поиска близких по тематике постов. Это позволит сравнить две тематические модели.</p></li>
 <li><p>На следующем этапе мы применим кластерный анализ к постам без предварительного тематического моделирования, и посмотрим, как будет отличаться результат.</p></li>
 </ul>
 <p>Если документов (или слов) много, то удобнее бывает обозначить кластеры цветом:</p>
-<div class="sourceCode" id="cb867"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb867-1"><a href="кластеризация.html#cb867-1" tabindex="-1"></a><span class="fu">t</span>(doc_emb) <span class="sc">%&gt;%</span> </span>
-<span id="cb867-2"><a href="кластеризация.html#cb867-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">&quot;item&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb867-3"><a href="кластеризация.html#cb867-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(V1, V2, <span class="at">label =</span> item, <span class="at">col =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(hc, <span class="dv">2</span>)))) <span class="sc">+</span></span>
-<span id="cb867-4"><a href="кластеризация.html#cb867-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
-<span id="cb867-5"><a href="кластеризация.html#cb867-5" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">show.legend =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-413-1.png" width="672" /></p>
+<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="кластеризация.html#cb838-1" tabindex="-1"></a><span class="fu">t</span>(doc_emb) <span class="sc">%&gt;%</span> </span>
+<span id="cb838-2"><a href="кластеризация.html#cb838-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">&quot;item&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb838-3"><a href="кластеризация.html#cb838-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(V1, V2, <span class="at">label =</span> item, <span class="at">col =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(hc, <span class="dv">2</span>)))) <span class="sc">+</span></span>
+<span id="cb838-4"><a href="кластеризация.html#cb838-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb838-5"><a href="кластеризация.html#cb838-5" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">show.legend =</span> F)</span></code></pre></div>
 
 </div>
             </section>
@@ -433,7 +426,7 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="поисковик-на-основе-lsa.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="латентно-семантический-анализ-часть-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="литература.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -465,7 +458,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/15-cluster.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/14-cluster.Rmd",
 "text": "Edit"
 },
 "history": {

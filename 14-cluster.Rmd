@@ -8,7 +8,7 @@
 
 Если документов (или слов) много, то удобнее бывает обозначить кластеры цветом:
 
-```{r warning=FALSE}
+```{r eval=FALSE}
 t(doc_emb) %>% 
   as_tibble(rownames = "item") %>% 
   ggplot(aes(V1, V2, label = item, col = as.factor(cutree(hc, 2)))) +
