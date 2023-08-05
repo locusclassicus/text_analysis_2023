@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Тема 15 Кластеризация и метод главных компонент | Компьютерный анализ текста в R</title>
+  <meta name="description" content="Все прекрасное трудно." />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Тема 15 Кластеризация и метод главных компонент | Компьютерный анализ текста в R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Все прекрасное трудно." />
+  <meta name="github-repo" content="https://github.com/locusclassicus/text_analysis_r_bookdown_2023/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Тема 15 Кластеризация и метод главных компонент | Компьютерный анализ текста в R" />
+  
+  <meta name="twitter:description" content="Все прекрасное трудно." />
+  
+
+<meta name="author" content="Ольга Алиева" />
+
+
+<meta name="date" content="2023-08-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="латентно-семантический-анализ.html"/>
+<link rel="next" href="литература.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.27/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Компьютерный анализ текста в R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> О курсе</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#благодарности"><i class="fa fa-check"></i><b>1.1</b> Благодарности</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html"><i class="fa fa-check"></i><b>2</b> Начало работы с R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#что-такое-r"><i class="fa fa-check"></i><b>2.1</b> Что такое R?</a></li>
+<li class="chapter" data-level="2.2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#пакеты-и-виньетки"><i class="fa fa-check"></i><b>2.2</b> Пакеты и виньетки</a></li>
+<li class="chapter" data-level="2.3" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#если-не-хватает-пакетов"><i class="fa fa-check"></i><b>2.3</b> Если не хватает пакетов</a></li>
+<li class="chapter" data-level="2.4" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#о-воспроизводимости"><i class="fa fa-check"></i><b>2.4</b> О воспроизводимости</a></li>
+<li class="chapter" data-level="2.5" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#что-мы-не-будем-делать"><i class="fa fa-check"></i><b>2.5</b> Что мы (не) будем делать?</a></li>
+<li class="chapter" data-level="2.6" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#rstudio"><i class="fa fa-check"></i><b>2.6</b> RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#установка"><i class="fa fa-check"></i><b>2.7</b> Установка</a></li>
+<li class="chapter" data-level="2.8" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#начало-работы"><i class="fa fa-check"></i><b>2.8</b> Начало работы</a></li>
+<li class="chapter" data-level="2.9" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#r-как-калькулятор"><i class="fa fa-check"></i><b>2.9</b> R как калькулятор</a></li>
+<li class="chapter" data-level="2.10" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#операторы-присваивания"><i class="fa fa-check"></i><b>2.10</b> Операторы присваивания</a></li>
+<li class="chapter" data-level="2.11" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#векторы"><i class="fa fa-check"></i><b>2.11</b> Векторы</a></li>
+<li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
+<li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
+<li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
+<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#шорткаты"><i class="fa fa-check"></i><b>2.15</b> Шорткаты</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="визуализации.html"><a href="визуализации.html#базовый-r"><i class="fa fa-check"></i><b>3.1</b> Базовый R</a></li>
+<li class="chapter" data-level="3.2" data-path="визуализации.html"><a href="визуализации.html#lattice"><i class="fa fa-check"></i><b>3.2</b> Lattice</a></li>
+<li class="chapter" data-level="3.3" data-path="визуализации.html"><a href="визуализации.html#ggplot2"><i class="fa fa-check"></i><b>3.3</b> Ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="визуализации.html"><a href="визуализации.html#быстрое-решение-qplot"><i class="fa fa-check"></i><b>3.3.1</b> Быстрое решение: qplot()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="визуализации.html"><a href="визуализации.html#слой-за-слоем-ggplot"><i class="fa fa-check"></i><b>3.3.2</b> Слой за слоем: ggplot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="визуализации.html"><a href="визуализации.html#экспорт-графиков-из-среды-r"><i class="fa fa-check"></i><b>3.4</b> Экспорт графиков из среды R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="опрятные-данные.html"><a href="опрятные-данные.html"><i class="fa fa-check"></i><b>4</b> Опрятные данные</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#синтаксис-tidyverse"><i class="fa fa-check"></i><b>4.1</b> Синтаксис tidyverse</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#tibble"><i class="fa fa-check"></i><b>4.1.1</b> Tibble</a></li>
+<li class="chapter" data-level="4.1.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#dplyr"><i class="fa fa-check"></i><b>4.1.2</b> Dplyr</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#опрятные-данные-1"><i class="fa fa-check"></i><b>4.2</b> Опрятные данные</a></li>
+<li class="chapter" data-level="4.3" data-path="опрятные-данные.html"><a href="опрятные-данные.html#пример-буккроссинг"><i class="fa fa-check"></i><b>4.3</b> Пример: буккроссинг</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#смотрим-на-данные"><i class="fa fa-check"></i><b>4.3.1</b> Смотрим на данные</a></li>
+<li class="chapter" data-level="4.3.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#трансформируем-данные"><i class="fa fa-check"></i><b>4.3.2</b> Трансформируем данные</a></li>
+<li class="chapter" data-level="4.3.3" data-path="опрятные-данные.html"><a href="опрятные-данные.html#объединяем-данные"><i class="fa fa-check"></i><b>4.3.3</b> Объединяем данные</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html"><i class="fa fa-check"></i><b>5</b> Функциональное программирование</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#зачем-писать-функции"><i class="fa fa-check"></i><b>5.1</b> Зачем писать функции?</a></li>
+<li class="chapter" data-level="5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#область-видимости-переменных"><i class="fa fa-check"></i><b>5.2</b> Область видимости переменных</a></li>
+<li class="chapter" data-level="5.3" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#аргументы-функции"><i class="fa fa-check"></i><b>5.3</b> Аргументы функции</a></li>
+<li class="chapter" data-level="5.4" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#векторизируй-это"><i class="fa fa-check"></i><b>5.4</b> Векторизируй это</a></li>
+<li class="chapter" data-level="5.5" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#векторизованные-конструкции"><i class="fa fa-check"></i><b>5.5</b> Векторизованные конструкции</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#циклы"><i class="fa fa-check"></i><b>5.5.1</b> Циклы</a></li>
+<li class="chapter" data-level="5.5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#условия"><i class="fa fa-check"></i><b>5.5.2</b> Условия</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#вместо-циклов-базовый-r-и-tidyverse"><i class="fa fa-check"></i><b>5.6</b> Вместо циклов: базовый R и tidyverse</a></li>
+<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.7</b> Purrr</a></li>
+<li class="chapter" data-level="5.8" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#пример-итерации"><i class="fa fa-check"></i><b>5.8</b> Пример итерации</a></li>
+<li class="chapter" data-level="5.9" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#furrr"><i class="fa fa-check"></i><b>5.9</b> Furrr</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html"><i class="fa fa-check"></i><b>6</b> Импорт и экспорт данных</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#рабочая-директория"><i class="fa fa-check"></i><b>6.1</b> Рабочая директория</a></li>
+<li class="chapter" data-level="6.2" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-файлов-из-интернета"><i class="fa fa-check"></i><b>6.2</b> Чтение файлов из интернета</a></li>
+<li class="chapter" data-level="6.3" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-локальных-файлов"><i class="fa fa-check"></i><b>6.3</b> Чтение локальных файлов</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#csv-и-tsv"><i class="fa fa-check"></i><b>6.3.1</b> csv и tsv</a></li>
+<li class="chapter" data-level="6.3.2" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#xls-и-xlsx"><i class="fa fa-check"></i><b>6.3.2</b> xls и xlsx</a></li>
+<li class="chapter" data-level="6.3.3" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#txt"><i class="fa fa-check"></i><b>6.3.3</b> txt</a></li>
+<li class="chapter" data-level="6.3.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#doc"><i class="fa fa-check"></i><b>6.3.4</b> doc</a></li>
+<li class="chapter" data-level="6.3.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#pdf"><i class="fa fa-check"></i><b>6.3.5</b> pdf</a></li>
+<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.6</b> zip</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#xml-и-html"><i class="fa fa-check"></i><b>6.4</b> xml и html</a></li>
+<li class="chapter" data-level="6.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#json"><i class="fa fa-check"></i><b>6.5</b> json</a></li>
+<li class="chapter" data-level="6.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#gutenbergr"><i class="fa fa-check"></i><b>6.6</b> GutenbergR</a></li>
+<li class="chapter" data-level="6.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rperseus"><i class="fa fa-check"></i><b>6.7</b> RPerseus</a></li>
+<li class="chapter" data-level="6.8" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-нескольких-файлов"><i class="fa fa-check"></i><b>6.8</b> Чтение нескольких файлов</a></li>
+<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.9.1</b> Rdata</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html"><i class="fa fa-check"></i><b>7</b> Воспроизводимые исследования</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#о-воспроизводимости-1"><i class="fa fa-check"></i><b>7.1</b> О воспроизводимости</a></li>
+<li class="chapter" data-level="7.2" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#markdown"><i class="fa fa-check"></i><b>7.2</b> Markdown</a></li>
+<li class="chapter" data-level="7.3" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#синтаксис-markdown"><i class="fa fa-check"></i><b>7.3</b> Синтаксис Markdown</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#заголовки"><i class="fa fa-check"></i><b>7.3.1</b> Заголовки</a></li>
+<li class="chapter" data-level="7.3.2" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#форматирование"><i class="fa fa-check"></i><b>7.3.2</b> Форматирование</a></li>
+<li class="chapter" data-level="7.3.3" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#списки-1"><i class="fa fa-check"></i><b>7.3.3</b> Списки</a></li>
+<li class="chapter" data-level="7.3.4" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#ссылки"><i class="fa fa-check"></i><b>7.3.4</b> Ссылки</a></li>
+<li class="chapter" data-level="7.3.5" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#изображения"><i class="fa fa-check"></i><b>7.3.5</b> Изображения</a></li>
+<li class="chapter" data-level="7.3.6" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#блоки-кода"><i class="fa fa-check"></i><b>7.3.6</b> Блоки кода</a></li>
+<li class="chapter" data-level="7.3.7" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#цитаты"><i class="fa fa-check"></i><b>7.3.7</b> Цитаты</a></li>
+<li class="chapter" data-level="7.3.8" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#разделители"><i class="fa fa-check"></i><b>7.3.8</b> Разделители</a></li>
+<li class="chapter" data-level="7.3.9" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#таблицы-1"><i class="fa fa-check"></i><b>7.3.9</b> Таблицы</a></li>
+<li class="chapter" data-level="7.3.10" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#id"><i class="fa fa-check"></i><b>7.3.10</b> Чек-листы</a></li>
+<li class="chapter" data-level="7.3.11" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#внутренние-ссылки"><i class="fa fa-check"></i><b>7.3.11</b> Внутренние ссылки</a></li>
+<li class="chapter" data-level="7.3.12" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#графики"><i class="fa fa-check"></i><b>7.3.12</b> Графики</a></li>
+<li class="chapter" data-level="7.3.13" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#математические-формулы"><i class="fa fa-check"></i><b>7.3.13</b> Математические формулы</a></li>
+<li class="chapter" data-level="7.3.14" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#библиография"><i class="fa fa-check"></i><b>7.3.14</b> Библиография</a></li>
+<li class="chapter" data-level="7.3.15" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#смайлы"><i class="fa fa-check"></i><b>7.3.15</b> Смайлы</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#публикация-html"><i class="fa fa-check"></i><b>7.4</b> Публикация html</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html"><i class="fa fa-check"></i><b>8</b> Регулярные выражения</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#regex-в-базовом-r"><i class="fa fa-check"></i><b>8.1</b> Regex в базовом R</a></li>
+<li class="chapter" data-level="8.2" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#литералы-и-классы"><i class="fa fa-check"></i><b>8.2</b> Литералы и классы</a></li>
+<li class="chapter" data-level="8.3" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#якоря"><i class="fa fa-check"></i><b>8.3</b> Якоря</a></li>
+<li class="chapter" data-level="8.4" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#метасимволы"><i class="fa fa-check"></i><b>8.4</b> Метасимволы</a></li>
+<li class="chapter" data-level="8.5" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#экранирование"><i class="fa fa-check"></i><b>8.5</b> Экранирование</a></li>
+<li class="chapter" data-level="8.6" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#квантификация"><i class="fa fa-check"></i><b>8.6</b> Квантификация</a></li>
+<li class="chapter" data-level="8.7" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#жадная-и-ленивая-квантификация"><i class="fa fa-check"></i><b>8.7</b> Жадная и ленивая квантификация</a></li>
+<li class="chapter" data-level="8.8" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#regex-в-stringr-основы"><i class="fa fa-check"></i><b>8.8</b> Regex в stringr: основы</a></li>
+<li class="chapter" data-level="8.9" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_detect-и-str_count"><i class="fa fa-check"></i><b>8.9</b> str_detect() и str_count()</a></li>
+<li class="chapter" data-level="8.10" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_extract"><i class="fa fa-check"></i><b>8.10</b> str_extract()</a></li>
+<li class="chapter" data-level="8.11" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_subset-и-str_match"><i class="fa fa-check"></i><b>8.11</b> str_subset() и str_match()</a></li>
+<li class="chapter" data-level="8.12" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_replace"><i class="fa fa-check"></i><b>8.12</b> str_replace</a></li>
+<li class="chapter" data-level="8.13" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_split"><i class="fa fa-check"></i><b>8.13</b> str_split</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html"><i class="fa fa-check"></i><b>9</b> Веб-скрапинг</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#структура-html"><i class="fa fa-check"></i><b>9.1</b> Структура html</a></li>
+<li class="chapter" data-level="9.2" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#каскадные-таблицы-стилей"><i class="fa fa-check"></i><b>9.2</b> Каскадные таблицы стилей</a></li>
+<li class="chapter" data-level="9.3" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#извлечение-данных"><i class="fa fa-check"></i><b>9.3</b> Извлечение данных</a></li>
+<li class="chapter" data-level="9.4" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#извлечение-в-тиббл"><i class="fa fa-check"></i><b>9.4</b> Извлечение в тиббл</a></li>
+<li class="chapter" data-level="9.5" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#скрапим-телеграм-канал"><i class="fa fa-check"></i><b>9.5</b> Скрапим телеграм-канал</a></li>
+<li class="chapter" data-level="9.6" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#эмотиконы"><i class="fa fa-check"></i><b>9.6</b> Эмотиконы</a></li>
+<li class="chapter" data-level="9.7" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#рутинная-уборка"><i class="fa fa-check"></i><b>9.7</b> Рутинная уборка</a></li>
+<li class="chapter" data-level="9.8" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#лемматизация"><i class="fa fa-check"></i><b>9.8</b> Лемматизация</a></li>
+<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#таблицы-html"><i class="fa fa-check"></i><b>9.9</b> Таблицы html</a></li>
+<li class="chapter" data-level="9.10" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#wikisource"><i class="fa fa-check"></i><b>9.10</b> Wikisource</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html"><i class="fa fa-check"></i><b>10</b> Токенизация и лемматизация</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#токенизация-в-tidytext"><i class="fa fa-check"></i><b>10.1</b> Токенизация в tidytext</a></li>
+<li class="chapter" data-level="10.2" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#токенизация-в-tokenizers"><i class="fa fa-check"></i><b>10.2</b> Токенизация в tokenizers</a></li>
+<li class="chapter" data-level="10.3" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#скипграмы"><i class="fa fa-check"></i><b>10.3</b> Скипграмы</a></li>
+<li class="chapter" data-level="10.4" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#лемматизация-и-частеречная-разметка"><i class="fa fa-check"></i><b>10.4</b> Лемматизация и частеречная разметка</a></li>
+<li class="chapter" data-level="10.5" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#морфологическая-разметка"><i class="fa fa-check"></i><b>10.5</b> Морфологическая разметка</a></li>
+<li class="chapter" data-level="10.6" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#распределение-частей-речи"><i class="fa fa-check"></i><b>10.6</b> Распределение частей речи</a></li>
+<li class="chapter" data-level="10.7" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#совместная-встречаемость-слов"><i class="fa fa-check"></i><b>10.7</b> Совместная встречаемость слов</a></li>
+<li class="chapter" data-level="10.8" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#синтаксическая-разметка"><i class="fa fa-check"></i><b>10.8</b> Синтаксическая разметка</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html"><i class="fa fa-check"></i><b>11</b> Распределения слов и анализ частотностей</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#извлечение-источников"><i class="fa fa-check"></i><b>11.1</b> Извлечение источников</a></li>
+<li class="chapter" data-level="11.2" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#подготовка-источников"><i class="fa fa-check"></i><b>11.2</b> Подготовка источников</a></li>
+<li class="chapter" data-level="11.3" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#токенизация"><i class="fa fa-check"></i><b>11.3</b> Токенизация</a></li>
+<li class="chapter" data-level="11.4" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#cтоп-слова"><i class="fa fa-check"></i><b>11.4</b> Cтоп-слова</a></li>
+<li class="chapter" data-level="11.5" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#абсолютная-частотность"><i class="fa fa-check"></i><b>11.5</b> Абсолютная частотность</a></li>
+<li class="chapter" data-level="11.6" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#стемминг"><i class="fa fa-check"></i><b>11.6</b> Стемминг</a></li>
+<li class="chapter" data-level="11.7" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#относительная-частотность"><i class="fa fa-check"></i><b>11.7</b> Относительная частотность</a></li>
+<li class="chapter" data-level="11.8" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#распределения-слов-токенов"><i class="fa fa-check"></i><b>11.8</b> Распределения слов (токенов)</a></li>
+<li class="chapter" data-level="11.9" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#закон-ципфа"><i class="fa fa-check"></i><b>11.9</b> Закон Ципфа</a></li>
+<li class="chapter" data-level="11.10" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#ttr-type-token-ratio"><i class="fa fa-check"></i><b>11.10</b> TTR (type-token ratio)</a></li>
+<li class="chapter" data-level="11.11" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#tf-idf"><i class="fa fa-check"></i><b>11.11</b> TF-IDF</a></li>
+<li class="chapter" data-level="11.12" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#сравнение-при-помощи-диаграммы-рассеяния"><i class="fa fa-check"></i><b>11.12</b> Сравнение при помощи диаграммы рассеяния</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html"><i class="fa fa-check"></i><b>12</b> Эмоциональная тональность</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#анализ-тональности"><i class="fa fa-check"></i><b>12.1</b> Анализ тональности</a></li>
+<li class="chapter" data-level="12.2" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#подходы"><i class="fa fa-check"></i><b>12.2</b> Подходы</a></li>
+<li class="chapter" data-level="12.3" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#тезаурусы"><i class="fa fa-check"></i><b>12.3</b> Тезаурусы</a></li>
+<li class="chapter" data-level="12.4" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#лексиконы-для-русского-языка"><i class="fa fa-check"></i><b>12.4</b> Лексиконы для русского языка</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#chen-skiena"><i class="fa fa-check"></i><b>12.4.1</b> Chen &amp; Skiena</a></li>
+<li class="chapter" data-level="12.4.2" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#rusentlex-2016"><i class="fa fa-check"></i><b>12.4.2</b> RuSentLex 2016</a></li>
+<li class="chapter" data-level="12.4.3" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#afinn"><i class="fa fa-check"></i><b>12.4.3</b> AFINN</a></li>
+<li class="chapter" data-level="12.4.4" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#nrc"><i class="fa fa-check"></i><b>12.4.4</b> NRC</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#анализ-тональности-с-tidy-data"><i class="fa fa-check"></i><b>12.5</b> Анализ тональности с Tidy Data</a></li>
+<li class="chapter" data-level="12.6" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#подготовка-текста"><i class="fa fa-check"></i><b>12.6</b> Подготовка текста</a></li>
+<li class="chapter" data-level="12.7" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#модификация-лексикона"><i class="fa fa-check"></i><b>12.7</b> Модификация лексикона</a></li>
+<li class="chapter" data-level="12.8" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#соединение-лексикона-и-текста"><i class="fa fa-check"></i><b>12.8</b> Соединение лексикона и текста</a></li>
+<li class="chapter" data-level="12.9" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#тональность-на-оси-времени"><i class="fa fa-check"></i><b>12.9</b> Тональность на оси времени</a></li>
+<li class="chapter" data-level="12.10" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#для-других-языков"><i class="fa fa-check"></i><b>12.10</b> Для других языков</a></li>
+<li class="chapter" data-level="12.11" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#виды-эмоций"><i class="fa fa-check"></i><b>12.11</b> Виды эмоций</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html"><i class="fa fa-check"></i><b>13</b> Тематическое моделирование</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#что-такое-lda"><i class="fa fa-check"></i><b>13.1</b> Что такое LDA</a></li>
+<li class="chapter" data-level="13.2" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#распределение-дирихле"><i class="fa fa-check"></i><b>13.2</b> Распределение Дирихле</a></li>
+<li class="chapter" data-level="13.3" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#подтоговка-данных"><i class="fa fa-check"></i><b>13.3</b> Подтоговка данных</a></li>
+<li class="chapter" data-level="13.4" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#матрица-встречаемости"><i class="fa fa-check"></i><b>13.4</b> Матрица встречаемости</a></li>
+<li class="chapter" data-level="13.5" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#число-тем"><i class="fa fa-check"></i><b>13.5</b> Число тем</a></li>
+<li class="chapter" data-level="13.6" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#модель-lda"><i class="fa fa-check"></i><b>13.6</b> Модель LDA</a></li>
+<li class="chapter" data-level="13.7" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#слова-и-темы"><i class="fa fa-check"></i><b>13.7</b> Слова и темы</a></li>
+<li class="chapter" data-level="13.8" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#сравнение-топиков"><i class="fa fa-check"></i><b>13.8</b> Сравнение топиков</a></li>
+<li class="chapter" data-level="13.9" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#темы-и-документы"><i class="fa fa-check"></i><b>13.9</b> Темы и документы</a></li>
+<li class="chapter" data-level="13.10" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#распределения-вероятности-для-топиков"><i class="fa fa-check"></i><b>13.10</b> Распределения вероятности для топиков</a></li>
+<li class="chapter" data-level="13.11" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#интерактивные-визуализации"><i class="fa fa-check"></i><b>13.11</b> Интерактивные визуализации</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html"><i class="fa fa-check"></i><b>14</b> Латентно-семантический анализ</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#что-это-такое"><i class="fa fa-check"></i><b>14.1</b> Что это такое</a></li>
+<li class="chapter" data-level="14.2" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#векторное-представление-слов"><i class="fa fa-check"></i><b>14.2</b> Векторное представление слов</a></li>
+<li class="chapter" data-level="14.3" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#сингулярное-разложение-матрицы"><i class="fa fa-check"></i><b>14.3</b> Сингулярное разложение матрицы</a></li>
+<li class="chapter" data-level="14.4" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#простой-пример"><i class="fa fa-check"></i><b>14.4</b> Простой пример</a></li>
+<li class="chapter" data-level="14.5" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#векторы-слов"><i class="fa fa-check"></i><b>14.5</b> Векторы слов</a></li>
+<li class="chapter" data-level="14.6" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#пакеты-для-работы-с-lsa"><i class="fa fa-check"></i><b>14.6</b> Пакеты для работы с LSA</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#lsa"><i class="fa fa-check"></i><b>14.6.1</b> lsa</a></li>
+<li class="chapter" data-level="14.6.2" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#textminer"><i class="fa fa-check"></i><b>14.6.2</b> TextmineR</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#lsa-c-использованием-tidy-data"><i class="fa fa-check"></i><b>14.7</b> LSA c использованием Tidy Data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html"><i class="fa fa-check"></i><b>15</b> Кластеризация и метод главных компонент</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#виды-кластерного-анализа"><i class="fa fa-check"></i><b>15.1</b> Виды кластерного анализа</a></li>
+<li class="chapter" data-level="15.2" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#кластеризация-по-методу-k-средних"><i class="fa fa-check"></i><b>15.2</b> Кластеризация по методу K средних</a></li>
+<li class="chapter" data-level="15.3" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#k-means-в-r"><i class="fa fa-check"></i><b>15.3</b> K-means в R</a></li>
+<li class="chapter" data-level="15.4" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#k-means-для-кластеризации-текстов"><i class="fa fa-check"></i><b>15.4</b> K-means для кластеризации текстов</a></li>
+<li class="chapter" data-level="15.5" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#нормализация-данных"><i class="fa fa-check"></i><b>15.5</b> Нормализация данных</a></li>
+<li class="chapter" data-level="15.6" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация"><i class="fa fa-check"></i><b>15.6</b> Иерархическая кластеризация</a></li>
+<li class="chapter" data-level="15.7" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#алгоритм-иерархической-кластеризации"><i class="fa fa-check"></i><b>15.7</b> Алгоритм иерархической кластеризации</a></li>
+<li class="chapter" data-level="15.8" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация-в-r"><i class="fa fa-check"></i><b>15.8</b> Иерархическая кластеризация в R</a></li>
+<li class="chapter" data-level="15.9" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация-текстов"><i class="fa fa-check"></i><b>15.9</b> Иерархическая кластеризация текстов</a></li>
+<li class="chapter" data-level="15.10" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#метод-главных-компонент"><i class="fa fa-check"></i><b>15.10</b> Метод главных компонент</a></li>
+<li class="chapter" data-level="15.11" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#pca-для-визуализации-кластеров-k-means"><i class="fa fa-check"></i><b>15.11</b> PCA для визуализации кластеров K-means</a></li>
+<li class="chapter" data-level="15.12" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#многомерное-шкалирование"><i class="fa fa-check"></i><b>15.12</b> Многомерное шкалирование</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Компьютерный анализ текста в R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="кластеризация-и-метод-главных-компонент" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Тема 15</span> Кластеризация и метод главных компонент<a href="кластеризация-и-метод-главных-компонент.html#кластеризация-и-метод-главных-компонент" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="виды-кластерного-анализа" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Виды кластерного анализа<a href="кластеризация-и-метод-главных-компонент.html#виды-кластерного-анализа" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Все методы машинного обучения делятся на методы <strong>обучения с учителем</strong> и методы обучения без учителя. В первом случае у нас есть некоторое количество признаков X, измеренных у n объектов, и некоторый отклик Y. Задача заключается в предсказании Y по X. Например, мы измерили вес и пушистость у сотни котов известных пород, и хотим предсказать породу других котов, зная их вес и пушистость.</p>
+<p><strong>Обучение без учителя</strong> предназначено для случаев, когда у нас есть только некоторый набор признаков X, но нет значения отклика. Например, есть группа котов, для которых мы измерили вес и пушистость, но мы не знаем, на какие породы они делятся.</p>
+<p><strong>Кластеризация</strong> относится к числу методов для обнаружения неизвестных групп (кластеров) в данных. Точнее, это целый набор методов. Мы рассмотрим два из них:
+- кластеризация по методу K средних
+- иерархическая кластеризация</p>
+<p>В случае с кластеризацией по методу K средних мы пытаемся разбить наблюдения на некоторое заранее заданное число кластеров. Иерархическая кластеризация возвращает результат в виде дерева (<strong>дендрограммы</strong>), которая позволяет увидеть все возможные кластеры.</p>
+</div>
+<div id="кластеризация-по-методу-k-средних" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Кластеризация по методу K средних<a href="кластеризация-и-метод-главных-компонент.html#кластеризация-по-методу-k-средних" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Алгоритм кластеризации:</p>
+<ol style="list-style-type: decimal">
+<li>Каждому наблюдению присваивается случайно выбранное число из интервала от 1 до K (число кластеров). Это исходные метки</li>
+</ol>
+<p><img src="https://delladata.fr/wp-content/uploads/2020/05/algo_kmeans.jpg.webp" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Вычисляется <em>центроид</em> для каждого из кластеров. Центроид k-го класса – вектор из p средних значений признаков, описывающих наблюдения из этого кластера;</p></li>
+<li><p>Каждому наблюдению присваивается метка того кластера, чей центроид находится ближе всего к этому наблюдению (удаленность выражается обычно в виде евклидова расстояния)</p></li>
+<li><p>Повторить шаги 2-3 до тех пор, пока метки классов не станут изменяться.</p></li>
+</ol>
+<p>Это дает возможность минимизировать <strong>внутрикластерный разброс</strong>: хорошей считается такая кластеризация, при которой такой разброс минимален.</p>
+<p>Когда центроиды двигаются, кластеры приобретают и теряют документы.</p>
+<p><img src="https://www.tidymodels.org/learn/statistics/k-means/kmeans.gif" /></p>
+<div class="infobox">
+<p>Внутрикластерный разброс в кластере k – это сумма квадратов евклидовых расстояний между всеми парами наблюдений в этом кластере, разделенная на общее число входящих в него наблюдений.</p>
+</div>
+</div>
+<div id="k-means-в-r" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> K-means в R<a href="кластеризация-и-метод-главных-компонент.html#k-means-в-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Рассмотрим это сначала на симулированных, а затем на реальных данных.</p>
+<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="кластеризация-и-метод-главных-компонент.html#cb838-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb838-2"><a href="кластеризация-и-метод-главных-компонент.html#cb838-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">50</span> <span class="sc">*</span> <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb838-3"><a href="кластеризация-и-метод-главных-компонент.html#cb838-3" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">=</span> x[<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb838-4"><a href="кластеризация-и-метод-главных-компонент.html#cb838-4" tabindex="-1"></a>x[<span class="dv">26</span><span class="sc">:</span><span class="dv">50</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">=</span> x[<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="sc">-</span> <span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb839-1"><a href="кластеризация-и-метод-главных-компонент.html#cb839-1" tabindex="-1"></a>km.out <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(x, <span class="at">centers =</span> <span class="dv">2</span>, <span class="at">nstart =</span> <span class="dv">20</span>)</span>
+<span id="cb839-2"><a href="кластеризация-и-метод-главных-компонент.html#cb839-2" tabindex="-1"></a></span>
+<span id="cb839-3"><a href="кластеризация-и-метод-главных-компонент.html#cb839-3" tabindex="-1"></a>km.out<span class="sc">$</span>cluster</span></code></pre></div>
+<pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2
+## [39] 2 2 2 2 2 2 2 2 2 2 2 2</code></pre>
+<p>Наблюдения разделились идеально. Вот так выглядят наши центроиды:</p>
+<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb841-1"><a href="кластеризация-и-метод-главных-компонент.html#cb841-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb841-2"><a href="кластеризация-и-метод-главных-компонент.html#cb841-2" tabindex="-1"></a></span>
+<span id="cb841-3"><a href="кластеризация-и-метод-главных-компонент.html#cb841-3" tabindex="-1"></a>centers <span class="ot">&lt;-</span> km.out<span class="sc">$</span>centers <span class="sc">%&gt;%</span> </span>
+<span id="cb841-4"><a href="кластеризация-и-метод-главных-компонент.html#cb841-4" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code></pre></div>
+<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if
+## `.name_repair` is omitted as of tibble 2.0.0.
+## ℹ Using compatibility `.name_repair`.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="кластеризация-и-метод-главных-компонент.html#cb843-1" tabindex="-1"></a>centers</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##       V1    V2
+##    &lt;dbl&gt; &lt;dbl&gt;
+## 1  3.33   2.92
+## 2 -0.666 -1.08</code></pre>
+<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="кластеризация-и-метод-главных-компонент.html#cb845-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb845-2"><a href="кластеризация-и-метод-главных-компонент.html#cb845-2" tabindex="-1"></a></span>
+<span id="cb845-3"><a href="кластеризация-и-метод-главных-компонент.html#cb845-3" tabindex="-1"></a><span class="fu">as_tibble</span>(x) <span class="sc">%&gt;%</span></span>
+<span id="cb845-4"><a href="кластеризация-и-метод-главных-компонент.html#cb845-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(V1, V2, <span class="at">color =</span> km.out<span class="sc">$</span>cluster)) <span class="sc">+</span></span>
+<span id="cb845-5"><a href="кластеризация-и-метод-главных-компонент.html#cb845-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb845-6"><a href="кластеризация-и-метод-главных-компонент.html#cb845-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> centers, <span class="at">color =</span> <span class="st">&quot;deeppink3&quot;</span>, </span>
+<span id="cb845-7"><a href="кластеризация-и-метод-главных-компонент.html#cb845-7" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-395-1.png" width="672" />
+Аргумент <code>nstart</code> позволяет запустить алгоритм функции несколько раз с разными начальными метками кластеров; функциия вернет наилучший результат.</p>
+</div>
+<div id="k-means-для-кластеризации-текстов" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> K-means для кластеризации текстов<a href="кластеризация-и-метод-главных-компонент.html#k-means-для-кластеризации-текстов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Я воспользуюсь данными из пакета <code>stylo</code>, где хранятся частотности 3000 наиболее частотных слов для 26 книг 5 авторов. Один из этих авторов – таинственный Роберт Гэлбрейт, как выяснилось – псевдоним Джоан Роулинг.</p>
+<div class="sourceCode" id="cb846"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb846-1"><a href="кластеризация-и-метод-главных-компонент.html#cb846-1" tabindex="-1"></a><span class="fu">library</span>(stylo)</span>
+<span id="cb846-2"><a href="кластеризация-и-метод-главных-компонент.html#cb846-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;galbraith&quot;</span>)</span>
+<span id="cb846-3"><a href="кластеризация-и-метод-главных-компонент.html#cb846-3" tabindex="-1"></a></span>
+<span id="cb846-4"><a href="кластеризация-и-метод-главных-компонент.html#cb846-4" tabindex="-1"></a>galbraith[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<pre><code>##                           the      and       to       of        a
+## coben_breaker        3.592199 1.175108 2.162724 1.375736 2.518600
+## coben_dropshot       3.587836 1.178543 2.122161 1.268598 2.375359
+## coben_fadeaway       3.931392 1.445498 2.200406 1.213044 2.306477
+## coben_falsemove      3.625411 1.613339 2.133533 1.236688 2.400991
+## coben_goneforgood    3.834031 1.816723 2.152941 1.175808 1.961908
+## coben_nosecondchance 4.098293 1.588967 2.271255 1.205863 1.992137</code></pre>
+<p>Применим к этим данным функцию <code>kmeans</code>. Этот датасет имеет формат <code>stylo.data</code>, поэтому сначала его трансформируем. Также уменьшим число переменных с 3000 до 200.</p>
+<div class="sourceCode" id="cb848"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb848-1"><a href="кластеризация-и-метод-главных-компонент.html#cb848-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb848-2"><a href="кластеризация-и-метод-главных-компонент.html#cb848-2" tabindex="-1"></a>galbraith <span class="ot">&lt;-</span> <span class="fu">as.data.frame.matrix</span>(galbraith)[,<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>]</span>
+<span id="cb848-3"><a href="кластеризация-и-метод-главных-компонент.html#cb848-3" tabindex="-1"></a>km.out <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(galbraith, <span class="at">centers =</span> <span class="dv">5</span>, <span class="at">nstart =</span> <span class="dv">20</span>)</span>
+<span id="cb848-4"><a href="кластеризация-и-метод-главных-компонент.html#cb848-4" tabindex="-1"></a></span>
+<span id="cb848-5"><a href="кластеризация-и-метод-главных-компонент.html#cb848-5" tabindex="-1"></a>km.out<span class="sc">$</span>cluster</span></code></pre></div>
+<pre><code>##        coben_breaker       coben_dropshot       coben_fadeaway 
+##                    5                    5                    5 
+##      coben_falsemove    coben_goneforgood coben_nosecondchance 
+##                    5                    1                    1 
+##      coben_tellnoone    galbraith_cuckoos         lewis_battle 
+##                    1                    4                    3 
+##        lewis_caspian          lewis_chair          lewis_horse 
+##                    3                    3                    3 
+##           lewis_lion         lewis_nephew         lewis_voyage 
+##                    3                    3                    3 
+##       rowling_casual      rowling_chamber       rowling_goblet 
+##                    4                    2                    2 
+##      rowling_hallows        rowling_order       rowling_prince 
+##                    2                    2                    2 
+##     rowling_prisoner        rowling_stone        tolkien_lord1 
+##                    2                    2                    3 
+##        tolkien_lord2        tolkien_lord3 
+##                    3                    3</code></pre>
+<div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb850-1"><a href="кластеризация-и-метод-главных-компонент.html#cb850-1" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb850-2"><a href="кластеризация-и-метод-главных-компонент.html#cb850-2" tabindex="-1"></a>expected <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(<span class="fu">names</span>(km.out<span class="sc">$</span>cluster), <span class="st">&quot;_.*&quot;</span>)</span>
+<span id="cb850-3"><a href="кластеризация-и-метод-главных-компонент.html#cb850-3" tabindex="-1"></a></span>
+<span id="cb850-4"><a href="кластеризация-и-метод-главных-компонент.html#cb850-4" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">expected =</span> expected, </span>
+<span id="cb850-5"><a href="кластеризация-и-метод-главных-компонент.html#cb850-5" tabindex="-1"></a>       <span class="at">predicted =</span> km.out<span class="sc">$</span>cluster) <span class="sc">%&gt;%</span> </span>
+<span id="cb850-6"><a href="кластеризация-и-метод-главных-компонент.html#cb850-6" tabindex="-1"></a>  <span class="fu">group_by</span>(expected) <span class="sc">%&gt;%</span> </span>
+<span id="cb850-7"><a href="кластеризация-и-метод-главных-компонент.html#cb850-7" tabindex="-1"></a>  <span class="fu">count</span>(predicted)</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 3
+## # Groups:   expected [5]
+##   expected  predicted     n
+##   &lt;chr&gt;         &lt;int&gt; &lt;int&gt;
+## 1 coben             1     3
+## 2 coben             5     4
+## 3 galbraith         4     1
+## 4 lewis             3     7
+## 5 rowling           2     7
+## 6 rowling           4     1
+## 7 tolkien           3     3</code></pre>
+<p>Поскольку у нас многомерные данные, придется применить метод главных компонент, чтобы изобразить их графически. Об этом методе я скажу ниже, а пока попробуем применить иерархическую кластеризацию.</p>
+</div>
+<div id="нормализация-данных" class="section level2 hasAnchor" number="15.5">
+<h2><span class="header-section-number">15.5</span> Нормализация данных<a href="кластеризация-и-метод-главных-компонент.html#нормализация-данных" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Формула расстояния зависит от способа измерения объектов. Если одни объекты имеют больший разброс значений, чем другие, то при вычислении расстояний будут преобладать элементы с более широкими диапазонами.</p>
+<div class="sourceCode" id="cb852"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb852-1"><a href="кластеризация-и-метод-главных-компонент.html#cb852-1" tabindex="-1"></a><span class="fu">as_tibble</span>(<span class="fu">t</span>(<span class="fu">map_df</span>(galbraith, sd)), <span class="at">rownames =</span> <span class="st">&quot;word&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 0 × 1
+## # ℹ 1 variable: word &lt;chr&gt;</code></pre>
+<p>Перед применением алгоритма в некоторых случаях рекомендуется изменить масштабы признаков, чтобы каждый из них вносил в формулу расстояния примерно равный вклад.</p>
+<p>Распространенное преобразование называется стандартизацией по Z-оценке: из значения признака Х вычитается среднее арифметическое, а результат делится на стандартное отклонение Х.</p>
+<p><span class="math display">\[ X_{new} = \frac{X - Mean(X)}{StDev(X)}\]</span></p>
+<div class="sourceCode" id="cb854"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb854-1"><a href="кластеризация-и-метод-главных-компонент.html#cb854-1" tabindex="-1"></a>galbraith_norm <span class="ot">&lt;-</span> <span class="fu">scale</span>(galbraith)</span></code></pre></div>
+<p>Снова проведем кластеризацию:</p>
+<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb855-1"><a href="кластеризация-и-метод-главных-компонент.html#cb855-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb855-2"><a href="кластеризация-и-метод-главных-компонент.html#cb855-2" tabindex="-1"></a>km_out_norm <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(galbraith_norm, <span class="at">centers =</span> <span class="dv">5</span>, <span class="at">nstart =</span> <span class="dv">20</span>)</span>
+<span id="cb855-3"><a href="кластеризация-и-метод-главных-компонент.html#cb855-3" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">expected =</span> expected, </span>
+<span id="cb855-4"><a href="кластеризация-и-метод-главных-компонент.html#cb855-4" tabindex="-1"></a>       <span class="at">predicted =</span> km_out_norm<span class="sc">$</span>cluster) <span class="sc">%&gt;%</span> </span>
+<span id="cb855-5"><a href="кластеризация-и-метод-главных-компонент.html#cb855-5" tabindex="-1"></a>  <span class="fu">group_by</span>(expected) <span class="sc">%&gt;%</span> </span>
+<span id="cb855-6"><a href="кластеризация-и-метод-главных-компонент.html#cb855-6" tabindex="-1"></a>  <span class="fu">count</span>(predicted)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+## # Groups:   expected [5]
+##   expected  predicted     n
+##   &lt;chr&gt;         &lt;int&gt; &lt;int&gt;
+## 1 coben             3     7
+## 2 galbraith         5     1
+## 3 lewis             2     7
+## 4 rowling           1     7
+## 5 rowling           5     1
+## 6 tolkien           4     3</code></pre>
+<p>Почти все авторы разошлись по разным кластерам (кроме Роулинг), при этом Гэлбрейт в одном кластере с Роулинг.</p>
+</div>
+<div id="иерархическая-кластеризация" class="section level2 hasAnchor" number="15.6">
+<h2><span class="header-section-number">15.6</span> Иерархическая кластеризация<a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Одним из недостатков кластеризации по методу K средних является то, что она требует предварительно указать число кластеров. Этого недостатка лишена иерархическая кластеризация. Если такая кластеризация происходит “снизу вверх”, она называется <strong>агломеративной</strong>. При этом построение дендрограммы начинается с “листьев” и продолжается вплоть до самого “ствола”.</p>
+<p><img src="images/clusters1.png" /></p>
+<p>При интерпретации дерева надо иметь в виду, что существует <span class="math inline">\(2^{n-1}\)</span> способов упорядочения ветвей дендрограммы, где n – это число листьев. В каждой из точек слияния можно поменять местами наблюдения, не изменяя смысла дендрограммы. Поэтому выводы о сходстве двух наблюдений нельзя делать на основе из близости по горизонтальной оси. См. Рис. 10.10 из книги “Введение в статистическое обучение”, с. 423). На рисунке видно, что наблюдение 9 похоже на наблюдение 2 не больше, чем оно похоже на наблюдения 8, 5 и 7. Вместо этого выводы делаются, исходя из положения на вертикальной оси той точки, где происходит слияние наблюдений.</p>
+<p>Количество кластеров определеяется высотой, на которой мы разрезаем дендрограмму.
+<img src="https://i.stack.imgur.com/tnbb9.jpg" /></p>
+<p>Из этого следует, что одну и ту же дендрограмму можно использовать для получения разного числа кластеров.</p>
+</div>
+<div id="алгоритм-иерархической-кластеризации" class="section level2 hasAnchor" number="15.7">
+<h2><span class="header-section-number">15.7</span> Алгоритм иерархической кластеризации<a href="кластеризация-и-метод-главных-компонент.html#алгоритм-иерархической-кластеризации" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Вычислить меру различия для всех пар наблюдений. На первом шаге все наблюдения рассматриваются как отдельный кластер.</p></li>
+<li><p>Найти пару наиболее похожих кластеров и объединить их. Различие между кластерами соответствует высоте, на которой происходит их слияние в дендрограмме.</p></li>
+<li><p>Повторить шаги 1-2, пока не останется 1 кластер.</p></li>
+</ol>
+<p><img src="images/clusters2.png" /></p>
+<p>Вид дерева будет зависеть от того, какой тип присоединения вы выберете. На рисунке ниже представлено три способа: полное, одиночное, среднее.</p>
+<p><img src="https://www.researchgate.net/publication/329208978/figure/fig5/AS:755481513562120@1557132237914/Different-linkage-methods-for-hierarchical-clustering.png" /></p>
+<p>Обычно предпочитают среднее и полное, т.к. они приводят к более сбалансированным дендрограммам.</p>
+<p><img src="https://slideplayer.com/slide/12781562/77/images/7/The+Elements+of+Statistical+Learning+%282nd+edition%29+Hastie%2C+Tibshirani+and+Friedman..jpg" /></p>
+<p>Для функции <code>hclust()</code> в R по умолчанию выставлено значение аргумента <code>method = "complete"</code>.</p>
+</div>
+<div id="иерархическая-кластеризация-в-r" class="section level2 hasAnchor" number="15.8">
+<h2><span class="header-section-number">15.8</span> Иерархическая кластеризация в R<a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация-в-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Применим алгоритм к симулированным данным, которые мы создали выше. Функция <code>dist()</code> по умолчанию считает евклидово расстояние.</p>
+<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="кластеризация-и-метод-главных-компонент.html#cb857-1" tabindex="-1"></a>hc.complete <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(x), <span class="at">method =</span> <span class="st">&quot;complete&quot;</span>)</span>
+<span id="cb857-2"><a href="кластеризация-и-метод-главных-компонент.html#cb857-2" tabindex="-1"></a><span class="fu">plot</span>(hc.complete)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-402-1.png" width="672" />
+На картинке видно, что наблюдения из верхих и нижних рядов почти идеально разделились на два кластера.</p>
+</div>
+<div id="иерархическая-кластеризация-текстов" class="section level2 hasAnchor" number="15.9">
+<h2><span class="header-section-number">15.9</span> Иерархическая кластеризация текстов<a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация-текстов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Для вычисления расстояния между текстами лучше подойдет не евклидово, а косинусное расстояние на нормализованных данных. В базовой <code>dist()</code> его нет, поэтому воспользуемся пакетом <code>philentropy</code>.</p>
+<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="кластеризация-и-метод-главных-компонент.html#cb858-1" tabindex="-1"></a>dist_mx <span class="ot">&lt;-</span> galbraith_norm <span class="sc">%&gt;%</span> </span>
+<span id="cb858-2"><a href="кластеризация-и-метод-главных-компонент.html#cb858-2" tabindex="-1"></a>  philentropy<span class="sc">::</span><span class="fu">distance</span>(<span class="at">method =</span> <span class="st">&quot;cosine&quot;</span>, <span class="at">use.row.names =</span> T) </span></code></pre></div>
+<pre><code>## Metric: &#39;cosine&#39;; comparing: 26 vectors.</code></pre>
+<p>Преобразуем меру сходства в меру расстояния и передадим на кластеризацию.</p>
+<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="кластеризация-и-метод-главных-компонент.html#cb860-1" tabindex="-1"></a>dist_mx <span class="ot">&lt;-</span> <span class="fu">as.dist</span>(<span class="dv">1</span> <span class="sc">-</span> dist_mx)</span>
+<span id="cb860-2"><a href="кластеризация-и-метод-главных-компонент.html#cb860-2" tabindex="-1"></a>hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_mx)</span>
+<span id="cb860-3"><a href="кластеризация-и-метод-главных-компонент.html#cb860-3" tabindex="-1"></a></span>
+<span id="cb860-4"><a href="кластеризация-и-метод-главных-компонент.html#cb860-4" tabindex="-1"></a><span class="fu">plot</span>(hc)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-404-1.png" width="672" /></p>
+<p>Для получения меток кластеров, возникающих в результате рассечения дендрограммы на той или иной высоте, можно воспользоваться функцией <code>cutree()</code>.</p>
+<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="кластеризация-и-метод-главных-компонент.html#cb861-1" tabindex="-1"></a><span class="fu">cutree</span>(hc, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##        coben_breaker       coben_dropshot       coben_fadeaway 
+##                    1                    1                    1 
+##      coben_falsemove    coben_goneforgood coben_nosecondchance 
+##                    1                    1                    1 
+##      coben_tellnoone    galbraith_cuckoos         lewis_battle 
+##                    1                    2                    3 
+##        lewis_caspian          lewis_chair          lewis_horse 
+##                    3                    3                    3 
+##           lewis_lion         lewis_nephew         lewis_voyage 
+##                    3                    3                    3 
+##       rowling_casual      rowling_chamber       rowling_goblet 
+##                    2                    4                    4 
+##      rowling_hallows        rowling_order       rowling_prince 
+##                    4                    4                    4 
+##     rowling_prisoner        rowling_stone        tolkien_lord1 
+##                    4                    4                    5 
+##        tolkien_lord2        tolkien_lord3 
+##                    5                    5</code></pre>
+<p>Эти метки можно использовать, чтобы раскрасить дерево.</p>
+<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb863-1"><a href="кластеризация-и-метод-главных-компонент.html#cb863-1" tabindex="-1"></a><span class="fu">library</span>(dendextend)</span>
+<span id="cb863-2"><a href="кластеризация-и-метод-главных-компонент.html#cb863-2" tabindex="-1"></a>hcd <span class="ot">&lt;-</span> <span class="fu">as.dendrogram</span>(hc)</span>
+<span id="cb863-3"><a href="кластеризация-и-метод-главных-компонент.html#cb863-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">7</span>))</span>
+<span id="cb863-4"><a href="кластеризация-и-метод-главных-компонент.html#cb863-4" tabindex="-1"></a>hcd <span class="sc">%&gt;%</span> </span>
+<span id="cb863-5"><a href="кластеризация-и-метод-главных-компонент.html#cb863-5" tabindex="-1"></a>  <span class="fu">set</span>(<span class="st">&quot;branches_k_color&quot;</span>, <span class="at">k =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb863-6"><a href="кластеризация-и-метод-главных-компонент.html#cb863-6" tabindex="-1"></a>  <span class="fu">set</span>(<span class="st">&quot;labels_col&quot;</span>, <span class="at">k=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb863-7"><a href="кластеризация-и-метод-главных-компонент.html#cb863-7" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">horiz =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb863-8"><a href="кластеризация-и-метод-главных-компонент.html#cb863-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.8</span>, <span class="at">col=</span><span class="st">&quot;pink4&quot;</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-406-1.png" width="672" /></p>
+<p>Результат как иерархической кластеризации, так и кластеризации по методу K средних многомерных данных можно визуализировать в двумерном пространстве, если предварительно применить к данным метод главных компонент.</p>
+</div>
+<div id="метод-главных-компонент" class="section level2 hasAnchor" number="15.10">
+<h2><span class="header-section-number">15.10</span> Метод главных компонент<a href="кластеризация-и-метод-главных-компонент.html#метод-главных-компонент" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Метод главных компонент (англ. principal component analysis, PCA) — один из основных способов уменьшить размерность данных, потеряв наименьшее количество информации. Этот метод привлекается, в частности, когда надо визуализировать многомерные данные.</p>
+<p>Общий принцип хорошо объясняется Гаральдом Баайеном (с. 119).</p>
+<p><img src="images/pca.png" /></p>
+<p>Серый цвет верхнего левого куба означает, что точки распределены равномерно – нужны все три измерения для того, чтобы описать положение точки в кубе. Куб справа сверху по-прежнему имеет три измерения, но нам достаточно только двух, вдоль которых рассеяны данные. Куб слева снизу тоже имеет два измерения, но вдоль оси y разброс данных меньше, чем вдоль x. Наконец, для куба справа снизу достаточно только одного измерения.</p>
+<p>Метод главных компонент ищет такие измерения, вдоль которых наблюдается наибольший разброс данных, причем каждая следующая компонента будет объяснять меньше разброса.</p>
+<div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb864-1"><a href="кластеризация-и-метод-главных-компонент.html#cb864-1" tabindex="-1"></a>pca_fit <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(galbraith, <span class="at">scale. =</span> T, <span class="at">center =</span> T)</span>
+<span id="cb864-2"><a href="кластеризация-и-метод-главных-компонент.html#cb864-2" tabindex="-1"></a></span>
+<span id="cb864-3"><a href="кластеризация-и-метод-главных-компонент.html#cb864-3" tabindex="-1"></a><span class="fu">names</span>(pca_fit)</span></code></pre></div>
+<pre><code>## [1] &quot;sdev&quot;     &quot;rotation&quot; &quot;center&quot;   &quot;scale&quot;    &quot;x&quot;</code></pre>
+<p>Первый элемент хранит данные о стандартном отклонении, соответствующем каждой компоненте.</p>
+<div class="sourceCode" id="cb866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb866-1"><a href="кластеризация-и-метод-главных-компонент.html#cb866-1" tabindex="-1"></a><span class="fu">round</span>(pca_fit<span class="sc">$</span>sdev, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##  [1] 8.118 6.282 4.816 3.480 3.218 2.660 2.236 2.042 1.975 1.875 1.811 1.681
+## [13] 1.555 1.514 1.478 1.339 1.288 1.266 1.173 1.122 1.104 1.031 0.985 0.900
+## [25] 0.747 0.000</code></pre>
+<p>Это можно узнать также, вызвав функцию summary.</p>
+<div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb868-1"><a href="кластеризация-и-метод-главных-компонент.html#cb868-1" tabindex="-1"></a><span class="fu">summary</span>(pca_fit)</span></code></pre></div>
+<pre><code>## Importance of components:
+##                           PC1    PC2    PC3     PC4     PC5     PC6    PC7
+## Standard deviation     8.1180 6.2824 4.8161 3.47962 3.21811 2.65990 2.2362
+## Proportion of Variance 0.3295 0.1973 0.1160 0.06054 0.05178 0.03538 0.0250
+## Cumulative Proportion  0.3295 0.5269 0.6428 0.70336 0.75514 0.79052 0.8155
+##                            PC8    PC9    PC10    PC11    PC12    PC13    PC14
+## Standard deviation     2.04233 1.9748 1.87495 1.81070 1.68115 1.55528 1.51356
+## Proportion of Variance 0.02086 0.0195 0.01758 0.01639 0.01413 0.01209 0.01145
+## Cumulative Proportion  0.83638 0.8559 0.87345 0.88985 0.90398 0.91607 0.92753
+##                           PC15    PC16   PC17    PC18    PC19    PC20   PC21
+## Standard deviation     1.47822 1.33897 1.2882 1.26627 1.17319 1.12184 1.1044
+## Proportion of Variance 0.01093 0.00896 0.0083 0.00802 0.00688 0.00629 0.0061
+## Cumulative Proportion  0.93845 0.94742 0.9557 0.96373 0.97061 0.97690 0.9830
+##                           PC22    PC23    PC24    PC25                 PC26
+## Standard deviation     1.03061 0.98464 0.89953 0.74739 0.000000000000007917
+## Proportion of Variance 0.00531 0.00485 0.00405 0.00279 0.000000000000000000
+## Cumulative Proportion  0.98831 0.99316 0.99721 1.00000 1.000000000000000000</code></pre>
+<p>Доля дисперсии – это стандартное отклонение в квадрате, деленное на сумму стандартных отклонений в квадрате. Проверим:</p>
+<div class="sourceCode" id="cb870"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb870-1"><a href="кластеризация-и-метод-главных-компонент.html#cb870-1" tabindex="-1"></a><span class="fu">round</span>(pca_fit<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sum</span>(pca_fit<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span>), <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>##  [1] 0.3295 0.1973 0.1160 0.0605 0.0518 0.0354 0.0250 0.0209 0.0195 0.0176
+## [11] 0.0164 0.0141 0.0121 0.0115 0.0109 0.0090 0.0083 0.0080 0.0069 0.0063
+## [21] 0.0061 0.0053 0.0048 0.0040 0.0028 0.0000</code></pre>
+<p>Таким образом, первые две компоненты объясняют почти половину дисперсии, а последняя почти не имеет объяснительной ценности.</p>
+<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="кластеризация-и-метод-главных-компонент.html#cb872-1" tabindex="-1"></a><span class="fu">plot</span>(pca_fit)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-411-1.png" width="672" />
+Координаты текстов в новом двумерном пространстве, определяемом первыми двумя компонентами, храняться в элементе под названием <code>x</code>.</p>
+<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="кластеризация-и-метод-главных-компонент.html#cb873-1" tabindex="-1"></a><span class="fu">head</span>(pca_fit<span class="sc">$</span>x[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>##                             PC1      PC2
+## coben_breaker        -10.785778 4.404143
+## coben_dropshot       -11.398234 5.447163
+## coben_fadeaway       -10.965308 5.078609
+## coben_falsemove      -10.713951 5.026340
+## coben_goneforgood     -9.801369 6.762709
+## coben_nosecondchance  -8.863422 7.718594</code></pre>
+<p>Нагрузки каждой компоненты хранятся в матрице ротации.</p>
+<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="кластеризация-и-метод-главных-компонент.html#cb875-1" tabindex="-1"></a><span class="fu">head</span>(pca_fit<span class="sc">$</span>rotation[, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
+<pre><code>##             PC1          PC2          PC3
+## the  0.11444948 -0.010111871 -0.033517351
+## and  0.11909663 -0.003730939 -0.004220942
+## to  -0.02633009 -0.120943864  0.054843337
+## of   0.11247527 -0.049333413 -0.024504809
+## a   -0.03283274  0.095953943  0.078496580
+## was -0.05525161  0.026979254  0.087428282</code></pre>
+<p>Число рядов в этой матрице равно числу исходных измерений (слов); т.е. для каждого слова указаны его координаты в новом измерении.</p>
+<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="кластеризация-и-метод-главных-компонент.html#cb877-1" tabindex="-1"></a><span class="fu">dim</span>(pca_fit<span class="sc">$</span>rotation[, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
+<pre><code>## [1] 200   3</code></pre>
+<p>Изобразить вместе главные компоненты и тексты позволяет функция <code>biplot()</code> (но получается не всегда читаемо).</p>
+<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="кластеризация-и-метод-главных-компонент.html#cb879-1" tabindex="-1"></a><span class="fu">biplot</span>(pca_fit, <span class="at">scale=</span><span class="dv">0</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-415-1.png" width="672" /></p>
+</div>
+<div id="pca-для-визуализации-кластеров-k-means" class="section level2 hasAnchor" number="15.11">
+<h2><span class="header-section-number">15.11</span> PCA для визуализации кластеров K-means<a href="кластеризация-и-метод-главных-компонент.html#pca-для-визуализации-кластеров-k-means" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Функция <code>augment()</code> из пакета <code>broom</code> позволяет соединить результат кластеризации (в данном случае – по методу K средних) с исходными данными.</p>
+<div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb880-1"><a href="кластеризация-и-метод-главных-компонент.html#cb880-1" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb880-2"><a href="кластеризация-и-метод-главных-компонент.html#cb880-2" tabindex="-1"></a></span>
+<span id="cb880-3"><a href="кластеризация-и-метод-главных-компонент.html#cb880-3" tabindex="-1"></a>pca_fit <span class="sc">%&gt;%</span></span>
+<span id="cb880-4"><a href="кластеризация-и-метод-главных-компонент.html#cb880-4" tabindex="-1"></a>  <span class="fu">augment</span>(galbraith) <span class="sc">%&gt;%</span> </span>
+<span id="cb880-5"><a href="кластеризация-и-метод-главных-компонент.html#cb880-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(.fittedPC1, .fittedPC2, </span>
+<span id="cb880-6"><a href="кластеризация-и-метод-главных-компонент.html#cb880-6" tabindex="-1"></a>             <span class="at">color =</span> expected, <span class="at">shape =</span> <span class="fu">as.factor</span>(km.out<span class="sc">$</span>cluster))) <span class="sc">+</span></span>
+<span id="cb880-7"><a href="кластеризация-и-метод-главных-компонент.html#cb880-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-416-1.png" width="672" />
+В таком же “опрятном” виде можем представить и нагрузки компонент.</p>
+<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="кластеризация-и-метод-главных-компонент.html#cb881-1" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:lubridate&#39;:
+## 
+##     stamp</code></pre>
+<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="кластеризация-и-метод-главных-компонент.html#cb884-1" tabindex="-1"></a><span class="fu">library</span>(grid)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;grid&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:emoji&#39;:
+## 
+##     arrow</code></pre>
+<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="кластеризация-и-метод-главных-компонент.html#cb887-1" tabindex="-1"></a><span class="co"># как будет выглядеть стрелка</span></span>
+<span id="cb887-2"><a href="кластеризация-и-метод-главных-компонент.html#cb887-2" tabindex="-1"></a>arrow_style <span class="ot">&lt;-</span> <span class="fu">arrow</span>(</span>
+<span id="cb887-3"><a href="кластеризация-и-метод-главных-компонент.html#cb887-3" tabindex="-1"></a>  <span class="at">angle =</span> <span class="dv">20</span>, <span class="at">ends =</span> <span class="st">&quot;first&quot;</span>, <span class="at">type =</span> <span class="st">&quot;closed&quot;</span>, <span class="at">length =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">8</span>, <span class="st">&quot;pt&quot;</span>)</span>
+<span id="cb887-4"><a href="кластеризация-и-метод-главных-компонент.html#cb887-4" tabindex="-1"></a>)</span>
+<span id="cb887-5"><a href="кластеризация-и-метод-главных-компонент.html#cb887-5" tabindex="-1"></a></span>
+<span id="cb887-6"><a href="кластеризация-и-метод-главных-компонент.html#cb887-6" tabindex="-1"></a>pca_fit <span class="sc">%&gt;%</span></span>
+<span id="cb887-7"><a href="кластеризация-и-метод-главных-компонент.html#cb887-7" tabindex="-1"></a>  <span class="fu">tidy</span>(<span class="at">matrix =</span> <span class="st">&quot;rotation&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb887-8"><a href="кластеризация-и-метод-главных-компонент.html#cb887-8" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;PC&quot;</span>, <span class="at">names_prefix =</span> <span class="st">&quot;PC&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb887-9"><a href="кластеризация-и-метод-главных-компонент.html#cb887-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(PC1, PC2)) <span class="sc">+</span></span>
+<span id="cb887-10"><a href="кластеризация-и-метод-главных-компонент.html#cb887-10" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="dv">0</span>, <span class="at">arrow =</span> arrow_style, <span class="at">color =</span> <span class="st">&quot;darkgrey&quot;</span>) <span class="sc">+</span></span>
+<span id="cb887-11"><a href="кластеризация-и-метод-главных-компонент.html#cb887-11" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb887-12"><a href="кластеризация-и-метод-главных-компонент.html#cb887-12" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> column),</span>
+<span id="cb887-13"><a href="кластеризация-и-метод-главных-компонент.html#cb887-13" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">nudge_x =</span> <span class="sc">-</span><span class="fl">0.02</span>, </span>
+<span id="cb887-14"><a href="кластеризация-и-метод-главных-компонент.html#cb887-14" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;#904C2F&quot;</span>,</span>
+<span id="cb887-15"><a href="кластеризация-и-метод-главных-компонент.html#cb887-15" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.7</span></span>
+<span id="cb887-16"><a href="кластеризация-и-метод-главных-компонент.html#cb887-16" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb887-17"><a href="кластеризация-и-метод-главных-компонент.html#cb887-17" tabindex="-1"></a>  <span class="fu">theme_minimal_grid</span>(<span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb887-18"><a href="кластеризация-и-метод-главных-компонент.html#cb887-18" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-417-1.png" width="672" />
+## PCA и иерархическая кластеризация</p>
+<p>Код почти как выше, но надо указать, на сколько кластеров мы разрезаем дерево.</p>
+<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb888-1"><a href="кластеризация-и-метод-главных-компонент.html#cb888-1" tabindex="-1"></a>pca_fit <span class="sc">%&gt;%</span></span>
+<span id="cb888-2"><a href="кластеризация-и-метод-главных-компонент.html#cb888-2" tabindex="-1"></a>  <span class="fu">augment</span>(galbraith) <span class="sc">%&gt;%</span> </span>
+<span id="cb888-3"><a href="кластеризация-и-метод-главных-компонент.html#cb888-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(.fittedPC1, .fittedPC2, </span>
+<span id="cb888-4"><a href="кластеризация-и-метод-главных-компонент.html#cb888-4" tabindex="-1"></a>             <span class="at">color =</span> expected, <span class="at">shape =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(hc, <span class="dv">5</span>)))) <span class="sc">+</span></span>
+<span id="cb888-5"><a href="кластеризация-и-метод-главных-компонент.html#cb888-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-418-1.png" width="672" /></p>
+</div>
+<div id="многомерное-шкалирование" class="section level2 hasAnchor" number="15.12">
+<h2><span class="header-section-number">15.12</span> Многомерное шкалирование<a href="кластеризация-и-метод-главных-компонент.html#многомерное-шкалирование" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Кроме этого, для визуализации многомерных данных применяют многомерное шкалирование. Функция получает на входе матрицу расстояний.</p>
+<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="кластеризация-и-метод-главных-компонент.html#cb889-1" tabindex="-1"></a>cmd_fit <span class="ot">&lt;-</span> <span class="fu">cmdscale</span>(dist_mx) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb889-2"><a href="кластеризация-и-метод-главных-компонент.html#cb889-2" tabindex="-1"></a><span class="fu">head</span>(cmd_fit)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##       V1     V2
+##    &lt;dbl&gt;  &lt;dbl&gt;
+## 1 -0.651 -0.425
+## 2 -0.596 -0.463
+## 3 -0.622 -0.471
+## 4 -0.605 -0.452
+## 5 -0.490 -0.532
+## 6 -0.396 -0.612</code></pre>
+<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb891-1"><a href="кластеризация-и-метод-главных-компонент.html#cb891-1" tabindex="-1"></a>cmd_fit <span class="sc">%&gt;%</span></span>
+<span id="cb891-2"><a href="кластеризация-и-метод-главных-компонент.html#cb891-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(V1, V2, </span>
+<span id="cb891-3"><a href="кластеризация-и-метод-главных-компонент.html#cb891-3" tabindex="-1"></a>             <span class="at">color =</span> expected, </span>
+<span id="cb891-4"><a href="кластеризация-и-метод-главных-компонент.html#cb891-4" tabindex="-1"></a>             <span class="at">shape =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(hc, <span class="dv">5</span>)))) <span class="sc">+</span></span>
+<span id="cb891-5"><a href="кластеризация-и-метод-главных-компонент.html#cb891-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-420-1.png" width="672" /></p>
+<p>Многомерное шкалирование стремится отразить <em>расстояния</em> между наблюдениями.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="латентно-семантический-анализ.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="литература.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/14-cluster.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
