@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf version="1.1" xmlns="http://www.gexf.net/1.1draft" xmlns:viz="http://www.gexf.net/1.1draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance">
+  <graph defaultedgetype="undirected" mode="static">
+    <nodes>
+      <node id="Туся" label="Туся" />
+      <node id="Минский" label="Минский" />
+      <node id="Шаляпин" label="Шаляпин" />
+      <node id="Женя" label="Женя" />
+      <node id="Толстой" label="Толстой" />
+      <node id="Эренбург" label="Эренбург" />
+      <node id="Нина" label="Нина" />
+      <node id="Белый" label="Белый" />
+      <node id="Добровейн" label="Добровейн" />
+      <node id="Горький" label="Горький" />
+      <node id="Феррари" label="Феррари" />
+      <node id="Ася" label="Ася" />
+      <node id="Парнах" label="Парнах" />
+      <node id="Кусиков" label="Кусиков" />
+      <node id="Зайцева_В" label="Зайцева_В" />
+      <node id="Залшупин" label="Залшупин" />
+      <node id="Кречетов" label="Кречетов" />
+      <node id="Шкловский" label="Шкловский" />
+      <node id="Каплун_Б" label="Каплун_Б" />
+      <node id="Берберов_Л" label="Берберов_Л" />
+      <node id="Венгерова" label="Венгерова" />
+      <node id="Маковский" label="Маковский" />
+      <node id="Рындина" label="Рындина" />
+      <node id="Багратион-Мухранская" label="Багратион-Мухранская" />
+      <node id="Цветаева" label="Цветаева" />
+      <node id="Ященко" label="Ященко" />
+      <node id="Юренева" label="Юренева" />
+      <node id="Дроздов" label="Дроздов" />
+      <node id="Горный" label="Горный" />
+      <node id="Григорович" label="Григорович" />
+      <node id="Берберов" label="Берберов" />
+      <node id="Вишняк" label="Вишняк" />
+      <node id="Постников" label="Постников" />
+      <node id="Пуни" label="Пуни" />
+      <node id="Слоним" label="Слоним" />
+      <node id="Амфитеатров" label="Амфитеатров" />
+      <node id="Зайцев_Б" label="Зайцев_Б" />
+      <node id="Пешков_М" label="Пешков_М" />
+      <node id="Алянский" label="Алянский" />
+      <node id="Андреева" label="Андреева" />
+      <node id="Каплун" label="Каплун" />
+      <node id="Ракицкий" label="Ракицкий" />
+    </nodes>
+    <edges>
+      <edge id="0" source="Туся" target="Толстой" weight="1" />
+      <edge id="1" source="Минский" target="Кусиков" weight="1" />
+      <edge id="2" source="Минский" target="Юренева" weight="1" />
+      <edge id="3" source="Минский" target="Эренбург" weight="1" />
+      <edge id="4" source="Минский" target="Шкловский" weight="1" />
+      <edge id="5" source="Минский" target="Постников" weight="1" />
+      <edge id="6" source="Минский" target="Венгерова" weight="3" />
+      <edge id="7" source="Минский" target="Пуни" weight="1" />
+      <edge id="8" source="Шаляпин" target="Багратион-Мухранская" weight="1" />
+      <edge id="9" source="Шаляпин" target="Парнах" weight="1" />
+      <edge id="10" source="Шаляпин" target="Горький" weight="1" />
+      <edge id="11" source="Шаляпин" target="Кречетов" weight="1" />
+      <edge id="12" source="Шаляпин" target="Пешков_М" weight="1" />
+      <edge id="13" source="Шаляпин" target="Добровейн" weight="1" />
+      <edge id="14" source="Шаляпин" target="Ракицкий" weight="1" />
+      <edge id="15" source="Женя" target="Нина" weight="2" />
+      <edge id="16" source="Женя" target="Григорович" weight="1" />
+      <edge id="17" source="Женя" target="Кречетов" weight="1" />
+      <edge id="18" source="Женя" target="Вишняк" weight="1" />
+      <edge id="19" source="Женя" target="Берберов" weight="1" />
+      <edge id="20" source="Женя" target="Берберов_Л" weight="1" />
+      <edge id="21" source="Женя" target="Шкловский" weight="2" />
+      <edge id="22" source="Женя" target="Ася" weight="1" />
+      <edge id="23" source="Женя" target="Феррари" weight="1" />
+      <edge id="24" source="Женя" target="Слоним" weight="1" />
+      <edge id="25" source="Толстой" target="Зайцева_В" weight="1" />
+      <edge id="26" source="Толстой" target="Зайцев_Б" weight="1" />
+      <edge id="27" source="Эренбург" target="Венгерова" weight="1" />
+      <edge id="28" source="Эренбург" target="Шкловский" weight="1" />
+      <edge id="29" source="Нина" target="Вишняк" weight="1" />
+      <edge id="30" source="Нина" target="Маковский" weight="1" />
+      <edge id="31" source="Нина" target="Ася" weight="2" />
+      <edge id="32" source="Белый" target="Амфитеатров" weight="1" />
+      <edge id="33" source="Добровейн" target="Багратион-Мухранская" weight="1" />
+      <edge id="34" source="Добровейн" target="Парнах" weight="1" />
+      <edge id="35" source="Добровейн" target="Кречетов" weight="1" />
+      <edge id="36" source="Добровейн" target="Пешков_М" weight="1" />
+      <edge id="37" source="Добровейн" target="Горький" weight="1" />
+      <edge id="38" source="Добровейн" target="Ракицкий" weight="1" />
+      <edge id="39" source="Горький" target="Багратион-Мухранская" weight="1" />
+      <edge id="40" source="Горький" target="Парнах" weight="1" />
+      <edge id="41" source="Горький" target="Кречетов" weight="1" />
+      <edge id="42" source="Горький" target="Пешков_М" weight="1" />
+      <edge id="43" source="Горький" target="Ракицкий" weight="1" />
+      <edge id="44" source="Феррари" target="Берберов_Л" weight="1" />
+      <edge id="45" source="Феррари" target="Берберов" weight="1" />
+      <edge id="46" source="Ася" target="Вишняк" weight="1" />
+      <edge id="47" source="Ася" target="Маковский" weight="1" />
+      <edge id="48" source="Ася" target="Слоним" weight="1" />
+      <edge id="49" source="Парнах" target="Багратион-Мухранская" weight="1" />
+      <edge id="50" source="Парнах" target="Кречетов" weight="1" />
+      <edge id="51" source="Парнах" target="Пешков_М" weight="1" />
+      <edge id="52" source="Парнах" target="Ракицкий" weight="1" />
+      <edge id="53" source="Кусиков" target="Венгерова" weight="1" />
+      <edge id="54" source="Кусиков" target="Пуни" weight="1" />
+      <edge id="55" source="Кусиков" target="Юренева" weight="1" />
+      <edge id="56" source="Кусиков" target="Постников" weight="1" />
+      <edge id="57" source="Зайцева_В" target="Зайцев_Б" weight="2" />
+      <edge id="58" source="Зайцева_В" target="Залшупин" weight="1" />
+      <edge id="59" source="Залшупин" target="Зайцев_Б" weight="1" />
+      <edge id="60" source="Кречетов" target="Багратион-Мухранская" weight="1" />
+      <edge id="61" source="Кречетов" target="Ракицкий" weight="1" />
+      <edge id="62" source="Кречетов" target="Шкловский" weight="1" />
+      <edge id="63" source="Кречетов" target="Вишняк" weight="1" />
+      <edge id="64" source="Кречетов" target="Пешков_М" weight="1" />
+      <edge id="65" source="Кречетов" target="Рындина" weight="1" />
+      <edge id="66" source="Шкловский" target="Алянский" weight="1" />
+      <edge id="67" source="Шкловский" target="Каплун_Б" weight="1" />
+      <edge id="68" source="Шкловский" target="Венгерова" weight="1" />
+      <edge id="69" source="Шкловский" target="Каплун" weight="1" />
+      <edge id="70" source="Каплун_Б" target="Алянский" weight="1" />
+      <edge id="71" source="Каплун_Б" target="Каплун" weight="1" />
+      <edge id="72" source="Берберов_Л" target="Берберов" weight="3" />
+      <edge id="73" source="Венгерова" target="Юренева" weight="1" />
+      <edge id="74" source="Венгерова" target="Постников" weight="1" />
+      <edge id="75" source="Венгерова" target="Пуни" weight="1" />
+      <edge id="76" source="Маковский" target="Вишняк" weight="1" />
+      <edge id="77" source="Рындина" target="Вишняк" weight="1" />
+      <edge id="78" source="Багратион-Мухранская" target="Пешков_М" weight="1" />
+      <edge id="79" source="Багратион-Мухранская" target="Ракицкий" weight="1" />
+      <edge id="80" source="Цветаева" target="Вишняк" weight="1" />
+      <edge id="81" source="Юренева" target="Пуни" weight="1" />
+      <edge id="82" source="Юренева" target="Постников" weight="1" />
+      <edge id="83" source="Постников" target="Пуни" weight="1" />
+      <edge id="84" source="Пешков_М" target="Ракицкий" weight="1" />
+      <edge id="85" source="Алянский" target="Каплун" weight="1" />
+    </edges>
+  </graph>
+</gexf>

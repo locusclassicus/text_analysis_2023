@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-09" />
+<meta name="date" content="2023-08-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,18 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.27/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +131,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -367,21 +401,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.13" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#многомерное-шкалирование"><i class="fa fa-check"></i><b>15.13</b> Многомерное шкалирование</a></li>
 <li class="chapter" data-level="15.14" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#pca-с-factominer"><i class="fa fa-check"></i><b>15.14</b> PCA с FactoMineR</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html"><i class="fa fa-check"></i><b>16</b> Кластеризация и метод главных компонент</a>
+<li class="chapter" data-level="16" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html"><i class="fa fa-check"></i><b>16</b> Построение сетей в R</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#виды-кластерного-анализа-1"><i class="fa fa-check"></i><b>16.1</b> Виды кластерного анализа</a></li>
-<li class="chapter" data-level="16.2" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#кластеризация-по-методу-k-средних-1"><i class="fa fa-check"></i><b>16.2</b> Кластеризация по методу K средних</a></li>
-<li class="chapter" data-level="16.3" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#k-means-в-r-1"><i class="fa fa-check"></i><b>16.3</b> K-means в R</a></li>
-<li class="chapter" data-level="16.4" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#k-means-для-кластеризации-текстов-1"><i class="fa fa-check"></i><b>16.4</b> K-means для кластеризации текстов</a></li>
-<li class="chapter" data-level="16.5" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#нормализация-данных-1"><i class="fa fa-check"></i><b>16.5</b> Нормализация данных</a></li>
-<li class="chapter" data-level="16.6" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#иерархическая-кластеризация-1"><i class="fa fa-check"></i><b>16.6</b> Иерархическая кластеризация</a></li>
-<li class="chapter" data-level="16.7" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#алгоритм-иерархической-кластеризации-1"><i class="fa fa-check"></i><b>16.7</b> Алгоритм иерархической кластеризации</a></li>
-<li class="chapter" data-level="16.8" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#иерархическая-кластеризация-в-r-1"><i class="fa fa-check"></i><b>16.8</b> Иерархическая кластеризация в R</a></li>
-<li class="chapter" data-level="16.9" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#иерархическая-кластеризация-текстов-1"><i class="fa fa-check"></i><b>16.9</b> Иерархическая кластеризация текстов</a></li>
-<li class="chapter" data-level="16.10" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#метод-главных-компонент-1"><i class="fa fa-check"></i><b>16.10</b> Метод главных компонент</a></li>
-<li class="chapter" data-level="16.11" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#pca-для-визуализации-кластеров-k-means-1"><i class="fa fa-check"></i><b>16.11</b> PCA для визуализации кластеров K-means</a></li>
-<li class="chapter" data-level="16.12" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#pca-и-иерархическая-кластеризация-1"><i class="fa fa-check"></i><b>16.12</b> PCA и иерархическая кластеризация</a></li>
-<li class="chapter" data-level="16.13" data-path="кластеризация-и-метод-главных-компонент-1.html"><a href="кластеризация-и-метод-главных-компонент-1.html#многомерное-шкалирование-1"><i class="fa fa-check"></i><b>16.13</b> Многомерное шкалирование</a></li>
+<li class="chapter" data-level="16.1" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#базовое-описание"><i class="fa fa-check"></i><b>16.1</b> Базовое описание</a></li>
+<li class="chapter" data-level="16.2" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#создание-сетевых-данных"><i class="fa fa-check"></i><b>16.2</b> Создание сетевых данных</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#социоматрица"><i class="fa fa-check"></i><b>16.2.1</b> Социоматрица</a></li>
+<li class="chapter" data-level="16.2.2" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#список-ребер"><i class="fa fa-check"></i><b>16.2.2</b> Список ребер</a></li>
+<li class="chapter" data-level="16.2.3" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#формула"><i class="fa fa-check"></i><b>16.2.3</b> Формула</a></li>
+<li class="chapter" data-level="16.2.4" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#импорт-данных"><i class="fa fa-check"></i><b>16.2.4</b> Импорт данных</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#атрибуты-вершин-узлов"><i class="fa fa-check"></i><b>16.3</b> Атрибуты вершин (узлов)</a></li>
+<li class="chapter" data-level="16.4" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#фильтрация-по-узлу"><i class="fa fa-check"></i><b>16.4</b> Фильтрация по узлу</a></li>
+<li class="chapter" data-level="16.5" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#атрибуты-ребер"><i class="fa fa-check"></i><b>16.5</b> Атрибуты ребер</a></li>
+<li class="chapter" data-level="16.6" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#импорт-из-gexf"><i class="fa fa-check"></i><b>16.6</b> Импорт из gexf</a></li>
+<li class="chapter" data-level="16.7" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#визуализация-с-ggraph"><i class="fa fa-check"></i><b>16.7</b> Визуализация с ggraph</a></li>
+<li class="chapter" data-level="16.8" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#фильтрация-по-атрибутам-ребер"><i class="fa fa-check"></i><b>16.8</b> Фильтрация по атрибутам ребер</a></li>
+<li class="chapter" data-level="16.9" data-path="построение-сетей-в-r.html"><a href="построение-сетей-в-r.html#укладка-сети"><i class="fa fa-check"></i><b>16.9</b> Укладка сети</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>

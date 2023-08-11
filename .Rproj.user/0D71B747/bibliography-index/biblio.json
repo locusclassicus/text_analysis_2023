@@ -287,6 +287,25 @@
             "type": "book"
         },
         {
+            "author": [
+                {
+                    "family": "Люк",
+                    "given": "Дуглас"
+                }
+            ],
+            "id": "luke2017",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "publisher": "ДМК",
+            "title": "Анализ сетей (графов) в среде R: Руководство пользователя",
+            "type": "book"
+        },
+        {
             "URL": "http://www.tidytextmining.com",
             "author": [
                 {
