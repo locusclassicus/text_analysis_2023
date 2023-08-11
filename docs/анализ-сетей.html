@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Тема 17 Анализ сетей | Компьютерный анализ текста в R</title>
+  <meta name="description" content="Все прекрасное трудно." />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Тема 17 Анализ сетей | Компьютерный анализ текста в R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Все прекрасное трудно." />
+  <meta name="github-repo" content="https://github.com/locusclassicus/text_analysis_r_bookdown_2023/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Тема 17 Анализ сетей | Компьютерный анализ текста в R" />
+  
+  <meta name="twitter:description" content="Все прекрасное трудно." />
+  
+
+<meta name="author" content="Ольга Алиева" />
+
+
+<meta name="date" content="2023-08-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="сетевые-данные-и-графы.html"/>
+<link rel="next" href="литература.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.27/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
+<link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
+<script src="libs/vis-9.1.0/vis-network.min.js"></script>
+<script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Компьютерный анализ текста в R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> О курсе</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#благодарности"><i class="fa fa-check"></i><b>1.1</b> Благодарности</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html"><i class="fa fa-check"></i><b>2</b> Начало работы с R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#что-такое-r"><i class="fa fa-check"></i><b>2.1</b> Что такое R?</a></li>
+<li class="chapter" data-level="2.2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#пакеты-и-виньетки"><i class="fa fa-check"></i><b>2.2</b> Пакеты и виньетки</a></li>
+<li class="chapter" data-level="2.3" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#если-не-хватает-пакетов"><i class="fa fa-check"></i><b>2.3</b> Если не хватает пакетов</a></li>
+<li class="chapter" data-level="2.4" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#о-воспроизводимости"><i class="fa fa-check"></i><b>2.4</b> О воспроизводимости</a></li>
+<li class="chapter" data-level="2.5" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#что-мы-не-будем-делать"><i class="fa fa-check"></i><b>2.5</b> Что мы (не) будем делать?</a></li>
+<li class="chapter" data-level="2.6" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#rstudio"><i class="fa fa-check"></i><b>2.6</b> RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#установка"><i class="fa fa-check"></i><b>2.7</b> Установка</a></li>
+<li class="chapter" data-level="2.8" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#начало-работы"><i class="fa fa-check"></i><b>2.8</b> Начало работы</a></li>
+<li class="chapter" data-level="2.9" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#r-как-калькулятор"><i class="fa fa-check"></i><b>2.9</b> R как калькулятор</a></li>
+<li class="chapter" data-level="2.10" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#операторы-присваивания"><i class="fa fa-check"></i><b>2.10</b> Операторы присваивания</a></li>
+<li class="chapter" data-level="2.11" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#векторы"><i class="fa fa-check"></i><b>2.11</b> Векторы</a></li>
+<li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
+<li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
+<li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
+<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#шорткаты"><i class="fa fa-check"></i><b>2.15</b> Шорткаты</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="визуализации.html"><a href="визуализации.html#базовый-r"><i class="fa fa-check"></i><b>3.1</b> Базовый R</a></li>
+<li class="chapter" data-level="3.2" data-path="визуализации.html"><a href="визуализации.html#lattice"><i class="fa fa-check"></i><b>3.2</b> Lattice</a></li>
+<li class="chapter" data-level="3.3" data-path="визуализации.html"><a href="визуализации.html#ggplot2"><i class="fa fa-check"></i><b>3.3</b> Ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="визуализации.html"><a href="визуализации.html#быстрое-решение-qplot"><i class="fa fa-check"></i><b>3.3.1</b> Быстрое решение: qplot()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="визуализации.html"><a href="визуализации.html#слой-за-слоем-ggplot"><i class="fa fa-check"></i><b>3.3.2</b> Слой за слоем: ggplot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="визуализации.html"><a href="визуализации.html#экспорт-графиков-из-среды-r"><i class="fa fa-check"></i><b>3.4</b> Экспорт графиков из среды R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="опрятные-данные.html"><a href="опрятные-данные.html"><i class="fa fa-check"></i><b>4</b> Опрятные данные</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#синтаксис-tidyverse"><i class="fa fa-check"></i><b>4.1</b> Синтаксис tidyverse</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#tibble"><i class="fa fa-check"></i><b>4.1.1</b> Tibble</a></li>
+<li class="chapter" data-level="4.1.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#dplyr"><i class="fa fa-check"></i><b>4.1.2</b> Dplyr</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#опрятные-данные-1"><i class="fa fa-check"></i><b>4.2</b> Опрятные данные</a></li>
+<li class="chapter" data-level="4.3" data-path="опрятные-данные.html"><a href="опрятные-данные.html#пример-буккроссинг"><i class="fa fa-check"></i><b>4.3</b> Пример: буккроссинг</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#смотрим-на-данные"><i class="fa fa-check"></i><b>4.3.1</b> Смотрим на данные</a></li>
+<li class="chapter" data-level="4.3.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#трансформируем-данные"><i class="fa fa-check"></i><b>4.3.2</b> Трансформируем данные</a></li>
+<li class="chapter" data-level="4.3.3" data-path="опрятные-данные.html"><a href="опрятные-данные.html#объединяем-данные"><i class="fa fa-check"></i><b>4.3.3</b> Объединяем данные</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html"><i class="fa fa-check"></i><b>5</b> Функциональное программирование</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#зачем-писать-функции"><i class="fa fa-check"></i><b>5.1</b> Зачем писать функции?</a></li>
+<li class="chapter" data-level="5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#область-видимости-переменных"><i class="fa fa-check"></i><b>5.2</b> Область видимости переменных</a></li>
+<li class="chapter" data-level="5.3" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#аргументы-функции"><i class="fa fa-check"></i><b>5.3</b> Аргументы функции</a></li>
+<li class="chapter" data-level="5.4" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#векторизируй-это"><i class="fa fa-check"></i><b>5.4</b> Векторизируй это</a></li>
+<li class="chapter" data-level="5.5" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#векторизованные-конструкции"><i class="fa fa-check"></i><b>5.5</b> Векторизованные конструкции</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#циклы"><i class="fa fa-check"></i><b>5.5.1</b> Циклы</a></li>
+<li class="chapter" data-level="5.5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#условия"><i class="fa fa-check"></i><b>5.5.2</b> Условия</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#вместо-циклов-базовый-r-и-tidyverse"><i class="fa fa-check"></i><b>5.6</b> Вместо циклов: базовый R и tidyverse</a></li>
+<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.7</b> Purrr</a></li>
+<li class="chapter" data-level="5.8" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#пример-итерации"><i class="fa fa-check"></i><b>5.8</b> Пример итерации</a></li>
+<li class="chapter" data-level="5.9" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#furrr"><i class="fa fa-check"></i><b>5.9</b> Furrr</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html"><i class="fa fa-check"></i><b>6</b> Импорт и экспорт данных</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#рабочая-директория"><i class="fa fa-check"></i><b>6.1</b> Рабочая директория</a></li>
+<li class="chapter" data-level="6.2" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-файлов-из-интернета"><i class="fa fa-check"></i><b>6.2</b> Чтение файлов из интернета</a></li>
+<li class="chapter" data-level="6.3" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-локальных-файлов"><i class="fa fa-check"></i><b>6.3</b> Чтение локальных файлов</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#csv-и-tsv"><i class="fa fa-check"></i><b>6.3.1</b> csv и tsv</a></li>
+<li class="chapter" data-level="6.3.2" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#xls-и-xlsx"><i class="fa fa-check"></i><b>6.3.2</b> xls и xlsx</a></li>
+<li class="chapter" data-level="6.3.3" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#txt"><i class="fa fa-check"></i><b>6.3.3</b> txt</a></li>
+<li class="chapter" data-level="6.3.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#doc"><i class="fa fa-check"></i><b>6.3.4</b> doc</a></li>
+<li class="chapter" data-level="6.3.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#pdf"><i class="fa fa-check"></i><b>6.3.5</b> pdf</a></li>
+<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.6</b> zip</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#xml-и-html"><i class="fa fa-check"></i><b>6.4</b> xml и html</a></li>
+<li class="chapter" data-level="6.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#json"><i class="fa fa-check"></i><b>6.5</b> json</a></li>
+<li class="chapter" data-level="6.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#gutenbergr"><i class="fa fa-check"></i><b>6.6</b> GutenbergR</a></li>
+<li class="chapter" data-level="6.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rperseus"><i class="fa fa-check"></i><b>6.7</b> RPerseus</a></li>
+<li class="chapter" data-level="6.8" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-нескольких-файлов"><i class="fa fa-check"></i><b>6.8</b> Чтение нескольких файлов</a></li>
+<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.9.1</b> Rdata</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html"><i class="fa fa-check"></i><b>7</b> Воспроизводимые исследования</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#о-воспроизводимости-1"><i class="fa fa-check"></i><b>7.1</b> О воспроизводимости</a></li>
+<li class="chapter" data-level="7.2" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#markdown"><i class="fa fa-check"></i><b>7.2</b> Markdown</a></li>
+<li class="chapter" data-level="7.3" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#синтаксис-markdown"><i class="fa fa-check"></i><b>7.3</b> Синтаксис Markdown</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#заголовки"><i class="fa fa-check"></i><b>7.3.1</b> Заголовки</a></li>
+<li class="chapter" data-level="7.3.2" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#форматирование"><i class="fa fa-check"></i><b>7.3.2</b> Форматирование</a></li>
+<li class="chapter" data-level="7.3.3" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#списки-1"><i class="fa fa-check"></i><b>7.3.3</b> Списки</a></li>
+<li class="chapter" data-level="7.3.4" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#ссылки"><i class="fa fa-check"></i><b>7.3.4</b> Ссылки</a></li>
+<li class="chapter" data-level="7.3.5" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#изображения"><i class="fa fa-check"></i><b>7.3.5</b> Изображения</a></li>
+<li class="chapter" data-level="7.3.6" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#блоки-кода"><i class="fa fa-check"></i><b>7.3.6</b> Блоки кода</a></li>
+<li class="chapter" data-level="7.3.7" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#цитаты"><i class="fa fa-check"></i><b>7.3.7</b> Цитаты</a></li>
+<li class="chapter" data-level="7.3.8" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#разделители"><i class="fa fa-check"></i><b>7.3.8</b> Разделители</a></li>
+<li class="chapter" data-level="7.3.9" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#таблицы-1"><i class="fa fa-check"></i><b>7.3.9</b> Таблицы</a></li>
+<li class="chapter" data-level="7.3.10" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#id"><i class="fa fa-check"></i><b>7.3.10</b> Чек-листы</a></li>
+<li class="chapter" data-level="7.3.11" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#внутренние-ссылки"><i class="fa fa-check"></i><b>7.3.11</b> Внутренние ссылки</a></li>
+<li class="chapter" data-level="7.3.12" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#графики"><i class="fa fa-check"></i><b>7.3.12</b> Графики</a></li>
+<li class="chapter" data-level="7.3.13" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#математические-формулы"><i class="fa fa-check"></i><b>7.3.13</b> Математические формулы</a></li>
+<li class="chapter" data-level="7.3.14" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#библиография"><i class="fa fa-check"></i><b>7.3.14</b> Библиография</a></li>
+<li class="chapter" data-level="7.3.15" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#смайлы"><i class="fa fa-check"></i><b>7.3.15</b> Смайлы</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#публикация-html"><i class="fa fa-check"></i><b>7.4</b> Публикация html</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html"><i class="fa fa-check"></i><b>8</b> Регулярные выражения</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#regex-в-базовом-r"><i class="fa fa-check"></i><b>8.1</b> Regex в базовом R</a></li>
+<li class="chapter" data-level="8.2" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#литералы-и-классы"><i class="fa fa-check"></i><b>8.2</b> Литералы и классы</a></li>
+<li class="chapter" data-level="8.3" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#якоря"><i class="fa fa-check"></i><b>8.3</b> Якоря</a></li>
+<li class="chapter" data-level="8.4" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#метасимволы"><i class="fa fa-check"></i><b>8.4</b> Метасимволы</a></li>
+<li class="chapter" data-level="8.5" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#экранирование"><i class="fa fa-check"></i><b>8.5</b> Экранирование</a></li>
+<li class="chapter" data-level="8.6" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#квантификация"><i class="fa fa-check"></i><b>8.6</b> Квантификация</a></li>
+<li class="chapter" data-level="8.7" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#жадная-и-ленивая-квантификация"><i class="fa fa-check"></i><b>8.7</b> Жадная и ленивая квантификация</a></li>
+<li class="chapter" data-level="8.8" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#regex-в-stringr-основы"><i class="fa fa-check"></i><b>8.8</b> Regex в stringr: основы</a></li>
+<li class="chapter" data-level="8.9" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_detect-и-str_count"><i class="fa fa-check"></i><b>8.9</b> str_detect() и str_count()</a></li>
+<li class="chapter" data-level="8.10" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_extract"><i class="fa fa-check"></i><b>8.10</b> str_extract()</a></li>
+<li class="chapter" data-level="8.11" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_subset-и-str_match"><i class="fa fa-check"></i><b>8.11</b> str_subset() и str_match()</a></li>
+<li class="chapter" data-level="8.12" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_replace"><i class="fa fa-check"></i><b>8.12</b> str_replace</a></li>
+<li class="chapter" data-level="8.13" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_split"><i class="fa fa-check"></i><b>8.13</b> str_split</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html"><i class="fa fa-check"></i><b>9</b> Веб-скрапинг</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#структура-html"><i class="fa fa-check"></i><b>9.1</b> Структура html</a></li>
+<li class="chapter" data-level="9.2" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#каскадные-таблицы-стилей"><i class="fa fa-check"></i><b>9.2</b> Каскадные таблицы стилей</a></li>
+<li class="chapter" data-level="9.3" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#извлечение-данных"><i class="fa fa-check"></i><b>9.3</b> Извлечение данных</a></li>
+<li class="chapter" data-level="9.4" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#извлечение-в-тиббл"><i class="fa fa-check"></i><b>9.4</b> Извлечение в тиббл</a></li>
+<li class="chapter" data-level="9.5" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#скрапим-телеграм-канал"><i class="fa fa-check"></i><b>9.5</b> Скрапим телеграм-канал</a></li>
+<li class="chapter" data-level="9.6" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#эмотиконы"><i class="fa fa-check"></i><b>9.6</b> Эмотиконы</a></li>
+<li class="chapter" data-level="9.7" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#рутинная-уборка"><i class="fa fa-check"></i><b>9.7</b> Рутинная уборка</a></li>
+<li class="chapter" data-level="9.8" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#лемматизация"><i class="fa fa-check"></i><b>9.8</b> Лемматизация</a></li>
+<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#таблицы-html"><i class="fa fa-check"></i><b>9.9</b> Таблицы html</a></li>
+<li class="chapter" data-level="9.10" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#wikisource"><i class="fa fa-check"></i><b>9.10</b> Wikisource</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html"><i class="fa fa-check"></i><b>10</b> Токенизация и лемматизация</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#токенизация-в-tidytext"><i class="fa fa-check"></i><b>10.1</b> Токенизация в tidytext</a></li>
+<li class="chapter" data-level="10.2" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#токенизация-в-tokenizers"><i class="fa fa-check"></i><b>10.2</b> Токенизация в tokenizers</a></li>
+<li class="chapter" data-level="10.3" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#скипграмы"><i class="fa fa-check"></i><b>10.3</b> Скипграмы</a></li>
+<li class="chapter" data-level="10.4" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#лемматизация-и-частеречная-разметка"><i class="fa fa-check"></i><b>10.4</b> Лемматизация и частеречная разметка</a></li>
+<li class="chapter" data-level="10.5" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#морфологическая-разметка"><i class="fa fa-check"></i><b>10.5</b> Морфологическая разметка</a></li>
+<li class="chapter" data-level="10.6" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#распределение-частей-речи"><i class="fa fa-check"></i><b>10.6</b> Распределение частей речи</a></li>
+<li class="chapter" data-level="10.7" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#совместная-встречаемость-слов"><i class="fa fa-check"></i><b>10.7</b> Совместная встречаемость слов</a></li>
+<li class="chapter" data-level="10.8" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#синтаксическая-разметка"><i class="fa fa-check"></i><b>10.8</b> Синтаксическая разметка</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html"><i class="fa fa-check"></i><b>11</b> Распределения слов и анализ частотностей</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#извлечение-источников"><i class="fa fa-check"></i><b>11.1</b> Извлечение источников</a></li>
+<li class="chapter" data-level="11.2" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#подготовка-источников"><i class="fa fa-check"></i><b>11.2</b> Подготовка источников</a></li>
+<li class="chapter" data-level="11.3" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#токенизация"><i class="fa fa-check"></i><b>11.3</b> Токенизация</a></li>
+<li class="chapter" data-level="11.4" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#cтоп-слова"><i class="fa fa-check"></i><b>11.4</b> Cтоп-слова</a></li>
+<li class="chapter" data-level="11.5" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#абсолютная-частотность"><i class="fa fa-check"></i><b>11.5</b> Абсолютная частотность</a></li>
+<li class="chapter" data-level="11.6" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#стемминг"><i class="fa fa-check"></i><b>11.6</b> Стемминг</a></li>
+<li class="chapter" data-level="11.7" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#относительная-частотность"><i class="fa fa-check"></i><b>11.7</b> Относительная частотность</a></li>
+<li class="chapter" data-level="11.8" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#распределения-слов-токенов"><i class="fa fa-check"></i><b>11.8</b> Распределения слов (токенов)</a></li>
+<li class="chapter" data-level="11.9" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#закон-ципфа"><i class="fa fa-check"></i><b>11.9</b> Закон Ципфа</a></li>
+<li class="chapter" data-level="11.10" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#ttr-type-token-ratio"><i class="fa fa-check"></i><b>11.10</b> TTR (type-token ratio)</a></li>
+<li class="chapter" data-level="11.11" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#tf-idf"><i class="fa fa-check"></i><b>11.11</b> TF-IDF</a></li>
+<li class="chapter" data-level="11.12" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#сравнение-при-помощи-диаграммы-рассеяния"><i class="fa fa-check"></i><b>11.12</b> Сравнение при помощи диаграммы рассеяния</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html"><i class="fa fa-check"></i><b>12</b> Эмоциональная тональность</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#анализ-тональности"><i class="fa fa-check"></i><b>12.1</b> Анализ тональности</a></li>
+<li class="chapter" data-level="12.2" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#подходы"><i class="fa fa-check"></i><b>12.2</b> Подходы</a></li>
+<li class="chapter" data-level="12.3" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#тезаурусы"><i class="fa fa-check"></i><b>12.3</b> Тезаурусы</a></li>
+<li class="chapter" data-level="12.4" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#лексиконы-для-русского-языка"><i class="fa fa-check"></i><b>12.4</b> Лексиконы для русского языка</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#chen-skiena"><i class="fa fa-check"></i><b>12.4.1</b> Chen &amp; Skiena</a></li>
+<li class="chapter" data-level="12.4.2" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#rusentlex-2016"><i class="fa fa-check"></i><b>12.4.2</b> RuSentLex 2016</a></li>
+<li class="chapter" data-level="12.4.3" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#afinn"><i class="fa fa-check"></i><b>12.4.3</b> AFINN</a></li>
+<li class="chapter" data-level="12.4.4" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#nrc"><i class="fa fa-check"></i><b>12.4.4</b> NRC</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#анализ-тональности-с-tidy-data"><i class="fa fa-check"></i><b>12.5</b> Анализ тональности с Tidy Data</a></li>
+<li class="chapter" data-level="12.6" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#подготовка-текста"><i class="fa fa-check"></i><b>12.6</b> Подготовка текста</a></li>
+<li class="chapter" data-level="12.7" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#модификация-лексикона"><i class="fa fa-check"></i><b>12.7</b> Модификация лексикона</a></li>
+<li class="chapter" data-level="12.8" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#соединение-лексикона-и-текста"><i class="fa fa-check"></i><b>12.8</b> Соединение лексикона и текста</a></li>
+<li class="chapter" data-level="12.9" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#тональность-на-оси-времени"><i class="fa fa-check"></i><b>12.9</b> Тональность на оси времени</a></li>
+<li class="chapter" data-level="12.10" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#для-других-языков"><i class="fa fa-check"></i><b>12.10</b> Для других языков</a></li>
+<li class="chapter" data-level="12.11" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#виды-эмоций"><i class="fa fa-check"></i><b>12.11</b> Виды эмоций</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html"><i class="fa fa-check"></i><b>13</b> Тематическое моделирование</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#что-такое-lda"><i class="fa fa-check"></i><b>13.1</b> Что такое LDA</a></li>
+<li class="chapter" data-level="13.2" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#распределение-дирихле"><i class="fa fa-check"></i><b>13.2</b> Распределение Дирихле</a></li>
+<li class="chapter" data-level="13.3" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#подтоговка-данных"><i class="fa fa-check"></i><b>13.3</b> Подтоговка данных</a></li>
+<li class="chapter" data-level="13.4" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#матрица-встречаемости"><i class="fa fa-check"></i><b>13.4</b> Матрица встречаемости</a></li>
+<li class="chapter" data-level="13.5" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#число-тем"><i class="fa fa-check"></i><b>13.5</b> Число тем</a></li>
+<li class="chapter" data-level="13.6" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#модель-lda"><i class="fa fa-check"></i><b>13.6</b> Модель LDA</a></li>
+<li class="chapter" data-level="13.7" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#слова-и-темы"><i class="fa fa-check"></i><b>13.7</b> Слова и темы</a></li>
+<li class="chapter" data-level="13.8" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#сравнение-топиков"><i class="fa fa-check"></i><b>13.8</b> Сравнение топиков</a></li>
+<li class="chapter" data-level="13.9" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#темы-и-документы"><i class="fa fa-check"></i><b>13.9</b> Темы и документы</a></li>
+<li class="chapter" data-level="13.10" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#распределения-вероятности-для-топиков"><i class="fa fa-check"></i><b>13.10</b> Распределения вероятности для топиков</a></li>
+<li class="chapter" data-level="13.11" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#интерактивные-визуализации"><i class="fa fa-check"></i><b>13.11</b> Интерактивные визуализации</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html"><i class="fa fa-check"></i><b>14</b> Латентно-семантический анализ</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#что-это-такое"><i class="fa fa-check"></i><b>14.1</b> Что это такое</a></li>
+<li class="chapter" data-level="14.2" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#векторное-представление-слов"><i class="fa fa-check"></i><b>14.2</b> Векторное представление слов</a></li>
+<li class="chapter" data-level="14.3" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#сингулярное-разложение-матрицы"><i class="fa fa-check"></i><b>14.3</b> Сингулярное разложение матрицы</a></li>
+<li class="chapter" data-level="14.4" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#простой-пример"><i class="fa fa-check"></i><b>14.4</b> Простой пример</a></li>
+<li class="chapter" data-level="14.5" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#векторы-слов"><i class="fa fa-check"></i><b>14.5</b> Векторы слов</a></li>
+<li class="chapter" data-level="14.6" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#пакеты-для-работы-с-lsa"><i class="fa fa-check"></i><b>14.6</b> Пакеты для работы с LSA</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#lsa"><i class="fa fa-check"></i><b>14.6.1</b> lsa</a></li>
+<li class="chapter" data-level="14.6.2" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#textminer"><i class="fa fa-check"></i><b>14.6.2</b> TextmineR</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#lsa-c-использованием-tidy-data"><i class="fa fa-check"></i><b>14.7</b> LSA c использованием Tidy Data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html"><i class="fa fa-check"></i><b>15</b> Кластеризация и метод главных компонент</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#виды-кластерного-анализа"><i class="fa fa-check"></i><b>15.1</b> Виды кластерного анализа</a></li>
+<li class="chapter" data-level="15.2" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#кластеризация-по-методу-k-средних"><i class="fa fa-check"></i><b>15.2</b> Кластеризация по методу K средних</a></li>
+<li class="chapter" data-level="15.3" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#k-means-в-r"><i class="fa fa-check"></i><b>15.3</b> K-means в R</a></li>
+<li class="chapter" data-level="15.4" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#k-means-для-кластеризации-текстов"><i class="fa fa-check"></i><b>15.4</b> K-means для кластеризации текстов</a></li>
+<li class="chapter" data-level="15.5" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#нормализация-данных"><i class="fa fa-check"></i><b>15.5</b> Нормализация данных</a></li>
+<li class="chapter" data-level="15.6" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация"><i class="fa fa-check"></i><b>15.6</b> Иерархическая кластеризация</a></li>
+<li class="chapter" data-level="15.7" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#алгоритм-иерархической-кластеризации"><i class="fa fa-check"></i><b>15.7</b> Алгоритм иерархической кластеризации</a></li>
+<li class="chapter" data-level="15.8" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация-в-r"><i class="fa fa-check"></i><b>15.8</b> Иерархическая кластеризация в R</a></li>
+<li class="chapter" data-level="15.9" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация-текстов"><i class="fa fa-check"></i><b>15.9</b> Иерархическая кластеризация текстов</a></li>
+<li class="chapter" data-level="15.10" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#метод-главных-компонент"><i class="fa fa-check"></i><b>15.10</b> Метод главных компонент</a></li>
+<li class="chapter" data-level="15.11" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#pca-для-визуализации-кластеров-k-means"><i class="fa fa-check"></i><b>15.11</b> PCA для визуализации кластеров K-means</a></li>
+<li class="chapter" data-level="15.12" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#pca-и-иерархическая-кластеризация"><i class="fa fa-check"></i><b>15.12</b> PCA и иерархическая кластеризация</a></li>
+<li class="chapter" data-level="15.13" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#многомерное-шкалирование"><i class="fa fa-check"></i><b>15.13</b> Многомерное шкалирование</a></li>
+<li class="chapter" data-level="15.14" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#pca-с-factominer"><i class="fa fa-check"></i><b>15.14</b> PCA с FactoMineR</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html"><i class="fa fa-check"></i><b>16</b> Сетевые данные и графы</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#базовое-описание"><i class="fa fa-check"></i><b>16.1</b> Базовое описание</a></li>
+<li class="chapter" data-level="16.2" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#создание-сетевых-данных"><i class="fa fa-check"></i><b>16.2</b> Создание сетевых данных</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#социоматрица"><i class="fa fa-check"></i><b>16.2.1</b> Социоматрица</a></li>
+<li class="chapter" data-level="16.2.2" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#список-ребер"><i class="fa fa-check"></i><b>16.2.2</b> Список ребер</a></li>
+<li class="chapter" data-level="16.2.3" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#формула"><i class="fa fa-check"></i><b>16.2.3</b> Формула</a></li>
+<li class="chapter" data-level="16.2.4" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#импорт-данных"><i class="fa fa-check"></i><b>16.2.4</b> Импорт данных</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#атрибуты-вершин-узлов"><i class="fa fa-check"></i><b>16.3</b> Атрибуты вершин (узлов)</a></li>
+<li class="chapter" data-level="16.4" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#фильтрация-по-узлу"><i class="fa fa-check"></i><b>16.4</b> Фильтрация по узлу</a></li>
+<li class="chapter" data-level="16.5" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#атрибуты-ребер"><i class="fa fa-check"></i><b>16.5</b> Атрибуты ребер</a></li>
+<li class="chapter" data-level="16.6" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#импорт-из-gexf"><i class="fa fa-check"></i><b>16.6</b> Импорт из gexf</a></li>
+<li class="chapter" data-level="16.7" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#визуализация-с-ggraph"><i class="fa fa-check"></i><b>16.7</b> Визуализация с ggraph</a></li>
+<li class="chapter" data-level="16.8" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#фильтрация-по-атрибутам-ребер"><i class="fa fa-check"></i><b>16.8</b> Фильтрация по атрибутам ребер</a></li>
+<li class="chapter" data-level="16.9" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#укладка-сети"><i class="fa fa-check"></i><b>16.9</b> Укладка сети</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="анализ-сетей.html"><a href="анализ-сетей.html"><i class="fa fa-check"></i><b>17</b> Анализ сетей</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="анализ-сетей.html"><a href="анализ-сетей.html#от-conllu-к-совместной-встречаемости"><i class="fa fa-check"></i><b>17.1</b> От conllu к совместной встречаемости</a></li>
+<li class="chapter" data-level="17.2" data-path="анализ-сетей.html"><a href="анализ-сетей.html#граф-слов-с-igraph"><i class="fa fa-check"></i><b>17.2</b> Граф слов с igraph</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Компьютерный анализ текста в R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="анализ-сетей" class="section level1 hasAnchor" number="17">
+<h1><span class="header-section-number">Тема 17</span> Анализ сетей<a href="анализ-сетей.html#анализ-сетей" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<blockquote>
+<p>Сети интересны своими паттернами взаимосвязей и тем, как эти паттерны влияют на участников сети.</p>
+<p><span class="citation">Люк (<a href="#ref-luke2017">2017</a>)</span></p>
+</blockquote>
+<p>В качестве участников сети можно рассматривать не только людей, но и, например, понятия. Пример подобного исследования см. в работе Б.В. Орехова <a href="http://nevmenandr.net/dkx/pdf/n45-105-115.pdf">“В сети терминов М. М. Бахтина: теория графов о диалоге, карнавале и хронотопе”</a>. Узлами сети при таком моделировании становятся прежде всего важнейшие для системы автора термины, а сам граф отражает их взаимное функционирование в тексте. В частности, как показало это исследование, “кажущийся конструктивно важным элементом терминологической системы Бахтина <em>хронотоп</em> … на самом деле обладает минимумом связей (в терминах сетевого анализа число связей узла называется степенью) внутри графа”.</p>
+<p>Мы попробуем провести похожее исследование, но за основу возьмем латинский текст “Исповеди” Августина.</p>
+<div id="от-conllu-к-совместной-встречаемости" class="section level2 hasAnchor" number="17.1">
+<h2><span class="header-section-number">17.1</span> От conllu к совместной встречаемости<a href="анализ-сетей.html#от-conllu-к-совместной-встречаемости" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Файлы “Исповеди” уже с размеченными частями речи, проверенный вручную, доступен в <a href="https://github.com/CIRCSE/AugustiniConfessiones/tree/main">репозитории на GitHub</a>. Эти файлы я заранее скачала в рабочую директорию курса.</p>
+<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="анализ-сетей.html#cb959-1" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;./files/augustinus/&quot;</span>)</span>
+<span id="cb959-2"><a href="анализ-сетей.html#cb959-2" tabindex="-1"></a>files</span></code></pre></div>
+<pre><code>##  [1] &quot;Augustinus_Confessiones_Liber1.tsv.conllu&quot; 
+##  [2] &quot;Augustinus_Confessiones_Liber10.tsv.conllu&quot;
+##  [3] &quot;Augustinus_Confessiones_Liber11.tsv.conllu&quot;
+##  [4] &quot;Augustinus_Confessiones_Liber12.tsv.conllu&quot;
+##  [5] &quot;Augustinus_Confessiones_Liber13.tsv.conllu&quot;
+##  [6] &quot;Augustinus_Confessiones_Liber2.tsv.conllu&quot; 
+##  [7] &quot;Augustinus_Confessiones_Liber3.tsv.conllu&quot; 
+##  [8] &quot;Augustinus_Confessiones_Liber4.tsv.conllu&quot; 
+##  [9] &quot;Augustinus_Confessiones_Liber5.tsv.conllu&quot; 
+## [10] &quot;Augustinus_Confessiones_Liber6.tsv.conllu&quot; 
+## [11] &quot;Augustinus_Confessiones_Liber7.tsv.conllu&quot; 
+## [12] &quot;Augustinus_Confessiones_Liber8.tsv.conllu&quot; 
+## [13] &quot;Augustinus_Confessiones_Liber9.tsv.conllu&quot;</code></pre>
+<p>Сначала их нужно прочитать.</p>
+<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="анализ-сетей.html#cb961-1" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
+<span id="cb961-2"><a href="анализ-сетей.html#cb961-2" tabindex="-1"></a>filenames <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;./files/augustinus/&quot;</span>, files)</span>
+<span id="cb961-3"><a href="анализ-сетей.html#cb961-3" tabindex="-1"></a><span class="fu">head</span>(filenames)</span></code></pre></div>
+<pre><code>## [1] &quot;./files/augustinus/Augustinus_Confessiones_Liber1.tsv.conllu&quot; 
+## [2] &quot;./files/augustinus/Augustinus_Confessiones_Liber10.tsv.conllu&quot;
+## [3] &quot;./files/augustinus/Augustinus_Confessiones_Liber11.tsv.conllu&quot;
+## [4] &quot;./files/augustinus/Augustinus_Confessiones_Liber12.tsv.conllu&quot;
+## [5] &quot;./files/augustinus/Augustinus_Confessiones_Liber13.tsv.conllu&quot;
+## [6] &quot;./files/augustinus/Augustinus_Confessiones_Liber2.tsv.conllu&quot;</code></pre>
+<div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb963-1"><a href="анализ-сетей.html#cb963-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb963-2"><a href="анализ-сетей.html#cb963-2" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb963-3"><a href="анализ-сетей.html#cb963-3" tabindex="-1"></a>confessions_ann <span class="ot">&lt;-</span> <span class="fu">map_df</span>(filenames, udpipe_read_conllu)</span>
+<span id="cb963-4"><a href="анализ-сетей.html#cb963-4" tabindex="-1"></a>confessions_ann <span class="ot">&lt;-</span> confessions_ann <span class="sc">%&gt;%</span> </span>
+<span id="cb963-5"><a href="анализ-сетей.html#cb963-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>doc_id, <span class="sc">-</span>paragraph_id, <span class="sc">-</span>xpos, <span class="sc">-</span>feats, <span class="sc">-</span>head_token_id, <span class="sc">-</span>dep_rel, <span class="sc">-</span>deps, <span class="sc">-</span>misc)</span>
+<span id="cb963-6"><a href="анализ-сетей.html#cb963-6" tabindex="-1"></a></span>
+<span id="cb963-7"><a href="анализ-сетей.html#cb963-7" tabindex="-1"></a><span class="fu">head</span>(confessions_ann)</span></code></pre></div>
+<pre><code>##                        sentence_id                                   sentence
+## 1 Augustinus_Confessiones_Liber1-1 magnus es , domine , et laudabilis valde .
+## 2 Augustinus_Confessiones_Liber1-1 magnus es , domine , et laudabilis valde .
+## 3 Augustinus_Confessiones_Liber1-1 magnus es , domine , et laudabilis valde .
+## 4 Augustinus_Confessiones_Liber1-1 magnus es , domine , et laudabilis valde .
+## 5 Augustinus_Confessiones_Liber1-1 magnus es , domine , et laudabilis valde .
+## 6 Augustinus_Confessiones_Liber1-1 magnus es , domine , et laudabilis valde .
+##   token_id  token   lemma  upos
+## 1        1 magnus  magnus   ADJ
+## 2        2     es     sum   AUX
+## 3        3      ,       , PUNCT
+## 4        4 domine dominus  NOUN
+## 5        5      ,       , PUNCT
+## 6        6     et      et CCONJ</code></pre>
+<p>Теперь можно посчитать совместную встречаемость, например, в рамках одного предложения. Для удобства визуализации я выберу только существительные, которые встречаются чаще 5 раз.</p>
+<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb965-1"><a href="анализ-сетей.html#cb965-1" tabindex="-1"></a>confessions_words <span class="ot">&lt;-</span> confessions_ann <span class="sc">%&gt;%</span></span>
+<span id="cb965-2"><a href="анализ-сетей.html#cb965-2" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb965-3"><a href="анализ-сетей.html#cb965-3" tabindex="-1"></a>  <span class="fu">group_by</span>(lemma) <span class="sc">%&gt;%</span> </span>
+<span id="cb965-4"><a href="анализ-сетей.html#cb965-4" tabindex="-1"></a>  <span class="fu">add_count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb965-5"><a href="анализ-сетей.html#cb965-5" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb965-6"><a href="анализ-сетей.html#cb965-6" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n)</span>
+<span id="cb965-7"><a href="анализ-сетей.html#cb965-7" tabindex="-1"></a></span>
+<span id="cb965-8"><a href="анализ-сетей.html#cb965-8" tabindex="-1"></a>confessions_words</span></code></pre></div>
+<pre><code>## # A tibble: 11,274 × 6
+## # Groups:   lemma [431]
+##    sentence_id                      sentence          token_id token lemma upos 
+##    &lt;chr&gt;                            &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 Augustinus_Confessiones_Liber1-1 magnus es , domi… 4        domi… domi… NOUN 
+##  2 Augustinus_Confessiones_Liber1-2 magna virtus tua… 2        virt… uirt… NOUN 
+##  3 Augustinus_Confessiones_Liber1-2 magna virtus tua… 5        sapi… sapi… NOUN 
+##  4 Augustinus_Confessiones_Liber1-2 magna virtus tua… 9        nume… nume… NOUN 
+##  5 Augustinus_Confessiones_Liber1-3 et laudare te vu… 5        homo  homo  NOUN 
+##  6 Augustinus_Confessiones_Liber1-3 et laudare te vu… 9        crea… crea… NOUN 
+##  7 Augustinus_Confessiones_Liber1-3 et laudare te vu… 13       homo  homo  NOUN 
+##  8 Augustinus_Confessiones_Liber1-3 et laudare te vu… 19       test… test… NOUN 
+##  9 Augustinus_Confessiones_Liber1-3 et laudare te vu… 20       pecc… pecc… NOUN 
+## 10 Augustinus_Confessiones_Liber1-3 et laudare te vu… 23       test… test… NOUN 
+## # ℹ 11,264 more rows</code></pre>
+<p>Теперь можно составить матрицу совместной встречаемости (и убрать редкие пары).</p>
+<div class="sourceCode" id="cb967"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb967-1"><a href="анализ-сетей.html#cb967-1" tabindex="-1"></a>cooc <span class="ot">&lt;-</span> <span class="fu">cooccurrence</span>(confessions_words, <span class="at">term =</span> <span class="st">&quot;lemma&quot;</span>, <span class="at">group =</span> <span class="st">&quot;sentence_id&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb968"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb968-1"><a href="анализ-сетей.html#cb968-1" tabindex="-1"></a>cooc <span class="ot">&lt;-</span> cooc <span class="sc">%&gt;%</span> </span>
+<span id="cb968-2"><a href="анализ-сетей.html#cb968-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb968-3"><a href="анализ-сетей.html#cb968-3" tabindex="-1"></a>  <span class="fu">filter</span>(cooc <span class="sc">&gt;</span> <span class="dv">5</span>)</span>
+<span id="cb968-4"><a href="анализ-сетей.html#cb968-4" tabindex="-1"></a>cooc </span></code></pre></div>
+<pre><code>## # A tibble: 781 × 3
+##    term1      term2       cooc
+##    &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;
+##  1 caelum     terra        274
+##  2 animus     memoria       55
+##  3 dies       nox           48
+##  4 caelum     principium    47
+##  5 dominus    homo          45
+##  6 spatium    tempus        44
+##  7 nomen      terra         44
+##  8 anima      corpus        43
+##  9 imago      memoria       43
+## 10 principium terra         43
+## # ℹ 771 more rows</code></pre>
+</div>
+<div id="граф-слов-с-igraph" class="section level2 hasAnchor" number="17.2">
+<h2><span class="header-section-number">17.2</span> Граф слов с igraph<a href="анализ-сетей.html#граф-слов-с-igraph" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>При создании графа уточним, что связи носят ненаправленный характер.</p>
+<div class="sourceCode" id="cb970"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb970-1"><a href="анализ-сетей.html#cb970-1" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb970-2"><a href="анализ-сетей.html#cb970-2" tabindex="-1"></a>confessions_graph <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(cooc, <span class="at">directed =</span> F)</span>
+<span id="cb970-3"><a href="анализ-сетей.html#cb970-3" tabindex="-1"></a>confessions_graph</span></code></pre></div>
+<pre><code>## IGRAPH b28592f UN-- 199 781 -- 
+## + attr: name (v/c), cooc (e/n)
+## + edges from b28592f (vertex names):
+##  [1] caelum    --terra      animus    --memoria    dies      --nox       
+##  [4] caelum    --principium dominus   --homo       spatium   --tempus    
+##  [7] nomen     --terra      anima     --corpus     imago     --memoria   
+## [10] principium--terra      caelum    --nomen      corpus    --sensus    
+## [13] materia   --terra      homo      --uita       abyssus   --terra     
+## [16] dominus   --deus       anima     --uita       caelum    --materia   
+## [19] homo      --uerbum     caelum    --aqua       caelum    --creatura  
+## [22] aqua      --terra      creatura  --terra      dies      --terra     
+## + ... omitted several edges</code></pre>
+<p>Попробуем изобразить (хотя для больших графов лучше строить интерактивную модель, в этом уроке наc больше интересует анализ связей, а не их визуализация).</p>
+<div class="sourceCode" id="cb972"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb972-1"><a href="анализ-сетей.html#cb972-1" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb972-2"><a href="анализ-сетей.html#cb972-2" tabindex="-1"></a><span class="fu">ggraph</span>(confessions_graph, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb972-3"><a href="анализ-сетей.html#cb972-3" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">edge_alpha =</span> cooc)) <span class="sc">+</span></span>
+<span id="cb972-4"><a href="анализ-сетей.html#cb972-4" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color=</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb972-5"><a href="анализ-сетей.html#cb972-5" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">repel=</span>T), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb972-6"><a href="анализ-сетей.html#cb972-6" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-470-1.png" width="672" />
+## Интерактивный график</p>
+<p>Очень просто, но не очень смотрибельно.</p>
+<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb973-1"><a href="анализ-сетей.html#cb973-1" tabindex="-1"></a><span class="co"># install.packages(&quot;networkD3&quot;)</span></span>
+<span id="cb973-2"><a href="анализ-сетей.html#cb973-2" tabindex="-1"></a><span class="fu">library</span>(networkD3)</span>
+<span id="cb973-3"><a href="анализ-сетей.html#cb973-3" tabindex="-1"></a><span class="fu">simpleNetwork</span>(cooc)</span></code></pre></div>
+<div class="forceNetwork html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-27adf15faf8914e23a8d" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-27adf15faf8914e23a8d">{"x":{"links":{"source":[19,11,44,19,47,168,113,10,72,142,19,34,95,69,0,43,10,19,69,13,19,13,36,44,96,34,19,10,178,19,19,34,44,43,110,179,10,11,58,69,44,93,168,69,177,47,11,99,69,47,34,69,33,19,73,11,0,69,47,90,24,19,69,19,34,21,109,0,112,12,69,72,19,86,19,47,47,179,34,34,24,4,34,104,155,147,10,10,19,34,34,147,165,19,169,19,186,34,19,11,19,81,34,69,99,23,135,82,36,47,185,19,10,10,19,24,35,11,24,13,34,10,58,69,34,69,60,147,153,10,108,177,179,3,19,25,62,47,69,104,36,62,104,47,177,16,27,44,36,67,10,47,11,44,34,33,69,113,69,142,19,147,47,2,128,99,157,43,185,69,16,10,13,33,44,11,69,19,34,69,69,44,34,95,11,47,99,44,19,24,10,35,62,69,169,86,105,44,84,104,142,69,61,36,33,162,168,5,11,24,19,47,47,43,69,69,53,101,86,47,89,33,34,168,65,100,99,65,103,150,10,19,24,33,34,68,69,60,47,10,0,58,69,94,19,33,10,87,11,72,19,34,86,96,90,115,171,69,67,101,185,58,104,177,7,2,16,34,10,44,69,0,36,44,69,47,10,56,79,19,47,19,10,69,86,36,24,13,69,105,47,113,81,19,47,34,47,69,47,69,10,72,118,70,115,165,19,13,22,12,153,36,138,11,13,101,34,23,177,24,33,44,147,185,29,2,1,18,44,49,10,47,69,33,69,34,67,81,99,47,69,33,19,69,13,19,19,36,110,69,62,67,10,34,19,69,104,7,58,113,33,10,25,121,141,79,16,33,140,153,11,19,82,90,135,104,34,99,101,156,47,101,24,34,10,19,0,19,25,33,33,42,33,47,19,34,47,20,51,55,69,47,47,33,19,44,19,58,69,33,62,33,33,44,34,10,34,99,112,10,60,90,47,33,69,94,34,95,43,25,128,113,69,109,34,14,126,147,150,89,69,112,74,90,113,121,128,44,43,58,101,156,165,15,34,36,68,71,86,110,158,24,43,104,147,179,10,13,87,90,121,109,147,174,185,186,47,99,104,147,186,0,7,11,24,19,22,10,43,40,47,19,15,44,10,12,34,16,64,0,69,33,32,43,47,62,10,19,19,44,34,60,60,19,58,47,36,24,43,86,24,87,34,89,90,16,30,86,10,69,104,61,93,47,33,23,69,36,19,58,82,112,114,43,24,58,77,112,147,101,147,47,13,69,73,95,36,130,16,25,70,111,162,67,88,103,100,99,56,60,90,103,149,150,171,10,29,33,171,33,47,69,11,177,1,40,128,153,163,39,106,194,0,6,6,9,11,19,19,10,7,31,12,29,33,10,35,25,44,44,50,34,8,33,10,0,47,47,33,33,44,15,26,29,37,45,46,52,62,67,69,33,15,60,82,10,33,13,33,43,11,36,43,5,26,69,44,47,72,98,12,10,17,43,10,47,36,47,73,95,105,95,110,69,82,27,107,109,72,60,10,16,47,80,84,113,47,44,43,69,43,86,118,19,93,44,113,116,38,43,95,130,145,25,34,153,15,29,62,69,44,58,69,69,10,67,28,148,27,91,107,99,110,34,96,104,147,10,28,82,90,128,137,142,19,165,12,101,47,73,82,95,107,123,171,47,69,115,24,41,59,64,72,109,118,122,123,134,150,161,58,85,109,112,115,118,4,16,51,153,177,185,147,11,83,110,155,173,188,181,98,104,112,10,65,67,69,82,109,166,196],"target":[179,99,115,142,69,177,179,34,99,179,113,156,179,194,179,47,194,95,185,19,36,179,179,179,179,194,44,179,179,47,60,86,165,69,179,185,69,34,69,81,177,179,187,179,179,58,147,147,171,177,179,186,47,110,179,182,19,97,113,178,185,93,101,112,128,166,177,178,179,44,72,147,153,168,177,179,194,194,62,69,156,177,177,177,179,185,24,47,88,101,118,177,177,178,179,185,194,72,73,79,96,98,99,103,117,168,168,185,186,186,186,194,13,33,34,34,36,69,69,93,98,101,130,133,147,175,179,179,179,185,194,198,198,12,69,69,69,103,147,147,177,179,179,185,185,198,44,60,69,69,90,94,104,107,109,118,125,147,150,153,155,156,171,179,179,182,185,194,194,196,33,43,60,69,70,72,98,101,104,104,108,109,110,113,118,147,156,168,171,171,177,177,177,177,177,179,179,185,185,185,185,188,194,196,198,198,198,11,47,47,62,65,67,81,84,85,99,112,128,133,165,171,171,175,186,186,192,194,194,194,196,198,30,43,47,69,87,88,90,92,96,113,118,130,147,147,151,153,156,163,165,168,177,178,179,179,179,180,185,186,188,194,194,196,10,19,24,43,44,47,77,90,90,90,90,92,93,94,99,104,104,105,108,110,110,113,118,120,128,128,130,130,133,141,143,144,150,151,153,153,156,156,156,165,165,168,169,171,171,177,177,178,179,185,185,185,186,187,189,194,194,194,194,198,33,34,69,69,69,69,72,81,82,86,86,93,99,101,104,108,112,113,115,119,121,121,128,128,128,130,147,147,150,151,160,163,168,171,171,171,177,178,179,179,179,182,185,185,185,185,186,186,186,186,187,189,192,194,194,194,196,196,197,198,19,35,36,43,44,44,46,47,56,56,58,67,68,69,69,69,71,76,82,84,86,88,90,90,93,94,96,101,104,104,105,112,113,113,113,115,115,118,121,124,129,133,136,142,143,147,147,153,164,165,166,167,168,169,170,172,174,174,177,177,177,177,177,178,179,179,179,179,179,185,185,185,185,185,185,185,185,186,186,186,186,186,191,194,194,194,194,196,196,196,196,196,198,198,198,198,198,13,13,14,26,28,33,36,44,47,50,54,56,58,67,68,68,69,69,73,75,78,83,83,85,86,87,87,89,89,90,90,93,94,94,99,100,101,101,101,108,110,112,115,115,118,118,118,121,121,121,124,128,131,133,135,139,142,146,147,147,147,147,150,152,153,153,153,153,156,157,159,161,169,169,169,171,171,177,177,177,177,177,179,179,179,183,184,185,185,185,185,185,185,185,186,186,186,186,188,188,190,192,193,194,194,194,194,196,197,197,197,198,10,11,19,24,24,25,29,33,33,34,34,34,41,47,48,48,56,56,57,58,58,60,62,63,64,66,68,68,69,69,69,69,69,69,69,72,72,76,80,82,82,84,86,87,90,92,94,95,95,98,99,99,99,101,101,101,101,102,103,104,104,109,109,110,110,110,110,110,112,112,113,113,115,115,115,117,121,124,124,124,124,124,124,127,128,130,132,133,135,135,138,138,142,142,145,147,147,147,147,147,151,153,154,155,156,156,156,158,159,160,162,163,163,164,164,165,165,165,166,168,169,169,169,170,171,171,171,171,171,171,171,172,172,173,174,176,177,177,177,177,177,177,178,178,178,179,179,179,179,179,179,179,179,179,179,179,179,185,185,185,185,185,185,186,186,186,186,187,190,192,194,194,194,194,194,194,195,196,196,196,198,198,198,198,198,198,198,198],"value":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"colour":["#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["abyssus","actio","aer","aetas","aeternitas","affectio","affectus","amor","ancilla","angelus","anima","animus","annus","aqua","ars","auctoritas","auris","benedictio","caecitas","caelum","canticum","cantus","caritas","carmen","caro","causa","cibus","circuitus","ciuitas","cogitatio","concupiscentia","conspectus","consuetudo","cor","corpus","creator","creatura","cupiditas","cura","curiositas","delectatio","delicia","desiderium","deus","dies","disciplina","doctrina","dominus","domus","donum","ecclesia","error","exemplum","exspectatio","facies","fama","fides","figura","filius","finis","firmamentum","fons","forma","frater","fructus","gaudium","gemitus","genus","gratia","homo","hora","humilitas","imago","informitas","interuallum","iudex","iudicium","iustitia","lacrima","laetitia","laus","lex","liber","libido","lingua","littera","locus","lumen","luminare","luna","lux","mane","manus","mare","mater","materia","materies","mediator","membrum","memoria","mendacium","mens","mensis","misericordia","modus","moles","molestia","mora","mors","motus","mundus","mutatio","natura","nomen","notitia","nox","numerus","obliuio","oculus","odium","oleum","opus","orbis","ordo","os","pactum","pagina","parens","pars","particula","pater","pax","peccator","peccatum","pecus","pes","phantasma","pietas","piscis","placitum","populus","potestas","principium","puer","pulchritudo","ratio","regnum","res","rex","sacramentum","saeculum","salus","sanguis","sapientia","scientia","scriptura","sensus","sententia","sermo","seruus","sidus","signum","silentium","similitudo","societas","sol","sonus","sors","spatium","species","spes","spiritus","stella","studium","substantia","syllaba","temptatio","tempus","tenebra","terra","testimonium","trinitas","tristitia","uanitas","uenter","uerbum","ueritas","uersus","uia","uicissitudo","uir","uirtus","uis","uisio","uita","unitas","uoluntas","uoluptas","uox"],"group":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"nodesize":[8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8]},"options":{"NodeID":"name","Group":"group","colourScale":"d3.scaleOrdinal(['#3182bd'])","fontSize":7,"fontFamily":"serif","clickTextSize":17.5,"linkDistance":50,"linkWidth":"'1.5px'.toString()","charge":-30,"opacity":0.6,"zoom":false,"legend":false,"arrows":false,"nodesize":true,"radiusCalculation":"d.nodesize","bounded":false,"opacityNoHover":1,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb974"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb974-1"><a href="анализ-сетей.html#cb974-1" tabindex="-1"></a><span class="co"># conf_net &lt;- simpleNetwork(cooc)</span></span>
+<span id="cb974-2"><a href="анализ-сетей.html#cb974-2" tabindex="-1"></a><span class="co"># saveNetwork(conf_net, file=&quot;Conf_net.html&quot;, selfcontained = T)</span></span></code></pre></div>
+<p>Можно чуть усложнить<a href="#fn54" class="footnote-ref" id="fnref54"><sup>54</sup></a>.</p>
+<div class="sourceCode" id="cb975"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb975-1"><a href="анализ-сетей.html#cb975-1" tabindex="-1"></a><span class="co">#install.packages(&quot;visNetwork&quot;)</span></span>
+<span id="cb975-2"><a href="анализ-сетей.html#cb975-2" tabindex="-1"></a><span class="fu">library</span>(visNetwork)</span>
+<span id="cb975-3"><a href="анализ-сетей.html#cb975-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">toVisNetworkData</span>(confessions_graph)</span>
+<span id="cb975-4"><a href="анализ-сетей.html#cb975-4" tabindex="-1"></a>confessions_3d <span class="ot">&lt;-</span> <span class="fu">visNetwork</span>(<span class="at">nodes =</span> data<span class="sc">$</span>nodes, <span class="at">edges =</span> data<span class="sc">$</span>edges)</span></code></pre></div>
+<div class="sourceCode" id="cb976"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb976-1"><a href="анализ-сетей.html#cb976-1" tabindex="-1"></a><span class="fu">visOptions</span>(confessions_3d, <span class="at">highlightNearest =</span> <span class="fu">list</span>(<span class="at">enabled =</span> T, <span class="at">degree =</span> <span class="dv">2</span>, <span class="at">hover =</span> T), <span class="at">nodesIdSelection =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb976-2"><a href="анализ-сетей.html#cb976-2" tabindex="-1"></a>  <span class="fu">visPhysics</span>(<span class="at">maxVelocity =</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb976-3"><a href="анализ-сетей.html#cb976-3" tabindex="-1"></a>  <span class="fu">visInteraction</span>(<span class="at">dragNodes =</span> T, <span class="at">navigationButtons =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="visNetwork html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e36e7aee475470cc5f32" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-e36e7aee475470cc5f32">{"x":{"nodes":{"id":["caelum","animus","dies","dominus","spatium","nomen","anima","imago","principium","corpus","materia","homo","abyssus","deus","aqua","creatura","materies","tenebra","mundus","terra","filius","mare","tempus","memoria","cor","informitas","lux","caro","cantus","motus","natura","annus","locus","aeternitas","modus","scriptura","res","sol","species","ueritas","lex","carmen","pes","liber","uerbum","creator","firmamentum","sapientia","mors","aetas","causa","forma","auris","circuitus","genus","aer","pars","sententia","moles","lingua","fons","silentium","affectio","exspectatio","mens","luna","gaudium","mendacium","misericordia","saeculum","gratia","mater","lumen","nox","spiritus","amor","fides","laetitia","oculus","hora","caritas","piscis","cogitatio","actio","caecitas","donum","opus","potestas","populus","sensus","desiderium","canticum","error","fama","ars","pagina","interuallum","auctoritas","humilitas","sermo","substantia","delectatio","fructus","consuetudo","concupiscentia","notitia","iustitia","pater","mutatio","luminare","sacramentum","similitudo","curiositas","molestia","uita","affectus","angelus","conspectus","ecclesia","ancilla","cibus","cupiditas","disciplina","doctrina","exemplum","membrum","benedictio","mora","laus","numerus","cura","ratio","ciuitas","rex","mane","pietas","ordo","delicia","finis","orbis","pecus","signum","littera","libido","studium","uia","trinitas","sonus","uoluntas","uersus","tristitia","mediator","obliuio","peccatum","syllaba","uox","pactum","uis","manus","salus","testimonium","oleum","puer","pulchritudo","uicissitudo","odium","sidus","uoluptas","iudicium","os","particula","phantasma","societas","sors","spes","stella","uirtus","facies","iudex","lacrima","pax","placitum","regnum","sanguis","seruus","uanitas","uenter","uir","uisio","domus","figura","frater","gemitus","mensis","parens","peccator","scientia","temptatio","unitas"],"label":["caelum","animus","dies","dominus","spatium","nomen","anima","imago","principium","corpus","materia","homo","abyssus","deus","aqua","creatura","materies","tenebra","mundus","terra","filius","mare","tempus","memoria","cor","informitas","lux","caro","cantus","motus","natura","annus","locus","aeternitas","modus","scriptura","res","sol","species","ueritas","lex","carmen","pes","liber","uerbum","creator","firmamentum","sapientia","mors","aetas","causa","forma","auris","circuitus","genus","aer","pars","sententia","moles","lingua","fons","silentium","affectio","exspectatio","mens","luna","gaudium","mendacium","misericordia","saeculum","gratia","mater","lumen","nox","spiritus","amor","fides","laetitia","oculus","hora","caritas","piscis","cogitatio","actio","caecitas","donum","opus","potestas","populus","sensus","desiderium","canticum","error","fama","ars","pagina","interuallum","auctoritas","humilitas","sermo","substantia","delectatio","fructus","consuetudo","concupiscentia","notitia","iustitia","pater","mutatio","luminare","sacramentum","similitudo","curiositas","molestia","uita","affectus","angelus","conspectus","ecclesia","ancilla","cibus","cupiditas","disciplina","doctrina","exemplum","membrum","benedictio","mora","laus","numerus","cura","ratio","ciuitas","rex","mane","pietas","ordo","delicia","finis","orbis","pecus","signum","littera","libido","studium","uia","trinitas","sonus","uoluntas","uersus","tristitia","mediator","obliuio","peccatum","syllaba","uox","pactum","uis","manus","salus","testimonium","oleum","puer","pulchritudo","uicissitudo","odium","sidus","uoluptas","iudicium","os","particula","phantasma","societas","sors","spes","stella","uirtus","facies","iudex","lacrima","pax","placitum","regnum","sanguis","seruus","uanitas","uenter","uir","uisio","domus","figura","frater","gemitus","mensis","parens","peccator","scientia","temptatio","unitas"]},"edges":{"from":["caelum","animus","dies","caelum","dominus","spatium","nomen","anima","imago","principium","caelum","corpus","materia","homo","abyssus","dominus","anima","caelum","homo","caelum","caelum","aqua","creatura","dies","materies","corpus","caelum","anima","tenebra","caelum","caelum","corpus","dies","homo","mundus","terra","anima","animus","homo","homo","dies","terra","spatium","homo","terra","dominus","animus","memoria","homo","dominus","corpus","homo","dominus","caelum","terra","animus","caelum","homo","dominus","tenebra","caro","caelum","homo","caelum","corpus","cantus","tempus","abyssus","terra","dies","imago","imago","caelum","spatium","caelum","dominus","dominus","terra","corpus","corpus","caro","tempus","corpus","tempus","terra","res","anima","dominus","caelum","corpus","corpus","tempus","tempus","caelum","terra","caelum","ueritas","imago","caelum","animus","caelum","lex","corpus","homo","memoria","spatium","spatium","liber","creatura","dominus","ueritas","caelum","anima","anima","caelum","corpus","creatura","animus","homo","aqua","corpus","anima","filius","homo","corpus","homo","terra","terra","terra","anima","mors","tempus","terra","annus","caelum","homo","homo","dominus","homo","modus","creatura","terra","terra","dominus","tempus","auris","dies","dies","homo","homo","anima","dominus","animus","dies","corpus","cor","homo","nomen","homo","principium","caelum","res","dominus","terra","terra","memoria","uerbum","deus","uerbum","homo","cor","anima","aqua","homo","dies","animus","homo","caelum","corpus","homo","homo","dies","corpus","nomen","animus","dominus","memoria","dies","caelum","caro","anima","tempus","tempus","homo","tempus","terra","terra","dies","uerbum","modus","principium","homo","fons","creatura","cor","silentium","spatium","animus","animus","dominus","caelum","dominus","dominus","deus","homo","homo","memoria","natura","locus","dominus","sol","cor","corpus","spatium","ueritas","ueritas","memoria","gaudium","misericordia","saeculum","anima","caelum","caro","deus","dominus","homo","homo","firmamentum","dominus","anima","abyssus","nomen","homo","mater","caelum","cor","anima","sapientia","animus","imago","caelum","spatium","tempus","materies","terra","terra","terra","homo","uerbum","ueritas","uerbum","filius","modus","tempus","anima","caelum","caro","corpus","dies","dies","homo","abyssus","creatura","dies","homo","dominus","anima","mater","memoria","caelum","dominus","caelum","anima","homo","mundus","nomen","caro","aqua","homo","pars","dominus","nomen","lex","caelum","dominus","corpus","dominus","homo","dominus","homo","anima","imago","oculus","sol","sol","spatium","caelum","aqua","spiritus","tempus","tempus","creatura","terra","animus","aqua","uerbum","corpus","carmen","tempus","caro","cor","dies","res","uerbum","cor","corpus","homo","homo","dies","homo","anima","dominus","homo","cor","homo","corpus","memoria","lex","memoria","dominus","homo","nomen","caelum","homo","aqua","caelum","caelum","creatura","mundus","homo","res","res","anima","corpus","caelum","homo","spatium","spiritus","filius","nomen","tempus","anima","terra","terra","terra","laetitia","uerbum","cor","uerbum","uerbum","animus","caelum","ueritas","lux","pes","modus","corpus","memoria","mens","sensus","dominus","mens","caro","corpus","caelum","caelum","abyssus","caelum","dies","dies","cor","dominus","cor","dominus","caelum","corpus","dominus","homo","homo","homo","homo","dominus","dominus","cor","caelum","dies","caelum","filius","homo","cor","materies","cor","cor","dies","corpus","anima","nomen","nomen","nomen","anima","firmamentum","lux","dominus","cor","homo","mater","corpus","principium","deus","res","res","nomen","homo","motus","corpus","ars","spatium","res","saeculum","luna","homo","natura","tempus","tempus","nomen","tempus","tempus","dies","deus","terra","terra","terra","terra","uerbum","corpus","creatura","uerbum","uerbum","locus","mundus","uerbum","caro","deus","modus","res","terra","anima","aqua","lumen","lux","opus","motus","res","substantia","uerbum","ueritas","dominus","memoria","modus","res","ueritas","abyssus","aqua","animus","caro","caelum","cor","anima","dies","dominus","dominus","caelum","fides","dies","anima","annus","corpus","homo","homo","abyssus","homo","cor","consuetudo","deus","dominus","locus","anima","caelum","caelum","dies","corpus","lux","mare","caelum","filius","dominus","creatura","caro","deus","locus","caro","mundus","corpus","luna","lux","auris","oculus","locus","anima","homo","modus","fons","mare","dominus","cor","carmen","homo","principium","caelum","filius","res","natura","res","deus","caro","filius","sapientia","natura","res","mens","res","dominus","aqua","homo","informitas","materia","creatura","spiritus","tempus","tempus","tempus","tempus","tempus","terra","terra","terra","mendacium","memoria","uerbum","uerbum","lux","uerbum","uerbum","uerbum","uerbum","anima","ueritas","cor","ueritas","cor","dominus","homo","animus","tempus","actio","delectatio","pars","sapientia","similitudo","curiositas","molestia","uita","abyssus","anima","animus","caelum","animus","caelum","caelum","anima","cor","cor","corpus","corpus","corpus","anima","dominus","causa","dies","dies","fides","corpus","filius","filius","anima","abyssus","dominus","dominus","cor","cor","dies","homo","homo","homo","homo","homo","homo","homo","imago","imago","homo","cor","liber","liber","liber","anima","cor","aqua","cor","deus","animus","materia","deus","memoria","memoria","homo","dies","dominus","imago","mens","annus","anima","modus","deus","anima","dominus","creatura","dominus","mundus","materia","mundus","materia","mundus","nomen","nomen","circuitus","nox","motus","imago","firmamentum","anima","auris","dominus","laus","lingua","nomen","dominus","dies","deus","homo","deus","locus","pes","caelum","mare","dies","nomen","numerus","res","deus","materia","res","res","causa","corpus","sapientia","scriptura","cogitatio","forma","homo","dies","filius","homo","homo","anima","genus","ciuitas","rex","sol","sol","sol","memoria","spatium","corpus","materies","modus","res","anima","spiritus","liber","lux","pars","spiritus","principium","caelum","sol","annus","mens","dominus","tempus","tempus","materia","tempus","tempus","tempus","dominus","homo","tenebra","terra","terra","terra","terra","imago","terra","terra","terra","terra","terra","terra","terra","filius","uerbum","motus","natura","uerbum","uerbum","aeternitas","ueritas","ueritas","ueritas","tempus","uerbum","res","animus","uita","mundus","scriptura","uita","uita","trinitas","membrum","modus","natura","anima","gaudium","genus","homo","liber","motus","sonus","uoluntas"],"to":["terra","memoria","nox","principium","homo","tempus","terra","corpus","memoria","terra","nomen","sensus","terra","uita","terra","deus","uita","materia","uerbum","aqua","creatura","terra","terra","terra","terra","uita","dies","terra","terra","dominus","firmamentum","locus","sol","deus","terra","uerbum","homo","corpus","filius","lex","tempus","mare","uersus","terra","tempus","filius","res","res","spiritus","tempus","terra","ueritas","cor","mundus","informitas","tristitia","abyssus","mediator","nomen","lux","uerbum","mare","mens","natura","pars","sonus","motus","tenebra","natura","annus","homo","res","sapientia","locus","tempus","terra","uita","uita","forma","homo","sensus","aeternitas","tempus","modus","scriptura","uerbum","caro","anima","luminare","mens","oculus","res","sol","tenebra","species","uerbum","uita","corpus","informitas","laetitia","materies","membrum","memoria","misericordia","obliuio","carmen","pes","uerbum","ueritas","ueritas","uerbum","uita","aqua","cor","corpus","caro","creator","homo","caro","mare","membrum","mens","pater","peccatum","res","syllaba","firmamentum","res","sapientia","uerbum","uita","uox","uox","aetas","homo","causa","forma","misericordia","res","res","tempus","forma","modus","uerbum","uerbum","uox","circuitus","firmamentum","creatura","genus","lux","mater","modus","mora","motus","oculus","pactum","res","saeculum","sapientia","scriptura","sensus","spiritus","aer","pars","tristitia","sententia","uita","uita","uoluntas","auris","deus","firmamentum","cor","hora","imago","membrum","mens","modus","modus","mors","motus","mundus","materia","oculus","res","sensus","spatium","spiritus","spiritus","tempus","creator","forma","tempus","species","locus","moles","uerbum","lingua","uerbum","uerbum","uia","uita","uoluntas","uox","uox","uox","affectio","dominus","caro","forma","gaudium","genus","lex","lingua","littera","exspectatio","mens","pars","peccatum","luna","spiritus","spiritus","syllaba","gaudium","mendacium","uis","uita","uita","uita","uoluntas","uox","concupiscentia","cor","corpus","gratia","lumen","luminare","lux","manus","materies","filius","oculus","pater","res","res","salus","lumen","sensus","similitudo","sol","corpus","locus","tenebra","lux","nox","spiritus","testimonium","genus","mens","uia","uita","uita","uoluntas","amor","aer","auris","deus","anima","dominus","iustitia","lux","lux","lux","lux","manus","mare","fides","laetitia","modus","modus","moles","mors","mundus","locus","creatura","oculus","oleum","pars","moles","pater","pater","peccatum","potestas","puer","pulchritudo","saeculum","salus","sapientia","sapientia","sensus","sensus","sensus","hora","nox","sol","species","spiritus","caritas","annus","sapientia","tenebra","piscis","uerbum","uerbum","mens","ueritas","uersus","uicissitudo","uita","uita","uita","uita","uox","cogitatio","aer","actio","caecitas","homo","donum","imago","lex","liber","locus","locus","mare","genus","mens","modus","mors","natura","cor","nox","odium","opus","opus","pars","pars","pars","pater","forma","genus","saeculum","salus","sidus","similitudo","modus","amor","spiritus","spiritus","cor","tenebra","causa","opus","potestas","tristitia","auris","uerbum","populus","sapientia","ueritas","ueritas","liber","ueritas","uersus","uicissitudo","uis","uita","uita","uita","uoluntas","uoluntas","uoluptas","uox","anima","creator","creatura","deus","causa","cor","doctrina","desiderium","fides","fides","filius","genus","gratia","canticum","error","fama","humilitas","iudicium","liber","lingua","locus","luminare","lux","lux","mare","mater","forma","mens","modus","modus","moles","natura","corpus","memoria","natura","nox","nox","oculus","opus","os","particula","peccatum","phantasma","materia","puer","causa","pars","sapientia","societas","sol","sonus","sors","pagina","species","spes","stella","substantia","substantia","interuallum","lux","tempus","opus","pars","tenebra","terra","filius","mens","sensus","sol","auctoritas","uerbum","uerbum","gratia","humilitas","uerbum","uerbum","sermo","ueritas","ueritas","ueritas","ueritas","ueritas","uirtus","uita","uita","uita","uita","uoluntas","uoluntas","uoluntas","uoluntas","uoluntas","uox","uox","uox","uox","uox","aqua","amor","ars","cibus","ciuitas","caritas","creatura","deus","delectatio","ecclesia","facies","auctoritas","filius","genus","gratia","gratia","auris","fructus","informitas","iudex","lacrima","libido","libido","littera","forma","lumen","lumen","luna","luna","lux","firmamentum","firmamentum","mater","mater","memoria","mendacium","mens","mens","mens","mors","lumen","natura","nox","nox","oculus","concupiscentia","oculus","opus","opus","opus","os","pars","pax","peccatum","pes","placitum","creatura","regnum","res","liber","res","notitia","saeculum","sanguis","sapientia","iustitia","sapientia","sapientia","sensus","sententia","seruus","signum","species","species","species","spiritus","pater","auris","causa","hora","mutatio","silentium","genus","luminare","misericordia","uanitas","uenter","fides","firmamentum","uerbum","misericordia","sacramentum","saeculum","spiritus","ueritas","cogitatio","ueritas","spiritus","uia","uia","uir","uis","uisio","uita","uita","uita","uita","uoluntas","uoluptas","uoluptas","uoluptas","uox","affectus","affectus","angelus","caro","caro","causa","cogitatio","amor","conspectus","annus","cogitatio","cor","delicia","creator","domus","domus","fides","ecclesia","figura","ancilla","cor","firmamentum","forma","frater","fructus","gemitus","gratia","gratia","auctoritas","cibus","cogitatio","cupiditas","disciplina","doctrina","exemplum","forma","genus","iudicium","laus","auctoritas","firmamentum","lingua","locus","lumen","lux","manus","mater","materia","creatura","membrum","affectio","cibus","memoria","mens","mens","mens","membrum","mensis","misericordia","benedictio","modus","motus","motus","mundus","mundus","informitas","mundus","moles","natura","natura","homo","liber","nox","mora","nox","obliuio","opus","os","os","os","os","os","os","parens","pars","pater","peccator","peccatum","pes","oculus","piscis","piscis","principium","principium","ratio","cura","res","res","pater","ratio","salus","sapientia","scientia","auctoritas","sensus","sensus","sensus","sermo","seruus","sidus","silentium","similitudo","similitudo","societas","societas","circuitus","mane","mora","sonus","mundus","species","species","species","spes","spiritus","ciuitas","spiritus","spiritus","spiritus","pietas","spiritus","stella","stella","studium","substantia","temptatio","informitas","liber","tempus","mora","ordo","spiritus","tenebra","tenebra","nox","caro","delicia","finis","fructus","terra","motus","oculus","orbis","ordo","pecus","saeculum","signum","uerbum","littera","uerbum","uerbum","nox","oculus","ueritas","auris","error","sapientia","uersus","uir","uis","uita","libido","uita","uita","studium","uia","unitas","uoluntas","uoluntas","uoluntas","uox","uox","uox","uox","uox","uox","uox","uox"],"cooc":[274,55,48,47,45,44,44,43,43,43,40,40,40,39,38,37,37,36,36,35,35,35,35,32,32,32,31,30,30,29,29,29,29,28,28,28,27,26,26,26,26,26,26,25,25,24,24,24,24,24,24,24,23,23,23,23,22,22,22,22,22,21,21,21,21,21,21,21,21,20,20,20,20,20,20,20,20,20,19,19,19,19,19,19,19,19,18,18,18,18,18,18,18,18,18,18,18,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,15,15,15,15,15,15,15,15,15,15,15,15,15,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"interaction":{"hover":true,"dragNodes":true,"navigationButtons":true,"zoomSpeed":1},"physics":{"maxVelocity":30}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":true,"degree":2,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+<p>Сохраняем график.</p>
+<div class="sourceCode" id="cb977"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb977-1"><a href="анализ-сетей.html#cb977-1" tabindex="-1"></a><span class="fu">visOptions</span>(confessions_3d, <span class="at">highlightNearest =</span> <span class="fu">list</span>(<span class="at">enabled =</span> T, <span class="at">degree =</span> <span class="dv">2</span>, <span class="at">hover =</span> T), <span class="at">nodesIdSelection =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb977-2"><a href="анализ-сетей.html#cb977-2" tabindex="-1"></a>  <span class="fu">visPhysics</span>(<span class="at">maxVelocity =</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb977-3"><a href="анализ-сетей.html#cb977-3" tabindex="-1"></a>  <span class="fu">visInteraction</span>(<span class="at">dragNodes =</span> T, <span class="at">navigationButtons =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">visSave</span>(<span class="at">file =</span> <span class="st">&quot;Confessions.html&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+<h3>Литература<a href="литература.html#литература" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-luke2017" class="csl-entry">
+Люк, Дуглас. 2017. <em><span class="nocase">Анализ сетей (графов) в среде R: Руководство пользователя</span></em>. ДМК.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="54">
+<li id="fn54"><p><a href="https://datastorm-open.github.io/visNetwork/physic.html" class="uri">https://datastorm-open.github.io/visNetwork/physic.html</a><a href="анализ-сетей.html#fnref54" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="сетевые-данные-и-графы.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="литература.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/16-networks.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

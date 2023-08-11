@@ -1,0 +1,118 @@
+# Анализ сетей 
+
+> Сети интересны своими паттернами взаимосвязей и тем, как эти паттерны влияют на участников сети. 
+>
+> @luke2017
+
+В качестве участников сети можно рассматривать не только людей, но и, например, понятия. Пример подобного исследования см. в работе Б.В. Орехова ["В сети терминов М. М. Бахтина: теория графов о диалоге, карнавале и хронотопе"](http://nevmenandr.net/dkx/pdf/n45-105-115.pdf). Узлами сети при таком моделировании становятся прежде всего важнейшие для системы автора термины, а сам граф отражает их взаимное функционирование в тексте. В частности, как показало это исследование, "кажущийся конструктивно важным элементом терминологической системы Бахтина _хронотоп_ ... на самом деле обладает минимумом связей (в терминах сетевого анализа число связей узла называется степенью) внутри графа". 
+
+Мы попробуем провести похожее исследование, но за основу возьмем латинский текст "Исповеди" Августина.
+
+## От conllu к совместной встречаемости
+
+Файлы "Исповеди" уже с размеченными частями речи, проверенный вручную, доступен в [репозитории на GitHub](https://github.com/CIRCSE/AugustiniConfessiones/tree/main). Эти файлы я заранее скачала в рабочую директорию курса. 
+
+```{r}
+files <- list.files("./files/augustinus/")
+files
+```
+
+Сначала их нужно прочитать.
+
+```{r}
+library(udpipe)
+filenames <- paste0("./files/augustinus/", files)
+head(filenames)
+```
+
+```{r}
+library(tidyverse)
+library(purrr)
+confessions_ann <- map_df(filenames, udpipe_read_conllu)
+confessions_ann <- confessions_ann %>% 
+  select(-doc_id, -paragraph_id, -xpos, -feats, -head_token_id, -dep_rel, -deps, -misc)
+
+head(confessions_ann)
+```
+
+Теперь можно посчитать совместную встречаемость, например, в рамках одного предложения. Для удобства визуализации я выберу только существительные, которые встречаются чаще 5 раз.
+
+```{r}
+confessions_words <- confessions_ann %>%
+  filter(upos == "NOUN") %>% 
+  group_by(lemma) %>% 
+  add_count() %>% 
+  filter(n > 5) %>% 
+  select(-n)
+
+confessions_words
+```
+
+Теперь можно составить матрицу совместной встречаемости (и убрать редкие пары).
+
+```{r error=TRUE}
+cooc <- cooccurrence(confessions_words, term = "lemma", group = "sentence_id")
+```
+
+
+```{r message=FALSE}
+cooc <- cooc %>% 
+  as_tibble() %>% 
+  filter(cooc > 5)
+cooc 
+```
+
+
+## Граф слов с igraph
+
+При создании графа уточним, что связи носят ненаправленный характер.
+
+```{r message=FALSE}
+library(igraph)
+confessions_graph <- graph_from_data_frame(cooc, directed = F)
+confessions_graph
+```
+Попробуем изобразить (хотя для больших графов лучше строить интерактивную модель, в этом уроке наc больше интересует анализ связей, а не их визуализация).
+
+```{r warning=FALSE}
+library(ggraph)
+ggraph(confessions_graph, layout = "fr") + 
+  geom_edge_link(aes(edge_alpha = cooc)) +
+  geom_node_point(color= "lightblue", size = 2) + 
+  geom_node_text(aes(label = name, repel=T), vjust = 1, hjust = 1) + 
+  theme_void()
+```
+## Интерактивный график
+
+Очень просто, но не очень смотрибельно.
+
+```{r message=FALSE}
+# install.packages("networkD3")
+library(networkD3)
+simpleNetwork(cooc)
+# conf_net <- simpleNetwork(cooc)
+# saveNetwork(conf_net, file="Conf_net.html", selfcontained = T)
+```
+
+Можно чуть усложнить^[https://datastorm-open.github.io/visNetwork/physic.html].
+
+```{r}
+#install.packages("visNetwork")
+library(visNetwork)
+data <- toVisNetworkData(confessions_graph)
+confessions_3d <- visNetwork(nodes = data$nodes, edges = data$edges)
+```
+
+```{r}
+visOptions(confessions_3d, highlightNearest = list(enabled = T, degree = 2, hover = T), nodesIdSelection = T) %>%
+  visPhysics(maxVelocity = 30) %>% 
+  visInteraction(dragNodes = T, navigationButtons = TRUE)
+```
+
+Сохраняем график. 
+
+```{r}
+visOptions(confessions_3d, highlightNearest = list(enabled = T, degree = 2, hover = T), nodesIdSelection = T) %>%
+  visPhysics(maxVelocity = 30) %>% 
+  visInteraction(dragNodes = T, navigationButtons = TRUE) %>% visSave(file = "Confessions.html")
+```
