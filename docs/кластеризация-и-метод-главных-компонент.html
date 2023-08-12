@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-11" />
+<meta name="date" content="2023-08-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -66,9 +66,6 @@
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="libs/d3-4.5.0/d3.min.js"></script>
 <script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
-<link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
-<script src="libs/vis-9.1.0/vis-network.min.js"></script>
-<script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
 
 
 <style type="text/css">
@@ -428,6 +425,17 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="17.1" data-path="анализ-сетей.html"><a href="анализ-сетей.html#от-conllu-к-совместной-встречаемости"><i class="fa fa-check"></i><b>17.1</b> От conllu к совместной встречаемости</a></li>
 <li class="chapter" data-level="17.2" data-path="анализ-сетей.html"><a href="анализ-сетей.html#граф-слов-с-igraph"><i class="fa fa-check"></i><b>17.2</b> Граф слов с igraph</a></li>
+<li class="chapter" data-level="17.3" data-path="анализ-сетей.html"><a href="анализ-сетей.html#важность-узлов"><i class="fa fa-check"></i><b>17.3</b> Важность узлов</a></li>
+<li class="chapter" data-level="17.4" data-path="анализ-сетей.html"><a href="анализ-сетей.html#централизация"><i class="fa fa-check"></i><b>17.4</b> Централизация</a></li>
+<li class="chapter" data-level="17.5" data-path="анализ-сетей.html"><a href="анализ-сетей.html#центральность-на-графике"><i class="fa fa-check"></i><b>17.5</b> Центральность на графике</a></li>
+<li class="chapter" data-level="17.6" data-path="анализ-сетей.html"><a href="анализ-сетей.html#интерактивный-график-2"><i class="fa fa-check"></i><b>17.6</b> Интерактивный график 2</a></li>
+<li class="chapter" data-level="17.7" data-path="анализ-сетей.html"><a href="анализ-сетей.html#точки-сочленения"><i class="fa fa-check"></i><b>17.7</b> Точки сочленения</a></li>
+<li class="chapter" data-level="17.8" data-path="анализ-сетей.html"><a href="анализ-сетей.html#подгруппы"><i class="fa fa-check"></i><b>17.8</b> Подгруппы</a>
+<ul>
+<li class="chapter" data-level="17.8.1" data-path="анализ-сетей.html"><a href="анализ-сетей.html#клики"><i class="fa fa-check"></i><b>17.8.1</b> Клики</a></li>
+</ul></li>
+<li class="chapter" data-level="17.9" data-path="анализ-сетей.html"><a href="анализ-сетей.html#k-ядра"><i class="fa fa-check"></i><b>17.9</b> K-ядра</a></li>
+<li class="chapter" data-level="17.10" data-path="анализ-сетей.html"><a href="анализ-сетей.html#модулярность"><i class="fa fa-check"></i><b>17.10</b> Модулярность</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
@@ -497,11 +505,19 @@ div.csl-indent {
 <span id="cb841-2"><a href="кластеризация-и-метод-главных-компонент.html#cb841-2" tabindex="-1"></a></span>
 <span id="cb841-3"><a href="кластеризация-и-метод-главных-компонент.html#cb841-3" tabindex="-1"></a>centers <span class="ot">&lt;-</span> km.out<span class="sc">$</span>centers <span class="sc">%&gt;%</span> </span>
 <span id="cb841-4"><a href="кластеризация-и-метод-главных-компонент.html#cb841-4" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code></pre></div>
-<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair`
-## is omitted as of tibble 2.0.0.
-## ℹ Using compatibility `.name_repair`.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## Warning: The `x` argument of
+## `as_tibble.matrix()` must
+## have unique column names if
+## `.name_repair` is omitted as
+## of tibble 2.0.0.
+## ℹ Using compatibility
+##   `.name_repair`.
+## This warning is displayed
+## once every 8 hours.
+## Call
+## `lifecycle::last_lifecycle_warnings()`
+## to see where this warning was
+## generated.</code></pre>
 <div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="кластеризация-и-метод-главных-компонент.html#cb843-1" tabindex="-1"></a>centers</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##       V1    V2

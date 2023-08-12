@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-11" />
+<meta name="date" content="2023-08-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -66,9 +66,6 @@
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="libs/d3-4.5.0/d3.min.js"></script>
 <script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
-<link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
-<script src="libs/vis-9.1.0/vis-network.min.js"></script>
-<script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
 
 
 <style type="text/css">
@@ -428,6 +425,17 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="17.1" data-path="анализ-сетей.html"><a href="анализ-сетей.html#от-conllu-к-совместной-встречаемости"><i class="fa fa-check"></i><b>17.1</b> От conllu к совместной встречаемости</a></li>
 <li class="chapter" data-level="17.2" data-path="анализ-сетей.html"><a href="анализ-сетей.html#граф-слов-с-igraph"><i class="fa fa-check"></i><b>17.2</b> Граф слов с igraph</a></li>
+<li class="chapter" data-level="17.3" data-path="анализ-сетей.html"><a href="анализ-сетей.html#важность-узлов"><i class="fa fa-check"></i><b>17.3</b> Важность узлов</a></li>
+<li class="chapter" data-level="17.4" data-path="анализ-сетей.html"><a href="анализ-сетей.html#централизация"><i class="fa fa-check"></i><b>17.4</b> Централизация</a></li>
+<li class="chapter" data-level="17.5" data-path="анализ-сетей.html"><a href="анализ-сетей.html#центральность-на-графике"><i class="fa fa-check"></i><b>17.5</b> Центральность на графике</a></li>
+<li class="chapter" data-level="17.6" data-path="анализ-сетей.html"><a href="анализ-сетей.html#интерактивный-график-2"><i class="fa fa-check"></i><b>17.6</b> Интерактивный график 2</a></li>
+<li class="chapter" data-level="17.7" data-path="анализ-сетей.html"><a href="анализ-сетей.html#точки-сочленения"><i class="fa fa-check"></i><b>17.7</b> Точки сочленения</a></li>
+<li class="chapter" data-level="17.8" data-path="анализ-сетей.html"><a href="анализ-сетей.html#подгруппы"><i class="fa fa-check"></i><b>17.8</b> Подгруппы</a>
+<ul>
+<li class="chapter" data-level="17.8.1" data-path="анализ-сетей.html"><a href="анализ-сетей.html#клики"><i class="fa fa-check"></i><b>17.8.1</b> Клики</a></li>
+</ul></li>
+<li class="chapter" data-level="17.9" data-path="анализ-сетей.html"><a href="анализ-сетей.html#k-ядра"><i class="fa fa-check"></i><b>17.9</b> K-ядра</a></li>
+<li class="chapter" data-level="17.10" data-path="анализ-сетей.html"><a href="анализ-сетей.html#модулярность"><i class="fa fa-check"></i><b>17.10</b> Модулярность</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
@@ -644,7 +652,7 @@ div.csl-indent {
 <span id="cb226-4"><a href="функциональное-программирование.html#cb226-4" tabindex="-1"></a>  medians[i] <span class="ot">&lt;-</span> <span class="fu">median</span>(hapax_plato[,i])</span>
 <span id="cb226-5"><a href="функциональное-программирование.html#cb226-5" tabindex="-1"></a>}</span>
 <span id="cb226-6"><a href="функциональное-программирование.html#cb226-6" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.004 sec elapsed</code></pre>
+<pre><code>## 0.002 sec elapsed</code></pre>
 <p>Второй способ чуть быстрее, и для больших данных это может быть существенно (знала бы я это раньше).</p>
 <div class="infobox">
 <p>Вы уже заметили, что в циклах часто используется буква <code>i</code>. Но никакой особой магии в ней нет!</p>
@@ -663,7 +671,7 @@ div.csl-indent {
 <span id="cb228-8"><a href="функциональное-программирование.html#cb228-8" tabindex="-1"></a>y[k]</span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="функциональное-программирование.html#cb230-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.005 sec elapsed</code></pre>
+<pre><code>## 0.003 sec elapsed</code></pre>
 <p>То же самое можно сделать без цикла, причем быстрее!</p>
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="функциональное-программирование.html#cb232-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb232-2"><a href="функциональное-программирование.html#cb232-2" tabindex="-1"></a>y[<span class="fu">nchar</span>(y) <span class="sc">==</span> <span class="dv">6</span>][<span class="dv">1</span>] </span></code></pre></div>
@@ -757,7 +765,7 @@ div.csl-indent {
 <span id="cb260-3"><a href="функциональное-программирование.html#cb260-3" tabindex="-1"></a>  hapax_plato[,i] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(hapax_plato[,i])</span>
 <span id="cb260-4"><a href="функциональное-программирование.html#cb260-4" tabindex="-1"></a>}</span>
 <span id="cb260-5"><a href="функциональное-программирование.html#cb260-5" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.003 sec elapsed</code></pre>
+<pre><code>## 0.002 sec elapsed</code></pre>
 <p>Функция <code>apply()</code> позволяет применять к данным собственные функции, в том числе анонимные.</p>
 <div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="функциональное-программирование.html#cb262-1" tabindex="-1"></a>hapax_centered <span class="ot">&lt;-</span> <span class="fu">apply</span>(hapax_plato, <span class="dv">2</span>, <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x))</span>
 <span id="cb262-2"><a href="функциональное-программирование.html#cb262-2" tabindex="-1"></a><span class="fu">head</span>(hapax_centered)</span></code></pre></div>
