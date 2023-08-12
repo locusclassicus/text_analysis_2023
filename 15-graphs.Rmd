@@ -170,7 +170,7 @@ dict_sub
 
 Для визуализации таких объектов подходит функция `ggraph()` из одноименного пакета, которая основана на грамматике `ggplot`.
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(ggraph)
 names <- names(V(dict_sub))
 
@@ -180,6 +180,24 @@ ggraph(dict_sub, layout = "fr") +
   geom_node_text(aes(label = names), nudge_y = -0.1) +
   theme_graph()
 ```
+
+Немного баловства (но лучше, конечно, другие картинки использовать).
+
+```{r}
+library(ggimage)
+
+## получаем координаты
+subgraph.layout <- layout.fruchterman.reingold(dict_sub)
+x <-  subgraph.layout[,1]
+y <- subgraph.layout[,2]
+
+ggraph(dict_sub, layout = subgraph.layout) +
+  geom_edge_link(color = "cadetblue3") +
+  geom_pokemon(aes(x, y), image="pikachu", size = 0.2) +
+  geom_node_text(aes(label = names), nudge_y = -0.1) +
+  theme_graph()
+```
+
 
 Теперь выберем отдельный узел _вместе_ с его соседями. 
 
@@ -333,7 +351,7 @@ ggraph(kfj_sub, layout = "kk") +
 - максимизировать угол между ребрами, когда они пересекают или соединяют узлы;
 - минимизировать общее пространство для вывода сети. 
 
-![](https://kateto.net/polnet2017.html)
+![](images/layout.png)
 
 Для автоматического построения укладок разработано большое количество методов. В пакете `igraph` для каждого есть особая функция:
 

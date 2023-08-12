@@ -428,14 +428,22 @@ div.csl-indent {
 <li class="chapter" data-level="17.3" data-path="анализ-сетей.html"><a href="анализ-сетей.html#важность-узлов"><i class="fa fa-check"></i><b>17.3</b> Важность узлов</a></li>
 <li class="chapter" data-level="17.4" data-path="анализ-сетей.html"><a href="анализ-сетей.html#централизация"><i class="fa fa-check"></i><b>17.4</b> Централизация</a></li>
 <li class="chapter" data-level="17.5" data-path="анализ-сетей.html"><a href="анализ-сетей.html#центральность-на-графике"><i class="fa fa-check"></i><b>17.5</b> Центральность на графике</a></li>
-<li class="chapter" data-level="17.6" data-path="анализ-сетей.html"><a href="анализ-сетей.html#интерактивный-график-2"><i class="fa fa-check"></i><b>17.6</b> Интерактивный график 2</a></li>
+<li class="chapter" data-level="17.6" data-path="анализ-сетей.html"><a href="анализ-сетей.html#интерактивный-граф"><i class="fa fa-check"></i><b>17.6</b> Интерактивный граф</a></li>
 <li class="chapter" data-level="17.7" data-path="анализ-сетей.html"><a href="анализ-сетей.html#точки-сочленения"><i class="fa fa-check"></i><b>17.7</b> Точки сочленения</a></li>
 <li class="chapter" data-level="17.8" data-path="анализ-сетей.html"><a href="анализ-сетей.html#подгруппы"><i class="fa fa-check"></i><b>17.8</b> Подгруппы</a>
 <ul>
 <li class="chapter" data-level="17.8.1" data-path="анализ-сетей.html"><a href="анализ-сетей.html#клики"><i class="fa fa-check"></i><b>17.8.1</b> Клики</a></li>
+<li class="chapter" data-level="17.8.2" data-path="анализ-сетей.html"><a href="анализ-сетей.html#k-ядра"><i class="fa fa-check"></i><b>17.8.2</b> K-ядра</a></li>
 </ul></li>
-<li class="chapter" data-level="17.9" data-path="анализ-сетей.html"><a href="анализ-сетей.html#k-ядра"><i class="fa fa-check"></i><b>17.9</b> K-ядра</a></li>
-<li class="chapter" data-level="17.10" data-path="анализ-сетей.html"><a href="анализ-сетей.html#модулярность"><i class="fa fa-check"></i><b>17.10</b> Модулярность</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="dracor.html"><a href="dracor.html"><i class="fa fa-check"></i><b>18</b> Dracor</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="dracor.html"><a href="dracor.html#о-корпусе-dracor"><i class="fa fa-check"></i><b>18.1</b> О корпусе Dracor</a></li>
+<li class="chapter" data-level="18.2" data-path="dracor.html"><a href="dracor.html#начало-работы-с-dracor"><i class="fa fa-check"></i><b>18.2</b> Начало работы с Dracor</a></li>
+<li class="chapter" data-level="18.3" data-path="dracor.html"><a href="dracor.html#сети-dracor"><i class="fa fa-check"></i><b>18.3</b> Сети Dracor</a></li>
+<li class="chapter" data-level="18.4" data-path="dracor.html"><a href="dracor.html#модулярность"><i class="fa fa-check"></i><b>18.4</b> Модулярность</a></li>
+<li class="chapter" data-level="18.5" data-path="dracor.html"><a href="dracor.html#алгоритмы-обнаружения-сообществ"><i class="fa fa-check"></i><b>18.5</b> Алгоритмы обнаружения сообществ</a></li>
+<li class="chapter" data-level="18.6" data-path="dracor.html"><a href="dracor.html#двудольные-графы-биграфы"><i class="fa fa-check"></i><b>18.6</b> Двудольные графы (биграфы)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
 <li class="divider"></li>
@@ -481,11 +489,14 @@ div.csl-indent {
 <span id="cb289-4"><a href="импорт-и-экспорт-данных.html#cb289-4" tabindex="-1"></a><span class="fu">download.file</span>(url, <span class="at">destfile =</span> <span class="st">&quot;files/Byron.tab&quot;</span>) </span></code></pre></div>
 <p>После этого в папке files появится новый файл. Получить список скачанных файлов можно при помощи <code>list.files()</code>.</p>
 <div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="импорт-и-экспорт-данных.html#cb290-1" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;./files&quot;</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;1922_Июль_.gexf&quot;     &quot;AmazonBooks.xlsx&quot;    &quot;antibarbari_archive&quot;
-##  [4] &quot;archive.zip&quot;         &quot;augustinus&quot;          &quot;BX-CSV-Dump&quot;        
-##  [7] &quot;Byron.tab&quot;           &quot;CiceroOff.txt&quot;       &quot;karamzin_liza.pdf&quot;  
-## [10] &quot;karamzin_liza.txt&quot;   &quot;names.txt&quot;           &quot;Persons_EDGES.csv&quot;  
-## [13] &quot;template.docx&quot;       &quot;War_and_Peace.xml&quot;</code></pre>
+<pre><code>##  [1] &quot;03132019_Excel_Socrates.xlsx&quot; &quot;1922_Июль_.gexf&quot;             
+##  [3] &quot;AmazonBooks.xlsx&quot;             &quot;antibarbari_archive&quot;         
+##  [5] &quot;archive.zip&quot;                  &quot;augustinus&quot;                  
+##  [7] &quot;BX-CSV-Dump&quot;                  &quot;Byron.tab&quot;                   
+##  [9] &quot;CiceroOff.txt&quot;                &quot;karamzin_liza.pdf&quot;           
+## [11] &quot;karamzin_liza.txt&quot;            &quot;names.txt&quot;                   
+## [13] &quot;Persons_EDGES.csv&quot;            &quot;template.docx&quot;               
+## [15] &quot;War_and_Peace.xml&quot;</code></pre>
 </div>
 <div id="чтение-локальных-файлов" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Чтение локальных файлов<a href="импорт-и-экспорт-данных.html#чтение-локальных-файлов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -505,7 +516,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="импорт-и-экспорт-данных.html#cb293-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb293-2"><a href="импорт-и-экспорт-данных.html#cb293-2" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Users.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 278858 Columns: 1
-## ── Column specification ──────
+## ── Column specification ─────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): User-ID;Location;Age
 ## 
@@ -524,7 +535,7 @@ div.csl-indent {
 <p>Чтобы исправить дело, воспользуемся другой функцией из того же пакета:</p>
 <div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="импорт-и-экспорт-данных.html#cb297-1" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Users.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 246666 Columns: 3
-## ── Column specification ──────
+## ── Column specification ─────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;;&quot;
 ## chr (2): Location, Age
 ## dbl (1): User-ID

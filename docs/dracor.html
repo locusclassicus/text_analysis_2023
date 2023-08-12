@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Тема 18 Dracor | Компьютерный анализ текста в R</title>
+  <meta name="description" content="Все прекрасное трудно." />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Тема 18 Dracor | Компьютерный анализ текста в R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Все прекрасное трудно." />
+  <meta name="github-repo" content="https://github.com/locusclassicus/text_analysis_r_bookdown_2023/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Тема 18 Dracor | Компьютерный анализ текста в R" />
+  
+  <meta name="twitter:description" content="Все прекрасное трудно." />
+  
+
+<meta name="author" content="Ольга Алиева" />
+
+
+<meta name="date" content="2023-08-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="анализ-сетей.html"/>
+<link rel="next" href="литература.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.27/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Компьютерный анализ текста в R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> О курсе</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#благодарности"><i class="fa fa-check"></i><b>1.1</b> Благодарности</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html"><i class="fa fa-check"></i><b>2</b> Начало работы с R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#что-такое-r"><i class="fa fa-check"></i><b>2.1</b> Что такое R?</a></li>
+<li class="chapter" data-level="2.2" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#пакеты-и-виньетки"><i class="fa fa-check"></i><b>2.2</b> Пакеты и виньетки</a></li>
+<li class="chapter" data-level="2.3" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#если-не-хватает-пакетов"><i class="fa fa-check"></i><b>2.3</b> Если не хватает пакетов</a></li>
+<li class="chapter" data-level="2.4" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#о-воспроизводимости"><i class="fa fa-check"></i><b>2.4</b> О воспроизводимости</a></li>
+<li class="chapter" data-level="2.5" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#что-мы-не-будем-делать"><i class="fa fa-check"></i><b>2.5</b> Что мы (не) будем делать?</a></li>
+<li class="chapter" data-level="2.6" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#rstudio"><i class="fa fa-check"></i><b>2.6</b> RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#установка"><i class="fa fa-check"></i><b>2.7</b> Установка</a></li>
+<li class="chapter" data-level="2.8" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#начало-работы"><i class="fa fa-check"></i><b>2.8</b> Начало работы</a></li>
+<li class="chapter" data-level="2.9" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#r-как-калькулятор"><i class="fa fa-check"></i><b>2.9</b> R как калькулятор</a></li>
+<li class="chapter" data-level="2.10" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#операторы-присваивания"><i class="fa fa-check"></i><b>2.10</b> Операторы присваивания</a></li>
+<li class="chapter" data-level="2.11" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#векторы"><i class="fa fa-check"></i><b>2.11</b> Векторы</a></li>
+<li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
+<li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
+<li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
+<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#шорткаты"><i class="fa fa-check"></i><b>2.15</b> Шорткаты</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="визуализации.html"><a href="визуализации.html#базовый-r"><i class="fa fa-check"></i><b>3.1</b> Базовый R</a></li>
+<li class="chapter" data-level="3.2" data-path="визуализации.html"><a href="визуализации.html#lattice"><i class="fa fa-check"></i><b>3.2</b> Lattice</a></li>
+<li class="chapter" data-level="3.3" data-path="визуализации.html"><a href="визуализации.html#ggplot2"><i class="fa fa-check"></i><b>3.3</b> Ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="визуализации.html"><a href="визуализации.html#быстрое-решение-qplot"><i class="fa fa-check"></i><b>3.3.1</b> Быстрое решение: qplot()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="визуализации.html"><a href="визуализации.html#слой-за-слоем-ggplot"><i class="fa fa-check"></i><b>3.3.2</b> Слой за слоем: ggplot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="визуализации.html"><a href="визуализации.html#экспорт-графиков-из-среды-r"><i class="fa fa-check"></i><b>3.4</b> Экспорт графиков из среды R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="опрятные-данные.html"><a href="опрятные-данные.html"><i class="fa fa-check"></i><b>4</b> Опрятные данные</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#синтаксис-tidyverse"><i class="fa fa-check"></i><b>4.1</b> Синтаксис tidyverse</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#tibble"><i class="fa fa-check"></i><b>4.1.1</b> Tibble</a></li>
+<li class="chapter" data-level="4.1.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#dplyr"><i class="fa fa-check"></i><b>4.1.2</b> Dplyr</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#опрятные-данные-1"><i class="fa fa-check"></i><b>4.2</b> Опрятные данные</a></li>
+<li class="chapter" data-level="4.3" data-path="опрятные-данные.html"><a href="опрятные-данные.html#пример-буккроссинг"><i class="fa fa-check"></i><b>4.3</b> Пример: буккроссинг</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="опрятные-данные.html"><a href="опрятные-данные.html#смотрим-на-данные"><i class="fa fa-check"></i><b>4.3.1</b> Смотрим на данные</a></li>
+<li class="chapter" data-level="4.3.2" data-path="опрятные-данные.html"><a href="опрятные-данные.html#трансформируем-данные"><i class="fa fa-check"></i><b>4.3.2</b> Трансформируем данные</a></li>
+<li class="chapter" data-level="4.3.3" data-path="опрятные-данные.html"><a href="опрятные-данные.html#объединяем-данные"><i class="fa fa-check"></i><b>4.3.3</b> Объединяем данные</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html"><i class="fa fa-check"></i><b>5</b> Функциональное программирование</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#зачем-писать-функции"><i class="fa fa-check"></i><b>5.1</b> Зачем писать функции?</a></li>
+<li class="chapter" data-level="5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#область-видимости-переменных"><i class="fa fa-check"></i><b>5.2</b> Область видимости переменных</a></li>
+<li class="chapter" data-level="5.3" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#аргументы-функции"><i class="fa fa-check"></i><b>5.3</b> Аргументы функции</a></li>
+<li class="chapter" data-level="5.4" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#векторизируй-это"><i class="fa fa-check"></i><b>5.4</b> Векторизируй это</a></li>
+<li class="chapter" data-level="5.5" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#векторизованные-конструкции"><i class="fa fa-check"></i><b>5.5</b> Векторизованные конструкции</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#циклы"><i class="fa fa-check"></i><b>5.5.1</b> Циклы</a></li>
+<li class="chapter" data-level="5.5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#условия"><i class="fa fa-check"></i><b>5.5.2</b> Условия</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#вместо-циклов-базовый-r-и-tidyverse"><i class="fa fa-check"></i><b>5.6</b> Вместо циклов: базовый R и tidyverse</a></li>
+<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.7</b> Purrr</a></li>
+<li class="chapter" data-level="5.8" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#пример-итерации"><i class="fa fa-check"></i><b>5.8</b> Пример итерации</a></li>
+<li class="chapter" data-level="5.9" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#furrr"><i class="fa fa-check"></i><b>5.9</b> Furrr</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html"><i class="fa fa-check"></i><b>6</b> Импорт и экспорт данных</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#рабочая-директория"><i class="fa fa-check"></i><b>6.1</b> Рабочая директория</a></li>
+<li class="chapter" data-level="6.2" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-файлов-из-интернета"><i class="fa fa-check"></i><b>6.2</b> Чтение файлов из интернета</a></li>
+<li class="chapter" data-level="6.3" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-локальных-файлов"><i class="fa fa-check"></i><b>6.3</b> Чтение локальных файлов</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#csv-и-tsv"><i class="fa fa-check"></i><b>6.3.1</b> csv и tsv</a></li>
+<li class="chapter" data-level="6.3.2" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#xls-и-xlsx"><i class="fa fa-check"></i><b>6.3.2</b> xls и xlsx</a></li>
+<li class="chapter" data-level="6.3.3" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#txt"><i class="fa fa-check"></i><b>6.3.3</b> txt</a></li>
+<li class="chapter" data-level="6.3.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#doc"><i class="fa fa-check"></i><b>6.3.4</b> doc</a></li>
+<li class="chapter" data-level="6.3.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#pdf"><i class="fa fa-check"></i><b>6.3.5</b> pdf</a></li>
+<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.6</b> zip</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#xml-и-html"><i class="fa fa-check"></i><b>6.4</b> xml и html</a></li>
+<li class="chapter" data-level="6.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#json"><i class="fa fa-check"></i><b>6.5</b> json</a></li>
+<li class="chapter" data-level="6.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#gutenbergr"><i class="fa fa-check"></i><b>6.6</b> GutenbergR</a></li>
+<li class="chapter" data-level="6.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rperseus"><i class="fa fa-check"></i><b>6.7</b> RPerseus</a></li>
+<li class="chapter" data-level="6.8" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-нескольких-файлов"><i class="fa fa-check"></i><b>6.8</b> Чтение нескольких файлов</a></li>
+<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.9.1</b> Rdata</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html"><i class="fa fa-check"></i><b>7</b> Воспроизводимые исследования</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#о-воспроизводимости-1"><i class="fa fa-check"></i><b>7.1</b> О воспроизводимости</a></li>
+<li class="chapter" data-level="7.2" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#markdown"><i class="fa fa-check"></i><b>7.2</b> Markdown</a></li>
+<li class="chapter" data-level="7.3" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#синтаксис-markdown"><i class="fa fa-check"></i><b>7.3</b> Синтаксис Markdown</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#заголовки"><i class="fa fa-check"></i><b>7.3.1</b> Заголовки</a></li>
+<li class="chapter" data-level="7.3.2" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#форматирование"><i class="fa fa-check"></i><b>7.3.2</b> Форматирование</a></li>
+<li class="chapter" data-level="7.3.3" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#списки-1"><i class="fa fa-check"></i><b>7.3.3</b> Списки</a></li>
+<li class="chapter" data-level="7.3.4" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#ссылки"><i class="fa fa-check"></i><b>7.3.4</b> Ссылки</a></li>
+<li class="chapter" data-level="7.3.5" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#изображения"><i class="fa fa-check"></i><b>7.3.5</b> Изображения</a></li>
+<li class="chapter" data-level="7.3.6" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#блоки-кода"><i class="fa fa-check"></i><b>7.3.6</b> Блоки кода</a></li>
+<li class="chapter" data-level="7.3.7" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#цитаты"><i class="fa fa-check"></i><b>7.3.7</b> Цитаты</a></li>
+<li class="chapter" data-level="7.3.8" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#разделители"><i class="fa fa-check"></i><b>7.3.8</b> Разделители</a></li>
+<li class="chapter" data-level="7.3.9" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#таблицы-1"><i class="fa fa-check"></i><b>7.3.9</b> Таблицы</a></li>
+<li class="chapter" data-level="7.3.10" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#id"><i class="fa fa-check"></i><b>7.3.10</b> Чек-листы</a></li>
+<li class="chapter" data-level="7.3.11" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#внутренние-ссылки"><i class="fa fa-check"></i><b>7.3.11</b> Внутренние ссылки</a></li>
+<li class="chapter" data-level="7.3.12" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#графики"><i class="fa fa-check"></i><b>7.3.12</b> Графики</a></li>
+<li class="chapter" data-level="7.3.13" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#математические-формулы"><i class="fa fa-check"></i><b>7.3.13</b> Математические формулы</a></li>
+<li class="chapter" data-level="7.3.14" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#библиография"><i class="fa fa-check"></i><b>7.3.14</b> Библиография</a></li>
+<li class="chapter" data-level="7.3.15" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#смайлы"><i class="fa fa-check"></i><b>7.3.15</b> Смайлы</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#публикация-html"><i class="fa fa-check"></i><b>7.4</b> Публикация html</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html"><i class="fa fa-check"></i><b>8</b> Регулярные выражения</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#regex-в-базовом-r"><i class="fa fa-check"></i><b>8.1</b> Regex в базовом R</a></li>
+<li class="chapter" data-level="8.2" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#литералы-и-классы"><i class="fa fa-check"></i><b>8.2</b> Литералы и классы</a></li>
+<li class="chapter" data-level="8.3" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#якоря"><i class="fa fa-check"></i><b>8.3</b> Якоря</a></li>
+<li class="chapter" data-level="8.4" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#метасимволы"><i class="fa fa-check"></i><b>8.4</b> Метасимволы</a></li>
+<li class="chapter" data-level="8.5" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#экранирование"><i class="fa fa-check"></i><b>8.5</b> Экранирование</a></li>
+<li class="chapter" data-level="8.6" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#квантификация"><i class="fa fa-check"></i><b>8.6</b> Квантификация</a></li>
+<li class="chapter" data-level="8.7" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#жадная-и-ленивая-квантификация"><i class="fa fa-check"></i><b>8.7</b> Жадная и ленивая квантификация</a></li>
+<li class="chapter" data-level="8.8" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#regex-в-stringr-основы"><i class="fa fa-check"></i><b>8.8</b> Regex в stringr: основы</a></li>
+<li class="chapter" data-level="8.9" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_detect-и-str_count"><i class="fa fa-check"></i><b>8.9</b> str_detect() и str_count()</a></li>
+<li class="chapter" data-level="8.10" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_extract"><i class="fa fa-check"></i><b>8.10</b> str_extract()</a></li>
+<li class="chapter" data-level="8.11" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_subset-и-str_match"><i class="fa fa-check"></i><b>8.11</b> str_subset() и str_match()</a></li>
+<li class="chapter" data-level="8.12" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_replace"><i class="fa fa-check"></i><b>8.12</b> str_replace</a></li>
+<li class="chapter" data-level="8.13" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_split"><i class="fa fa-check"></i><b>8.13</b> str_split</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html"><i class="fa fa-check"></i><b>9</b> Веб-скрапинг</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#структура-html"><i class="fa fa-check"></i><b>9.1</b> Структура html</a></li>
+<li class="chapter" data-level="9.2" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#каскадные-таблицы-стилей"><i class="fa fa-check"></i><b>9.2</b> Каскадные таблицы стилей</a></li>
+<li class="chapter" data-level="9.3" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#извлечение-данных"><i class="fa fa-check"></i><b>9.3</b> Извлечение данных</a></li>
+<li class="chapter" data-level="9.4" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#извлечение-в-тиббл"><i class="fa fa-check"></i><b>9.4</b> Извлечение в тиббл</a></li>
+<li class="chapter" data-level="9.5" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#скрапим-телеграм-канал"><i class="fa fa-check"></i><b>9.5</b> Скрапим телеграм-канал</a></li>
+<li class="chapter" data-level="9.6" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#эмотиконы"><i class="fa fa-check"></i><b>9.6</b> Эмотиконы</a></li>
+<li class="chapter" data-level="9.7" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#рутинная-уборка"><i class="fa fa-check"></i><b>9.7</b> Рутинная уборка</a></li>
+<li class="chapter" data-level="9.8" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#лемматизация"><i class="fa fa-check"></i><b>9.8</b> Лемматизация</a></li>
+<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#таблицы-html"><i class="fa fa-check"></i><b>9.9</b> Таблицы html</a></li>
+<li class="chapter" data-level="9.10" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#wikisource"><i class="fa fa-check"></i><b>9.10</b> Wikisource</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html"><i class="fa fa-check"></i><b>10</b> Токенизация и лемматизация</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#токенизация-в-tidytext"><i class="fa fa-check"></i><b>10.1</b> Токенизация в tidytext</a></li>
+<li class="chapter" data-level="10.2" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#токенизация-в-tokenizers"><i class="fa fa-check"></i><b>10.2</b> Токенизация в tokenizers</a></li>
+<li class="chapter" data-level="10.3" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#скипграмы"><i class="fa fa-check"></i><b>10.3</b> Скипграмы</a></li>
+<li class="chapter" data-level="10.4" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#лемматизация-и-частеречная-разметка"><i class="fa fa-check"></i><b>10.4</b> Лемматизация и частеречная разметка</a></li>
+<li class="chapter" data-level="10.5" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#морфологическая-разметка"><i class="fa fa-check"></i><b>10.5</b> Морфологическая разметка</a></li>
+<li class="chapter" data-level="10.6" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#распределение-частей-речи"><i class="fa fa-check"></i><b>10.6</b> Распределение частей речи</a></li>
+<li class="chapter" data-level="10.7" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#совместная-встречаемость-слов"><i class="fa fa-check"></i><b>10.7</b> Совместная встречаемость слов</a></li>
+<li class="chapter" data-level="10.8" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html#синтаксическая-разметка"><i class="fa fa-check"></i><b>10.8</b> Синтаксическая разметка</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html"><i class="fa fa-check"></i><b>11</b> Распределения слов и анализ частотностей</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#извлечение-источников"><i class="fa fa-check"></i><b>11.1</b> Извлечение источников</a></li>
+<li class="chapter" data-level="11.2" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#подготовка-источников"><i class="fa fa-check"></i><b>11.2</b> Подготовка источников</a></li>
+<li class="chapter" data-level="11.3" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#токенизация"><i class="fa fa-check"></i><b>11.3</b> Токенизация</a></li>
+<li class="chapter" data-level="11.4" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#cтоп-слова"><i class="fa fa-check"></i><b>11.4</b> Cтоп-слова</a></li>
+<li class="chapter" data-level="11.5" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#абсолютная-частотность"><i class="fa fa-check"></i><b>11.5</b> Абсолютная частотность</a></li>
+<li class="chapter" data-level="11.6" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#стемминг"><i class="fa fa-check"></i><b>11.6</b> Стемминг</a></li>
+<li class="chapter" data-level="11.7" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#относительная-частотность"><i class="fa fa-check"></i><b>11.7</b> Относительная частотность</a></li>
+<li class="chapter" data-level="11.8" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#распределения-слов-токенов"><i class="fa fa-check"></i><b>11.8</b> Распределения слов (токенов)</a></li>
+<li class="chapter" data-level="11.9" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#закон-ципфа"><i class="fa fa-check"></i><b>11.9</b> Закон Ципфа</a></li>
+<li class="chapter" data-level="11.10" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#ttr-type-token-ratio"><i class="fa fa-check"></i><b>11.10</b> TTR (type-token ratio)</a></li>
+<li class="chapter" data-level="11.11" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#tf-idf"><i class="fa fa-check"></i><b>11.11</b> TF-IDF</a></li>
+<li class="chapter" data-level="11.12" data-path="распределения-слов-и-анализ-частотностей.html"><a href="распределения-слов-и-анализ-частотностей.html#сравнение-при-помощи-диаграммы-рассеяния"><i class="fa fa-check"></i><b>11.12</b> Сравнение при помощи диаграммы рассеяния</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html"><i class="fa fa-check"></i><b>12</b> Эмоциональная тональность</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#анализ-тональности"><i class="fa fa-check"></i><b>12.1</b> Анализ тональности</a></li>
+<li class="chapter" data-level="12.2" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#подходы"><i class="fa fa-check"></i><b>12.2</b> Подходы</a></li>
+<li class="chapter" data-level="12.3" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#тезаурусы"><i class="fa fa-check"></i><b>12.3</b> Тезаурусы</a></li>
+<li class="chapter" data-level="12.4" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#лексиконы-для-русского-языка"><i class="fa fa-check"></i><b>12.4</b> Лексиконы для русского языка</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#chen-skiena"><i class="fa fa-check"></i><b>12.4.1</b> Chen &amp; Skiena</a></li>
+<li class="chapter" data-level="12.4.2" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#rusentlex-2016"><i class="fa fa-check"></i><b>12.4.2</b> RuSentLex 2016</a></li>
+<li class="chapter" data-level="12.4.3" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#afinn"><i class="fa fa-check"></i><b>12.4.3</b> AFINN</a></li>
+<li class="chapter" data-level="12.4.4" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#nrc"><i class="fa fa-check"></i><b>12.4.4</b> NRC</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#анализ-тональности-с-tidy-data"><i class="fa fa-check"></i><b>12.5</b> Анализ тональности с Tidy Data</a></li>
+<li class="chapter" data-level="12.6" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#подготовка-текста"><i class="fa fa-check"></i><b>12.6</b> Подготовка текста</a></li>
+<li class="chapter" data-level="12.7" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#модификация-лексикона"><i class="fa fa-check"></i><b>12.7</b> Модификация лексикона</a></li>
+<li class="chapter" data-level="12.8" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#соединение-лексикона-и-текста"><i class="fa fa-check"></i><b>12.8</b> Соединение лексикона и текста</a></li>
+<li class="chapter" data-level="12.9" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#тональность-на-оси-времени"><i class="fa fa-check"></i><b>12.9</b> Тональность на оси времени</a></li>
+<li class="chapter" data-level="12.10" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#для-других-языков"><i class="fa fa-check"></i><b>12.10</b> Для других языков</a></li>
+<li class="chapter" data-level="12.11" data-path="эмоциональная-тональность.html"><a href="эмоциональная-тональность.html#виды-эмоций"><i class="fa fa-check"></i><b>12.11</b> Виды эмоций</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html"><i class="fa fa-check"></i><b>13</b> Тематическое моделирование</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#что-такое-lda"><i class="fa fa-check"></i><b>13.1</b> Что такое LDA</a></li>
+<li class="chapter" data-level="13.2" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#распределение-дирихле"><i class="fa fa-check"></i><b>13.2</b> Распределение Дирихле</a></li>
+<li class="chapter" data-level="13.3" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#подтоговка-данных"><i class="fa fa-check"></i><b>13.3</b> Подтоговка данных</a></li>
+<li class="chapter" data-level="13.4" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#матрица-встречаемости"><i class="fa fa-check"></i><b>13.4</b> Матрица встречаемости</a></li>
+<li class="chapter" data-level="13.5" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#число-тем"><i class="fa fa-check"></i><b>13.5</b> Число тем</a></li>
+<li class="chapter" data-level="13.6" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#модель-lda"><i class="fa fa-check"></i><b>13.6</b> Модель LDA</a></li>
+<li class="chapter" data-level="13.7" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#слова-и-темы"><i class="fa fa-check"></i><b>13.7</b> Слова и темы</a></li>
+<li class="chapter" data-level="13.8" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#сравнение-топиков"><i class="fa fa-check"></i><b>13.8</b> Сравнение топиков</a></li>
+<li class="chapter" data-level="13.9" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#темы-и-документы"><i class="fa fa-check"></i><b>13.9</b> Темы и документы</a></li>
+<li class="chapter" data-level="13.10" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#распределения-вероятности-для-топиков"><i class="fa fa-check"></i><b>13.10</b> Распределения вероятности для топиков</a></li>
+<li class="chapter" data-level="13.11" data-path="тематическое-моделирование.html"><a href="тематическое-моделирование.html#интерактивные-визуализации"><i class="fa fa-check"></i><b>13.11</b> Интерактивные визуализации</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html"><i class="fa fa-check"></i><b>14</b> Латентно-семантический анализ</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#что-это-такое"><i class="fa fa-check"></i><b>14.1</b> Что это такое</a></li>
+<li class="chapter" data-level="14.2" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#векторное-представление-слов"><i class="fa fa-check"></i><b>14.2</b> Векторное представление слов</a></li>
+<li class="chapter" data-level="14.3" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#сингулярное-разложение-матрицы"><i class="fa fa-check"></i><b>14.3</b> Сингулярное разложение матрицы</a></li>
+<li class="chapter" data-level="14.4" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#простой-пример"><i class="fa fa-check"></i><b>14.4</b> Простой пример</a></li>
+<li class="chapter" data-level="14.5" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#векторы-слов"><i class="fa fa-check"></i><b>14.5</b> Векторы слов</a></li>
+<li class="chapter" data-level="14.6" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#пакеты-для-работы-с-lsa"><i class="fa fa-check"></i><b>14.6</b> Пакеты для работы с LSA</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#lsa"><i class="fa fa-check"></i><b>14.6.1</b> lsa</a></li>
+<li class="chapter" data-level="14.6.2" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#textminer"><i class="fa fa-check"></i><b>14.6.2</b> TextmineR</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="латентно-семантический-анализ.html"><a href="латентно-семантический-анализ.html#lsa-c-использованием-tidy-data"><i class="fa fa-check"></i><b>14.7</b> LSA c использованием Tidy Data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html"><i class="fa fa-check"></i><b>15</b> Кластеризация и метод главных компонент</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#виды-кластерного-анализа"><i class="fa fa-check"></i><b>15.1</b> Виды кластерного анализа</a></li>
+<li class="chapter" data-level="15.2" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#кластеризация-по-методу-k-средних"><i class="fa fa-check"></i><b>15.2</b> Кластеризация по методу K средних</a></li>
+<li class="chapter" data-level="15.3" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#k-means-в-r"><i class="fa fa-check"></i><b>15.3</b> K-means в R</a></li>
+<li class="chapter" data-level="15.4" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#k-means-для-кластеризации-текстов"><i class="fa fa-check"></i><b>15.4</b> K-means для кластеризации текстов</a></li>
+<li class="chapter" data-level="15.5" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#нормализация-данных"><i class="fa fa-check"></i><b>15.5</b> Нормализация данных</a></li>
+<li class="chapter" data-level="15.6" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация"><i class="fa fa-check"></i><b>15.6</b> Иерархическая кластеризация</a></li>
+<li class="chapter" data-level="15.7" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#алгоритм-иерархической-кластеризации"><i class="fa fa-check"></i><b>15.7</b> Алгоритм иерархической кластеризации</a></li>
+<li class="chapter" data-level="15.8" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация-в-r"><i class="fa fa-check"></i><b>15.8</b> Иерархическая кластеризация в R</a></li>
+<li class="chapter" data-level="15.9" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#иерархическая-кластеризация-текстов"><i class="fa fa-check"></i><b>15.9</b> Иерархическая кластеризация текстов</a></li>
+<li class="chapter" data-level="15.10" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#метод-главных-компонент"><i class="fa fa-check"></i><b>15.10</b> Метод главных компонент</a></li>
+<li class="chapter" data-level="15.11" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#pca-для-визуализации-кластеров-k-means"><i class="fa fa-check"></i><b>15.11</b> PCA для визуализации кластеров K-means</a></li>
+<li class="chapter" data-level="15.12" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#pca-и-иерархическая-кластеризация"><i class="fa fa-check"></i><b>15.12</b> PCA и иерархическая кластеризация</a></li>
+<li class="chapter" data-level="15.13" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#многомерное-шкалирование"><i class="fa fa-check"></i><b>15.13</b> Многомерное шкалирование</a></li>
+<li class="chapter" data-level="15.14" data-path="кластеризация-и-метод-главных-компонент.html"><a href="кластеризация-и-метод-главных-компонент.html#pca-с-factominer"><i class="fa fa-check"></i><b>15.14</b> PCA с FactoMineR</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html"><i class="fa fa-check"></i><b>16</b> Сетевые данные и графы</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#базовое-описание"><i class="fa fa-check"></i><b>16.1</b> Базовое описание</a></li>
+<li class="chapter" data-level="16.2" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#создание-сетевых-данных"><i class="fa fa-check"></i><b>16.2</b> Создание сетевых данных</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#социоматрица"><i class="fa fa-check"></i><b>16.2.1</b> Социоматрица</a></li>
+<li class="chapter" data-level="16.2.2" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#список-ребер"><i class="fa fa-check"></i><b>16.2.2</b> Список ребер</a></li>
+<li class="chapter" data-level="16.2.3" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#формула"><i class="fa fa-check"></i><b>16.2.3</b> Формула</a></li>
+<li class="chapter" data-level="16.2.4" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#импорт-данных"><i class="fa fa-check"></i><b>16.2.4</b> Импорт данных</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#атрибуты-вершин-узлов"><i class="fa fa-check"></i><b>16.3</b> Атрибуты вершин (узлов)</a></li>
+<li class="chapter" data-level="16.4" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#фильтрация-по-узлу"><i class="fa fa-check"></i><b>16.4</b> Фильтрация по узлу</a></li>
+<li class="chapter" data-level="16.5" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#атрибуты-ребер"><i class="fa fa-check"></i><b>16.5</b> Атрибуты ребер</a></li>
+<li class="chapter" data-level="16.6" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#импорт-из-gexf"><i class="fa fa-check"></i><b>16.6</b> Импорт из gexf</a></li>
+<li class="chapter" data-level="16.7" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#визуализация-с-ggraph"><i class="fa fa-check"></i><b>16.7</b> Визуализация с ggraph</a></li>
+<li class="chapter" data-level="16.8" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#фильтрация-по-атрибутам-ребер"><i class="fa fa-check"></i><b>16.8</b> Фильтрация по атрибутам ребер</a></li>
+<li class="chapter" data-level="16.9" data-path="сетевые-данные-и-графы.html"><a href="сетевые-данные-и-графы.html#укладка-сети"><i class="fa fa-check"></i><b>16.9</b> Укладка сети</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="анализ-сетей.html"><a href="анализ-сетей.html"><i class="fa fa-check"></i><b>17</b> Анализ сетей</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="анализ-сетей.html"><a href="анализ-сетей.html#от-conllu-к-совместной-встречаемости"><i class="fa fa-check"></i><b>17.1</b> От conllu к совместной встречаемости</a></li>
+<li class="chapter" data-level="17.2" data-path="анализ-сетей.html"><a href="анализ-сетей.html#граф-слов-с-igraph"><i class="fa fa-check"></i><b>17.2</b> Граф слов с igraph</a></li>
+<li class="chapter" data-level="17.3" data-path="анализ-сетей.html"><a href="анализ-сетей.html#важность-узлов"><i class="fa fa-check"></i><b>17.3</b> Важность узлов</a></li>
+<li class="chapter" data-level="17.4" data-path="анализ-сетей.html"><a href="анализ-сетей.html#централизация"><i class="fa fa-check"></i><b>17.4</b> Централизация</a></li>
+<li class="chapter" data-level="17.5" data-path="анализ-сетей.html"><a href="анализ-сетей.html#центральность-на-графике"><i class="fa fa-check"></i><b>17.5</b> Центральность на графике</a></li>
+<li class="chapter" data-level="17.6" data-path="анализ-сетей.html"><a href="анализ-сетей.html#интерактивный-граф"><i class="fa fa-check"></i><b>17.6</b> Интерактивный граф</a></li>
+<li class="chapter" data-level="17.7" data-path="анализ-сетей.html"><a href="анализ-сетей.html#точки-сочленения"><i class="fa fa-check"></i><b>17.7</b> Точки сочленения</a></li>
+<li class="chapter" data-level="17.8" data-path="анализ-сетей.html"><a href="анализ-сетей.html#подгруппы"><i class="fa fa-check"></i><b>17.8</b> Подгруппы</a>
+<ul>
+<li class="chapter" data-level="17.8.1" data-path="анализ-сетей.html"><a href="анализ-сетей.html#клики"><i class="fa fa-check"></i><b>17.8.1</b> Клики</a></li>
+<li class="chapter" data-level="17.8.2" data-path="анализ-сетей.html"><a href="анализ-сетей.html#k-ядра"><i class="fa fa-check"></i><b>17.8.2</b> K-ядра</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="dracor.html"><a href="dracor.html"><i class="fa fa-check"></i><b>18</b> Dracor</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="dracor.html"><a href="dracor.html#о-корпусе-dracor"><i class="fa fa-check"></i><b>18.1</b> О корпусе Dracor</a></li>
+<li class="chapter" data-level="18.2" data-path="dracor.html"><a href="dracor.html#начало-работы-с-dracor"><i class="fa fa-check"></i><b>18.2</b> Начало работы с Dracor</a></li>
+<li class="chapter" data-level="18.3" data-path="dracor.html"><a href="dracor.html#сети-dracor"><i class="fa fa-check"></i><b>18.3</b> Сети Dracor</a></li>
+<li class="chapter" data-level="18.4" data-path="dracor.html"><a href="dracor.html#модулярность"><i class="fa fa-check"></i><b>18.4</b> Модулярность</a></li>
+<li class="chapter" data-level="18.5" data-path="dracor.html"><a href="dracor.html#алгоритмы-обнаружения-сообществ"><i class="fa fa-check"></i><b>18.5</b> Алгоритмы обнаружения сообществ</a></li>
+<li class="chapter" data-level="18.6" data-path="dracor.html"><a href="dracor.html#двудольные-графы-биграфы"><i class="fa fa-check"></i><b>18.6</b> Двудольные графы (биграфы)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="литература.html"><a href="литература.html"><i class="fa fa-check"></i>Литература</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Компьютерный анализ текста в R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dracor" class="section level1 hasAnchor" number="18">
+<h1><span class="header-section-number">Тема 18</span> Dracor<a href="dracor.html#dracor" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Мы продолжим исследовать возможности сетевого анализа с использованием корпуса Dracor. В дальнейшем я опираюсь на <a href="https://rpubs.com/Pozdniakov/rdracor_presentation">презентацию</a> Ивана Позднякова, который разрабатывал DraCor Shiny app (<a href="https://shiny.dracor.org/" class="uri">https://shiny.dracor.org/</a>).</p>
+<div id="о-корпусе-dracor" class="section level2 hasAnchor" number="18.1">
+<h2><span class="header-section-number">18.1</span> О корпусе Dracor<a href="dracor.html#о-корпусе-dracor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>DraCor — сокращение от drama corpora — это собрание размеченных по стандарту TEI драматических текстов на 11-ти языках. Здесь есть корпуса пьес на французском, немецком, испанском, русском, итальянском, шведском, португальском (только Кальдерон) и английском (только Шекспир), а также совсем небольшие коллекции эльзасских, татарских и башкирских пьес.</p>
+<p>Два крупных корпуса пьес в составе собрания — немецкий и русский — были собраны и поддерживаются создателями проекта DraCor (часть команды из России — это Центр цифровых гуманитарных исследований Высшей школы экономики). Остальные корпуса были взяты из сторонних проектов, а затем адаптированы для совместимости с функционалом DraCor. (<a href="https://sysblok.ru/philology/dracor-i-programmable-corpora-korpusa-dlja-cifrovyh-gumanitariev/">Отсюда</a>).</p>
+<p>На сайте проекта “Системный Блок” можно прочитать серию материалов о том, как возможности Dracor используются в литературоведении:</p>
+<ul>
+<li>о “Ревизоре” <a href="https://sysblok.ru/philology/socseti-russkoj-dramy-chast-ii-revizor-vs-gorodnichij-kto-zhe-glavnyj-geroj/">тыц</a></li>
+<li>о плотности сетей в трагедии и комедии <a href="https://sysblok.ru/nlp/prazdnik-ili-smert-drama-v-seti/">тыц</a></li>
+<li>о “зоне смерти” в “Гамлете” и др. <a href="https://sysblok.ru/philology/smert-v-seti/">тыц</a></li>
+</ul>
+</div>
+<div id="начало-работы-с-dracor" class="section level2 hasAnchor" number="18.2">
+<h2><span class="header-section-number">18.2</span> Начало работы с Dracor<a href="dracor.html#начало-работы-с-dracor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1021"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1021-1"><a href="dracor.html#cb1021-1" tabindex="-1"></a><span class="co"># remotes::install_github(&quot;Pozdniakov/rdracor&quot;)</span></span>
+<span id="cb1021-2"><a href="dracor.html#cb1021-2" tabindex="-1"></a><span class="fu">library</span>(rdracor)</span>
+<span id="cb1021-3"><a href="dracor.html#cb1021-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1021-4"><a href="dracor.html#cb1021-4" tabindex="-1"></a></span>
+<span id="cb1021-5"><a href="dracor.html#cb1021-5" tabindex="-1"></a><span class="fu">get_dracor_meta</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1021-6"><a href="dracor.html#cb1021-6" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
+<pre><code>## DraCor hosts 16 corpora comprising 3112 plays.
+## 
+## The last updated corpus was German Drama Corpus (2023-08-11 11:45:20).</code></pre>
+<p>Извлекаем метаданные.</p>
+<div class="sourceCode" id="cb1023"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1023-1"><a href="dracor.html#cb1023-1" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">get_dracor_meta</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1023-2"><a href="dracor.html#cb1023-2" tabindex="-1"></a>  <span class="fu">select</span>(name, title, plays)</span>
+<span id="cb1023-3"><a href="dracor.html#cb1023-3" tabindex="-1"></a></span>
+<span id="cb1023-4"><a href="dracor.html#cb1023-4" tabindex="-1"></a>meta</span></code></pre></div>
+<pre><code>## # A tibble: 16 × 3
+##    name  title                           plays
+##    &lt;chr&gt; &lt;chr&gt;                           &lt;int&gt;
+##  1 fre   French Drama Corpus              1560
+##  2 ger   German Drama Corpus               635
+##  3 rus   Russian Drama Corpus              212
+##  4 cal   Calderón Drama Corpus             205
+##  5 ita   Italian Drama Corpus              139
+##  6 swe   Swedish Drama Corpus               68
+##  7 hun   Hungarian Drama Corpus             41
+##  8 greek Greek Drama Corpus                 40
+##  9 u     Ukrainian Drama Corpus             40
+## 10 gersh German Shakespeare Drama Corpus    38
+## 11 shake Shakespeare Drama Corpus           37
+## 12 rom   Roman Drama Corpus                 36
+## 13 als   Alsatian Drama Corpus              30
+## 14 span  Spanish Drama Corpus               25
+## 15 bash  Bashkir Drama Corpus                3
+## 16 tat   Tatar Drama Corpus                  3</code></pre>
+<div class="sourceCode" id="cb1025"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1025-1"><a href="dracor.html#cb1025-1" tabindex="-1"></a>meta <span class="sc">%&gt;%</span></span>
+<span id="cb1025-2"><a href="dracor.html#cb1025-2" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-498-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1026"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1026-1"><a href="dracor.html#cb1026-1" tabindex="-1"></a>shake <span class="ot">&lt;-</span> <span class="fu">get_dracor</span>(<span class="st">&quot;shake&quot;</span>)</span>
+<span id="cb1026-2"><a href="dracor.html#cb1026-2" tabindex="-1"></a><span class="fu">summary</span>(shake)</span></code></pre></div>
+<pre><code>## 37 plays in Shakespeare Drama Corpus 
+## Corpus id: shake, repository: https://github.com/dracor-org/shakedracor  
+## Description: Derived from the [Folger Shakespeare Library](https://shakespeare.folger.edu/). Enhancements documented in our [README at GitHub](https://github.com/dracor-org/shakedracor).
+## Written years (range): 1591–1613 
+## No information on premiere years 
+## Years of the first printing (range): 1597–1774</code></pre>
+<div class="sourceCode" id="cb1028"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1028-1"><a href="dracor.html#cb1028-1" tabindex="-1"></a>shake <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(shake)</span>
+<span id="cb1028-2"><a href="dracor.html#cb1028-2" tabindex="-1"></a>shake</span></code></pre></div>
+<pre><code>## # A tibble: 37 × 55
+##    corpus id      playName yearNormalized title subtitle firstAuthorName authors
+##    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;             &lt;int&gt; &lt;chr&gt; &lt;lgl&gt;    &lt;chr&gt;           &lt;list&gt; 
+##  1 shake  shake0… the-tem…           1611 The … NA       Shakespeare, W… &lt;df&gt;   
+##  2 shake  shake0… two-gen…           1591 Two … NA       Shakespeare, W… &lt;df&gt;   
+##  3 shake  shake0… the-mer…           1602 The … NA       Shakespeare, W… &lt;df&gt;   
+##  4 shake  shake0… measure…           1604 Meas… NA       Shakespeare, W… &lt;df&gt;   
+##  5 shake  shake0… the-com…           1594 The … NA       Shakespeare, W… &lt;df&gt;   
+##  6 shake  shake0… much-ad…           1600 Much… NA       Shakespeare, W… &lt;df&gt;   
+##  7 shake  shake0… love-s-…           1595 Love… NA       Shakespeare, W… &lt;df&gt;   
+##  8 shake  shake0… a-midsu…           1595 A Mi… NA       Shakespeare, W… &lt;df&gt;   
+##  9 shake  shake0… the-mer…           1600 The … NA       Shakespeare, W… &lt;df&gt;   
+## 10 shake  shake0… as-you-…           1599 As Y… NA       Shakespeare, W… &lt;df&gt;   
+## # ℹ 27 more rows
+## # ℹ 47 more variables: source &lt;lgl&gt;, sourceUrl &lt;lgl&gt;, writtenYearStart &lt;lgl&gt;,
+## #   writtenYearFinish &lt;int&gt;, printYearStart &lt;lgl&gt;, printYearFinish &lt;int&gt;,
+## #   premiereYearStart &lt;lgl&gt;, premiereYearFinish &lt;lgl&gt;, wikidataId &lt;chr&gt;,
+## #   networkSize &lt;int&gt;, networkdataCsvUrl &lt;chr&gt;, normalizedGenre &lt;lgl&gt;,
+## #   size &lt;int&gt;, density &lt;dbl&gt;, diameter &lt;int&gt;, averageClustering &lt;dbl&gt;,
+## #   averagePathLength &lt;dbl&gt;, averageDegree &lt;dbl&gt;, maxDegree &lt;int&gt;, …</code></pre>
+<p>Тут хранится очень много всего: размер сети, плотность сети и т.д. Вот так, например, выглядят самые длинные пьесы Шекспира:</p>
+<div class="sourceCode" id="cb1030"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1030-1"><a href="dracor.html#cb1030-1" tabindex="-1"></a>shake <span class="sc">%&gt;%</span></span>
+<span id="cb1030-2"><a href="dracor.html#cb1030-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(wordCountText)) <span class="sc">%&gt;%</span></span>
+<span id="cb1030-3"><a href="dracor.html#cb1030-3" tabindex="-1"></a>  <span class="fu">select</span>(corpus, firstAuthorName, title, wordCountText, yearWrittenMeta)</span></code></pre></div>
+<pre><code>## # A tibble: 37 × 5
+##    corpus firstAuthorName      title               wordCountText yearWrittenMeta
+##    &lt;chr&gt;  &lt;chr&gt;                &lt;chr&gt;                       &lt;int&gt;           &lt;int&gt;
+##  1 shake  Shakespeare, William Hamlet                      32539            1602
+##  2 shake  Shakespeare, William Richard III                 31765            1593
+##  3 shake  Shakespeare, William Cymbeline                   30141            1610
+##  4 shake  Shakespeare, William Coriolanus                  29948            1608
+##  5 shake  Shakespeare, William Troilus and Cressi…         28502            1602
+##  6 shake  Shakespeare, William Henry IV, Part II           28461            1598
+##  7 shake  Shakespeare, William Othello                     28452            1604
+##  8 shake  Shakespeare, William King Lear                   28192            1606
+##  9 shake  Shakespeare, William Henry V                     27982            1599
+## 10 shake  Shakespeare, William Henry VI, Part 2            27902            1591
+## # ℹ 27 more rows</code></pre>
+<p>Распределение мужских и женских персонажей по годам:</p>
+<div class="sourceCode" id="cb1032"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1032-1"><a href="dracor.html#cb1032-1" tabindex="-1"></a>gender_ratio <span class="ot">&lt;-</span> shake <span class="sc">%&gt;%</span></span>
+<span id="cb1032-2"><a href="dracor.html#cb1032-2" tabindex="-1"></a>  <span class="fu">select</span>(title, yearWrittenMeta, numOfSpeakers, numOfSpeakersFemale, numOfSpeakersMale) <span class="sc">%&gt;%</span> </span>
+<span id="cb1032-3"><a href="dracor.html#cb1032-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">male =</span> numOfSpeakersMale <span class="sc">/</span> numOfSpeakers,</span>
+<span id="cb1032-4"><a href="dracor.html#cb1032-4" tabindex="-1"></a>         <span class="at">female =</span> numOfSpeakersFemale <span class="sc">/</span> numOfSpeakers) <span class="sc">%&gt;%</span></span>
+<span id="cb1032-5"><a href="dracor.html#cb1032-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>numOfSpeakers, <span class="sc">-</span>numOfSpeakersMale, <span class="sc">-</span>numOfSpeakersFemale) <span class="sc">%&gt;%</span> </span>
+<span id="cb1032-6"><a href="dracor.html#cb1032-6" tabindex="-1"></a>  <span class="fu">arrange</span>(yearWrittenMeta) <span class="sc">%&gt;%</span> </span>
+<span id="cb1032-7"><a href="dracor.html#cb1032-7" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(male, female), <span class="at">names_to =</span> <span class="st">&quot;gender&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1032-8"><a href="dracor.html#cb1032-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.factor</span>(yearWrittenMeta)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1032-9"><a href="dracor.html#cb1032-9" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>yearWrittenMeta)</span>
+<span id="cb1032-10"><a href="dracor.html#cb1032-10" tabindex="-1"></a></span>
+<span id="cb1032-11"><a href="dracor.html#cb1032-11" tabindex="-1"></a>gender_ratio </span></code></pre></div>
+<pre><code>## # A tibble: 74 × 4
+##    title                   gender  value year 
+##    &lt;chr&gt;                   &lt;chr&gt;   &lt;dbl&gt; &lt;fct&gt;
+##  1 Two Gentlemen of Verona male   0.824  1591 
+##  2 Two Gentlemen of Verona female 0.176  1591 
+##  3 The Taming of the Shrew male   0.5    1591 
+##  4 The Taming of the Shrew female 0.0789 1591 
+##  5 Henry VI, Part 1        male   0.238  1591 
+##  6 Henry VI, Part 1        female 0.0159 1591 
+##  7 Henry VI, Part 2        male   0.583  1591 
+##  8 Henry VI, Part 2        female 0.0278 1591 
+##  9 Henry VI, Part 3        male   0.531  1591 
+## 10 Henry VI, Part 3        female 0.0408 1591 
+## # ℹ 64 more rows</code></pre>
+<div class="sourceCode" id="cb1034"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1034-1"><a href="dracor.html#cb1034-1" tabindex="-1"></a>gender_ratio <span class="sc">%&gt;%</span></span>
+<span id="cb1034-2"><a href="dracor.html#cb1034-2" tabindex="-1"></a>  <span class="fu">group_by</span>(year, gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb1034-3"><a href="dracor.html#cb1034-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(value)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1034-4"><a href="dracor.html#cb1034-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, mean, <span class="at">fill =</span> gender)) <span class="sc">+</span> </span>
+<span id="cb1034-5"><a href="dracor.html#cb1034-5" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) </span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-503-1.png" width="672" /></p>
+</div>
+<div id="сети-dracor" class="section level2 hasAnchor" number="18.3">
+<h2><span class="header-section-number">18.3</span> Сети Dracor<a href="dracor.html#сети-dracor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Однако самое интересное – это построение и анализ сетей при помощи Dracor.</p>
+<div class="sourceCode" id="cb1036"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1036-1"><a href="dracor.html#cb1036-1" tabindex="-1"></a>taming <span class="ot">&lt;-</span> <span class="fu">get_net_cooccur_igraph</span>(<span class="at">corpus =</span> <span class="st">&quot;shake&quot;</span>,</span>
+<span id="cb1036-2"><a href="dracor.html#cb1036-2" tabindex="-1"></a>                                 <span class="at">play =</span> <span class="st">&quot;the-taming-of-the-shrew&quot;</span>)</span>
+<span id="cb1036-3"><a href="dracor.html#cb1036-3" tabindex="-1"></a></span>
+<span id="cb1036-4"><a href="dracor.html#cb1036-4" tabindex="-1"></a>taming</span></code></pre></div>
+<pre><code>## IGRAPH 691eecc UNW- 38 222 -- 
+## + attr: name (v/c), isGroup (v/l), gender (v/c), numOfScenes (v/n),
+## | numOfSpeechActs (v/n), numOfWords (v/n), degree (v/n), weightedDegree
+## | (v/n), closeness (v/n), betweenness (v/n), eigenvector (v/n), weight
+## | (e/n)
+## + edges from 691eecc (vertex names):
+## [1] Christopher Sly--characters in the Induction
+## [2] Christopher Sly--characters in the Induction
+## [3] Christopher Sly--characters in the Induction
+## [4] Christopher Sly--characters in the Induction
+## [5] Christopher Sly--characters in the Induction
+## + ... omitted several edges</code></pre>
+<div class="sourceCode" id="cb1038"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1038-1"><a href="dracor.html#cb1038-1" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb1038-2"><a href="dracor.html#cb1038-2" tabindex="-1"></a></span>
+<span id="cb1038-3"><a href="dracor.html#cb1038-3" tabindex="-1"></a><span class="fu">ggraph</span>(taming, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1038-4"><a href="dracor.html#cb1038-4" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">edge_alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1038-5"><a href="dracor.html#cb1038-5" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>, </span>
+<span id="cb1038-6"><a href="dracor.html#cb1038-6" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">4</span>,</span>
+<span id="cb1038-7"><a href="dracor.html#cb1038-7" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb1038-8"><a href="dracor.html#cb1038-8" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
+<span id="cb1038-9"><a href="dracor.html#cb1038-9" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb1038-10"><a href="dracor.html#cb1038-10" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-505-1.png" width="672" /></p>
+<p>Для удобства я удалю некоторые узлы. Например, можно удалить групповых персонажей. В “Укрощении” это некие лица из “индукции” Вместе с ними удалю Кристофера Слая, который появляется только в <a href="http://www.w-shakespeare.ru/library/shekspir-remeslo-dramaturga16.html">“индукции”</a>.</p>
+<div class="sourceCode" id="cb1039"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1039-1"><a href="dracor.html#cb1039-1" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1039-2"><a href="dracor.html#cb1039-2" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">get.vertex.attribute</span>(taming)<span class="sc">$</span>isGroup</span>
+<span id="cb1039-3"><a href="dracor.html#cb1039-3" tabindex="-1"></a>groups</span></code></pre></div>
+<pre><code>##  [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [13]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [37] FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb1041"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1041-1"><a href="dracor.html#cb1041-1" tabindex="-1"></a>taming_sub <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(taming, <span class="at">vids =</span> <span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>))</span>
+<span id="cb1041-2"><a href="dracor.html#cb1041-2" tabindex="-1"></a><span class="fu">ggraph</span>(taming_sub, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1041-3"><a href="dracor.html#cb1041-3" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">edge_alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1041-4"><a href="dracor.html#cb1041-4" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> gender),</span>
+<span id="cb1041-5"><a href="dracor.html#cb1041-5" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">4</span>,</span>
+<span id="cb1041-6"><a href="dracor.html#cb1041-6" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb1041-7"><a href="dracor.html#cb1041-7" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
+<span id="cb1041-8"><a href="dracor.html#cb1041-8" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb1041-9"><a href="dracor.html#cb1041-9" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-507-1.png" width="672" /></p>
+<p>Теперь на примере этих данных исследуем такую характеристику сети, как модулярность.</p>
+</div>
+<div id="модулярность" class="section level2 hasAnchor" number="18.4">
+<h2><span class="header-section-number">18.4</span> Модулярность<a href="dracor.html#модулярность" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Модулярность — одна из мер структуры сетей или графов. Мера была разработана для измерения силы разбиения сети на модули (называемые группами, кластерами или сообществами). Сети с высокой модулярностью имеют плотные связи между узлами внутри модулей, но слабые связи между узлами в различных модулях.</p>
+<p><img src="https://www.researchgate.net/profile/Maksim-Koptelov-2/publication/345039212/figure/fig8/AS:952552506019840@1604117623007/Modularity-values-and-quality-of-discovered-communities-12_W640.jpg" /></p>
+<p>Модулярность равна доле рёбер от общего числа рёбер, которые попадают в данные группы минус ожидаемая доля рёбер, которые попали бы в те же группы, если бы они были распределены случайно.</p>
+<p>Если все узлы принадлежат к одному классу, то модулярность равна нулю. Если разбиение на классы хорошее, то модулярность должна быть высокая.</p>
+<p>Снова загружим датасет <code>Moreno</code>, где, как мы видели, ученики 4-го класса делятся на две сети в зависимости от пола.</p>
+<div class="sourceCode" id="cb1042"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1042-1"><a href="dracor.html#cb1042-1" tabindex="-1"></a><span class="fu">library</span>(UserNetR)</span>
+<span id="cb1042-2"><a href="dracor.html#cb1042-2" tabindex="-1"></a><span class="fu">library</span>(intergraph)</span>
+<span id="cb1042-3"><a href="dracor.html#cb1042-3" tabindex="-1"></a></span>
+<span id="cb1042-4"><a href="dracor.html#cb1042-4" tabindex="-1"></a><span class="fu">data</span>(Moreno)</span>
+<span id="cb1042-5"><a href="dracor.html#cb1042-5" tabindex="-1"></a>Moreno_graph <span class="ot">&lt;-</span> intergraph<span class="sc">::</span><span class="fu">asIgraph</span>(Moreno)</span>
+<span id="cb1042-6"><a href="dracor.html#cb1042-6" tabindex="-1"></a><span class="fu">plot</span>(Moreno_graph, <span class="at">vertex.color =</span> gender)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-508-1.png" width="672" /></p>
+<p>Метрика модулярности подтверждает, что пол учеников действительно объясняет наблюдаемую кластеризацию.</p>
+<div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1043-1"><a href="dracor.html#cb1043-1" tabindex="-1"></a><span class="fu">modularity</span>(Moreno_graph, <span class="fu">V</span>(Moreno_graph)<span class="sc">$</span>gender)</span></code></pre></div>
+<pre><code>## [1] 0.4761342</code></pre>
+<p>В графе “Укрощения…” пол явно не является определяющим (он закодирован цветом на графике выше). Чтобы убедиться в этом сначала перекодируем гендер, так как функция <code>modularity()</code> принимает числовую переменную в качестве аргумента. Значение гендера 3 (unknown) в пьесе имеют групповые персонажи.</p>
+<div class="sourceCode" id="cb1045"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1045-1"><a href="dracor.html#cb1045-1" tabindex="-1"></a><span class="fu">V</span>(taming_sub)<span class="sc">$</span>gender</span></code></pre></div>
+<pre><code>##  [1] &quot;MALE&quot;    &quot;MALE&quot;    &quot;MALE&quot;    &quot;MALE&quot;    &quot;FEMALE&quot;  &quot;MALE&quot;    &quot;FEMALE&quot; 
+##  [8] &quot;MALE&quot;    &quot;MALE&quot;    &quot;MALE&quot;    &quot;UNKNOWN&quot; &quot;MALE&quot;    &quot;MALE&quot;    &quot;MALE&quot;   
+## [15] &quot;MALE&quot;    &quot;MALE&quot;    &quot;MALE&quot;    &quot;UNKNOWN&quot; &quot;MALE&quot;    &quot;MALE&quot;    &quot;MALE&quot;   
+## [22] &quot;MALE&quot;    &quot;FEMALE&quot;</code></pre>
+<div class="sourceCode" id="cb1047"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1047-1"><a href="dracor.html#cb1047-1" tabindex="-1"></a><span class="do">## male = 1</span></span>
+<span id="cb1047-2"><a href="dracor.html#cb1047-2" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">V</span>(taming_sub)<span class="sc">$</span>gender<span class="sc">==</span><span class="st">&quot;MALE&quot;</span></span>
+<span id="cb1047-3"><a href="dracor.html#cb1047-3" tabindex="-1"></a><span class="fu">V</span>(taming_sub)<span class="sc">$</span>gender[idx] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1047-4"><a href="dracor.html#cb1047-4" tabindex="-1"></a></span>
+<span id="cb1047-5"><a href="dracor.html#cb1047-5" tabindex="-1"></a><span class="do">## female = 2</span></span>
+<span id="cb1047-6"><a href="dracor.html#cb1047-6" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">V</span>(taming_sub)<span class="sc">$</span>gender<span class="sc">==</span><span class="st">&quot;FEMALE&quot;</span></span>
+<span id="cb1047-7"><a href="dracor.html#cb1047-7" tabindex="-1"></a><span class="fu">V</span>(taming_sub)<span class="sc">$</span>gender[idx] <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb1047-8"><a href="dracor.html#cb1047-8" tabindex="-1"></a></span>
+<span id="cb1047-9"><a href="dracor.html#cb1047-9" tabindex="-1"></a><span class="do">## unknown for groups</span></span>
+<span id="cb1047-10"><a href="dracor.html#cb1047-10" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">V</span>(taming_sub)<span class="sc">$</span>gender<span class="sc">==</span><span class="st">&quot;UNKNOWN&quot;</span></span>
+<span id="cb1047-11"><a href="dracor.html#cb1047-11" tabindex="-1"></a><span class="fu">V</span>(taming_sub)<span class="sc">$</span>gender[idx] <span class="ot">&lt;-</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb1048"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1048-1"><a href="dracor.html#cb1048-1" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">V</span>(taming_sub)<span class="sc">$</span>gender)</span>
+<span id="cb1048-2"><a href="dracor.html#cb1048-2" tabindex="-1"></a><span class="fu">modularity</span>(taming_sub, gender)</span></code></pre></div>
+<pre><code>## [1] -0.01708984</code></pre>
+<div class="infobox">
+<p>При выделении сообществ в большинстве случаев наша задача – максимизировать модулярность.</p>
+</div>
+</div>
+<div id="алгоритмы-обнаружения-сообществ" class="section level2 hasAnchor" number="18.5">
+<h2><span class="header-section-number">18.5</span> Алгоритмы обнаружения сообществ<a href="dracor.html#алгоритмы-обнаружения-сообществ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>В пакете <code>igraph</code> реализовано множество алгоритмов обнаружения сообществ. Обычной практикой является применение нескольких алгоритмов и сравнение результатов.</p>
+<p><img src="images/communities-detection.png" /></p>
+<p>У нас ненаправленная взвешенная сеть.</p>
+<div class="sourceCode" id="cb1050"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1050-1"><a href="dracor.html#cb1050-1" tabindex="-1"></a>taming_sub</span></code></pre></div>
+<pre><code>## IGRAPH d051632 UNW- 23 128 -- 
+## + attr: name (v/c), isGroup (v/l), gender (v/c), numOfScenes (v/n),
+## | numOfSpeechActs (v/n), numOfWords (v/n), degree (v/n), weightedDegree
+## | (v/n), closeness (v/n), betweenness (v/n), eigenvector (v/n), weight
+## | (e/n)
+## + edges from d051632 (vertex names):
+##  [1] Lucentio--Tranio                  Lucentio--Baptista Minola        
+##  [3] Lucentio--Gremio                  Lucentio--Katherine              
+##  [5] Lucentio--Hortensio               Lucentio--Bianca                 
+##  [7] Lucentio--Biondello               Lucentio--Petruchio              
+##  [9] Lucentio--Grumio                  Lucentio--SERVANTS.BAPTISTA.1_Shr
+## + ... omitted several edges</code></pre>
+<p>Применим алгоритм “случайного блуждания”.</p>
+<div class="sourceCode" id="cb1052"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1052-1"><a href="dracor.html#cb1052-1" tabindex="-1"></a>cw <span class="ot">&lt;-</span> <span class="fu">cluster_walktrap</span>(taming_sub)</span>
+<span id="cb1052-2"><a href="dracor.html#cb1052-2" tabindex="-1"></a><span class="fu">membership</span>(cw)</span></code></pre></div>
+<pre><code>##                   Lucentio                     Tranio 
+##                          2                          2 
+##            Baptista Minola                     Gremio 
+##                          2                          2 
+##                  Katherine                  Hortensio 
+##                          1                          2 
+##                     Bianca                  Biondello 
+##                          2                          2 
+##                  Petruchio                     Grumio 
+##                          1                          1 
+##    SERVANTS.BAPTISTA.1_Shr                     Curtis 
+##                          2                          3 
+##                  Nathaniel                    Phillip 
+##                          3                          3 
+##                     Joseph                   Nicholas 
+##                          3                          3 
+##                      Peter SERVANTS.PETRUCHIO.0.4_Shr 
+##                          3                          3 
+##               Merchant_Shr            Haberdasher_Shr 
+##                          2                          1 
+##                 Tailor_Shr                  Vincentio 
+##                          1                          2 
+##                  Widow_Shr 
+##                          2</code></pre>
+<div class="sourceCode" id="cb1054"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1054-1"><a href="dracor.html#cb1054-1" tabindex="-1"></a><span class="fu">plot</span>(cw, taming_sub)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-514-1.png" width="672" /></p>
+<p>Значение модулярности положительное, но не очень высокое.</p>
+<div class="sourceCode" id="cb1055"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1055-1"><a href="dracor.html#cb1055-1" tabindex="-1"></a><span class="fu">modularity</span>(cw)</span></code></pre></div>
+<pre><code>## [1] 0.1489342</code></pre>
+<p>Поищем другое разбиение.</p>
+<div class="sourceCode" id="cb1057"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1057-1"><a href="dracor.html#cb1057-1" tabindex="-1"></a>csg <span class="ot">&lt;-</span> <span class="fu">cluster_spinglass</span>(taming_sub)</span>
+<span id="cb1057-2"><a href="dracor.html#cb1057-2" tabindex="-1"></a><span class="fu">membership</span>(csg)</span></code></pre></div>
+<pre><code>##                   Lucentio                     Tranio 
+##                          1                          1 
+##            Baptista Minola                     Gremio 
+##                          1                          1 
+##                  Katherine                  Hortensio 
+##                          2                          1 
+##                     Bianca                  Biondello 
+##                          1                          1 
+##                  Petruchio                     Grumio 
+##                          2                          2 
+##    SERVANTS.BAPTISTA.1_Shr                     Curtis 
+##                          1                          2 
+##                  Nathaniel                    Phillip 
+##                          2                          2 
+##                     Joseph                   Nicholas 
+##                          2                          2 
+##                      Peter SERVANTS.PETRUCHIO.0.4_Shr 
+##                          2                          2 
+##               Merchant_Shr            Haberdasher_Shr 
+##                          1                          2 
+##                 Tailor_Shr                  Vincentio 
+##                          2                          1 
+##                  Widow_Shr 
+##                          1</code></pre>
+<p>На графе видно, что почти все слуги, портной и галантерейщик оказались в отдельном кластере, что вполне осмысленно. Но есть два кластера с одним элементом (вдова и слуги Баптисты), всего 4.</p>
+<div class="sourceCode" id="cb1059"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1059-1"><a href="dracor.html#cb1059-1" tabindex="-1"></a><span class="fu">plot</span>(csg, taming_sub)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-517-1.png" width="672" /></p>
+<p>Показатели модулярности чуть выше, чем для предыдущего разбиения.</p>
+<div class="sourceCode" id="cb1060"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1060-1"><a href="dracor.html#cb1060-1" tabindex="-1"></a><span class="fu">modularity</span>(csg)</span></code></pre></div>
+<pre><code>## [1] 0.2373678</code></pre>
+<p>Также используем алгоритм под названием “главный собственный вектор”. Он выделяет всего две группы, но показатели модулярности ниже, чем для предыдущего.</p>
+<div class="sourceCode" id="cb1062"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1062-1"><a href="dracor.html#cb1062-1" tabindex="-1"></a>cev <span class="ot">&lt;-</span> <span class="fu">cluster_leading_eigen</span>(taming_sub)</span>
+<span id="cb1062-2"><a href="dracor.html#cb1062-2" tabindex="-1"></a><span class="fu">plot</span>(cev, taming_sub)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-519-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1063"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1063-1"><a href="dracor.html#cb1063-1" tabindex="-1"></a><span class="fu">modularity</span>(cev)</span></code></pre></div>
+<pre><code>## [1] 0.1664325</code></pre>
+</div>
+<div id="двудольные-графы-биграфы" class="section level2 hasAnchor" number="18.6">
+<h2><span class="header-section-number">18.6</span> Двудольные графы (биграфы)<a href="dracor.html#двудольные-графы-биграфы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Двудольные графы подходят для ситуаций, когда существует возможность возникновения социальных взаимосвязей, но напрямую их наблюдать нельзя. Тем не менее если участники относятся к одной и той же социальной группе, можно сделать вывод, что существует возможность или потенциал развития связей между ними. Такие сети называются <strong>сетями аффилированности</strong> (affiliation network).</p>
+<p>Будет дополнено позже.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="анализ-сетей.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="литература.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/17-dracor.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
