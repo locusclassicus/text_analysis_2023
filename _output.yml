@@ -6,4 +6,4 @@ bookdown::gitbook:
         <li><a href="./">Компьютерный анализ текста в R</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
+    edit: https://github.com/locusclassicus/text_analysis_2023/edit/main/%s

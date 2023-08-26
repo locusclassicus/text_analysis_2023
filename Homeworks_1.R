@@ -1,0 +1,91 @@
+# lesson 1 starting with R
+install.packages("swirl")
+library(swirl)
+install_course("R Programming E")
+swirl()
+# 1 Basic Building Blocks      
+# 2 Workspace and Files     
+# 3 Sequences of Numbers      
+# 4 Vectors                 
+# 5 Missing Values             
+# 6 Subsetting Vectors      
+# 7 Matrices and Data Frames   
+# 8 Logic        
+
+#Would you like to inform someone about your successful
+# completion of this lesson via email?
+
+## если не настроен почтовый клиент, то отправить письмо не удастся
+## в этом случае:
+## yes на вопрос Would you like to inform someone about your successful
+## completion of this lesson via email?
+## вводите полное имя
+## делаете скриншот (пример в папке images)
+
+## lesson 2 plotting
+# "R Programming E"
+# 15 Base Graphics
+
+install_course("Exploratory Data Analysis")
+# 1: Principles of Analytic Graphs
+# 2: Exploratory Graphs
+# 3: Graphics Devices in R
+# 4: Plotting Systems
+# 5: Base Plotting System
+# 6: Lattice Plotting System
+# 7: Working with Colors
+# 8: GGPlot2 Part1
+# 9: GGPlot2 Part2
+# 10: GGPlot2 Extras
+
+# lesson 3 tidy data
+swirl::install_course("Getting and Cleaning Data")
+# 1: Manipulating Data with dplyr
+# 2: Grouping and Chaining with dplyr
+# 3: Tidying Data with tidyr
+
+
+# lesson 4 functions
+# "R Programming E"
+# 9: Functions
+# 10: lapply and sapply
+# 11: vapply and tapply
+
+swirl::install_course("Advanced R Programming")
+# 1: Setting Up Swirl
+# 2: Functions
+# 3: Functional Programming with purrr
+
+# lesson 5
+# 1) Скачать файл с текстом "О природе вещей" Лукреция из библиотеки проекта Perseus. Команды для скачивания должны быть прописаны в файле с кодом: https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml 
+# 2) Написать код, извлекающий полностью текст первой книги "О природе вещей". Допустимо пользоваться как пакетом XML, так и пакетом xml2. Разбивать текст на слова не надо. Код должен включать команды по привязке необходимых пакетов.
+# 3) Записать текст первой книги в файл "Lucretius.txt". В текстовом файле не должно быть лишних знаков (номеров рядов, столбцов, кавычек, знаков табуляции, переноса строки и др.) -- только латинский текст. При необходимости воспользуйтесь регулярными выражениями, чтобы удалить лишние знаки.
+# 4) Сохранить в отдельный файл весь код. После того, как вы создали новый файл (File -- New File -- R Script ) и прописали весь код, выбираете Save As... в том же меню File или просто нажимаете дискету для сохранения. Сохраняете под названием "Lucretius.R" (обратите внимание на расширение .R). Файл с кодом должен содержать не только воспроизводимый код, но и аннотации к нему, поясняющие, что этот код делает (аннотации сопровождаются знаком ##).
+# 5) Проверить задания сокурсников. 
+# Критерии
+# 1 Задание содержит два файла с расширениями .txt и .R, оба под названием Lucretius
+# 2 Файл .txt содержит первую книгу "О природе вещей" Лукреция (первый стих и последний стих совпадают с оригиналом)                                                                                                                                                                                                                                                                                                                                                                                                                     
+# 3 Файл .txt содержит только текст без лишних символов (кавычек, номеров строк и названий столбцов, знаков табуляции и переноса строки и т.п.).
+# 4 Нет сбоев в кодировке файла txt, все знаки отражаются как следует.
+# 5 Файл с кодом носит название "Lucretius.R"
+# 6 Код, насколько можно судить, выполняет все то, что должен выполнять (то есть скачивает, парсит и сохраняет в отдельный файл текст первой книги поэмы), при этом использован язык R.
+# 7 Файл с кодом содержит также аннотации под знаком ##, объясняющие, что делает та или иная строка кода.
+# 8 В файле с кодом есть команды для привязки всех необходимых библиотек. Все функции относятся к подвязанным библиотекам. 
+# 9 Для парсинга использованы пакеты XML или xml2.
+# 10 Насколько можно судить, работа выполнена самостоятельно.
+
+# lesson 6 markdown
+# создать файл и опубликовать его на https://rpubs.com/
+
+# lesson 7 regex
+swirl::install_course("Regular Expressions")
+# 1: Introduction
+# 2: Regex in base R
+# 3: Anchors
+# 4: Character Classes
+# 5: Groups and Ranges
+# 6: Quantifiers
+# 7: Applied Examples
+
+# возможно, еще stringr отсюда
+

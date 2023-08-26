@@ -143,7 +143,7 @@ library(intergraph)
 
 data(Moreno)
 Moreno_graph <- intergraph::asIgraph(Moreno)
-plot(Moreno_graph, vertex.color = gender)
+plot.igraph(Moreno_graph, vertex.color =1+ V(Moreno_graph)$gender)
 ```
 
 Метрика модулярности подтверждает, что пол учеников действительно объясняет наблюдаемую кластеризацию.

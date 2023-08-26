@@ -13,11 +13,24 @@ pre code {
   white-space: inherit;
 }
 .infobox {
-  padding: 1em;
-  background: #ededed;
+  padding: 1em 1em 1em 4em;
+  background: #ededed 5px center/3em no-repeat;
   color: black;
 }
-
+.task {
+  padding: 1em 1em 1em 4em;
+  color: black;
+  background: cornsilk 5px center/3em no-repeat;
+}
+.question {
+  background-image: url("https://static.thenounproject.com/png/1156194-200.png");
+}
+.info {
+  background-image: url("https://cdn-icons-png.flaticon.com/128/545/545674.png");
+}
+.code{
+  background-image: url("https://cdn-icons-png.flaticon.com/128/984/984196.png");
+}
 .spoiler {
   visibility: hidden;
 }

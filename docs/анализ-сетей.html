@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-12" />
+<meta name="date" content="2023-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -192,7 +192,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
 <li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
 <li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
-<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#шорткаты"><i class="fa fa-check"></i><b>2.15</b> Шорткаты</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
 <ul>
@@ -575,9 +574,9 @@ div.csl-indent {
 <div class="sourceCode" id="cb974"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb974-1"><a href="анализ-сетей.html#cb974-1" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
 <span id="cb974-2"><a href="анализ-сетей.html#cb974-2" tabindex="-1"></a>confessions_graph <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(cooc, <span class="at">directed =</span> F)</span>
 <span id="cb974-3"><a href="анализ-сетей.html#cb974-3" tabindex="-1"></a>confessions_graph</span></code></pre></div>
-<pre><code>## IGRAPH 1549537 UN-- 102 264 -- 
+<pre><code>## IGRAPH d8ac55e UN-- 102 264 -- 
 ## + attr: name (v/c), value (e/n)
-## + edges from 1549537 (vertex names):
+## + edges from d8ac55e (vertex names):
 ##  [1] caelum    --terra      animus    --memoria    dies      --nox       
 ##  [4] caelum    --principium dominus   --homo       spatium   --tempus    
 ##  [7] nomen     --terra      anima     --corpus     imago     --memoria   
@@ -594,7 +593,7 @@ div.csl-indent {
 <span id="cb976-4"><a href="анализ-сетей.html#cb976-4" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color=</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
 <span id="cb976-5"><a href="анализ-сетей.html#cb976-5" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">repel=</span>T), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb976-6"><a href="анализ-сетей.html#cb976-6" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-471-1.png" width="672" />
+<p><img src="_main_files/figure-html/unnamed-chunk-479-1.png" width="672" />
 ## Интерактивный график</p>
 <p>Очень просто, но не очень смотрибельно.</p>
 <div class="sourceCode" id="cb977"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb977-1"><a href="анализ-сетей.html#cb977-1" tabindex="-1"></a><span class="co"># install.packages(&quot;networkD3&quot;)</span></span>
@@ -653,14 +652,14 @@ div.csl-indent {
 </div>
 <div id="централизация" class="section level2 hasAnchor" number="17.4">
 <h2><span class="header-section-number">17.4</span> Централизация<a href="анализ-сетей.html#централизация" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Централизация</strong> характеризует сеть в целом. Рассмотрим два крайних случая: кругой граф и звездчатый граф.</p>
+<p><strong>Централизация</strong> характеризует сеть в целом. Рассмотрим два крайних случая: круговой граф и звездчатый граф.</p>
 <div class="sourceCode" id="cb989"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb989-1"><a href="анализ-сетей.html#cb989-1" tabindex="-1"></a>star_g <span class="ot">&lt;-</span> <span class="fu">graph.formula</span>(a<span class="sc">--</span>b, a<span class="sc">--</span>c, a<span class="sc">--</span>d, a<span class="sc">--</span>e)</span>
 <span id="cb989-2"><a href="анализ-сетей.html#cb989-2" tabindex="-1"></a>circle_g <span class="ot">&lt;-</span> <span class="fu">graph.formula</span>(a<span class="sc">--</span>b, b<span class="sc">--</span>c, c<span class="sc">--</span>d, d<span class="sc">--</span>e, a<span class="sc">--</span>e)</span>
 <span id="cb989-3"><a href="анализ-сетей.html#cb989-3" tabindex="-1"></a></span>
 <span id="cb989-4"><a href="анализ-сетей.html#cb989-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
 <span id="cb989-5"><a href="анализ-сетей.html#cb989-5" tabindex="-1"></a><span class="fu">plot</span>(circle_g, <span class="at">vertex.color=</span><span class="dv">2</span>)</span>
 <span id="cb989-6"><a href="анализ-сетей.html#cb989-6" tabindex="-1"></a><span class="fu">plot</span>(star_g, <span class="at">vertex.color=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-478-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-486-1.png" width="672" /></p>
 <p>В случае звездчатого графа централизация максимальна, а для отдельных узлов наблюдается разброс центральности.</p>
 <div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="анализ-сетей.html#cb990-1" tabindex="-1"></a><span class="fu">centralization.closeness</span>(star_g)</span></code></pre></div>
 <pre><code>## $res
@@ -699,9 +698,9 @@ div.csl-indent {
 <span id="cb998-7"><a href="анализ-сетей.html#cb998-7" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb998-8"><a href="анализ-сетей.html#cb998-8" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">repel=</span>T), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb998-9"><a href="анализ-сетей.html#cb998-9" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<pre><code>## Warning in geom_node_text(aes(label = name, repel = T), vjust = 1, hjust = 1):
-## Ignoring unknown aesthetics: repel</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-482-1.png" width="672" /></p>
+<pre><code>## Warning in geom_node_text(aes(label = name, repel = T), vjust = 1, hjust = 1): Ignoring unknown aesthetics:
+## repel</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-490-1.png" width="672" /></p>
 </div>
 <div id="интерактивный-граф" class="section level2 hasAnchor" number="17.6">
 <h2><span class="header-section-number">17.6</span> Интерактивный граф<a href="анализ-сетей.html#интерактивный-граф" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -726,7 +725,7 @@ div.csl-indent {
 <h2><span class="header-section-number">17.7</span> Точки сочленения<a href="анализ-сетей.html#точки-сочленения" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Точка сочленения – это узел, при удалении которого увеличивается число компонент связности. Таким образом, они соединяют разные части сети. При их удалении акторы (узлы, вершины) не могут взаимодействовать друг с другом.</p>
 <div class="sourceCode" id="cb1002"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1002-1"><a href="анализ-сетей.html#cb1002-1" tabindex="-1"></a><span class="fu">articulation_points</span>(confessions_graph)</span></code></pre></div>
-<pre><code>## + 16/102 vertices, named, from 1549537:
+<pre><code>## + 16/102 vertices, named, from d8ac55e:
 ##  [1] uita    uox     caro    uerbum  ueritas tempus  sol     memoria imago  
 ## [10] homo    anima   terra   animus  spatium annus   dies</code></pre>
 <p>Например, oblivio и expectatio связаны с остальным графом только через “память”.</p>
@@ -745,20 +744,20 @@ div.csl-indent {
 <pre><code>## [1] 7</code></pre>
 <div class="sourceCode" id="cb1006"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1006-1"><a href="анализ-сетей.html#cb1006-1" tabindex="-1"></a><span class="fu">cliques</span>(confessions_graph, <span class="at">min=</span><span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## [[1]]
-## + 7/102 vertices, named, from 1549537:
+## + 7/102 vertices, named, from d8ac55e:
 ## [1] caelum  dominus homo    terra   tempus  res     uerbum 
 ## 
 ## [[2]]
-## + 7/102 vertices, named, from 1549537:
+## + 7/102 vertices, named, from d8ac55e:
 ## [1] caelum  dominus corpus  homo    terra   tempus  res</code></pre>
 <p>Или, что то же самое:</p>
 <div class="sourceCode" id="cb1008"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1008-1"><a href="анализ-сетей.html#cb1008-1" tabindex="-1"></a><span class="fu">largest_cliques</span>(confessions_graph)</span></code></pre></div>
 <pre><code>## [[1]]
-## + 7/102 vertices, named, from 1549537:
+## + 7/102 vertices, named, from d8ac55e:
 ## [1] uerbum  homo    terra   tempus  res     dominus caelum 
 ## 
 ## [[2]]
-## + 7/102 vertices, named, from 1549537:
+## + 7/102 vertices, named, from d8ac55e:
 ## [1] res     corpus  tempus  terra   homo    dominus caelum</code></pre>
 <p>Но клика – это очень строгое определение сплоченной группы. Например, чтобы подграф, состоящий из 7 вершин, считался кликой, нужно, чтобы между ними было проведено <span class="math inline">\((7 \cdot 6) / 2 = 21\)</span> связей. Если хотя бы одно ребро отсутствует, то условие не выполняется. Такие клики просто очень редко встречаются.</p>
 </div>
@@ -801,7 +800,7 @@ div.csl-indent {
 <span id="cb1018-7"><a href="анализ-сетей.html#cb1018-7" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb1018-8"><a href="анализ-сетей.html#cb1018-8" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1018-9"><a href="анализ-сетей.html#cb1018-9" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-493-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-501-1.png" width="672" /></p>
 <p>Сейчас граф не очень читается, но видно, что в центре находятся ядра наивысшей степени. В данном случае речь идет о 7-ядре, которому принадлежит 11 узлов. Т.е. из этих 11 узлов каждое связано не менее чем с 7 другими участниками группы.</p>
 <p>Чтобы глубже исследовать подгруппы, последовательно удаляют k-ядра более низкой степени. Для этого можно воспользоваться функцией <code>induced_subgraph()</code>.</p>
 <div class="sourceCode" id="cb1019"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1019-1"><a href="анализ-сетей.html#cb1019-1" tabindex="-1"></a>confessions3_7 <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(confessions_graph, <span class="at">vids=</span><span class="fu">which</span>(coreness <span class="sc">&gt;</span> <span class="dv">2</span>))</span>
@@ -815,7 +814,7 @@ div.csl-indent {
 <span id="cb1019-9"><a href="анализ-сетей.html#cb1019-9" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb1019-10"><a href="анализ-сетей.html#cb1019-10" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1019-11"><a href="анализ-сетей.html#cb1019-11" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-494-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-502-1.png" width="672" /></p>
 <p>При интерпретации важно помнить, что ядра являются вложенными. Чем выше степень ядра, тем больше узлы связаны между собой.</p>
 <div class="sourceCode" id="cb1020"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1020-1"><a href="анализ-сетей.html#cb1020-1" tabindex="-1"></a>confessions6_7 <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(confessions_graph, <span class="at">vids=</span><span class="fu">which</span>(coreness <span class="sc">&gt;</span> <span class="dv">5</span>))</span>
 <span id="cb1020-2"><a href="анализ-сетей.html#cb1020-2" tabindex="-1"></a></span>
@@ -828,7 +827,7 @@ div.csl-indent {
 <span id="cb1020-9"><a href="анализ-сетей.html#cb1020-9" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb1020-10"><a href="анализ-сетей.html#cb1020-10" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1020-11"><a href="анализ-сетей.html#cb1020-11" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-495-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-503-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -882,7 +881,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/16-networks.Rmd",
+"link": "https://github.com/locusclassicus/text_analysis_2023/edit/main/16-networks.Rmd",
 "text": "Edit"
 },
 "history": {

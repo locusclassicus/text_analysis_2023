@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-12" />
+<meta name="date" content="2023-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -192,7 +192,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
 <li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
 <li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
-<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#шорткаты"><i class="fa fa-check"></i><b>2.15</b> Шорткаты</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
 <ul>
@@ -513,11 +512,19 @@ div.csl-indent {
 <span id="cb841-2"><a href="кластеризация-и-метод-главных-компонент.html#cb841-2" tabindex="-1"></a></span>
 <span id="cb841-3"><a href="кластеризация-и-метод-главных-компонент.html#cb841-3" tabindex="-1"></a>centers <span class="ot">&lt;-</span> km.out<span class="sc">$</span>centers <span class="sc">%&gt;%</span> </span>
 <span id="cb841-4"><a href="кластеризация-и-метод-главных-компонент.html#cb841-4" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code></pre></div>
-<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair`
-## is omitted as of tibble 2.0.0.
-## ℹ Using compatibility `.name_repair`.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## Warning: The `x` argument of
+## `as_tibble.matrix()` must
+## have unique column names if
+## `.name_repair` is omitted as
+## of tibble 2.0.0.
+## ℹ Using compatibility
+##   `.name_repair`.
+## This warning is displayed
+## once every 8 hours.
+## Call
+## `lifecycle::last_lifecycle_warnings()`
+## to see where this warning was
+## generated.</code></pre>
 <div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="кластеризация-и-метод-главных-компонент.html#cb843-1" tabindex="-1"></a>centers</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##       V1    V2
@@ -531,7 +538,7 @@ div.csl-indent {
 <span id="cb845-5"><a href="кластеризация-и-метод-главных-компонент.html#cb845-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
 <span id="cb845-6"><a href="кластеризация-и-метод-главных-компонент.html#cb845-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> centers, <span class="at">color =</span> <span class="st">&quot;deeppink3&quot;</span>, </span>
 <span id="cb845-7"><a href="кластеризация-и-метод-главных-компонент.html#cb845-7" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-395-1.png" width="672" />
+<p><img src="_main_files/figure-html/unnamed-chunk-403-1.png" width="672" />
 Аргумент <code>nstart</code> позволяет запустить алгоритм функции несколько раз с разными начальными метками кластеров; функциия вернет наилучший результат.</p>
 </div>
 <div id="k-means-для-кластеризации-текстов" class="section level2 hasAnchor" number="15.4">
@@ -661,7 +668,7 @@ div.csl-indent {
 <p>Применим алгоритм к симулированным данным, которые мы создали выше. Функция <code>dist()</code> по умолчанию считает евклидово расстояние.</p>
 <div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="кластеризация-и-метод-главных-компонент.html#cb857-1" tabindex="-1"></a>hc.complete <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(x), <span class="at">method =</span> <span class="st">&quot;complete&quot;</span>)</span>
 <span id="cb857-2"><a href="кластеризация-и-метод-главных-компонент.html#cb857-2" tabindex="-1"></a><span class="fu">plot</span>(hc.complete)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-402-1.png" width="672" />
+<p><img src="_main_files/figure-html/unnamed-chunk-410-1.png" width="672" />
 На картинке видно, что наблюдения из верхих и нижних рядов почти идеально разделились на два кластера.</p>
 </div>
 <div id="иерархическая-кластеризация-текстов" class="section level2 hasAnchor" number="15.9">
@@ -675,7 +682,7 @@ div.csl-indent {
 <span id="cb860-2"><a href="кластеризация-и-метод-главных-компонент.html#cb860-2" tabindex="-1"></a>hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_mx)</span>
 <span id="cb860-3"><a href="кластеризация-и-метод-главных-компонент.html#cb860-3" tabindex="-1"></a></span>
 <span id="cb860-4"><a href="кластеризация-и-метод-главных-компонент.html#cb860-4" tabindex="-1"></a><span class="fu">plot</span>(hc)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-404-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-412-1.png" width="672" /></p>
 <p>Для получения меток кластеров, возникающих в результате рассечения дендрограммы на той или иной высоте, можно воспользоваться функцией <code>cutree()</code>.</p>
 <div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="кластеризация-и-метод-главных-компонент.html#cb861-1" tabindex="-1"></a><span class="fu">cutree</span>(hc, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##        coben_breaker       coben_dropshot       coben_fadeaway 
@@ -705,7 +712,7 @@ div.csl-indent {
 <span id="cb863-6"><a href="кластеризация-и-метод-главных-компонент.html#cb863-6" tabindex="-1"></a>  <span class="fu">set</span>(<span class="st">&quot;labels_col&quot;</span>, <span class="at">k=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb863-7"><a href="кластеризация-и-метод-главных-компонент.html#cb863-7" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">horiz =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb863-8"><a href="кластеризация-и-метод-главных-компонент.html#cb863-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.8</span>, <span class="at">col=</span><span class="st">&quot;pink4&quot;</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-406-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-414-1.png" width="672" /></p>
 <p>Результат как иерархической кластеризации, так и кластеризации по методу K средних многомерных данных можно визуализировать в двумерном пространстве, если предварительно применить к данным метод главных компонент.</p>
 </div>
 <div id="метод-главных-компонент" class="section level2 hasAnchor" number="15.10">
@@ -750,7 +757,7 @@ div.csl-indent {
 ## [21] 0.0061 0.0053 0.0048 0.0040 0.0028 0.0000</code></pre>
 <p>Таким образом, первые две компоненты объясняют почти половину дисперсии, а последняя почти не имеет объяснительной ценности.</p>
 <div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="кластеризация-и-метод-главных-компонент.html#cb872-1" tabindex="-1"></a><span class="fu">plot</span>(pca_fit)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-411-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-419-1.png" width="672" /></p>
 <p>Координаты текстов в новом двумерном пространстве, определяемом первыми двумя компонентами, хранятся в элементе под названием <code>x</code>.</p>
 <div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="кластеризация-и-метод-главных-компонент.html#cb873-1" tabindex="-1"></a><span class="fu">head</span>(pca_fit<span class="sc">$</span>x[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span></code></pre></div>
 <pre><code>##                             PC1      PC2
@@ -774,7 +781,7 @@ div.csl-indent {
 <pre><code>## [1] 200   3</code></pre>
 <p>Изобразить вместе главные компоненты и тексты позволяет функция <code>biplot()</code> (на нормализованных данных получается совсем не читаемо, поэтому демонстрирую на исходных).</p>
 <div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="кластеризация-и-метод-главных-компонент.html#cb879-1" tabindex="-1"></a><span class="fu">biplot</span>(<span class="fu">prcomp</span>(galbraith), <span class="at">scale=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-415-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-423-1.png" width="672" /></p>
 </div>
 <div id="pca-для-визуализации-кластеров-k-means" class="section level2 hasAnchor" number="15.11">
 <h2><span class="header-section-number">15.11</span> PCA для визуализации кластеров K-means<a href="кластеризация-и-метод-главных-компонент.html#pca-для-визуализации-кластеров-k-means" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -786,7 +793,7 @@ div.csl-indent {
 <span id="cb880-5"><a href="кластеризация-и-метод-главных-компонент.html#cb880-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(.fittedPC1, .fittedPC2, </span>
 <span id="cb880-6"><a href="кластеризация-и-метод-главных-компонент.html#cb880-6" tabindex="-1"></a>             <span class="at">color =</span> expected, <span class="at">shape =</span> <span class="fu">as.factor</span>(km.out<span class="sc">$</span>cluster))) <span class="sc">+</span></span>
 <span id="cb880-7"><a href="кластеризация-и-метод-главных-компонент.html#cb880-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-416-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-424-1.png" width="672" /></p>
 <p>В таком же “опрятном” виде можем представить и нагрузки компонент. Для наглядности вывожу только первые 30 слов.</p>
 <div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="кластеризация-и-метод-главных-компонент.html#cb881-1" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code></pre></div>
 <pre><code>## 
@@ -819,7 +826,7 @@ div.csl-indent {
 <span id="cb887-17"><a href="кластеризация-и-метод-главных-компонент.html#cb887-17" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb887-18"><a href="кластеризация-и-метод-главных-компонент.html#cb887-18" tabindex="-1"></a>  <span class="fu">theme_minimal_grid</span>(<span class="dv">10</span>) <span class="sc">+</span></span>
 <span id="cb887-19"><a href="кластеризация-и-метод-главных-компонент.html#cb887-19" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-417-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-425-1.png" width="672" /></p>
 </div>
 <div id="pca-и-иерархическая-кластеризация" class="section level2 hasAnchor" number="15.12">
 <h2><span class="header-section-number">15.12</span> PCA и иерархическая кластеризация<a href="кластеризация-и-метод-главных-компонент.html#pca-и-иерархическая-кластеризация" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -829,7 +836,7 @@ div.csl-indent {
 <span id="cb888-3"><a href="кластеризация-и-метод-главных-компонент.html#cb888-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(.fittedPC1, .fittedPC2, </span>
 <span id="cb888-4"><a href="кластеризация-и-метод-главных-компонент.html#cb888-4" tabindex="-1"></a>             <span class="at">color =</span> expected, <span class="at">shape =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(hc, <span class="dv">5</span>)))) <span class="sc">+</span></span>
 <span id="cb888-5"><a href="кластеризация-и-метод-главных-компонент.html#cb888-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-418-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-426-1.png" width="672" /></p>
 </div>
 <div id="многомерное-шкалирование" class="section level2 hasAnchor" number="15.13">
 <h2><span class="header-section-number">15.13</span> Многомерное шкалирование<a href="кластеризация-и-метод-главных-компонент.html#многомерное-шкалирование" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -850,7 +857,7 @@ div.csl-indent {
 <span id="cb891-3"><a href="кластеризация-и-метод-главных-компонент.html#cb891-3" tabindex="-1"></a>             <span class="at">color =</span> expected, </span>
 <span id="cb891-4"><a href="кластеризация-и-метод-главных-компонент.html#cb891-4" tabindex="-1"></a>             <span class="at">shape =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(hc, <span class="dv">5</span>)))) <span class="sc">+</span></span>
 <span id="cb891-5"><a href="кластеризация-и-метод-главных-компонент.html#cb891-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-420-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-428-1.png" width="672" /></p>
 <p>Многомерное шкалирование стремится отразить <em>расстояния</em> между наблюдениями.</p>
 </div>
 <div id="pca-с-factominer" class="section level2 hasAnchor" number="15.14">
@@ -889,10 +896,10 @@ div.csl-indent {
 ## comp 5       0.65                   6.51                             94.36
 ## comp 6       0.25                   2.48                             96.84</code></pre>
 <div class="sourceCode" id="cb896"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb896-1"><a href="кластеризация-и-метод-главных-компонент.html#cb896-1" tabindex="-1"></a><span class="fu">barplot</span>(pca_object<span class="sc">$</span>eig[,<span class="dv">1</span>], <span class="at">names.arg =</span> <span class="fu">paste</span>(<span class="st">&quot;comp &quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(pca_object<span class="sc">$</span>eig)))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-423-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-431-1.png" width="672" /></p>
 <p>При визуализации аргументы <code>shadow</code> и <code>autoLab</code> отвечают за то, чтобы график хорошо читался.</p>
 <div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="кластеризация-и-метод-главных-компонент.html#cb897-1" tabindex="-1"></a><span class="fu">plot</span>(pca_object, <span class="at">shadow=</span>T, <span class="at">autoLab =</span> <span class="st">&quot;yes&quot;</span>, <span class="at">choix =</span> <span class="st">&quot;var&quot;</span>, <span class="at">new.plot =</span> F, <span class="at">title =</span> <span class="st">&quot;&quot;</span>, <span class="at">col.var =</span> <span class="st">&quot;grey40&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-424-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-432-1.png" width="672" /></p>
 <p>Получившийся график называется <em>круг корреляции</em>, и его следует понимать так:</p>
 <ul>
 <li>положительно коррелированные переменные находятся рядом;</li>
@@ -913,7 +920,7 @@ div.csl-indent {
 ## said  0.3317503 -0.5806990</code></pre>
 <p>Построим графикк с наблюдениями, а не с переменными:</p>
 <div class="sourceCode" id="cb900"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb900-1"><a href="кластеризация-и-метод-главных-компонент.html#cb900-1" tabindex="-1"></a><span class="fu">plot</span>(pca_object, <span class="at">shadow =</span> T, <span class="at">autoLab =</span> <span class="st">&quot;yes&quot;</span>, <span class="at">title =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-426-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-434-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -954,7 +961,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/14-cluster.Rmd",
+"link": "https://github.com/locusclassicus/text_analysis_2023/edit/main/14-cluster.Rmd",
 "text": "Edit"
 },
 "history": {

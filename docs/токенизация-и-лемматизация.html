@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-12" />
+<meta name="date" content="2023-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -192,7 +192,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
 <li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
 <li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
-<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#шорткаты"><i class="fa fa-check"></i><b>2.15</b> Шорткаты</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
 <ul>
@@ -804,7 +803,7 @@ div.csl-indent {
 <span id="cb597-6"><a href="токенизация-и-лемматизация.html#cb597-6" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
 <span id="cb597-7"><a href="токенизация-и-лемматизация.html#cb597-7" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
 <span id="cb597-8"><a href="токенизация-и-лемматизация.html#cb597-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-256-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-264-1.png" width="672" /></p>
 <p>Обратите внимание на некоторое заметное число междометий. Какое междометие встречается здесь чаще всего, можно догадаться 😊</p>
 <p>Можно отобрать наиболее частотные слова для любой части речи.</p>
 <div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="токенизация-и-лемматизация.html#cb598-1" tabindex="-1"></a>nouns <span class="ot">&lt;-</span> liza_df <span class="sc">%&gt;%</span></span>
@@ -834,7 +833,7 @@ div.csl-indent {
 <span id="cb602-4"><a href="токенизация-и-лемматизация.html#cb602-4" tabindex="-1"></a></span>
 <span id="cb602-5"><a href="токенизация-и-лемматизация.html#cb602-5" tabindex="-1"></a>nouns <span class="sc">%&gt;%</span></span>
 <span id="cb602-6"><a href="токенизация-и-лемматизация.html#cb602-6" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(lemma, n, <span class="at">max.words =</span> <span class="dv">50</span>, <span class="at">colors =</span> pal))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-258-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-266-1.png" width="672" /></p>
 <p>Можно заметить, что в тексте часто встречаются слова “мать”, “матушка”, “старушка” (42 раза): Лизина мать упоминается в тексте так же часто, как Эраст, и чаще, чем слово “сердце” (24). В любовной повести Карамзин чуть ли не чаще говорит о матери героини, чем о её возлюбленном!</p>
 </div>
 <div id="совместная-встречаемость-слов" class="section level2 hasAnchor" number="10.7">
@@ -869,7 +868,7 @@ div.csl-indent {
 <span id="cb605-9"><a href="токенизация-и-лемматизация.html#cb605-9" tabindex="-1"></a>  <span class="fu">theme_graph</span>(<span class="at">base_family =</span> <span class="st">&quot;Arial Narrow&quot;</span>) <span class="sc">+</span></span>
 <span id="cb605-10"><a href="токенизация-и-лемматизация.html#cb605-10" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb605-11"><a href="токенизация-и-лемматизация.html#cb605-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Совместная встречаемость слов&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Существительные и прилагательные&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-260-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-268-1.png" width="672" /></p>
 <p>Милый друг, глубокий пруд. Грустная история!</p>
 <p>Чтобы узнать, какие слова чаще стоят рядом, используем ту же функцию, но с другими аргументами<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>:</p>
 <div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="токенизация-и-лемматизация.html#cb606-1" tabindex="-1"></a>cooc <span class="ot">&lt;-</span> <span class="fu">cooccurrence</span>(x<span class="sc">$</span>lemma, <span class="at">relevant =</span> x<span class="sc">$</span>upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NOUN&quot;</span>, <span class="st">&quot;ADJ&quot;</span>), <span class="at">skipgram =</span> <span class="dv">1</span>)</span>
@@ -889,7 +888,7 @@ div.csl-indent {
 <span id="cb608-6"><a href="токенизация-и-лемматизация.html#cb608-6" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">angle=</span><span class="dv">15</span>, <span class="at">repel =</span> T) <span class="sc">+</span></span>
 <span id="cb608-7"><a href="токенизация-и-лемматизация.html#cb608-7" tabindex="-1"></a>  <span class="fu">theme_graph</span>(<span class="at">base_family =</span> <span class="st">&quot;Arial Narrow&quot;</span>) <span class="sc">+</span></span>
 <span id="cb608-8"><a href="токенизация-и-лемматизация.html#cb608-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Слова, стоящие рядом в тексте&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Существительные и прилагательные&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-261-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-269-1.png" width="672" /></p>
 </div>
 <div id="синтаксическая-разметка" class="section level2 hasAnchor" number="10.8">
 <h2><span class="header-section-number">10.8</span> Синтаксическая разметка<a href="токенизация-и-лемматизация.html#синтаксическая-разметка" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -911,7 +910,7 @@ div.csl-indent {
 <p>Связь между токенами определяется в полях token_id и head_token_id, отношение зависимости определено в dep_rel. Корневой токен имеет значение 0, то есть ни от чего не зависит. Графически изобразить связи поможет пакет <code>textplot</code>.</p>
 <div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="токенизация-и-лемматизация.html#cb612-1" tabindex="-1"></a><span class="fu">library</span>(textplot)</span>
 <span id="cb612-2"><a href="токенизация-и-лемматизация.html#cb612-2" tabindex="-1"></a><span class="fu">textplot_dependencyparser</span>(liza_synt_sel)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-264-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-272-1.png" width="672" /></p>
 <p>Построить граф можно и при помощи библиотек igraph и ggraph:</p>
 <div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="токенизация-и-лемматизация.html#cb613-1" tabindex="-1"></a>liza_synt_sel <span class="ot">&lt;-</span> liza_synt <span class="sc">%&gt;%</span> </span>
 <span id="cb613-2"><a href="токенизация-и-лемматизация.html#cb613-2" tabindex="-1"></a>  <span class="fu">filter</span>(doc_id <span class="sc">==</span> <span class="st">&quot;doc17&quot;</span>, sentence_id <span class="sc">==</span> <span class="dv">1</span>)</span>
@@ -943,7 +942,7 @@ div.csl-indent {
 <span id="cb616-12"><a href="токенизация-и-лемматизация.html#cb616-12" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb616-13"><a href="токенизация-и-лемматизация.html#cb616-13" tabindex="-1"></a>  <span class="fu">theme_void</span>(<span class="at">base_family =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
 <span id="cb616-14"><a href="токенизация-и-лемматизация.html#cb616-14" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> token), <span class="at">nudge_y =</span> <span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-266-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-274-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -1003,7 +1002,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-tokenize.Rmd",
+"link": "https://github.com/locusclassicus/text_analysis_2023/edit/main/09-tokenize.Rmd",
 "text": "Edit"
 },
 "history": {

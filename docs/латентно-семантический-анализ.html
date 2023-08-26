@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-12" />
+<meta name="date" content="2023-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -192,7 +192,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
 <li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
 <li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
-<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#шорткаты"><i class="fa fa-check"></i><b>2.15</b> Шорткаты</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
 <ul>
@@ -664,7 +663,7 @@ div.csl-indent {
 ## 13 d5            -0.327 -0.46  doc  
 ## 14 q_doc         -1.10   0.124 doc</code></pre>
 <p>Теперь строим график.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-366-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-374-1.png" width="672" /></p>
 <p>Как видно, поисковый запрос оказался ближе к d2, чем к d4, хотя в каждом из документов было одно слово из запроса. Более того: он оказался ближе к d1, в котором не было ни одного слова из запроса! Наш алгоритм оказался достаточно умен, чтобы понять, что d1 более релевантен, хотя и не содержит точных совпадений с поисковыми словами. Возможно, человек дал бы такую же рекомендацию.</p>
 <p>Мы исследовали наш небольшой корпус графически, теперь посчитаем косинусное расстояние.</p>
 <div class="sourceCode" id="cb792"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb792-1"><a href="латентно-семантический-анализ.html#cb792-1" tabindex="-1"></a>dist_mx <span class="ot">&lt;-</span> all_df <span class="sc">%&gt;%</span> </span>
@@ -904,7 +903,7 @@ div.csl-indent {
 <span id="cb821-9"><a href="латентно-семантический-анализ.html#cb821-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dimension, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">ncol=</span><span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb821-10"><a href="латентно-семантический-анализ.html#cb821-10" tabindex="-1"></a>  <span class="fu">scale_x_reordered</span>() <span class="sc">+</span></span>
 <span id="cb821-11"><a href="латентно-семантический-анализ.html#cb821-11" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-386-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-394-1.png" width="672" /></p>
 <p>Имея эмбеддинги слов и матрицу документ-термин, можно создать пространство документов той же размерности. Для этого перемножаем две матрицы.</p>
 <div class="sourceCode" id="cb822"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb822-1"><a href="латентно-семантический-анализ.html#cb822-1" tabindex="-1"></a>word_mx <span class="ot">&lt;-</span> text_pruned <span class="sc">%&gt;%</span></span>
 <span id="cb822-2"><a href="латентно-семантический-анализ.html#cb822-2" tabindex="-1"></a>  <span class="fu">count</span>(doc_id, lemma) <span class="sc">%&gt;%</span></span>
@@ -1014,7 +1013,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/13-lsa.Rmd",
+"link": "https://github.com/locusclassicus/text_analysis_2023/edit/main/13-lsa.Rmd",
 "text": "Edit"
 },
 "history": {

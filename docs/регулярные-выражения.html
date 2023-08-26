@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-12" />
+<meta name="date" content="2023-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -192,7 +192,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
 <li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
 <li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
-<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#шорткаты"><i class="fa fa-check"></i><b>2.15</b> Шорткаты</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
 <ul>
@@ -1063,10 +1062,16 @@ div.csl-indent {
 <p>Но можно обойтись и без регулярных выражений.</p>
 <div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="регулярные-выражения.html#cb476-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;This is a sentence.  This is another sentence.&quot;</span></span>
 <span id="cb476-2"><a href="регулярные-выражения.html#cb476-2" tabindex="-1"></a><span class="fu">str_view_all</span>(x, <span class="fu">boundary</span>(<span class="st">&quot;word&quot;</span>))</span></code></pre></div>
-<pre><code>## Warning: `str_view()` was deprecated in stringr 1.5.0.
-## ℹ Please use `str_view_all()` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## Warning: `str_view()` was deprecated
+## in stringr 1.5.0.
+## ℹ Please use `str_view_all()`
+##   instead.
+## This warning is displayed
+## once every 8 hours.
+## Call
+## `lifecycle::last_lifecycle_warnings()`
+## to see where this warning was
+## generated.</code></pre>
 <pre><code>## [1] │ &lt;This&gt; &lt;is&gt; &lt;a&gt; &lt;sentence&gt;.  &lt;This&gt; &lt;is&gt; &lt;another&gt; &lt;sentence&gt;.</code></pre>
 <div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="регулярные-выражения.html#cb479-1" tabindex="-1"></a><span class="fu">str_view_all</span>(x, <span class="fu">boundary</span>(<span class="st">&quot;sentence&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] │ &lt;This is a sentence.  &gt;&lt;This is another sentence.&gt;</code></pre>
@@ -1124,7 +1129,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-regex.Rmd",
+"link": "https://github.com/locusclassicus/text_analysis_2023/edit/main/07-regex.Rmd",
 "text": "Edit"
 },
 "history": {
