@@ -22,6 +22,12 @@ pre code {
   color: black;
   background: cornsilk 5px center/3em no-repeat;
 }
+
+.ask {
+  padding: 1em 1em 1em 4em;
+  color: black;
+  background: #d8e7dd 5px center/3em no-repeat;
+}
 .question {
   background-image: url("https://static.thenounproject.com/png/1156194-200.png");
 }

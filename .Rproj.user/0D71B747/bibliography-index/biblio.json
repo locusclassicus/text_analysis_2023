@@ -289,6 +289,25 @@
         {
             "author": [
                 {
+                    "family": "Burns",
+                    "given": "Patrick"
+                }
+            ],
+            "id": "burns2012r",
+            "issued": {
+                "date-parts": [
+                    [
+                        2012
+                    ]
+                ]
+            },
+            "publisher": "Lulu. com",
+            "title": "The r inferno",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
                     "family": "Люк",
                     "given": "Дуглас"
                 }

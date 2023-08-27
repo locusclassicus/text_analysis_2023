@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-26" />
+<meta name="date" content="2023-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -189,9 +189,10 @@ div.csl-indent {
 <li class="chapter" data-level="2.9" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#r-как-калькулятор"><i class="fa fa-check"></i><b>2.9</b> R как калькулятор</a></li>
 <li class="chapter" data-level="2.10" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#операторы-присваивания"><i class="fa fa-check"></i><b>2.10</b> Операторы присваивания</a></li>
 <li class="chapter" data-level="2.11" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#векторы"><i class="fa fa-check"></i><b>2.11</b> Векторы</a></li>
-<li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
-<li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
-<li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
+<li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#отсутствующие-значения"><i class="fa fa-check"></i><b>2.12</b> Отсутствующие значения</a></li>
+<li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.13</b> Списки</a></li>
+<li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.14</b> Матрицы</a></li>
+<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.15</b> Таблицы</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
 <ul>
@@ -485,76 +486,76 @@ div.csl-indent {
 <p>Далее следует определить <strong>формальные аргументы</strong> и, при желании, <strong>значения по умолчанию</strong>. Тело функции пишется в фигурных скобках. В конце кода функции располагается команда <code>return()</code>; если ее нет, то функция возвращает последнее вычисленное значение (см. <a href="https://r4ds.had.co.nz/functions.html">здесь</a> о том, когда что предпочесть).</p>
 <p>Написание функций – навык, который можно бесконечно совершенствовать. Начать проще всего с обычного кода. Убедившись, что он работает как надо, вы можете упаковать его в функцию.</p>
 <p>Например, нам нужна функция, которая ищет совпадения в двух векторах и возвращает совпавшие элементы. Сначала решим задачу для двух векторов.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="функциональное-программирование.html#cb189-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;гнев&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;воспой&quot;</span>)</span>
-<span id="cb189-2"><a href="функциональное-программирование.html#cb189-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;в&quot;</span>, <span class="st">&quot;мысли&quot;</span>, <span class="st">&quot;ему&quot;</span>, <span class="st">&quot;то&quot;</span>, <span class="st">&quot;вложила&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;державная&quot;</span>, <span class="st">&quot;гера&quot;</span>)</span>
-<span id="cb189-3"><a href="функциональное-программирование.html#cb189-3" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">which</span>(x <span class="sc">%in%</span> y) <span class="co"># 2</span></span>
-<span id="cb189-4"><a href="функциональное-программирование.html#cb189-4" tabindex="-1"></a>x[idx]</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="функциональное-программирование.html#cb205-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;гнев&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;воспой&quot;</span>)</span>
+<span id="cb205-2"><a href="функциональное-программирование.html#cb205-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;в&quot;</span>, <span class="st">&quot;мысли&quot;</span>, <span class="st">&quot;ему&quot;</span>, <span class="st">&quot;то&quot;</span>, <span class="st">&quot;вложила&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;державная&quot;</span>, <span class="st">&quot;гера&quot;</span>)</span>
+<span id="cb205-3"><a href="функциональное-программирование.html#cb205-3" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">which</span>(x <span class="sc">%in%</span> y) <span class="co"># 2</span></span>
+<span id="cb205-4"><a href="функциональное-программирование.html#cb205-4" tabindex="-1"></a>x[idx]</span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
 <p>Теперь заменяем фактические переменные на формальные.</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="функциональное-программирование.html#cb191-1" tabindex="-1"></a>common_words <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb191-2"><a href="функциональное-программирование.html#cb191-2" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(x <span class="sc">%in%</span> y)</span>
-<span id="cb191-3"><a href="функциональное-программирование.html#cb191-3" tabindex="-1"></a>  x[idx]</span>
-<span id="cb191-4"><a href="функциональное-программирование.html#cb191-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="функциональное-программирование.html#cb207-1" tabindex="-1"></a>common_words <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb207-2"><a href="функциональное-программирование.html#cb207-2" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(x <span class="sc">%in%</span> y)</span>
+<span id="cb207-3"><a href="функциональное-программирование.html#cb207-3" tabindex="-1"></a>  x[idx]</span>
+<span id="cb207-4"><a href="функциональное-программирование.html#cb207-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>И применяем к новым данным.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="функциональное-программирование.html#cb192-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;лишь&quot;</span>, <span class="st">&quot;явилась&quot;</span>, <span class="st">&quot;заря&quot;</span>, <span class="st">&quot;розоперстая&quot;</span>, <span class="st">&quot;вестница&quot;</span>, <span class="st">&quot;утра&quot;</span>)</span>
-<span id="cb192-2"><a href="функциональное-программирование.html#cb192-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;вестница&quot;</span>, <span class="st">&quot;утра&quot;</span>, <span class="st">&quot;заря&quot;</span>, <span class="st">&quot;на&quot;</span>, <span class="st">&quot;великий&quot;</span>, <span class="st">&quot;олимп&quot;</span>, <span class="st">&quot;восходила&quot;</span>)</span>
-<span id="cb192-3"><a href="функциональное-программирование.html#cb192-3" tabindex="-1"></a><span class="fu">common_words</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="функциональное-программирование.html#cb208-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;лишь&quot;</span>, <span class="st">&quot;явилась&quot;</span>, <span class="st">&quot;заря&quot;</span>, <span class="st">&quot;розоперстая&quot;</span>, <span class="st">&quot;вестница&quot;</span>, <span class="st">&quot;утра&quot;</span>)</span>
+<span id="cb208-2"><a href="функциональное-программирование.html#cb208-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;вестница&quot;</span>, <span class="st">&quot;утра&quot;</span>, <span class="st">&quot;заря&quot;</span>, <span class="st">&quot;на&quot;</span>, <span class="st">&quot;великий&quot;</span>, <span class="st">&quot;олимп&quot;</span>, <span class="st">&quot;восходила&quot;</span>)</span>
+<span id="cb208-3"><a href="функциональное-программирование.html#cb208-3" tabindex="-1"></a><span class="fu">common_words</span>(x, y)</span></code></pre></div>
 <pre><code>## [1] &quot;заря&quot;     &quot;вестница&quot; &quot;утра&quot;</code></pre>
 <p>Ура, все работает! Запомните простое правило: если вы трижды скопировали код, пора писать функцию!</p>
 </div>
 <div id="область-видимости-переменных" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Область видимости переменных<a href="функциональное-программирование.html#область-видимости-переменных" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Напишем функцию, которая будет центрировать данные, то есть вычитать среднее из каждого значения (забудем на время, что это уже делает базовая <code>scale()</code>):</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="функциональное-программирование.html#cb194-1" tabindex="-1"></a>center <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ </span>
-<span id="cb194-2"><a href="функциональное-программирование.html#cb194-2" tabindex="-1"></a>  n <span class="ot">=</span> x <span class="sc">-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb194-3"><a href="функциональное-программирование.html#cb194-3" tabindex="-1"></a>  <span class="fu">return</span>(n) </span>
-<span id="cb194-4"><a href="функциональное-программирование.html#cb194-4" tabindex="-1"></a>}</span>
-<span id="cb194-5"><a href="функциональное-программирование.html#cb194-5" tabindex="-1"></a></span>
-<span id="cb194-6"><a href="функциональное-программирование.html#cb194-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>)</span>
-<span id="cb194-7"><a href="функциональное-программирование.html#cb194-7" tabindex="-1"></a><span class="fu">center</span>(x) </span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="функциональное-программирование.html#cb210-1" tabindex="-1"></a>center <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ </span>
+<span id="cb210-2"><a href="функциональное-программирование.html#cb210-2" tabindex="-1"></a>  n <span class="ot">=</span> x <span class="sc">-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb210-3"><a href="функциональное-программирование.html#cb210-3" tabindex="-1"></a>  <span class="fu">return</span>(n) </span>
+<span id="cb210-4"><a href="функциональное-программирование.html#cb210-4" tabindex="-1"></a>}</span>
+<span id="cb210-5"><a href="функциональное-программирование.html#cb210-5" tabindex="-1"></a></span>
+<span id="cb210-6"><a href="функциональное-программирование.html#cb210-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>)</span>
+<span id="cb210-7"><a href="функциональное-программирование.html#cb210-7" tabindex="-1"></a><span class="fu">center</span>(x) </span></code></pre></div>
 <pre><code>## [1] -5  0  5</code></pre>
 <p>Внутри нашей функции есть переменная <code>n</code>, которую не видно в глобальном окружении. Это <strong>локальная переменная</strong>. Область ее видимости – тело функции. Когда функция возвращает управление, переменная исчезает. Обратное неверно: глобальные переменные доступны в теле функции.</p>
 </div>
 <div id="аргументы-функции" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Аргументы функции<a href="функциональное-программирование.html#аргументы-функции" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Функция может принимать произвольное число аргументов. Доработаем наш код:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="функциональное-программирование.html#cb196-1" tabindex="-1"></a>center <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> F){</span>
-<span id="cb196-2"><a href="функциональное-программирование.html#cb196-2" tabindex="-1"></a>  <span class="cf">if</span>(na.rm) { x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x)]} <span class="co"># добавим условие</span></span>
-<span id="cb196-3"><a href="функциональное-программирование.html#cb196-3" tabindex="-1"></a>  x <span class="sc">-</span> <span class="fu">mean</span>(x) <span class="co"># на этот раз без return()</span></span>
-<span id="cb196-4"><a href="функциональное-программирование.html#cb196-4" tabindex="-1"></a>}</span>
-<span id="cb196-5"><a href="функциональное-программирование.html#cb196-5" tabindex="-1"></a></span>
-<span id="cb196-6"><a href="функциональное-программирование.html#cb196-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="cn">NA</span>)</span>
-<span id="cb196-7"><a href="функциональное-программирование.html#cb196-7" tabindex="-1"></a><span class="fu">center</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="функциональное-программирование.html#cb212-1" tabindex="-1"></a>center <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> F){</span>
+<span id="cb212-2"><a href="функциональное-программирование.html#cb212-2" tabindex="-1"></a>  <span class="cf">if</span>(na.rm) { x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x)]} <span class="co"># добавим условие</span></span>
+<span id="cb212-3"><a href="функциональное-программирование.html#cb212-3" tabindex="-1"></a>  x <span class="sc">-</span> <span class="fu">mean</span>(x) <span class="co"># на этот раз без return()</span></span>
+<span id="cb212-4"><a href="функциональное-программирование.html#cb212-4" tabindex="-1"></a>}</span>
+<span id="cb212-5"><a href="функциональное-программирование.html#cb212-5" tabindex="-1"></a></span>
+<span id="cb212-6"><a href="функциональное-программирование.html#cb212-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="cn">NA</span>)</span>
+<span id="cb212-7"><a href="функциональное-программирование.html#cb212-7" tabindex="-1"></a><span class="fu">center</span>(x)</span></code></pre></div>
 <pre><code>## [1] NA NA NA</code></pre>
 <p>Что произошло? Почему следующий код выдает другой результат?</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="функциональное-программирование.html#cb198-1" tabindex="-1"></a><span class="fu">center</span>(x, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="функциональное-программирование.html#cb214-1" tabindex="-1"></a><span class="fu">center</span>(x, <span class="at">na.rm =</span> T)</span></code></pre></div>
 <pre><code>## [1] -2.5  2.5</code></pre>
 <p>Вычисления в R <strong>ленивы</strong>, то есть они откладываются до тех пор, пока не понадобится результат. Если вы зададите аргумент, который не нужен в теле функции, ошибки не будет.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="функциональное-программирование.html#cb200-1" tabindex="-1"></a>center <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> F, what_is_your_name){</span>
-<span id="cb200-2"><a href="функциональное-программирование.html#cb200-2" tabindex="-1"></a>  <span class="cf">if</span>(na.rm) { x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x)]} <span class="co"># добавим условие</span></span>
-<span id="cb200-3"><a href="функциональное-программирование.html#cb200-3" tabindex="-1"></a>  x <span class="sc">-</span> <span class="fu">mean</span>(x) <span class="co"># на этот раз без return()</span></span>
-<span id="cb200-4"><a href="функциональное-программирование.html#cb200-4" tabindex="-1"></a>}</span>
-<span id="cb200-5"><a href="функциональное-программирование.html#cb200-5" tabindex="-1"></a></span>
-<span id="cb200-6"><a href="функциональное-программирование.html#cb200-6" tabindex="-1"></a><span class="fu">center</span>(x, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="функциональное-программирование.html#cb216-1" tabindex="-1"></a>center <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> F, what_is_your_name){</span>
+<span id="cb216-2"><a href="функциональное-программирование.html#cb216-2" tabindex="-1"></a>  <span class="cf">if</span>(na.rm) { x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x)]} <span class="co"># добавим условие</span></span>
+<span id="cb216-3"><a href="функциональное-программирование.html#cb216-3" tabindex="-1"></a>  x <span class="sc">-</span> <span class="fu">mean</span>(x) <span class="co"># на этот раз без return()</span></span>
+<span id="cb216-4"><a href="функциональное-программирование.html#cb216-4" tabindex="-1"></a>}</span>
+<span id="cb216-5"><a href="функциональное-программирование.html#cb216-5" tabindex="-1"></a></span>
+<span id="cb216-6"><a href="функциональное-программирование.html#cb216-6" tabindex="-1"></a><span class="fu">center</span>(x, <span class="at">na.rm =</span> T)</span></code></pre></div>
 <pre><code>## [1] -2.5  2.5</code></pre>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="функциональное-программирование.html#cb202-1" tabindex="-1"></a><span class="fu">center</span>(x, <span class="at">na.rm =</span> T, <span class="at">what_is_your_name =</span> <span class="st">&quot;Locusclassicus&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="функциональное-программирование.html#cb218-1" tabindex="-1"></a><span class="fu">center</span>(x, <span class="at">na.rm =</span> T, <span class="at">what_is_your_name =</span> <span class="st">&quot;Locusclassicus&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] -2.5  2.5</code></pre>
 <p>Часто имеет смысл добавить условие остановки или сообщение, которое будет распечатано в консоль при выполнении.</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="функциональное-программирование.html#cb204-1" tabindex="-1"></a>center <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb204-2"><a href="функциональное-программирование.html#cb204-2" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">1</span>) {<span class="fu">stop</span>(<span class="st">&quot;И без меня посчитает&quot;</span>)}</span>
-<span id="cb204-3"><a href="функциональное-программирование.html#cb204-3" tabindex="-1"></a>  x <span class="sc">-</span> <span class="fu">mean</span>(x) <span class="co"># на этот раз без return()</span></span>
-<span id="cb204-4"><a href="функциональное-программирование.html#cb204-4" tabindex="-1"></a>}</span>
-<span id="cb204-5"><a href="функциональное-программирование.html#cb204-5" tabindex="-1"></a></span>
-<span id="cb204-6"><a href="функциональное-программирование.html#cb204-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb204-7"><a href="функциональное-программирование.html#cb204-7" tabindex="-1"></a><span class="fu">center</span>(x) <span class="co"># вернет ошибку</span></span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="функциональное-программирование.html#cb220-1" tabindex="-1"></a>center <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb220-2"><a href="функциональное-программирование.html#cb220-2" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">1</span>) {<span class="fu">stop</span>(<span class="st">&quot;И без меня посчитает&quot;</span>)}</span>
+<span id="cb220-3"><a href="функциональное-программирование.html#cb220-3" tabindex="-1"></a>  x <span class="sc">-</span> <span class="fu">mean</span>(x) <span class="co"># на этот раз без return()</span></span>
+<span id="cb220-4"><a href="функциональное-программирование.html#cb220-4" tabindex="-1"></a>}</span>
+<span id="cb220-5"><a href="функциональное-программирование.html#cb220-5" tabindex="-1"></a></span>
+<span id="cb220-6"><a href="функциональное-программирование.html#cb220-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb220-7"><a href="функциональное-программирование.html#cb220-7" tabindex="-1"></a><span class="fu">center</span>(x) <span class="co"># вернет ошибку</span></span></code></pre></div>
 </div>
 <div id="векторизируй-это" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Векторизируй это<a href="функциональное-программирование.html#векторизируй-это" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Теперь самое главное: если мы хотим применить функцию к каждому элементу вектора, то в большинстве случаев достаточно просто вызвать функцию. Это называется <strong>векторизация</strong>.</p>
 <p>Это относится не только ко многим встроенным функциям R, но и к даже к операторам. <code>x + 4</code> в действительности представляет собой <code>+(x, 4)</code>:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="функциональное-программирование.html#cb205-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">2.51</span>, <span class="fl">3.8</span>)</span>
-<span id="cb205-2"><a href="функциональное-программирование.html#cb205-2" tabindex="-1"></a></span>
-<span id="cb205-3"><a href="функциональное-программирование.html#cb205-3" tabindex="-1"></a><span class="st">`</span><span class="at">+</span><span class="st">`</span>(x, <span class="dv">4</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="функциональное-программирование.html#cb221-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">2.51</span>, <span class="fl">3.8</span>)</span>
+<span id="cb221-2"><a href="функциональное-программирование.html#cb221-2" tabindex="-1"></a></span>
+<span id="cb221-3"><a href="функциональное-программирование.html#cb221-3" tabindex="-1"></a><span class="st">`</span><span class="at">+</span><span class="st">`</span>(x, <span class="dv">4</span>) </span></code></pre></div>
 <pre><code>## [1] 5.20 6.51 7.80</code></pre>
 <p>Ключевую роль здесь играет переработка данных, о которой мы уже говорили: короткий вектор повторяется до тех пор, пока его длина не сравняется с длиной более длинного вектора. Как-то так:</p>
 <p><span class="math display">\[\left(
@@ -571,28 +572,28 @@ div.csl-indent {
     \end{array}
   \right)\]</span></p>
 <p>Понимание того, как действуют векторизованные вычисления, очень важно для написания корректного кода. Посмотрите на пример ниже: почему функция <code>is_article()</code> возвращает два значения, хотя на входе только одно?</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="функциональное-программирование.html#cb207-1" tabindex="-1"></a>is_article <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb207-2"><a href="функциональное-программирование.html#cb207-2" tabindex="-1"></a>  x <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;the&quot;</span>)</span>
-<span id="cb207-3"><a href="функциональное-программирование.html#cb207-3" tabindex="-1"></a>}</span>
-<span id="cb207-4"><a href="функциональное-программирование.html#cb207-4" tabindex="-1"></a></span>
-<span id="cb207-5"><a href="функциональное-программирование.html#cb207-5" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;the&quot;</span></span>
-<span id="cb207-6"><a href="функциональное-программирование.html#cb207-6" tabindex="-1"></a><span class="fu">is_article</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="функциональное-программирование.html#cb223-1" tabindex="-1"></a>is_article <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb223-2"><a href="функциональное-программирование.html#cb223-2" tabindex="-1"></a>  x <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;the&quot;</span>)</span>
+<span id="cb223-3"><a href="функциональное-программирование.html#cb223-3" tabindex="-1"></a>}</span>
+<span id="cb223-4"><a href="функциональное-программирование.html#cb223-4" tabindex="-1"></a></span>
+<span id="cb223-5"><a href="функциональное-программирование.html#cb223-5" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;the&quot;</span></span>
+<span id="cb223-6"><a href="функциональное-программирование.html#cb223-6" tabindex="-1"></a><span class="fu">is_article</span>(x)</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE</code></pre>
 <p>Поскольку векторы сравниваются поэлементно, то функция ниже вернет разный результат в зависимости от того, в каком порядке заданы элементы:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="функциональное-программирование.html#cb209-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;just&quot;</span>, <span class="st">&quot;the&quot;</span>)</span>
-<span id="cb209-2"><a href="функциональное-программирование.html#cb209-2" tabindex="-1"></a><span class="fu">is_article</span>(x) </span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="функциональное-программирование.html#cb225-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;just&quot;</span>, <span class="st">&quot;the&quot;</span>)</span>
+<span id="cb225-2"><a href="функциональное-программирование.html#cb225-2" tabindex="-1"></a><span class="fu">is_article</span>(x) </span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="функциональное-программирование.html#cb211-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;the&quot;</span>, <span class="st">&quot;just&quot;</span>)</span>
-<span id="cb211-2"><a href="функциональное-программирование.html#cb211-2" tabindex="-1"></a><span class="fu">is_article</span>(x) <span class="co"># взрыв мозга</span></span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="функциональное-программирование.html#cb227-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;the&quot;</span>, <span class="st">&quot;just&quot;</span>)</span>
+<span id="cb227-2"><a href="функциональное-программирование.html#cb227-2" tabindex="-1"></a><span class="fu">is_article</span>(x) <span class="co"># взрыв мозга</span></span></code></pre></div>
 <pre><code>## [1] FALSE FALSE</code></pre>
 <p>Подумайте, вектор какого типа и какой длины вернет код ниже.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="функциональное-программирование.html#cb213-1" tabindex="-1"></a>is_article <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { </span>
-<span id="cb213-2"><a href="функциональное-программирование.html#cb213-2" tabindex="-1"></a>  articles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;the&quot;</span>)</span>
-<span id="cb213-3"><a href="функциональное-программирование.html#cb213-3" tabindex="-1"></a>  x <span class="sc">%in%</span> articles</span>
-<span id="cb213-4"><a href="функциональное-программирование.html#cb213-4" tabindex="-1"></a>}</span>
-<span id="cb213-5"><a href="функциональное-программирование.html#cb213-5" tabindex="-1"></a></span>
-<span id="cb213-6"><a href="функциональное-программирование.html#cb213-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;the&quot;</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">&quot;if&quot;</span>, <span class="dv">5</span>))</span>
-<span id="cb213-7"><a href="функциональное-программирование.html#cb213-7" tabindex="-1"></a><span class="co"># is_article(x)</span></span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="функциональное-программирование.html#cb229-1" tabindex="-1"></a>is_article <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { </span>
+<span id="cb229-2"><a href="функциональное-программирование.html#cb229-2" tabindex="-1"></a>  articles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;the&quot;</span>)</span>
+<span id="cb229-3"><a href="функциональное-программирование.html#cb229-3" tabindex="-1"></a>  x <span class="sc">%in%</span> articles</span>
+<span id="cb229-4"><a href="функциональное-программирование.html#cb229-4" tabindex="-1"></a>}</span>
+<span id="cb229-5"><a href="функциональное-программирование.html#cb229-5" tabindex="-1"></a></span>
+<span id="cb229-6"><a href="функциональное-программирование.html#cb229-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;the&quot;</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">&quot;if&quot;</span>, <span class="dv">5</span>))</span>
+<span id="cb229-7"><a href="функциональное-программирование.html#cb229-7" tabindex="-1"></a><span class="co"># is_article(x)</span></span></code></pre></div>
 </div>
 <div id="векторизованные-конструкции" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Векторизованные конструкции<a href="функциональное-программирование.html#векторизованные-конструкции" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -607,59 +608,59 @@ div.csl-indent {
 <div id="цикл-for" class="section level4 hasAnchor" number="5.5.1.1">
 <h4><span class="header-section-number">5.5.1.1</span> Цикл <code>for</code><a href="функциональное-программирование.html#цикл-for" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Цикл ниже считает количество букв для каждого слова в векторе.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="функциональное-программирование.html#cb214-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;в&quot;</span>, <span class="st">&quot;мысли&quot;</span>, <span class="st">&quot;ему&quot;</span>, <span class="st">&quot;то&quot;</span>, <span class="st">&quot;вложила&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;державная&quot;</span>, <span class="st">&quot;гера&quot;</span>)</span>
-<span id="cb214-2"><a href="функциональное-программирование.html#cb214-2" tabindex="-1"></a></span>
-<span id="cb214-3"><a href="функциональное-программирование.html#cb214-3" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb214-4"><a href="функциональное-программирование.html#cb214-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> y) { </span>
-<span id="cb214-5"><a href="функциональное-программирование.html#cb214-5" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nchar</span>(i)</span>
-<span id="cb214-6"><a href="функциональное-программирование.html#cb214-6" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">c</span>(result, n)</span>
-<span id="cb214-7"><a href="функциональное-программирование.html#cb214-7" tabindex="-1"></a>}</span>
-<span id="cb214-8"><a href="функциональное-программирование.html#cb214-8" tabindex="-1"></a></span>
-<span id="cb214-9"><a href="функциональное-программирование.html#cb214-9" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="функциональное-программирование.html#cb230-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;в&quot;</span>, <span class="st">&quot;мысли&quot;</span>, <span class="st">&quot;ему&quot;</span>, <span class="st">&quot;то&quot;</span>, <span class="st">&quot;вложила&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;державная&quot;</span>, <span class="st">&quot;гера&quot;</span>)</span>
+<span id="cb230-2"><a href="функциональное-программирование.html#cb230-2" tabindex="-1"></a></span>
+<span id="cb230-3"><a href="функциональное-программирование.html#cb230-3" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb230-4"><a href="функциональное-программирование.html#cb230-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> y) { </span>
+<span id="cb230-5"><a href="функциональное-программирование.html#cb230-5" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nchar</span>(i)</span>
+<span id="cb230-6"><a href="функциональное-программирование.html#cb230-6" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">c</span>(result, n)</span>
+<span id="cb230-7"><a href="функциональное-программирование.html#cb230-7" tabindex="-1"></a>}</span>
+<span id="cb230-8"><a href="функциональное-программирование.html#cb230-8" tabindex="-1"></a></span>
+<span id="cb230-9"><a href="функциональное-программирование.html#cb230-9" tabindex="-1"></a>result</span></code></pre></div>
 <pre><code>## [1] 1 5 3 2 7 6 9 4</code></pre>
 <p>В данном случае мы указали, что надо совершить какую-то операцию над каждым элементом вектора; но по сути это избыточно, потому что <code>nchar()</code> тоже векторизована.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="функциональное-программирование.html#cb216-1" tabindex="-1"></a><span class="fu">nchar</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="функциональное-программирование.html#cb232-1" tabindex="-1"></a><span class="fu">nchar</span>(y)</span></code></pre></div>
 <pre><code>## [1] 1 5 3 2 7 6 9 4</code></pre>
 <p>Поэтому чаще цикл <code>for</code> применяют к другим структурам данных. Например, к спискам и датафреймам. Загрузим и немного изменим датасет о гапаксах у Платона. Изменения нужны, так как цикл работает для данных только одного типа, в то время как в нашей таблице столбец <code>dialogue</code> содержит символьные строки, а <code>group</code> – фактор. Обратите внимание, что оператор <code>pipe</code> и функции из <code>dplyr</code> работают и с обычными датафреймами:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="функциональное-программирование.html#cb218-1" tabindex="-1"></a><span class="fu">rownames</span>(hapax_plato) <span class="ot">&lt;-</span> hapax_plato<span class="sc">$</span>dialogue </span>
-<span id="cb218-2"><a href="функциональное-программирование.html#cb218-2" tabindex="-1"></a></span>
-<span id="cb218-3"><a href="функциональное-программирование.html#cb218-3" tabindex="-1"></a>hapax_plato <span class="ot">&lt;-</span> hapax_plato <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>group, <span class="sc">-</span>dialogue) <span class="co"># </span></span>
-<span id="cb218-4"><a href="функциональное-программирование.html#cb218-4" tabindex="-1"></a><span class="fu">str</span>(hapax_plato)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="функциональное-программирование.html#cb234-1" tabindex="-1"></a><span class="fu">rownames</span>(hapax_plato) <span class="ot">&lt;-</span> hapax_plato<span class="sc">$</span>dialogue </span>
+<span id="cb234-2"><a href="функциональное-программирование.html#cb234-2" tabindex="-1"></a></span>
+<span id="cb234-3"><a href="функциональное-программирование.html#cb234-3" tabindex="-1"></a>hapax_plato <span class="ot">&lt;-</span> hapax_plato <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>group, <span class="sc">-</span>dialogue) <span class="co"># </span></span>
+<span id="cb234-4"><a href="функциональное-программирование.html#cb234-4" tabindex="-1"></a><span class="fu">str</span>(hapax_plato)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    26 obs. of  3 variables:
 ##  $ words: chr  &quot;8745&quot; &quot;8311&quot; &quot;17944&quot; &quot;4950&quot; ...
 ##  $ hapax: chr  &quot;36&quot; &quot;31&quot; &quot;122&quot; &quot;104&quot; ...
 ##  $ ratio: chr  &quot;0.004&quot; &quot;0.004&quot; &quot;0.007&quot; &quot;0.021&quot; ...</code></pre>
 <p>Сейчас все данные в нашей таблице имеют тип <code>chr</code>, то есть строка, и при помощи цикла мы можем их трансформировать.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="функциональное-программирование.html#cb220-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(hapax_plato)) {  <span class="co"># seq_along ≈ 1:length(x)</span></span>
-<span id="cb220-2"><a href="функциональное-программирование.html#cb220-2" tabindex="-1"></a>  hapax_plato[,i] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(hapax_plato[,i])</span>
-<span id="cb220-3"><a href="функциональное-программирование.html#cb220-3" tabindex="-1"></a>}</span>
-<span id="cb220-4"><a href="функциональное-программирование.html#cb220-4" tabindex="-1"></a></span>
-<span id="cb220-5"><a href="функциональное-программирование.html#cb220-5" tabindex="-1"></a><span class="fu">str</span>(hapax_plato) <span class="co"># убеждаемся, что все получилось</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="функциональное-программирование.html#cb236-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(hapax_plato)) {  <span class="co"># seq_along ≈ 1:length(x)</span></span>
+<span id="cb236-2"><a href="функциональное-программирование.html#cb236-2" tabindex="-1"></a>  hapax_plato[,i] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(hapax_plato[,i])</span>
+<span id="cb236-3"><a href="функциональное-программирование.html#cb236-3" tabindex="-1"></a>}</span>
+<span id="cb236-4"><a href="функциональное-программирование.html#cb236-4" tabindex="-1"></a></span>
+<span id="cb236-5"><a href="функциональное-программирование.html#cb236-5" tabindex="-1"></a><span class="fu">str</span>(hapax_plato) <span class="co"># убеждаемся, что все получилось</span></span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    26 obs. of  3 variables:
 ##  $ words: num  8745 8311 17944 4950 4169 ...
 ##  $ hapax: num  36 31 122 104 19 87 15 125 12 32 ...
 ##  $ ratio: num  0.004 0.004 0.007 0.021 0.005 0.007 0.003 0.005 0.003 0.008 ...</code></pre>
 <p>При помощи циклов можно не только трансформировать данные, но и создавать новые. Чтобы посчитать среднее для столбца, цикл писать не надо: для этого есть функция <code>colSums()</code> (или, для других задач, <code>rowSums()</code>). А вот посчитать медиану таким образом не получится, тут может пригодиться цикл.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="функциональное-программирование.html#cb222-1" tabindex="-1"></a><span class="fu">library</span>(tictoc)</span>
-<span id="cb222-2"><a href="функциональное-программирование.html#cb222-2" tabindex="-1"></a></span>
-<span id="cb222-3"><a href="функциональное-программирование.html#cb222-3" tabindex="-1"></a><span class="fu">tic</span>()</span>
-<span id="cb222-4"><a href="функциональное-программирование.html#cb222-4" tabindex="-1"></a>medians <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb222-5"><a href="функциональное-программирование.html#cb222-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(hapax_plato)) { </span>
-<span id="cb222-6"><a href="функциональное-программирование.html#cb222-6" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">median</span>(hapax_plato[,i])</span>
-<span id="cb222-7"><a href="функциональное-программирование.html#cb222-7" tabindex="-1"></a>  medians <span class="ot">&lt;-</span> <span class="fu">c</span>(medians, m)</span>
-<span id="cb222-8"><a href="функциональное-программирование.html#cb222-8" tabindex="-1"></a>}</span>
-<span id="cb222-9"><a href="функциональное-программирование.html#cb222-9" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.006 sec elapsed</code></pre>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="функциональное-программирование.html#cb224-1" tabindex="-1"></a>medians</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="функциональное-программирование.html#cb238-1" tabindex="-1"></a><span class="fu">library</span>(tictoc)</span>
+<span id="cb238-2"><a href="функциональное-программирование.html#cb238-2" tabindex="-1"></a></span>
+<span id="cb238-3"><a href="функциональное-программирование.html#cb238-3" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb238-4"><a href="функциональное-программирование.html#cb238-4" tabindex="-1"></a>medians <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb238-5"><a href="функциональное-программирование.html#cb238-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(hapax_plato)) { </span>
+<span id="cb238-6"><a href="функциональное-программирование.html#cb238-6" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">median</span>(hapax_plato[,i])</span>
+<span id="cb238-7"><a href="функциональное-программирование.html#cb238-7" tabindex="-1"></a>  medians <span class="ot">&lt;-</span> <span class="fu">c</span>(medians, m)</span>
+<span id="cb238-8"><a href="функциональное-программирование.html#cb238-8" tabindex="-1"></a>}</span>
+<span id="cb238-9"><a href="функциональное-программирование.html#cb238-9" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
+<pre><code>## 0.003 sec elapsed</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="функциональное-программирование.html#cb240-1" tabindex="-1"></a>medians</span></code></pre></div>
 <pre><code>## [1] 15589.500    94.500     0.007</code></pre>
-<p>Мы сохранили результат, инициировав пустой вектор, к которому затем привязали данные по каждому столбцу. Это не всегда хорошая идея, поскольку для больших данных может сильно замедлить цикл<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>. Еще один способ – сразу инициировать вектор нужной длины. Сравнить скорость можно при помощи пакета <code>tictoc</code>.</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="функциональное-программирование.html#cb226-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
-<span id="cb226-2"><a href="функциональное-программирование.html#cb226-2" tabindex="-1"></a>medians <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(hapax_plato))</span>
-<span id="cb226-3"><a href="функциональное-программирование.html#cb226-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(hapax_plato)) { </span>
-<span id="cb226-4"><a href="функциональное-программирование.html#cb226-4" tabindex="-1"></a>  medians[i] <span class="ot">&lt;-</span> <span class="fu">median</span>(hapax_plato[,i])</span>
-<span id="cb226-5"><a href="функциональное-программирование.html#cb226-5" tabindex="-1"></a>}</span>
-<span id="cb226-6"><a href="функциональное-программирование.html#cb226-6" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.007 sec elapsed</code></pre>
+<p>Мы сохранили результат, инициировав пустой вектор, к которому затем привязали данные по каждому столбцу. Это не всегда хорошая идея, поскольку для больших данных может сильно замедлить цикл<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>. Еще один способ – сразу инициировать вектор нужной длины. Сравнить скорость можно при помощи пакета <code>tictoc</code>.</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="функциональное-программирование.html#cb242-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb242-2"><a href="функциональное-программирование.html#cb242-2" tabindex="-1"></a>medians <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(hapax_plato))</span>
+<span id="cb242-3"><a href="функциональное-программирование.html#cb242-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(hapax_plato)) { </span>
+<span id="cb242-4"><a href="функциональное-программирование.html#cb242-4" tabindex="-1"></a>  medians[i] <span class="ot">&lt;-</span> <span class="fu">median</span>(hapax_plato[,i])</span>
+<span id="cb242-5"><a href="функциональное-программирование.html#cb242-5" tabindex="-1"></a>}</span>
+<span id="cb242-6"><a href="функциональное-программирование.html#cb242-6" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
+<pre><code>## 0.003 sec elapsed</code></pre>
 <p>Второй способ чуть быстрее, и для больших данных это может быть существенно (знала бы я это раньше).</p>
 <div class="infobox">
 <p>Вы уже заметили, что в циклах часто используется буква <code>i</code>. Но никакой особой магии в ней нет!</p>
@@ -668,22 +669,22 @@ div.csl-indent {
 <div id="цикл-while" class="section level4 hasAnchor" number="5.5.1.2">
 <h4><span class="header-section-number">5.5.1.2</span> Цикл <code>while</code><a href="функциональное-программирование.html#цикл-while" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Как уже говорилось, с циклами <code>while</code> стоит быть осторожнее. Посмотрите, например, на этот цикл, который перебирает слова, пока не найдет слово длиной 6 букв. Что могло пойти не так?</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="функциональное-программирование.html#cb228-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
-<span id="cb228-2"><a href="функциональное-программирование.html#cb228-2" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb228-3"><a href="функциональное-программирование.html#cb228-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb228-4"><a href="функциональное-программирование.html#cb228-4" tabindex="-1"></a><span class="cf">while</span> (n <span class="sc">!=</span> <span class="dv">6</span>) {</span>
-<span id="cb228-5"><a href="функциональное-программирование.html#cb228-5" tabindex="-1"></a>  k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb228-6"><a href="функциональное-программирование.html#cb228-6" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nchar</span>(y[k])</span>
-<span id="cb228-7"><a href="функциональное-программирование.html#cb228-7" tabindex="-1"></a>}</span>
-<span id="cb228-8"><a href="функциональное-программирование.html#cb228-8" tabindex="-1"></a>y[k]</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="функциональное-программирование.html#cb244-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb244-2"><a href="функциональное-программирование.html#cb244-2" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb244-3"><a href="функциональное-программирование.html#cb244-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb244-4"><a href="функциональное-программирование.html#cb244-4" tabindex="-1"></a><span class="cf">while</span> (n <span class="sc">!=</span> <span class="dv">6</span>) {</span>
+<span id="cb244-5"><a href="функциональное-программирование.html#cb244-5" tabindex="-1"></a>  k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb244-6"><a href="функциональное-программирование.html#cb244-6" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nchar</span>(y[k])</span>
+<span id="cb244-7"><a href="функциональное-программирование.html#cb244-7" tabindex="-1"></a>}</span>
+<span id="cb244-8"><a href="функциональное-программирование.html#cb244-8" tabindex="-1"></a>y[k]</span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="функциональное-программирование.html#cb230-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.006 sec elapsed</code></pre>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="функциональное-программирование.html#cb246-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
+<pre><code>## 0.004 sec elapsed</code></pre>
 <p>То же самое можно сделать без цикла, причем быстрее!</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="функциональное-программирование.html#cb232-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
-<span id="cb232-2"><a href="функциональное-программирование.html#cb232-2" tabindex="-1"></a>y[<span class="fu">nchar</span>(y) <span class="sc">==</span> <span class="dv">6</span>][<span class="dv">1</span>] </span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="функциональное-программирование.html#cb248-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb248-2"><a href="функциональное-программирование.html#cb248-2" tabindex="-1"></a>y[<span class="fu">nchar</span>(y) <span class="sc">==</span> <span class="dv">6</span>][<span class="dv">1</span>] </span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="функциональное-программирование.html#cb234-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="функциональное-программирование.html#cb250-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
 <pre><code>## 0.001 sec elapsed</code></pre>
 <p>В целом, ничего незаконного в циклах нет, но</p>
 <ul>
@@ -696,56 +697,56 @@ div.csl-indent {
 <div id="условия" class="section level3 hasAnchor" number="5.5.2">
 <h3><span class="header-section-number">5.5.2</span> Условия<a href="функциональное-программирование.html#условия" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Иногда необходимо ограничить выполнение функции неким условием. Короткие условия можно писать в одну строку без фигурных скобок.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="функциональное-программирование.html#cb236-1" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">any</span>(<span class="fu">nchar</span>(y) <span class="sc">&gt;</span> <span class="dv">6</span>)) <span class="fu">print</span>(<span class="st">&quot;многабукв&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="функциональное-программирование.html#cb252-1" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">any</span>(<span class="fu">nchar</span>(y) <span class="sc">&gt;</span> <span class="dv">6</span>)) <span class="fu">print</span>(<span class="st">&quot;многабукв&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;многабукв&quot;</code></pre>
 <p>Более сложные и множественные условия требуют фигурных скобок. Можно сравнить это с условным периодом: протасис (всегда либо TRUE, либо FALSE) в круглых скобках, аподосис в фигурных.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="функциональное-программирование.html#cb238-1" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">nchar</span>(y)) <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
-<span id="cb238-2"><a href="функциональное-программирование.html#cb238-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;много букв&quot;</span>)</span>
-<span id="cb238-3"><a href="функциональное-программирование.html#cb238-3" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">nchar</span>(y)) <span class="sc">&lt;</span> <span class="dv">5</span>) {</span>
-<span id="cb238-4"><a href="функциональное-программирование.html#cb238-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;мало букв&quot;</span>)</span>
-<span id="cb238-5"><a href="функциональное-программирование.html#cb238-5" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb238-6"><a href="функциональное-программирование.html#cb238-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;норм букв&quot;</span>)</span>
-<span id="cb238-7"><a href="функциональное-программирование.html#cb238-7" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="функциональное-программирование.html#cb254-1" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">nchar</span>(y)) <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
+<span id="cb254-2"><a href="функциональное-программирование.html#cb254-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;много букв&quot;</span>)</span>
+<span id="cb254-3"><a href="функциональное-программирование.html#cb254-3" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">nchar</span>(y)) <span class="sc">&lt;</span> <span class="dv">5</span>) {</span>
+<span id="cb254-4"><a href="функциональное-программирование.html#cb254-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;мало букв&quot;</span>)</span>
+<span id="cb254-5"><a href="функциональное-программирование.html#cb254-5" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb254-6"><a href="функциональное-программирование.html#cb254-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;норм букв&quot;</span>)</span>
+<span id="cb254-7"><a href="функциональное-программирование.html#cb254-7" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;много букв&quot;</code></pre>
 <p>Также в R можно использовать специальную функцию:</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="функциональное-программирование.html#cb240-1" tabindex="-1"></a><span class="fu">ifelse</span>((<span class="fu">sum</span>(<span class="fu">nchar</span>(y)) <span class="sc">&gt;</span> <span class="dv">10</span>), <span class="st">&quot;много букв&quot;</span>, <span class="st">&quot;мало букв&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="функциональное-программирование.html#cb256-1" tabindex="-1"></a><span class="fu">ifelse</span>((<span class="fu">sum</span>(<span class="fu">nchar</span>(y)) <span class="sc">&gt;</span> <span class="dv">10</span>), <span class="st">&quot;много букв&quot;</span>, <span class="st">&quot;мало букв&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;много букв&quot;</code></pre>
 <p>Прописывая условие, не забывайте, что применение бинарного оператора к вектору возвращает логический вектор:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="функциональное-программирование.html#cb242-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb242-2"><a href="функциональное-программирование.html#cb242-2" tabindex="-1"></a>x <span class="sc">&gt;=</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="функциональное-программирование.html#cb258-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb258-2"><a href="функциональное-программирование.html#cb258-2" tabindex="-1"></a>x <span class="sc">&gt;=</span> <span class="dv">5</span></span></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 <p>Условия с таким логическим вектором используют первый его элемент (а вряд ли это то, что вам нужно):</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="функциональное-программирование.html#cb244-1" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="fu">print</span>(<span class="st">&quot;все сработало&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="функциональное-программирование.html#cb260-1" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="fu">print</span>(<span class="st">&quot;все сработало&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in if (x &gt;= 5) print(&quot;все сработало&quot;): the condition has length &gt; 1 and
 ## only the first element will be used</code></pre>
 <p>Можно скорректировать код так:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="функциональное-программирование.html#cb246-1" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(x <span class="sc">&gt;=</span> <span class="dv">5</span>)) <span class="fu">print</span>(<span class="st">&quot;все сработало&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="функциональное-программирование.html#cb262-1" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(x <span class="sc">&gt;=</span> <span class="dv">5</span>)) <span class="fu">print</span>(<span class="st">&quot;все сработало&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;все сработало&quot;</code></pre>
 <p>По той же причине внутри условия не надо использовать логические операторы <code>|</code> (“или”) или <code>&amp;</code> (“и”), потому что они векторизованы:</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="функциональное-программирование.html#cb248-1" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">|</span> x <span class="sc">&gt;</span> <span class="dv">7</span></span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="функциональное-программирование.html#cb264-1" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">|</span> x <span class="sc">&gt;</span> <span class="dv">7</span></span></code></pre></div>
 <pre><code>##  [1]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
 <p>Вместо этого можно применять <code>||</code> (“или”) или <code>&amp;&amp;</code> (“и”), которые остановятся, дойдя до первого истинного значения.</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="функциональное-программирование.html#cb250-1" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">||</span> x <span class="sc">&gt;</span> <span class="dv">7</span></span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="функциональное-программирование.html#cb266-1" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">||</span> x <span class="sc">&gt;</span> <span class="dv">7</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
 <div id="вместо-циклов-базовый-r-и-tidyverse" class="section level2 hasAnchor" number="5.6">
 <h2><span class="header-section-number">5.6</span> Вместо циклов: базовый R и tidyverse<a href="функциональное-программирование.html#вместо-циклов-базовый-r-и-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Функция <strong><code>tapply()</code></strong> из базового R принимает на входе вектор, фактор (или список факторов) и функцию. Каждый фактор должен быть той же длины, что и вектор. Код ниже считает средний процент гапаксов по группам диалогов:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="функциональное-программирование.html#cb252-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/HapaxPlato.Rdata&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="функциональное-программирование.html#cb253-1" tabindex="-1"></a><span class="co"># подготавливаем векторы </span></span>
-<span id="cb253-2"><a href="функциональное-программирование.html#cb253-2" tabindex="-1"></a>my_fct <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(hapax_plato<span class="sc">$</span>group)</span>
-<span id="cb253-3"><a href="функциональное-программирование.html#cb253-3" tabindex="-1"></a>my_vct <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(hapax_plato<span class="sc">$</span>ratio)</span>
-<span id="cb253-4"><a href="функциональное-программирование.html#cb253-4" tabindex="-1"></a></span>
-<span id="cb253-5"><a href="функциональное-программирование.html#cb253-5" tabindex="-1"></a><span class="co"># применяем к ним функцию mean()</span></span>
-<span id="cb253-6"><a href="функциональное-программирование.html#cb253-6" tabindex="-1"></a><span class="fu">tapply</span>(my_vct, my_fct, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="функциональное-программирование.html#cb268-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/HapaxPlato.Rdata&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="функциональное-программирование.html#cb269-1" tabindex="-1"></a><span class="co"># подготавливаем векторы </span></span>
+<span id="cb269-2"><a href="функциональное-программирование.html#cb269-2" tabindex="-1"></a>my_fct <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(hapax_plato<span class="sc">$</span>group)</span>
+<span id="cb269-3"><a href="функциональное-программирование.html#cb269-3" tabindex="-1"></a>my_vct <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(hapax_plato<span class="sc">$</span>ratio)</span>
+<span id="cb269-4"><a href="функциональное-программирование.html#cb269-4" tabindex="-1"></a></span>
+<span id="cb269-5"><a href="функциональное-программирование.html#cb269-5" tabindex="-1"></a><span class="co"># применяем к ним функцию mean()</span></span>
+<span id="cb269-6"><a href="функциональное-программирование.html#cb269-6" tabindex="-1"></a><span class="fu">tapply</span>(my_vct, my_fct, mean)</span></code></pre></div>
 <pre><code>##          1          2          3 
 ## 0.00550000 0.00750000 0.01133333</code></pre>
 <p>На диалекте tidyverse эта задача решается так:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="функциональное-программирование.html#cb255-1" tabindex="-1"></a>hapax_plato <span class="sc">%&gt;%</span> </span>
-<span id="cb255-2"><a href="функциональное-программирование.html#cb255-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fu">as.numeric</span>(ratio)) <span class="sc">%&gt;%</span> </span>
-<span id="cb255-3"><a href="функциональное-программирование.html#cb255-3" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
-<span id="cb255-4"><a href="функциональное-программирование.html#cb255-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(ratio))</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="функциональное-программирование.html#cb271-1" tabindex="-1"></a>hapax_plato <span class="sc">%&gt;%</span> </span>
+<span id="cb271-2"><a href="функциональное-программирование.html#cb271-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fu">as.numeric</span>(ratio)) <span class="sc">%&gt;%</span> </span>
+<span id="cb271-3"><a href="функциональное-программирование.html#cb271-3" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb271-4"><a href="функциональное-программирование.html#cb271-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(ratio))</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   group   mean
 ##   &lt;dbl&gt;  &lt;dbl&gt;
@@ -753,29 +754,29 @@ div.csl-indent {
 ## 2     2 0.0075
 ## 3     3 0.0113</code></pre>
 <p>Функция <strong><code>apply()</code></strong> вызывает функцию для каждой строки или столбца матрицы или датафрейма.</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="функциональное-программирование.html#cb257-1" tabindex="-1"></a><span class="co"># избавляемся от факторов и строк</span></span>
-<span id="cb257-2"><a href="функциональное-программирование.html#cb257-2" tabindex="-1"></a><span class="fu">rownames</span>(hapax_plato) <span class="ot">&lt;-</span> hapax_plato<span class="sc">$</span>dialogue</span>
-<span id="cb257-3"><a href="функциональное-программирование.html#cb257-3" tabindex="-1"></a>hapax_plato <span class="ot">&lt;-</span> <span class="fu">subset</span>(hapax_plato, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(dialogue, group)) </span>
-<span id="cb257-4"><a href="функциональное-программирование.html#cb257-4" tabindex="-1"></a></span>
-<span id="cb257-5"><a href="функциональное-программирование.html#cb257-5" tabindex="-1"></a><span class="co"># преобразуем столбцы в числовой формат при помощи apply</span></span>
-<span id="cb257-6"><a href="функциональное-программирование.html#cb257-6" tabindex="-1"></a><span class="fu">tic</span>()</span>
-<span id="cb257-7"><a href="функциональное-программирование.html#cb257-7" tabindex="-1"></a>hapax_plato<span class="ot">&lt;-</span> <span class="fu">apply</span>(hapax_plato, <span class="dv">2</span>, as.numeric)</span>
-<span id="cb257-8"><a href="функциональное-программирование.html#cb257-8" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.001 sec elapsed</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="функциональное-программирование.html#cb273-1" tabindex="-1"></a><span class="co"># избавляемся от факторов и строк</span></span>
+<span id="cb273-2"><a href="функциональное-программирование.html#cb273-2" tabindex="-1"></a><span class="fu">rownames</span>(hapax_plato) <span class="ot">&lt;-</span> hapax_plato<span class="sc">$</span>dialogue</span>
+<span id="cb273-3"><a href="функциональное-программирование.html#cb273-3" tabindex="-1"></a>hapax_plato <span class="ot">&lt;-</span> <span class="fu">subset</span>(hapax_plato, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(dialogue, group)) </span>
+<span id="cb273-4"><a href="функциональное-программирование.html#cb273-4" tabindex="-1"></a></span>
+<span id="cb273-5"><a href="функциональное-программирование.html#cb273-5" tabindex="-1"></a><span class="co"># преобразуем столбцы в числовой формат при помощи apply</span></span>
+<span id="cb273-6"><a href="функциональное-программирование.html#cb273-6" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb273-7"><a href="функциональное-программирование.html#cb273-7" tabindex="-1"></a>hapax_plato<span class="ot">&lt;-</span> <span class="fu">apply</span>(hapax_plato, <span class="dv">2</span>, as.numeric)</span>
+<span id="cb273-8"><a href="функциональное-программирование.html#cb273-8" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
+<pre><code>## 0 sec elapsed</code></pre>
 <p>Сравните со скростью цикла, который мы написали выше:</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="функциональное-программирование.html#cb259-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/HapaxPlato.Rdata&quot;</span>)</span>
-<span id="cb259-2"><a href="функциональное-программирование.html#cb259-2" tabindex="-1"></a><span class="co"># избавляемся от факторов и строк</span></span>
-<span id="cb259-3"><a href="функциональное-программирование.html#cb259-3" tabindex="-1"></a><span class="fu">rownames</span>(hapax_plato) <span class="ot">&lt;-</span> hapax_plato<span class="sc">$</span>dialogue</span>
-<span id="cb259-4"><a href="функциональное-программирование.html#cb259-4" tabindex="-1"></a>hapax_plato <span class="ot">&lt;-</span> <span class="fu">subset</span>(hapax_plato, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(dialogue, group)) </span></code></pre></div>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="функциональное-программирование.html#cb260-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
-<span id="cb260-2"><a href="функциональное-программирование.html#cb260-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(hapax_plato)) {  </span>
-<span id="cb260-3"><a href="функциональное-программирование.html#cb260-3" tabindex="-1"></a>  hapax_plato[,i] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(hapax_plato[,i])</span>
-<span id="cb260-4"><a href="функциональное-программирование.html#cb260-4" tabindex="-1"></a>}</span>
-<span id="cb260-5"><a href="функциональное-программирование.html#cb260-5" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.003 sec elapsed</code></pre>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="функциональное-программирование.html#cb275-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/HapaxPlato.Rdata&quot;</span>)</span>
+<span id="cb275-2"><a href="функциональное-программирование.html#cb275-2" tabindex="-1"></a><span class="co"># избавляемся от факторов и строк</span></span>
+<span id="cb275-3"><a href="функциональное-программирование.html#cb275-3" tabindex="-1"></a><span class="fu">rownames</span>(hapax_plato) <span class="ot">&lt;-</span> hapax_plato<span class="sc">$</span>dialogue</span>
+<span id="cb275-4"><a href="функциональное-программирование.html#cb275-4" tabindex="-1"></a>hapax_plato <span class="ot">&lt;-</span> <span class="fu">subset</span>(hapax_plato, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(dialogue, group)) </span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="функциональное-программирование.html#cb276-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb276-2"><a href="функциональное-программирование.html#cb276-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(hapax_plato)) {  </span>
+<span id="cb276-3"><a href="функциональное-программирование.html#cb276-3" tabindex="-1"></a>  hapax_plato[,i] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(hapax_plato[,i])</span>
+<span id="cb276-4"><a href="функциональное-программирование.html#cb276-4" tabindex="-1"></a>}</span>
+<span id="cb276-5"><a href="функциональное-программирование.html#cb276-5" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
+<pre><code>## 0.002 sec elapsed</code></pre>
 <p>Функция <code>apply()</code> позволяет применять к данным собственные функции, в том числе анонимные.</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="функциональное-программирование.html#cb262-1" tabindex="-1"></a>hapax_centered <span class="ot">&lt;-</span> <span class="fu">apply</span>(hapax_plato, <span class="dv">2</span>, <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x))</span>
-<span id="cb262-2"><a href="функциональное-программирование.html#cb262-2" tabindex="-1"></a><span class="fu">head</span>(hapax_centered)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="функциональное-программирование.html#cb278-1" tabindex="-1"></a>hapax_centered <span class="ot">&lt;-</span> <span class="fu">apply</span>(hapax_plato, <span class="dv">2</span>, <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x))</span>
+<span id="cb278-2"><a href="функциональное-программирование.html#cb278-2" tabindex="-1"></a><span class="fu">head</span>(hapax_centered)</span></code></pre></div>
 <pre><code>##                 words      hapax         ratio
 ## Apology    -10619.423 -110.69231 -0.0031538462
 ## Charmides  -11053.423 -115.69231 -0.0031538462
@@ -784,19 +785,19 @@ div.csl-indent {
 ## Crito      -15195.423 -127.69231 -0.0021538462
 ## Euthydemus  -6911.423  -59.69231 -0.0001538462</code></pre>
 <p>Опять-таки, все это решается (даже проще) в грамматике dplyr:</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="функциональное-программирование.html#cb264-1" tabindex="-1"></a><span class="fu">as_tibble</span>(hapax_plato) <span class="sc">%&gt;%</span> </span>
-<span id="cb264-2"><a href="функциональное-программирование.html#cb264-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">words =</span> words <span class="sc">-</span> <span class="fu">mean</span>(words), </span>
-<span id="cb264-3"><a href="функциональное-программирование.html#cb264-3" tabindex="-1"></a>         <span class="at">hapax =</span> hapax <span class="sc">-</span> <span class="fu">mean</span>(hapax),</span>
-<span id="cb264-4"><a href="функциональное-программирование.html#cb264-4" tabindex="-1"></a>         <span class="at">ratio =</span> ratio <span class="sc">-</span> <span class="fu">mean</span>(ratio))</span></code></pre></div>
-<p>Видно, что по времени мы при этом сильно не выигрываем; к тому же, нам пришлось повторить один код три раза. Значит, надо что-то менять. Например, так<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>:</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="функциональное-программирование.html#cb265-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
-<span id="cb265-2"><a href="функциональное-программирование.html#cb265-2" tabindex="-1"></a><span class="fu">as_tibble</span>(hapax_plato) <span class="sc">%&gt;%</span> </span>
-<span id="cb265-3"><a href="функциональное-программирование.html#cb265-3" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x))</span>
-<span id="cb265-4"><a href="функциональное-программирование.html#cb265-4" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<p>Или даже так<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>:</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="функциональное-программирование.html#cb266-1" tabindex="-1"></a>fn <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb266-2"><a href="функциональное-программирование.html#cb266-2" tabindex="-1"></a><span class="fu">as_tibble</span>(hapax_plato) <span class="sc">%&gt;%</span></span>
-<span id="cb266-3"><a href="функциональное-программирование.html#cb266-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, fn)) <span class="sc">%&gt;%</span> <span class="fu">invisible</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="функциональное-программирование.html#cb280-1" tabindex="-1"></a><span class="fu">as_tibble</span>(hapax_plato) <span class="sc">%&gt;%</span> </span>
+<span id="cb280-2"><a href="функциональное-программирование.html#cb280-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">words =</span> words <span class="sc">-</span> <span class="fu">mean</span>(words), </span>
+<span id="cb280-3"><a href="функциональное-программирование.html#cb280-3" tabindex="-1"></a>         <span class="at">hapax =</span> hapax <span class="sc">-</span> <span class="fu">mean</span>(hapax),</span>
+<span id="cb280-4"><a href="функциональное-программирование.html#cb280-4" tabindex="-1"></a>         <span class="at">ratio =</span> ratio <span class="sc">-</span> <span class="fu">mean</span>(ratio))</span></code></pre></div>
+<p>Видно, что по времени мы при этом сильно не выигрываем; к тому же, нам пришлось повторить один код три раза. Значит, надо что-то менять. Например, так<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>:</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="функциональное-программирование.html#cb281-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb281-2"><a href="функциональное-программирование.html#cb281-2" tabindex="-1"></a><span class="fu">as_tibble</span>(hapax_plato) <span class="sc">%&gt;%</span> </span>
+<span id="cb281-3"><a href="функциональное-программирование.html#cb281-3" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x))</span>
+<span id="cb281-4"><a href="функциональное-программирование.html#cb281-4" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
+<p>Или даже так<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>:</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="функциональное-программирование.html#cb282-1" tabindex="-1"></a>fn <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb282-2"><a href="функциональное-программирование.html#cb282-2" tabindex="-1"></a><span class="fu">as_tibble</span>(hapax_plato) <span class="sc">%&gt;%</span></span>
+<span id="cb282-3"><a href="функциональное-программирование.html#cb282-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, fn)) <span class="sc">%&gt;%</span> <span class="fu">invisible</span>()</span></code></pre></div>
 <p>В любом случае, нам удалось обойтись без цикла, код понятен и хорошо читается.</p>
 <p>Функции <strong><code>lapply()</code></strong> и <strong><code>sapply()</code></strong> подходят для применения функций к спискам (и к датафреймам, которые по сути представляют собой прямоугольные списки).</p>
 <p>Чтобы понять, как они работают, сначала создадим список.</p>
@@ -804,19 +805,19 @@ div.csl-indent {
 <p>При анализе текста со списками приходится иметь дело достаточно часто: объекты типа <code>stylo.corpus</code>, которые создает пакет <a href="https://rdrr.io/cran/stylo"><code>stylo</code></a>, по сути являются списками.</p>
 </div>
 <p>Создадим игрушечный корпус из двух игрушечных текстов.</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="функциональное-программирование.html#cb267-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;гнев&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;воспой&quot;</span>)</span>
-<span id="cb267-2"><a href="функциональное-программирование.html#cb267-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;в&quot;</span>, <span class="st">&quot;мысли&quot;</span>, <span class="st">&quot;ему&quot;</span>, <span class="st">&quot;то&quot;</span>, <span class="st">&quot;вложила&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;державная&quot;</span>, <span class="st">&quot;гера&quot;</span>)</span>
-<span id="cb267-3"><a href="функциональное-программирование.html#cb267-3" tabindex="-1"></a>corpus <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="функциональное-программирование.html#cb283-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;гнев&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;воспой&quot;</span>)</span>
+<span id="cb283-2"><a href="функциональное-программирование.html#cb283-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;в&quot;</span>, <span class="st">&quot;мысли&quot;</span>, <span class="st">&quot;ему&quot;</span>, <span class="st">&quot;то&quot;</span>, <span class="st">&quot;вложила&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;державная&quot;</span>, <span class="st">&quot;гера&quot;</span>)</span>
+<span id="cb283-3"><a href="функциональное-программирование.html#cb283-3" tabindex="-1"></a>corpus <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span></code></pre></div>
 <p>Наш условный корпус – это список из 2 элементов (текстов), а каждый текст хранится как символьный вектор. Допустим, мы хотим взять из каждого диалога выборку размером 5 слов, то есть применить функцию <code>sample()</code> к элементам списка. При помощи <code>lapply()</code> (l = list) это делается так:</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="функциональное-программирование.html#cb268-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>) </span>
-<span id="cb268-2"><a href="функциональное-программирование.html#cb268-2" tabindex="-1"></a><span class="fu">lapply</span>(corpus, sample, <span class="dv">5</span>, <span class="at">replace =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="функциональное-программирование.html#cb284-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>) </span>
+<span id="cb284-2"><a href="функциональное-программирование.html#cb284-2" tabindex="-1"></a><span class="fu">lapply</span>(corpus, sample, <span class="dv">5</span>, <span class="at">replace =</span> T)</span></code></pre></div>
 <pre><code>## $x
 ## [1] &quot;воспой&quot; &quot;воспой&quot; &quot;воспой&quot; &quot;богиня&quot; &quot;воспой&quot;
 ## 
 ## $y
 ## [1] &quot;державная&quot; &quot;вложила&quot;   &quot;то&quot;        &quot;мысли&quot;     &quot;вложила&quot;</code></pre>
 <p>Функция <strong><code>sapply()</code></strong> ведет себя так же, но упрощает результат до вектора или матрицы (s = simplify).</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="функциональное-программирование.html#cb270-1" tabindex="-1"></a><span class="fu">sapply</span>(corpus, sample, <span class="dv">5</span>, <span class="at">replace =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="функциональное-программирование.html#cb286-1" tabindex="-1"></a><span class="fu">sapply</span>(corpus, sample, <span class="dv">5</span>, <span class="at">replace =</span> T)</span></code></pre></div>
 <pre><code>##      x        y          
 ## [1,] &quot;богиня&quot; &quot;ему&quot;      
 ## [2,] &quot;гнев&quot;   &quot;державная&quot;
@@ -824,7 +825,7 @@ div.csl-indent {
 ## [4,] &quot;богиня&quot; &quot;то&quot;       
 ## [5,] &quot;воспой&quot; &quot;мысли&quot;</code></pre>
 <p>Функция <strong><code>vapply()</code></strong> позволяет задать тип данных на выходе.</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="функциональное-программирование.html#cb272-1" tabindex="-1"></a><span class="fu">vapply</span>(corpus, sample, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> T, <span class="fu">character</span>(<span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="функциональное-программирование.html#cb288-1" tabindex="-1"></a><span class="fu">vapply</span>(corpus, sample, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> T, <span class="fu">character</span>(<span class="dv">5</span>))</span></code></pre></div>
 <pre><code>##      x        y        
 ## [1,] &quot;воспой&quot; &quot;то&quot;     
 ## [2,] &quot;богиня&quot; &quot;гера&quot;   
@@ -832,7 +833,7 @@ div.csl-indent {
 ## [4,] &quot;гнев&quot;   &quot;гера&quot;   
 ## [5,] &quot;гнев&quot;   &quot;мысли&quot;</code></pre>
 <p>Поскольку наш “корпус” – это список, то применить грамматику <code>dplyr</code> не очень удобно, списко легко превращается в таблицу:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="функциональное-программирование.html#cb274-1" tabindex="-1"></a><span class="fu">stack</span>(corpus) <span class="co"># передвинуть и переименовать: `relocate()` и `rename()`</span></span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="функциональное-программирование.html#cb290-1" tabindex="-1"></a><span class="fu">stack</span>(corpus) <span class="co"># передвинуть и переименовать: `relocate()` и `rename()`</span></span></code></pre></div>
 <pre><code>##       values ind
 ## 1       гнев   x
 ## 2     богиня   x
@@ -846,10 +847,10 @@ div.csl-indent {
 ## 10 державная   y
 ## 11      гера   y</code></pre>
 <p>Теперь повторные выборки можно делать так:</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="функциональное-программирование.html#cb276-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>)</span>
-<span id="cb276-2"><a href="функциональное-программирование.html#cb276-2" tabindex="-1"></a><span class="fu">stack</span>(corpus) <span class="sc">%&gt;%</span> </span>
-<span id="cb276-3"><a href="функциональное-программирование.html#cb276-3" tabindex="-1"></a>  <span class="fu">group_by</span>(ind) <span class="sc">%&gt;%</span> </span>
-<span id="cb276-4"><a href="функциональное-программирование.html#cb276-4" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="функциональное-программирование.html#cb292-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>)</span>
+<span id="cb292-2"><a href="функциональное-программирование.html#cb292-2" tabindex="-1"></a><span class="fu">stack</span>(corpus) <span class="sc">%&gt;%</span> </span>
+<span id="cb292-3"><a href="функциональное-программирование.html#cb292-3" tabindex="-1"></a>  <span class="fu">group_by</span>(ind) <span class="sc">%&gt;%</span> </span>
+<span id="cb292-4"><a href="функциональное-программирование.html#cb292-4" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> T)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 2
 ## # Groups:   ind [2]
 ##    values    ind  
@@ -867,12 +868,12 @@ div.csl-indent {
 </div>
 <div id="purrr" class="section level2 hasAnchor" number="5.7">
 <h2><span class="header-section-number">5.7</span> Purrr<a href="функциональное-программирование.html#purrr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>По-настоящему мощный инструмент для итераций – это пакет <code>purrr</code> из семейства <code>tidyverse</code><a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>. Разработчики предупреждают, что потребуется время, чтобы овладеть этим инструментом <span class="citation">(<a href="#ref-wickham2016">Wickham and Grolemund 2017</a>)</span>.</p>
+<p>По-настоящему мощный инструмент для итераций – это пакет <code>purrr</code> из семейства <code>tidyverse</code><a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>. Разработчики предупреждают, что потребуется время, чтобы овладеть этим инструментом <span class="citation">(<a href="#ref-wickham2016">Wickham and Grolemund 2017</a>)</span>.</p>
 <blockquote>
 <p>You should never feel bad about using a loop instead of a map function. The map functions are a step up a tower of abstraction, and it can take a long time to get your head around how they work.</p>
 <p>— Hadley Wickham &amp; Garrett Grolemund</p>
 </blockquote>
-<p>В семействе функций <code>map_</code> из этого пакета всего 23 вариации<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>. Вот основные из них:</p>
+<p>В семействе функций <code>map_</code> из этого пакета всего 23 вариации<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>. Вот основные из них:</p>
 <ul>
 <li><code>map()</code></li>
 <li><code>map_lgl()</code></li>
@@ -881,10 +882,10 @@ div.csl-indent {
 <li><code>map_chr()</code></li>
 </ul>
 <p>Все они принимают на входе данные и функцию, которую следует к ним применить, и возвращают результат в том виде, который указан после подчеркивания. Просто <code>map()</code> вернет список, а <code>map_df()</code> – таблицу:</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="функциональное-программирование.html#cb278-1" tabindex="-1"></a>hapax_plato  <span class="sc">%&gt;%</span></span>
-<span id="cb278-2"><a href="функциональное-программирование.html#cb278-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb278-3"><a href="функциональное-программирование.html#cb278-3" tabindex="-1"></a>  <span class="fu">map_df</span>(center) <span class="sc">%&gt;%</span> </span>
-<span id="cb278-4"><a href="функциональное-программирование.html#cb278-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="функциональное-программирование.html#cb294-1" tabindex="-1"></a>hapax_plato  <span class="sc">%&gt;%</span></span>
+<span id="cb294-2"><a href="функциональное-программирование.html#cb294-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb294-3"><a href="функциональное-программирование.html#cb294-3" tabindex="-1"></a>  <span class="fu">map_df</span>(center) <span class="sc">%&gt;%</span> </span>
+<span id="cb294-4"><a href="функциональное-программирование.html#cb294-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##     words  hapax     ratio
 ##     &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
@@ -895,13 +896,13 @@ div.csl-indent {
 ## 5 -15195. -128.  -0.00215 
 ## 6  -6911.  -59.7 -0.000154</code></pre>
 <p>Если на выходе требуется числовой вектор, то используем суффикс <code>dbl</code>:</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="функциональное-программирование.html#cb280-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">map_dbl</span>(hapax_plato, mean), <span class="dv">3</span>) <span class="co"># это именованный вектор!</span></span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="функциональное-программирование.html#cb296-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">map_dbl</span>(hapax_plato, mean), <span class="dv">3</span>) <span class="co"># это именованный вектор!</span></span></code></pre></div>
 <pre><code>##     words     hapax     ratio 
 ## 19364.423   146.692     0.007</code></pre>
-<p>Если необходимо несколько раз вызывать одну и ту же функцию с двумя аргументами, используется функция <code>map2()</code> <a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>. Аргументы, которые меняются при каждом вызове, пишутся до функции; аргументы, которые остаются неизменны, – после.</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="функциональное-программирование.html#cb282-1" tabindex="-1"></a>mean <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="sc">-</span><span class="dv">3</span>)</span>
-<span id="cb282-2"><a href="функциональное-программирование.html#cb282-2" tabindex="-1"></a>sd <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">50</span>)</span>
-<span id="cb282-3"><a href="функциональное-программирование.html#cb282-3" tabindex="-1"></a><span class="fu">map2</span>(mean, sd, rnorm, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
+<p>Если необходимо несколько раз вызывать одну и ту же функцию с двумя аргументами, используется функция <code>map2()</code> <a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>. Аргументы, которые меняются при каждом вызове, пишутся до функции; аргументы, которые остаются неизменны, – после.</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="функциональное-программирование.html#cb298-1" tabindex="-1"></a>mean <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="sc">-</span><span class="dv">3</span>)</span>
+<span id="cb298-2"><a href="функциональное-программирование.html#cb298-2" tabindex="-1"></a>sd <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">50</span>)</span>
+<span id="cb298-3"><a href="функциональное-программирование.html#cb298-3" tabindex="-1"></a><span class="fu">map2</span>(mean, sd, rnorm, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 5.727572 4.812749 4.528140 6.565481 4.356073
 ## 
@@ -920,11 +921,11 @@ div.csl-indent {
 </div>
 <div id="пример-итерации" class="section level2 hasAnchor" number="5.8">
 <h2><span class="header-section-number">5.8</span> Пример итерации<a href="функциональное-программирование.html#пример-итерации" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Функция <code>map2()</code> в анализе текста: функция, которая принимает на входе список таблиц, созданных функцией <code>slide</code>, и назначает каждому окну id.<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>. Используется для создания скользящего окна при создании эмбеддингов.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="функциональное-программирование.html#cb284-1" tabindex="-1"></a>corpus_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">stack</span>(corpus))</span>
-<span id="cb284-2"><a href="функциональное-программирование.html#cb284-2" tabindex="-1"></a>windows <span class="ot">&lt;-</span> slider<span class="sc">::</span><span class="fu">slide</span>(corpus_tbl, <span class="sc">~</span>.x, <span class="at">.after =</span> <span class="dv">1</span>)</span>
-<span id="cb284-3"><a href="функциональное-программирование.html#cb284-3" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">map2</span>(<span class="at">.x =</span> windows, <span class="at">.y =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(windows), <span class="sc">~</span> <span class="fu">mutate</span>(.x, <span class="at">window_id =</span> .y)) <span class="co"># out is a list</span></span>
-<span id="cb284-4"><a href="функциональное-программирование.html#cb284-4" tabindex="-1"></a>out[<span class="dv">2</span>]</span></code></pre></div>
+<p>Функция <code>map2()</code> в анализе текста: функция, которая принимает на входе список таблиц, созданных функцией <code>slide</code>, и назначает каждому окну id.<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>. Используется для создания скользящего окна при создании эмбеддингов.</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="функциональное-программирование.html#cb300-1" tabindex="-1"></a>corpus_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">stack</span>(corpus))</span>
+<span id="cb300-2"><a href="функциональное-программирование.html#cb300-2" tabindex="-1"></a>windows <span class="ot">&lt;-</span> slider<span class="sc">::</span><span class="fu">slide</span>(corpus_tbl, <span class="sc">~</span>.x, <span class="at">.after =</span> <span class="dv">1</span>)</span>
+<span id="cb300-3"><a href="функциональное-программирование.html#cb300-3" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">map2</span>(<span class="at">.x =</span> windows, <span class="at">.y =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(windows), <span class="sc">~</span> <span class="fu">mutate</span>(.x, <span class="at">window_id =</span> .y)) <span class="co"># out is a list</span></span>
+<span id="cb300-4"><a href="функциональное-программирование.html#cb300-4" tabindex="-1"></a>out[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [[1]]
 ## # A tibble: 2 × 3
 ##   values ind   window_id
@@ -932,8 +933,8 @@ div.csl-indent {
 ## 1 богиня x             2
 ## 2 воспой x             2</code></pre>
 <p>Поскольку второй аргумент – это, по сути, индекс, можно было бы использовать функцию <code>imap()</code>:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="функциональное-программирование.html#cb286-1" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">imap</span>(<span class="at">.x =</span> windows, <span class="sc">~</span> <span class="fu">mutate</span>(.x, <span class="at">window_id =</span> .y))</span>
-<span id="cb286-2"><a href="функциональное-программирование.html#cb286-2" tabindex="-1"></a>out[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="функциональное-программирование.html#cb302-1" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">imap</span>(<span class="at">.x =</span> windows, <span class="sc">~</span> <span class="fu">mutate</span>(.x, <span class="at">window_id =</span> .y))</span>
+<span id="cb302-2"><a href="функциональное-программирование.html#cb302-2" tabindex="-1"></a>out[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [[1]]
 ## # A tibble: 2 × 3
 ##   values ind   window_id
@@ -962,14 +963,14 @@ Wickham, Hadley, and Garrett Grolemund. 2017. <em><span class="nocase">R for Dat
 </div>
 <div class="footnotes">
 <hr />
-<ol start="14">
-<li id="fn14"><p><a href="https://r4ds.had.co.nz/iteration.html" class="uri">https://r4ds.had.co.nz/iteration.html</a><a href="функциональное-программирование.html#fnref14" class="footnote-back">↩︎</a></p></li>
-<li id="fn15"><p><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="uri">https://dplyr.tidyverse.org/reference/mutate_all.html</a><a href="функциональное-программирование.html#fnref15" class="footnote-back">↩︎</a></p></li>
-<li id="fn16"><p><a href="https://dplyr.tidyverse.org/articles/colwise.html" class="uri">https://dplyr.tidyverse.org/articles/colwise.html</a><a href="функциональное-программирование.html#fnref16" class="footnote-back">↩︎</a></p></li>
-<li id="fn17"><p><a href="https://purrr.tidyverse.org/" class="uri">https://purrr.tidyverse.org/</a><a href="функциональное-программирование.html#fnref17" class="footnote-back">↩︎</a></p></li>
-<li id="fn18"><p><a href="https://adv-r.hadley.nz/functionals.html" class="uri">https://adv-r.hadley.nz/functionals.html</a><a href="функциональное-программирование.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<ol start="15">
+<li id="fn15"><p><a href="https://r4ds.had.co.nz/iteration.html" class="uri">https://r4ds.had.co.nz/iteration.html</a><a href="функциональное-программирование.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="uri">https://dplyr.tidyverse.org/reference/mutate_all.html</a><a href="функциональное-программирование.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p><a href="https://dplyr.tidyverse.org/articles/colwise.html" class="uri">https://dplyr.tidyverse.org/articles/colwise.html</a><a href="функциональное-программирование.html#fnref17" class="footnote-back">↩︎</a></p></li>
+<li id="fn18"><p><a href="https://purrr.tidyverse.org/" class="uri">https://purrr.tidyverse.org/</a><a href="функциональное-программирование.html#fnref18" class="footnote-back">↩︎</a></p></li>
 <li id="fn19"><p><a href="https://adv-r.hadley.nz/functionals.html" class="uri">https://adv-r.hadley.nz/functionals.html</a><a href="функциональное-программирование.html#fnref19" class="footnote-back">↩︎</a></p></li>
-<li id="fn20"><p>Пример отсюда, с некоторыми упрощениями: <a href="https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself" class="uri">https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself</a>. Подробный разбор в <a href="https://vk.com/video-211800158_456239215">видео</a><a href="функциональное-программирование.html#fnref20" class="footnote-back">↩︎</a></p></li>
+<li id="fn20"><p><a href="https://adv-r.hadley.nz/functionals.html" class="uri">https://adv-r.hadley.nz/functionals.html</a><a href="функциональное-программирование.html#fnref20" class="footnote-back">↩︎</a></p></li>
+<li id="fn21"><p>Пример отсюда, с некоторыми упрощениями: <a href="https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself" class="uri">https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself</a>. Подробный разбор в <a href="https://vk.com/video-211800158_456239215">видео</a><a href="функциональное-программирование.html#fnref21" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-08-26" />
+<meta name="date" content="2023-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -189,9 +189,10 @@ div.csl-indent {
 <li class="chapter" data-level="2.9" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#r-как-калькулятор"><i class="fa fa-check"></i><b>2.9</b> R как калькулятор</a></li>
 <li class="chapter" data-level="2.10" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#операторы-присваивания"><i class="fa fa-check"></i><b>2.10</b> Операторы присваивания</a></li>
 <li class="chapter" data-level="2.11" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#векторы"><i class="fa fa-check"></i><b>2.11</b> Векторы</a></li>
-<li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.12</b> Списки</a></li>
-<li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.13</b> Матрицы</a></li>
-<li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.14</b> Таблицы</a></li>
+<li class="chapter" data-level="2.12" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#отсутствующие-значения"><i class="fa fa-check"></i><b>2.12</b> Отсутствующие значения</a></li>
+<li class="chapter" data-level="2.13" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#списки"><i class="fa fa-check"></i><b>2.13</b> Списки</a></li>
+<li class="chapter" data-level="2.14" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#матрицы"><i class="fa fa-check"></i><b>2.14</b> Матрицы</a></li>
+<li class="chapter" data-level="2.15" data-path="начало-работы-с-r.html"><a href="начало-работы-с-r.html#таблицы"><i class="fa fa-check"></i><b>2.15</b> Таблицы</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="визуализации.html"><a href="визуализации.html"><i class="fa fa-check"></i><b>3</b> Визуализации</a>
 <ul>
@@ -506,13 +507,6 @@ div.csl-indent {
 <div id="что-мы-не-будем-делать" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Что мы (не) будем делать?<a href="начало-работы-с-r.html#что-мы-не-будем-делать" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Хотя возможности R очень широки, мы будем заниматься в основном анализом текстовых данных. “Текст” в данном случае можно понимать как зафиксированную (в машиночитаемом виде) речь: от отзыва на товар до романа. Но в основном данные я подбираю таким образом, чтобы они были интересны гуманитариям.</p>
-<p>Мы <em>не будем</em>:</p>
-<ul>
-<li>анализировать звучащую речь (хотя это тоже <a href="https://ling.hse.ru/news/671710245.html">можно делать</a> в R);</li>
-<li>распознавать рукописные символов, для этого есть гораздо другие <a href="https://vk.com/video-211800158_456239315">мощные инструменты</a>;</li>
-<li>изучать машинное обучение и нейронные сети;</li>
-<li>разрабатывать приложения.</li>
-</ul>
 <p>Курс включает в себя два основных блока и 16 уроков:</p>
 <ul>
 <li>общее введение в R (темы 1-8)</li>
@@ -542,12 +536,19 @@ div.csl-indent {
 <li>Описание и анализ сетей.
 <em>Консолидация: итоговый проект</em></li>
 </ol>
+<p>Мы <em>не будем</em>:</p>
+<ul>
+<li>анализировать звучащую речь (хотя это тоже <a href="https://ling.hse.ru/news/671710245.html">можно делать</a> в R);</li>
+<li>распознавать рукописные символов, для этого есть гораздо другие <a href="https://vk.com/video-211800158_456239315">мощные инструменты</a>;</li>
+<li>изучать машинное обучение и нейронные сети;</li>
+<li>разрабатывать приложения.</li>
+</ul>
 <p>Домашние и самостоятельные задания в основном будут проходить в виде интерактивных уроков с использованием пакета <code>swirl</code>.</p>
 <p>Если вы плохо представляете, на что вообще способны количественные методы в гуманитаристике, посмотрите видео панельной дискуссии <a href="https://vk.com/video-211800158_456239307">“Цифровые инструменты и методы: в чем их польза и как им обучить гуманитария?”</a> (НИУ ВШЭ, 2023 г.). Это видео о том, зачем. О том, как – дальше.</p>
 </div>
 <div id="rstudio" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> RStudio<a href="начало-работы-с-r.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Работать в R мы будем с использованием RStudio, которая представляет собой свободную среду разработки (IDE) программного обеспечения с открытым исходным кодом для языка программирования R.</p>
+<p>Работать в R мы будем с использованием RStudio. Это свободная среда разработки (IDE) программного обеспечения с открытым исходным кодом для языка программирования R.</p>
 <p>Наша задача в этом уроке – установить R и R Studio и убедиться, что все работает; научиться самостоятельно находить помощь, совершать несложные вычисления.</p>
 </div>
 <div id="установка" class="section level2 hasAnchor" number="2.7">
@@ -569,41 +570,64 @@ div.csl-indent {
 <div class="infobox info">
 <p>На MacOS для работы библиотеки Stylo также понадобится установить XQuartz: <a href="https://www.xquartz.org/" class="uri">https://www.xquartz.org/</a></p>
 </div>
-<p>Также возможно пользоваться R в облаке: <a href="https://posit.cloud/" class="uri">https://posit.cloud/</a> (нужна регистрация).</p>
+<p>Можно пользоваться R в облаке: <a href="https://posit.cloud/" class="uri">https://posit.cloud/</a> (нужна регистрация).</p>
 </div>
 <div id="начало-работы" class="section level2 hasAnchor" number="2.8">
 <h2><span class="header-section-number">2.8</span> Начало работы<a href="начало-работы-с-r.html#начало-работы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>После установки и запуска RStudio вы увидите вот такие четыре панели (их названия подписаны на картинке):</p>
 <div class="float">
-<img src="https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.jpeg" alt="RStudio Panes" />
-<div class="figcaption"><em>RStudio Panes</em></div>
+<img src="https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.jpeg" alt="RStudio Panes. Источник." />
+<div class="figcaption"><em>RStudio Panes</em>. <a href="https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html">Источник.</a></div>
 </div>
-<p>По <a href="https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html">ссылке</a> можно подробнее прочитать, что за что отвечает (и как это поменять).</p>
-<p>Для начала попробуйте получить информацию о сессии, введя в <strong>консоли</strong> такую команду:</p>
+<p></br>
+Для начала попробуйте получить информацию о сессии, введя в <strong>консоли</strong> такую команду:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="начало-работы-с-r.html#cb2-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <p><code>sessionInfo()</code> – это <strong>функция</strong>. За названием функции всегда следуют круглые скобки, внутри которых могут находиться <strong>аргументы функции</strong>. О функциях можно думать как о глаголах (“сделай то-то!”). Аргументы – это что-то вроде дополнений и обстоятельств. (Кстати, в “диалекте” tidyverse есть функции-наречия, так что аналогия законная.) Аргументы могут быть обязательные и необязательные.</p>
 <p>Чтобы узнать, каких аргументов требует функция, надо вызывать <strong>help</strong>: <code>?mean()</code>. Также можно (и нужно) читать техническую документацию к пакетам.</p>
-<div class="task question">
+<div class="ask question">
 <p>Сколько аргументов функции <code>mean()</code> имеют значения по умолчанию?</p>
-<form name="form_51250" onsubmit="return validate_form_51250()" method="post">
-<input type="text" name="answer_51250"><br><input type="submit" value="check">
+<form name="form_71768" onsubmit="return validate_form_71768()" method="post">
+<input type="text" name="answer_71768"><br><input type="submit" value="check">
 </form>
-<p id="result_51250">
+<p id="result_71768">
 </p>
-<script> function validate_form_51250() {var x, text; var x = document.forms["form_51250"]["answer_51250"].value;if (x == "2"){text = 'Все верно!';} else {text = 'Не совсем. Значения по умолчанию стоят после знака <code>=</code>';} document.getElementById('result_51250').innerHTML = text; return false;} </script>
+<script> function validate_form_71768() {var x, text; var x = document.forms["form_71768"]["answer_71768"].value;if (x == "2"){text = 'Все верно!';} else {text = 'Не совсем. Значения по умолчанию стоят после знака <code>=</code>';} document.getElementById('result_71768').innerHTML = text; return false;} </script>
 </div>
-<p>Уточнить свою <strong>рабочую директорию</strong> (в которой R будет искать и сохранять файлы) можно при помощи функции <code>getwd()</code> без аргументов. Установить рабочую директорию можно при помощи функции <code>setwd()</code>, указав в качестве аргумента путь к рабочей директории на вашем компьютере (в кавычках, так как это символьный вектор). В моем случае это выглядит так:</p>
+<p></br>
+Уточнить свою <strong>рабочую директорию</strong> (в которой R будет искать и сохранять файлы) можно при помощи функции <code>getwd()</code> без аргументов. Установить рабочую директорию можно при помощи функции <code>setwd()</code>, указав в качестве аргумента путь к рабочей директории на вашем компьютере (в кавычках, так как это символьный вектор). В моем случае это выглядит так:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="начало-работы-с-r.html#cb3-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/olga/R_Workflow/&quot;</span>)</span></code></pre></div>
 <p>Также для выбора рабочей директории можно использовать меню R <code>Session &gt; Set Working Directory</code>.</p>
 <p>Пакеты для работы устанавливаются один раз, однако подключать их надо во время каждой сессии. Чтобы установить новый пакет, можно воспользоваться меню <code>Tools &gt; Install Packages</code>. Также можно устанавливать пакеты из консоли. Установим пакет с интерактивными уроками программирования на языке R:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="начало-работы-с-r.html#cb4-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;swirl&quot;</span>)</span></code></pre></div>
 <p>Для подключения используем функцию <code>library()</code>, которой передаем в качестве аргумента название пакета без кавычек:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="начало-работы-с-r.html#cb5-1" tabindex="-1"></a><span class="fu">library</span>(swirl)</span></code></pre></div>
-<p>Что еще надо знать:</p>
-<ul>
-<li>как создавать проекты в R и почему это удобно <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
-<li>как создавать и хранить файлы с кодом</li>
-</ul>
+<p>В R можно создавать проекты, и это очень удобно<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>А теперь – первое задание на кодинг. После выполнения <code>swirl</code> предложит отправить e-mail преподавателю; ответьте <code>Yes</code> и сделайте скриншот сообщения об отправке. Если задание оценивается, укажите имя так, чтобы вас можно было узнать. Вот пример:</p>
+<p><img src="images/swirl_completion.png" /></p>
+<div class="task code">
+<p>Установите курс программирования на R: <code>install_course("R Programming E")</code>. После этого привяжите пакет командой <code>library(swirl)</code> и выполните следующую команду: <code>swirl()</code>. Укажите ваше имя. Пройдите урок 2 <code>Workspace and Files</code>.</p>
+</div>
+<p></br>
+После выполнения ответьте на несколько вопросов на закрепление материала.</p>
+<div class="ask question">
+<p>Какие действия в рабочей директории можно совершать из консоли?</p>
+</div>
+<form name="form_49107" onsubmit="return validate_form_49107()" method="post">
+<input type="checkbox" id="answer_49107_1" value="создать директорию"><label for="answer_49107_1">создать директорию</label><br><input type="checkbox" id="answer_49107_2" value="удалить директорию"><label for="answer_49107_2">удалить директорию</label><br><input type="checkbox" id="answer_49107_3" value="создать файл"><label for="answer_49107_3">создать файл</label><br><input type="checkbox" id="answer_49107_4" value="переименовать файл"><label for="answer_49107_4">переименовать файл</label><br><input type="checkbox" id="answer_49107_5" value="копировать файл"><label for="answer_49107_5">копировать файл</label><br><input type="checkbox" id="answer_49107_6" value="удалить файл"><label for="answer_49107_6">удалить файл</label><br><input type="submit" value="check">
+</form>
+<p id="result_49107">
+</p>
+<script> function validate_form_49107() {var text;var x1 = document.getElementById("answer_49107_1");var x2 = document.getElementById("answer_49107_2");var x3 = document.getElementById("answer_49107_3");var x4 = document.getElementById("answer_49107_4");var x5 = document.getElementById("answer_49107_5");var x6 = document.getElementById("answer_49107_6");if (x1.checked == true&x2.checked == true&x3.checked == true&x4.checked == true&x5.checked == true&x6.checked == true){text = "Все возможно в дивном мире R!";} else {text = "Чего-то не хватает&hellip;";} document.getElementById("result_49107").innerHTML = text; return false;}</script>
+<div class="ask question">
+<p>Чтобы создать вложенную директорию при помощи функции <code>dir.create()</code>, аргументу <code>recursive</code> следует задать значение…</p>
+</div>
+<form name="form_69018" onsubmit="return validate_form_69018()" method="post">
+<select name="answer_69018"><option> TRUE </option><option> FALSE </option></select><br><input type="submit" value="check">
+</form>
+<p id="result_69018">
+</p>
+<script> function validate_form_69018() {var x, text; var x = document.forms["form_69018"]["answer_69018"].value;if (x == "TRUE"){text = 'Гениально!';} else {text = 'Подсказка: рекурсия — это определение, описание, изображение какого-либо объекта или процесса внутри самого этого объекта или процесса';} document.getElementById('result_69018').innerHTML = text; return false;} </script>
+<p>Если все получилось, двигаемся дальше.</p>
 </div>
 <div id="r-как-калькулятор" class="section level2 hasAnchor" number="2.9">
 <h2><span class="header-section-number">2.9</span> R как калькулятор<a href="начало-работы-с-r.html#r-как-калькулятор" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -624,7 +648,7 @@ div.csl-indent {
 <span id="cb12-3"><a href="начало-работы-с-r.html#cb12-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> y <span class="co"># переназначаем  </span></span>
 <span id="cb12-4"><a href="начало-работы-с-r.html#cb12-4" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
 <pre><code>## [1] 0.2</code></pre>
-<p><strong>Имя переменной</strong>, как и имя функции, может содержать прописные и строчные буквы, точку и знак подчеркивания. Функция <code>c()</code> (concatenation) позволяет собрать несколько элементов в единый вектор:</p>
+<p><strong>Имя переменной</strong>, как и имя функции, может содержать прописные и строчные буквы, точку и знак подчеркивания. Функция <code>c()</code> позволяет собрать несколько элементов в единый вектор:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="начало-работы-с-r.html#cb14-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
 <span id="cb14-2"><a href="начало-работы-с-r.html#cb14-2" tabindex="-1"></a>x_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="co"># также возможно x.mean или xMean</span></span>
 <span id="cb14-3"><a href="начало-работы-с-r.html#cb14-3" tabindex="-1"></a>x_mean</span></code></pre></div>
@@ -633,42 +657,40 @@ div.csl-indent {
 <div class="infobox info">
 <p><strong>Объекты, предназначенные для хранения данных</strong>, – это отдельные переменные, векторы, матрицы и массивы, списки, факторы, таблицы данных. <strong>Функции</strong> – это поименованные программы, предназначенные для создания новых объектов или выполнения определенных действий над ними <span class="citation">(<a href="#ref-мастицкий2015">С. Мастицкий и В. Шитиков 2015, 24</a>)</span></p>
 </div>
-<p>Чтобы получить список всех объектов в окружении, используется функция <code>ls()</code>. Удалять объекты можно при помощи <code>rm()</code>. Функции можно вкладывать друг в друга:</p>
+<p>Как вы уже знаете из урока в <code>swirl</code>, список всех объектов в окружении возвращает функция <code>ls()</code>. Удалять объекты можно при помощи <code>rm()</code>. Функции можно вкладывать друг в друга:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="начало-работы-с-r.html#cb16-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># удаляет все объекты в окружении</span></span></code></pre></div>
-<p>Для закрепления материала здесь и далее предлагаются задания на кодирование. После их выполнения <code>swirl</code> предложит отправить e-mail преподавателю; ответьте <code>Yes</code> и сделайте скриншот сообщения об отправке. Если задание оценивается, укажите имя так, чтобы вас можно было узнать. Вот пример:</p>
-<p><img src="images/swirl_completion.png" /></p>
-<div class="task code">
-<p>Установите курс программирования на R: <code>install_course("R Programming E")</code>. После этого выполните следующую команду:
-<code>swirl()</code>. Укажите ваше имя. Пройдите урок 1 <code>Basic Building Blocks</code>. Также выполните также урок 2 <code>Workspace and Files</code>.</p>
-</div>
+<p></br>
+::::{.task .code}
+Снова запустите <code>swirl()</code>. Укажите ваше имя. Пройдите урок 1 <code>Basic Building Blocks</code>.
+::::</p>
 <p>Если все получилось, можно двигаться дальше! Но сначала зафиксируем несколько новых функций из этих первого урока.</p>
-<div class="task question">
-<p>Что возвращает функция <code>abs()</code>?</p>
+<div class="ask question">
+<p>Что вычисляет функция <code>abs()</code>?</p>
 </div>
-<form name="form_31699" onsubmit="return validate_form_31699()" method="post">
-<input type="radio" name="answer_31699" id="31699_1" value="среднее"><label for="1">среднее</label><br><input type="radio" name="answer_31699" id="31699_2" value="модуль"><label for="2">модуль</label><br><input type="radio" name="answer_31699" id="31699_3" value="квадратный корень"><label for="3">квадратный корень</label><br><input type="submit" value="check">
+<form name="form_79853" onsubmit="return validate_form_79853()" method="post">
+<input type="radio" name="answer_79853" id="79853_1" value="среднее"><label for="1">среднее</label><br><input type="radio" name="answer_79853" id="79853_2" value="модуль"><label for="2">модуль</label><br><input type="radio" name="answer_79853" id="79853_3" value="квадратный корень"><label for="3">квадратный корень</label><br><input type="submit" value="check">
 </form>
-<p id="result_31699">
+<p id="result_79853">
 </p>
-<script> function validate_form_31699() {var x, text; var x = document.forms["form_31699"]["answer_31699"].value;if (x == "модуль"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_31699').innerHTML = text; return false;} </script>
-<div class="task question">
+<script> function validate_form_79853() {var x, text; var x = document.forms["form_79853"]["answer_79853"].value;if (x == "модуль"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_79853').innerHTML = text; return false;} </script>
+<div class="ask question">
 <p>Сколько значений вернет функция, если разделить <code>c(2, 4, 6)</code> на <code>2</code>?</p>
 </div>
-<form name="form_49926" onsubmit="return validate_form_49926()" method="post">
-<input type="text" name="answer_49926"><br><input type="submit" value="check">
+<form name="form_42382" onsubmit="return validate_form_42382()" method="post">
+<input type="text" name="answer_42382"><br><input type="submit" value="check">
 </form>
-<p id="result_49926">
+<p id="result_42382">
 </p>
-<script> function validate_form_49926() {var x, text; var x = document.forms["form_49926"]["answer_49926"].value;if (x == "3"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_49926').innerHTML = text; return false;} </script>
-<div class="task question">
-<p>Как называется тип данных, создаваемый при помощи функции <code>c()</code>?</p>
+<script> function validate_form_42382() {var x, text; var x = document.forms["form_42382"]["answer_42382"].value;if (x == "3"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_42382').innerHTML = text; return false;} </script>
+<div class="ask question">
+<p>Буква “c” в названии функции <code>c()</code> означает…</p>
 </div>
-<form name="form_5275" onsubmit="return validate_form_5275()" method="post">
-<input type="radio" name="answer_5275" id="5275_1" value="список"><label for="1">список</label><br><input type="radio" name="answer_5275" id="5275_2" value="вектор"><label for="2">вектор</label><br><input type="radio" name="answer_5275" id="5275_3" value="матрица"><label for="3">матрица</label><br><input type="submit" value="check">
+<form name="form_43071" onsubmit="return validate_form_43071()" method="post">
+<input type="radio" name="answer_43071" id="43071_1" value="cover"><label for="1">cover</label><br><input type="radio" name="answer_43071" id="43071_2" value="collapse"><label for="2">collapse</label><br><input type="radio" name="answer_43071" id="43071_3" value="concatenate"><label for="3">concatenate</label><br><input type="submit" value="check">
 </form>
-<p id="result_5275">
+<p id="result_43071">
 </p>
-<script> function validate_form_5275() {var x, text; var x = document.forms["form_5275"]["answer_5275"].value;if (x == "вектор"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_5275').innerHTML = text; return false;} </script>
+<script> function validate_form_43071() {var x, text; var x = document.forms["form_43071"]["answer_43071"].value;if (x == "concatenate"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_43071').innerHTML = text; return false;} </script>
 </div>
 <div id="векторы" class="section level2 hasAnchor" number="2.11">
 <h2><span class="header-section-number">2.11</span> Векторы<a href="начало-работы-с-r.html#векторы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -678,14 +700,6 @@ div.csl-indent {
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="начало-работы-с-r.html#cb19-1" tabindex="-1"></a><span class="fu">length</span>(x) <span class="co"># длина вектора</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="начало-работы-с-r.html#cb21-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>() <span class="co"># создадим пустой вектор</span></span>
-<span id="cb21-2"><a href="начало-работы-с-r.html#cb21-2" tabindex="-1"></a>y <span class="co"># при попытке распечатать получаем NULL </span></span></code></pre></div>
-<pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="начало-работы-с-r.html#cb23-1" tabindex="-1"></a><span class="fu">length</span>(y) <span class="co"># длина равна 0</span></span></code></pre></div>
-<pre><code>## [1] 0</code></pre>
-<div class="infobox info">
-<p><code>NULL</code> означает, что значение не существует; <code>NA</code> (not available) – что оно существует, но неизвестно. Поэтому <code>mean(c(1, NA, 2))</code> выдаст ошибку, а <code>mean(c(1, NULL, 2))</code> вернет среднее. В первом случае можно использовать дополнительный аргумент: <code>mean(c(1, NA, 2), na.rm=T)</code>. Подробнее см. <span class="citation">(<a href="#ref-мэтлофф2019">Мэтлофф 2019</a>)</span>.</p>
-</div>
 <p>Основные типы данных, с которыми мы будем работать, следующие:</p>
 <ul>
 <li>целое число (integer)</li>
@@ -694,100 +708,222 @@ div.csl-indent {
 <li>логическая переменная (logical)</li>
 <li>категориальная переменная, или фактор (factor)</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="начало-работы-с-r.html#cb25-1" tabindex="-1"></a><span class="co"># проверить тип данных </span></span>
-<span id="cb25-2"><a href="начало-работы-с-r.html#cb25-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)</span>
-<span id="cb25-3"><a href="начало-работы-с-r.html#cb25-3" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="начало-работы-с-r.html#cb21-1" tabindex="-1"></a><span class="co"># проверить тип данных </span></span>
+<span id="cb21-2"><a href="начало-работы-с-r.html#cb21-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)</span>
+<span id="cb21-3"><a href="начало-работы-с-r.html#cb21-3" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="начало-работы-с-r.html#cb27-1" tabindex="-1"></a><span class="fu">is.integer</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="начало-работы-с-r.html#cb23-1" tabindex="-1"></a><span class="fu">is.integer</span>(x)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="начало-работы-с-r.html#cb29-1" tabindex="-1"></a><span class="fu">is.numeric</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="начало-работы-с-r.html#cb25-1" tabindex="-1"></a><span class="fu">is.numeric</span>(x)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
+<p>Для начала мы научимся генерировать векторы. Например, так.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="начало-работы-с-r.html#cb27-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="начало-работы-с-r.html#cb29-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="st">&quot;foo&quot;</span>, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;foo&quot; &quot;foo&quot; &quot;foo&quot; &quot;foo&quot; &quot;foo&quot;</code></pre>
+<div class="task code">
+<p>Запустите <code>swirl()</code> и пройдите урок 3 <code>Sequences of Numbers</code>.</p>
+</div>
+<p>Проверьте свои знания, прежде чем двигаться дальше.</p>
+<div class="ask question">
+<p>Какие числа вернет команда <code>pi:10</code>?</p>
+</div>
+<form name="form_25756" onsubmit="return validate_form_25756()" method="post">
+<input type="radio" name="answer_25756" id="25756_1" value="натуральные"><label for="1">натуральные</label><br><input type="radio" name="answer_25756" id="25756_2" value="целые"><label for="2">целые</label><br><input type="radio" name="answer_25756" id="25756_3" value="рациональные"><label for="3">рациональные</label><br><input type="radio" name="answer_25756" id="25756_4" value="вещественные"><label for="4">вещественные</label><br><input type="radio" name="answer_25756" id="25756_5" value="комплексные"><label for="5">комплексные</label><br><input type="submit" value="check">
+</form>
+<p id="result_25756">
+</p>
+<script> function validate_form_25756() {var x, text; var x = document.forms["form_25756"]["answer_25756"].value;if (x == "вещественные"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_25756').innerHTML = text; return false;} </script>
+<div class="ask question">
+<p>Какие функции могут использоваться для создания <em>символьных</em> векторов?</p>
+</div>
+<form name="form_12996" onsubmit="return validate_form_12996()" method="post">
+<input type="checkbox" id="answer_12996_1" value="seq()"><label for="answer_12996_1">seq()</label><br><input type="checkbox" id="answer_12996_2" value="rep()"><label for="answer_12996_2">rep()</label><br><input type="checkbox" id="answer_12996_3" value="c()"><label for="answer_12996_3">c()</label><br><input type="submit" value="check">
+</form>
+<p id="result_12996">
+</p>
+<script> function validate_form_12996() {var text;var x1 = document.getElementById("answer_12996_1");var x2 = document.getElementById("answer_12996_2");var x3 = document.getElementById("answer_12996_3");if (x1.checked == false&x2.checked == true&x3.checked == true){text = "Ну это же просто фантастика!";} else {text = "Не совсем.";} document.getElementById("result_12996").innerHTML = text; return false;}</script>
+<div class="ask question">
+<p>Сколько значений вернет команда <code>rep(c(0, 1, 2), times = 10)</code>? Посчитайте в уме, не выполняя код.</p>
+</div>
+<form name="form_66641" onsubmit="return validate_form_66641()" method="post">
+<input type="text" name="answer_66641"><br><input type="submit" value="check">
+</form>
+<p id="result_66641">
+</p>
+<script> function validate_form_66641() {var x, text; var x = document.forms["form_66641"]["answer_66641"].value;if (x == "30"){text = 'Ах, красота!';} else {text = 'Надо бы пересчитать.';} document.getElementById('result_66641').innerHTML = text; return false;} </script>
+<p></br>
+<strong>Факторы</strong> внешне похожи на строки, но в отличие от них хранят информацию об <em>уровнях</em> категориальных переменных. Уровень может обозначаться как числом (например, 1 и 0), так и строкой.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="начало-работы-с-r.html#cb31-1" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</span>
+<span id="cb31-2"><a href="начало-работы-с-r.html#cb31-2" tabindex="-1"></a>t</span></code></pre></div>
+<pre><code>## [1] A B C
+## Levels: A B C</code></pre>
 <p>При попытке объединить в единый вектор данные разных типов, они будут принудительно приведены к одному типу:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="начало-работы-с-r.html#cb31-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="cn">FALSE</span>)</span>
-<span id="cb31-2"><a href="начало-работы-с-r.html#cb31-2" tabindex="-1"></a>x <span class="co"># логические значения переработаны в числовые</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="начало-работы-с-r.html#cb33-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb33-2"><a href="начало-работы-с-r.html#cb33-2" tabindex="-1"></a>x <span class="co"># логические значения переработаны в числовые</span></span></code></pre></div>
 <pre><code>## [1] 1 1 3 0</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="начало-работы-с-r.html#cb33-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="dv">2</span>, <span class="st">&quot;лукоморье&quot;</span>) <span class="co"># строки всегда в кавычках</span></span>
-<span id="cb33-2"><a href="начало-работы-с-r.html#cb33-2" tabindex="-1"></a>y <span class="co"># числа превратились в строки</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="начало-работы-с-r.html#cb35-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="dv">2</span>, <span class="st">&quot;лукоморье&quot;</span>) <span class="co"># строки всегда в кавычках</span></span>
+<span id="cb35-2"><a href="начало-работы-с-r.html#cb35-2" tabindex="-1"></a>y <span class="co"># числа превратились в строки</span></span></code></pre></div>
 <pre><code>## [1] &quot;1&quot;         &quot;a&quot;         &quot;2&quot;         &quot;лукоморье&quot;</code></pre>
 <div class="float">
 <img src="https://d33wubrfki0l68.cloudfront.net/1d1b4e1cf0dc5f6e80f621b0225354b0addb9578/6ee1c/diagrams/data-structures-overview.png" style="width:60.0%" alt="Типы векторов в R. Источник" />
 <div class="figcaption"><em>Типы векторов в R</em>. <a href="https://r4ds.had.co.nz/vectors.html">Источник</a></div>
 </div>
 <p></br>
-Логические векторы можно получить в результате применения <strong>логических выражений</strong> (<code>==</code> “равно”, <code>!=</code> “не равно”, <code>&lt;=</code> “меньше или равно”) к данным других типов:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="начало-работы-с-r.html#cb35-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># числа от 1 до 10</span></span>
-<span id="cb35-2"><a href="начало-работы-с-r.html#cb35-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">&gt;</span> <span class="dv">5</span></span>
-<span id="cb35-3"><a href="начало-работы-с-r.html#cb35-3" tabindex="-1"></a>y <span class="co"># значения TRUE соответствуют единице, поэтому их можно складывать</span></span></code></pre></div>
+<strong>Логические векторы</strong> можно получить в результате применения <strong>логических операторов</strong> (<code>==</code> “равно”, <code>!=</code> “не равно”, <code>&lt;=</code> “меньше или равно”) к данным других типов:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="начало-работы-с-r.html#cb37-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># числа от 1 до 10</span></span>
+<span id="cb37-2"><a href="начало-работы-с-r.html#cb37-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">&gt;</span> <span class="dv">5</span></span>
+<span id="cb37-3"><a href="начало-работы-с-r.html#cb37-3" tabindex="-1"></a>y <span class="co"># значения TRUE соответствуют единице, поэтому их можно складывать</span></span></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="начало-работы-с-r.html#cb37-1" tabindex="-1"></a><span class="fu">sum</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="начало-работы-с-r.html#cb39-1" tabindex="-1"></a><span class="fu">sum</span>(y)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<p>Функции <code>all()</code> и <code>any()</code> также возвращают логические значения:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="начало-работы-с-r.html#cb39-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span> </span>
-<span id="cb39-2"><a href="начало-работы-с-r.html#cb39-2" tabindex="-1"></a><span class="fu">any</span>(x <span class="sc">==</span> <span class="dv">15</span>)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="начало-работы-с-r.html#cb41-1" tabindex="-1"></a><span class="fu">all</span>(x <span class="sc">&gt;</span> <span class="dv">9</span>)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<p>Существуют различные способы сгенерировать векторы:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="начало-работы-с-r.html#cb43-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.5</span>)</span></code></pre></div>
-<pre><code>## [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="начало-работы-с-r.html#cb45-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="st">&quot;foo&quot;</span>, <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;foo&quot; &quot;foo&quot; &quot;foo&quot; &quot;foo&quot; &quot;foo&quot;</code></pre>
-<p>Векторы можно индексировать, то есть забирать из них какие-то элементы:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="начало-работы-с-r.html#cb47-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.5</span>)</span>
-<span id="cb47-2"><a href="начало-работы-с-r.html#cb47-2" tabindex="-1"></a>x[<span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># индексы начинаются с 1 (в отличие от Python)</span></span></code></pre></div>
-<pre><code>## [1] 2.5 3.0</code></pre>
-<p>Над векторами можно совершать арифметические операции, но будьте внимательны, применяя операции к векторам разной длины: в этом случае более короткий вектор будет <strong>переработан</strong>, то есть повторен до тех пор, пока его длина не сравняется с длиной вектора большей длины.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="начало-работы-с-r.html#cb49-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span>; y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>); z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
-<span id="cb49-2"><a href="начало-работы-с-r.html#cb49-2" tabindex="-1"></a>y <span class="sc">/</span> x </span></code></pre></div>
-<pre><code>## [1]  5 10 15</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="начало-работы-с-r.html#cb51-1" tabindex="-1"></a>x <span class="sc">+</span> y </span></code></pre></div>
-<pre><code>## [1] 12 22 32</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="начало-работы-с-r.html#cb53-1" tabindex="-1"></a>y <span class="sc">+</span> z</span></code></pre></div>
-<pre><code>## [1] 15 26 37</code></pre>
-<p><strong>Факторы</strong> внешне похожи на строки, но в отличие от них хранят информацию об <em>уровнях</em> категориальных переменных. Уровень может обозначаться как числом (например, 1 и 0), так и строкой.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="начало-работы-с-r.html#cb55-1" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</span>
-<span id="cb55-2"><a href="начало-работы-с-r.html#cb55-2" tabindex="-1"></a>t</span></code></pre></div>
-<pre><code>## [1] A B C
-## Levels: A B C</code></pre>
-<p>Прежде чем двигаться дальше – несколько упражнений в кодинге.</p>
+<p></br></p>
 <div class="task code">
-<p>Запустите <code>swirl()</code> и пройдите уроки: 3 <code>Sequences of Numbers</code>, 4 <code>Vectors</code>, 5 <code>Missing Values</code>, 6 <code>Subsetting Vectors</code>.</p>
+<p>Здесь можно запустить <code>swirl()</code> и пройти урок 8 <code>Logic</code>. Это не обязательно, но очень полезно, если хотите разобраться в операторах!</p>
 </div>
-<p>Не забудьте отправить подтверждение о прохождении вашему преподавателю.</p>
-<p>Как обычно, несколько вопросов на закрепление новых знаний (пока только по уроку 3).</p>
-<div class="task question">
-<p>Какие числа вернет команда <code>pi:10</code>?</p>
+<p></br></p>
+<div class="ask question">
+<p>Попробуйте посчитать в уме: какое из выражений ниже вернет значение <code>TRUE</code>?</p>
 </div>
-<form name="form_55940" onsubmit="return validate_form_55940()" method="post">
-<input type="radio" name="answer_55940" id="55940_1" value="натуральные"><label for="1">натуральные</label><br><input type="radio" name="answer_55940" id="55940_2" value="целые"><label for="2">целые</label><br><input type="radio" name="answer_55940" id="55940_3" value="рациональные"><label for="3">рациональные</label><br><input type="radio" name="answer_55940" id="55940_4" value="вещественные"><label for="4">вещественные</label><br><input type="radio" name="answer_55940" id="55940_5" value="комплексные"><label for="5">комплексные</label><br><input type="submit" value="check">
+<form name="form_84148" onsubmit="return validate_form_84148()" method="post">
+<input type="radio" name="answer_84148" id="84148_1" value="7 == 9"><label for="1">7 == 9</label><br><input type="radio" name="answer_84148" id="84148_2" value="!(57 != 8)"><label for="2">!(57 != 8)</label><br><input type="radio" name="answer_84148" id="84148_3" value="9 >= 10"><label for="3">9 &gt;= 10</label><br><input type="radio" name="answer_84148" id="84148_4" value="-6 > -7"><label for="4">-6 &gt; -7</label><br><input type="submit" value="check">
 </form>
-<p id="result_55940">
+<p id="result_84148">
 </p>
-<script> function validate_form_55940() {var x, text; var x = document.forms["form_55940"]["answer_55940"].value;if (x == "вещественные"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_55940').innerHTML = text; return false;} </script>
-<div class="task question">
-<p>Какие функции или операторы могут использоваться для создания числовых рядов?</p>
+<script> function validate_form_84148() {var x, text; var x = document.forms["form_84148"]["answer_84148"].value;if (x == "-6 > -7"){text = 'Восторг!';} else {text = 'Посмотрите внимательнее.';} document.getElementById('result_84148').innerHTML = text; return false;} </script>
+<p>Функции <code>all()</code> и <code>any()</code> также возвращают логические значения:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="начало-работы-с-r.html#cb41-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span> </span>
+<span id="cb41-2"><a href="начало-работы-с-r.html#cb41-2" tabindex="-1"></a><span class="fu">any</span>(x <span class="sc">==</span> <span class="dv">15</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="начало-работы-с-r.html#cb43-1" tabindex="-1"></a><span class="fu">all</span>(x <span class="sc">&gt;</span> <span class="dv">9</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="task code">
+<p>Запустите <code>swirl()</code> и пройдите урок 4 <code>Vectors</code>. Это позволит больше узнать про логические и символьные векторы.</p>
 </div>
-<form name="form_72726" onsubmit="return validate_form_72726()" method="post">
-<input type="checkbox" id="answer_72726_1" value="seq()"><label for="answer_72726_1">seq()</label><br><input type="checkbox" id="answer_72726_2" value="rep()"><label for="answer_72726_2">rep()</label><br><input type="checkbox" id="answer_72726_3" value="abs()"><label for="answer_72726_3">abs()</label><br><input type="submit" value="check">
+<p>Несколько вопросов для самопроверки.</p>
+<div class="ask question">
+<p>Какие значение вернет команда <code>(3 &gt; 5) &amp; (4 == 4)</code>?</p>
+</div>
+<form name="form_85174" onsubmit="return validate_form_85174()" method="post">
+<select name="answer_85174"><option> TRUE </option><option> FALSE </option><option> NA </option></select><br><input type="submit" value="check">
 </form>
-<p id="result_72726">
+<p id="result_85174">
 </p>
-<script> function validate_form_72726() {var text;var x1 = document.getElementById("answer_72726_1");var x2 = document.getElementById("answer_72726_2");var x3 = document.getElementById("answer_72726_3");if (x1.checked == true&x2.checked == true&x3.checked == false){text = "Ну это же просто фантастика!";} else {text = "Не совсем.";} document.getElementById("result_72726").innerHTML = text; return false;}</script>
-<div class="task question">
-<p>Сколько значений вернет команда <code>rep(c(0, 1, 2), times = 10)</code>? Посчитайте в уме, не выполняя код.</p>
+<script> function validate_form_85174() {var x, text; var x = document.forms["form_85174"]["answer_85174"].value;if (x == "FALSE"){text = 'Железная логика!';} else {text = 'Нет, одно из условий невыполнимо';} document.getElementById('result_85174').innerHTML = text; return false;} </script>
+<div class="ask question">
+<p>Какие значения вернет команда <code>(TRUE == TRUE) | (TRUE == FALSE)</code>?</p>
 </div>
-<form name="form_56894" onsubmit="return validate_form_56894()" method="post">
-<input type="text" name="answer_56894"><br><input type="submit" value="check">
+<form name="form_62578" onsubmit="return validate_form_62578()" method="post">
+<select name="answer_62578"><option> TRUE </option><option> FALSE </option><option> NA </option></select><br><input type="submit" value="check">
 </form>
-<p id="result_56894">
+<p id="result_62578">
 </p>
-<script> function validate_form_56894() {var x, text; var x = document.forms["form_56894"]["answer_56894"].value;if (x == "30"){text = 'Ах, красота!';} else {text = 'У меня другой ответ&hellip;';} document.getElementById('result_56894').innerHTML = text; return false;} </script>
+<script> function validate_form_62578() {var x, text; var x = document.forms["form_62578"]["answer_62578"].value;if (x == "TRUE"){text = 'Восхищаемся вами';} else {text = 'Это дизъюнкция&hellip;';} document.getElementById('result_62578').innerHTML = text; return false;} </script>
+<div class="ask question">
+<p>Команда <code>paste(LETTERS, 1:4, sep = "-")</code> вернет…</p>
 </div>
-<div id="списки" class="section level2 hasAnchor" number="2.12">
-<h2><span class="header-section-number">2.12</span> Списки<a href="начало-работы-с-r.html#списки" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<form name="form_30002" onsubmit="return validate_form_30002()" method="post">
+<input type="radio" name="answer_30002" id="30002_1" value="числовой вектор длиной 26"><label for="1">числовой вектор длиной 26</label><br><input type="radio" name="answer_30002" id="30002_2" value="символьный вектор длиной 26"><label for="2">символьный вектор длиной 26</label><br><input type="radio" name="answer_30002" id="30002_3" value="числовой вектор длиной 4"><label for="3">числовой вектор длиной 4</label><br><input type="radio" name="answer_30002" id="30002_4" value="символьный вектор длиной 4"><label for="4">символьный вектор длиной 4</label><br><input type="radio" name="answer_30002" id="30002_5" value="ошибку"><label for="5">ошибку</label><br><input type="submit" value="check">
+</form>
+<p id="result_30002">
+</p>
+<script> function validate_form_30002() {var x, text; var x = document.forms["form_30002"]["answer_30002"].value;if (x == "символьный вектор длиной 26"){text = 'Гениально💡';} else {text = 'Не совсем.';} document.getElementById('result_30002').innerHTML = text; return false;} </script>
+<p></br>
+Над векторами можно совершать арифметические операции, но будьте внимательны, применяя операции к векторам разной длины: в этом случае более короткий вектор будет <strong>переработан</strong>, то есть повторен до тех пор, пока его длина не сравняется с длиной вектора большей длины.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="начало-работы-с-r.html#cb45-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span>; y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>); z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb45-2"><a href="начало-работы-с-r.html#cb45-2" tabindex="-1"></a>y <span class="sc">/</span> x </span></code></pre></div>
+<pre><code>## [1]  5 10 15</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="начало-работы-с-r.html#cb47-1" tabindex="-1"></a>x <span class="sc">+</span> y </span></code></pre></div>
+<pre><code>## [1] 12 22 32</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="начало-работы-с-r.html#cb49-1" tabindex="-1"></a>y <span class="sc">+</span> z</span></code></pre></div>
+<pre><code>## [1] 15 26 37</code></pre>
+<p>Векторы можно индексировать, то есть забирать из них какие-то элементы:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="начало-работы-с-r.html#cb51-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb51-2"><a href="начало-работы-с-r.html#cb51-2" tabindex="-1"></a>x[<span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># индексы начинаются с 1 (в отличие от Python)</span></span></code></pre></div>
+<pre><code>## [1] 2.5 3.0</code></pre>
+<div class="task code">
+<p>Запустите <code>swirl()</code> и пройдите урок 6 <code>Subsetting Vectors</code>.</p>
+</div>
+<p>Проверьте, все ли вы поняли из этого урока.</p>
+<div class="ask question">
+<p>Если вектор <code>x</code> содержит числовые значения и некоторое количество NA, то что вернет команда <code>x[is.na(x)]</code>?</p>
+</div>
+<form name="form_22032" onsubmit="return validate_form_22032()" method="post">
+<input type="radio" name="answer_22032" id="22032_1" value="вектор длиной 0"><label for="1">вектор длиной 0</label><br><input type="radio" name="answer_22032" id="22032_2" value="вектор всех NA"><label for="2">вектор всех NA</label><br><input type="radio" name="answer_22032" id="22032_3" value="логический вектор"><label for="3">логический вектор</label><br><input type="radio" name="answer_22032" id="22032_4" value="вектор без NA"><label for="4">вектор без NA</label><br><input type="radio" name="answer_22032" id="22032_5" value="ошибку"><label for="5">ошибку</label><br><input type="submit" value="check">
+</form>
+<p id="result_22032">
+</p>
+<script> function validate_form_22032() {var x, text; var x = document.forms["form_22032"]["answer_22032"].value;if (x == "вектор всех NA"){text = 'Зажигаете! 🔥';} else {text = 'Надо еще подумать';} document.getElementById('result_22032').innerHTML = text; return false;} </script>
+<p>Что надо изменить в этом коде, чтобы получить все, <em>кроме</em> NA?</p>
+<div class="ask question">
+<p>Дан именованный вектор: <code>vect &lt;- c(foo = 11, bar = 2, norf = NA)</code>. Как можно выбрать второй элемент?</p>
+</div>
+<form name="form_15345" onsubmit="return validate_form_15345()" method="post">
+<input type="radio" name="answer_15345" id="15345_1" value="vect[bar]"><label for="1">vect[bar]</label><br><input type="radio" name="answer_15345" id="15345_2" value="vect['2']"><label for="2">vect[‘2’]</label><br><input type="radio" name="answer_15345" id="15345_3" value="vect['bar']"><label for="3">vect[‘bar’]</label><br><input type="submit" value="check">
+</form>
+<p id="result_15345">
+</p>
+<script> function validate_form_15345() {var x, text; var x = document.forms["form_15345"]["answer_15345"].value;if (x == "vect['bar']"){text = 'С вами явно пребывает сила.';} else {text = 'Что-то не так.';} document.getElementById('result_15345').innerHTML = text; return false;} </script>
+</div>
+<div id="отсутствующие-значения" class="section level2 hasAnchor" number="2.12">
+<h2><span class="header-section-number">2.12</span> Отсутствующие значения<a href="начало-работы-с-r.html#отсутствующие-значения" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>NULL</code> означает, что значение не существует. Например, если мы создадим пустой вектор, то при попытке распечатать его получим <code>NULL</code>. А вот длина пустого вектора равна нулю!</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="начало-работы-с-r.html#cb53-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>() </span>
+<span id="cb53-2"><a href="начало-работы-с-r.html#cb53-2" tabindex="-1"></a>y </span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="начало-работы-с-r.html#cb55-1" tabindex="-1"></a><span class="fu">length</span>(y) </span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p><code>NA</code> (not available) указывает на то, что значение существует, но оно неизвестно. Любые операции с <code>NA</code> приводят к появлению новых <code>NA</code>! Сравните:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="начало-работы-с-r.html#cb57-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">2</span>)</span>
+<span id="cb57-2"><a href="начало-работы-с-r.html#cb57-2" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="начало-работы-с-r.html#cb59-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NULL</span>, <span class="dv">2</span>)</span>
+<span id="cb59-2"><a href="начало-работы-с-r.html#cb59-2" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code></pre></div>
+<pre><code>## [1] 1.5</code></pre>
+<p>Как проверить, есть ли в данных <code>NA</code> или <code>NULL</code>? Знак <code>==</code>, который вы встречали в уроке <code>swirl</code>, здесь не подойдет.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="начало-работы-с-r.html#cb61-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb61-2"><a href="начало-работы-с-r.html#cb61-2" tabindex="-1"></a>x <span class="sc">==</span> <span class="cn">NA</span></span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="начало-работы-с-r.html#cb63-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb63-2"><a href="начало-работы-с-r.html#cb63-2" tabindex="-1"></a>y <span class="sc">==</span> <span class="cn">NULL</span></span></code></pre></div>
+<pre><code>## logical(0)</code></pre>
+<p>Для этого есть специальные функции.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="начало-работы-с-r.html#cb65-1" tabindex="-1"></a><span class="fu">is.na</span>(x)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="начало-работы-с-r.html#cb67-1" tabindex="-1"></a><span class="fu">is.null</span>(y)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<blockquote>
+<p>When some people first get to R, they spend a lot of time trying to get rid of NAs. People probably did the same sort of thing when zero was invented. NA is a wonderful thing to have available to you. It is seldom pleasant when your data have missing values, but life if much better with NA than without.</p>
+<p><span class="citation">Burns (<a href="#ref-burns2012r">2012</a>)</span></p>
+</blockquote>
+<p>Как избавиться от NA? В некоторых случаях достаточно аргумента функции.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="начало-работы-с-r.html#cb69-1" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">2</span>), <span class="at">na.rm=</span>T) </span></code></pre></div>
+<pre><code>## [1] 1.5</code></pre>
+<p>Чуть более сложные способы вы узнаете из урока <code>swirl</code> ниже.</p>
+<div class="task code">
+<p>Запустите <code>swirl()</code> и пройдите урок 5 <code>Missing Values</code>.</p>
+</div>
+<p>Готово? Тогда попробуйте ответить на вопрос ниже, не выполняя вычислений в R.</p>
+<div class="ask question">
+<p>Дан вектор <code>x &lt;- c(44, NA, 5, NA)</code>. Сколько <code>NA</code> вернет команда <code>x == NA</code>?</p>
+</div>
+<form name="form_73149" onsubmit="return validate_form_73149()" method="post">
+<input type="text" name="answer_73149"><br><input type="submit" value="check">
+</form>
+<p id="result_73149">
+</p>
+<script> function validate_form_73149() {var x, text; var x = document.forms["form_73149"]["answer_73149"].value;if (x == "4"){text = 'Красота!';} else {text = 'Надо еще подумать.';} document.getElementById('result_73149').innerHTML = text; return false;} </script>
+<p></br></p>
+<div class="float">
+<img src="https://c.pxhere.com/photos/7f/cb/coffee_cup_drink_espresso_caffeine_cafe_breakfast_beverage-893387.jpg!d" style="width:60.0%" alt="Впереди еще списки, матрицы и таблицы. Не забывайте давать себе отдых!" />
+<div class="figcaption"><em>Впереди еще списки, матрицы и таблицы. Не забывайте давать себе отдых!</em></div>
+</div>
+</div>
+<div id="списки" class="section level2 hasAnchor" number="2.13">
+<h2><span class="header-section-number">2.13</span> Списки<a href="начало-работы-с-r.html#списки" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Списки, или рекурсивные векторы (в отличие от атомарных векторов), могут хранить данные разных типов.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="начало-работы-с-r.html#cb57-1" tabindex="-1"></a>list <span class="ot">=</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="at">b =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">c =</span> <span class="fu">c</span>(T, F, T))</span>
-<span id="cb57-2"><a href="начало-работы-с-r.html#cb57-2" tabindex="-1"></a>list</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="начало-работы-с-r.html#cb71-1" tabindex="-1"></a>list <span class="ot">=</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="at">b =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">c =</span> <span class="fu">c</span>(T, F, T))</span>
+<span id="cb71-2"><a href="начало-работы-с-r.html#cb71-2" tabindex="-1"></a>list</span></code></pre></div>
 <pre><code>## $a
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
 ## 
@@ -797,117 +933,149 @@ div.csl-indent {
 ## $c
 ## [1]  TRUE FALSE  TRUE</code></pre>
 <p>Можно получить доступ как к элементам списка целиком, так и к их содержимому.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="начало-работы-с-r.html#cb59-1" tabindex="-1"></a>list<span class="sc">$</span>a <span class="co"># обращение к поименованным элементам </span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="начало-работы-с-r.html#cb73-1" tabindex="-1"></a>list<span class="sc">$</span>a <span class="co"># обращение к поименованным элементам </span></span></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="начало-работы-с-r.html#cb61-1" tabindex="-1"></a>list[<span class="dv">2</span>] <span class="co"># одинарные квадратные скобки извлекают элемент списка целиком</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="начало-работы-с-r.html#cb75-1" tabindex="-1"></a>list[<span class="dv">2</span>] <span class="co"># одинарные квадратные скобки извлекают элемент списка целиком</span></span></code></pre></div>
 <pre><code>## $b
 ## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="начало-работы-с-r.html#cb63-1" tabindex="-1"></a><span class="fu">class</span>(list[<span class="dv">2</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="начало-работы-с-r.html#cb77-1" tabindex="-1"></a><span class="fu">class</span>(list[<span class="dv">2</span>])</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="начало-работы-с-r.html#cb65-1" tabindex="-1"></a>list[[<span class="dv">2</span>]] <span class="co">#  элементы второго элемента </span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="начало-работы-с-r.html#cb79-1" tabindex="-1"></a>list[[<span class="dv">2</span>]] <span class="co">#  элементы второго элемента </span></span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="начало-работы-с-r.html#cb67-1" tabindex="-1"></a><span class="fu">class</span>(list[[<span class="dv">2</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="начало-работы-с-r.html#cb81-1" tabindex="-1"></a><span class="fu">class</span>(list[[<span class="dv">2</span>]])</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="начало-работы-с-r.html#cb69-1" tabindex="-1"></a>list<span class="sc">$</span>c[<span class="dv">1</span>]<span class="co"># первый элемент второго элемента</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="начало-работы-с-r.html#cb83-1" tabindex="-1"></a>list<span class="sc">$</span>c[<span class="dv">1</span>]<span class="co"># первый элемент второго элемента</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Обратите внимание, что <code>list[2]</code> и <code>list[[2]]</code> возвращают объекты разных классов. Нам это еще понадобится при работе с XML.</p>
 <div class="float">
 <img src="https://d33wubrfki0l68.cloudfront.net/2f3f752cae25018554d484464f117e600ff365a2/37627/diagrams/lists-subsetting.png" style="width:60.0%" alt="Индексирование списка в R. Источник 🧂" />
 <div class="figcaption"><em>Индексирование списка в R</em>. <a href="https://r4ds.had.co.nz/vectors.html#subsetting-1">Источник 🧂</a></div>
 </div>
+<p></br></p>
+<div class="task code">
+<p>Установите библиотеку <code>rcorpora</code> и загрузите список с названиями хлеба и сладкой выпечки.</p>
+<pre><code>library(rcorpora)
+my_list &lt;-  corpora(&quot;foods/breads_and_pastries&quot;)</code></pre>
 </div>
-<div id="матрицы" class="section level2 hasAnchor" number="2.13">
-<h2><span class="header-section-number">2.13</span> Матрицы<a href="начало-работы-с-r.html#матрицы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p></br></p>
+<div class="ask question">
+<p>Узнайте длину <code>my_list</code> и введите ее в поле ниже.</p>
+</div>
+<form name="form_97691" onsubmit="return validate_form_97691()" method="post">
+<input type="text" name="answer_97691"><br><input type="submit" value="check">
+</form>
+<p id="result_97691">
+</p>
+<script> function validate_form_97691() {var x, text; var x = document.forms["form_97691"]["answer_97691"].value;if (x == "3"){text = 'Список вкусняшек в вашей власти!';} else {text = 'Нет, еще не все вкусняшки вы учли.';} document.getElementById('result_97691').innerHTML = text; return false;} </script>
+<div class="ask question">
+<p>Достаньте из <code>my_list</code> элемент <code>pastries</code> и узнайте его длину.</p>
+</div>
+<form name="form_57424" onsubmit="return validate_form_57424()" method="post">
+<input type="text" name="answer_57424"><br><input type="submit" value="check">
+</form>
+<p id="result_57424">
+</p>
+<script> function validate_form_57424() {var x, text; var x = document.forms["form_57424"]["answer_57424"].value;if (x == "20"){text = 'Вот вам пончик в награду 🍩';} else {text = 'Нет, не все вкусняшки вы учли.';} document.getElementById('result_57424').innerHTML = text; return false;} </script>
+<div class="ask question">
+<p>А теперь извлеките пятый элемент из <code>pastries</code> и введите ниже его название.</p>
+</div>
+<form name="form_51548" onsubmit="return validate_form_51548()" method="post">
+<input type="text" name="answer_51548"><br><input type="submit" value="check">
+</form>
+<p id="result_51548">
+</p>
+<script> function validate_form_51548() {var x, text; var x = document.forms["form_51548"]["answer_51548"].value;if (x == "croissant"){text = 'Все 🥐🥐🥐 ваши!';} else {text = 'Это я не ем.';} document.getElementById('result_51548').innerHTML = text; return false;} </script>
+<p>Со списками покончено. Теперь можно пойти выпить кофе с <code>my_list$pastries[13]</code>.</p>
+</div>
+<div id="матрицы" class="section level2 hasAnchor" number="2.14">
+<h2><span class="header-section-number">2.14</span> Матрицы<a href="начало-работы-с-r.html#матрицы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="https://images1.memedroid.com/images/UPLOADED10/4fca11183ee26.jpeg" /></p>
 <p>Матрица – это вектор, который имеет два дополнительных атрибута: количество строк и количество столбцов. Из этого следует, что матрица, как и вектор, может хранить данные одного типа. Проверим.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="начало-работы-с-r.html#cb71-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
-<span id="cb71-2"><a href="начало-работы-с-r.html#cb71-2" tabindex="-1"></a>M <span class="co"># все ок</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="начало-работы-с-r.html#cb86-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb86-2"><a href="начало-работы-с-r.html#cb86-2" tabindex="-1"></a>M <span class="co"># все ок</span></span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    3
 ## [2,]    2    4</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="начало-работы-с-r.html#cb73-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&quot;a&quot;</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
-<span id="cb73-2"><a href="начало-работы-с-r.html#cb73-2" tabindex="-1"></a>M <span class="co"># все превратилось в строку! </span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="начало-работы-с-r.html#cb88-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&quot;a&quot;</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb88-2"><a href="начало-работы-с-r.html#cb88-2" tabindex="-1"></a>M <span class="co"># все превратилось в строку! </span></span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,] &quot;1&quot;  &quot;3&quot; 
 ## [2,] &quot;2&quot;  &quot;a&quot;</code></pre>
-<p>В матрице есть строки и столбцы. Их количество определяет размер (порядок) матрицы. Выше мы создали матрицу 2 x 2. Элементы матрицы, как и элементы вектора, можно извлекать по индексу. Сначала указывается номер строки, потом номер столбца.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="начало-работы-с-r.html#cb75-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
-<span id="cb75-2"><a href="начало-работы-с-r.html#cb75-2" tabindex="-1"></a>M[<span class="dv">1</span>, ] <span class="co"># первая строка полностью</span></span></code></pre></div>
+<p>В матрице есть ряды и столбцы. Их количество определяет размер (порядок) матрицы. Выше мы создали матрицу 2 x 2. Элементы матрицы, как и элементы вектора, можно извлекать по индексу. Сначала указывается номер ряда (строки), потом номер столбца.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="начало-работы-с-r.html#cb90-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb90-2"><a href="начало-работы-с-r.html#cb90-2" tabindex="-1"></a>M[<span class="dv">1</span>, ] <span class="co"># первая строка полностью</span></span></code></pre></div>
 <pre><code>## [1] 1 3</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="начало-работы-с-r.html#cb77-1" tabindex="-1"></a>M[,<span class="dv">2</span>] <span class="co"># второй столбец полностью</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="начало-работы-с-r.html#cb92-1" tabindex="-1"></a>M[,<span class="dv">2</span>] <span class="co"># второй столбец полностью</span></span></code></pre></div>
 <pre><code>## [1] 3 4</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="начало-работы-с-r.html#cb79-1" tabindex="-1"></a>M[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># одно значение</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="начало-работы-с-r.html#cb94-1" tabindex="-1"></a>M[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># одно значение</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Обратите внимание, как меняется размерность при индексировании.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="начало-работы-с-r.html#cb81-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
-<span id="cb81-2"><a href="начало-работы-с-r.html#cb81-2" tabindex="-1"></a><span class="fu">class</span>(M)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="начало-работы-с-r.html#cb96-1" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb96-2"><a href="начало-работы-с-r.html#cb96-2" tabindex="-1"></a><span class="fu">class</span>(M)</span></code></pre></div>
 <pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="начало-работы-с-r.html#cb83-1" tabindex="-1"></a><span class="fu">dim</span>(M) <span class="co"># функция для извлечения измерений</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="начало-работы-с-r.html#cb98-1" tabindex="-1"></a><span class="fu">dim</span>(M) <span class="co"># функция для извлечения измерений</span></span></code></pre></div>
 <pre><code>## [1] 2 2</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="начало-работы-с-r.html#cb85-1" tabindex="-1"></a><span class="fu">class</span>(M[<span class="dv">1</span>, ]) <span class="co"># первая строка полностью</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="начало-работы-с-r.html#cb100-1" tabindex="-1"></a><span class="fu">class</span>(M[<span class="dv">1</span>, ]) <span class="co"># первая строка полностью</span></span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="начало-работы-с-r.html#cb87-1" tabindex="-1"></a><span class="fu">dim</span>(M[<span class="dv">1</span>, ]) </span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="начало-работы-с-r.html#cb102-1" tabindex="-1"></a><span class="fu">dim</span>(M[<span class="dv">1</span>, ]) </span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Попытка узнать измерения вектора возвращает <code>NULL</code>, потому что с точки зрения R векторы не являются матрицами из одного столбца или одной строки, и потому не имеют измерений. С другой стороны, можно создать матрицу, в которой будет одна строка или один столбцец. При выводе они выглядят не так, как обычные векторы. Хотя казалось бы.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="начало-работы-с-r.html#cb89-1" tabindex="-1"></a><span class="co"># вектор-строка</span></span>
-<span id="cb89-2"><a href="начало-работы-с-r.html#cb89-2" tabindex="-1"></a>C <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
-<span id="cb89-3"><a href="начало-работы-с-r.html#cb89-3" tabindex="-1"></a>C</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="начало-работы-с-r.html#cb104-1" tabindex="-1"></a><span class="co"># вектор-строка</span></span>
+<span id="cb104-2"><a href="начало-работы-с-r.html#cb104-2" tabindex="-1"></a>C <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb104-3"><a href="начало-работы-с-r.html#cb104-3" tabindex="-1"></a>C</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    2    3</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="начало-работы-с-r.html#cb91-1" tabindex="-1"></a><span class="co"># вектор-столбец</span></span>
-<span id="cb91-2"><a href="начало-работы-с-r.html#cb91-2" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">3</span>)</span>
-<span id="cb91-3"><a href="начало-работы-с-r.html#cb91-3" tabindex="-1"></a>D</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="начало-работы-с-r.html#cb106-1" tabindex="-1"></a><span class="co"># вектор-столбец</span></span>
+<span id="cb106-2"><a href="начало-работы-с-r.html#cb106-2" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb106-3"><a href="начало-работы-с-r.html#cb106-3" tabindex="-1"></a>D</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    1
 ## [2,]    2
 ## [3,]    3</code></pre>
-<p>Над числовыми матрицами в R можно совершать разные операции из линейной алгебры; многие из них нам понадобятся, когда мы будем говорить о латентно-семантическом анализе.</p>
-<p>Пока лишь несколько полезных функций.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="начало-работы-с-r.html#cb93-1" tabindex="-1"></a><span class="co"># в квадратной матрице есть главная и побочная диагонали</span></span>
-<span id="cb93-2"><a href="начало-работы-с-r.html#cb93-2" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>) <span class="co"># ее мы распечатывали выше</span></span>
-<span id="cb93-3"><a href="начало-работы-с-r.html#cb93-3" tabindex="-1"></a><span class="fu">diag</span>(M)</span></code></pre></div>
+<p>Над числовыми матрицами в R можно совершать разные операции из линейной алгебры <span class="citation">(<a href="#ref-буховец2015">А. Буховец и П. Москалев 2015</a>)</span>; многие из них нам понадобятся, когда мы будем говорить о латентно-семантическом анализе. Ниже несколько полезных функций (но пока их можно пропустить).</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="начало-работы-с-r.html#cb108-1" tabindex="-1"></a><span class="co"># в квадратной матрице есть главная и побочная диагонали</span></span>
+<span id="cb108-2"><a href="начало-работы-с-r.html#cb108-2" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>) <span class="co"># ее мы распечатывали выше</span></span>
+<span id="cb108-3"><a href="начало-работы-с-r.html#cb108-3" tabindex="-1"></a><span class="fu">diag</span>(M)</span></code></pre></div>
 <pre><code>## [1] 1 4</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="начало-работы-с-r.html#cb95-1" tabindex="-1"></a><span class="co"># если поставить матрицу на бок, то получится транспонированная матрица</span></span>
-<span id="cb95-2"><a href="начало-работы-с-r.html#cb95-2" tabindex="-1"></a><span class="fu">t</span>(M)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="начало-работы-с-r.html#cb110-1" tabindex="-1"></a><span class="co"># если поставить матрицу на бок, то получится транспонированная матрица</span></span>
+<span id="cb110-2"><a href="начало-работы-с-r.html#cb110-2" tabindex="-1"></a><span class="fu">t</span>(M)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    2
 ## [2,]    3    4</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="начало-работы-с-r.html#cb97-1" tabindex="-1"></a><span class="co"># матрицу можно умножить на скаляр, то есть на обычное число. </span></span>
-<span id="cb97-2"><a href="начало-работы-с-r.html#cb97-2" tabindex="-1"></a>M <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="начало-работы-с-r.html#cb112-1" tabindex="-1"></a><span class="co"># матрицу можно умножить на скаляр, то есть на обычное число. </span></span>
+<span id="cb112-2"><a href="начало-работы-с-r.html#cb112-2" tabindex="-1"></a>M <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    3    9
 ## [2,]    6   12</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="начало-работы-с-r.html#cb99-1" tabindex="-1"></a><span class="co"># матрицы одного размера можно складывать</span></span>
-<span id="cb99-2"><a href="начало-работы-с-r.html#cb99-2" tabindex="-1"></a>M <span class="sc">+</span> M</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="начало-работы-с-r.html#cb114-1" tabindex="-1"></a><span class="co"># матрицы одного размера можно складывать</span></span>
+<span id="cb114-2"><a href="начало-работы-с-r.html#cb114-2" tabindex="-1"></a>M <span class="sc">+</span> M</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    2    6
 ## [2,]    4    8</code></pre>
-<p>Матрицы также можно умножать на другие матрицы и на векторы. Но это уже линан, и мы вернемся к этому в другой раз. Пока, если хотите, можете посмотреть <a href="https://vk.com/video-211800158_456239317">видео</a>.</p>
-<p>Подробнее об элементах линейной алгебры в R см. <span class="citation">(<a href="#ref-буховец2015">А. Буховец и П. Москалев 2015</a>)</span>.</p>
+<p>Если хотите, можете посмотреть <a href="https://vk.com/video-211800158_456239317">видео</a>. Упражнений на матрицы пока не будет! (Они настигнут вас позже.)</p>
 </div>
-<div id="таблицы" class="section level2 hasAnchor" number="2.14">
-<h2><span class="header-section-number">2.14</span> Таблицы<a href="начало-работы-с-r.html#таблицы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="таблицы" class="section level2 hasAnchor" number="2.15">
+<h2><span class="header-section-number">2.15</span> Таблицы<a href="начало-работы-с-r.html#таблицы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Таблицы (кадры данных, data frames) – это двумерные объекты (как и матрицы). Датафреймы отличаются от матриц тем, что их столбцы могут хранить данные разного типа.</p>
 <div class="infobox info">
 <p>Если списки являются разнородными аналогами векторов в одном измерении, кадры данных являются разнородными аналогами матриц для двумерных данных <span class="citation">(<a href="#ref-мэтлофф2019">Мэтлофф 2019, 134</a>)</span>.</p>
 </div>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="начало-работы-с-r.html#cb101-1" tabindex="-1"></a><span class="co"># создание датафрейма</span></span>
-<span id="cb101-2"><a href="начало-работы-с-r.html#cb101-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>))</span>
-<span id="cb101-3"><a href="начало-работы-с-r.html#cb101-3" tabindex="-1"></a>df</span></code></pre></div>
+<p></br></p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="начало-работы-с-r.html#cb116-1" tabindex="-1"></a><span class="co"># создание датафрейма</span></span>
+<span id="cb116-2"><a href="начало-работы-с-r.html#cb116-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>))</span>
+<span id="cb116-3"><a href="начало-работы-с-r.html#cb116-3" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   names age
 ## 1     A  10
 ## 2     B  11</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="начало-работы-с-r.html#cb103-1" tabindex="-1"></a><span class="co"># извлечение элементов</span></span>
-<span id="cb103-2"><a href="начало-работы-с-r.html#cb103-2" tabindex="-1"></a>df<span class="sc">$</span>names <span class="co"># забирает весь столбец</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="начало-работы-с-r.html#cb118-1" tabindex="-1"></a><span class="co"># извлечение элементов</span></span>
+<span id="cb118-2"><a href="начало-работы-с-r.html#cb118-2" tabindex="-1"></a>df<span class="sc">$</span>names <span class="co"># забирает весь столбец</span></span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot;</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="начало-работы-с-r.html#cb105-1" tabindex="-1"></a>df[,<span class="st">&quot;names&quot;</span>] <span class="co"># то же самое, другой способ</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="начало-работы-с-r.html#cb120-1" tabindex="-1"></a>df[,<span class="st">&quot;names&quot;</span>] <span class="co"># то же самое, другой способ</span></span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot;</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="начало-работы-с-r.html#cb107-1" tabindex="-1"></a>df[<span class="dv">1</span>, ] <span class="co"># забирает ряд</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="начало-работы-с-r.html#cb122-1" tabindex="-1"></a>df[<span class="dv">1</span>, ] <span class="co"># забирает ряд</span></span></code></pre></div>
 <pre><code>##   names age
 ## 1     A  10</code></pre>
-<p>Потренируемся на датасете с данными о гапаксах в диалогах Платона. Датасет можно скачать по <a href="https://github.com/locusclassicus/text_analysis_2023/blob/main/data/HapaxPlato.Rdata">ссылке</a>. Файл имеет расширение <code>.Rdata</code>; щелкнув на него правой кнопкой мыши, можете открыть его сразу в RStudio и потренироваться.</p>
-<div class="infobox info">
-<p>Гапакс – это слово, которое встречается один раз в корпусе или тексте.</p>
-</div>
+<p>Потренируемся на датасете с данными о гапаксах<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> в диалогах Платона. Датасет можно скачать по <a href="https://github.com/locusclassicus/text_analysis_2023/blob/main/data/HapaxPlato.Rdata">ссылке</a>. Файл имеет расширение <code>.Rdata</code>; щелкнув на него правой кнопкой мыши, можете открыть его сразу в RStudio и потренироваться.</p>
 <p>Этот датасет позволяет перепроверить выводы Льюиса Кэмпбелла, профессора Сент-Эндрюсского университета в Шотландии. Еще 1867 г., впервые применив количественный метод для датировки диалогов Платона, он пришел к выводу, что для “позднего” стиля Платона, среди прочего, характерно обилие редкой лексики <span class="citation">(<a href="#ref-campbell1867">Campbell 1867</a>, xxxi)</span>.</p>
 <p>В корпус подлинных диалогов Кэмпбелл включал 26 текстов, которые делил на три хронологические группы. Свои вычисления он делал вручную, а мы можем попробовать все пересчитать в R.</p>
 <pre><code>##     dialogue words hapax ratio group
@@ -920,23 +1088,23 @@ div.csl-indent {
 <p>Вот так выглядят наши данные. Функция <code>class()</code> позволяет убедиться, что это датафрейм.</p>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>Потренируемся работать с данными в таблицах.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="начало-работы-с-r.html#cb111-1" tabindex="-1"></a><span class="co"># узнать имена столбцов</span></span>
-<span id="cb111-2"><a href="начало-работы-с-r.html#cb111-2" tabindex="-1"></a><span class="fu">colnames</span>(hapax_plato) </span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="начало-работы-с-r.html#cb126-1" tabindex="-1"></a><span class="co"># узнать имена столбцов</span></span>
+<span id="cb126-2"><a href="начало-работы-с-r.html#cb126-2" tabindex="-1"></a><span class="fu">colnames</span>(hapax_plato) </span></code></pre></div>
 <pre><code>## [1] &quot;dialogue&quot; &quot;words&quot;    &quot;hapax&quot;    &quot;ratio&quot;    &quot;group&quot;</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="начало-работы-с-r.html#cb113-1" tabindex="-1"></a><span class="co"># извлечь ряд(ы) по значению</span></span>
-<span id="cb113-2"><a href="начало-работы-с-r.html#cb113-2" tabindex="-1"></a>hapax_plato[hapax_plato<span class="sc">$</span>dialogue <span class="sc">==</span> <span class="st">&quot;Parmenides&quot;</span>, ] </span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="начало-работы-с-r.html#cb128-1" tabindex="-1"></a><span class="co"># извлечь ряд(ы) по значению</span></span>
+<span id="cb128-2"><a href="начало-работы-с-r.html#cb128-2" tabindex="-1"></a>hapax_plato[hapax_plato<span class="sc">$</span>dialogue <span class="sc">==</span> <span class="st">&quot;Parmenides&quot;</span>, ] </span></code></pre></div>
 <pre><code>##      dialogue words hapax ratio group
 ## 16 Parmenides 15155    20 0.001     2</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="начало-работы-с-r.html#cb115-1" tabindex="-1"></a><span class="co"># узнать тип данных в столбцах</span></span>
-<span id="cb115-2"><a href="начало-работы-с-r.html#cb115-2" tabindex="-1"></a><span class="fu">str</span>(hapax_plato) </span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="начало-работы-с-r.html#cb130-1" tabindex="-1"></a><span class="co"># узнать тип данных в столбцах</span></span>
+<span id="cb130-2"><a href="начало-работы-с-r.html#cb130-2" tabindex="-1"></a><span class="fu">str</span>(hapax_plato) </span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    26 obs. of  5 variables:
 ##  $ dialogue: chr  &quot;Apology&quot; &quot;Charmides&quot; &quot;Cratylus&quot; &quot;Critias&quot; ...
 ##  $ words   : chr  &quot;8745&quot; &quot;8311&quot; &quot;17944&quot; &quot;4950&quot; ...
 ##  $ hapax   : chr  &quot;36&quot; &quot;31&quot; &quot;122&quot; &quot;104&quot; ...
 ##  $ ratio   : chr  &quot;0.004&quot; &quot;0.004&quot; &quot;0.007&quot; &quot;0.021&quot; ...
 ##  $ group   : num  1 1 1 3 1 1 1 1 1 1 ...</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="начало-работы-с-r.html#cb117-1" tabindex="-1"></a><span class="co"># отобрать ряды по количеству слов</span></span>
-<span id="cb117-2"><a href="начало-работы-с-r.html#cb117-2" tabindex="-1"></a>hapax_plato[hapax_plato<span class="sc">$</span>words <span class="sc">&gt;</span> <span class="dv">10000</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="начало-работы-с-r.html#cb132-1" tabindex="-1"></a><span class="co"># отобрать ряды по количеству слов</span></span>
+<span id="cb132-2"><a href="начало-работы-с-r.html#cb132-2" tabindex="-1"></a>hapax_plato[hapax_plato<span class="sc">$</span>words <span class="sc">&gt;</span> <span class="dv">10000</span>, ]</span></code></pre></div>
 <pre><code>##        dialogue  words hapax ratio group
 ## 1       Apology   8745    36 0.004     1
 ## 2     Charmides   8311    31 0.004     1
@@ -964,11 +1132,11 @@ div.csl-indent {
 ## 24    Symposium  17461   127 0.007     1
 ## 25   Theaetetus  22489   162 0.007     2
 ## 26      Timaeus  23662   370 0.016     3</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="начало-работы-с-r.html#cb119-1" tabindex="-1"></a><span class="co"># преобразовать тип данных в столбцах</span></span>
-<span id="cb119-2"><a href="начало-работы-с-r.html#cb119-2" tabindex="-1"></a>hapax_plato<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(hapax_plato<span class="sc">$</span>group)</span>
-<span id="cb119-3"><a href="начало-работы-с-r.html#cb119-3" tabindex="-1"></a>hapax_plato[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">sapply</span>(hapax_plato[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>],as.numeric) <span class="co"># подробнее о функции `sapply()` в уроке про итерации</span></span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="начало-работы-с-r.html#cb134-1" tabindex="-1"></a><span class="co"># преобразовать тип данных в столбцах</span></span>
+<span id="cb134-2"><a href="начало-работы-с-r.html#cb134-2" tabindex="-1"></a>hapax_plato<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(hapax_plato<span class="sc">$</span>group)</span>
+<span id="cb134-3"><a href="начало-работы-с-r.html#cb134-3" tabindex="-1"></a>hapax_plato[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">sapply</span>(hapax_plato[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>],as.numeric) <span class="co"># подробнее о функции `sapply()` в уроке про итерации</span></span></code></pre></div>
 <p>И еще с датафреймами полезна функция <code>summary()</code>:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="начало-работы-с-r.html#cb120-1" tabindex="-1"></a><span class="fu">summary</span>(hapax_plato)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="начало-работы-с-r.html#cb135-1" tabindex="-1"></a><span class="fu">summary</span>(hapax_plato)</span></code></pre></div>
 <pre><code>##    dialogue             words            hapax            ratio          group 
 ##  Length:26          Min.   :  4024   Min.   : 12.00   Min.   :0.001000   1:16  
 ##  Class :character   1st Qu.:  7154   1st Qu.: 31.25   1st Qu.:0.004000   2: 4  
@@ -976,15 +1144,36 @@ div.csl-indent {
 ##                     Mean   : 19364   Mean   :146.69   Mean   :0.007154         
 ##                     3rd Qu.: 17907   3rd Qu.:136.75   3rd Qu.:0.008000         
 ##                     Max.   :103193   Max.   :914.00   Max.   :0.021000</code></pre>
-<p>Последнее упражнение на кодинг в этом уроке!</p>
+<p>Последнее упражнение на кодинг в этой главе!</p>
 <div class="task code">
-<p>Запустите <code>swirl()</code> и пройдите уроки: 7 <code>Matrices and Data Frames</code> и 8 <code>Logic</code>.</p>
+<p>Запустите <code>swirl()</code> и пройдите урок 7 <code>Matrices and Data Frames</code>.</p>
 </div>
+<p>Напоследок небольшое практическое задание. Код для его выполнения сохраните в виде файла с расширением <code>.R</code>. Его надо будет отправить преподавателю.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="начало-работы-с-r.html#cb137-1" tabindex="-1"></a><span class="co"># устанавливаем и загружаем нужный пакет</span></span>
+<span id="cb137-2"><a href="начало-работы-с-r.html#cb137-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;languageR&quot;</span>)</span>
+<span id="cb137-3"><a href="начало-работы-с-r.html#cb137-3" tabindex="-1"></a><span class="fu">library</span>(languageR)</span>
+<span id="cb137-4"><a href="начало-работы-с-r.html#cb137-4" tabindex="-1"></a></span>
+<span id="cb137-5"><a href="начало-работы-с-r.html#cb137-5" tabindex="-1"></a><span class="co"># загружаем датасет</span></span>
+<span id="cb137-6"><a href="начало-работы-с-r.html#cb137-6" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">data</span>(<span class="st">&quot;spanishMeta&quot;</span>)</span>
+<span id="cb137-7"><a href="начало-работы-с-r.html#cb137-7" tabindex="-1"></a></span>
+<span id="cb137-8"><a href="начало-работы-с-r.html#cb137-8" tabindex="-1"></a><span class="co"># допишите ваш код ниже</span></span>
+<span id="cb137-9"><a href="начало-работы-с-r.html#cb137-9" tabindex="-1"></a><span class="co"># посчитайте средний год публикации романов Камило Хосе Селы</span></span>
+<span id="cb137-10"><a href="начало-работы-с-r.html#cb137-10" tabindex="-1"></a></span>
+<span id="cb137-11"><a href="начало-работы-с-r.html#cb137-11" tabindex="-1"></a></span>
+<span id="cb137-12"><a href="начало-работы-с-r.html#cb137-12" tabindex="-1"></a><span class="co"># вычислите суммарное число слов в романах Эдуардо Мендосы</span></span>
+<span id="cb137-13"><a href="начало-работы-с-r.html#cb137-13" tabindex="-1"></a></span>
+<span id="cb137-14"><a href="начало-работы-с-r.html#cb137-14" tabindex="-1"></a></span>
+<span id="cb137-15"><a href="начало-работы-с-r.html#cb137-15" tabindex="-1"></a><span class="co"># извлеките ряды с текстами, опубликованными до 1980 г.</span></span></code></pre></div>
+<p>Поздравляем! С этой главой вы справились. Дальше будет сложнее, но интереснее.</p>
+<p><img src="https://thumbs.gfycat.com/TidyUnlawfulJunco-size_restricted.gif" /></p>
 
 </div>
 </div>
 <h3>Литература<a href="литература.html#литература" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-burns2012r" class="csl-entry">
+Burns, Patrick. 2012. <em>The r Inferno</em>. Lulu. com.
+</div>
 <div id="ref-campbell1867" class="csl-entry">
 Campbell, Lewis. 1867. <em><span class="nocase">The Sophistes and Politicus of Plato with a Revised Text and English Notes</span></em>. Clarendon Press.
 </div>
@@ -1002,6 +1191,7 @@ Campbell, Lewis. 1867. <em><span class="nocase">The Sophistes and Politicus of P
 <hr />
 <ol start="1">
 <li id="fn1"><p><a href="https://intro2r.com/rsprojs.html" class="uri">https://intro2r.com/rsprojs.html</a><a href="начало-работы-с-r.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Гапакс – это слово, которое встречается один раз в корпусе или тексте.<a href="начало-работы-с-r.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

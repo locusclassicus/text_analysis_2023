@@ -12,15 +12,6 @@ swirl()
 # 7 Matrices and Data Frames   
 # 8 Logic        
 
-#Would you like to inform someone about your successful
-# completion of this lesson via email?
-
-## если не настроен почтовый клиент, то отправить письмо не удастся
-## в этом случае:
-## yes на вопрос Would you like to inform someone about your successful
-## completion of this lesson via email?
-## вводите полное имя
-## делаете скриншот (пример в папке images)
 
 ## lesson 2 plotting
 # "R Programming E"
