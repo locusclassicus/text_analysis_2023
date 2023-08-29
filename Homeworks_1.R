@@ -1,33 +1,3 @@
-# lesson 1 starting with R
-install.packages("swirl")
-library(swirl)
-install_course("R Programming E")
-swirl()
-# 1 Basic Building Blocks      
-# 2 Workspace and Files     
-# 3 Sequences of Numbers      
-# 4 Vectors                 
-# 5 Missing Values             
-# 6 Subsetting Vectors      
-# 7 Matrices and Data Frames   
-# 8 Logic        
-
-
-## lesson 2 plotting
-# "R Programming E"
-# 15 Base Graphics
-
-install_course("Exploratory Data Analysis")
-# 1: Principles of Analytic Graphs
-# 2: Exploratory Graphs
-# 3: Graphics Devices in R
-# 4: Plotting Systems
-# 5: Base Plotting System
-# 6: Lattice Plotting System
-# 7: Working with Colors
-# 8: GGPlot2 Part1
-# 9: GGPlot2 Part2
-# 10: GGPlot2 Extras
 
 # lesson 3 tidy data
 swirl::install_course("Getting and Cleaning Data")
