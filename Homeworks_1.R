@@ -1,4 +1,3 @@
-
 # lesson 3 tidy data
 swirl::install_course("Getting and Cleaning Data")
 # 1: Manipulating Data with dplyr

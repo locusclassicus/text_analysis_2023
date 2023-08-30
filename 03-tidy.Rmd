@@ -83,7 +83,17 @@ diorisis_sort <- diorisis_count[order(diorisis_count$Freq, decreasing =T),]
 head(diorisis_sort)
 ```
 
-Тут должен быть какой-то поучительный вывод.
+Тут должен быть какой-то поучительный вывод. Но вместо него будет задание на кодинг.
+
+::::{.task .code}
+Установите курс `swirl::install_course("Getting and Cleaning Data")`.  Загрузите библиотеку `library(swirl)`, запустите `swirl()`, выберите этот курс и пройдите из него урок 1 `Manipulating Data with dplyr`.
+::::
+
+</br>
+
+::::{.infobox .info}
+При попытке загрузить урок вы можете получить сообщение об ошибке: `/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/swirl/Courses/Getting_and_Cleaning_Data/Manipulating_Data_with_dplyr/lesson.yaml) Scanner error: while scanning a tag at line 205, column 9 did not find expected whitespace or line break at line 205, column 19`. Скопируйте путь до файла. На MacOS откройте Finder `>` Go `>` Go to Folder. Вставьте путь до папки в открывшееся окно, найдите там файл `lesson.yaml`.  Скачайте исправленный файл [по ссылке]() и замените его в папке. Не меняйте название! Обсуждение проблемы [здесь](https://github.com/swirldev/swirl_courses/issues/394).
+::::
 
 ## Опрятные данные
 
@@ -91,14 +101,16 @@ head(diorisis_sort)
 
 [^03-tidy-4]: <https://r4ds.had.co.nz/tidy-data.html>
 
-Основные правила опрятных данных:
+Основные принципы опрятных данных:
 
 -   отдельный столбец для каждой переменной;
 -   отдельный ряд для каждого наблюдения;
 -   у каждого значения отдельная ячейка;
 -   один датасет -- одна таблица.
 
-![Принципы опрятных данных](https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png)
+![_Принципы опрятных данных_. [Источник](https://r4ds.had.co.nz/tidy-data.html).](https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png)
+
+</br>
 
 Посмотрите на учебные тибблы из пакета `tidyr` и подумайте, какое из этих правил нарушено в каждом случае.
 

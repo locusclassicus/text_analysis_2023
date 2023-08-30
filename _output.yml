@@ -1,6 +1,7 @@
 bookdown::gitbook:
   css: style.css
   config:
+    sharing: null
     toc:
       before: |
         <li><a href="./">Компьютерный анализ текста в R</a></li>
