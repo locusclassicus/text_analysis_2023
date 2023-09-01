@@ -1,7 +1,5 @@
 # lesson 3 tidy data
 swirl::install_course("Getting and Cleaning Data")
-# 1: Manipulating Data with dplyr
-# 2: Grouping and Chaining with dplyr
 # 3: Tidying Data with tidyr
 
 

@@ -46,9 +46,71 @@ tbl <- tibble('var 1' = 1:2, two = 3:4)
 tbl
 ```
 
+Пора тренироваться.
+
+::::{.task .code}
+Установите курс `swirl::install_course("Getting and Cleaning Data")`.  Загрузите библиотеку `library(swirl)`, запустите `swirl()`, выберите этот курс и пройдите из него урок 1 `Manipulating Data with dplyr`.
+::::
+
+</br>
+
+::::{.infobox .info}
+При попытке загрузить урок вы можете получить сообщение об ошибке: `/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/swirl/Courses/Getting_and_Cleaning_Data/Manipulating_Data_with_dplyr/lesson.yaml) Scanner error: while scanning a tag at line 205, column 9 did not find expected whitespace or line break at line 205, column 19`. Скопируйте путь до папки с курсом. На MacOS откройте Finder `>` Go `>` Go to Folder. Вставьте путь до папки в открывшееся окно, найдите там файл `lesson.yaml`.  Скачайте исправленный файл [по ссылке](https://github.com/locusclassicus/text_analysis_2023/blob/main/files/lesson.yaml) и замените его в папке. Не меняйте название! Обсуждение проблемы [здесь](https://github.com/swirldev/swirl_courses/issues/394). 
+::::
+
+
+**Все попробовали, не получилось?**
+
+:::spoiler
+Ну и ладно. Двигайтесь дальше. 
+:::
+
+**Все получилось?**
+
+:::spoiler
+Классно! Двигайтесь дальше.
+:::
+
+
+Время вопросов! Обычный датафрейм или тиббл?
+
+::::{.ask .question}
+По умолчанию распечатывает только первые 10 рядов в консоль.
+::::
+
+```{r echo=FALSE, results='asis'}
+library(checkdown)
+check_question("тиббл", options = c("датафрейм", "тиббл"), right = "✅", wrong =  "❌")
+```
+ 
+::::{.ask .question}
+Молчаливо исправляет некорректные названия столбцов.
+::::
+```{r echo=FALSE, results='asis'}
+check_question("датафрейм", options = c("датафрейм", "тиббл"), right = "✅", wrong =  "❌")
+```
+
+::::{.ask .question}
+По умолчанию конвертирует строки в факторы при импорте данных. 
+::::
+
+```{r echo=FALSE, results='asis'}
+check_question("датафрейм", options = c("датафрейм", "тиббл"), right = "✅", wrong =  "❌")
+```
+
+::::{.ask .question}
+Не имеет названий рядов.
+::::
+
+```{r echo=FALSE, results='asis'}
+check_question("тиббл", options = c("датафрейм", "тиббл"), right = "✅", wrong =  "❌")
+```
+
+Кстати, обратили внимание, как работает оператор `<=` с символьным вектором? 
+
 ### Dplyr
 
-Но самое главное, tibble подходит для "грамматики манипуляции данных", лежащей в основе `dplyr`[^03-tidy-3]. Эта грамматика предоставляет последовательный набор глаголов, которые помогают решать наиболее распространенные задачи манипулирования данными:
+В уроке `swirl` выше вы уже немного познакомились с "грамматикой манипуляции данных", лежащей в основе `dplyr`[^03-tidy-3]. Здесь об этом будет сказано подробнее. Эта грамматика предоставляет последовательный набор глаголов, которые помогают решать наиболее распространенные задачи манипулирования данными:
 
 [^03-tidy-3]: <https://dplyr.tidyverse.org/>
 
@@ -65,7 +127,7 @@ tbl
 ```{r}
 diorisis_meta %>% 
   select(-subgenre) %>% 
-  filter(genre == "Narrative") %>%  # не нужны кавычки!
+  filter(genre == "Narrative") %>%  
   group_by(name) %>% 
   count() %>% 
   arrange(-n)
@@ -83,17 +145,36 @@ diorisis_sort <- diorisis_count[order(diorisis_count$Freq, decreasing =T),]
 head(diorisis_sort)
 ```
 
-Тут должен быть какой-то поучительный вывод. Но вместо него будет задание на кодинг.
+Тут должен быть какой-то поучительный вывод. Но вместо него будет задание на кодинг. Вам придется редактировать код, который предложит программа, так что сгруппируйтесь.
 
 ::::{.task .code}
-Установите курс `swirl::install_course("Getting and Cleaning Data")`.  Загрузите библиотеку `library(swirl)`, запустите `swirl()`, выберите этот курс и пройдите из него урок 1 `Manipulating Data with dplyr`.
+Запустите `swirl()`, выберите курс `Getting and Cleaning Data` и пройдите из него урок 2 `Grouping and Chaining with dplyr`.
 ::::
 
-</br>
+Правда или ложь?
 
-::::{.infobox .info}
-При попытке загрузить урок вы можете получить сообщение об ошибке: `/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/swirl/Courses/Getting_and_Cleaning_Data/Manipulating_Data_with_dplyr/lesson.yaml) Scanner error: while scanning a tag at line 205, column 9 did not find expected whitespace or line break at line 205, column 19`. Скопируйте путь до файла. На MacOS откройте Finder `>` Go `>` Go to Folder. Вставьте путь до папки в открывшееся окно, найдите там файл `lesson.yaml`.  Скачайте исправленный файл [по ссылке]() и замените его в папке. Не меняйте название! Обсуждение проблемы [здесь](https://github.com/swirldev/swirl_courses/issues/394).
+::::{.ask .question}
+Функция `n_distinct()` возвращает все уникальные значения. 
 ::::
+
+```{r echo=FALSE, results='asis'}
+check_question("Ложь", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
+```
+
+::::{.ask .question}
+Если `x <- 1:100`, то функция `quantile(x, probs = 0.9)` вернет значения от 91 до 100. 
+::::
+
+```{r echo=FALSE, results='asis'}
+check_question("Ложь", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
+```
+
+:::spoiler
+Кванти́ль в математической статистике — значение, которое заданная случайная величина не превышает с фиксированной вероятностью. В нашем случае 90% данных ниже 90.1.
+:::
+
+Это было сложное задание, время сделать перерыв ☕
+
 
 ## Опрятные данные
 
@@ -136,9 +217,42 @@ table4b
 
 Также упомянем функцию `distinct()` из `dplyr`, которая оставляет только уникальные наблюдения и предсталяет собой аналог базовой `unique()` для таблиц.
 
-Кроме того, в `dplyr` есть полезное семейство функций `_join`, позволяющих объединять данные в различных таблицах.[^03-tidy-5] Дальше мы потренируемся с ними работать.
+Кроме того, в `dplyr` есть полезное семейство функций `_join`, позволяющих объединять данные в различных таблицах.[^03-tidy-5] Дальше мы потренируемся с ними работать, но сначала пройдем урок `swirl`. Это достаточно сложный урок (снова понадобится редактировать скрипт), но он нам дальше здорово поможет. 
+
 
 [^03-tidy-5]: <https://r4ds.had.co.nz/relational-data.html>
+
+::::{.task .code}
+Запустите `swirl()`, выберите курс `Getting and Cleaning Data` и пройдите из него урок 3 `Tidying Data with tidyr`.
+::::
+
+Правда или ложь?
+
+::::{.ask .question}
+Функция `separate()` обязательно требует указать разделитель.
+::::
+
+```{r echo=FALSE, results='asis'}
+check_question("Ложь", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
+```
+
+::::{.ask .question}
+Принципы опрятных данных требуют, чтобы одному наблюдению соответствовал один столбец.
+::::
+
+```{r echo=FALSE, results='asis'}
+check_question("Ложь", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
+```
+
+::::{.ask .question}
+Функция `contains()` используется вместе с `filter()` для выбора рядов.
+::::
+
+```{r echo=FALSE, results='asis'}
+check_question("Ложь", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
+```
+
+Отличная работа! Больше `swirl` в этом уроке не будет, дальше -- только реальные данные.
 
 ## Пример: буккроссинг
 
@@ -180,7 +294,8 @@ head(books)
 -   Age представляет собой строку и др.
 :::
 
--   Прежде чем начинать преобразование, надо сформулировать примерный вопрос и понять, что для нас важно, а что нет.
+
+Прежде чем начинать преобразование, надо сформулировать примерный вопрос и понять, что для нас важно, а что нет.
 
 ::: spoiler
 Например: 
