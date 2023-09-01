@@ -477,8 +477,8 @@ div.csl-indent {
 <div id="от-conllu-к-совместной-встречаемости" class="section level2 hasAnchor" number="17.1">
 <h2><span class="header-section-number">17.1</span> От conllu к совместной встречаемости<a href="анализ-сетей.html#от-conllu-к-совместной-встречаемости" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Файлы “Исповеди” уже с размеченными частями речи, проверенный вручную, доступен в <a href="https://github.com/CIRCSE/AugustiniConfessiones/tree/main">репозитории на GitHub</a>. Эти файлы я заранее скачала в рабочую директорию курса.</p>
-<div class="sourceCode" id="cb989"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb989-1"><a href="анализ-сетей.html#cb989-1" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;./files/augustinus/&quot;</span>)</span>
-<span id="cb989-2"><a href="анализ-сетей.html#cb989-2" tabindex="-1"></a>files</span></code></pre></div>
+<div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="анализ-сетей.html#cb990-1" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;./files/augustinus/&quot;</span>)</span>
+<span id="cb990-2"><a href="анализ-сетей.html#cb990-2" tabindex="-1"></a>files</span></code></pre></div>
 <pre><code>##  [1] &quot;Augustinus_Confessiones_Liber1.tsv.conllu&quot; 
 ##  [2] &quot;Augustinus_Confessiones_Liber10.tsv.conllu&quot;
 ##  [3] &quot;Augustinus_Confessiones_Liber11.tsv.conllu&quot;
@@ -493,22 +493,22 @@ div.csl-indent {
 ## [12] &quot;Augustinus_Confessiones_Liber8.tsv.conllu&quot; 
 ## [13] &quot;Augustinus_Confessiones_Liber9.tsv.conllu&quot;</code></pre>
 <p>Сначала их нужно прочитать.</p>
-<div class="sourceCode" id="cb991"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb991-1"><a href="анализ-сетей.html#cb991-1" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
-<span id="cb991-2"><a href="анализ-сетей.html#cb991-2" tabindex="-1"></a>filenames <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;./files/augustinus/&quot;</span>, files)</span>
-<span id="cb991-3"><a href="анализ-сетей.html#cb991-3" tabindex="-1"></a><span class="fu">head</span>(filenames)</span></code></pre></div>
+<div class="sourceCode" id="cb992"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb992-1"><a href="анализ-сетей.html#cb992-1" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
+<span id="cb992-2"><a href="анализ-сетей.html#cb992-2" tabindex="-1"></a>filenames <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;./files/augustinus/&quot;</span>, files)</span>
+<span id="cb992-3"><a href="анализ-сетей.html#cb992-3" tabindex="-1"></a><span class="fu">head</span>(filenames)</span></code></pre></div>
 <pre><code>## [1] &quot;./files/augustinus/Augustinus_Confessiones_Liber1.tsv.conllu&quot; 
 ## [2] &quot;./files/augustinus/Augustinus_Confessiones_Liber10.tsv.conllu&quot;
 ## [3] &quot;./files/augustinus/Augustinus_Confessiones_Liber11.tsv.conllu&quot;
 ## [4] &quot;./files/augustinus/Augustinus_Confessiones_Liber12.tsv.conllu&quot;
 ## [5] &quot;./files/augustinus/Augustinus_Confessiones_Liber13.tsv.conllu&quot;
 ## [6] &quot;./files/augustinus/Augustinus_Confessiones_Liber2.tsv.conllu&quot;</code></pre>
-<div class="sourceCode" id="cb993"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb993-1"><a href="анализ-сетей.html#cb993-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb993-2"><a href="анализ-сетей.html#cb993-2" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb993-3"><a href="анализ-сетей.html#cb993-3" tabindex="-1"></a>confessions_ann <span class="ot">&lt;-</span> <span class="fu">map_df</span>(filenames, udpipe_read_conllu)</span>
-<span id="cb993-4"><a href="анализ-сетей.html#cb993-4" tabindex="-1"></a>confessions_ann <span class="ot">&lt;-</span> confessions_ann <span class="sc">%&gt;%</span> </span>
-<span id="cb993-5"><a href="анализ-сетей.html#cb993-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>doc_id, <span class="sc">-</span>paragraph_id, <span class="sc">-</span>xpos, <span class="sc">-</span>feats, <span class="sc">-</span>head_token_id, <span class="sc">-</span>dep_rel, <span class="sc">-</span>deps, <span class="sc">-</span>misc)</span>
-<span id="cb993-6"><a href="анализ-сетей.html#cb993-6" tabindex="-1"></a></span>
-<span id="cb993-7"><a href="анализ-сетей.html#cb993-7" tabindex="-1"></a><span class="fu">head</span>(confessions_ann)</span></code></pre></div>
+<div class="sourceCode" id="cb994"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb994-1"><a href="анализ-сетей.html#cb994-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb994-2"><a href="анализ-сетей.html#cb994-2" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb994-3"><a href="анализ-сетей.html#cb994-3" tabindex="-1"></a>confessions_ann <span class="ot">&lt;-</span> <span class="fu">map_df</span>(filenames, udpipe_read_conllu)</span>
+<span id="cb994-4"><a href="анализ-сетей.html#cb994-4" tabindex="-1"></a>confessions_ann <span class="ot">&lt;-</span> confessions_ann <span class="sc">%&gt;%</span> </span>
+<span id="cb994-5"><a href="анализ-сетей.html#cb994-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>doc_id, <span class="sc">-</span>paragraph_id, <span class="sc">-</span>xpos, <span class="sc">-</span>feats, <span class="sc">-</span>head_token_id, <span class="sc">-</span>dep_rel, <span class="sc">-</span>deps, <span class="sc">-</span>misc)</span>
+<span id="cb994-6"><a href="анализ-сетей.html#cb994-6" tabindex="-1"></a></span>
+<span id="cb994-7"><a href="анализ-сетей.html#cb994-7" tabindex="-1"></a><span class="fu">head</span>(confessions_ann)</span></code></pre></div>
 <pre><code>##                        sentence_id                                   sentence
 ## 1 Augustinus_Confessiones_Liber1-1 magnus es , domine , et laudabilis valde .
 ## 2 Augustinus_Confessiones_Liber1-1 magnus es , domine , et laudabilis valde .
@@ -524,14 +524,14 @@ div.csl-indent {
 ## 5        5      ,       , PUNCT
 ## 6        6     et      et CCONJ</code></pre>
 <p>Теперь можно посчитать совместную встречаемость, например, в рамках одного предложения. Для удобства визуализации я выберу только существительные, которые встречаются чаще 5 раз.</p>
-<div class="sourceCode" id="cb995"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb995-1"><a href="анализ-сетей.html#cb995-1" tabindex="-1"></a>confessions_words <span class="ot">&lt;-</span> confessions_ann <span class="sc">%&gt;%</span></span>
-<span id="cb995-2"><a href="анализ-сетей.html#cb995-2" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb995-3"><a href="анализ-сетей.html#cb995-3" tabindex="-1"></a>  <span class="fu">group_by</span>(lemma) <span class="sc">%&gt;%</span> </span>
-<span id="cb995-4"><a href="анализ-сетей.html#cb995-4" tabindex="-1"></a>  <span class="fu">add_count</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb995-5"><a href="анализ-сетей.html#cb995-5" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb995-6"><a href="анализ-сетей.html#cb995-6" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n)</span>
-<span id="cb995-7"><a href="анализ-сетей.html#cb995-7" tabindex="-1"></a></span>
-<span id="cb995-8"><a href="анализ-сетей.html#cb995-8" tabindex="-1"></a>confessions_words</span></code></pre></div>
+<div class="sourceCode" id="cb996"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb996-1"><a href="анализ-сетей.html#cb996-1" tabindex="-1"></a>confessions_words <span class="ot">&lt;-</span> confessions_ann <span class="sc">%&gt;%</span></span>
+<span id="cb996-2"><a href="анализ-сетей.html#cb996-2" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb996-3"><a href="анализ-сетей.html#cb996-3" tabindex="-1"></a>  <span class="fu">group_by</span>(lemma) <span class="sc">%&gt;%</span> </span>
+<span id="cb996-4"><a href="анализ-сетей.html#cb996-4" tabindex="-1"></a>  <span class="fu">add_count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb996-5"><a href="анализ-сетей.html#cb996-5" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb996-6"><a href="анализ-сетей.html#cb996-6" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n)</span>
+<span id="cb996-7"><a href="анализ-сетей.html#cb996-7" tabindex="-1"></a></span>
+<span id="cb996-8"><a href="анализ-сетей.html#cb996-8" tabindex="-1"></a>confessions_words</span></code></pre></div>
 <pre><code>## # A tibble: 11,274 × 6
 ## # Groups:   lemma [431]
 ##    sentence_id                      sentence          token_id token lemma upos 
@@ -548,12 +548,12 @@ div.csl-indent {
 ## 10 Augustinus_Confessiones_Liber1-3 et laudare te vu… 23       test… test… NOUN 
 ## # ℹ 11,264 more rows</code></pre>
 <p>Теперь можно составить матрицу совместной встречаемости (и убрать редкие пары).</p>
-<div class="sourceCode" id="cb997"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb997-1"><a href="анализ-сетей.html#cb997-1" tabindex="-1"></a>cooc <span class="ot">&lt;-</span> <span class="fu">cooccurrence</span>(confessions_words, <span class="at">term =</span> <span class="st">&quot;lemma&quot;</span>, <span class="at">group =</span> <span class="st">&quot;sentence_id&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb998"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb998-1"><a href="анализ-сетей.html#cb998-1" tabindex="-1"></a>cooc <span class="ot">&lt;-</span> cooc <span class="sc">%&gt;%</span> </span>
-<span id="cb998-2"><a href="анализ-сетей.html#cb998-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb998-3"><a href="анализ-сетей.html#cb998-3" tabindex="-1"></a>  <span class="fu">filter</span>(cooc <span class="sc">&gt;</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb998-4"><a href="анализ-сетей.html#cb998-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">value =</span> cooc)</span>
-<span id="cb998-5"><a href="анализ-сетей.html#cb998-5" tabindex="-1"></a>cooc </span></code></pre></div>
+<div class="sourceCode" id="cb998"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb998-1"><a href="анализ-сетей.html#cb998-1" tabindex="-1"></a>cooc <span class="ot">&lt;-</span> <span class="fu">cooccurrence</span>(confessions_words, <span class="at">term =</span> <span class="st">&quot;lemma&quot;</span>, <span class="at">group =</span> <span class="st">&quot;sentence_id&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb999"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb999-1"><a href="анализ-сетей.html#cb999-1" tabindex="-1"></a>cooc <span class="ot">&lt;-</span> cooc <span class="sc">%&gt;%</span> </span>
+<span id="cb999-2"><a href="анализ-сетей.html#cb999-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb999-3"><a href="анализ-сетей.html#cb999-3" tabindex="-1"></a>  <span class="fu">filter</span>(cooc <span class="sc">&gt;</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb999-4"><a href="анализ-сетей.html#cb999-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">value =</span> cooc)</span>
+<span id="cb999-5"><a href="анализ-сетей.html#cb999-5" tabindex="-1"></a>cooc </span></code></pre></div>
 <pre><code>## # A tibble: 264 × 3
 ##    term1      term2      value
 ##    &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;
@@ -572,12 +572,12 @@ div.csl-indent {
 <div id="граф-слов-с-igraph" class="section level2 hasAnchor" number="17.2">
 <h2><span class="header-section-number">17.2</span> Граф слов с igraph<a href="анализ-сетей.html#граф-слов-с-igraph" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>При создании графа уточним, что связи носят ненаправленный характер.</p>
-<div class="sourceCode" id="cb1000"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1000-1"><a href="анализ-сетей.html#cb1000-1" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
-<span id="cb1000-2"><a href="анализ-сетей.html#cb1000-2" tabindex="-1"></a>confessions_graph <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(cooc, <span class="at">directed =</span> F)</span>
-<span id="cb1000-3"><a href="анализ-сетей.html#cb1000-3" tabindex="-1"></a>confessions_graph</span></code></pre></div>
-<pre><code>## IGRAPH f3e5a0f UN-- 102 264 -- 
+<div class="sourceCode" id="cb1001"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1001-1"><a href="анализ-сетей.html#cb1001-1" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1001-2"><a href="анализ-сетей.html#cb1001-2" tabindex="-1"></a>confessions_graph <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(cooc, <span class="at">directed =</span> F)</span>
+<span id="cb1001-3"><a href="анализ-сетей.html#cb1001-3" tabindex="-1"></a>confessions_graph</span></code></pre></div>
+<pre><code>## IGRAPH 3fabcee UN-- 102 264 -- 
 ## + attr: name (v/c), value (e/n)
-## + edges from f3e5a0f (vertex names):
+## + edges from 3fabcee (vertex names):
 ##  [1] caelum    --terra      animus    --memoria    dies      --nox       
 ##  [4] caelum    --principium dominus   --homo       spatium   --tempus    
 ##  [7] nomen     --terra      anima     --corpus     imago     --memoria   
@@ -588,59 +588,59 @@ div.csl-indent {
 ## [22] aqua      --terra      creatura  --terra      dies      --terra     
 ## + ... omitted several edges</code></pre>
 <p>Попробуем изобразить (хотя для больших графов лучше строить интерактивную модель, в этом уроке наc больше интересует анализ связей, а не их визуализация).</p>
-<div class="sourceCode" id="cb1002"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1002-1"><a href="анализ-сетей.html#cb1002-1" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
-<span id="cb1002-2"><a href="анализ-сетей.html#cb1002-2" tabindex="-1"></a><span class="fu">ggraph</span>(confessions_graph, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb1002-3"><a href="анализ-сетей.html#cb1002-3" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">edge_alpha =</span> value)) <span class="sc">+</span></span>
-<span id="cb1002-4"><a href="анализ-сетей.html#cb1002-4" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color=</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb1002-5"><a href="анализ-сетей.html#cb1002-5" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">repel=</span>T), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb1002-6"><a href="анализ-сетей.html#cb1002-6" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1003"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1003-1"><a href="анализ-сетей.html#cb1003-1" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb1003-2"><a href="анализ-сетей.html#cb1003-2" tabindex="-1"></a><span class="fu">ggraph</span>(confessions_graph, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1003-3"><a href="анализ-сетей.html#cb1003-3" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">edge_alpha =</span> value)) <span class="sc">+</span></span>
+<span id="cb1003-4"><a href="анализ-сетей.html#cb1003-4" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color=</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb1003-5"><a href="анализ-сетей.html#cb1003-5" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">repel=</span>T), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb1003-6"><a href="анализ-сетей.html#cb1003-6" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-538-1.png" width="672" />
 ## Интерактивный график</p>
 <p>Очень просто, но не очень смотрибельно.</p>
-<div class="sourceCode" id="cb1003"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1003-1"><a href="анализ-сетей.html#cb1003-1" tabindex="-1"></a><span class="co"># install.packages(&quot;networkD3&quot;)</span></span>
-<span id="cb1003-2"><a href="анализ-сетей.html#cb1003-2" tabindex="-1"></a><span class="fu">library</span>(networkD3)</span>
-<span id="cb1003-3"><a href="анализ-сетей.html#cb1003-3" tabindex="-1"></a><span class="fu">simpleNetwork</span>(cooc)</span></code></pre></div>
+<div class="sourceCode" id="cb1004"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1004-1"><a href="анализ-сетей.html#cb1004-1" tabindex="-1"></a><span class="co"># install.packages(&quot;networkD3&quot;)</span></span>
+<span id="cb1004-2"><a href="анализ-сетей.html#cb1004-2" tabindex="-1"></a><span class="fu">library</span>(networkD3)</span>
+<span id="cb1004-3"><a href="анализ-сетей.html#cb1004-3" tabindex="-1"></a><span class="fu">simpleNetwork</span>(cooc)</span></code></pre></div>
 <div class="forceNetwork html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-27adf15faf8914e23a8d" style="width:672px;height:480px;"></div>
 <script type="application/json" data-for="htmlwidget-27adf15faf8914e23a8d">{"x":{"links":{"source":[10,6,22,10,23,85,64,5,34,73,10,18,49,32,0,21,5,10,32,8,10,8,20,22,50,18,10,5,90,10,10,18,22,21,62,91,5,6,25,32,22,47,85,32,89,23,6,53,32,23,18,32,17,10,35,6,0,32,23,45,13,10,32,10,18,11,61,0,63,7,32,34,10,41,10,23,23,91,18,18,13,3,18,57,78,74,5,5,10,18,18,74,83,10,86,10,95,18,10,6,10,37,18,32,53,12,72,38,20,23,94,10,5,5,10,13,19,6,13,8,18,5,25,32,18,32,26,74,77,5,60,89,91,2,10,14,28,23,32,57,20,28,57,23,89,9,15,22,20,30,5,23,6,22,18,17,32,64,32,73,10,74,23,1,69,53,80,21,94,32,9,5,8,17,22,6,32,10,18,32,32,22,18,49,6,23,53,22,10,13,5,19,28,32,86,41,58,22,39,57,73,32,27,20,17,81,85,4,6,13,10,23,23,21,32,32,24,55,41,23,44,17,18,85,29,54,53,29,56,75,5,10,13,17,18,31,32,26,23,5,0,25,32,48,10,17,5,42,6,34,10,18,41,50,45,65,87,32,30,55,94,25,57,89],"target":[91,53,65,73,32,89,91,18,53,91,64,79,91,99,91,23,99,49,94,10,20,91,91,91,91,99,22,91,91,23,26,41,83,32,91,94,32,18,32,37,89,91,96,91,91,25,74,74,87,89,91,95,23,62,91,93,10,51,64,90,94,47,55,63,69,84,89,90,91,22,34,74,77,85,89,91,99,99,28,32,79,89,89,89,91,94,13,23,43,55,67,89,89,90,91,94,99,34,35,36,50,52,53,56,66,85,85,94,95,95,95,99,8,17,18,18,20,32,32,47,52,55,70,71,74,88,91,91,91,94,99,101,101,7,32,32,32,56,74,74,89,91,91,94,94,101,22,26,32,32,45,48,57,59,61,67,68,74,75,77,78,79,87,91,91,93,94,99,99,100,17,21,26,32,33,34,52,55,57,57,60,61,62,64,67,74,79,85,87,87,89,89,89,89,89,91,91,94,94,94,94,97,99,100,101,101,101,6,23,23,28,29,30,37,39,40,53,63,69,71,83,87,87,88,95,95,98,99,99,99,100,101,16,21,23,32,42,43,45,46,50,64,67,70,74,74,76,77,79,82,83,85,89,90,91,91,91,92,94,95,97,99,99,100],"value":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"colour":["#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["abyssus","aer","aetas","aeternitas","affectio","anima","animus","annus","aqua","auris","caelum","cantus","carmen","caro","causa","circuitus","concupiscentia","cor","corpus","creator","creatura","deus","dies","dominus","exspectatio","filius","firmamentum","fons","forma","gaudium","genus","gratia","homo","hora","imago","informitas","laetitia","lex","liber","lingua","littera","locus","lumen","luminare","luna","lux","manus","mare","mater","materia","materies","mediator","membrum","memoria","mendacium","mens","misericordia","modus","moles","mora","mors","motus","mundus","natura","nomen","nox","obliuio","oculus","pactum","pars","pater","peccatum","pes","principium","res","saeculum","salus","sapientia","scriptura","sensus","sententia","silentium","similitudo","sol","sonus","spatium","species","spiritus","syllaba","tempus","tenebra","terra","testimonium","tristitia","uerbum","ueritas","uersus","uia","uis","uita","uoluntas","uox"],"group":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"nodesize":[8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8]},"options":{"NodeID":"name","Group":"group","colourScale":"d3.scaleOrdinal(['#3182bd'])","fontSize":7,"fontFamily":"serif","clickTextSize":17.5,"linkDistance":50,"linkWidth":"'1.5px'.toString()","charge":-30,"opacity":0.6,"zoom":false,"legend":false,"arrows":false,"nodesize":true,"radiusCalculation":"d.nodesize","bounded":false,"opacityNoHover":1,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
-<div class="sourceCode" id="cb1004"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1004-1"><a href="анализ-сетей.html#cb1004-1" tabindex="-1"></a><span class="co"># conf_net &lt;- simpleNetwork(cooc)</span></span>
-<span id="cb1004-2"><a href="анализ-сетей.html#cb1004-2" tabindex="-1"></a><span class="co"># saveNetwork(conf_net, file=&quot;Conf_net.html&quot;, selfcontained = T)</span></span></code></pre></div>
+<div class="sourceCode" id="cb1005"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1005-1"><a href="анализ-сетей.html#cb1005-1" tabindex="-1"></a><span class="co"># conf_net &lt;- simpleNetwork(cooc)</span></span>
+<span id="cb1005-2"><a href="анализ-сетей.html#cb1005-2" tabindex="-1"></a><span class="co"># saveNetwork(conf_net, file=&quot;Conf_net.html&quot;, selfcontained = T)</span></span></code></pre></div>
 <p>Можно чуть усложнить<a href="#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a>; код ниже, а результат смотрим <a href="https://locusclassicus.github.io/confessiones/">здесь</a>.</p>
 </div>
 <div id="важность-узлов" class="section level2 hasAnchor" number="17.3">
 <h2><span class="header-section-number">17.3</span> Важность узлов<a href="анализ-сетей.html#важность-узлов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Важность</strong> (prominence) участника (актора, вершины, узла) определяется его положением внутри сети. Применительно к ненаправленным сетям говорят о <strong>центральности</strong> (центральный актор вовлечен в наибольшее количество связей, прямых или косвенных), а применительно к направленным – о <strong>престиже</strong>. Престижный актор характеризуется большим количеством входящих связей.</p>
 <p><strong>Центральность по степени</strong> (degree centrality) определяется количеством связи: чем больше прямых связей, тем более важным является узел.</p>
-<div class="sourceCode" id="cb1005"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1005-1"><a href="анализ-сетей.html#cb1005-1" tabindex="-1"></a>degrees <span class="ot">&lt;-</span> <span class="fu">degree</span>(confessions_graph)</span>
-<span id="cb1005-2"><a href="анализ-сетей.html#cb1005-2" tabindex="-1"></a><span class="fu">sort</span>(degrees, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb1006"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1006-1"><a href="анализ-сетей.html#cb1006-1" tabindex="-1"></a>degrees <span class="ot">&lt;-</span> <span class="fu">degree</span>(confessions_graph)</span>
+<span id="cb1006-2"><a href="анализ-сетей.html#cb1006-2" tabindex="-1"></a><span class="fu">sort</span>(degrees, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##    homo   terra  caelum  corpus dominus  tempus  uerbum   anima    uita     res 
 ##      40      36      30      24      23      21      18      16      16      14</code></pre>
 <p>Центральным понятием по степени для “Исповеди” является “человек”. Это слово имеет максимальное число связей.</p>
 <p><strong>Центральность по близости</strong> (closeness centrality) говорит о том, насколько близко узел расположен к другим узлам сети. Центральность по близости – это величина, обратная сумме расстояний от узла i до всех остальных узлов сети.</p>
-<div class="sourceCode" id="cb1007"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1007-1"><a href="анализ-сетей.html#cb1007-1" tabindex="-1"></a>closeness <span class="ot">&lt;-</span> <span class="fu">closeness</span>(confessions_graph)</span>
-<span id="cb1007-2"><a href="анализ-сетей.html#cb1007-2" tabindex="-1"></a><span class="fu">sort</span>(closeness, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb1008"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1008-1"><a href="анализ-сетей.html#cb1008-1" tabindex="-1"></a>closeness <span class="ot">&lt;-</span> <span class="fu">closeness</span>(confessions_graph)</span>
+<span id="cb1008-2"><a href="анализ-сетей.html#cb1008-2" tabindex="-1"></a><span class="fu">sort</span>(closeness, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##      cantus       sonus        homo       terra      caelum      corpus 
 ## 1.000000000 1.000000000 0.005813953 0.005649718 0.005434783 0.005347594 
 ##      tempus     dominus      uerbum         res 
 ## 0.005291005 0.005263158 0.005128205 0.004975124</code></pre>
 <p>Если обратиться к интерактивному графу, можно заметить, что cantus и sonus представляют собой отдельную компоненту. Собственно, только они туда и входят.</p>
-<div class="sourceCode" id="cb1009"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1009-1"><a href="анализ-сетей.html#cb1009-1" tabindex="-1"></a>membership <span class="ot">&lt;-</span> <span class="fu">components</span>(confessions_graph)<span class="sc">$</span>membership</span>
-<span id="cb1009-2"><a href="анализ-сетей.html#cb1009-2" tabindex="-1"></a><span class="fu">table</span>(membership)</span></code></pre></div>
+<div class="sourceCode" id="cb1010"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1010-1"><a href="анализ-сетей.html#cb1010-1" tabindex="-1"></a>membership <span class="ot">&lt;-</span> <span class="fu">components</span>(confessions_graph)<span class="sc">$</span>membership</span>
+<span id="cb1010-2"><a href="анализ-сетей.html#cb1010-2" tabindex="-1"></a><span class="fu">table</span>(membership)</span></code></pre></div>
 <pre><code>## membership
 ##   1   2 
 ## 100   2</code></pre>
 <p>Поэтому уточним, что центральность по близости должна считаться для большей компоненты.</p>
-<div class="sourceCode" id="cb1011"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1011-1"><a href="анализ-сетей.html#cb1011-1" tabindex="-1"></a>confessions_subgraph <span class="ot">=</span> <span class="fu">induced_subgraph</span>(confessions_graph, </span>
-<span id="cb1011-2"><a href="анализ-сетей.html#cb1011-2" tabindex="-1"></a>    <span class="fu">which</span>(membership <span class="sc">==</span> <span class="dv">1</span>))</span>
-<span id="cb1011-3"><a href="анализ-сетей.html#cb1011-3" tabindex="-1"></a>closeness <span class="ot">&lt;-</span> <span class="fu">closeness</span>(confessions_subgraph)</span>
-<span id="cb1011-4"><a href="анализ-сетей.html#cb1011-4" tabindex="-1"></a><span class="fu">sort</span>(closeness, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb1012"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1012-1"><a href="анализ-сетей.html#cb1012-1" tabindex="-1"></a>confessions_subgraph <span class="ot">=</span> <span class="fu">induced_subgraph</span>(confessions_graph, </span>
+<span id="cb1012-2"><a href="анализ-сетей.html#cb1012-2" tabindex="-1"></a>    <span class="fu">which</span>(membership <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb1012-3"><a href="анализ-сетей.html#cb1012-3" tabindex="-1"></a>closeness <span class="ot">&lt;-</span> <span class="fu">closeness</span>(confessions_subgraph)</span>
+<span id="cb1012-4"><a href="анализ-сетей.html#cb1012-4" tabindex="-1"></a><span class="fu">sort</span>(closeness, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##        homo       terra      caelum      corpus      tempus     dominus 
 ## 0.005813953 0.005649718 0.005434783 0.005347594 0.005291005 0.005263158 
 ##      uerbum         res       anima        uita 
 ## 0.005128205 0.004975124 0.004926108 0.004901961</code></pre>
 <p>И снова на первом месте “человек”.</p>
 <p><strong>Центральность по посредничеству</strong> (betweenness centrality) характеризует, насколько важную роль данный узел играет на пути “между” парами других узлов сети.</p>
-<div class="sourceCode" id="cb1013"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1013-1"><a href="анализ-сетей.html#cb1013-1" tabindex="-1"></a>betweenness <span class="ot">&lt;-</span> <span class="fu">betweenness</span>(confessions_graph)</span>
-<span id="cb1013-2"><a href="анализ-сетей.html#cb1013-2" tabindex="-1"></a><span class="fu">sort</span>(betweenness, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb1014"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1014-1"><a href="анализ-сетей.html#cb1014-1" tabindex="-1"></a>betweenness <span class="ot">&lt;-</span> <span class="fu">betweenness</span>(confessions_graph)</span>
+<span id="cb1014-2"><a href="анализ-сетей.html#cb1014-2" tabindex="-1"></a><span class="fu">sort</span>(betweenness, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##      homo     terra    caelum    corpus      dies    tempus   dominus    uerbum 
 ## 1476.0830 1055.3757  740.4504  619.8684  548.6346  515.2094  439.5217  414.5475 
 ##   spatium   memoria 
@@ -654,15 +654,15 @@ div.csl-indent {
 <div id="централизация" class="section level2 hasAnchor" number="17.4">
 <h2><span class="header-section-number">17.4</span> Централизация<a href="анализ-сетей.html#централизация" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Централизация</strong> характеризует сеть в целом. Рассмотрим два крайних случая: круговой граф и звездчатый граф.</p>
-<div class="sourceCode" id="cb1015"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1015-1"><a href="анализ-сетей.html#cb1015-1" tabindex="-1"></a>star_g <span class="ot">&lt;-</span> <span class="fu">graph.formula</span>(a<span class="sc">--</span>b, a<span class="sc">--</span>c, a<span class="sc">--</span>d, a<span class="sc">--</span>e)</span>
-<span id="cb1015-2"><a href="анализ-сетей.html#cb1015-2" tabindex="-1"></a>circle_g <span class="ot">&lt;-</span> <span class="fu">graph.formula</span>(a<span class="sc">--</span>b, b<span class="sc">--</span>c, c<span class="sc">--</span>d, d<span class="sc">--</span>e, a<span class="sc">--</span>e)</span>
-<span id="cb1015-3"><a href="анализ-сетей.html#cb1015-3" tabindex="-1"></a></span>
-<span id="cb1015-4"><a href="анализ-сетей.html#cb1015-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb1015-5"><a href="анализ-сетей.html#cb1015-5" tabindex="-1"></a><span class="fu">plot</span>(circle_g, <span class="at">vertex.color=</span><span class="dv">2</span>)</span>
-<span id="cb1015-6"><a href="анализ-сетей.html#cb1015-6" tabindex="-1"></a><span class="fu">plot</span>(star_g, <span class="at">vertex.color=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1016"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1016-1"><a href="анализ-сетей.html#cb1016-1" tabindex="-1"></a>star_g <span class="ot">&lt;-</span> <span class="fu">graph.formula</span>(a<span class="sc">--</span>b, a<span class="sc">--</span>c, a<span class="sc">--</span>d, a<span class="sc">--</span>e)</span>
+<span id="cb1016-2"><a href="анализ-сетей.html#cb1016-2" tabindex="-1"></a>circle_g <span class="ot">&lt;-</span> <span class="fu">graph.formula</span>(a<span class="sc">--</span>b, b<span class="sc">--</span>c, c<span class="sc">--</span>d, d<span class="sc">--</span>e, a<span class="sc">--</span>e)</span>
+<span id="cb1016-3"><a href="анализ-сетей.html#cb1016-3" tabindex="-1"></a></span>
+<span id="cb1016-4"><a href="анализ-сетей.html#cb1016-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb1016-5"><a href="анализ-сетей.html#cb1016-5" tabindex="-1"></a><span class="fu">plot</span>(circle_g, <span class="at">vertex.color=</span><span class="dv">2</span>)</span>
+<span id="cb1016-6"><a href="анализ-сетей.html#cb1016-6" tabindex="-1"></a><span class="fu">plot</span>(star_g, <span class="at">vertex.color=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-545-1.png" width="672" /></p>
 <p>В случае звездчатого графа централизация максимальна, а для отдельных узлов наблюдается разброс центральности.</p>
-<div class="sourceCode" id="cb1016"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1016-1"><a href="анализ-сетей.html#cb1016-1" tabindex="-1"></a><span class="fu">centralization.closeness</span>(star_g)</span></code></pre></div>
+<div class="sourceCode" id="cb1017"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1017-1"><a href="анализ-сетей.html#cb1017-1" tabindex="-1"></a><span class="fu">centralization.closeness</span>(star_g)</span></code></pre></div>
 <pre><code>## $res
 ## [1] 1.0000000 0.5714286 0.5714286 0.5714286 0.5714286
 ## 
@@ -672,7 +672,7 @@ div.csl-indent {
 ## $theoretical_max
 ## [1] 1.714286</code></pre>
 <p>Во втором случае наборот – разброса нет, а для графа в целом централизация минимальна.</p>
-<div class="sourceCode" id="cb1018"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1018-1"><a href="анализ-сетей.html#cb1018-1" tabindex="-1"></a><span class="fu">centralization.closeness</span>(circle_g)</span></code></pre></div>
+<div class="sourceCode" id="cb1019"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1019-1"><a href="анализ-сетей.html#cb1019-1" tabindex="-1"></a><span class="fu">centralization.closeness</span>(circle_g)</span></code></pre></div>
 <pre><code>## $res
 ## [1] 0.6666667 0.6666667 0.6666667 0.6666667 0.6666667
 ## 
@@ -682,23 +682,23 @@ div.csl-indent {
 ## $theoretical_max
 ## [1] 1.714286</code></pre>
 <p>Расчитаем централизацию для графа со словами из “Исповеди”.</p>
-<div class="sourceCode" id="cb1020"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1020-1"><a href="анализ-сетей.html#cb1020-1" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">centralization.closeness</span>(confessions_graph))</span></code></pre></div>
+<div class="sourceCode" id="cb1021"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1021-1"><a href="анализ-сетей.html#cb1021-1" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">centralization.closeness</span>(confessions_graph))</span></code></pre></div>
 <pre><code>## [1] &quot;res&quot;             &quot;centralization&quot;  &quot;theoretical_max&quot;</code></pre>
-<div class="sourceCode" id="cb1022"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1022-1"><a href="анализ-сетей.html#cb1022-1" tabindex="-1"></a><span class="fu">centralization.closeness</span>(confessions_graph)<span class="sc">$</span>centralization</span></code></pre></div>
+<div class="sourceCode" id="cb1023"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1023-1"><a href="анализ-сетей.html#cb1023-1" tabindex="-1"></a><span class="fu">centralization.closeness</span>(confessions_graph)<span class="sc">$</span>centralization</span></code></pre></div>
 <pre><code>## [1] 1.240763</code></pre>
 </div>
 <div id="центральность-на-графике" class="section level2 hasAnchor" number="17.5">
 <h2><span class="header-section-number">17.5</span> Центральность на графике<a href="анализ-сетей.html#центральность-на-графике" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>График сети, который включает в себя информацию о важности конкретных узлов, может быть эффективным инструментом анализа и визуализации. (Изменение формы на 21 нужно, чтобы можно было контур и заливку узла сделать разными цветами).</p>
-<div class="sourceCode" id="cb1024"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1024-1"><a href="анализ-сетей.html#cb1024-1" tabindex="-1"></a><span class="fu">ggraph</span>(confessions_graph, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb1024-2"><a href="анализ-сетей.html#cb1024-2" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">edge_alpha =</span> value)) <span class="sc">+</span></span>
-<span id="cb1024-3"><a href="анализ-сетей.html#cb1024-3" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
-<span id="cb1024-4"><a href="анализ-сетей.html#cb1024-4" tabindex="-1"></a>                  <span class="at">color=</span> <span class="st">&quot;grey30&quot;</span>, </span>
-<span id="cb1024-5"><a href="анализ-сетей.html#cb1024-5" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fu">log2</span>(degrees) <span class="sc">*</span> <span class="dv">3</span>, </span>
-<span id="cb1024-6"><a href="анализ-сетей.html#cb1024-6" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb1024-7"><a href="анализ-сетей.html#cb1024-7" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
-<span id="cb1024-8"><a href="анализ-сетей.html#cb1024-8" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">repel=</span>T), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb1024-9"><a href="анализ-сетей.html#cb1024-9" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1025"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1025-1"><a href="анализ-сетей.html#cb1025-1" tabindex="-1"></a><span class="fu">ggraph</span>(confessions_graph, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1025-2"><a href="анализ-сетей.html#cb1025-2" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">edge_alpha =</span> value)) <span class="sc">+</span></span>
+<span id="cb1025-3"><a href="анализ-сетей.html#cb1025-3" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
+<span id="cb1025-4"><a href="анализ-сетей.html#cb1025-4" tabindex="-1"></a>                  <span class="at">color=</span> <span class="st">&quot;grey30&quot;</span>, </span>
+<span id="cb1025-5"><a href="анализ-сетей.html#cb1025-5" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fu">log2</span>(degrees) <span class="sc">*</span> <span class="dv">3</span>, </span>
+<span id="cb1025-6"><a href="анализ-сетей.html#cb1025-6" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb1025-7"><a href="анализ-сетей.html#cb1025-7" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
+<span id="cb1025-8"><a href="анализ-сетей.html#cb1025-8" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">repel=</span>T), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb1025-9"><a href="анализ-сетей.html#cb1025-9" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
 <pre><code>## Warning in geom_node_text(aes(label = name, repel = T), vjust = 1, hjust = 1): Ignoring unknown aesthetics:
 ## repel</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-549-1.png" width="672" /></p>
@@ -706,27 +706,27 @@ div.csl-indent {
 <div id="интерактивный-граф" class="section level2 hasAnchor" number="17.6">
 <h2><span class="header-section-number">17.6</span> Интерактивный граф<a href="анализ-сетей.html#интерактивный-граф" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Создадим интерактивный график (результат по ссылке выше).</p>
-<div class="sourceCode" id="cb1026"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1026-1"><a href="анализ-сетей.html#cb1026-1" tabindex="-1"></a><span class="co">#install.packages(&quot;visNetwork&quot;)</span></span>
-<span id="cb1026-2"><a href="анализ-сетей.html#cb1026-2" tabindex="-1"></a><span class="fu">library</span>(visNetwork)</span>
-<span id="cb1026-3"><a href="анализ-сетей.html#cb1026-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">toVisNetworkData</span>(confessions_graph)</span>
-<span id="cb1026-4"><a href="анализ-сетей.html#cb1026-4" tabindex="-1"></a></span>
-<span id="cb1026-5"><a href="анализ-сетей.html#cb1026-5" tabindex="-1"></a><span class="co"># масштабированная центральность узла</span></span>
-<span id="cb1026-6"><a href="анализ-сетей.html#cb1026-6" tabindex="-1"></a>data<span class="sc">$</span>nodes<span class="sc">$</span>value <span class="ot">&lt;-</span> <span class="fu">log</span>(degrees)<span class="sc">*</span><span class="dv">3</span></span>
-<span id="cb1026-7"><a href="анализ-сетей.html#cb1026-7" tabindex="-1"></a></span>
-<span id="cb1026-8"><a href="анализ-сетей.html#cb1026-8" tabindex="-1"></a>confessions_3d <span class="ot">&lt;-</span> <span class="fu">visNetwork</span>(<span class="at">nodes =</span> data<span class="sc">$</span>nodes, </span>
-<span id="cb1026-9"><a href="анализ-сетей.html#cb1026-9" tabindex="-1"></a>                             <span class="at">edges =</span> data<span class="sc">$</span>edges, </span>
-<span id="cb1026-10"><a href="анализ-сетей.html#cb1026-10" tabindex="-1"></a>                             <span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, </span>
-<span id="cb1026-11"><a href="анализ-сетей.html#cb1026-11" tabindex="-1"></a>                             <span class="at">height =</span> <span class="dv">800</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1027"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1027-1"><a href="анализ-сетей.html#cb1027-1" tabindex="-1"></a><span class="co">#install.packages(&quot;visNetwork&quot;)</span></span>
+<span id="cb1027-2"><a href="анализ-сетей.html#cb1027-2" tabindex="-1"></a><span class="fu">library</span>(visNetwork)</span>
+<span id="cb1027-3"><a href="анализ-сетей.html#cb1027-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">toVisNetworkData</span>(confessions_graph)</span>
+<span id="cb1027-4"><a href="анализ-сетей.html#cb1027-4" tabindex="-1"></a></span>
+<span id="cb1027-5"><a href="анализ-сетей.html#cb1027-5" tabindex="-1"></a><span class="co"># масштабированная центральность узла</span></span>
+<span id="cb1027-6"><a href="анализ-сетей.html#cb1027-6" tabindex="-1"></a>data<span class="sc">$</span>nodes<span class="sc">$</span>value <span class="ot">&lt;-</span> <span class="fu">log</span>(degrees)<span class="sc">*</span><span class="dv">3</span></span>
+<span id="cb1027-7"><a href="анализ-сетей.html#cb1027-7" tabindex="-1"></a></span>
+<span id="cb1027-8"><a href="анализ-сетей.html#cb1027-8" tabindex="-1"></a>confessions_3d <span class="ot">&lt;-</span> <span class="fu">visNetwork</span>(<span class="at">nodes =</span> data<span class="sc">$</span>nodes, </span>
+<span id="cb1027-9"><a href="анализ-сетей.html#cb1027-9" tabindex="-1"></a>                             <span class="at">edges =</span> data<span class="sc">$</span>edges, </span>
+<span id="cb1027-10"><a href="анализ-сетей.html#cb1027-10" tabindex="-1"></a>                             <span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, </span>
+<span id="cb1027-11"><a href="анализ-сетей.html#cb1027-11" tabindex="-1"></a>                             <span class="at">height =</span> <span class="dv">800</span>)</span></code></pre></div>
 <p>Настраиваем и сохраняем график.</p>
-<div class="sourceCode" id="cb1027"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1027-1"><a href="анализ-сетей.html#cb1027-1" tabindex="-1"></a><span class="fu">visOptions</span>(confessions_3d, <span class="at">highlightNearest =</span> <span class="fu">list</span>(<span class="at">enabled =</span> T, <span class="at">degree =</span> <span class="dv">1</span>, <span class="at">hover =</span> T), <span class="at">nodesIdSelection =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb1027-2"><a href="анализ-сетей.html#cb1027-2" tabindex="-1"></a>  <span class="fu">visPhysics</span>(<span class="at">maxVelocity =</span> <span class="dv">20</span>, <span class="at">stabilization =</span> F) <span class="sc">%&gt;%</span> </span>
-<span id="cb1027-3"><a href="анализ-сетей.html#cb1027-3" tabindex="-1"></a>  <span class="fu">visInteraction</span>(<span class="at">dragNodes =</span> T) <span class="sc">%&gt;%</span> <span class="fu">visSave</span>(<span class="at">file =</span> <span class="st">&quot;Confessions.html&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1028"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1028-1"><a href="анализ-сетей.html#cb1028-1" tabindex="-1"></a><span class="fu">visOptions</span>(confessions_3d, <span class="at">highlightNearest =</span> <span class="fu">list</span>(<span class="at">enabled =</span> T, <span class="at">degree =</span> <span class="dv">1</span>, <span class="at">hover =</span> T), <span class="at">nodesIdSelection =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb1028-2"><a href="анализ-сетей.html#cb1028-2" tabindex="-1"></a>  <span class="fu">visPhysics</span>(<span class="at">maxVelocity =</span> <span class="dv">20</span>, <span class="at">stabilization =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb1028-3"><a href="анализ-сетей.html#cb1028-3" tabindex="-1"></a>  <span class="fu">visInteraction</span>(<span class="at">dragNodes =</span> T) <span class="sc">%&gt;%</span> <span class="fu">visSave</span>(<span class="at">file =</span> <span class="st">&quot;Confessions.html&quot;</span>)</span></code></pre></div>
 </div>
 <div id="точки-сочленения" class="section level2 hasAnchor" number="17.7">
 <h2><span class="header-section-number">17.7</span> Точки сочленения<a href="анализ-сетей.html#точки-сочленения" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Точка сочленения – это узел, при удалении которого увеличивается число компонент связности. Таким образом, они соединяют разные части сети. При их удалении акторы (узлы, вершины) не могут взаимодействовать друг с другом.</p>
-<div class="sourceCode" id="cb1028"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1028-1"><a href="анализ-сетей.html#cb1028-1" tabindex="-1"></a><span class="fu">articulation_points</span>(confessions_graph)</span></code></pre></div>
-<pre><code>## + 16/102 vertices, named, from f3e5a0f:
+<div class="sourceCode" id="cb1029"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1029-1"><a href="анализ-сетей.html#cb1029-1" tabindex="-1"></a><span class="fu">articulation_points</span>(confessions_graph)</span></code></pre></div>
+<pre><code>## + 16/102 vertices, named, from 3fabcee:
 ##  [1] uita    uox     caro    uerbum  ueritas tempus  sol     memoria imago  
 ## [10] homo    anima   terra   animus  spatium annus   dies</code></pre>
 <p>Например, oblivio и expectatio связаны с остальным графом только через “память”.</p>
@@ -741,24 +741,24 @@ div.csl-indent {
 <p><a href="http://gramota.ru/slovari/dic/?word=%D0%BA%D0%BB%D0%B8%D0%BA%D0%B0&amp;all=x">Толковые словари</a> понимают слово иначе. КЛИКА, -и; ж. [от франц. clique - шайка, банда] Неодобр. Группа, сообщество людей, стремящихся к достижению каких-л. корыстных, неблаговидных целей. Придворная к. К. финансовых дельцов. Фашистская к.</p>
 </div>
 <p>Вопреки своему названию, функция <code>clique.number</code> возвращает размер наибольшей клики:</p>
-<div class="sourceCode" id="cb1030"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1030-1"><a href="анализ-сетей.html#cb1030-1" tabindex="-1"></a><span class="fu">clique.number</span>(confessions_graph)</span></code></pre></div>
+<div class="sourceCode" id="cb1031"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1031-1"><a href="анализ-сетей.html#cb1031-1" tabindex="-1"></a><span class="fu">clique.number</span>(confessions_graph)</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb1032"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1032-1"><a href="анализ-сетей.html#cb1032-1" tabindex="-1"></a><span class="fu">cliques</span>(confessions_graph, <span class="at">min=</span><span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1033"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1033-1"><a href="анализ-сетей.html#cb1033-1" tabindex="-1"></a><span class="fu">cliques</span>(confessions_graph, <span class="at">min=</span><span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## [[1]]
-## + 7/102 vertices, named, from f3e5a0f:
+## + 7/102 vertices, named, from 3fabcee:
 ## [1] caelum  dominus homo    terra   tempus  res     uerbum 
 ## 
 ## [[2]]
-## + 7/102 vertices, named, from f3e5a0f:
+## + 7/102 vertices, named, from 3fabcee:
 ## [1] caelum  dominus corpus  homo    terra   tempus  res</code></pre>
 <p>Или, что то же самое:</p>
-<div class="sourceCode" id="cb1034"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1034-1"><a href="анализ-сетей.html#cb1034-1" tabindex="-1"></a><span class="fu">largest_cliques</span>(confessions_graph)</span></code></pre></div>
+<div class="sourceCode" id="cb1035"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1035-1"><a href="анализ-сетей.html#cb1035-1" tabindex="-1"></a><span class="fu">largest_cliques</span>(confessions_graph)</span></code></pre></div>
 <pre><code>## [[1]]
-## + 7/102 vertices, named, from f3e5a0f:
+## + 7/102 vertices, named, from 3fabcee:
 ## [1] uerbum  homo    terra   tempus  res     dominus caelum 
 ## 
 ## [[2]]
-## + 7/102 vertices, named, from f3e5a0f:
+## + 7/102 vertices, named, from 3fabcee:
 ## [1] res     corpus  tempus  terra   homo    dominus caelum</code></pre>
 <p>Но клика – это очень строгое определение сплоченной группы. Например, чтобы подграф, состоящий из 7 вершин, считался кликой, нужно, чтобы между ними было проведено <span class="math inline">\((7 \cdot 6) / 2 = 21\)</span> связей. Если хотя бы одно ребро отсутствует, то условие не выполняется. Такие клики просто очень редко встречаются.</p>
 </div>
@@ -776,50 +776,37 @@ div.csl-indent {
 <p>Ядро степени k+1 является подграфом ядра степени k. Любой узел в ядре степени k имеет степень либо k, <em>либо выше</em>. При этом coreness узла определяется по ядру с наибольшей степенью, к которому они принадлежат.</p>
 <p><img src="https://www.researchgate.net/publication/326621799/figure/fig1/AS:652484443910144@1532575822967/Illustration-of-the-k-core-decomposition-Here-k-max-3.png" /></p>
 <p>Для определения k-ядерной структуры используется функция <code>graph.coreness()</code>:</p>
-<div class="sourceCode" id="cb1036"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1036-1"><a href="анализ-сетей.html#cb1036-1" tabindex="-1"></a>coreness <span class="ot">&lt;-</span> <span class="fu">graph.coreness</span>(confessions_graph)</span>
-<span id="cb1036-2"><a href="анализ-сетей.html#cb1036-2" tabindex="-1"></a><span class="fu">head</span>(coreness)</span></code></pre></div>
+<div class="sourceCode" id="cb1037"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1037-1"><a href="анализ-сетей.html#cb1037-1" tabindex="-1"></a>coreness <span class="ot">&lt;-</span> <span class="fu">graph.coreness</span>(confessions_graph)</span>
+<span id="cb1037-2"><a href="анализ-сетей.html#cb1037-2" tabindex="-1"></a><span class="fu">head</span>(coreness)</span></code></pre></div>
 <pre><code>##  caelum  animus    dies dominus spatium   nomen 
 ##       7       5       4       7       4       4</code></pre>
 <p>Посчитаем количество вершин в ядрах.</p>
-<div class="sourceCode" id="cb1038"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1038-1"><a href="анализ-сетей.html#cb1038-1" tabindex="-1"></a><span class="fu">table</span>(coreness)</span></code></pre></div>
+<div class="sourceCode" id="cb1039"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1039-1"><a href="анализ-сетей.html#cb1039-1" tabindex="-1"></a><span class="fu">table</span>(coreness)</span></code></pre></div>
 <pre><code>## coreness
 ##  1  2  3  4  5  6  7 
 ## 34 17 14 14 10  2 11</code></pre>
 <p>1-ядро содержит 34 вершины, 2-ядро содержит 17 вершин, и т.д.</p>
 <p>Для лучшей интерпретации k-ядерной структуры мы можем графически изобразить сеть, используя информацию о множестве k-ядер. Для начала добавим информацию о цвете к атрибутам узлов. Сейчас, как можно убедиться, в списке атрибутов хранятся только имена:</p>
-<div class="sourceCode" id="cb1040"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1040-1"><a href="анализ-сетей.html#cb1040-1" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">get.vertex.attribute</span>(confessions_graph))</span></code></pre></div>
+<div class="sourceCode" id="cb1041"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1041-1"><a href="анализ-сетей.html#cb1041-1" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">get.vertex.attribute</span>(confessions_graph))</span></code></pre></div>
 <pre><code>## [1] &quot;name&quot;</code></pre>
-<div class="sourceCode" id="cb1042"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1042-1"><a href="анализ-сетей.html#cb1042-1" tabindex="-1"></a><span class="fu">V</span>(confessions_graph)<span class="sc">$</span>color <span class="ot">&lt;-</span> coreness</span>
-<span id="cb1042-2"><a href="анализ-сетей.html#cb1042-2" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">get.vertex.attribute</span>(confessions_graph))</span></code></pre></div>
+<div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1043-1"><a href="анализ-сетей.html#cb1043-1" tabindex="-1"></a><span class="fu">V</span>(confessions_graph)<span class="sc">$</span>color <span class="ot">&lt;-</span> coreness</span>
+<span id="cb1043-2"><a href="анализ-сетей.html#cb1043-2" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">get.vertex.attribute</span>(confessions_graph))</span></code></pre></div>
 <pre><code>## [1] &quot;name&quot;  &quot;color&quot;</code></pre>
-<div class="sourceCode" id="cb1044"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1044-1"><a href="анализ-сетей.html#cb1044-1" tabindex="-1"></a><span class="fu">ggraph</span>(confessions_graph, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb1044-2"><a href="анализ-сетей.html#cb1044-2" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">edge_alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb1044-3"><a href="анализ-сетей.html#cb1044-3" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">as.factor</span>(color)),</span>
-<span id="cb1044-4"><a href="анализ-сетей.html#cb1044-4" tabindex="-1"></a>                  <span class="at">color=</span> <span class="st">&quot;grey30&quot;</span>, </span>
-<span id="cb1044-5"><a href="анализ-сетей.html#cb1044-5" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fu">log2</span>(degrees) <span class="sc">*</span> <span class="dv">4</span>, </span>
-<span id="cb1044-6"><a href="анализ-сетей.html#cb1044-6" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb1044-7"><a href="анализ-сетей.html#cb1044-7" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
-<span id="cb1044-8"><a href="анализ-сетей.html#cb1044-8" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb1044-9"><a href="анализ-сетей.html#cb1044-9" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1045"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1045-1"><a href="анализ-сетей.html#cb1045-1" tabindex="-1"></a><span class="fu">ggraph</span>(confessions_graph, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1045-2"><a href="анализ-сетей.html#cb1045-2" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">edge_alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb1045-3"><a href="анализ-сетей.html#cb1045-3" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">as.factor</span>(color)),</span>
+<span id="cb1045-4"><a href="анализ-сетей.html#cb1045-4" tabindex="-1"></a>                  <span class="at">color=</span> <span class="st">&quot;grey30&quot;</span>, </span>
+<span id="cb1045-5"><a href="анализ-сетей.html#cb1045-5" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fu">log2</span>(degrees) <span class="sc">*</span> <span class="dv">4</span>, </span>
+<span id="cb1045-6"><a href="анализ-сетей.html#cb1045-6" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb1045-7"><a href="анализ-сетей.html#cb1045-7" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
+<span id="cb1045-8"><a href="анализ-сетей.html#cb1045-8" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb1045-9"><a href="анализ-сетей.html#cb1045-9" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-560-1.png" width="672" /></p>
 <p>Сейчас граф не очень читается, но видно, что в центре находятся ядра наивысшей степени. В данном случае речь идет о 7-ядре, которому принадлежит 11 узлов. Т.е. из этих 11 узлов каждое связано не менее чем с 7 другими участниками группы.</p>
 <p>Чтобы глубже исследовать подгруппы, последовательно удаляют k-ядра более низкой степени. Для этого можно воспользоваться функцией <code>induced_subgraph()</code>.</p>
-<div class="sourceCode" id="cb1045"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1045-1"><a href="анализ-сетей.html#cb1045-1" tabindex="-1"></a>confessions3_7 <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(confessions_graph, <span class="at">vids=</span><span class="fu">which</span>(coreness <span class="sc">&gt;</span> <span class="dv">2</span>))</span>
-<span id="cb1045-2"><a href="анализ-сетей.html#cb1045-2" tabindex="-1"></a></span>
-<span id="cb1045-3"><a href="анализ-сетей.html#cb1045-3" tabindex="-1"></a><span class="fu">ggraph</span>(confessions3_7, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb1045-4"><a href="анализ-сетей.html#cb1045-4" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">edge_alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb1045-5"><a href="анализ-сетей.html#cb1045-5" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">as.factor</span>(color)),</span>
-<span id="cb1045-6"><a href="анализ-сетей.html#cb1045-6" tabindex="-1"></a>                  <span class="at">color=</span> <span class="st">&quot;grey30&quot;</span>, </span>
-<span id="cb1045-7"><a href="анализ-сетей.html#cb1045-7" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">4</span>,</span>
-<span id="cb1045-8"><a href="анализ-сетей.html#cb1045-8" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb1045-9"><a href="анализ-сетей.html#cb1045-9" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
-<span id="cb1045-10"><a href="анализ-сетей.html#cb1045-10" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb1045-11"><a href="анализ-сетей.html#cb1045-11" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-561-1.png" width="672" /></p>
-<p>При интерпретации важно помнить, что ядра являются вложенными. Чем выше степень ядра, тем больше узлы связаны между собой.</p>
-<div class="sourceCode" id="cb1046"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1046-1"><a href="анализ-сетей.html#cb1046-1" tabindex="-1"></a>confessions6_7 <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(confessions_graph, <span class="at">vids=</span><span class="fu">which</span>(coreness <span class="sc">&gt;</span> <span class="dv">5</span>))</span>
+<div class="sourceCode" id="cb1046"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1046-1"><a href="анализ-сетей.html#cb1046-1" tabindex="-1"></a>confessions3_7 <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(confessions_graph, <span class="at">vids=</span><span class="fu">which</span>(coreness <span class="sc">&gt;</span> <span class="dv">2</span>))</span>
 <span id="cb1046-2"><a href="анализ-сетей.html#cb1046-2" tabindex="-1"></a></span>
-<span id="cb1046-3"><a href="анализ-сетей.html#cb1046-3" tabindex="-1"></a><span class="fu">ggraph</span>(confessions6_7, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1046-3"><a href="анализ-сетей.html#cb1046-3" tabindex="-1"></a><span class="fu">ggraph</span>(confessions3_7, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb1046-4"><a href="анализ-сетей.html#cb1046-4" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">edge_alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
 <span id="cb1046-5"><a href="анализ-сетей.html#cb1046-5" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">as.factor</span>(color)),</span>
 <span id="cb1046-6"><a href="анализ-сетей.html#cb1046-6" tabindex="-1"></a>                  <span class="at">color=</span> <span class="st">&quot;grey30&quot;</span>, </span>
@@ -828,6 +815,19 @@ div.csl-indent {
 <span id="cb1046-9"><a href="анализ-сетей.html#cb1046-9" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb1046-10"><a href="анализ-сетей.html#cb1046-10" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1046-11"><a href="анализ-сетей.html#cb1046-11" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-561-1.png" width="672" /></p>
+<p>При интерпретации важно помнить, что ядра являются вложенными. Чем выше степень ядра, тем больше узлы связаны между собой.</p>
+<div class="sourceCode" id="cb1047"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1047-1"><a href="анализ-сетей.html#cb1047-1" tabindex="-1"></a>confessions6_7 <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(confessions_graph, <span class="at">vids=</span><span class="fu">which</span>(coreness <span class="sc">&gt;</span> <span class="dv">5</span>))</span>
+<span id="cb1047-2"><a href="анализ-сетей.html#cb1047-2" tabindex="-1"></a></span>
+<span id="cb1047-3"><a href="анализ-сетей.html#cb1047-3" tabindex="-1"></a><span class="fu">ggraph</span>(confessions6_7, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1047-4"><a href="анализ-сетей.html#cb1047-4" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">edge_alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb1047-5"><a href="анализ-сетей.html#cb1047-5" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">as.factor</span>(color)),</span>
+<span id="cb1047-6"><a href="анализ-сетей.html#cb1047-6" tabindex="-1"></a>                  <span class="at">color=</span> <span class="st">&quot;grey30&quot;</span>, </span>
+<span id="cb1047-7"><a href="анализ-сетей.html#cb1047-7" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">4</span>,</span>
+<span id="cb1047-8"><a href="анализ-сетей.html#cb1047-8" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb1047-9"><a href="анализ-сетей.html#cb1047-9" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
+<span id="cb1047-10"><a href="анализ-сетей.html#cb1047-10" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb1047-11"><a href="анализ-сетей.html#cb1047-11" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-562-1.png" width="672" /></p>
 
 </div>

@@ -478,12 +478,12 @@ div.csl-indent {
 <div id="извлечение-источников" class="section level2 hasAnchor" number="11.1">
 <h2><span class="header-section-number">11.1</span> Извлечение источников<a href="распределения-слов-и-анализ-частотностей.html#извлечение-источников" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Источники для этого урока доступны в библиотеке Gutengerg; чтобы их извлечь, следует выяснить <code>gutenberg_id</code>. Пример ниже; таким же образом можно найти id для трактатов Локка и Беркли.</p>
-<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="распределения-слов-и-анализ-частотностей.html#cb643-1" tabindex="-1"></a><span class="co"># install.packages(&quot;gutenbergr&quot;)</span></span>
-<span id="cb643-2"><a href="распределения-слов-и-анализ-частотностей.html#cb643-2" tabindex="-1"></a><span class="fu">library</span>(gutenbergr)</span>
-<span id="cb643-3"><a href="распределения-слов-и-анализ-частотностей.html#cb643-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb643-4"><a href="распределения-слов-и-анализ-частотностей.html#cb643-4" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb643-5"><a href="распределения-слов-и-анализ-частотностей.html#cb643-5" tabindex="-1"></a></span>
-<span id="cb643-6"><a href="распределения-слов-и-анализ-частотностей.html#cb643-6" tabindex="-1"></a><span class="fu">gutenberg_works</span>(<span class="fu">str_detect</span>(author, <span class="st">&quot;Hume&quot;</span>), <span class="at">languages =</span> <span class="st">&quot;en&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="распределения-слов-и-анализ-частотностей.html#cb644-1" tabindex="-1"></a><span class="co"># install.packages(&quot;gutenbergr&quot;)</span></span>
+<span id="cb644-2"><a href="распределения-слов-и-анализ-частотностей.html#cb644-2" tabindex="-1"></a><span class="fu">library</span>(gutenbergr)</span>
+<span id="cb644-3"><a href="распределения-слов-и-анализ-частотностей.html#cb644-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb644-4"><a href="распределения-слов-и-анализ-частотностей.html#cb644-4" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb644-5"><a href="распределения-слов-и-анализ-частотностей.html#cb644-5" tabindex="-1"></a></span>
+<span id="cb644-6"><a href="распределения-слов-и-анализ-частотностей.html#cb644-6" tabindex="-1"></a><span class="fu">gutenberg_works</span>(<span class="fu">str_detect</span>(author, <span class="st">&quot;Hume&quot;</span>), <span class="at">languages =</span> <span class="st">&quot;en&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 99 × 8
 ##    gutenberg_id title    author gutenberg_author_id language gutenberg_bookshelf
 ##           &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;                &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;              
@@ -500,9 +500,9 @@ div.csl-indent {
 ## # ℹ 89 more rows
 ## # ℹ 2 more variables: rights &lt;chr&gt;, has_text &lt;lgl&gt;</code></pre>
 <p>Когда id найдены, <code>gutenbergr</code> позволяет загрузить сочинения; на этом этапе часто возникают ошибки – в таком случае надо воспользоваться одним из зеркал. Список зеркал, как уже говорилось в уроке про импорт данных, доступен по ссылке: <a href="https://www.gutenberg.org/MIRRORS.ALL" class="uri">https://www.gutenberg.org/MIRRORS.ALL</a>.</p>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="распределения-слов-и-анализ-частотностей.html#cb645-1" tabindex="-1"></a>my_corpus <span class="ot">&lt;-</span> <span class="fu">gutenberg_download</span>(<span class="at">meta_fields =</span> <span class="fu">c</span>(<span class="st">&quot;author&quot;</span>, <span class="st">&quot;title&quot;</span>), <span class="fu">c</span>(<span class="dv">9662</span>, <span class="dv">4723</span>, <span class="dv">10615</span>), <span class="at">mirror =</span> <span class="st">&quot;https://www.gutenberg.org/dirs/&quot;</span>)</span>
-<span id="cb645-2"><a href="распределения-слов-и-анализ-частотностей.html#cb645-2" tabindex="-1"></a></span>
-<span id="cb645-3"><a href="распределения-слов-и-анализ-частотностей.html#cb645-3" tabindex="-1"></a>my_corpus</span></code></pre></div>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="распределения-слов-и-анализ-частотностей.html#cb646-1" tabindex="-1"></a>my_corpus <span class="ot">&lt;-</span> <span class="fu">gutenberg_download</span>(<span class="at">meta_fields =</span> <span class="fu">c</span>(<span class="st">&quot;author&quot;</span>, <span class="st">&quot;title&quot;</span>), <span class="fu">c</span>(<span class="dv">9662</span>, <span class="dv">4723</span>, <span class="dv">10615</span>), <span class="at">mirror =</span> <span class="st">&quot;https://www.gutenberg.org/dirs/&quot;</span>)</span>
+<span id="cb646-2"><a href="распределения-слов-и-анализ-частотностей.html#cb646-2" tabindex="-1"></a></span>
+<span id="cb646-3"><a href="распределения-слов-и-анализ-частотностей.html#cb646-3" tabindex="-1"></a>my_corpus</span></code></pre></div>
 <pre><code>## # A tibble: 23,844 × 4
 ##    gutenberg_id text                                                author title
 ##           &lt;int&gt; &lt;chr&gt;                                               &lt;chr&gt;  &lt;chr&gt;
@@ -518,11 +518,11 @@ div.csl-indent {
 ## 10         4723 &quot;WITH THE GROUNDS OF SCEPTICISM, ATHEISM, AND IRRE… Berke… A Tr…
 ## # ℹ 23,834 more rows</code></pre>
 <p>В этом тиббле хранятся все три текста, которые нам нужны. Уточнить уникальные называния и имена можно двумя способами: при помощи функции <code>unique()</code> из базового R или <code>distinct()</code> из tidyverse.</p>
-<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="распределения-слов-и-анализ-частотностей.html#cb647-1" tabindex="-1"></a><span class="fu">unique</span>(my_corpus<span class="sc">$</span>title)</span></code></pre></div>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="распределения-слов-и-анализ-частотностей.html#cb648-1" tabindex="-1"></a><span class="fu">unique</span>(my_corpus<span class="sc">$</span>title)</span></code></pre></div>
 <pre><code>## [1] &quot;A Treatise Concerning the Principles of Human Knowledge&quot;                                             
 ## [2] &quot;An Enquiry Concerning Human Understanding&quot;                                                           
 ## [3] &quot;An Essay Concerning Humane Understanding, Volume 1\r\nMDCXC, Based on the 2nd Edition, Books 1 and 2&quot;</code></pre>
-<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="распределения-слов-и-анализ-частотностей.html#cb649-1" tabindex="-1"></a>my_corpus <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(author)</span></code></pre></div>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="распределения-слов-и-анализ-частотностей.html#cb650-1" tabindex="-1"></a>my_corpus <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(author)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 1
 ##   author          
 ##   &lt;chr&gt;           
@@ -533,14 +533,14 @@ div.csl-indent {
 <div id="подготовка-источников" class="section level2 hasAnchor" number="11.2">
 <h2><span class="header-section-number">11.2</span> Подготовка источников<a href="распределения-слов-и-анализ-частотностей.html#подготовка-источников" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Прежде чем приступать к анализу, придется немного прибраться. Для этого используем инструменты tidyverse, о которых шла речь в главе про опрятные данные.</p>
-<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="распределения-слов-и-анализ-частотностей.html#cb651-1" tabindex="-1"></a>my_corpus <span class="ot">&lt;-</span> my_corpus <span class="sc">%&gt;%</span> </span>
-<span id="cb651-2"><a href="распределения-слов-и-анализ-частотностей.html#cb651-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>gutenberg_id) <span class="sc">%&gt;%</span> </span>
-<span id="cb651-3"><a href="распределения-слов-и-анализ-частотностей.html#cb651-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>title) <span class="sc">%&gt;%</span> </span>
-<span id="cb651-4"><a href="распределения-слов-и-анализ-частотностей.html#cb651-4" tabindex="-1"></a>  <span class="fu">relocate</span>(text, <span class="at">.after =</span> author) <span class="sc">%&gt;%</span></span>
-<span id="cb651-5"><a href="распределения-слов-и-анализ-частотностей.html#cb651-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">author =</span> <span class="fu">str_remove</span>(author, <span class="st">&quot;,.+$&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb651-6"><a href="распределения-слов-и-анализ-частотностей.html#cb651-6" tabindex="-1"></a>  <span class="fu">filter</span>(text <span class="sc">!=</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb651-7"><a href="распределения-слов-и-анализ-частотностей.html#cb651-7" tabindex="-1"></a></span>
-<span id="cb651-8"><a href="распределения-слов-и-анализ-частотностей.html#cb651-8" tabindex="-1"></a><span class="fu">head</span>(my_corpus, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="распределения-слов-и-анализ-частотностей.html#cb652-1" tabindex="-1"></a>my_corpus <span class="ot">&lt;-</span> my_corpus <span class="sc">%&gt;%</span> </span>
+<span id="cb652-2"><a href="распределения-слов-и-анализ-частотностей.html#cb652-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>gutenberg_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb652-3"><a href="распределения-слов-и-анализ-частотностей.html#cb652-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>title) <span class="sc">%&gt;%</span> </span>
+<span id="cb652-4"><a href="распределения-слов-и-анализ-частотностей.html#cb652-4" tabindex="-1"></a>  <span class="fu">relocate</span>(text, <span class="at">.after =</span> author) <span class="sc">%&gt;%</span></span>
+<span id="cb652-5"><a href="распределения-слов-и-анализ-частотностей.html#cb652-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">author =</span> <span class="fu">str_remove</span>(author, <span class="st">&quot;,.+$&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb652-6"><a href="распределения-слов-и-анализ-частотностей.html#cb652-6" tabindex="-1"></a>  <span class="fu">filter</span>(text <span class="sc">!=</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb652-7"><a href="распределения-слов-и-анализ-частотностей.html#cb652-7" tabindex="-1"></a></span>
+<span id="cb652-8"><a href="распределения-слов-и-анализ-частотностей.html#cb652-8" tabindex="-1"></a><span class="fu">head</span>(my_corpus, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   author   text                                                   
 ##   &lt;chr&gt;    &lt;chr&gt;                                                  
@@ -548,16 +548,16 @@ div.csl-indent {
 ## 2 Berkeley by                                                     
 ## 3 Berkeley George Berkeley (1685-1753)</code></pre>
 <p>В случае с Юмом отрезаем предисловия, оглавление и индексы, а также номера разделов (везде прописными). Многие слова, которые в оригинале были выделены курсивом, окружены знаками подчеркивания (_), их тоже удаляем.</p>
-<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="распределения-слов-и-анализ-частотностей.html#cb653-1" tabindex="-1"></a>Hume <span class="ot">&lt;-</span> my_corpus <span class="sc">%&gt;%</span> </span>
-<span id="cb653-2"><a href="распределения-слов-и-анализ-частотностей.html#cb653-2" tabindex="-1"></a>  <span class="fu">filter</span>(author <span class="sc">==</span> <span class="st">&quot;Hume&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb653-3"><a href="распределения-слов-и-анализ-частотностей.html#cb653-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>),</span>
-<span id="cb653-4"><a href="распределения-слов-и-анализ-частотностей.html#cb653-4" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4814</span><span class="sc">:</span><span class="fu">nrow</span>(my_corpus))) <span class="sc">%&gt;%</span> </span>
-<span id="cb653-5"><a href="распределения-слов-и-анализ-частотностей.html#cb653-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;[[:digit:]]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb653-6"><a href="распределения-слов-и-анализ-частотностей.html#cb653-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb653-7"><a href="распределения-слов-и-анализ-частотностей.html#cb653-7" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">&quot;SECTION .{1,4}&quot;</span>))</span>
-<span id="cb653-8"><a href="распределения-слов-и-анализ-частотностей.html#cb653-8" tabindex="-1"></a>  </span>
-<span id="cb653-9"><a href="распределения-слов-и-анализ-частотностей.html#cb653-9" tabindex="-1"></a></span>
-<span id="cb653-10"><a href="распределения-слов-и-анализ-частотностей.html#cb653-10" tabindex="-1"></a><span class="fu">sample_n</span>(Hume, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="распределения-слов-и-анализ-частотностей.html#cb654-1" tabindex="-1"></a>Hume <span class="ot">&lt;-</span> my_corpus <span class="sc">%&gt;%</span> </span>
+<span id="cb654-2"><a href="распределения-слов-и-анализ-частотностей.html#cb654-2" tabindex="-1"></a>  <span class="fu">filter</span>(author <span class="sc">==</span> <span class="st">&quot;Hume&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb654-3"><a href="распределения-слов-и-анализ-частотностей.html#cb654-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>),</span>
+<span id="cb654-4"><a href="распределения-слов-и-анализ-частотностей.html#cb654-4" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4814</span><span class="sc">:</span><span class="fu">nrow</span>(my_corpus))) <span class="sc">%&gt;%</span> </span>
+<span id="cb654-5"><a href="распределения-слов-и-анализ-частотностей.html#cb654-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;[[:digit:]]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb654-6"><a href="распределения-слов-и-анализ-частотностей.html#cb654-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb654-7"><a href="распределения-слов-и-анализ-частотностей.html#cb654-7" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">&quot;SECTION .{1,4}&quot;</span>))</span>
+<span id="cb654-8"><a href="распределения-слов-и-анализ-частотностей.html#cb654-8" tabindex="-1"></a>  </span>
+<span id="cb654-9"><a href="распределения-слов-и-анализ-частотностей.html#cb654-9" tabindex="-1"></a></span>
+<span id="cb654-10"><a href="распределения-слов-и-анализ-частотностей.html#cb654-10" tabindex="-1"></a><span class="fu">sample_n</span>(Hume, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   author text                                                                   
 ##   &lt;chr&gt;  &lt;chr&gt;                                                                  
@@ -565,31 +565,31 @@ div.csl-indent {
 ## 2 Hume   depart from the primary instincts of nature, and to embrace a new syst…
 ## 3 Hume   superlative intelligence and benevolence are entirely imaginary, or, at</code></pre>
 <p>В случае с Беркли отрезаем метаданные и посвящение в самом начале, а также удаляем нумерацию параграфов. Кроме того, текст содержит примечания следующего вида: [Note: Vide Hobbes’ Tripos, ch. v. sect. 6.]<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>, от них тоже следует избавиться.</p>
-<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="распределения-слов-и-анализ-частотностей.html#cb655-1" tabindex="-1"></a>Berkeley <span class="ot">&lt;-</span> my_corpus <span class="sc">%&gt;%</span> </span>
-<span id="cb655-2"><a href="распределения-слов-и-анализ-частотностей.html#cb655-2" tabindex="-1"></a>  <span class="fu">filter</span>(author <span class="sc">==</span> <span class="st">&quot;Berkeley&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb655-3"><a href="распределения-слов-и-анализ-частотностей.html#cb655-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">38</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb655-4"><a href="распределения-слов-и-анализ-частотностей.html#cb655-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;[[:digit:]]+?</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb655-5"><a href="распределения-слов-и-анализ-частотностей.html#cb655-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">[.+?</span><span class="sc">\\</span><span class="st">]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb655-6"><a href="распределения-слов-и-анализ-частотностей.html#cb655-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;[[:digit:]]+&quot;</span>, <span class="st">&quot; &quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="распределения-слов-и-анализ-частотностей.html#cb656-1" tabindex="-1"></a>Berkeley <span class="ot">&lt;-</span> my_corpus <span class="sc">%&gt;%</span> </span>
+<span id="cb656-2"><a href="распределения-слов-и-анализ-частотностей.html#cb656-2" tabindex="-1"></a>  <span class="fu">filter</span>(author <span class="sc">==</span> <span class="st">&quot;Berkeley&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb656-3"><a href="распределения-слов-и-анализ-частотностей.html#cb656-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">38</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb656-4"><a href="распределения-слов-и-анализ-частотностей.html#cb656-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;[[:digit:]]+?</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb656-5"><a href="распределения-слов-и-анализ-частотностей.html#cb656-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">[.+?</span><span class="sc">\\</span><span class="st">]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb656-6"><a href="распределения-слов-и-анализ-частотностей.html#cb656-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;[[:digit:]]+&quot;</span>, <span class="st">&quot; &quot;</span>))</span></code></pre></div>
 <p>Что касается Локка, то здесь удаляем метаданные и оглавление в самом начале, а также посвящение; удаляем подчеркивания вокруг слов. “Письмо к читателю” уже содержит некоторые философские положения, и его можно оставить.</p>
-<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="распределения-слов-и-анализ-частотностей.html#cb656-1" tabindex="-1"></a>Locke <span class="ot">&lt;-</span> my_corpus <span class="sc">%&gt;%</span> </span>
-<span id="cb656-2"><a href="распределения-слов-и-анализ-частотностей.html#cb656-2" tabindex="-1"></a>  <span class="fu">filter</span>(author <span class="sc">==</span> <span class="st">&quot;Locke&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb656-3"><a href="распределения-слов-и-анализ-частотностей.html#cb656-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">135</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb656-4"><a href="распределения-слов-и-анализ-частотностей.html#cb656-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb656-5"><a href="распределения-слов-и-анализ-частотностей.html#cb656-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;[[:digit:]]&quot;</span>, <span class="st">&quot; &quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="распределения-слов-и-анализ-частотностей.html#cb657-1" tabindex="-1"></a>Locke <span class="ot">&lt;-</span> my_corpus <span class="sc">%&gt;%</span> </span>
+<span id="cb657-2"><a href="распределения-слов-и-анализ-частотностей.html#cb657-2" tabindex="-1"></a>  <span class="fu">filter</span>(author <span class="sc">==</span> <span class="st">&quot;Locke&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb657-3"><a href="распределения-слов-и-анализ-частотностей.html#cb657-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">135</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb657-4"><a href="распределения-слов-и-анализ-частотностей.html#cb657-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb657-5"><a href="распределения-слов-и-анализ-частотностей.html#cb657-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;[[:digit:]]&quot;</span>, <span class="st">&quot; &quot;</span>))</span></code></pre></div>
 <p>Соединив обратно все три текста, замечаем некоторые орфографические нерегулярности; исправляем.</p>
-<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="распределения-слов-и-анализ-частотностей.html#cb657-1" tabindex="-1"></a>tidy_corpus <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(Hume, Berkeley, Locke) <span class="sc">%&gt;%</span> </span>
-<span id="cb657-2"><a href="распределения-слов-и-анализ-частотностей.html#cb657-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="fu">c</span>(<span class="st">&quot;[Mm]an’s&quot;</span> <span class="ot">=</span> <span class="st">&quot;man&#39;s&quot;</span>, <span class="st">&quot;[mM]en’s&quot;</span> <span class="ot">=</span> <span class="st">&quot;men&#39;s&quot;</span>, <span class="st">&quot;[hH]ath&quot;</span> <span class="ot">=</span> <span class="st">&quot;has&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="распределения-слов-и-анализ-частотностей.html#cb658-1" tabindex="-1"></a>tidy_corpus <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(Hume, Berkeley, Locke) <span class="sc">%&gt;%</span> </span>
+<span id="cb658-2"><a href="распределения-слов-и-анализ-частотностей.html#cb658-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="fu">c</span>(<span class="st">&quot;[Mm]an’s&quot;</span> <span class="ot">=</span> <span class="st">&quot;man&#39;s&quot;</span>, <span class="st">&quot;[mM]en’s&quot;</span> <span class="ot">=</span> <span class="st">&quot;men&#39;s&quot;</span>, <span class="st">&quot;[hH]ath&quot;</span> <span class="ot">=</span> <span class="st">&quot;has&quot;</span>)))</span></code></pre></div>
 </div>
 <div id="токенизация" class="section level2 hasAnchor" number="11.3">
 <h2><span class="header-section-number">11.3</span> Токенизация<a href="распределения-слов-и-анализ-частотностей.html#токенизация" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>После этого делим корпус на слова, как мы уже делали в уроке про токенизацию.</p>
-<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="распределения-слов-и-анализ-частотностей.html#cb658-1" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb658-2"><a href="распределения-слов-и-анализ-частотностей.html#cb658-2" tabindex="-1"></a></span>
-<span id="cb658-3"><a href="распределения-слов-и-анализ-частотностей.html#cb658-3" tabindex="-1"></a>corpus_words <span class="ot">&lt;-</span> tidy_corpus <span class="sc">%&gt;%</span> </span>
-<span id="cb658-4"><a href="распределения-слов-и-анализ-частотностей.html#cb658-4" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
-<span id="cb658-5"><a href="распределения-слов-и-анализ-частотностей.html#cb658-5" tabindex="-1"></a></span>
-<span id="cb658-6"><a href="распределения-слов-и-анализ-частотностей.html#cb658-6" tabindex="-1"></a>corpus_words</span></code></pre></div>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="распределения-слов-и-анализ-частотностей.html#cb659-1" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb659-2"><a href="распределения-слов-и-анализ-частотностей.html#cb659-2" tabindex="-1"></a></span>
+<span id="cb659-3"><a href="распределения-слов-и-анализ-частотностей.html#cb659-3" tabindex="-1"></a>corpus_words <span class="ot">&lt;-</span> tidy_corpus <span class="sc">%&gt;%</span> </span>
+<span id="cb659-4"><a href="распределения-слов-и-анализ-частотностей.html#cb659-4" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
+<span id="cb659-5"><a href="распределения-слов-и-анализ-частотностей.html#cb659-5" tabindex="-1"></a></span>
+<span id="cb659-6"><a href="распределения-слов-и-анализ-частотностей.html#cb659-6" tabindex="-1"></a>corpus_words</span></code></pre></div>
 <pre><code>## # A tibble: 238,538 × 2
 ##    author word      
 ##    &lt;chr&gt;  &lt;chr&gt;     
@@ -609,14 +609,14 @@ div.csl-indent {
 <h2><span class="header-section-number">11.4</span> Cтоп-слова<a href="распределения-слов-и-анализ-частотностей.html#cтоп-слова" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Большая часть слов, которые мы сейчас видим в корпусе, нам пока не интересна – это шумовые слова, или стоп-слова, не несущие смысловой нагрузки. Функция <code>anti_join()</code> позволяет от них избавиться; в случае с английским языком список стоп-слов уже доступен в пакете <code>tidytext</code>; в других случаях их следует загружать отдельно. Для многих языков стоп-слова доступны в пакете <code>stopwords</code><a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>. Функция <code>anti_join()</code> работает так:</p>
 <p><img src="https://d33wubrfki0l68.cloudfront.net/f29a85efd53a079cc84c14ba4ba6894e238c3759/c1408/diagrams/join-anti.png" style="width:70.0%" /></p>
-<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="распределения-слов-и-анализ-частотностей.html#cb660-1" tabindex="-1"></a>other <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;section&quot;</span>, <span class="st">&quot;chapter&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">40</span>, <span class="st">&quot;edit&quot;</span>, <span class="dv">1710</span>, <span class="st">&quot;v.g&quot;</span>, <span class="st">&quot;v.g.a&quot;</span>)</span>
-<span id="cb660-2"><a href="распределения-слов-и-анализ-частотностей.html#cb660-2" tabindex="-1"></a></span>
-<span id="cb660-3"><a href="распределения-слов-и-анализ-частотностей.html#cb660-3" tabindex="-1"></a>corpus_words_nosp <span class="ot">&lt;-</span> corpus_words <span class="sc">%&gt;%</span> </span>
-<span id="cb660-4"><a href="распределения-слов-и-анализ-частотностей.html#cb660-4" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">%&gt;%</span> </span>
-<span id="cb660-5"><a href="распределения-слов-и-анализ-частотностей.html#cb660-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> other)</span></code></pre></div>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="распределения-слов-и-анализ-частотностей.html#cb661-1" tabindex="-1"></a>other <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;section&quot;</span>, <span class="st">&quot;chapter&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">40</span>, <span class="st">&quot;edit&quot;</span>, <span class="dv">1710</span>, <span class="st">&quot;v.g&quot;</span>, <span class="st">&quot;v.g.a&quot;</span>)</span>
+<span id="cb661-2"><a href="распределения-слов-и-анализ-частотностей.html#cb661-2" tabindex="-1"></a></span>
+<span id="cb661-3"><a href="распределения-слов-и-анализ-частотностей.html#cb661-3" tabindex="-1"></a>corpus_words_nosp <span class="ot">&lt;-</span> corpus_words <span class="sc">%&gt;%</span> </span>
+<span id="cb661-4"><a href="распределения-слов-и-анализ-частотностей.html#cb661-4" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">%&gt;%</span> </span>
+<span id="cb661-5"><a href="распределения-слов-и-анализ-частотностей.html#cb661-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> other)</span></code></pre></div>
 <pre><code>## Joining with `by =
 ## join_by(word)`</code></pre>
-<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="распределения-слов-и-анализ-частотностей.html#cb662-1" tabindex="-1"></a>corpus_words_nosp</span></code></pre></div>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="распределения-слов-и-анализ-частотностей.html#cb663-1" tabindex="-1"></a>corpus_words_nosp</span></code></pre></div>
 <pre><code>## # A tibble: 73,311 × 2
 ##    author word      
 ##    &lt;chr&gt;  &lt;chr&gt;     
@@ -636,21 +636,21 @@ div.csl-indent {
 <div id="абсолютная-частотность" class="section level2 hasAnchor" number="11.5">
 <h2><span class="header-section-number">11.5</span> Абсолютная частотность<a href="распределения-слов-и-анализ-частотностей.html#абсолютная-частотность" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Для начала посмотрим на самые частотные слова <em>во всем корпусе</em>.</p>
-<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="распределения-слов-и-анализ-частотностей.html#cb664-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb664-2"><a href="распределения-слов-и-анализ-частотностей.html#cb664-2" tabindex="-1"></a></span>
-<span id="cb664-3"><a href="распределения-слов-и-анализ-частотностей.html#cb664-3" tabindex="-1"></a>corpus_words_nosp <span class="sc">%&gt;%</span> </span>
-<span id="cb664-4"><a href="распределения-слов-и-анализ-частотностей.html#cb664-4" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb664-5"><a href="распределения-слов-и-анализ-частотностей.html#cb664-5" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb664-6"><a href="распределения-слов-и-анализ-частотностей.html#cb664-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder</span>(word, n), n, <span class="at">fill =</span> word)) <span class="sc">+</span></span>
-<span id="cb664-7"><a href="распределения-слов-и-анализ-частотностей.html#cb664-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
-<span id="cb664-8"><a href="распределения-слов-и-анализ-частотностей.html#cb664-8" tabindex="-1"></a>  <span class="fu">coord_flip</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="распределения-слов-и-анализ-частотностей.html#cb665-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb665-2"><a href="распределения-слов-и-анализ-частотностей.html#cb665-2" tabindex="-1"></a></span>
+<span id="cb665-3"><a href="распределения-слов-и-анализ-частотностей.html#cb665-3" tabindex="-1"></a>corpus_words_nosp <span class="sc">%&gt;%</span> </span>
+<span id="cb665-4"><a href="распределения-слов-и-анализ-частотностей.html#cb665-4" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb665-5"><a href="распределения-слов-и-анализ-частотностей.html#cb665-5" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb665-6"><a href="распределения-слов-и-анализ-частотностей.html#cb665-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder</span>(word, n), n, <span class="at">fill =</span> word)) <span class="sc">+</span></span>
+<span id="cb665-7"><a href="распределения-слов-и-анализ-частотностей.html#cb665-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb665-8"><a href="распределения-слов-и-анализ-частотностей.html#cb665-8" tabindex="-1"></a>  <span class="fu">coord_flip</span>() </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-347-1.png" width="672" /></p>
 <p>Этот график уже дает общее представление о тематике нашего корпуса: это теория познания, в центре которой для всех трех авторов стоит понятие idea.</p>
 <p>Однако можно заподозрить, что высокие показатели для слов <em>simple</em>, <em>distinct</em> и <em>powers</em> – это заслуга прежде всего Локка, который вводит понятия “простой идеи” и “отчетливой идеи”, а также говорит о “силах” вещей, благодаря которым они воздействуют как друг на друга, так и на разум. Силы для Локка – это причины идей, и как таковые они часто упоминаются в его тексте. Понятие врожденности (innate) также занимает в первую очередь его: вся первая книга “Опыта” – это опровержение теории врожденных идей. Беркли о врожденности не говорит вообще, а Юм – очень кратко.</p>
 <p>Кроме того, хотя мы взяли только две книги из “Опыта” Локка – это самый длинный в нашем корпусе, что создает значительный перекос:</p>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="распределения-слов-и-анализ-частотностей.html#cb665-1" tabindex="-1"></a>corpus_words_nosp <span class="sc">%&gt;%</span> </span>
-<span id="cb665-2"><a href="распределения-слов-и-анализ-частотностей.html#cb665-2" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">%&gt;%</span> </span>
-<span id="cb665-3"><a href="распределения-слов-и-анализ-частотностей.html#cb665-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sum =</span> <span class="fu">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="распределения-слов-и-анализ-частотностей.html#cb666-1" tabindex="-1"></a>corpus_words_nosp <span class="sc">%&gt;%</span> </span>
+<span id="cb666-2"><a href="распределения-слов-и-анализ-частотностей.html#cb666-2" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">%&gt;%</span> </span>
+<span id="cb666-3"><a href="распределения-слов-и-анализ-частотностей.html#cb666-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sum =</span> <span class="fu">n</span>())</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   author     sum
 ##   &lt;chr&gt;    &lt;int&gt;
@@ -658,15 +658,15 @@ div.csl-indent {
 ## 2 Hume     18182
 ## 3 Locke    43674</code></pre>
 <p>Посмотрим статистику по отдельным авторам.</p>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="распределения-слов-и-анализ-частотностей.html#cb667-1" tabindex="-1"></a>corpus_words_nosp <span class="sc">%&gt;%</span></span>
-<span id="cb667-2"><a href="распределения-слов-и-анализ-частотностей.html#cb667-2" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">%&gt;%</span> </span>
-<span id="cb667-3"><a href="распределения-слов-и-анализ-частотностей.html#cb667-3" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb667-4"><a href="распределения-слов-и-анализ-частотностей.html#cb667-4" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb667-5"><a href="распределения-слов-и-анализ-частотностей.html#cb667-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder_within</span>(word, n, author), n, <span class="at">fill =</span> word)) <span class="sc">+</span></span>
-<span id="cb667-6"><a href="распределения-слов-и-анализ-частотностей.html#cb667-6" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
-<span id="cb667-7"><a href="распределения-слов-и-анализ-частотностей.html#cb667-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>author, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
-<span id="cb667-8"><a href="распределения-слов-и-анализ-частотностей.html#cb667-8" tabindex="-1"></a>  <span class="fu">scale_x_reordered</span>() <span class="sc">+</span></span>
-<span id="cb667-9"><a href="распределения-слов-и-анализ-частотностей.html#cb667-9" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="распределения-слов-и-анализ-частотностей.html#cb668-1" tabindex="-1"></a>corpus_words_nosp <span class="sc">%&gt;%</span></span>
+<span id="cb668-2"><a href="распределения-слов-и-анализ-частотностей.html#cb668-2" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">%&gt;%</span> </span>
+<span id="cb668-3"><a href="распределения-слов-и-анализ-частотностей.html#cb668-3" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb668-4"><a href="распределения-слов-и-анализ-частотностей.html#cb668-4" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb668-5"><a href="распределения-слов-и-анализ-частотностей.html#cb668-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder_within</span>(word, n, author), n, <span class="at">fill =</span> word)) <span class="sc">+</span></span>
+<span id="cb668-6"><a href="распределения-слов-и-анализ-частотностей.html#cb668-6" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb668-7"><a href="распределения-слов-и-анализ-частотностей.html#cb668-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>author, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb668-8"><a href="распределения-слов-и-анализ-частотностей.html#cb668-8" tabindex="-1"></a>  <span class="fu">scale_x_reordered</span>() <span class="sc">+</span></span>
+<span id="cb668-9"><a href="распределения-слов-и-анализ-частотностей.html#cb668-9" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-349-1.png" width="672" /></p>
 <p>Наиболее частотные слова (при условии удаления стоп-слов) дают вполне адекватное представление о тематике каждого из трех трактатов.</p>
 <p>Согласно Локку, объектом мышления является идея (желательно <em>отчетливая</em>, но тут уж как получится). Все идеи приобретены <em>умом</em> из опыта, направленного на либо на внешние предметы (ощущения, или чувства), либо на внутренние действия разума (рефлексия, или внутреннее чувство). Никаких <em>врожденных</em> идей у человека нет, изначально его душа похожа на чистый лист (антинативизм). Идеи могут быть <em>простыми</em> и сложными; они делятся на модусы, субстанции и отношения. К числу простых модусов относятся <em>пространство</em>, в котором находятся <em>тела</em>, а также <em>продолжительность</em>; измеренная продолжительность представляет собой <em>время</em>.</p>
@@ -679,28 +679,28 @@ div.csl-indent {
 <p>Поскольку мы не лемматизировали текст, то единственное и множественное число слова idea рассматриваются как разные токены. Один из способов справиться с этим – стемминг.</p>
 <p>Стемминг (англ. stemming — находить происхождение) — это процесс нахождения основы слова для заданного исходного слова. Основа слова не обязательно совпадает с морфологическим корнем слова. Стемминг применяется в поисковых системах для расширения поискового запроса пользователя, является частью процесса нормализации текста. Один из наиболее популярных алгоритмов стемминга был написан Мартином Портером и опубликован в 1980 году.</p>
 <p>В R стеммер Портера доступен в пакете <code>snowball</code>. К сожалению, он поддерживает не все языки, но русский, французский, немецкий и др. там есть<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>. Не для всех языков, впрочем, и не для всех задач стемминг – это хорошая идея. Но попробуем применить его к нашему корпусу.</p>
-<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="распределения-слов-и-анализ-частотностей.html#cb668-1" tabindex="-1"></a><span class="fu">library</span>(SnowballC)</span>
-<span id="cb668-2"><a href="распределения-слов-и-анализ-частотностей.html#cb668-2" tabindex="-1"></a></span>
-<span id="cb668-3"><a href="распределения-слов-и-анализ-частотностей.html#cb668-3" tabindex="-1"></a>corpus_stems <span class="ot">&lt;-</span> corpus_words_nosp <span class="sc">%&gt;%</span></span>
-<span id="cb668-4"><a href="распределения-слов-и-анализ-частотностей.html#cb668-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">stem =</span> <span class="fu">wordStem</span>(word)) </span>
-<span id="cb668-5"><a href="распределения-слов-и-анализ-частотностей.html#cb668-5" tabindex="-1"></a></span>
-<span id="cb668-6"><a href="распределения-слов-и-анализ-частотностей.html#cb668-6" tabindex="-1"></a>corpus_stems <span class="sc">%&gt;%</span> </span>
-<span id="cb668-7"><a href="распределения-слов-и-анализ-частотностей.html#cb668-7" tabindex="-1"></a>  <span class="fu">count</span>(stem, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb668-8"><a href="распределения-слов-и-анализ-частотностей.html#cb668-8" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb668-9"><a href="распределения-слов-и-анализ-частотностей.html#cb668-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder</span>(stem, n), n, <span class="at">fill =</span> stem)) <span class="sc">+</span></span>
-<span id="cb668-10"><a href="распределения-слов-и-анализ-частотностей.html#cb668-10" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
-<span id="cb668-11"><a href="распределения-слов-и-анализ-частотностей.html#cb668-11" tabindex="-1"></a>  <span class="fu">coord_flip</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="распределения-слов-и-анализ-частотностей.html#cb669-1" tabindex="-1"></a><span class="fu">library</span>(SnowballC)</span>
+<span id="cb669-2"><a href="распределения-слов-и-анализ-частотностей.html#cb669-2" tabindex="-1"></a></span>
+<span id="cb669-3"><a href="распределения-слов-и-анализ-частотностей.html#cb669-3" tabindex="-1"></a>corpus_stems <span class="ot">&lt;-</span> corpus_words_nosp <span class="sc">%&gt;%</span></span>
+<span id="cb669-4"><a href="распределения-слов-и-анализ-частотностей.html#cb669-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">stem =</span> <span class="fu">wordStem</span>(word)) </span>
+<span id="cb669-5"><a href="распределения-слов-и-анализ-частотностей.html#cb669-5" tabindex="-1"></a></span>
+<span id="cb669-6"><a href="распределения-слов-и-анализ-частотностей.html#cb669-6" tabindex="-1"></a>corpus_stems <span class="sc">%&gt;%</span> </span>
+<span id="cb669-7"><a href="распределения-слов-и-анализ-частотностей.html#cb669-7" tabindex="-1"></a>  <span class="fu">count</span>(stem, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb669-8"><a href="распределения-слов-и-анализ-частотностей.html#cb669-8" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb669-9"><a href="распределения-слов-и-анализ-частотностей.html#cb669-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder</span>(stem, n), n, <span class="at">fill =</span> stem)) <span class="sc">+</span></span>
+<span id="cb669-10"><a href="распределения-слов-и-анализ-частотностей.html#cb669-10" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb669-11"><a href="распределения-слов-и-анализ-частотностей.html#cb669-11" tabindex="-1"></a>  <span class="fu">coord_flip</span>() </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-350-1.png" width="672" /></p>
 <p>Все слова немного покромсаны, но вполне узнаваемы. При этом общее количество уникальных токенов стало значительно ниже:</p>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="распределения-слов-и-анализ-частотностей.html#cb669-1" tabindex="-1"></a><span class="co"># до стемминга</span></span>
-<span id="cb669-2"><a href="распределения-слов-и-анализ-частотностей.html#cb669-2" tabindex="-1"></a>corpus_words_nosp <span class="sc">%&gt;%</span></span>
-<span id="cb669-3"><a href="распределения-слов-и-анализ-частотностей.html#cb669-3" tabindex="-1"></a>  <span class="fu">distinct</span>(word) <span class="sc">%&gt;%</span> </span>
-<span id="cb669-4"><a href="распределения-слов-и-анализ-частотностей.html#cb669-4" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="распределения-слов-и-анализ-частотностей.html#cb670-1" tabindex="-1"></a><span class="co"># до стемминга</span></span>
+<span id="cb670-2"><a href="распределения-слов-и-анализ-частотностей.html#cb670-2" tabindex="-1"></a>corpus_words_nosp <span class="sc">%&gt;%</span></span>
+<span id="cb670-3"><a href="распределения-слов-и-анализ-частотностей.html#cb670-3" tabindex="-1"></a>  <span class="fu">distinct</span>(word) <span class="sc">%&gt;%</span> </span>
+<span id="cb670-4"><a href="распределения-слов-и-анализ-частотностей.html#cb670-4" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
 <pre><code>## [1] 8132</code></pre>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="распределения-слов-и-анализ-частотностей.html#cb671-1" tabindex="-1"></a><span class="co"># после стемминга</span></span>
-<span id="cb671-2"><a href="распределения-слов-и-анализ-частотностей.html#cb671-2" tabindex="-1"></a>corpus_stems <span class="sc">%&gt;%</span></span>
-<span id="cb671-3"><a href="распределения-слов-и-анализ-частотностей.html#cb671-3" tabindex="-1"></a>  <span class="fu">distinct</span>(stem) <span class="sc">%&gt;%</span> </span>
-<span id="cb671-4"><a href="распределения-слов-и-анализ-частотностей.html#cb671-4" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="распределения-слов-и-анализ-частотностей.html#cb672-1" tabindex="-1"></a><span class="co"># после стемминга</span></span>
+<span id="cb672-2"><a href="распределения-слов-и-анализ-частотностей.html#cb672-2" tabindex="-1"></a>corpus_stems <span class="sc">%&gt;%</span></span>
+<span id="cb672-3"><a href="распределения-слов-и-анализ-частотностей.html#cb672-3" tabindex="-1"></a>  <span class="fu">distinct</span>(stem) <span class="sc">%&gt;%</span> </span>
+<span id="cb672-4"><a href="распределения-слов-и-анализ-частотностей.html#cb672-4" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
 <pre><code>## [1] 5229</code></pre>
 <p>Стемминг применяется в некоторых алгоритмах машинного обучения.</p>
 </div>
@@ -708,11 +708,11 @@ div.csl-indent {
 <h2><span class="header-section-number">11.7</span> Относительная частотность<a href="распределения-слов-и-анализ-частотностей.html#относительная-частотность" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Абсолютная частотность – плохой показатель для текстов разной длины. Чтобы тексты было проще сравнивать, разделим показатели частотности на общее число токенов в тексте.</p>
 <p>Cначала считаем частотность для всех токенов по авторам.</p>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="распределения-слов-и-анализ-частотностей.html#cb673-1" tabindex="-1"></a>author_word_counts <span class="ot">&lt;-</span> corpus_words <span class="sc">%&gt;%</span></span>
-<span id="cb673-2"><a href="распределения-слов-и-анализ-частотностей.html#cb673-2" tabindex="-1"></a>  <span class="fu">count</span>(author, word, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb673-3"><a href="распределения-слов-и-анализ-частотностей.html#cb673-3" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb673-4"><a href="распределения-слов-и-анализ-частотностей.html#cb673-4" tabindex="-1"></a></span>
-<span id="cb673-5"><a href="распределения-слов-и-анализ-частотностей.html#cb673-5" tabindex="-1"></a>author_word_counts</span></code></pre></div>
+<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="распределения-слов-и-анализ-частотностей.html#cb674-1" tabindex="-1"></a>author_word_counts <span class="ot">&lt;-</span> corpus_words <span class="sc">%&gt;%</span></span>
+<span id="cb674-2"><a href="распределения-слов-и-анализ-частотностей.html#cb674-2" tabindex="-1"></a>  <span class="fu">count</span>(author, word, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb674-3"><a href="распределения-слов-и-анализ-частотностей.html#cb674-3" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb674-4"><a href="распределения-слов-и-анализ-частотностей.html#cb674-4" tabindex="-1"></a></span>
+<span id="cb674-5"><a href="распределения-слов-и-анализ-частотностей.html#cb674-5" tabindex="-1"></a>author_word_counts</span></code></pre></div>
 <pre><code>## # A tibble: 14,111 × 3
 ##    author word      n
 ##    &lt;chr&gt;  &lt;chr&gt; &lt;int&gt;
@@ -728,11 +728,11 @@ div.csl-indent {
 ## 10 Hume   of     2461
 ## # ℹ 14,101 more rows</code></pre>
 <p>Затем – число токенов в каждой книге.</p>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="распределения-слов-и-анализ-частотностей.html#cb675-1" tabindex="-1"></a>total_counts <span class="ot">&lt;-</span> author_word_counts <span class="sc">%&gt;%</span> </span>
-<span id="cb675-2"><a href="распределения-слов-и-анализ-частотностей.html#cb675-2" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">%&gt;%</span> </span>
-<span id="cb675-3"><a href="распределения-слов-и-анализ-частотностей.html#cb675-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(n))</span>
-<span id="cb675-4"><a href="распределения-слов-и-анализ-частотностей.html#cb675-4" tabindex="-1"></a></span>
-<span id="cb675-5"><a href="распределения-слов-и-анализ-частотностей.html#cb675-5" tabindex="-1"></a>total_counts</span></code></pre></div>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="распределения-слов-и-анализ-частотностей.html#cb676-1" tabindex="-1"></a>total_counts <span class="ot">&lt;-</span> author_word_counts <span class="sc">%&gt;%</span> </span>
+<span id="cb676-2"><a href="распределения-слов-и-анализ-частотностей.html#cb676-2" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">%&gt;%</span> </span>
+<span id="cb676-3"><a href="распределения-слов-и-анализ-частотностей.html#cb676-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(n))</span>
+<span id="cb676-4"><a href="распределения-слов-и-анализ-частотностей.html#cb676-4" tabindex="-1"></a></span>
+<span id="cb676-5"><a href="распределения-слов-и-анализ-частотностей.html#cb676-5" tabindex="-1"></a>total_counts</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   author    total
 ##   &lt;chr&gt;     &lt;int&gt;
@@ -740,10 +740,10 @@ div.csl-indent {
 ## 2 Hume      53590
 ## 3 Locke    148171</code></pre>
 <p>Соединяем два тиббла:</p>
-<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="распределения-слов-и-анализ-частотностей.html#cb677-1" tabindex="-1"></a>author_word_counts <span class="ot">&lt;-</span> author_word_counts <span class="sc">%&gt;%</span> </span>
-<span id="cb677-2"><a href="распределения-слов-и-анализ-частотностей.html#cb677-2" tabindex="-1"></a>  <span class="fu">left_join</span>(total_counts)</span>
-<span id="cb677-3"><a href="распределения-слов-и-анализ-частотностей.html#cb677-3" tabindex="-1"></a></span>
-<span id="cb677-4"><a href="распределения-слов-и-анализ-частотностей.html#cb677-4" tabindex="-1"></a><span class="fu">head</span>(author_word_counts)</span></code></pre></div>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="распределения-слов-и-анализ-частотностей.html#cb678-1" tabindex="-1"></a>author_word_counts <span class="ot">&lt;-</span> author_word_counts <span class="sc">%&gt;%</span> </span>
+<span id="cb678-2"><a href="распределения-слов-и-анализ-частотностей.html#cb678-2" tabindex="-1"></a>  <span class="fu">left_join</span>(total_counts)</span>
+<span id="cb678-3"><a href="распределения-слов-и-анализ-частотностей.html#cb678-3" tabindex="-1"></a></span>
+<span id="cb678-4"><a href="распределения-слов-и-анализ-частотностей.html#cb678-4" tabindex="-1"></a><span class="fu">head</span>(author_word_counts)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
 ##   author word      n  total
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;int&gt;  &lt;int&gt;
@@ -754,12 +754,12 @@ div.csl-indent {
 ## 5 Hume   the    3182  53590
 ## 6 Locke  in     3056 148171</code></pre>
 <p>Считаем относительную частотность и умножаем на 100, чтобы получить проценты:</p>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="распределения-слов-и-анализ-частотностей.html#cb679-1" tabindex="-1"></a>author_word_rf <span class="ot">&lt;-</span> author_word_counts <span class="sc">%&gt;%</span> </span>
-<span id="cb679-2"><a href="распределения-слов-и-анализ-частотностей.html#cb679-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rf =</span> <span class="fu">round</span>((n <span class="sc">/</span> total), <span class="dv">5</span>) <span class="sc">*</span> <span class="dv">100</span>)</span>
-<span id="cb679-3"><a href="распределения-слов-и-анализ-частотностей.html#cb679-3" tabindex="-1"></a></span>
-<span id="cb679-4"><a href="распределения-слов-и-анализ-частотностей.html#cb679-4" tabindex="-1"></a>author_word_rf <span class="sc">%&gt;%</span> </span>
-<span id="cb679-5"><a href="распределения-слов-и-анализ-частотностей.html#cb679-5" tabindex="-1"></a>  <span class="fu">filter</span>(author <span class="sc">==</span> <span class="st">&quot;Berkeley&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb679-6"><a href="распределения-слов-и-анализ-частотностей.html#cb679-6" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="распределения-слов-и-анализ-частотностей.html#cb680-1" tabindex="-1"></a>author_word_rf <span class="ot">&lt;-</span> author_word_counts <span class="sc">%&gt;%</span> </span>
+<span id="cb680-2"><a href="распределения-слов-и-анализ-частотностей.html#cb680-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rf =</span> <span class="fu">round</span>((n <span class="sc">/</span> total), <span class="dv">5</span>) <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb680-3"><a href="распределения-слов-и-анализ-частотностей.html#cb680-3" tabindex="-1"></a></span>
+<span id="cb680-4"><a href="распределения-слов-и-анализ-частотностей.html#cb680-4" tabindex="-1"></a>author_word_rf <span class="sc">%&gt;%</span> </span>
+<span id="cb680-5"><a href="распределения-слов-и-анализ-частотностей.html#cb680-5" tabindex="-1"></a>  <span class="fu">filter</span>(author <span class="sc">==</span> <span class="st">&quot;Berkeley&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb680-6"><a href="распределения-слов-и-анализ-частотностей.html#cb680-6" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ##   author   word      n total    rf
 ##   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
@@ -773,10 +773,10 @@ div.csl-indent {
 <div id="распределения-слов-токенов" class="section level2 hasAnchor" number="11.8">
 <h2><span class="header-section-number">11.8</span> Распределения слов (токенов)<a href="распределения-слов-и-анализ-частотностей.html#распределения-слов-токенов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Наиболее частотные слова – это служебные части речи. На графике видно, что подавляющее большинство слов встречается очень-очень редко, а слов с высокой частотностью – мало. Тоненький хвост уходит далеко вправо по оси x, для наглядности зададим произвольный предел.</p>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="распределения-слов-и-анализ-частотностей.html#cb681-1" tabindex="-1"></a>author_word_rf <span class="sc">%&gt;%</span> </span>
-<span id="cb681-2"><a href="распределения-слов-и-анализ-частотностей.html#cb681-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rf, <span class="at">fill =</span> author)) <span class="sc">+</span></span>
-<span id="cb681-3"><a href="распределения-слов-и-анализ-частотностей.html#cb681-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb681-4"><a href="распределения-слов-и-анализ-частотностей.html#cb681-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>author, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="распределения-слов-и-анализ-частотностей.html#cb682-1" tabindex="-1"></a>author_word_rf <span class="sc">%&gt;%</span> </span>
+<span id="cb682-2"><a href="распределения-слов-и-анализ-частотностей.html#cb682-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rf, <span class="at">fill =</span> author)) <span class="sc">+</span></span>
+<span id="cb682-3"><a href="распределения-слов-и-анализ-частотностей.html#cb682-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb682-4"><a href="распределения-слов-и-анализ-частотностей.html#cb682-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>author, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-356-1.png" width="672" /></p>
 </div>
 <div id="закон-ципфа" class="section level2 hasAnchor" number="11.9">
@@ -792,33 +792,33 @@ div.csl-indent {
 <p><span class="math display">\[log(tf_{r_i}) = log(c) - α \cdot log(r_i) \]</span></p>
 <p>На всякий случай: логарифм дроби равен разности логарифмов числителя и знаменателя.</p>
 <p>Таким образом, мы получаем (почти) линейную зависимость, где c – точка пересечения оси y, a α - коэффициент наклона прямой. Графически это выглядит вот так:</p>
-<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="распределения-слов-и-анализ-частотностей.html#cb682-1" tabindex="-1"></a>author_word_rf_rank <span class="ot">&lt;-</span> author_word_rf <span class="sc">%&gt;%</span> </span>
-<span id="cb682-2"><a href="распределения-слов-и-анализ-частотностей.html#cb682-2" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">%&gt;%</span> </span>
-<span id="cb682-3"><a href="распределения-слов-и-анализ-частотностей.html#cb682-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>()) </span>
-<span id="cb682-4"><a href="распределения-слов-и-анализ-частотностей.html#cb682-4" tabindex="-1"></a></span>
-<span id="cb682-5"><a href="распределения-слов-и-анализ-частотностей.html#cb682-5" tabindex="-1"></a>author_word_rf_rank <span class="sc">%&gt;%</span> </span>
-<span id="cb682-6"><a href="распределения-слов-и-анализ-частотностей.html#cb682-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, rf, <span class="at">color =</span> author)) <span class="sc">+</span></span>
-<span id="cb682-7"><a href="распределения-слов-и-анализ-частотностей.html#cb682-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb682-8"><a href="распределения-слов-и-анализ-частотностей.html#cb682-8" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb682-9"><a href="распределения-слов-и-анализ-частотностей.html#cb682-9" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="распределения-слов-и-анализ-частотностей.html#cb683-1" tabindex="-1"></a>author_word_rf_rank <span class="ot">&lt;-</span> author_word_rf <span class="sc">%&gt;%</span> </span>
+<span id="cb683-2"><a href="распределения-слов-и-анализ-частотностей.html#cb683-2" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">%&gt;%</span> </span>
+<span id="cb683-3"><a href="распределения-слов-и-анализ-частотностей.html#cb683-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>()) </span>
+<span id="cb683-4"><a href="распределения-слов-и-анализ-частотностей.html#cb683-4" tabindex="-1"></a></span>
+<span id="cb683-5"><a href="распределения-слов-и-анализ-частотностей.html#cb683-5" tabindex="-1"></a>author_word_rf_rank <span class="sc">%&gt;%</span> </span>
+<span id="cb683-6"><a href="распределения-слов-и-анализ-частотностей.html#cb683-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, rf, <span class="at">color =</span> author)) <span class="sc">+</span></span>
+<span id="cb683-7"><a href="распределения-слов-и-анализ-частотностей.html#cb683-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb683-8"><a href="распределения-слов-и-анализ-частотностей.html#cb683-8" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb683-9"><a href="распределения-слов-и-анализ-частотностей.html#cb683-9" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-357-1.png" width="672" /></p>
 <p>Чтобы узнать точные коэффициенты, придется подогнать линейную модель (об этом подробнее в следующих уроках):</p>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="распределения-слов-и-анализ-частотностей.html#cb683-1" tabindex="-1"></a>lm_zipf <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> author_word_rf_rank, </span>
-<span id="cb683-2"><a href="распределения-слов-и-анализ-частотностей.html#cb683-2" tabindex="-1"></a>              <span class="at">formula =</span> <span class="fu">log10</span>(rf) <span class="sc">~</span> <span class="fu">log10</span>(rank))</span>
-<span id="cb683-3"><a href="распределения-слов-и-анализ-частотностей.html#cb683-3" tabindex="-1"></a></span>
-<span id="cb683-4"><a href="распределения-слов-и-анализ-частотностей.html#cb683-4" tabindex="-1"></a><span class="fu">coefficients</span>(lm_zipf)</span></code></pre></div>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="распределения-слов-и-анализ-частотностей.html#cb684-1" tabindex="-1"></a>lm_zipf <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> author_word_rf_rank, </span>
+<span id="cb684-2"><a href="распределения-слов-и-анализ-частотностей.html#cb684-2" tabindex="-1"></a>              <span class="at">formula =</span> <span class="fu">log10</span>(rf) <span class="sc">~</span> <span class="fu">log10</span>(rank))</span>
+<span id="cb684-3"><a href="распределения-слов-и-анализ-частотностей.html#cb684-3" tabindex="-1"></a></span>
+<span id="cb684-4"><a href="распределения-слов-и-анализ-частотностей.html#cb684-4" tabindex="-1"></a><span class="fu">coefficients</span>(lm_zipf)</span></code></pre></div>
 <pre><code>## (Intercept) log10(rank) 
 ##    1.749726   -1.272644</code></pre>
 <p>Мы получили коэффициент наклона α чуть больше -1 (на практике точно -1 встречается редко). Добавим линию регрессии на график:</p>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="распределения-слов-и-анализ-частотностей.html#cb685-1" tabindex="-1"></a>author_word_rf_rank <span class="sc">%&gt;%</span> </span>
-<span id="cb685-2"><a href="распределения-слов-и-анализ-частотностей.html#cb685-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, rf, <span class="at">color =</span> author)) <span class="sc">+</span></span>
-<span id="cb685-3"><a href="распределения-слов-и-анализ-частотностей.html#cb685-3" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb685-4"><a href="распределения-слов-и-анализ-частотностей.html#cb685-4" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="fl">1.744</span>,</span>
-<span id="cb685-5"><a href="распределения-слов-и-анализ-частотностей.html#cb685-5" tabindex="-1"></a>              <span class="at">slope =</span> <span class="sc">-</span><span class="fl">1.26</span>, </span>
-<span id="cb685-6"><a href="распределения-слов-и-анализ-частотностей.html#cb685-6" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="dv">2</span>, </span>
-<span id="cb685-7"><a href="распределения-слов-и-анализ-частотностей.html#cb685-7" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;grey50&quot;</span>) <span class="sc">+</span></span>
-<span id="cb685-8"><a href="распределения-слов-и-анализ-частотностей.html#cb685-8" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb685-9"><a href="распределения-слов-и-анализ-частотностей.html#cb685-9" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="распределения-слов-и-анализ-частотностей.html#cb686-1" tabindex="-1"></a>author_word_rf_rank <span class="sc">%&gt;%</span> </span>
+<span id="cb686-2"><a href="распределения-слов-и-анализ-частотностей.html#cb686-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, rf, <span class="at">color =</span> author)) <span class="sc">+</span></span>
+<span id="cb686-3"><a href="распределения-слов-и-анализ-частотностей.html#cb686-3" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb686-4"><a href="распределения-слов-и-анализ-частотностей.html#cb686-4" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="fl">1.744</span>,</span>
+<span id="cb686-5"><a href="распределения-слов-и-анализ-частотностей.html#cb686-5" tabindex="-1"></a>              <span class="at">slope =</span> <span class="sc">-</span><span class="fl">1.26</span>, </span>
+<span id="cb686-6"><a href="распределения-слов-и-анализ-частотностей.html#cb686-6" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="dv">2</span>, </span>
+<span id="cb686-7"><a href="распределения-слов-и-анализ-частотностей.html#cb686-7" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;grey50&quot;</span>) <span class="sc">+</span></span>
+<span id="cb686-8"><a href="распределения-слов-и-анализ-частотностей.html#cb686-8" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb686-9"><a href="распределения-слов-и-анализ-частотностей.html#cb686-9" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-359-1.png" width="672" /></p>
 <p>Здесь видно, что отклонения наиболее заметны как в области самых частотных слов, так и в области наиболее редких (с высокими рангами).</p>
 </div>
@@ -830,19 +830,19 @@ div.csl-indent {
 <p><span class="math display">\[ TTR(T) = \frac{Voc(T)}{n} \]</span>
 где n - общее число токенов, а Voc - число уникальных токенов (типов).</p>
 <p>В пакете <code>languageR</code>, написанном лингвистом Гаральдом Баайеном, есть функция, позволяющая быстро производить такие вычисления. Она требует на входе вектор, а не тиббл, поэтому для эксперимента извлечем один из текстов.</p>
-<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="распределения-слов-и-анализ-частотностей.html#cb686-1" tabindex="-1"></a>locke_words <span class="ot">&lt;-</span> corpus_words <span class="sc">%&gt;%</span> </span>
-<span id="cb686-2"><a href="распределения-слов-и-анализ-частотностей.html#cb686-2" tabindex="-1"></a>  <span class="fu">filter</span>(author <span class="sc">==</span> <span class="st">&quot;Locke&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb686-3"><a href="распределения-слов-и-анализ-частотностей.html#cb686-3" tabindex="-1"></a>  <span class="fu">pull</span>(word)</span>
-<span id="cb686-4"><a href="распределения-слов-и-анализ-частотностей.html#cb686-4" tabindex="-1"></a></span>
-<span id="cb686-5"><a href="распределения-слов-и-анализ-частотностей.html#cb686-5" tabindex="-1"></a><span class="fu">head</span>(locke_words)</span></code></pre></div>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="распределения-слов-и-анализ-частотностей.html#cb687-1" tabindex="-1"></a>locke_words <span class="ot">&lt;-</span> corpus_words <span class="sc">%&gt;%</span> </span>
+<span id="cb687-2"><a href="распределения-слов-и-анализ-частотностей.html#cb687-2" tabindex="-1"></a>  <span class="fu">filter</span>(author <span class="sc">==</span> <span class="st">&quot;Locke&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb687-3"><a href="распределения-слов-и-анализ-частотностей.html#cb687-3" tabindex="-1"></a>  <span class="fu">pull</span>(word)</span>
+<span id="cb687-4"><a href="распределения-слов-и-анализ-частотностей.html#cb687-4" tabindex="-1"></a></span>
+<span id="cb687-5"><a href="распределения-слов-и-анализ-частотностей.html#cb687-5" tabindex="-1"></a><span class="fu">head</span>(locke_words)</span></code></pre></div>
 <pre><code>## [1] &quot;i&quot;     &quot;have&quot;  &quot;put&quot;   &quot;into&quot;  &quot;thy&quot;   &quot;hands&quot;</code></pre>
-<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="распределения-слов-и-анализ-частотностей.html#cb688-1" tabindex="-1"></a><span class="fu">length</span>(locke_words)</span></code></pre></div>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="распределения-слов-и-анализ-частотностей.html#cb689-1" tabindex="-1"></a><span class="fu">length</span>(locke_words)</span></code></pre></div>
 <pre><code>## [1] 148171</code></pre>
 <p>Это немного задумчивая функция, поэтому я создам не 148 тысяч отрывков, а всего 40.</p>
-<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="распределения-слов-и-анализ-частотностей.html#cb690-1" tabindex="-1"></a><span class="fu">library</span>(languageR)</span>
-<span id="cb690-2"><a href="распределения-слов-и-анализ-частотностей.html#cb690-2" tabindex="-1"></a>locke.growth <span class="ot">=</span> <span class="fu">growth.fnc</span>(<span class="at">text =</span> locke_words, <span class="at">size =</span> <span class="dv">1000</span>, <span class="at">nchunks =</span> <span class="dv">40</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="распределения-слов-и-анализ-частотностей.html#cb691-1" tabindex="-1"></a><span class="fu">library</span>(languageR)</span>
+<span id="cb691-2"><a href="распределения-слов-и-анализ-частотностей.html#cb691-2" tabindex="-1"></a>locke.growth <span class="ot">=</span> <span class="fu">growth.fnc</span>(<span class="at">text =</span> locke_words, <span class="at">size =</span> <span class="dv">1000</span>, <span class="at">nchunks =</span> <span class="dv">40</span>)</span></code></pre></div>
 <pre><code>## ........................................</code></pre>
-<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="распределения-слов-и-анализ-частотностей.html#cb692-1" tabindex="-1"></a><span class="fu">head</span>(locke.growth<span class="sc">@</span>data<span class="sc">$</span>data)</span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="распределения-слов-и-анализ-частотностей.html#cb693-1" tabindex="-1"></a><span class="fu">head</span>(locke.growth<span class="sc">@</span>data<span class="sc">$</span>data)</span></code></pre></div>
 <pre><code>##   Chunk Tokens Types HapaxLegomena DisLegomena TrisLegomena     Yule       Zipf
 ## 1     1   1000   409           273          64           18  83.8600 -0.6618709
 ## 2     2   2000   638           407         100           34  97.8500 -0.7749886
@@ -857,7 +857,7 @@ div.csl-indent {
 ## 4      0.2532500 0.7124681 16.01694 0.1520237 0.5779033
 ## 5      0.2266000 0.6992475 16.02304 0.1509267 0.6194817
 ## 6      0.2093333 0.6834975 16.21489 0.1536624 0.6548148</code></pre>
-<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="распределения-слов-и-анализ-частотностей.html#cb694-1" tabindex="-1"></a><span class="fu">plot</span>(locke.growth)</span></code></pre></div>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="распределения-слов-и-анализ-частотностей.html#cb695-1" tabindex="-1"></a><span class="fu">plot</span>(locke.growth)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-362-1.png" width="672" /></p>
 <p>Тут много всего интересного, но обратим внимание лишь на два верхних окошка слева: количество типов растет постоянно, но с разной скоростью. Так же меняется числов гапаксов: нечто похожее мы уже замечали, когда говорили о гапаксах у Платона. Подробнее о различных мерах лексического разнообразия см.: <span class="citation">(<a href="#ref-Baayen2008">Baayen 2008, 222–36</a>)</span> и <span class="citation">(<a href="#ref-savoy2020">Savoy 2020</a>)</span>.</p>
 </div>
@@ -867,11 +867,11 @@ div.csl-indent {
 <p><img src="https://avatars.dzeninfra.ru/get-zen_doc/3986249/pub_5f589066197cd55cd9ab2254_5f5890f7197cd55cd9ac1822/scale_1200" /></p>
 <p>Логарифм единицы равен нулю, поэтому если слово встречается во всех документах, его tf-idf равно нулю. Чем выше tf-idf, тем более характерно некое слово для некоторого документа. Однако относительная частотность тоже учитывается! Например, Беркли один раз упоминает “сахарные бобы”, а Локк – “миндаль”, но из-за редкой частотности tf-idf для подобных слов будет низкий.</p>
 <p>Функция <code>bind_tf_idf()</code> принимает на входе тиббл с абсолютной частотностью для каждого слова.</p>
-<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="распределения-слов-и-анализ-частотностей.html#cb695-1" tabindex="-1"></a>author_word_tfidf <span class="ot">&lt;-</span> author_word_rf <span class="sc">%&gt;%</span> </span>
-<span id="cb695-2"><a href="распределения-слов-и-анализ-частотностей.html#cb695-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> other) <span class="sc">%&gt;%</span> </span>
-<span id="cb695-3"><a href="распределения-слов-и-анализ-частотностей.html#cb695-3" tabindex="-1"></a>  <span class="fu">bind_tf_idf</span>(word, author, n)</span>
-<span id="cb695-4"><a href="распределения-слов-и-анализ-частотностей.html#cb695-4" tabindex="-1"></a></span>
-<span id="cb695-5"><a href="распределения-слов-и-анализ-частотностей.html#cb695-5" tabindex="-1"></a>author_word_tfidf</span></code></pre></div>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="распределения-слов-и-анализ-частотностей.html#cb696-1" tabindex="-1"></a>author_word_tfidf <span class="ot">&lt;-</span> author_word_rf <span class="sc">%&gt;%</span> </span>
+<span id="cb696-2"><a href="распределения-слов-и-анализ-частотностей.html#cb696-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> other) <span class="sc">%&gt;%</span> </span>
+<span id="cb696-3"><a href="распределения-слов-и-анализ-частотностей.html#cb696-3" tabindex="-1"></a>  <span class="fu">bind_tf_idf</span>(word, author, n)</span>
+<span id="cb696-4"><a href="распределения-слов-и-анализ-частотностей.html#cb696-4" tabindex="-1"></a></span>
+<span id="cb696-5"><a href="распределения-слов-и-анализ-частотностей.html#cb696-5" tabindex="-1"></a>author_word_tfidf</span></code></pre></div>
 <pre><code>## # A tibble: 14,103 × 8
 ##    author word      n  total    rf     tf   idf tf_idf
 ##    &lt;chr&gt;  &lt;chr&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -887,9 +887,9 @@ div.csl-indent {
 ## 10 Hume   of     2461  53590  4.59 0.0459     0      0
 ## # ℹ 14,093 more rows</code></pre>
 <p>Выбираем слова с высокой tf-idf:</p>
-<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="распределения-слов-и-анализ-частотностей.html#cb697-1" tabindex="-1"></a>author_word_tfidf <span class="sc">%&gt;%</span> </span>
-<span id="cb697-2"><a href="распределения-слов-и-анализ-частотностей.html#cb697-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>total) <span class="sc">%&gt;%</span> </span>
-<span id="cb697-3"><a href="распределения-слов-и-анализ-частотностей.html#cb697-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span></code></pre></div>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="распределения-слов-и-анализ-частотностей.html#cb698-1" tabindex="-1"></a>author_word_tfidf <span class="sc">%&gt;%</span> </span>
+<span id="cb698-2"><a href="распределения-слов-и-анализ-частотностей.html#cb698-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>total) <span class="sc">%&gt;%</span> </span>
+<span id="cb698-3"><a href="распределения-слов-и-анализ-частотностей.html#cb698-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span></code></pre></div>
 <pre><code>## # A tibble: 14,103 × 7
 ##    author word          n    rf       tf   idf   tf_idf
 ##    &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
@@ -905,17 +905,17 @@ div.csl-indent {
 ## 10 Hume   witnesses    22 0.041 0.000411 1.10  0.000451
 ## # ℹ 14,093 more rows</code></pre>
 <p>Снова визуализируем.</p>
-<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="распределения-слов-и-анализ-частотностей.html#cb699-1" tabindex="-1"></a>author_word_tfidf <span class="sc">%&gt;%</span> </span>
-<span id="cb699-2"><a href="распределения-слов-и-анализ-частотностей.html#cb699-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>tf_idf) <span class="sc">%&gt;%</span> </span>
-<span id="cb699-3"><a href="распределения-слов-и-анализ-частотностей.html#cb699-3" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">%&gt;%</span> </span>
-<span id="cb699-4"><a href="распределения-слов-и-анализ-частотностей.html#cb699-4" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb699-5"><a href="распределения-слов-и-анализ-частотностей.html#cb699-5" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb699-6"><a href="распределения-слов-и-анализ-частотностей.html#cb699-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder_within</span>(word, tf_idf, author), tf_idf, <span class="at">fill =</span> author)) <span class="sc">+</span></span>
-<span id="cb699-7"><a href="распределения-слов-и-анализ-частотностей.html#cb699-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb699-8"><a href="распределения-слов-и-анализ-частотностей.html#cb699-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;tf-idf&quot;</span>) <span class="sc">+</span></span>
-<span id="cb699-9"><a href="распределения-слов-и-анализ-частотностей.html#cb699-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>author, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
-<span id="cb699-10"><a href="распределения-слов-и-анализ-частотностей.html#cb699-10" tabindex="-1"></a>  <span class="fu">scale_x_reordered</span>() <span class="sc">+</span></span>
-<span id="cb699-11"><a href="распределения-слов-и-анализ-частотностей.html#cb699-11" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="распределения-слов-и-анализ-частотностей.html#cb700-1" tabindex="-1"></a>author_word_tfidf <span class="sc">%&gt;%</span> </span>
+<span id="cb700-2"><a href="распределения-слов-и-анализ-частотностей.html#cb700-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>tf_idf) <span class="sc">%&gt;%</span> </span>
+<span id="cb700-3"><a href="распределения-слов-и-анализ-частотностей.html#cb700-3" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">%&gt;%</span> </span>
+<span id="cb700-4"><a href="распределения-слов-и-анализ-частотностей.html#cb700-4" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb700-5"><a href="распределения-слов-и-анализ-частотностей.html#cb700-5" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb700-6"><a href="распределения-слов-и-анализ-частотностей.html#cb700-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder_within</span>(word, tf_idf, author), tf_idf, <span class="at">fill =</span> author)) <span class="sc">+</span></span>
+<span id="cb700-7"><a href="распределения-слов-и-анализ-частотностей.html#cb700-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb700-8"><a href="распределения-слов-и-анализ-частотностей.html#cb700-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;tf-idf&quot;</span>) <span class="sc">+</span></span>
+<span id="cb700-9"><a href="распределения-слов-и-анализ-частотностей.html#cb700-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>author, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb700-10"><a href="распределения-слов-и-анализ-частотностей.html#cb700-10" tabindex="-1"></a>  <span class="fu">scale_x_reordered</span>() <span class="sc">+</span></span>
+<span id="cb700-11"><a href="распределения-слов-и-анализ-частотностей.html#cb700-11" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
 <pre><code>## Selecting by tf_idf</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-365-1.png" width="672" /></p>
 <p>На таком графике авторы выглядят гораздо более самобытными, но будьте осторожны: все то, что их сближает (а это не только служебные части речи!), сюда просто не попало.</p>
@@ -924,16 +924,16 @@ div.csl-indent {
 <div id="сравнение-при-помощи-диаграммы-рассеяния" class="section level2 hasAnchor" number="11.12">
 <h2><span class="header-section-number">11.12</span> Сравнение при помощи диаграммы рассеяния<a href="распределения-слов-и-анализ-частотностей.html#сравнение-при-помощи-диаграммы-рассеяния" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Столбиковая диаграмма – не единственный способ сравнить частотности слов. Еще один наглядный метод – это диаграмма рассеяния с относительными частотностями. Функция <code>spread()</code> позволяет разделить один столбец на несколько новых, а <code>gather()</code>, напротив, – собрать.</p>
-<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="распределения-слов-и-анализ-частотностей.html#cb701-1" tabindex="-1"></a>freq <span class="ot">&lt;-</span> author_word_rf <span class="sc">%&gt;%</span></span>
-<span id="cb701-2"><a href="распределения-слов-и-анализ-частотностей.html#cb701-2" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">%&gt;%</span> </span>
-<span id="cb701-3"><a href="распределения-слов-и-анализ-частотностей.html#cb701-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rf =</span> rf <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb701-4"><a href="распределения-слов-и-анализ-частотностей.html#cb701-4" tabindex="-1"></a>  <span class="fu">filter</span>(rf <span class="sc">&gt;</span> <span class="fl">0.0001</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb701-5"><a href="распределения-слов-и-анализ-частотностей.html#cb701-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n, <span class="sc">-</span>total) <span class="sc">%&gt;%</span> </span>
-<span id="cb701-6"><a href="распределения-слов-и-анализ-частотностей.html#cb701-6" tabindex="-1"></a>  <span class="fu">spread</span>(author, rf, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb701-7"><a href="распределения-слов-и-анализ-частотностей.html#cb701-7" tabindex="-1"></a>  <span class="fu">gather</span>(author, rf, Hume<span class="sc">:</span>Locke)</span></code></pre></div>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="распределения-слов-и-анализ-частотностей.html#cb702-1" tabindex="-1"></a>freq <span class="ot">&lt;-</span> author_word_rf <span class="sc">%&gt;%</span></span>
+<span id="cb702-2"><a href="распределения-слов-и-анализ-частотностей.html#cb702-2" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">%&gt;%</span> </span>
+<span id="cb702-3"><a href="распределения-слов-и-анализ-частотностей.html#cb702-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rf =</span> rf <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb702-4"><a href="распределения-слов-и-анализ-частотностей.html#cb702-4" tabindex="-1"></a>  <span class="fu">filter</span>(rf <span class="sc">&gt;</span> <span class="fl">0.0001</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb702-5"><a href="распределения-слов-и-анализ-частотностей.html#cb702-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n, <span class="sc">-</span>total) <span class="sc">%&gt;%</span> </span>
+<span id="cb702-6"><a href="распределения-слов-и-анализ-частотностей.html#cb702-6" tabindex="-1"></a>  <span class="fu">spread</span>(author, rf, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb702-7"><a href="распределения-слов-и-анализ-частотностей.html#cb702-7" tabindex="-1"></a>  <span class="fu">gather</span>(author, rf, Hume<span class="sc">:</span>Locke)</span></code></pre></div>
 <pre><code>## Joining with `by =
 ## join_by(word)`</code></pre>
-<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="распределения-слов-и-анализ-частотностей.html#cb703-1" tabindex="-1"></a>freq</span></code></pre></div>
+<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="распределения-слов-и-анализ-частотностей.html#cb704-1" tabindex="-1"></a>freq</span></code></pre></div>
 <pre><code>## # A tibble: 2,458 × 4
 ##    word        Berkeley author      rf
 ##    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
@@ -948,24 +948,24 @@ div.csl-indent {
 ##  9 abstruse     0       Hume   0.00017
 ## 10 absurd       0.00049 Hume   0.00017
 ## # ℹ 2,448 more rows</code></pre>
-<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="распределения-слов-и-анализ-частотностей.html#cb705-1" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb705-2"><a href="распределения-слов-и-анализ-частотностей.html#cb705-2" tabindex="-1"></a></span>
-<span id="cb705-3"><a href="распределения-слов-и-анализ-частотностей.html#cb705-3" tabindex="-1"></a>freq <span class="sc">%&gt;%</span> </span>
-<span id="cb705-4"><a href="распределения-слов-и-анализ-частотностей.html#cb705-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rf, <span class="at">y =</span> Berkeley)) <span class="sc">+</span></span>
-<span id="cb705-5"><a href="распределения-слов-и-анализ-частотностей.html#cb705-5" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">color =</span> <span class="st">&quot;grey40&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb705-6"><a href="распределения-слов-и-анализ-частотностей.html#cb705-6" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">width =</span> <span class="fl">0.3</span>, </span>
-<span id="cb705-7"><a href="распределения-слов-и-анализ-частотностей.html#cb705-7" tabindex="-1"></a>              <span class="at">height =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;darkblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb705-8"><a href="распределения-слов-и-анализ-частотностей.html#cb705-8" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> word), <span class="at">check_overlap =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb705-9"><a href="распределения-слов-и-анализ-частотностей.html#cb705-9" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>) <span class="sc">+</span></span>
-<span id="cb705-10"><a href="распределения-слов-и-анализ-частотностей.html#cb705-10" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
-<span id="cb705-11"><a href="распределения-слов-и-анализ-частотностей.html#cb705-11" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
-<span id="cb705-12"><a href="распределения-слов-и-анализ-частотностей.html#cb705-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>author, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb705-13"><a href="распределения-слов-и-анализ-частотностей.html#cb705-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb705-14"><a href="распределения-слов-и-анализ-частотностей.html#cb705-14" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb705-15"><a href="распределения-слов-и-анализ-частотностей.html#cb705-15" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Berkeley&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="распределения-слов-и-анализ-частотностей.html#cb706-1" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb706-2"><a href="распределения-слов-и-анализ-частотностей.html#cb706-2" tabindex="-1"></a></span>
+<span id="cb706-3"><a href="распределения-слов-и-анализ-частотностей.html#cb706-3" tabindex="-1"></a>freq <span class="sc">%&gt;%</span> </span>
+<span id="cb706-4"><a href="распределения-слов-и-анализ-частотностей.html#cb706-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rf, <span class="at">y =</span> Berkeley)) <span class="sc">+</span></span>
+<span id="cb706-5"><a href="распределения-слов-и-анализ-частотностей.html#cb706-5" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">color =</span> <span class="st">&quot;grey40&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb706-6"><a href="распределения-слов-и-анализ-частотностей.html#cb706-6" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">width =</span> <span class="fl">0.3</span>, </span>
+<span id="cb706-7"><a href="распределения-слов-и-анализ-частотностей.html#cb706-7" tabindex="-1"></a>              <span class="at">height =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;darkblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb706-8"><a href="распределения-слов-и-анализ-частотностей.html#cb706-8" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> word), <span class="at">check_overlap =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb706-9"><a href="распределения-слов-и-анализ-частотностей.html#cb706-9" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>) <span class="sc">+</span></span>
+<span id="cb706-10"><a href="распределения-слов-и-анализ-частотностей.html#cb706-10" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb706-11"><a href="распределения-слов-и-анализ-частотностей.html#cb706-11" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb706-12"><a href="распределения-слов-и-анализ-частотностей.html#cb706-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>author, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb706-13"><a href="распределения-слов-и-анализ-частотностей.html#cb706-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb706-14"><a href="распределения-слов-и-анализ-частотностей.html#cb706-14" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb706-15"><a href="распределения-слов-и-анализ-частотностей.html#cb706-15" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Berkeley&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-367-1.png" width="672" />
 Эти три трактата нам еще понадобятся, поэтому сохраняем опрятный текст с уже удаленными стоп-словами.</p>
-<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="распределения-слов-и-анализ-частотностей.html#cb706-1" tabindex="-1"></a><span class="fu">save</span>(corpus_words_nosp, <span class="at">file =</span> <span class="st">&quot;data/Idea.Rdata&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="распределения-слов-и-анализ-частотностей.html#cb707-1" tabindex="-1"></a><span class="fu">save</span>(corpus_words_nosp, <span class="at">file =</span> <span class="st">&quot;data/Idea.Rdata&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>

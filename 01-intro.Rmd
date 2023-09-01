@@ -715,7 +715,7 @@ head(hapax_plato)
 
 Вот так выглядят наши данные. Функция `class()` позволяет убедиться, что это датафрейм.
 
-```{r echo = F}
+```{r}
 class(hapax_plato)
 ```
 
@@ -729,14 +729,10 @@ colnames(hapax_plato)
 # извлечь ряд(ы) по значению
 hapax_plato[hapax_plato$dialogue == "Parmenides", ]
 ```
+
 ```{r}
 # узнать тип данных в столбцах
 str(hapax_plato) 
-```
-
-```{r}
-# отобрать ряды по количеству слов
-hapax_plato[hapax_plato$words > 10000, ]
 ```
 
 ```{r}
@@ -744,6 +740,14 @@ hapax_plato[hapax_plato$words > 10000, ]
 hapax_plato$group <- as.factor(hapax_plato$group)
 hapax_plato[,2:4] <- sapply(hapax_plato[,2:4],as.numeric) # подробнее о функции `sapply()` в уроке про итерации
 ```
+
+
+
+```{r}
+# отобрать ряды по количеству слов
+hapax_plato[hapax_plato$words > 10000, ]
+```
+
 
 И еще с датафреймами полезна функция `summary()`:
 
