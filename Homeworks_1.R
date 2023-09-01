@@ -1,8 +1,3 @@
-# lesson 3 tidy data
-swirl::install_course("Getting and Cleaning Data")
-# 3: Tidying Data with tidyr
-
-
 # lesson 4 functions
 # "R Programming E"
 # 9: Functions

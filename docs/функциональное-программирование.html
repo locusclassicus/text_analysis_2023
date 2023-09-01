@@ -650,7 +650,7 @@ div.csl-indent {
 <span id="cb248-7"><a href="функциональное-программирование.html#cb248-7" tabindex="-1"></a>  medians <span class="ot">&lt;-</span> <span class="fu">c</span>(medians, m)</span>
 <span id="cb248-8"><a href="функциональное-программирование.html#cb248-8" tabindex="-1"></a>}</span>
 <span id="cb248-9"><a href="функциональное-программирование.html#cb248-9" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.002 sec elapsed</code></pre>
+<pre><code>## 0.003 sec elapsed</code></pre>
 <div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="функциональное-программирование.html#cb250-1" tabindex="-1"></a>medians</span></code></pre></div>
 <pre><code>## [1] 15589.500    94.500     0.007</code></pre>
 <p>Мы сохранили результат, инициировав пустой вектор, к которому затем привязали данные по каждому столбцу. Это не всегда хорошая идея, поскольку для больших данных может сильно замедлить цикл<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>. Еще один способ – сразу инициировать вектор нужной длины. Сравнить скорость можно при помощи пакета <code>tictoc</code>.</p>
@@ -660,7 +660,7 @@ div.csl-indent {
 <span id="cb252-4"><a href="функциональное-программирование.html#cb252-4" tabindex="-1"></a>  medians[i] <span class="ot">&lt;-</span> <span class="fu">median</span>(hapax_plato[,i])</span>
 <span id="cb252-5"><a href="функциональное-программирование.html#cb252-5" tabindex="-1"></a>}</span>
 <span id="cb252-6"><a href="функциональное-программирование.html#cb252-6" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.003 sec elapsed</code></pre>
+<pre><code>## 0.002 sec elapsed</code></pre>
 <p>Второй способ чуть быстрее, и для больших данных это может быть существенно (знала бы я это раньше).</p>
 <div class="infobox">
 <p>Вы уже заметили, что в циклах часто используется буква <code>i</code>. Но никакой особой магии в ней нет!</p>
@@ -679,13 +679,13 @@ div.csl-indent {
 <span id="cb254-8"><a href="функциональное-программирование.html#cb254-8" tabindex="-1"></a>y[k]</span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="функциональное-программирование.html#cb256-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.002 sec elapsed</code></pre>
+<pre><code>## 0.003 sec elapsed</code></pre>
 <p>То же самое можно сделать без цикла, причем быстрее!</p>
 <div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="функциональное-программирование.html#cb258-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb258-2"><a href="функциональное-программирование.html#cb258-2" tabindex="-1"></a>y[<span class="fu">nchar</span>(y) <span class="sc">==</span> <span class="dv">6</span>][<span class="dv">1</span>] </span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
 <div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="функциональное-программирование.html#cb260-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.001 sec elapsed</code></pre>
+<pre><code>## 0 sec elapsed</code></pre>
 <p>В целом, ничего незаконного в циклах нет, но</p>
 <ul>
 <li>множество вложенных друг в друга циклов сложно воспринимать;</li>
@@ -773,7 +773,7 @@ div.csl-indent {
 <span id="cb286-3"><a href="функциональное-программирование.html#cb286-3" tabindex="-1"></a>  hapax_plato[,i] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(hapax_plato[,i])</span>
 <span id="cb286-4"><a href="функциональное-программирование.html#cb286-4" tabindex="-1"></a>}</span>
 <span id="cb286-5"><a href="функциональное-программирование.html#cb286-5" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.001 sec elapsed</code></pre>
+<pre><code>## 0.002 sec elapsed</code></pre>
 <p>Функция <code>apply()</code> позволяет применять к данным собственные функции, в том числе анонимные.</p>
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="функциональное-программирование.html#cb288-1" tabindex="-1"></a>hapax_centered <span class="ot">&lt;-</span> <span class="fu">apply</span>(hapax_plato, <span class="dv">2</span>, <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x))</span>
 <span id="cb288-2"><a href="функциональное-программирование.html#cb288-2" tabindex="-1"></a><span class="fu">head</span>(hapax_centered)</span></code></pre></div>
