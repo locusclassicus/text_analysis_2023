@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Тема 9 Веб-скрапинг | Компьютерный анализ текста в R</title>
   <meta name="description" content="Все прекрасное трудно." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Тема 9 Веб-скрапинг | Компьютерный анализ текста в R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-09-01" />
+<meta name="date" content="2023-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,13 +54,13 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.27/datatables.js"></script>
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.29/datatables.js"></script>
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
@@ -133,6 +133,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -247,17 +251,16 @@ div.csl-indent {
 <li class="chapter" data-level="6.3.3" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#txt"><i class="fa fa-check"></i><b>6.3.3</b> txt</a></li>
 <li class="chapter" data-level="6.3.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#doc"><i class="fa fa-check"></i><b>6.3.4</b> doc</a></li>
 <li class="chapter" data-level="6.3.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#pdf"><i class="fa fa-check"></i><b>6.3.5</b> pdf</a></li>
-<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.6</b> zip</a></li>
+<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#png"><i class="fa fa-check"></i><b>6.3.6</b> png</a></li>
+<li class="chapter" data-level="6.3.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.7</b> zip</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#xml-и-html"><i class="fa fa-check"></i><b>6.4</b> xml и html</a></li>
 <li class="chapter" data-level="6.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#json"><i class="fa fa-check"></i><b>6.5</b> json</a></li>
 <li class="chapter" data-level="6.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#gutenbergr"><i class="fa fa-check"></i><b>6.6</b> GutenbergR</a></li>
 <li class="chapter" data-level="6.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rperseus"><i class="fa fa-check"></i><b>6.7</b> RPerseus</a></li>
 <li class="chapter" data-level="6.8" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-нескольких-файлов"><i class="fa fa-check"></i><b>6.8</b> Чтение нескольких файлов</a></li>
-<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a>
-<ul>
-<li class="chapter" data-level="6.9.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.9.1</b> Rdata</a></li>
-</ul></li>
+<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a></li>
+<li class="chapter" data-level="6.10" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.10</b> Rdata</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html"><i class="fa fa-check"></i><b>7</b> Воспроизводимые исследования</a>
 <ul>
@@ -309,7 +312,7 @@ div.csl-indent {
 <li class="chapter" data-level="9.6" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#эмотиконы"><i class="fa fa-check"></i><b>9.6</b> Эмотиконы</a></li>
 <li class="chapter" data-level="9.7" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#рутинная-уборка"><i class="fa fa-check"></i><b>9.7</b> Рутинная уборка</a></li>
 <li class="chapter" data-level="9.8" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#лемматизация"><i class="fa fa-check"></i><b>9.8</b> Лемматизация</a></li>
-<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#таблицы-html"><i class="fa fa-check"></i><b>9.9</b> Таблицы html</a></li>
+<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#html-таблицы"><i class="fa fa-check"></i><b>9.9</b> Html таблицы</a></li>
 <li class="chapter" data-level="9.10" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#wikisource"><i class="fa fa-check"></i><b>9.10</b> Wikisource</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html"><i class="fa fa-check"></i><b>10</b> Токенизация и лемматизация</a>
@@ -507,46 +510,46 @@ div.csl-indent {
 <div id="извлечение-данных" class="section level2 hasAnchor" number="9.3">
 <h2><span class="header-section-number">9.3</span> Извлечение данных<a href="веб-скрапинг.html#извлечение-данных" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Чтобы прочесть файл html, используем одноименную функцию.</p>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="веб-скрапинг.html#cb511-1" tabindex="-1"></a><span class="fu">library</span>(rvest)</span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="веб-скрапинг.html#cb515-1" tabindex="-1"></a><span class="fu">library</span>(rvest)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;rvest&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:readr&#39;:
 ## 
 ##     guess_encoding</code></pre>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="веб-скрапинг.html#cb514-1" tabindex="-1"></a>messages <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;./files/antibarbari_archive/messages.html&quot;</span>)</span>
-<span id="cb514-2"><a href="веб-скрапинг.html#cb514-2" tabindex="-1"></a>messages2 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;./files/antibarbari_archive/messages2.html&quot;</span>)</span>
-<span id="cb514-3"><a href="веб-скрапинг.html#cb514-3" tabindex="-1"></a></span>
-<span id="cb514-4"><a href="веб-скрапинг.html#cb514-4" tabindex="-1"></a>messages</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="веб-скрапинг.html#cb518-1" tabindex="-1"></a>messages <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;./files/antibarbari_archive/messages.html&quot;</span>)</span>
+<span id="cb518-2"><a href="веб-скрапинг.html#cb518-2" tabindex="-1"></a>messages2 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;./files/antibarbari_archive/messages2.html&quot;</span>)</span>
+<span id="cb518-3"><a href="веб-скрапинг.html#cb518-3" tabindex="-1"></a></span>
+<span id="cb518-4"><a href="веб-скрапинг.html#cb518-4" tabindex="-1"></a>messages</span></code></pre></div>
 <pre><code>## {html_document}
 ## &lt;html&gt;
 ## [1] &lt;head&gt;\n&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8 ...
 ## [2] &lt;body onload=&quot;CheckLocation();&quot;&gt;\n\n  &lt;div class=&quot;page_wrap&quot;&gt;\n\n   &lt;div  ...</code></pre>
 <p>На следующем этапе важно понять, какие именно элементы нужны. Рассмотрим на примере одного сообщения. Для примера я сохраню этот элемент как небольшой отдельных html; <code>rvest</code> позволяет это сделать (но внутри двойных кавычек должны быть только одинарные):</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="веб-скрапинг.html#cb516-1" tabindex="-1"></a>html <span class="ot">&lt;-</span>  <span class="fu">minimal_html</span>(<span class="st">&quot;</span></span>
-<span id="cb516-2"><a href="веб-скрапинг.html#cb516-2" tabindex="-1"></a><span class="st">&lt;div class=&#39;message default clearfix&#39; id=&#39;message83&#39;&gt;</span></span>
-<span id="cb516-3"><a href="веб-скрапинг.html#cb516-3" tabindex="-1"></a><span class="st">      &lt;div class=&#39;pull_left userpic_wrap&#39;&gt;</span></span>
-<span id="cb516-4"><a href="веб-скрапинг.html#cb516-4" tabindex="-1"></a><span class="st">       &lt;div class=&#39;userpic userpic2&#39; style=&#39;width: 42px; height: 42px&#39;&gt;</span></span>
-<span id="cb516-5"><a href="веб-скрапинг.html#cb516-5" tabindex="-1"></a><span class="st">        &lt;div class=&#39;initials&#39; style=&#39;line-height: 42px&#39;&gt;</span></span>
-<span id="cb516-6"><a href="веб-скрапинг.html#cb516-6" tabindex="-1"></a><span class="st">A</span></span>
-<span id="cb516-7"><a href="веб-скрапинг.html#cb516-7" tabindex="-1"></a><span class="st">        &lt;/div&gt;</span></span>
-<span id="cb516-8"><a href="веб-скрапинг.html#cb516-8" tabindex="-1"></a><span class="st">       &lt;/div&gt;</span></span>
-<span id="cb516-9"><a href="веб-скрапинг.html#cb516-9" tabindex="-1"></a><span class="st">      &lt;/div&gt;</span></span>
-<span id="cb516-10"><a href="веб-скрапинг.html#cb516-10" tabindex="-1"></a><span class="st">      &lt;div class=&#39;body&#39;&gt;</span></span>
-<span id="cb516-11"><a href="веб-скрапинг.html#cb516-11" tabindex="-1"></a><span class="st">       &lt;div class=&#39;pull_right date details&#39; title=&#39;19.05.2022 11:18:07 UTC+03:00&#39;&gt;</span></span>
-<span id="cb516-12"><a href="веб-скрапинг.html#cb516-12" tabindex="-1"></a><span class="st">11:18</span></span>
-<span id="cb516-13"><a href="веб-скрапинг.html#cb516-13" tabindex="-1"></a><span class="st">       &lt;/div&gt;</span></span>
-<span id="cb516-14"><a href="веб-скрапинг.html#cb516-14" tabindex="-1"></a><span class="st">       &lt;div class=&#39;from_name&#39;&gt;</span></span>
-<span id="cb516-15"><a href="веб-скрапинг.html#cb516-15" tabindex="-1"></a><span class="st">Antibarbari HSE </span></span>
-<span id="cb516-16"><a href="веб-скрапинг.html#cb516-16" tabindex="-1"></a><span class="st">       &lt;/div&gt;</span></span>
-<span id="cb516-17"><a href="веб-скрапинг.html#cb516-17" tabindex="-1"></a><span class="st">       &lt;div class=&#39;text&#39;&gt;</span></span>
-<span id="cb516-18"><a href="веб-скрапинг.html#cb516-18" tabindex="-1"></a><span class="st">Этот пост открывает серию переложений из «Дайджеста платоновских идиом» Джеймса Ридделла (1823–1866), английского филолога-классика, чей научный путь был связан с Оксфордским университетом. По приглашению Бенджамина Джоветта он должен был подготовить к изданию «Апологию», «Критон», «Федон» и «Пир». Однако из этих четырех текстов вышла лишь «Апология» с предисловием и приложением в виде «Дайджеста» (ссылка) — уже после смерти автора. &lt;br&gt;&lt;br&gt;«Дайджест» содержит 326 параграфов, посвященных грамматическим, синтаксическим и риторическим особенностям языка Платона. Знакомство с этим теоретическим материалом позволяет лучше почувствовать уникальный стиль философа и добиться большей точности при переводе. Ссылки на «Дайджест» могут быть уместны и в учебных комментариях к диалогам Платона. Предлагаемая здесь первая часть «Дайджеста» содержит «идиомы имен» и «идиомы артикля» (§§ 1–39).&lt;br&gt;&lt;a href=&#39;http://antibarbari.ru/2022/05/19/digest_1/&#39;&gt;http://antibarbari.ru/2022/05/19/digest_1/&lt;/a&gt;</span></span>
-<span id="cb516-19"><a href="веб-скрапинг.html#cb516-19" tabindex="-1"></a><span class="st">       &lt;/div&gt;</span></span>
-<span id="cb516-20"><a href="веб-скрапинг.html#cb516-20" tabindex="-1"></a><span class="st">       &lt;div class=&#39;signature details&#39;&gt;</span></span>
-<span id="cb516-21"><a href="веб-скрапинг.html#cb516-21" tabindex="-1"></a><span class="st">Olga Alieva</span></span>
-<span id="cb516-22"><a href="веб-скрапинг.html#cb516-22" tabindex="-1"></a><span class="st">       &lt;/div&gt;</span></span>
-<span id="cb516-23"><a href="веб-скрапинг.html#cb516-23" tabindex="-1"></a><span class="st">      &lt;/div&gt;</span></span>
-<span id="cb516-24"><a href="веб-скрапинг.html#cb516-24" tabindex="-1"></a><span class="st">     &lt;/div&gt;</span></span>
-<span id="cb516-25"><a href="веб-скрапинг.html#cb516-25" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="веб-скрапинг.html#cb520-1" tabindex="-1"></a>html <span class="ot">&lt;-</span>  <span class="fu">minimal_html</span>(<span class="st">&quot;</span></span>
+<span id="cb520-2"><a href="веб-скрапинг.html#cb520-2" tabindex="-1"></a><span class="st">&lt;div class=&#39;message default clearfix&#39; id=&#39;message83&#39;&gt;</span></span>
+<span id="cb520-3"><a href="веб-скрапинг.html#cb520-3" tabindex="-1"></a><span class="st">      &lt;div class=&#39;pull_left userpic_wrap&#39;&gt;</span></span>
+<span id="cb520-4"><a href="веб-скрапинг.html#cb520-4" tabindex="-1"></a><span class="st">       &lt;div class=&#39;userpic userpic2&#39; style=&#39;width: 42px; height: 42px&#39;&gt;</span></span>
+<span id="cb520-5"><a href="веб-скрапинг.html#cb520-5" tabindex="-1"></a><span class="st">        &lt;div class=&#39;initials&#39; style=&#39;line-height: 42px&#39;&gt;</span></span>
+<span id="cb520-6"><a href="веб-скрапинг.html#cb520-6" tabindex="-1"></a><span class="st">A</span></span>
+<span id="cb520-7"><a href="веб-скрапинг.html#cb520-7" tabindex="-1"></a><span class="st">        &lt;/div&gt;</span></span>
+<span id="cb520-8"><a href="веб-скрапинг.html#cb520-8" tabindex="-1"></a><span class="st">       &lt;/div&gt;</span></span>
+<span id="cb520-9"><a href="веб-скрапинг.html#cb520-9" tabindex="-1"></a><span class="st">      &lt;/div&gt;</span></span>
+<span id="cb520-10"><a href="веб-скрапинг.html#cb520-10" tabindex="-1"></a><span class="st">      &lt;div class=&#39;body&#39;&gt;</span></span>
+<span id="cb520-11"><a href="веб-скрапинг.html#cb520-11" tabindex="-1"></a><span class="st">       &lt;div class=&#39;pull_right date details&#39; title=&#39;19.05.2022 11:18:07 UTC+03:00&#39;&gt;</span></span>
+<span id="cb520-12"><a href="веб-скрапинг.html#cb520-12" tabindex="-1"></a><span class="st">11:18</span></span>
+<span id="cb520-13"><a href="веб-скрапинг.html#cb520-13" tabindex="-1"></a><span class="st">       &lt;/div&gt;</span></span>
+<span id="cb520-14"><a href="веб-скрапинг.html#cb520-14" tabindex="-1"></a><span class="st">       &lt;div class=&#39;from_name&#39;&gt;</span></span>
+<span id="cb520-15"><a href="веб-скрапинг.html#cb520-15" tabindex="-1"></a><span class="st">Antibarbari HSE </span></span>
+<span id="cb520-16"><a href="веб-скрапинг.html#cb520-16" tabindex="-1"></a><span class="st">       &lt;/div&gt;</span></span>
+<span id="cb520-17"><a href="веб-скрапинг.html#cb520-17" tabindex="-1"></a><span class="st">       &lt;div class=&#39;text&#39;&gt;</span></span>
+<span id="cb520-18"><a href="веб-скрапинг.html#cb520-18" tabindex="-1"></a><span class="st">Этот пост открывает серию переложений из «Дайджеста платоновских идиом» Джеймса Ридделла (1823–1866), английского филолога-классика, чей научный путь был связан с Оксфордским университетом. По приглашению Бенджамина Джоветта он должен был подготовить к изданию «Апологию», «Критон», «Федон» и «Пир». Однако из этих четырех текстов вышла лишь «Апология» с предисловием и приложением в виде «Дайджеста» (ссылка) — уже после смерти автора. &lt;br&gt;&lt;br&gt;«Дайджест» содержит 326 параграфов, посвященных грамматическим, синтаксическим и риторическим особенностям языка Платона. Знакомство с этим теоретическим материалом позволяет лучше почувствовать уникальный стиль философа и добиться большей точности при переводе. Ссылки на «Дайджест» могут быть уместны и в учебных комментариях к диалогам Платона. Предлагаемая здесь первая часть «Дайджеста» содержит «идиомы имен» и «идиомы артикля» (§§ 1–39).&lt;br&gt;&lt;a href=&#39;http://antibarbari.ru/2022/05/19/digest_1/&#39;&gt;http://antibarbari.ru/2022/05/19/digest_1/&lt;/a&gt;</span></span>
+<span id="cb520-19"><a href="веб-скрапинг.html#cb520-19" tabindex="-1"></a><span class="st">       &lt;/div&gt;</span></span>
+<span id="cb520-20"><a href="веб-скрапинг.html#cb520-20" tabindex="-1"></a><span class="st">       &lt;div class=&#39;signature details&#39;&gt;</span></span>
+<span id="cb520-21"><a href="веб-скрапинг.html#cb520-21" tabindex="-1"></a><span class="st">Olga Alieva</span></span>
+<span id="cb520-22"><a href="веб-скрапинг.html#cb520-22" tabindex="-1"></a><span class="st">       &lt;/div&gt;</span></span>
+<span id="cb520-23"><a href="веб-скрапинг.html#cb520-23" tabindex="-1"></a><span class="st">      &lt;/div&gt;</span></span>
+<span id="cb520-24"><a href="веб-скрапинг.html#cb520-24" tabindex="-1"></a><span class="st">     &lt;/div&gt;</span></span>
+<span id="cb520-25"><a href="веб-скрапинг.html#cb520-25" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
 Из всего этого мне может быть интересно id сообщения (
 <div class='message default clearfix' id='message83'>
 ), текст сообщения (
@@ -554,36 +557,36 @@ div.csl-indent {
 ), а также, если указан, автор сообщения (
 <div class='signature details'>
 <p>). Извлекаем текст:</p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="веб-скрапинг.html#cb517-1" tabindex="-1"></a>html <span class="sc">%&gt;%</span></span>
-<span id="cb517-2"><a href="веб-скрапинг.html#cb517-2" tabindex="-1"></a>  <span class="fu">html_element</span>(<span class="st">&quot;.text&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb517-3"><a href="веб-скрапинг.html#cb517-3" tabindex="-1"></a>  <span class="fu">html_text2</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="веб-скрапинг.html#cb521-1" tabindex="-1"></a>html <span class="sc">%&gt;%</span></span>
+<span id="cb521-2"><a href="веб-скрапинг.html#cb521-2" tabindex="-1"></a>  <span class="fu">html_element</span>(<span class="st">&quot;.text&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb521-3"><a href="веб-скрапинг.html#cb521-3" tabindex="-1"></a>  <span class="fu">html_text2</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Этот пост открывает серию переложений из «Дайджеста платоновских идиом» Джеймса Ридделла (1823–1866), английского филолога-классика, чей научный путь был связан с Оксфордским университетом. По приглашению Бенджамина Джоветта он должен был подготовить к изданию «Апологию», «Критон», «Федон» и «Пир». Однако из этих четырех текстов вышла лишь «Апология» с предисловием и приложением в виде «Дайджеста» (ссылка) — уже после смерти автора.\n\n«Дайджест» содержит 326 параграфов, посвященных грамматическим, синтаксическим и риторическим особенностям языка Платона. Знакомство с этим теоретическим материалом позволяет лучше почувствовать уникальный стиль философа и добиться большей точности при переводе. Ссылки на «Дайджест» могут быть уместны и в учебных комментариях к диалогам Платона. Предлагаемая здесь первая часть «Дайджеста» содержит «идиомы имен» и «идиомы артикля» (§§ 1–39).\nhttp://antibarbari.ru/2022/05/19/digest_1/&quot;</code></pre>
 <p>В классе signature details есть пробел, достаточно на его месте поставить точку:</p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="веб-скрапинг.html#cb519-1" tabindex="-1"></a>html <span class="sc">%&gt;%</span></span>
-<span id="cb519-2"><a href="веб-скрапинг.html#cb519-2" tabindex="-1"></a>  <span class="fu">html_element</span>(<span class="st">&quot;.signature.details&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb519-3"><a href="веб-скрапинг.html#cb519-3" tabindex="-1"></a>  <span class="fu">html_text2</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="веб-скрапинг.html#cb523-1" tabindex="-1"></a>html <span class="sc">%&gt;%</span></span>
+<span id="cb523-2"><a href="веб-скрапинг.html#cb523-2" tabindex="-1"></a>  <span class="fu">html_element</span>(<span class="st">&quot;.signature.details&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb523-3"><a href="веб-скрапинг.html#cb523-3" tabindex="-1"></a>  <span class="fu">html_text2</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Olga Alieva&quot;</code></pre>
 <p>Важно помнить, что <code>html_element</code> всегда возвращает один элемент. Если их больше, надо использовать <code>html_elements</code>.</p>
 <p>Осталось добыть message id:</p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="веб-скрапинг.html#cb521-1" tabindex="-1"></a>html <span class="sc">%&gt;%</span></span>
-<span id="cb521-2"><a href="веб-скрапинг.html#cb521-2" tabindex="-1"></a>  <span class="fu">html_element</span>(<span class="st">&quot;div&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb521-3"><a href="веб-скрапинг.html#cb521-3" tabindex="-1"></a>  <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="веб-скрапинг.html#cb525-1" tabindex="-1"></a>html <span class="sc">%&gt;%</span></span>
+<span id="cb525-2"><a href="веб-скрапинг.html#cb525-2" tabindex="-1"></a>  <span class="fu">html_element</span>(<span class="st">&quot;div&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb525-3"><a href="веб-скрапинг.html#cb525-3" tabindex="-1"></a>  <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;message83&quot;</code></pre>
 </div>
 <div id="извлечение-в-тиббл" class="section level2 hasAnchor" number="9.4">
 <h2><span class="header-section-number">9.4</span> Извлечение в тиббл<a href="веб-скрапинг.html#извлечение-в-тиббл" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="веб-скрапинг.html#cb523-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb523-2"><a href="веб-скрапинг.html#cb523-2" tabindex="-1"></a></span>
-<span id="cb523-3"><a href="веб-скрапинг.html#cb523-3" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">id =</span> html <span class="sc">%&gt;%</span> </span>
-<span id="cb523-4"><a href="веб-скрапинг.html#cb523-4" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;div&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb523-5"><a href="веб-скрапинг.html#cb523-5" tabindex="-1"></a>         <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>),</span>
-<span id="cb523-6"><a href="веб-скрапинг.html#cb523-6" tabindex="-1"></a>       <span class="at">signature =</span> html <span class="sc">%&gt;%</span></span>
-<span id="cb523-7"><a href="веб-скрапинг.html#cb523-7" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.signature.details&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb523-8"><a href="веб-скрапинг.html#cb523-8" tabindex="-1"></a>         <span class="fu">html_text2</span>(),</span>
-<span id="cb523-9"><a href="веб-скрапинг.html#cb523-9" tabindex="-1"></a>       <span class="at">text =</span> html <span class="sc">%&gt;%</span> </span>
-<span id="cb523-10"><a href="веб-скрапинг.html#cb523-10" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.text&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb523-11"><a href="веб-скрапинг.html#cb523-11" tabindex="-1"></a>         <span class="fu">html_text2</span>()</span>
-<span id="cb523-12"><a href="веб-скрапинг.html#cb523-12" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="веб-скрапинг.html#cb527-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb527-2"><a href="веб-скрапинг.html#cb527-2" tabindex="-1"></a></span>
+<span id="cb527-3"><a href="веб-скрапинг.html#cb527-3" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">id =</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb527-4"><a href="веб-скрапинг.html#cb527-4" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;div&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb527-5"><a href="веб-скрапинг.html#cb527-5" tabindex="-1"></a>         <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>),</span>
+<span id="cb527-6"><a href="веб-скрапинг.html#cb527-6" tabindex="-1"></a>       <span class="at">signature =</span> html <span class="sc">%&gt;%</span></span>
+<span id="cb527-7"><a href="веб-скрапинг.html#cb527-7" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.signature.details&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb527-8"><a href="веб-скрапинг.html#cb527-8" tabindex="-1"></a>         <span class="fu">html_text2</span>(),</span>
+<span id="cb527-9"><a href="веб-скрапинг.html#cb527-9" tabindex="-1"></a>       <span class="at">text =</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb527-10"><a href="веб-скрапинг.html#cb527-10" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.text&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb527-11"><a href="веб-скрапинг.html#cb527-11" tabindex="-1"></a>         <span class="fu">html_text2</span>()</span>
+<span id="cb527-12"><a href="веб-скрапинг.html#cb527-12" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 3
 ##   id        signature   text                                                    
 ##   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;                                                   
@@ -592,9 +595,9 @@ div.csl-indent {
 <div id="скрапим-телеграм-канал" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">9.5</span> Скрапим телеграм-канал<a href="веб-скрапинг.html#скрапим-телеграм-канал" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>До сих пор наша задача упрощалась тем, что мы имели дело с игрушечным html для единственного сообщения. В настоящем html тег div повторяется на разных уровнях, нам надо извлечь только такие div, которым соответствует определенный класс:</p>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="веб-скрапинг.html#cb525-1" tabindex="-1"></a>messages <span class="sc">%&gt;%</span></span>
-<span id="cb525-2"><a href="веб-скрапинг.html#cb525-2" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb525-3"><a href="веб-скрапинг.html#cb525-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="веб-скрапинг.html#cb529-1" tabindex="-1"></a>messages <span class="sc">%&gt;%</span></span>
+<span id="cb529-2"><a href="веб-скрапинг.html#cb529-2" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb529-3"><a href="веб-скрапинг.html#cb529-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## {xml_nodeset (6)}
 ## [1] &lt;div class=&quot;message default clearfix&quot; id=&quot;message3&quot;&gt;\n\n      &lt;div class= ...
 ## [2] &lt;div class=&quot;message default clearfix&quot; id=&quot;message5&quot;&gt;\n\n      &lt;div class= ...
@@ -603,37 +606,37 @@ div.csl-indent {
 ## [5] &lt;div class=&quot;message default clearfix&quot; id=&quot;message8&quot;&gt;\n\n      &lt;div class= ...
 ## [6] &lt;div class=&quot;message default clearfix&quot; id=&quot;message9&quot;&gt;\n\n      &lt;div class= ...</code></pre>
 <p>Уже из этого списка можем доставать все остальное.</p>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="веб-скрапинг.html#cb527-1" tabindex="-1"></a>messages_tbl1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> messages <span class="sc">%&gt;%</span> </span>
-<span id="cb527-2"><a href="веб-скрапинг.html#cb527-2" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb527-3"><a href="веб-скрапинг.html#cb527-3" tabindex="-1"></a>         <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>),</span>
-<span id="cb527-4"><a href="веб-скрапинг.html#cb527-4" tabindex="-1"></a>       <span class="at">signature =</span> messages <span class="sc">%&gt;%</span></span>
-<span id="cb527-5"><a href="веб-скрапинг.html#cb527-5" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb527-6"><a href="веб-скрапинг.html#cb527-6" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.signature.details&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb527-7"><a href="веб-скрапинг.html#cb527-7" tabindex="-1"></a>         <span class="fu">html_text2</span>(),</span>
-<span id="cb527-8"><a href="веб-скрапинг.html#cb527-8" tabindex="-1"></a>       <span class="at">text =</span> messages <span class="sc">%&gt;%</span> </span>
-<span id="cb527-9"><a href="веб-скрапинг.html#cb527-9" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb527-10"><a href="веб-скрапинг.html#cb527-10" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.text&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb527-11"><a href="веб-скрапинг.html#cb527-11" tabindex="-1"></a>         <span class="fu">html_text2</span>()</span>
-<span id="cb527-12"><a href="веб-скрапинг.html#cb527-12" tabindex="-1"></a>)</span>
-<span id="cb527-13"><a href="веб-скрапинг.html#cb527-13" tabindex="-1"></a></span>
-<span id="cb527-14"><a href="веб-скрапинг.html#cb527-14" tabindex="-1"></a>messages_tbl2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> messages2 <span class="sc">%&gt;%</span> </span>
-<span id="cb527-15"><a href="веб-скрапинг.html#cb527-15" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb527-16"><a href="веб-скрапинг.html#cb527-16" tabindex="-1"></a>         <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>),</span>
-<span id="cb527-17"><a href="веб-скрапинг.html#cb527-17" tabindex="-1"></a>       <span class="at">signature =</span> messages2 <span class="sc">%&gt;%</span></span>
-<span id="cb527-18"><a href="веб-скрапинг.html#cb527-18" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb527-19"><a href="веб-скрапинг.html#cb527-19" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.signature.details&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb527-20"><a href="веб-скрапинг.html#cb527-20" tabindex="-1"></a>         <span class="fu">html_text2</span>(),</span>
-<span id="cb527-21"><a href="веб-скрапинг.html#cb527-21" tabindex="-1"></a>       <span class="at">text =</span> messages2 <span class="sc">%&gt;%</span> </span>
-<span id="cb527-22"><a href="веб-скрапинг.html#cb527-22" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb527-23"><a href="веб-скрапинг.html#cb527-23" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.text&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb527-24"><a href="веб-скрапинг.html#cb527-24" tabindex="-1"></a>         <span class="fu">html_text2</span>()</span>
-<span id="cb527-25"><a href="веб-скрапинг.html#cb527-25" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="веб-скрапинг.html#cb531-1" tabindex="-1"></a>messages_tbl1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> messages <span class="sc">%&gt;%</span> </span>
+<span id="cb531-2"><a href="веб-скрапинг.html#cb531-2" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb531-3"><a href="веб-скрапинг.html#cb531-3" tabindex="-1"></a>         <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>),</span>
+<span id="cb531-4"><a href="веб-скрапинг.html#cb531-4" tabindex="-1"></a>       <span class="at">signature =</span> messages <span class="sc">%&gt;%</span></span>
+<span id="cb531-5"><a href="веб-скрапинг.html#cb531-5" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb531-6"><a href="веб-скрапинг.html#cb531-6" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.signature.details&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb531-7"><a href="веб-скрапинг.html#cb531-7" tabindex="-1"></a>         <span class="fu">html_text2</span>(),</span>
+<span id="cb531-8"><a href="веб-скрапинг.html#cb531-8" tabindex="-1"></a>       <span class="at">text =</span> messages <span class="sc">%&gt;%</span> </span>
+<span id="cb531-9"><a href="веб-скрапинг.html#cb531-9" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb531-10"><a href="веб-скрапинг.html#cb531-10" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.text&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb531-11"><a href="веб-скрапинг.html#cb531-11" tabindex="-1"></a>         <span class="fu">html_text2</span>()</span>
+<span id="cb531-12"><a href="веб-скрапинг.html#cb531-12" tabindex="-1"></a>)</span>
+<span id="cb531-13"><a href="веб-скрапинг.html#cb531-13" tabindex="-1"></a></span>
+<span id="cb531-14"><a href="веб-скрапинг.html#cb531-14" tabindex="-1"></a>messages_tbl2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> messages2 <span class="sc">%&gt;%</span> </span>
+<span id="cb531-15"><a href="веб-скрапинг.html#cb531-15" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb531-16"><a href="веб-скрапинг.html#cb531-16" tabindex="-1"></a>         <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>),</span>
+<span id="cb531-17"><a href="веб-скрапинг.html#cb531-17" tabindex="-1"></a>       <span class="at">signature =</span> messages2 <span class="sc">%&gt;%</span></span>
+<span id="cb531-18"><a href="веб-скрапинг.html#cb531-18" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb531-19"><a href="веб-скрапинг.html#cb531-19" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.signature.details&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb531-20"><a href="веб-скрапинг.html#cb531-20" tabindex="-1"></a>         <span class="fu">html_text2</span>(),</span>
+<span id="cb531-21"><a href="веб-скрапинг.html#cb531-21" tabindex="-1"></a>       <span class="at">text =</span> messages2 <span class="sc">%&gt;%</span> </span>
+<span id="cb531-22"><a href="веб-скрапинг.html#cb531-22" tabindex="-1"></a>         <span class="fu">html_elements</span>(<span class="st">&quot;div.message.default&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb531-23"><a href="веб-скрапинг.html#cb531-23" tabindex="-1"></a>         <span class="fu">html_element</span>(<span class="st">&quot;.text&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb531-24"><a href="веб-скрапинг.html#cb531-24" tabindex="-1"></a>         <span class="fu">html_text2</span>()</span>
+<span id="cb531-25"><a href="веб-скрапинг.html#cb531-25" tabindex="-1"></a>)</span></code></pre></div>
 <p>Обратите внимание, что мы сначала извлекаем нужные элементы при помощи <code>html_elements()</code>, а потом применяем к каждому из них <code>html_element()</code>. Это гарантирует, что в каждом столбце нашей таблицы равное число наблюдений, т.к. функция <code>html_element()</code>, если она не может найти, например, подпись, возвращает NA.</p>
 <p>Сшиваем воедино два тиббла.</p>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="веб-скрапинг.html#cb528-1" tabindex="-1"></a>messages_tbl <span class="ot">&lt;-</span> messages_tbl1 <span class="sc">%&gt;%</span> </span>
-<span id="cb528-2"><a href="веб-скрапинг.html#cb528-2" tabindex="-1"></a>  <span class="fu">bind_rows</span>(messages_tbl2)</span>
-<span id="cb528-3"><a href="веб-скрапинг.html#cb528-3" tabindex="-1"></a></span>
-<span id="cb528-4"><a href="веб-скрапинг.html#cb528-4" tabindex="-1"></a>messages_tbl</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="веб-скрапинг.html#cb532-1" tabindex="-1"></a>messages_tbl <span class="ot">&lt;-</span> messages_tbl1 <span class="sc">%&gt;%</span> </span>
+<span id="cb532-2"><a href="веб-скрапинг.html#cb532-2" tabindex="-1"></a>  <span class="fu">bind_rows</span>(messages_tbl2)</span>
+<span id="cb532-3"><a href="веб-скрапинг.html#cb532-3" tabindex="-1"></a></span>
+<span id="cb532-4"><a href="веб-скрапинг.html#cb532-4" tabindex="-1"></a>messages_tbl</span></code></pre></div>
 <pre><code>## # A tibble: 1,096 × 3
 ##    id        signature text                                                     
 ##    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                                                    
@@ -649,23 +652,23 @@ div.csl-indent {
 ## 10 message13 &lt;NA&gt;      &quot;Воспользовались дополнительным выходным, чтобы забэкапи…
 ## # ℹ 1,086 more rows</code></pre>
 <p>Создатели канала не сразу разрешили подписывать посты, поэтому для первых нескольких десятков подписи не будет. В некоторых постах только фото, для них в столбце text – NA, их можно сразу отсеять.</p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="веб-скрапинг.html#cb530-1" tabindex="-1"></a>messages_tbl <span class="ot">&lt;-</span> messages_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb530-2"><a href="веб-скрапинг.html#cb530-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(text))</span>
-<span id="cb530-3"><a href="веб-скрапинг.html#cb530-3" tabindex="-1"></a></span>
-<span id="cb530-4"><a href="веб-скрапинг.html#cb530-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="веб-скрапинг.html#cb534-1" tabindex="-1"></a>messages_tbl <span class="ot">&lt;-</span> messages_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb534-2"><a href="веб-скрапинг.html#cb534-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(text))</span>
+<span id="cb534-3"><a href="веб-скрапинг.html#cb534-3" tabindex="-1"></a></span>
+<span id="cb534-4"><a href="веб-скрапинг.html#cb534-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span></code></pre></div>
 </div>
 <div id="эмотиконы" class="section level2 hasAnchor" number="9.6">
 <h2><span class="header-section-number">9.6</span> Эмотиконы<a href="веб-скрапинг.html#эмотиконы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>В постах довольно много эмотиконов. Я их удалю, но сначала скажу о полезном пакете, который позволяет их все извлечь и, например, посчитать.</p>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="веб-скрапинг.html#cb531-1" tabindex="-1"></a><span class="fu">library</span>(emoji)</span>
-<span id="cb531-2"><a href="веб-скрапинг.html#cb531-2" tabindex="-1"></a></span>
-<span id="cb531-3"><a href="веб-скрапинг.html#cb531-3" tabindex="-1"></a>messages_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb531-4"><a href="веб-скрапинг.html#cb531-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emoji =</span> <span class="fu">emoji_extract_all</span>(text)) <span class="sc">%&gt;%</span> </span>
-<span id="cb531-5"><a href="веб-скрапинг.html#cb531-5" tabindex="-1"></a>  <span class="fu">pull</span>(emoji) <span class="sc">%&gt;%</span> </span>
-<span id="cb531-6"><a href="веб-скрапинг.html#cb531-6" tabindex="-1"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb531-7"><a href="веб-скрапинг.html#cb531-7" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb531-8"><a href="веб-скрапинг.html#cb531-8" tabindex="-1"></a>  <span class="fu">count</span>(value) <span class="sc">%&gt;%</span> </span>
-<span id="cb531-9"><a href="веб-скрапинг.html#cb531-9" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n) </span></code></pre></div>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="веб-скрапинг.html#cb535-1" tabindex="-1"></a><span class="fu">library</span>(emoji)</span>
+<span id="cb535-2"><a href="веб-скрапинг.html#cb535-2" tabindex="-1"></a></span>
+<span id="cb535-3"><a href="веб-скрапинг.html#cb535-3" tabindex="-1"></a>messages_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb535-4"><a href="веб-скрапинг.html#cb535-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emoji =</span> <span class="fu">emoji_extract_all</span>(text)) <span class="sc">%&gt;%</span> </span>
+<span id="cb535-5"><a href="веб-скрапинг.html#cb535-5" tabindex="-1"></a>  <span class="fu">pull</span>(emoji) <span class="sc">%&gt;%</span> </span>
+<span id="cb535-6"><a href="веб-скрапинг.html#cb535-6" tabindex="-1"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb535-7"><a href="веб-скрапинг.html#cb535-7" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb535-8"><a href="веб-скрапинг.html#cb535-8" tabindex="-1"></a>  <span class="fu">count</span>(value) <span class="sc">%&gt;%</span> </span>
+<span id="cb535-9"><a href="веб-скрапинг.html#cb535-9" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n) </span></code></pre></div>
 <pre><code>## # A tibble: 159 × 2
 ##    value     n
 ##    &lt;chr&gt; &lt;int&gt;
@@ -681,224 +684,171 @@ div.csl-indent {
 ## 10 🔗       10
 ## # ℹ 149 more rows</code></pre>
 <p>Заменяем их все на пробелы.</p>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="веб-скрапинг.html#cb533-1" tabindex="-1"></a>messages_tbl <span class="ot">&lt;-</span> messages_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb533-2"><a href="веб-скрапинг.html#cb533-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">emoji_replace_all</span>(text, <span class="st">&quot; &quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="веб-скрапинг.html#cb537-1" tabindex="-1"></a>messages_tbl <span class="ot">&lt;-</span> messages_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb537-2"><a href="веб-скрапинг.html#cb537-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">emoji_replace_all</span>(text, <span class="st">&quot; &quot;</span>))</span></code></pre></div>
 </div>
 <div id="рутинная-уборка" class="section level2 hasAnchor" number="9.7">
 <h2><span class="header-section-number">9.7</span> Рутинная уборка<a href="веб-скрапинг.html#рутинная-уборка" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Подготовка текста для анализа включает в себя удаление сносок, иногда хэштегов, чисел, имейлов, возможно имен и т.п. В нашем случае ситуация осложняется тем, что тексты включают цитаты на латыни и древнегреческом, некоторые технические сокращения, номера страниц и др. Вот так, например, выглядит типичный пост:</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="веб-скрапинг.html#cb534-1" tabindex="-1"></a>example <span class="ot">&lt;-</span> messages_tbl<span class="sc">$</span>text[<span class="dv">340</span>]</span>
-<span id="cb534-2"><a href="веб-скрапинг.html#cb534-2" tabindex="-1"></a></span>
-<span id="cb534-3"><a href="веб-скрапинг.html#cb534-3" tabindex="-1"></a>example</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="веб-скрапинг.html#cb538-1" tabindex="-1"></a>example <span class="ot">&lt;-</span> messages_tbl<span class="sc">$</span>text[<span class="dv">340</span>]</span>
+<span id="cb538-2"><a href="веб-скрапинг.html#cb538-2" tabindex="-1"></a></span>
+<span id="cb538-3"><a href="веб-скрапинг.html#cb538-3" tabindex="-1"></a>example</span></code></pre></div>
 <pre><code>## [1] &quot;🎞 Теэтет #10 149b7-150b8\nСократ продолжает засыпать семнадцатилетнего математика подробностями из области акушерства и гинекологии, и мы вместе с ним терпеливо изучаем, чем сводничество отличается от сватовства. Верните квадратные корни. #платон #теэтет\nhttps://vk.com/video-211800158_456239238&quot;</code></pre>
 <p>Вот так вылавливается гиперссылка.</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="веб-скрапинг.html#cb536-1" tabindex="-1"></a><span class="fu">str_extract_all</span>(example, <span class="st">&quot;(http|https)(</span><span class="sc">\\</span><span class="st">S+)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="веб-скрапинг.html#cb540-1" tabindex="-1"></a><span class="fu">str_extract_all</span>(example, <span class="st">&quot;(http|https)(</span><span class="sc">\\</span><span class="st">S+)&quot;</span>)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;https://vk.com/video-211800158_456239238&quot;</code></pre>
 <p>Вот так вылавливается пагинация и номер семинара (и некоторые другие числа).</p>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="веб-скрапинг.html#cb538-1" tabindex="-1"></a><span class="fu">str_extract_all</span>(example, <span class="st">&quot;#?</span><span class="sc">\\</span><span class="st">d{2,3}</span><span class="sc">\\</span><span class="st">w?</span><span class="sc">\\</span><span class="st">d?-?&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="веб-скрапинг.html#cb542-1" tabindex="-1"></a><span class="fu">str_extract_all</span>(example, <span class="st">&quot;#?</span><span class="sc">\\</span><span class="st">d{2,3}</span><span class="sc">\\</span><span class="st">w?</span><span class="sc">\\</span><span class="st">d?-?&quot;</span>)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;#10&quot;    &quot;149b7-&quot; &quot;150b8&quot;  &quot;21180&quot;  &quot;0158&quot;   &quot;45623&quot;  &quot;9238&quot;</code></pre>
 <p>Похожим образом можно выловить даты, имейлы и т.п. Все это удаляем из текста.</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="веб-скрапинг.html#cb540-1" tabindex="-1"></a>messages_clean <span class="ot">&lt;-</span> messages_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb540-2"><a href="веб-скрапинг.html#cb540-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;(http|https)(</span><span class="sc">\\</span><span class="st">S+)&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb540-3"><a href="веб-скрапинг.html#cb540-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{2}</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">d{2}</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">d{4}&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb540-4"><a href="веб-скрапинг.html#cb540-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">W[-A-Za-z0-9_.%]+</span><span class="sc">\\</span><span class="st">@[-A-Za-z0-9_.%]+</span><span class="sc">\\</span><span class="st">.[A-Za-z]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb540-5"><a href="веб-скрапинг.html#cb540-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;#?</span><span class="sc">\\</span><span class="st">d{2,3}</span><span class="sc">\\</span><span class="st">w?</span><span class="sc">\\</span><span class="st">d?-?&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb540-6"><a href="веб-скрапинг.html#cb540-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">n+&quot;</span>, <span class="st">&quot; &quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="веб-скрапинг.html#cb544-1" tabindex="-1"></a>messages_clean <span class="ot">&lt;-</span> messages_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb544-2"><a href="веб-скрапинг.html#cb544-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;(http|https)(</span><span class="sc">\\</span><span class="st">S+)&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb544-3"><a href="веб-скрапинг.html#cb544-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{2}</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">d{2}</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">d{4}&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb544-4"><a href="веб-скрапинг.html#cb544-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">W[-A-Za-z0-9_.%]+</span><span class="sc">\\</span><span class="st">@[-A-Za-z0-9_.%]+</span><span class="sc">\\</span><span class="st">.[A-Za-z]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb544-5"><a href="веб-скрапинг.html#cb544-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;#?</span><span class="sc">\\</span><span class="st">d{2,3}</span><span class="sc">\\</span><span class="st">w?</span><span class="sc">\\</span><span class="st">d?-?&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb544-6"><a href="веб-скрапинг.html#cb544-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">n+&quot;</span>, <span class="st">&quot; &quot;</span>))</span></code></pre></div>
 <p>Остались еще сокращения вроде “г.”, но токены из одной буквы можно будет удалить после разделения на слова. Знаки пунктуации можно оставить или убрать – иногда они бывают интересным стилистическим маркером. В любом случае лучше это делать после лемматизации, т.к. на тексте без знаков препинания анализатор покажет себя хуже.</p>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="веб-скрапинг.html#cb541-1" tabindex="-1"></a>messages_clean <span class="sc">%&gt;%</span> </span>
-<span id="cb541-2"><a href="веб-скрапинг.html#cb541-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">340</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="веб-скрапинг.html#cb545-1" tabindex="-1"></a>messages_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb545-2"><a href="веб-скрапинг.html#cb545-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">340</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 3
 ##   id         signature   text                                                   
 ##   &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;                                                  
 ## 1 message465 Olga Alieva &quot;🎞 Теэтет      Сократ продолжает засыпать семнадцатиле…</code></pre>
 <p>Число id и число текстов не совпадает, поскольку для некоторых постов текста нет (NA), а у других он совпадает (“Пост выходного дня”). Это надо сразу исправить, чтобы результат лемматизации можно было потом соединить с данными о подписи. Я просто уберу очень короткие посты, поскольку для анализа они неинтересны.</p>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="веб-скрапинг.html#cb543-1" tabindex="-1"></a>messages_clean <span class="ot">&lt;-</span> messages_clean <span class="sc">%&gt;%</span></span>
-<span id="cb543-2"><a href="веб-скрапинг.html#cb543-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">nchar</span>(text) <span class="sc">&gt;</span> <span class="dv">19</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="веб-скрапинг.html#cb544-1" tabindex="-1"></a><span class="fu">dim</span>(messages_clean)</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="веб-скрапинг.html#cb547-1" tabindex="-1"></a>messages_clean <span class="ot">&lt;-</span> messages_clean <span class="sc">%&gt;%</span></span>
+<span id="cb547-2"><a href="веб-скрапинг.html#cb547-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">nchar</span>(text) <span class="sc">&gt;</span> <span class="dv">19</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="веб-скрапинг.html#cb548-1" tabindex="-1"></a><span class="fu">dim</span>(messages_clean)</span></code></pre></div>
 <pre><code>## [1] 734   3</code></pre>
 <p>Переименуем первый столбец и переназначим id, чтобы можно было потом соединить с результатами лемматизации.</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="веб-скрапинг.html#cb546-1" tabindex="-1"></a>messages_clean <span class="ot">&lt;-</span> messages_clean <span class="sc">%&gt;%</span> </span>
-<span id="cb546-2"><a href="веб-скрапинг.html#cb546-2" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">doc_id =</span> id) <span class="sc">%&gt;%</span> </span>
-<span id="cb546-3"><a href="веб-скрапинг.html#cb546-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">doc_id =</span> <span class="fu">paste0</span>(<span class="st">&quot;doc&quot;</span>, <span class="fu">row_number</span>()))</span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="веб-скрапинг.html#cb550-1" tabindex="-1"></a>messages_clean <span class="ot">&lt;-</span> messages_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb550-2"><a href="веб-скрапинг.html#cb550-2" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">doc_id =</span> id) <span class="sc">%&gt;%</span> </span>
+<span id="cb550-3"><a href="веб-скрапинг.html#cb550-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">doc_id =</span> <span class="fu">paste0</span>(<span class="st">&quot;doc&quot;</span>, <span class="fu">row_number</span>()))</span></code></pre></div>
 </div>
 <div id="лемматизация" class="section level2 hasAnchor" number="9.8">
 <h2><span class="header-section-number">9.8</span> Лемматизация<a href="веб-скрапинг.html#лемматизация" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>На лемматизацию мы отдаем вектор с сообщениями.</p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="веб-скрапинг.html#cb547-1" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
-<span id="cb547-2"><a href="веб-скрапинг.html#cb547-2" tabindex="-1"></a>russian_syntagrus <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(<span class="at">file =</span> <span class="st">&quot;russian-syntagrus-ud-2.5-191206.udpipe&quot;</span>)</span>
-<span id="cb547-3"><a href="веб-скрапинг.html#cb547-3" tabindex="-1"></a></span>
-<span id="cb547-4"><a href="веб-скрапинг.html#cb547-4" tabindex="-1"></a>messages_ann <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(russian_syntagrus, messages_clean<span class="sc">$</span>text)</span>
-<span id="cb547-5"><a href="веб-скрапинг.html#cb547-5" tabindex="-1"></a></span>
-<span id="cb547-6"><a href="веб-скрапинг.html#cb547-6" tabindex="-1"></a>messages_ann <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(messages_ann)</span>
-<span id="cb547-7"><a href="веб-скрапинг.html#cb547-7" tabindex="-1"></a></span>
-<span id="cb547-8"><a href="веб-скрапинг.html#cb547-8" tabindex="-1"></a>messages_ann</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="веб-скрапинг.html#cb551-1" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
+<span id="cb551-2"><a href="веб-скрапинг.html#cb551-2" tabindex="-1"></a>russian_syntagrus <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(<span class="at">file =</span> <span class="st">&quot;russian-syntagrus-ud-2.5-191206.udpipe&quot;</span>)</span>
+<span id="cb551-3"><a href="веб-скрапинг.html#cb551-3" tabindex="-1"></a></span>
+<span id="cb551-4"><a href="веб-скрапинг.html#cb551-4" tabindex="-1"></a>messages_ann <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(russian_syntagrus, messages_clean<span class="sc">$</span>text)</span>
+<span id="cb551-5"><a href="веб-скрапинг.html#cb551-5" tabindex="-1"></a></span>
+<span id="cb551-6"><a href="веб-скрапинг.html#cb551-6" tabindex="-1"></a>messages_ann <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(messages_ann)</span>
+<span id="cb551-7"><a href="веб-скрапинг.html#cb551-7" tabindex="-1"></a></span>
+<span id="cb551-8"><a href="веб-скрапинг.html#cb551-8" tabindex="-1"></a>messages_ann</span></code></pre></div>
 <p>Убедимся, что после лемматизации число id не изменилось, и соединим этот тиббл с данными о подписи.</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="веб-скрапинг.html#cb548-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(messages_ann<span class="sc">$</span>doc_id))</span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="веб-скрапинг.html#cb552-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(messages_ann<span class="sc">$</span>doc_id))</span></code></pre></div>
 <pre><code>## [1] 734</code></pre>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="веб-скрапинг.html#cb550-1" tabindex="-1"></a>messages_signed <span class="ot">&lt;-</span> messages_ann <span class="sc">%&gt;%</span> </span>
-<span id="cb550-2"><a href="веб-скрапинг.html#cb550-2" tabindex="-1"></a>  <span class="fu">left_join</span>(messages_clean, <span class="at">by =</span> <span class="st">&quot;doc_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb550-3"><a href="веб-скрапинг.html#cb550-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>text, <span class="sc">-</span>sentence_id, <span class="sc">-</span>paragraph_id, <span class="sc">-</span>xpos, <span class="sc">-</span>feats,</span>
-<span id="cb550-4"><a href="веб-скрапинг.html#cb550-4" tabindex="-1"></a>         <span class="sc">-</span>head_token_id, <span class="sc">-</span>dep_rel, <span class="sc">-</span>deps, <span class="sc">-</span>misc)</span>
-<span id="cb550-5"><a href="веб-скрапинг.html#cb550-5" tabindex="-1"></a></span>
-<span id="cb550-6"><a href="веб-скрапинг.html#cb550-6" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(messages_signed<span class="sc">$</span>doc_id))</span></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="веб-скрапинг.html#cb554-1" tabindex="-1"></a>messages_signed <span class="ot">&lt;-</span> messages_ann <span class="sc">%&gt;%</span> </span>
+<span id="cb554-2"><a href="веб-скрапинг.html#cb554-2" tabindex="-1"></a>  <span class="fu">left_join</span>(messages_clean, <span class="at">by =</span> <span class="st">&quot;doc_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb554-3"><a href="веб-скрапинг.html#cb554-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>text, <span class="sc">-</span>sentence_id, <span class="sc">-</span>paragraph_id, <span class="sc">-</span>xpos, <span class="sc">-</span>feats,</span>
+<span id="cb554-4"><a href="веб-скрапинг.html#cb554-4" tabindex="-1"></a>         <span class="sc">-</span>head_token_id, <span class="sc">-</span>dep_rel, <span class="sc">-</span>deps, <span class="sc">-</span>misc)</span>
+<span id="cb554-5"><a href="веб-скрапинг.html#cb554-5" tabindex="-1"></a></span>
+<span id="cb554-6"><a href="веб-скрапинг.html#cb554-6" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(messages_signed<span class="sc">$</span>doc_id))</span></code></pre></div>
 <pre><code>## [1] 734</code></pre>
 <p>В постах упоминаются многие коллеги и студенты, чьи имена я бы хотела удалить, чтобы они не появлялись на графиках и т.п., но есть и много древних и новых имен, которые хотелось бы оставить.</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="веб-скрапинг.html#cb552-1" tabindex="-1"></a><span class="co"># valid_names &lt;- messages_ann %&gt;% </span></span>
-<span id="cb552-2"><a href="веб-скрапинг.html#cb552-2" tabindex="-1"></a><span class="co">#   filter(upos == &quot;PROPN&quot;) %&gt;% </span></span>
-<span id="cb552-3"><a href="веб-скрапинг.html#cb552-3" tabindex="-1"></a><span class="co">#   count(lemma) %&gt;% </span></span>
-<span id="cb552-4"><a href="веб-скрапинг.html#cb552-4" tabindex="-1"></a><span class="co">#   arrange(-n) %&gt;% </span></span>
-<span id="cb552-5"><a href="веб-скрапинг.html#cb552-5" tabindex="-1"></a><span class="co">#   filter(!str_detect(lemma, &quot;[\\.«]&quot;)) %&gt;% </span></span>
-<span id="cb552-6"><a href="веб-скрапинг.html#cb552-6" tabindex="-1"></a><span class="co">#   filter(str_detect(lemma, &quot;[[\u0400-\u04FF]]&quot;)) %&gt;% </span></span>
-<span id="cb552-7"><a href="веб-скрапинг.html#cb552-7" tabindex="-1"></a><span class="co">#   filter(n &gt; 1)</span></span>
-<span id="cb552-8"><a href="веб-скрапинг.html#cb552-8" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb552-9"><a href="веб-скрапинг.html#cb552-9" tabindex="-1"></a><span class="co"># valid_names_vec &lt;- as.character(valid_names$lemma)</span></span>
-<span id="cb552-10"><a href="веб-скрапинг.html#cb552-10" tabindex="-1"></a></span>
-<span id="cb552-11"><a href="веб-скрапинг.html#cb552-11" tabindex="-1"></a><span class="co"># список имен отредактирован вручную</span></span>
-<span id="cb552-12"><a href="веб-скрапинг.html#cb552-12" tabindex="-1"></a><span class="co"># write.table(valid_names_vec, file = &quot;files/names.txt&quot;, </span></span>
-<span id="cb552-13"><a href="веб-скрапинг.html#cb552-13" tabindex="-1"></a><span class="co">#            row.names = F, col.names = F)</span></span></code></pre></div>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="веб-скрапинг.html#cb553-1" tabindex="-1"></a>valid_names <span class="ot">&lt;-</span> <span class="fu">read_table</span>(<span class="at">file =</span> <span class="st">&quot;files/names.txt&quot;</span>, <span class="at">col_names =</span> F)</span>
-<span id="cb553-2"><a href="веб-скрапинг.html#cb553-2" tabindex="-1"></a></span>
-<span id="cb553-3"><a href="веб-скрапинг.html#cb553-3" tabindex="-1"></a>valid_names <span class="ot">&lt;-</span> valid_names <span class="sc">%&gt;%</span> </span>
-<span id="cb553-4"><a href="веб-скрапинг.html#cb553-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">names =</span> X1) <span class="sc">%&gt;%</span> </span>
-<span id="cb553-5"><a href="веб-скрапинг.html#cb553-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">names =</span> <span class="fu">str_remove_all</span>(names, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">W&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb553-6"><a href="веб-скрапинг.html#cb553-6" tabindex="-1"></a>  <span class="fu">pull</span>(names)</span></code></pre></div>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="веб-скрапинг.html#cb554-1" tabindex="-1"></a>messages_signed <span class="ot">&lt;-</span> messages_signed <span class="sc">%&gt;%</span> </span>
-<span id="cb554-2"><a href="веб-скрапинг.html#cb554-2" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">!=</span> <span class="st">&quot;PROPN&quot;</span> <span class="sc">|</span> upos <span class="sc">==</span> <span class="st">&quot;PROPN&quot;</span> <span class="sc">&amp;</span> lemma <span class="sc">%in%</span> valid_names) <span class="sc">%&gt;%</span> </span>
-<span id="cb554-3"><a href="веб-скрапинг.html#cb554-3" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">!=</span> <span class="st">&quot;PUNCT&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb554-4"><a href="веб-скрапинг.html#cb554-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;NUM&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb554-5"><a href="веб-скрапинг.html#cb554-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">str_replace_all</span>(lemma, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb554-6"><a href="веб-скрапинг.html#cb554-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">str_remove_all</span>(lemma, <span class="st">&quot;[[:punct:]]&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="веб-скрапинг.html#cb556-1" tabindex="-1"></a><span class="co"># valid_names &lt;- messages_ann %&gt;% </span></span>
+<span id="cb556-2"><a href="веб-скрапинг.html#cb556-2" tabindex="-1"></a><span class="co">#   filter(upos == &quot;PROPN&quot;) %&gt;% </span></span>
+<span id="cb556-3"><a href="веб-скрапинг.html#cb556-3" tabindex="-1"></a><span class="co">#   count(lemma) %&gt;% </span></span>
+<span id="cb556-4"><a href="веб-скрапинг.html#cb556-4" tabindex="-1"></a><span class="co">#   arrange(-n) %&gt;% </span></span>
+<span id="cb556-5"><a href="веб-скрапинг.html#cb556-5" tabindex="-1"></a><span class="co">#   filter(!str_detect(lemma, &quot;[\\.«]&quot;)) %&gt;% </span></span>
+<span id="cb556-6"><a href="веб-скрапинг.html#cb556-6" tabindex="-1"></a><span class="co">#   filter(str_detect(lemma, &quot;[[\u0400-\u04FF]]&quot;)) %&gt;% </span></span>
+<span id="cb556-7"><a href="веб-скрапинг.html#cb556-7" tabindex="-1"></a><span class="co">#   filter(n &gt; 1)</span></span>
+<span id="cb556-8"><a href="веб-скрапинг.html#cb556-8" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb556-9"><a href="веб-скрапинг.html#cb556-9" tabindex="-1"></a><span class="co"># valid_names_vec &lt;- as.character(valid_names$lemma)</span></span>
+<span id="cb556-10"><a href="веб-скрапинг.html#cb556-10" tabindex="-1"></a></span>
+<span id="cb556-11"><a href="веб-скрапинг.html#cb556-11" tabindex="-1"></a><span class="co"># список имен отредактирован вручную</span></span>
+<span id="cb556-12"><a href="веб-скрапинг.html#cb556-12" tabindex="-1"></a><span class="co"># write.table(valid_names_vec, file = &quot;files/names.txt&quot;, </span></span>
+<span id="cb556-13"><a href="веб-скрапинг.html#cb556-13" tabindex="-1"></a><span class="co">#            row.names = F, col.names = F)</span></span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="веб-скрапинг.html#cb557-1" tabindex="-1"></a>valid_names <span class="ot">&lt;-</span> <span class="fu">read_table</span>(<span class="at">file =</span> <span class="st">&quot;files/names.txt&quot;</span>, <span class="at">col_names =</span> F)</span>
+<span id="cb557-2"><a href="веб-скрапинг.html#cb557-2" tabindex="-1"></a></span>
+<span id="cb557-3"><a href="веб-скрапинг.html#cb557-3" tabindex="-1"></a>valid_names <span class="ot">&lt;-</span> valid_names <span class="sc">%&gt;%</span> </span>
+<span id="cb557-4"><a href="веб-скрапинг.html#cb557-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">names =</span> X1) <span class="sc">%&gt;%</span> </span>
+<span id="cb557-5"><a href="веб-скрапинг.html#cb557-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">names =</span> <span class="fu">str_remove_all</span>(names, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">W&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb557-6"><a href="веб-скрапинг.html#cb557-6" tabindex="-1"></a>  <span class="fu">pull</span>(names)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="веб-скрапинг.html#cb558-1" tabindex="-1"></a>messages_signed <span class="ot">&lt;-</span> messages_signed <span class="sc">%&gt;%</span> </span>
+<span id="cb558-2"><a href="веб-скрапинг.html#cb558-2" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">!=</span> <span class="st">&quot;PROPN&quot;</span> <span class="sc">|</span> upos <span class="sc">==</span> <span class="st">&quot;PROPN&quot;</span> <span class="sc">&amp;</span> lemma <span class="sc">%in%</span> valid_names) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-3"><a href="веб-скрапинг.html#cb558-3" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">!=</span> <span class="st">&quot;PUNCT&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-4"><a href="веб-скрапинг.html#cb558-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;NUM&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-5"><a href="веб-скрапинг.html#cb558-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">str_replace_all</span>(lemma, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-6"><a href="веб-скрапинг.html#cb558-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">str_remove_all</span>(lemma, <span class="st">&quot;[[:punct:]]&quot;</span>))</span></code></pre></div>
 <p>После некоторых сомнений, я удалю все, кроме кириллицы – на канале очень много латинского и греческого текста, на этапе создания термдокументной матрицы из-за этого будет почти 100% разреженность.</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="веб-скрапинг.html#cb555-1" tabindex="-1"></a>messages_signed <span class="ot">&lt;-</span> messages_signed <span class="sc">%&gt;%</span> </span>
-<span id="cb555-2"><a href="веб-скрапинг.html#cb555-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">str_replace_all</span>(lemma, <span class="st">&quot;[[^\u0400-\u04FF]]&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb555-3"><a href="веб-скрапинг.html#cb555-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">nchar</span>(lemma) <span class="sc">&gt;</span> <span class="dv">0</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="веб-скрапинг.html#cb559-1" tabindex="-1"></a>messages_signed <span class="ot">&lt;-</span> messages_signed <span class="sc">%&gt;%</span> </span>
+<span id="cb559-2"><a href="веб-скрапинг.html#cb559-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">str_replace_all</span>(lemma, <span class="st">&quot;[[^\u0400-\u04FF]]&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb559-3"><a href="веб-скрапинг.html#cb559-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">nchar</span>(lemma) <span class="sc">&gt;</span> <span class="dv">0</span>) </span></code></pre></div>
 <p>Дальше были исправлены некоторые ошибки лемматизации.</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="веб-скрапинг.html#cb556-1" tabindex="-1"></a>text_tidy <span class="ot">&lt;-</span> messages_signed <span class="sc">%&gt;%</span></span>
-<span id="cb556-2"><a href="веб-скрапинг.html#cb556-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">tolower</span>(lemma)) <span class="sc">%&gt;%</span> </span>
-<span id="cb556-3"><a href="веб-скрапинг.html#cb556-3" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(lemma), <span class="sc">~</span></span>
-<span id="cb556-4"><a href="веб-скрапинг.html#cb556-4" tabindex="-1"></a>       <span class="fu">case_when</span>(lemma <span class="sc">==</span> <span class="st">&quot;мят&quot;</span> <span class="sc">~</span>  <span class="st">&quot;мята&quot;</span>,</span>
-<span id="cb556-5"><a href="веб-скрапинг.html#cb556-5" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;сенек&quot;</span>) <span class="sc">~</span> <span class="st">&quot;сенека&quot;</span>,</span>
-<span id="cb556-6"><a href="веб-скрапинг.html#cb556-6" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;аттик&quot;</span>) <span class="sc">~</span> <span class="st">&quot;аттик&quot;</span>,</span>
-<span id="cb556-7"><a href="веб-скрапинг.html#cb556-7" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;кальвиз&quot;</span>) <span class="sc">~</span> <span class="st">&quot;кальвизий&quot;</span>,</span>
-<span id="cb556-8"><a href="веб-скрапинг.html#cb556-8" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;горац&quot;</span>) <span class="sc">~</span> <span class="st">&quot;гораций&quot;</span>,</span>
-<span id="cb556-9"><a href="веб-скрапинг.html#cb556-9" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;гален&quot;</span>) <span class="sc">~</span> <span class="st">&quot;гален&quot;</span>,</span>
-<span id="cb556-10"><a href="веб-скрапинг.html#cb556-10" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;плотин&quot;</span>) <span class="sc">~</span> <span class="st">&quot;плотин&quot;</span>,</span>
-<span id="cb556-11"><a href="веб-скрапинг.html#cb556-11" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;августин&quot;</span>) <span class="sc">~</span> <span class="st">&quot;августин&quot;</span>,</span>
-<span id="cb556-12"><a href="веб-скрапинг.html#cb556-12" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;абари&quot;</span>) <span class="sc">~</span> <span class="st">&quot;абарид&quot;</span>,</span>
-<span id="cb556-13"><a href="веб-скрапинг.html#cb556-13" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;катулл&quot;</span>) <span class="sc">~</span> <span class="st">&quot;катулл&quot;</span>,</span>
-<span id="cb556-14"><a href="веб-скрапинг.html#cb556-14" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;лукул&quot;</span>) <span class="sc">~</span> <span class="st">&quot;лукулл&quot;</span>,</span>
-<span id="cb556-15"><a href="веб-скрапинг.html#cb556-15" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;посидо&quot;</span>) <span class="sc">~</span> <span class="st">&quot;посидоний&quot;</span>,</span>
-<span id="cb556-16"><a href="веб-скрапинг.html#cb556-16" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;деркилл&quot;</span>) <span class="sc">~</span> <span class="st">&quot;деркиллид&quot;</span>,</span>
-<span id="cb556-17"><a href="веб-скрапинг.html#cb556-17" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;порфир&quot;</span>) <span class="sc">~</span> <span class="st">&quot;порфирий&quot;</span>,</span>
-<span id="cb556-18"><a href="веб-скрапинг.html#cb556-18" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;афин&quot;</span>) <span class="sc">~</span> <span class="st">&quot;афины&quot;</span>,</span>
-<span id="cb556-19"><a href="веб-скрапинг.html#cb556-19" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;локк&quot;</span>) <span class="sc">~</span> <span class="st">&quot;локк&quot;</span>,</span>
-<span id="cb556-20"><a href="веб-скрапинг.html#cb556-20" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;макроб&quot;</span>) <span class="sc">~</span> <span class="st">&quot;макробий&quot;</span>,</span>
-<span id="cb556-21"><a href="веб-скрапинг.html#cb556-21" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;лаэр&quot;</span>) <span class="sc">~</span> <span class="st">&quot;лаэрций&quot;</span>,</span>
-<span id="cb556-22"><a href="веб-скрапинг.html#cb556-22" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;макрин&quot;</span>) <span class="sc">~</span> <span class="st">&quot;макрина&quot;</span>,</span>
-<span id="cb556-23"><a href="веб-скрапинг.html#cb556-23" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;маркиш&quot;</span>) <span class="sc">~</span> <span class="st">&quot;маркиш&quot;</span>,</span>
-<span id="cb556-24"><a href="веб-скрапинг.html#cb556-24" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;маячк&quot;</span>) <span class="sc">~</span> <span class="st">&quot;маячок&quot;</span>,</span>
-<span id="cb556-25"><a href="веб-скрапинг.html#cb556-25" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;очерк&quot;</span>) <span class="sc">~</span> <span class="st">&quot;очерк&quot;</span>,</span>
-<span id="cb556-26"><a href="веб-скрапинг.html#cb556-26" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;птолем&quot;</span>) <span class="sc">~</span> <span class="st">&quot;птолемей&quot;</span>,</span>
-<span id="cb556-27"><a href="веб-скрапинг.html#cb556-27" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;росса&quot;</span>) <span class="sc">~</span> <span class="st">&quot;росс&quot;</span>,</span>
-<span id="cb556-28"><a href="веб-скрапинг.html#cb556-28" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;самосат&quot;</span>) <span class="sc">~</span> <span class="st">&quot;самосата&quot;</span>,</span>
-<span id="cb556-29"><a href="веб-скрапинг.html#cb556-29" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;стрепсиад&quot;</span>) <span class="sc">~</span> <span class="st">&quot;стрепсиад&quot;</span>,</span>
-<span id="cb556-30"><a href="веб-скрапинг.html#cb556-30" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;эпихар&quot;</span>) <span class="sc">~</span> <span class="st">&quot;эпихарм&quot;</span>,</span>
-<span id="cb556-31"><a href="веб-скрапинг.html#cb556-31" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;ямвл&quot;</span>) <span class="sc">~</span> <span class="st">&quot;ямвлих&quot;</span>,</span>
-<span id="cb556-32"><a href="веб-скрапинг.html#cb556-32" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;брумал&quot;</span>) <span class="sc">~</span> <span class="st">&quot;брумалии&quot;</span>,</span>
-<span id="cb556-33"><a href="веб-скрапинг.html#cb556-33" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;иоанн&quot;</span>) <span class="sc">~</span> <span class="st">&quot;иоанн&quot;</span>,</span>
-<span id="cb556-34"><a href="веб-скрапинг.html#cb556-34" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;кинопоиск&quot;</span>) <span class="sc">~</span> <span class="st">&quot;кинопоиск&quot;</span>,</span>
-<span id="cb556-35"><a href="веб-скрапинг.html#cb556-35" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;корнар&quot;</span>) <span class="sc">~</span> <span class="st">&quot;корнарий&quot;</span>,</span>
-<span id="cb556-36"><a href="веб-скрапинг.html#cb556-36" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;луция&quot;</span>) <span class="sc">~</span> <span class="st">&quot;луций&quot;</span>,</span>
-<span id="cb556-37"><a href="веб-скрапинг.html#cb556-37" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;кассия&quot;</span>) <span class="sc">~</span> <span class="st">&quot;кассий&quot;</span>,</span>
-<span id="cb556-38"><a href="веб-скрапинг.html#cb556-38" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;минф&quot;</span>) <span class="sc">~</span> <span class="st">&quot;минфа&quot;</span>,</span>
-<span id="cb556-39"><a href="веб-скрапинг.html#cb556-39" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;персефон&quot;</span>) <span class="sc">~</span> <span class="st">&quot;персефона&quot;</span>,</span>
-<span id="cb556-40"><a href="веб-скрапинг.html#cb556-40" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;пестум&quot;</span>) <span class="sc">~</span> <span class="st">&quot;пестум&quot;</span>,</span>
-<span id="cb556-41"><a href="веб-скрапинг.html#cb556-41" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;платон&quot;</span>) <span class="sc">~</span> <span class="st">&quot;платон&quot;</span>,</span>
-<span id="cb556-42"><a href="веб-скрапинг.html#cb556-42" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;платно&quot;</span>) <span class="sc">~</span> <span class="st">&quot;платон&quot;</span>,</span>
-<span id="cb556-43"><a href="веб-скрапинг.html#cb556-43" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;филеб&quot;</span>) <span class="sc">~</span> <span class="st">&quot;филеб&quot;</span>,</span>
-<span id="cb556-44"><a href="веб-скрапинг.html#cb556-44" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;фульг&quot;</span>) <span class="sc">~</span> <span class="st">&quot;фульгенций&quot;</span>,</span>
-<span id="cb556-45"><a href="веб-скрапинг.html#cb556-45" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;аврел&quot;</span>) <span class="sc">~</span> <span class="st">&quot;аврелий&quot;</span>,</span>
-<span id="cb556-46"><a href="веб-скрапинг.html#cb556-46" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;антигон&quot;</span>) <span class="sc">~</span> <span class="st">&quot;антигона&quot;</span>,</span>
-<span id="cb556-47"><a href="веб-скрапинг.html#cb556-47" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;анция&quot;</span>) <span class="sc">~</span> <span class="st">&quot;анций&quot;</span>,</span>
-<span id="cb556-48"><a href="веб-скрапинг.html#cb556-48" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;борея&quot;</span>) <span class="sc">~</span> <span class="st">&quot;борей&quot;</span>,</span>
-<span id="cb556-49"><a href="веб-скрапинг.html#cb556-49" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;вольтер&quot;</span>) <span class="sc">~</span> <span class="st">&quot;вольтер&quot;</span>,</span>
-<span id="cb556-50"><a href="веб-скрапинг.html#cb556-50" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;гераклид&quot;</span>) <span class="sc">~</span> <span class="st">&quot;гераклид&quot;</span>,</span>
-<span id="cb556-51"><a href="веб-скрапинг.html#cb556-51" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;теэтет&quot;</span>) <span class="sc">~</span> <span class="st">&quot;теэтет&quot;</span>,</span>
-<span id="cb556-52"><a href="веб-скрапинг.html#cb556-52" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;евангел&quot;</span>) <span class="sc">~</span> <span class="st">&quot;евангелие&quot;</span>,</span>
-<span id="cb556-53"><a href="веб-скрапинг.html#cb556-53" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;федон&quot;</span>) <span class="sc">~</span> <span class="st">&quot;федон&quot;</span>,</span>
-<span id="cb556-54"><a href="веб-скрапинг.html#cb556-54" tabindex="-1"></a>                 <span class="cn">TRUE</span> <span class="sc">~</span> .))</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="веб-скрапинг.html#cb560-1" tabindex="-1"></a>text_tidy <span class="ot">&lt;-</span> messages_signed <span class="sc">%&gt;%</span></span>
+<span id="cb560-2"><a href="веб-скрапинг.html#cb560-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lemma =</span> <span class="fu">tolower</span>(lemma)) <span class="sc">%&gt;%</span> </span>
+<span id="cb560-3"><a href="веб-скрапинг.html#cb560-3" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(lemma), <span class="sc">~</span></span>
+<span id="cb560-4"><a href="веб-скрапинг.html#cb560-4" tabindex="-1"></a>       <span class="fu">case_when</span>(lemma <span class="sc">==</span> <span class="st">&quot;мят&quot;</span> <span class="sc">~</span>  <span class="st">&quot;мята&quot;</span>,</span>
+<span id="cb560-5"><a href="веб-скрапинг.html#cb560-5" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;сенек&quot;</span>) <span class="sc">~</span> <span class="st">&quot;сенека&quot;</span>,</span>
+<span id="cb560-6"><a href="веб-скрапинг.html#cb560-6" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;аттик&quot;</span>) <span class="sc">~</span> <span class="st">&quot;аттик&quot;</span>,</span>
+<span id="cb560-7"><a href="веб-скрапинг.html#cb560-7" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;кальвиз&quot;</span>) <span class="sc">~</span> <span class="st">&quot;кальвизий&quot;</span>,</span>
+<span id="cb560-8"><a href="веб-скрапинг.html#cb560-8" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;горац&quot;</span>) <span class="sc">~</span> <span class="st">&quot;гораций&quot;</span>,</span>
+<span id="cb560-9"><a href="веб-скрапинг.html#cb560-9" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;гален&quot;</span>) <span class="sc">~</span> <span class="st">&quot;гален&quot;</span>,</span>
+<span id="cb560-10"><a href="веб-скрапинг.html#cb560-10" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;плотин&quot;</span>) <span class="sc">~</span> <span class="st">&quot;плотин&quot;</span>,</span>
+<span id="cb560-11"><a href="веб-скрапинг.html#cb560-11" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;августин&quot;</span>) <span class="sc">~</span> <span class="st">&quot;августин&quot;</span>,</span>
+<span id="cb560-12"><a href="веб-скрапинг.html#cb560-12" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;абари&quot;</span>) <span class="sc">~</span> <span class="st">&quot;абарид&quot;</span>,</span>
+<span id="cb560-13"><a href="веб-скрапинг.html#cb560-13" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;катулл&quot;</span>) <span class="sc">~</span> <span class="st">&quot;катулл&quot;</span>,</span>
+<span id="cb560-14"><a href="веб-скрапинг.html#cb560-14" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;лукул&quot;</span>) <span class="sc">~</span> <span class="st">&quot;лукулл&quot;</span>,</span>
+<span id="cb560-15"><a href="веб-скрапинг.html#cb560-15" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;посидо&quot;</span>) <span class="sc">~</span> <span class="st">&quot;посидоний&quot;</span>,</span>
+<span id="cb560-16"><a href="веб-скрапинг.html#cb560-16" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;деркилл&quot;</span>) <span class="sc">~</span> <span class="st">&quot;деркиллид&quot;</span>,</span>
+<span id="cb560-17"><a href="веб-скрапинг.html#cb560-17" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;порфир&quot;</span>) <span class="sc">~</span> <span class="st">&quot;порфирий&quot;</span>,</span>
+<span id="cb560-18"><a href="веб-скрапинг.html#cb560-18" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;афин&quot;</span>) <span class="sc">~</span> <span class="st">&quot;афины&quot;</span>,</span>
+<span id="cb560-19"><a href="веб-скрапинг.html#cb560-19" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;локк&quot;</span>) <span class="sc">~</span> <span class="st">&quot;локк&quot;</span>,</span>
+<span id="cb560-20"><a href="веб-скрапинг.html#cb560-20" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;макроб&quot;</span>) <span class="sc">~</span> <span class="st">&quot;макробий&quot;</span>,</span>
+<span id="cb560-21"><a href="веб-скрапинг.html#cb560-21" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;лаэр&quot;</span>) <span class="sc">~</span> <span class="st">&quot;лаэрций&quot;</span>,</span>
+<span id="cb560-22"><a href="веб-скрапинг.html#cb560-22" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;макрин&quot;</span>) <span class="sc">~</span> <span class="st">&quot;макрина&quot;</span>,</span>
+<span id="cb560-23"><a href="веб-скрапинг.html#cb560-23" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;маркиш&quot;</span>) <span class="sc">~</span> <span class="st">&quot;маркиш&quot;</span>,</span>
+<span id="cb560-24"><a href="веб-скрапинг.html#cb560-24" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;маячк&quot;</span>) <span class="sc">~</span> <span class="st">&quot;маячок&quot;</span>,</span>
+<span id="cb560-25"><a href="веб-скрапинг.html#cb560-25" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;очерк&quot;</span>) <span class="sc">~</span> <span class="st">&quot;очерк&quot;</span>,</span>
+<span id="cb560-26"><a href="веб-скрапинг.html#cb560-26" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;птолем&quot;</span>) <span class="sc">~</span> <span class="st">&quot;птолемей&quot;</span>,</span>
+<span id="cb560-27"><a href="веб-скрапинг.html#cb560-27" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;росса&quot;</span>) <span class="sc">~</span> <span class="st">&quot;росс&quot;</span>,</span>
+<span id="cb560-28"><a href="веб-скрапинг.html#cb560-28" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;самосат&quot;</span>) <span class="sc">~</span> <span class="st">&quot;самосата&quot;</span>,</span>
+<span id="cb560-29"><a href="веб-скрапинг.html#cb560-29" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;стрепсиад&quot;</span>) <span class="sc">~</span> <span class="st">&quot;стрепсиад&quot;</span>,</span>
+<span id="cb560-30"><a href="веб-скрапинг.html#cb560-30" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;эпихар&quot;</span>) <span class="sc">~</span> <span class="st">&quot;эпихарм&quot;</span>,</span>
+<span id="cb560-31"><a href="веб-скрапинг.html#cb560-31" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;ямвл&quot;</span>) <span class="sc">~</span> <span class="st">&quot;ямвлих&quot;</span>,</span>
+<span id="cb560-32"><a href="веб-скрапинг.html#cb560-32" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;брумал&quot;</span>) <span class="sc">~</span> <span class="st">&quot;брумалии&quot;</span>,</span>
+<span id="cb560-33"><a href="веб-скрапинг.html#cb560-33" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;иоанн&quot;</span>) <span class="sc">~</span> <span class="st">&quot;иоанн&quot;</span>,</span>
+<span id="cb560-34"><a href="веб-скрапинг.html#cb560-34" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;кинопоиск&quot;</span>) <span class="sc">~</span> <span class="st">&quot;кинопоиск&quot;</span>,</span>
+<span id="cb560-35"><a href="веб-скрапинг.html#cb560-35" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;корнар&quot;</span>) <span class="sc">~</span> <span class="st">&quot;корнарий&quot;</span>,</span>
+<span id="cb560-36"><a href="веб-скрапинг.html#cb560-36" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;луция&quot;</span>) <span class="sc">~</span> <span class="st">&quot;луций&quot;</span>,</span>
+<span id="cb560-37"><a href="веб-скрапинг.html#cb560-37" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;кассия&quot;</span>) <span class="sc">~</span> <span class="st">&quot;кассий&quot;</span>,</span>
+<span id="cb560-38"><a href="веб-скрапинг.html#cb560-38" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;минф&quot;</span>) <span class="sc">~</span> <span class="st">&quot;минфа&quot;</span>,</span>
+<span id="cb560-39"><a href="веб-скрапинг.html#cb560-39" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;персефон&quot;</span>) <span class="sc">~</span> <span class="st">&quot;персефона&quot;</span>,</span>
+<span id="cb560-40"><a href="веб-скрапинг.html#cb560-40" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;пестум&quot;</span>) <span class="sc">~</span> <span class="st">&quot;пестум&quot;</span>,</span>
+<span id="cb560-41"><a href="веб-скрапинг.html#cb560-41" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;платон&quot;</span>) <span class="sc">~</span> <span class="st">&quot;платон&quot;</span>,</span>
+<span id="cb560-42"><a href="веб-скрапинг.html#cb560-42" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;платно&quot;</span>) <span class="sc">~</span> <span class="st">&quot;платон&quot;</span>,</span>
+<span id="cb560-43"><a href="веб-скрапинг.html#cb560-43" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;филеб&quot;</span>) <span class="sc">~</span> <span class="st">&quot;филеб&quot;</span>,</span>
+<span id="cb560-44"><a href="веб-скрапинг.html#cb560-44" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;фульг&quot;</span>) <span class="sc">~</span> <span class="st">&quot;фульгенций&quot;</span>,</span>
+<span id="cb560-45"><a href="веб-скрапинг.html#cb560-45" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;аврел&quot;</span>) <span class="sc">~</span> <span class="st">&quot;аврелий&quot;</span>,</span>
+<span id="cb560-46"><a href="веб-скрапинг.html#cb560-46" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;антигон&quot;</span>) <span class="sc">~</span> <span class="st">&quot;антигона&quot;</span>,</span>
+<span id="cb560-47"><a href="веб-скрапинг.html#cb560-47" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;анция&quot;</span>) <span class="sc">~</span> <span class="st">&quot;анций&quot;</span>,</span>
+<span id="cb560-48"><a href="веб-скрапинг.html#cb560-48" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;борея&quot;</span>) <span class="sc">~</span> <span class="st">&quot;борей&quot;</span>,</span>
+<span id="cb560-49"><a href="веб-скрапинг.html#cb560-49" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;вольтер&quot;</span>) <span class="sc">~</span> <span class="st">&quot;вольтер&quot;</span>,</span>
+<span id="cb560-50"><a href="веб-скрапинг.html#cb560-50" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;гераклид&quot;</span>) <span class="sc">~</span> <span class="st">&quot;гераклид&quot;</span>,</span>
+<span id="cb560-51"><a href="веб-скрапинг.html#cb560-51" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;теэтет&quot;</span>) <span class="sc">~</span> <span class="st">&quot;теэтет&quot;</span>,</span>
+<span id="cb560-52"><a href="веб-скрапинг.html#cb560-52" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;евангел&quot;</span>) <span class="sc">~</span> <span class="st">&quot;евангелие&quot;</span>,</span>
+<span id="cb560-53"><a href="веб-скрапинг.html#cb560-53" tabindex="-1"></a>                 <span class="fu">str_detect</span>(lemma, <span class="st">&quot;федон&quot;</span>) <span class="sc">~</span> <span class="st">&quot;федон&quot;</span>,</span>
+<span id="cb560-54"><a href="веб-скрапинг.html#cb560-54" tabindex="-1"></a>                 <span class="cn">TRUE</span> <span class="sc">~</span> .))</span></code></pre></div>
 <p>Получившийся тиббл сохраняю – он понадобится в главе 13.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="веб-скрапинг.html#cb557-1" tabindex="-1"></a><span class="fu">save</span>(text_tidy, <span class="at">file =</span> <span class="st">&quot;data/AntibarbariTidy.Rdata&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="веб-скрапинг.html#cb561-1" tabindex="-1"></a><span class="fu">save</span>(text_tidy, <span class="at">file =</span> <span class="st">&quot;data/AntibarbariTidy.Rdata&quot;</span>)</span></code></pre></div>
 </div>
-<div id="таблицы-html" class="section level2 hasAnchor" number="9.9">
-<h2><span class="header-section-number">9.9</span> Таблицы html<a href="веб-скрапинг.html#таблицы-html" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Чуть более сложный пример: скрапинг html таблицы c фильмами IMDB.</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="веб-скрапинг.html#cb558-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://web.archive.org/web/20220201012049/https://www.imdb.com/chart/top/&quot;</span></span>
-<span id="cb558-2"><a href="веб-скрапинг.html#cb558-2" tabindex="-1"></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span></code></pre></div>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="веб-скрапинг.html#cb559-1" tabindex="-1"></a>table <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
-<span id="cb559-2"><a href="веб-скрапинг.html#cb559-2" tabindex="-1"></a>  <span class="fu">html_element</span>(<span class="st">&quot;table&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb559-3"><a href="веб-скрапинг.html#cb559-3" tabindex="-1"></a>  <span class="fu">html_table</span>()</span>
-<span id="cb559-4"><a href="веб-скрапинг.html#cb559-4" tabindex="-1"></a></span>
-<span id="cb559-5"><a href="веб-скрапинг.html#cb559-5" tabindex="-1"></a>table</span></code></pre></div>
-<pre><code>## # A tibble: 250 × 5
-##    ``    `Rank &amp; Title`                        `IMDb Rating` `Your Rating` ``   
-##    &lt;lgl&gt; &lt;chr&gt;                                         &lt;dbl&gt; &lt;chr&gt;         &lt;lgl&gt;
-##  1 NA    &quot;1.\n      The Shawshank Redemption\…           9.2 &quot;12345678910… NA   
-##  2 NA    &quot;2.\n      The Godfather\n        (1…           9.1 &quot;12345678910… NA   
-##  3 NA    &quot;3.\n      The Godfather: Part II\n …           9   &quot;12345678910… NA   
-##  4 NA    &quot;4.\n      The Dark Knight\n        …           9   &quot;12345678910… NA   
-##  5 NA    &quot;5.\n      12 Angry Men\n        (19…           8.9 &quot;12345678910… NA   
-##  6 NA    &quot;6.\n      Schindler&#39;s List\n       …           8.9 &quot;12345678910… NA   
-##  7 NA    &quot;7.\n      The Lord of the Rings: Th…           8.9 &quot;12345678910… NA   
-##  8 NA    &quot;8.\n      Pulp Fiction\n        (19…           8.8 &quot;12345678910… NA   
-##  9 NA    &quot;9.\n      The Good, the Bad and the…           8.8 &quot;12345678910… NA   
-## 10 NA    &quot;10.\n      The Lord of the Rings: T…           8.8 &quot;12345678910… NA   
-## # ℹ 240 more rows</code></pre>
-<p>Чтобы было удобнее работать с этими данными, их стоит переименовать и трансформировать.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="веб-скрапинг.html#cb561-1" tabindex="-1"></a>ratings <span class="ot">&lt;-</span> table <span class="sc">|&gt;</span></span>
-<span id="cb561-2"><a href="веб-скрапинг.html#cb561-2" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb561-3"><a href="веб-скрапинг.html#cb561-3" tabindex="-1"></a>    <span class="at">rank_title_year =</span> <span class="st">`</span><span class="at">Rank &amp; Title</span><span class="st">`</span>,</span>
-<span id="cb561-4"><a href="веб-скрапинг.html#cb561-4" tabindex="-1"></a>    <span class="at">rating =</span> <span class="st">`</span><span class="at">IMDb Rating</span><span class="st">`</span></span>
-<span id="cb561-5"><a href="веб-скрапинг.html#cb561-5" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb561-6"><a href="веб-скрапинг.html#cb561-6" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb561-7"><a href="веб-скрапинг.html#cb561-7" tabindex="-1"></a>    <span class="at">rank_title_year =</span> <span class="fu">str_replace_all</span>(rank_title_year, <span class="st">&quot;</span><span class="sc">\n</span><span class="st"> +&quot;</span>, <span class="st">&quot; &quot;</span>)</span>
-<span id="cb561-8"><a href="веб-скрапинг.html#cb561-8" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb561-9"><a href="веб-скрапинг.html#cb561-9" tabindex="-1"></a>  <span class="fu">separate_wider_regex</span>(</span>
-<span id="cb561-10"><a href="веб-скрапинг.html#cb561-10" tabindex="-1"></a>    rank_title_year,</span>
-<span id="cb561-11"><a href="веб-скрапинг.html#cb561-11" tabindex="-1"></a>    <span class="at">patterns =</span> <span class="fu">c</span>(</span>
-<span id="cb561-12"><a href="веб-скрапинг.html#cb561-12" tabindex="-1"></a>      <span class="at">rank =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">. &quot;</span>,</span>
-<span id="cb561-13"><a href="веб-скрапинг.html#cb561-13" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;.+&quot;</span>, <span class="st">&quot; +</span><span class="sc">\\</span><span class="st">(&quot;</span>,</span>
-<span id="cb561-14"><a href="веб-скрапинг.html#cb561-14" tabindex="-1"></a>      <span class="at">year =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">)&quot;</span></span>
-<span id="cb561-15"><a href="веб-скрапинг.html#cb561-15" tabindex="-1"></a>    )</span>
-<span id="cb561-16"><a href="веб-скрапинг.html#cb561-16" tabindex="-1"></a>  )</span>
-<span id="cb561-17"><a href="веб-скрапинг.html#cb561-17" tabindex="-1"></a>ratings</span></code></pre></div>
-<pre><code>## # A tibble: 250 × 4
-##    rank  title                                             year  rating
-##    &lt;chr&gt; &lt;chr&gt;                                             &lt;chr&gt;  &lt;dbl&gt;
-##  1 1     The Shawshank Redemption                          1994     9.2
-##  2 2     The Godfather                                     1972     9.1
-##  3 3     The Godfather: Part II                            1974     9  
-##  4 4     The Dark Knight                                   2008     9  
-##  5 5     12 Angry Men                                      1957     8.9
-##  6 6     Schindler&#39;s List                                  1993     8.9
-##  7 7     The Lord of the Rings: The Return of the King     2003     8.9
-##  8 8     Pulp Fiction                                      1994     8.8
-##  9 9     The Good, the Bad and the Ugly                    1966     8.8
-## 10 10    The Lord of the Rings: The Fellowship of the Ring 2001     8.8
-## # ℹ 240 more rows</code></pre>
+<div id="html-таблицы" class="section level2 hasAnchor" number="9.9">
+<h2><span class="header-section-number">9.9</span> Html таблицы<a href="веб-скрапинг.html#html-таблицы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To be supplied.</p>
 </div>
 <div id="wikisource" class="section level2 hasAnchor" number="9.10">
 <h2><span class="header-section-number">9.10</span> Wikisource<a href="веб-скрапинг.html#wikisource" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Многие тексты доступны на сайте Wikisource.org. Попробуем извлечь все сказки Салтыкова-Щедрина.</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="веб-скрапинг.html#cb563-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://ru.wikisource.org/wiki/%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB_%D0%95%D0%B2%D0%B3%D1%80%D0%B0%D1%84%D0%BE%D0%B2%D0%B8%D1%87_%D0%A1%D0%B0%D0%BB%D1%82%D1%8B%D0%BA%D0%BE%D0%B2-%D0%A9%D0%B5%D0%B4%D1%80%D0%B8%D0%BD&quot;</span></span>
-<span id="cb563-2"><a href="веб-скрапинг.html#cb563-2" tabindex="-1"></a>html <span class="ot">=</span> <span class="fu">read_html</span>(url)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="веб-скрапинг.html#cb562-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://ru.wikisource.org/wiki/%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB_%D0%95%D0%B2%D0%B3%D1%80%D0%B0%D1%84%D0%BE%D0%B2%D0%B8%D1%87_%D0%A1%D0%B0%D0%BB%D1%82%D1%8B%D0%BA%D0%BE%D0%B2-%D0%A9%D0%B5%D0%B4%D1%80%D0%B8%D0%BD&quot;</span></span>
+<span id="cb562-2"><a href="веб-скрапинг.html#cb562-2" tabindex="-1"></a>html <span class="ot">=</span> <span class="fu">read_html</span>(url)</span></code></pre></div>
 <p>Для того, чтобы справиться с такой страницей, пригодится Selector Gadget (расширение для Chrome). Вот <a href="https://youtu.be/oqNTfWrGdbk">тут</a> можно посмотреть короткое видео, как его установить. При помощи селектора выбираем нужные уровни.</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="веб-скрапинг.html#cb564-1" tabindex="-1"></a>toc <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
-<span id="cb564-2"><a href="веб-скрапинг.html#cb564-2" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;ul:nth-child(22) a&quot;</span>)</span>
-<span id="cb564-3"><a href="веб-скрапинг.html#cb564-3" tabindex="-1"></a></span>
-<span id="cb564-4"><a href="веб-скрапинг.html#cb564-4" tabindex="-1"></a><span class="fu">head</span>(toc)</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="веб-скрапинг.html#cb563-1" tabindex="-1"></a>toc <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb563-2"><a href="веб-скрапинг.html#cb563-2" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;ul:nth-child(22) a&quot;</span>)</span>
+<span id="cb563-3"><a href="веб-скрапинг.html#cb563-3" tabindex="-1"></a></span>
+<span id="cb563-4"><a href="веб-скрапинг.html#cb563-4" tabindex="-1"></a><span class="fu">head</span>(toc)</span></code></pre></div>
 <pre><code>## {xml_nodeset (6)}
 ## [1] &lt;a href=&quot;/wiki/%D0%9F%D0%BE%D0%B2%D0%B5%D1%81%D1%82%D1%8C_%D0%BE_%D1%82%D ...
 ## [2] &lt;a href=&quot;/wiki/%D0%93%D0%BE%D0%B4%D0%BE%D0%B2%D1%89%D0%B8%D0%BD%D0%B0_(%D ...
@@ -907,17 +857,17 @@ div.csl-indent {
 ## [5] &lt;a href=&quot;/wiki/%D0%9F%D1%80%D0%B5%D0%BC%D1%83%D0%B4%D1%80%D1%8B%D0%B9_%D0 ...
 ## [6] &lt;a href=&quot;/wiki/%D0%A1%D0%B0%D0%BC%D0%BE%D0%BE%D1%82%D0%B2%D0%B5%D1%80%D0% ...</code></pre>
 <p>Теперь у нас есть список ссылок.</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="веб-скрапинг.html#cb566-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb566-2"><a href="веб-скрапинг.html#cb566-2" tabindex="-1"></a>  <span class="at">title =</span> toc <span class="sc">%&gt;%</span></span>
-<span id="cb566-3"><a href="веб-скрапинг.html#cb566-3" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;title&quot;</span>),</span>
-<span id="cb566-4"><a href="веб-скрапинг.html#cb566-4" tabindex="-1"></a>  <span class="at">href =</span> toc <span class="sc">%&gt;%</span> </span>
-<span id="cb566-5"><a href="веб-скрапинг.html#cb566-5" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>)</span>
-<span id="cb566-6"><a href="веб-скрапинг.html#cb566-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="веб-скрапинг.html#cb565-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb565-2"><a href="веб-скрапинг.html#cb565-2" tabindex="-1"></a>  <span class="at">title =</span> toc <span class="sc">%&gt;%</span></span>
+<span id="cb565-3"><a href="веб-скрапинг.html#cb565-3" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;title&quot;</span>),</span>
+<span id="cb565-4"><a href="веб-скрапинг.html#cb565-4" tabindex="-1"></a>  <span class="at">href =</span> toc <span class="sc">%&gt;%</span> </span>
+<span id="cb565-5"><a href="веб-скрапинг.html#cb565-5" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>)</span>
+<span id="cb565-6"><a href="веб-скрапинг.html#cb565-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>Данных о годе публикации под тегом <a> нет; надо подняться на уровень выше:</p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="веб-скрапинг.html#cb567-1" tabindex="-1"></a>toc2 <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
-<span id="cb567-2"><a href="веб-скрапинг.html#cb567-2" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;ul:nth-child(22) li&quot;</span>)</span>
-<span id="cb567-3"><a href="веб-скрапинг.html#cb567-3" tabindex="-1"></a></span>
-<span id="cb567-4"><a href="веб-скрапинг.html#cb567-4" tabindex="-1"></a><span class="fu">head</span>(toc2)</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="веб-скрапинг.html#cb566-1" tabindex="-1"></a>toc2 <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb566-2"><a href="веб-скрапинг.html#cb566-2" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;ul:nth-child(22) li&quot;</span>)</span>
+<span id="cb566-3"><a href="веб-скрапинг.html#cb566-3" tabindex="-1"></a></span>
+<span id="cb566-4"><a href="веб-скрапинг.html#cb566-4" tabindex="-1"></a><span class="fu">head</span>(toc2)</span></code></pre></div>
 <pre><code>## {xml_nodeset (6)}
 ## [1] &lt;li&gt;\n&lt;a href=&quot;/wiki/%D0%9F%D0%BE%D0%B2%D0%B5%D1%81%D1%82%D1%8C_%D0%BE_%D ...
 ## [2] &lt;li&gt;\n&lt;a href=&quot;/wiki/%D0%93%D0%BE%D0%B4%D0%BE%D0%B2%D1%89%D0%B8%D0%BD%D0% ...
@@ -925,8 +875,8 @@ div.csl-indent {
 ## [4] &lt;li&gt;\n&lt;a href=&quot;/wiki/%D0%94%D0%B8%D0%BA%D0%B8%D0%B9_%D0%BF%D0%BE%D0%BC%D0 ...
 ## [5] &lt;li&gt;\n&lt;a href=&quot;/wiki/%D0%9F%D1%80%D0%B5%D0%BC%D1%83%D0%B4%D1%80%D1%8B%D0% ...
 ## [6] &lt;li&gt;\n&lt;a href=&quot;/wiki/%D0%A1%D0%B0%D0%BC%D0%BE%D0%BE%D1%82%D0%B2%D0%B5%D1% ...</code></pre>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="веб-скрапинг.html#cb569-1" tabindex="-1"></a>toc2 <span class="sc">%&gt;%</span></span>
-<span id="cb569-2"><a href="веб-скрапинг.html#cb569-2" tabindex="-1"></a>  <span class="fu">html_text2</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="веб-скрапинг.html#cb568-1" tabindex="-1"></a>toc2 <span class="sc">%&gt;%</span></span>
+<span id="cb568-2"><a href="веб-скрапинг.html#cb568-2" tabindex="-1"></a>  <span class="fu">html_text2</span>()</span></code></pre></div>
 <pre><code>##  [1] &quot;Повесть о том, как один мужик двух генералов прокормил, 1869&quot;
 ##  [2] &quot;Годовщина, 1869&quot;                                             
 ##  [3] &quot;Пропала совесть, 1869&quot;                                       
@@ -961,14 +911,14 @@ div.csl-indent {
 ## [32] &quot;Ворон-челобитчик, 1886&quot;                                      
 ## [33] &quot;Рождественская сказка, 1886&quot;</code></pre>
 <p>Соединяем:</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="веб-скрапинг.html#cb571-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb571-2"><a href="веб-скрапинг.html#cb571-2" tabindex="-1"></a>  <span class="at">title_year =</span> toc2 <span class="sc">%&gt;%</span></span>
-<span id="cb571-3"><a href="веб-скрапинг.html#cb571-3" tabindex="-1"></a>    <span class="fu">html_text2</span>(),</span>
-<span id="cb571-4"><a href="веб-скрапинг.html#cb571-4" tabindex="-1"></a>  <span class="at">href =</span> toc <span class="sc">%&gt;%</span> </span>
-<span id="cb571-5"><a href="веб-скрапинг.html#cb571-5" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>)</span>
-<span id="cb571-6"><a href="веб-скрапинг.html#cb571-6" tabindex="-1"></a>)</span>
-<span id="cb571-7"><a href="веб-скрапинг.html#cb571-7" tabindex="-1"></a></span>
-<span id="cb571-8"><a href="веб-скрапинг.html#cb571-8" tabindex="-1"></a>tales</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="веб-скрапинг.html#cb570-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb570-2"><a href="веб-скрапинг.html#cb570-2" tabindex="-1"></a>  <span class="at">title_year =</span> toc2 <span class="sc">%&gt;%</span></span>
+<span id="cb570-3"><a href="веб-скрапинг.html#cb570-3" tabindex="-1"></a>    <span class="fu">html_text2</span>(),</span>
+<span id="cb570-4"><a href="веб-скрапинг.html#cb570-4" tabindex="-1"></a>  <span class="at">href =</span> toc <span class="sc">%&gt;%</span> </span>
+<span id="cb570-5"><a href="веб-скрапинг.html#cb570-5" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>)</span>
+<span id="cb570-6"><a href="веб-скрапинг.html#cb570-6" tabindex="-1"></a>)</span>
+<span id="cb570-7"><a href="веб-скрапинг.html#cb570-7" tabindex="-1"></a></span>
+<span id="cb570-8"><a href="веб-скрапинг.html#cb570-8" tabindex="-1"></a>tales</span></code></pre></div>
 <pre><code>## # A tibble: 33 × 2
 ##    title_year                                                   href            
 ##    &lt;chr&gt;                                                        &lt;chr&gt;           
@@ -984,40 +934,40 @@ div.csl-indent {
 ## 10 Обманщик-газетчик и легковерный читатель, 1884               /wiki/%D0%9E%D0…
 ## # ℹ 23 more rows</code></pre>
 <p>Дальше можно достать текст для каждой сказки. Потренируемся на одной. Снова привлекаем Selector Gadget для составления правила.</p>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="веб-скрапинг.html#cb573-1" tabindex="-1"></a>url_test <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
-<span id="cb573-2"><a href="веб-скрапинг.html#cb573-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb573-3"><a href="веб-скрапинг.html#cb573-3" tabindex="-1"></a>  <span class="fu">pull</span>(href) <span class="sc">%&gt;%</span> </span>
-<span id="cb573-4"><a href="веб-скрапинг.html#cb573-4" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">&quot;https://ru.wikisource.org&quot;</span>, .)</span>
-<span id="cb573-5"><a href="веб-скрапинг.html#cb573-5" tabindex="-1"></a></span>
-<span id="cb573-6"><a href="веб-скрапинг.html#cb573-6" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url_test) <span class="sc">%&gt;%</span> </span>
-<span id="cb573-7"><a href="веб-скрапинг.html#cb573-7" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;.indent p&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb573-8"><a href="веб-скрапинг.html#cb573-8" tabindex="-1"></a>  <span class="fu">html_text2</span>() </span>
-<span id="cb573-9"><a href="веб-скрапинг.html#cb573-9" tabindex="-1"></a></span>
-<span id="cb573-10"><a href="веб-скрапинг.html#cb573-10" tabindex="-1"></a>text[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="веб-скрапинг.html#cb572-1" tabindex="-1"></a>url_test <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
+<span id="cb572-2"><a href="веб-скрапинг.html#cb572-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb572-3"><a href="веб-скрапинг.html#cb572-3" tabindex="-1"></a>  <span class="fu">pull</span>(href) <span class="sc">%&gt;%</span> </span>
+<span id="cb572-4"><a href="веб-скрапинг.html#cb572-4" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">&quot;https://ru.wikisource.org&quot;</span>, .)</span>
+<span id="cb572-5"><a href="веб-скрапинг.html#cb572-5" tabindex="-1"></a></span>
+<span id="cb572-6"><a href="веб-скрапинг.html#cb572-6" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url_test) <span class="sc">%&gt;%</span> </span>
+<span id="cb572-7"><a href="веб-скрапинг.html#cb572-7" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;.indent p&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb572-8"><a href="веб-скрапинг.html#cb572-8" tabindex="-1"></a>  <span class="fu">html_text2</span>() </span>
+<span id="cb572-9"><a href="веб-скрапинг.html#cb572-9" tabindex="-1"></a></span>
+<span id="cb572-10"><a href="веб-скрапинг.html#cb572-10" tabindex="-1"></a>text[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;Жили да были два генерала, и так как оба были легкомысленны, то в скором времени, по щучьему велению, по моему хотению, очутились на необитаемом острове.&quot;</code></pre>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="веб-скрапинг.html#cb575-1" tabindex="-1"></a>text[<span class="fu">length</span>(text)]</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="веб-скрапинг.html#cb574-1" tabindex="-1"></a>text[<span class="fu">length</span>(text)]</span></code></pre></div>
 <pre><code>## [1] &quot;Однако, и об мужике не забыли; выслали ему рюмку водки да пятак серебра: веселись, мужичина!&quot;</code></pre>
 <p>Первый и последний параграф достали верно; можно обобщать.</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="веб-скрапинг.html#cb577-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
-<span id="cb577-2"><a href="веб-скрапинг.html#cb577-2" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">href =</span> <span class="fu">paste0</span>(<span class="st">&quot;https://ru.wikisource.org&quot;</span>, href))</span></code></pre></div>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="веб-скрапинг.html#cb578-1" tabindex="-1"></a>urls <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
-<span id="cb578-2"><a href="веб-скрапинг.html#cb578-2" tabindex="-1"></a>  <span class="fu">pull</span>(href)</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="веб-скрапинг.html#cb576-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
+<span id="cb576-2"><a href="веб-скрапинг.html#cb576-2" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">href =</span> <span class="fu">paste0</span>(<span class="st">&quot;https://ru.wikisource.org&quot;</span>, href))</span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="веб-скрапинг.html#cb577-1" tabindex="-1"></a>urls <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
+<span id="cb577-2"><a href="веб-скрапинг.html#cb577-2" tabindex="-1"></a>  <span class="fu">pull</span>(href)</span></code></pre></div>
 <p>Функция для извлечения текстов.</p>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="веб-скрапинг.html#cb579-1" tabindex="-1"></a>get_text <span class="ot">&lt;-</span> <span class="cf">function</span>(url) {</span>
-<span id="cb579-2"><a href="веб-скрапинг.html#cb579-2" tabindex="-1"></a>  <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span> </span>
-<span id="cb579-3"><a href="веб-скрапинг.html#cb579-3" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;.indent p&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb579-4"><a href="веб-скрапинг.html#cb579-4" tabindex="-1"></a>  <span class="fu">html_text2</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb579-5"><a href="веб-скрапинг.html#cb579-5" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="at">collapse=</span> <span class="st">&quot; &quot;</span>)</span>
-<span id="cb579-6"><a href="веб-скрапинг.html#cb579-6" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="веб-скрапинг.html#cb580-1" tabindex="-1"></a>tales_text <span class="ot">&lt;-</span> <span class="fu">map</span>(urls, get_text)</span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="веб-скрапинг.html#cb578-1" tabindex="-1"></a>get_text <span class="ot">&lt;-</span> <span class="cf">function</span>(url) {</span>
+<span id="cb578-2"><a href="веб-скрапинг.html#cb578-2" tabindex="-1"></a>  <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span> </span>
+<span id="cb578-3"><a href="веб-скрапинг.html#cb578-3" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;.indent p&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb578-4"><a href="веб-скрапинг.html#cb578-4" tabindex="-1"></a>  <span class="fu">html_text2</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb578-5"><a href="веб-скрапинг.html#cb578-5" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="at">collapse=</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb578-6"><a href="веб-скрапинг.html#cb578-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="веб-скрапинг.html#cb579-1" tabindex="-1"></a>tales_text <span class="ot">&lt;-</span> <span class="fu">map</span>(urls, get_text)</span></code></pre></div>
 <p>Несколько сказок не выловились: там другая структура html, но в целом все получилось.</p>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="веб-скрапинг.html#cb581-1" tabindex="-1"></a>tales_text <span class="ot">&lt;-</span> tales_text <span class="sc">%&gt;%</span></span>
-<span id="cb581-2"><a href="веб-скрапинг.html#cb581-2" tabindex="-1"></a>  <span class="fu">flatten_chr</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb581-3"><a href="веб-скрапинг.html#cb581-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb581-4"><a href="веб-скрапинг.html#cb581-4" tabindex="-1"></a></span>
-<span id="cb581-5"><a href="веб-скрапинг.html#cb581-5" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
-<span id="cb581-6"><a href="веб-скрапинг.html#cb581-6" tabindex="-1"></a>  <span class="fu">bind_cols</span>(tales_text)</span></code></pre></div>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="веб-скрапинг.html#cb582-1" tabindex="-1"></a>tales</span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="веб-скрапинг.html#cb580-1" tabindex="-1"></a>tales_text <span class="ot">&lt;-</span> tales_text <span class="sc">%&gt;%</span></span>
+<span id="cb580-2"><a href="веб-скрапинг.html#cb580-2" tabindex="-1"></a>  <span class="fu">flatten_chr</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb580-3"><a href="веб-скрапинг.html#cb580-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb580-4"><a href="веб-скрапинг.html#cb580-4" tabindex="-1"></a></span>
+<span id="cb580-5"><a href="веб-скрапинг.html#cb580-5" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
+<span id="cb580-6"><a href="веб-скрапинг.html#cb580-6" tabindex="-1"></a>  <span class="fu">bind_cols</span>(tales_text)</span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="веб-скрапинг.html#cb581-1" tabindex="-1"></a>tales</span></code></pre></div>
 <pre><code>## # A tibble: 33 × 3
 ##    title_year                                                   href       value
 ##    &lt;chr&gt;                                                        &lt;chr&gt;      &lt;chr&gt;
@@ -1033,11 +983,11 @@ div.csl-indent {
 ## 10 Обманщик-газетчик и легковерный читатель, 1884               https://r… &quot;Жил…
 ## # ℹ 23 more rows</code></pre>
 <p>Дальше можно разделить столбец с названием и годом и, например, удалить ссылку, она больше не нужна. Разделить по запятой не получится, т.к. она есть в некоторых названиях.</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="веб-скрапинг.html#cb584-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
-<span id="cb584-2"><a href="веб-скрапинг.html#cb584-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>href) <span class="sc">%&gt;%</span> </span>
-<span id="cb584-3"><a href="веб-скрапинг.html#cb584-3" tabindex="-1"></a>  <span class="fu">separate</span>(title_year, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;title&quot;</span>, <span class="st">&quot;year&quot;</span>), <span class="at">sep =</span> <span class="sc">-</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb584-4"><a href="веб-скрапинг.html#cb584-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">title =</span> <span class="fu">str_remove</span>(title, <span class="st">&quot;,$&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="веб-скрапинг.html#cb585-1" tabindex="-1"></a>tales</span></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="веб-скрапинг.html#cb583-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
+<span id="cb583-2"><a href="веб-скрапинг.html#cb583-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>href) <span class="sc">%&gt;%</span> </span>
+<span id="cb583-3"><a href="веб-скрапинг.html#cb583-3" tabindex="-1"></a>  <span class="fu">separate</span>(title_year, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;title&quot;</span>, <span class="st">&quot;year&quot;</span>), <span class="at">sep =</span> <span class="sc">-</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb583-4"><a href="веб-скрапинг.html#cb583-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">title =</span> <span class="fu">str_remove</span>(title, <span class="st">&quot;,$&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="веб-скрапинг.html#cb584-1" tabindex="-1"></a>tales</span></code></pre></div>
 <pre><code>## # A tibble: 33 × 3
 ##    title                                                  year    value         
 ##    &lt;chr&gt;                                                  &lt;chr&gt;   &lt;chr&gt;         

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Тема 6 Импорт и экспорт данных | Компьютерный анализ текста в R</title>
   <meta name="description" content="Все прекрасное трудно." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Тема 6 Импорт и экспорт данных | Компьютерный анализ текста в R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-09-01" />
+<meta name="date" content="2023-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,13 +54,13 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.27/datatables.js"></script>
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.29/datatables.js"></script>
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
@@ -133,6 +133,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -247,17 +251,16 @@ div.csl-indent {
 <li class="chapter" data-level="6.3.3" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#txt"><i class="fa fa-check"></i><b>6.3.3</b> txt</a></li>
 <li class="chapter" data-level="6.3.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#doc"><i class="fa fa-check"></i><b>6.3.4</b> doc</a></li>
 <li class="chapter" data-level="6.3.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#pdf"><i class="fa fa-check"></i><b>6.3.5</b> pdf</a></li>
-<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.6</b> zip</a></li>
+<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#png"><i class="fa fa-check"></i><b>6.3.6</b> png</a></li>
+<li class="chapter" data-level="6.3.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.7</b> zip</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#xml-и-html"><i class="fa fa-check"></i><b>6.4</b> xml и html</a></li>
 <li class="chapter" data-level="6.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#json"><i class="fa fa-check"></i><b>6.5</b> json</a></li>
 <li class="chapter" data-level="6.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#gutenbergr"><i class="fa fa-check"></i><b>6.6</b> GutenbergR</a></li>
 <li class="chapter" data-level="6.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rperseus"><i class="fa fa-check"></i><b>6.7</b> RPerseus</a></li>
 <li class="chapter" data-level="6.8" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-нескольких-файлов"><i class="fa fa-check"></i><b>6.8</b> Чтение нескольких файлов</a></li>
-<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a>
-<ul>
-<li class="chapter" data-level="6.9.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.9.1</b> Rdata</a></li>
-</ul></li>
+<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a></li>
+<li class="chapter" data-level="6.10" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.10</b> Rdata</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html"><i class="fa fa-check"></i><b>7</b> Воспроизводимые исследования</a>
 <ul>
@@ -309,7 +312,7 @@ div.csl-indent {
 <li class="chapter" data-level="9.6" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#эмотиконы"><i class="fa fa-check"></i><b>9.6</b> Эмотиконы</a></li>
 <li class="chapter" data-level="9.7" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#рутинная-уборка"><i class="fa fa-check"></i><b>9.7</b> Рутинная уборка</a></li>
 <li class="chapter" data-level="9.8" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#лемматизация"><i class="fa fa-check"></i><b>9.8</b> Лемматизация</a></li>
-<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#таблицы-html"><i class="fa fa-check"></i><b>9.9</b> Таблицы html</a></li>
+<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#html-таблицы"><i class="fa fa-check"></i><b>9.9</b> Html таблицы</a></li>
 <li class="chapter" data-level="9.10" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#wikisource"><i class="fa fa-check"></i><b>9.10</b> Wikisource</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html"><i class="fa fa-check"></i><b>10</b> Токенизация и лемматизация</a>
@@ -471,32 +474,33 @@ div.csl-indent {
 <div id="рабочая-директория" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Рабочая директория<a href="импорт-и-экспорт-данных.html#рабочая-директория" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Любой анализ данных начинается с импорта данных. Прежде чем что-то делать, проверьте свою рабочую директорию при помощи <code>getwd()</code> (<a href="https://youtu.be/z7pOxe6dDG0">подробнее</a>). Для смены можно использовать как <strong>абсолютный</strong>, так и <strong>относительный</strong> путь:</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="импорт-и-экспорт-данных.html#cb315-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/olga/R_Workflow/Text_Analysis_2023&quot;</span>)</span>
-<span id="cb315-2"><a href="импорт-и-экспорт-данных.html#cb315-2" tabindex="-1"></a></span>
-<span id="cb315-3"><a href="импорт-и-экспорт-данных.html#cb315-3" tabindex="-1"></a><span class="co"># искать в текущей директории</span></span>
-<span id="cb315-4"><a href="импорт-и-экспорт-данных.html#cb315-4" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;./Text_Analysis_2023&quot;</span>)</span>
-<span id="cb315-5"><a href="импорт-и-экспорт-данных.html#cb315-5" tabindex="-1"></a></span>
-<span id="cb315-6"><a href="импорт-и-экспорт-данных.html#cb315-6" tabindex="-1"></a><span class="co"># перейти на уровень вверх</span></span>
-<span id="cb315-7"><a href="импорт-и-экспорт-данных.html#cb315-7" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;../&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="импорт-и-экспорт-данных.html#cb311-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/olga/R_Workflow/Text_Analysis_2023&quot;</span>)</span>
+<span id="cb311-2"><a href="импорт-и-экспорт-данных.html#cb311-2" tabindex="-1"></a></span>
+<span id="cb311-3"><a href="импорт-и-экспорт-данных.html#cb311-3" tabindex="-1"></a><span class="co"># искать в текущей директории</span></span>
+<span id="cb311-4"><a href="импорт-и-экспорт-данных.html#cb311-4" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;./Text_Analysis_2023&quot;</span>)</span>
+<span id="cb311-5"><a href="импорт-и-экспорт-данных.html#cb311-5" tabindex="-1"></a></span>
+<span id="cb311-6"><a href="импорт-и-экспорт-данных.html#cb311-6" tabindex="-1"></a><span class="co"># перейти на уровень вверх</span></span>
+<span id="cb311-7"><a href="импорт-и-экспорт-данных.html#cb311-7" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;../&quot;</span>)</span></code></pre></div>
 </div>
 <div id="чтение-файлов-из-интернета" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Чтение файлов из интернета<a href="импорт-и-экспорт-данных.html#чтение-файлов-из-интернета" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Основная функция для скачивания файлов из Сети – <code>download.file()</code>, которой необходимо задать в качестве аргументов url, название сохраняемого файла, иногда также метод.</p>
 <p>Попробуем скачать датасет из <a href="https://dataverse.pushdom.ru/dataverse/openlit">Репозитория открытых данных по русской литературе и фольклору</a> под названием <a href="https://dataverse.pushdom.ru/dataset.xhtml?persistentId=doi:10.31860/openlit-2019.11-R002">“Байрон в русских переводах 1810–1860-х годов”</a>.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="импорт-и-экспорт-данных.html#cb316-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://dataverse.pushdom.ru/api/access/datafile/:persistentId?persistentId=doi:10.5072/openlit-2019.11-R002/VQRXXK&quot;</span></span>
-<span id="cb316-2"><a href="импорт-и-экспорт-данных.html#cb316-2" tabindex="-1"></a></span>
-<span id="cb316-3"><a href="импорт-и-экспорт-данных.html#cb316-3" tabindex="-1"></a><span class="co"># если url начинается с https, на Mac _может_ потребоваться указать method = &quot;curl&quot;</span></span>
-<span id="cb316-4"><a href="импорт-и-экспорт-данных.html#cb316-4" tabindex="-1"></a><span class="fu">download.file</span>(url, <span class="at">destfile =</span> <span class="st">&quot;files/Byron.tab&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="импорт-и-экспорт-данных.html#cb312-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://dataverse.pushdom.ru/api/access/datafile/:persistentId?persistentId=doi:10.5072/openlit-2019.11-R002/VQRXXK&quot;</span></span>
+<span id="cb312-2"><a href="импорт-и-экспорт-данных.html#cb312-2" tabindex="-1"></a></span>
+<span id="cb312-3"><a href="импорт-и-экспорт-данных.html#cb312-3" tabindex="-1"></a><span class="co"># если url начинается с https, на Mac _может_ потребоваться указать method = &quot;curl&quot;</span></span>
+<span id="cb312-4"><a href="импорт-и-экспорт-данных.html#cb312-4" tabindex="-1"></a><span class="fu">download.file</span>(url, <span class="at">destfile =</span> <span class="st">&quot;files/Byron.tab&quot;</span>) </span></code></pre></div>
 <p>После этого в папке files появится новый файл. Получить список скачанных файлов можно при помощи <code>list.files()</code>.</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="импорт-и-экспорт-данных.html#cb317-1" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;./files&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="импорт-и-экспорт-данных.html#cb313-1" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;./files&quot;</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;03132019_Excel_Socrates.xlsx&quot; &quot;1922_Июль_.gexf&quot;             
 ##  [3] &quot;AmazonBooks.xlsx&quot;             &quot;antibarbari_archive&quot;         
 ##  [5] &quot;archive.zip&quot;                  &quot;augustinus&quot;                  
 ##  [7] &quot;BX-CSV-Dump&quot;                  &quot;Byron.tab&quot;                   
-##  [9] &quot;CiceroOff.txt&quot;                &quot;karamzin_liza.pdf&quot;           
-## [11] &quot;karamzin_liza.txt&quot;            &quot;lesson.yaml&quot;                 
-## [13] &quot;names.txt&quot;                    &quot;Persons_EDGES.csv&quot;           
-## [15] &quot;template.docx&quot;                &quot;War_and_Peace.xml&quot;</code></pre>
+##  [9] &quot;CiceroOff.txt&quot;                &quot;data-19-structure-4.json&quot;    
+## [11] &quot;German.pdf&quot;                   &quot;karamzin_liza.pdf&quot;           
+## [13] &quot;karamzin_liza.txt&quot;            &quot;lesson.yaml&quot;                 
+## [15] &quot;names.txt&quot;                    &quot;Persons_EDGES.csv&quot;           
+## [17] &quot;template.docx&quot;                &quot;War_and_Peace.xml&quot;</code></pre>
 </div>
 <div id="чтение-локальных-файлов" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Чтение локальных файлов<a href="импорт-и-экспорт-данных.html#чтение-локальных-файлов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -508,21 +512,21 @@ div.csl-indent {
 <div id="csv-и-tsv" class="section level3 hasAnchor" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> csv и tsv<a href="импорт-и-экспорт-данных.html#csv-и-tsv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Файл, который мы скачали, имеет расширение .tab. Такие файлы по структуре аналогичны файлам .tsv (tab separated values). Чтобы его прочитать, используем <code>read.table()</code>, указав тип разделителя:</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="импорт-и-экспорт-данных.html#cb319-1" tabindex="-1"></a>Byron <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;files/Byron.tab&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb319-2"><a href="импорт-и-экспорт-данных.html#cb319-2" tabindex="-1"></a><span class="fu">head</span>(Byron)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="импорт-и-экспорт-данных.html#cb315-1" tabindex="-1"></a>Byron <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;files/Byron.tab&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb315-2"><a href="импорт-и-экспорт-данных.html#cb315-2" tabindex="-1"></a><span class="fu">head</span>(Byron)</span></code></pre></div>
 <p>Функция <code>read.csv()</code> отличается лишь тем, что автоматически выставляет значения аргументов <code>sep = ","</code>, header = TRUE.</p>
 <p>В диалекте tidyverse для импорта подобных файлов используется пакет <code>readr</code><a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>.</p>
 <p>Вернемся к нашему датасету про буккроссинг, файлы которого имеют расширение csv. К сожалению, это не всегда гарантия того, что перед вами действительно csv:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="импорт-и-экспорт-данных.html#cb320-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb320-2"><a href="импорт-и-экспорт-данных.html#cb320-2" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Users.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="импорт-и-экспорт-данных.html#cb316-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb316-2"><a href="импорт-и-экспорт-данных.html#cb316-2" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Users.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 278858 Columns: 1
-## ── Column specification ────────
+## ── Column specification ──────
 ## Delimiter: &quot;,&quot;
 ## chr (1): User-ID;Location;Age
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="импорт-и-экспорт-данных.html#cb322-1" tabindex="-1"></a><span class="fu">head</span>(users)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="импорт-и-экспорт-данных.html#cb318-1" tabindex="-1"></a><span class="fu">head</span>(users)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 1
 ##   `User-ID;Location;Age`                   
 ##   &lt;chr&gt;                                    
@@ -533,16 +537,16 @@ div.csl-indent {
 ## 5 5;farnborough, hants, united kingdom;NULL
 ## 6 6;santa monica, california, usa;61</code></pre>
 <p>Чтобы исправить дело, воспользуемся другой функцией из того же пакета:</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="импорт-и-экспорт-данных.html#cb324-1" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Users.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="импорт-и-экспорт-данных.html#cb320-1" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Users.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 246666 Columns: 3
-## ── Column specification ────────
+## ── Column specification ──────
 ## Delimiter: &quot;;&quot;
 ## chr (2): Location, Age
 ## dbl (1): User-ID
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="импорт-и-экспорт-данных.html#cb326-1" tabindex="-1"></a>users</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="импорт-и-экспорт-данных.html#cb322-1" tabindex="-1"></a>users</span></code></pre></div>
 <pre><code>## # A tibble: 246,666 × 3
 ##    `User-ID` Location                           Age  
 ##        &lt;dbl&gt; &lt;chr&gt;                              &lt;chr&gt;
@@ -562,9 +566,9 @@ div.csl-indent {
 <div id="xls-и-xlsx" class="section level3 hasAnchor" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> xls и xlsx<a href="импорт-и-экспорт-данных.html#xls-и-xlsx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Не самый любимый аналитиками, но очень распространенный тип файлов. Чтобы с ним работать, нужно установить пакет <code>readxl</code> из семейства tidyverse<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>. Это не единственный пакет для работы с Excel, но, пожалуй, самый удобный. Файл с самыми популярными на Amazon книгами можно взять <a href="https://www.kaggle.com/datasets/palanjali007/amazons-top-50-bestselling-novels-20092020">здесь</a>.</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="импорт-и-экспорт-данных.html#cb328-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb328-2"><a href="импорт-и-экспорт-данных.html#cb328-2" tabindex="-1"></a>amazon <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;files/AmazonBooks.xlsx&quot;</span>)</span>
-<span id="cb328-3"><a href="импорт-и-экспорт-данных.html#cb328-3" tabindex="-1"></a><span class="fu">head</span>(amazon)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="импорт-и-экспорт-данных.html#cb324-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb324-2"><a href="импорт-и-экспорт-данных.html#cb324-2" tabindex="-1"></a>amazon <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;files/AmazonBooks.xlsx&quot;</span>)</span>
+<span id="cb324-3"><a href="импорт-и-экспорт-данных.html#cb324-3" tabindex="-1"></a><span class="fu">head</span>(amazon)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 7
 ##   Name                            Author `User Rating` Reviews Price  Year Genre
 ##   &lt;chr&gt;                           &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
@@ -578,50 +582,76 @@ div.csl-indent {
 <div id="txt" class="section level3 hasAnchor" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> txt<a href="импорт-и-экспорт-данных.html#txt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Для чтения текстовых файлов в базовом R есть функция <code>readlines()</code>.</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="импорт-и-экспорт-данных.html#cb330-1" tabindex="-1"></a><span class="fu">readLines</span>(<span class="at">con =</span> <span class="st">&quot;files/karamzin_liza.txt&quot;</span>, <span class="at">n =</span> <span class="dv">1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="импорт-и-экспорт-данных.html#cb326-1" tabindex="-1"></a><span class="fu">readLines</span>(<span class="at">con =</span> <span class="st">&quot;files/karamzin_liza.txt&quot;</span>, <span class="at">n =</span> <span class="dv">1</span>) </span></code></pre></div>
 <pre><code>## [1] &quot;    Может быть, никто из живущих в Москве не знает так хорошо окрестностей города сего, как я, потому что никто чаще моего не бывает в поле, никто более моего не бродит пешком, без плана, без цели -- куда глаза глядят -- по лугам и рощам, по холмам и равнинам. Всякое лето нахожу новые приятные места или в старых новые красоты. Но всего приятнее для меня то место, на котором возвышаются мрачные, готические башни Си...нова монастыря. Стоя на сей горе, видишь на правой стороне почти всю Москву, сию ужасную громаду домов и церквей, которая представляется глазам в образе величественного амфитеатра: великолепная картина, особливо когда светит на нее солнце, когда вечерние лучи его пылают на бесчисленных златых куполах, на бесчисленных крестах, к небу возносящихся! Внизу расстилаются тучные, густо-зеленые цветущие луга, а за ними, по желтым пескам, течет светлая река, волнуемая легкими веслами рыбачьих лодок или шумящая под рулем грузных стругов, которые плывут от плодоноснейших стран Российской империи и наделяют алчную Москву хлебом. &quot;</code></pre>
 </div>
 <div id="doc" class="section level3 hasAnchor" number="6.3.4">
 <h3><span class="header-section-number">6.3.4</span> doc<a href="импорт-и-экспорт-данных.html#doc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Если есть возможность конвертировать документ Word в простой текстовый формат, то лучше так и сделать. Если нет, то устанавливаем пакет <code>officer</code>.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="импорт-и-экспорт-данных.html#cb332-1" tabindex="-1"></a><span class="fu">library</span>(officer)</span>
-<span id="cb332-2"><a href="импорт-и-экспорт-данных.html#cb332-2" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&quot;files&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;docx&quot;</span>) </span>
-<span id="cb332-3"><a href="импорт-и-экспорт-данных.html#cb332-3" tabindex="-1"></a>files[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="импорт-и-экспорт-данных.html#cb328-1" tabindex="-1"></a><span class="fu">library</span>(officer)</span>
+<span id="cb328-2"><a href="импорт-и-экспорт-данных.html#cb328-2" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&quot;files&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;docx&quot;</span>) </span>
+<span id="cb328-3"><a href="импорт-и-экспорт-данных.html#cb328-3" tabindex="-1"></a>files[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;template.docx&quot;</code></pre>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="импорт-и-экспорт-данных.html#cb334-1" tabindex="-1"></a><span class="co"># read file</span></span>
-<span id="cb334-2"><a href="импорт-и-экспорт-данных.html#cb334-2" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="fu">paste0</span>(<span class="st">&quot;files/&quot;</span>, files[<span class="dv">1</span>]))</span>
-<span id="cb334-3"><a href="импорт-и-экспорт-данных.html#cb334-3" tabindex="-1"></a>content <span class="ot">&lt;-</span> <span class="fu">docx_summary</span>(doc) </span>
-<span id="cb334-4"><a href="импорт-и-экспорт-данных.html#cb334-4" tabindex="-1"></a><span class="fu">head</span>(content, <span class="dv">2</span>) <span class="co"># весь текст доступен в столбце text</span></span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="импорт-и-экспорт-данных.html#cb330-1" tabindex="-1"></a><span class="co"># read file</span></span>
+<span id="cb330-2"><a href="импорт-и-экспорт-данных.html#cb330-2" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="fu">paste0</span>(<span class="st">&quot;files/&quot;</span>, files[<span class="dv">1</span>]))</span>
+<span id="cb330-3"><a href="импорт-и-экспорт-данных.html#cb330-3" tabindex="-1"></a>content <span class="ot">&lt;-</span> <span class="fu">docx_summary</span>(doc) </span>
+<span id="cb330-4"><a href="импорт-и-экспорт-данных.html#cb330-4" tabindex="-1"></a><span class="fu">head</span>(content, <span class="dv">2</span>) <span class="co"># весь текст доступен в столбце text</span></span></code></pre></div>
 <pre><code>##   doc_index content_type style_name          text level num_id
 ## 1         1    paragraph         NA Chapter Title    NA     NA
 ## 2         2    paragraph         NA Author’s Name    NA     NA</code></pre>
 <p>Таким образом, однако, мы теряем все сноски. Следующий код позволяет их достать:</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="импорт-и-экспорт-данных.html#cb336-1" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
-<span id="cb336-2"><a href="импорт-и-экспорт-данных.html#cb336-2" tabindex="-1"></a><span class="fu">xml_text</span>(<span class="fu">xml_find_all</span>(doc<span class="sc">$</span>footnotes<span class="sc">$</span><span class="fu">get</span>(), <span class="st">&quot;*&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="импорт-и-экспорт-данных.html#cb332-1" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
+<span id="cb332-2"><a href="импорт-и-экспорт-данных.html#cb332-2" tabindex="-1"></a><span class="fu">xml_text</span>(<span class="fu">xml_find_all</span>(doc<span class="sc">$</span>footnotes<span class="sc">$</span><span class="fu">get</span>(), <span class="st">&quot;*&quot;</span>))</span></code></pre></div>
 <p>Тут уже применяются функции для работы с xml. Поэтому лишний раз подумайте, не проще ли конвертировать документ Word в .txt.</p>
 </div>
 <div id="pdf" class="section level3 hasAnchor" number="6.3.5">
 <h3><span class="header-section-number">6.3.5</span> pdf<a href="импорт-и-экспорт-данных.html#pdf" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>С pdf тоже без нужды лучше не иметь дела. Но если все-таки пришлось читать pdf, для этого есть пакет <code>pdftools</code><a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>.</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="импорт-и-экспорт-данных.html#cb337-1" tabindex="-1"></a><span class="fu">library</span>(pdftools)</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="импорт-и-экспорт-данных.html#cb333-1" tabindex="-1"></a><span class="fu">library</span>(pdftools)</span></code></pre></div>
 <pre><code>## Using poppler version 22.02.0</code></pre>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="импорт-и-экспорт-данных.html#cb339-1" tabindex="-1"></a><span class="co"># длинющий вектор, который придется очищать от \n (новая строка)</span></span>
-<span id="cb339-2"><a href="импорт-и-экспорт-данных.html#cb339-2" tabindex="-1"></a>liza <span class="ot">&lt;-</span> <span class="fu">pdf_text</span>(<span class="at">pdf =</span> <span class="st">&quot;files/karamzin_liza.pdf&quot;</span>)</span>
-<span id="cb339-3"><a href="импорт-и-экспорт-данных.html#cb339-3" tabindex="-1"></a></span>
-<span id="cb339-4"><a href="импорт-и-экспорт-данных.html#cb339-4" tabindex="-1"></a><span class="co"># метаданные в виде списка</span></span>
-<span id="cb339-5"><a href="импорт-и-экспорт-данных.html#cb339-5" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">pdf_info</span>(<span class="at">pdf =</span> <span class="st">&quot;files/karamzin_liza.pdf&quot;</span>)</span>
-<span id="cb339-6"><a href="импорт-и-экспорт-данных.html#cb339-6" tabindex="-1"></a>meta<span class="sc">$</span>created</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="импорт-и-экспорт-данных.html#cb335-1" tabindex="-1"></a><span class="co"># длинющий вектор, который придется очищать от \n (новая строка)</span></span>
+<span id="cb335-2"><a href="импорт-и-экспорт-данных.html#cb335-2" tabindex="-1"></a>liza <span class="ot">&lt;-</span> <span class="fu">pdf_text</span>(<span class="at">pdf =</span> <span class="st">&quot;files/karamzin_liza.pdf&quot;</span>)</span>
+<span id="cb335-3"><a href="импорт-и-экспорт-данных.html#cb335-3" tabindex="-1"></a></span>
+<span id="cb335-4"><a href="импорт-и-экспорт-данных.html#cb335-4" tabindex="-1"></a><span class="co"># метаданные в виде списка</span></span>
+<span id="cb335-5"><a href="импорт-и-экспорт-данных.html#cb335-5" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">pdf_info</span>(<span class="at">pdf =</span> <span class="st">&quot;files/karamzin_liza.pdf&quot;</span>)</span>
+<span id="cb335-6"><a href="импорт-и-экспорт-данных.html#cb335-6" tabindex="-1"></a>meta<span class="sc">$</span>created</span></code></pre></div>
 <pre><code>## [1] &quot;2023-07-16 19:36:09 MSK&quot;</code></pre>
-<p>Разработчики утверждают, что пакет справится и с распознаванием текста, но установка нужных для этого зависимостей может быть сопряжена с такими трудостями, что вы, вероятно, захотите решить эту задачу за пределами R. Например, <a href="https://rescribe.xyz/rescribe/">тут</a>.</p>
+<p>Разработчики утверждают, что пакет справится и с распознаванием текста, но для этого должен быть установлен пакет <code>tesseract</code>.</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="импорт-и-экспорт-данных.html#cb337-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tesseract&quot;</span>)</span></code></pre></div>
+<p>Возможно, сначала вам придется установить нужные языки. Код ниже вы можете попробовать выполнить самостоятельно, указав актуальный путь до файла.</p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="импорт-и-экспорт-данных.html#cb338-1" tabindex="-1"></a><span class="fu">library</span>(tesseract)</span>
+<span id="cb338-2"><a href="импорт-и-экспорт-данных.html#cb338-2" tabindex="-1"></a><span class="co"># tesseract_download(&quot;deu&quot;)</span></span>
+<span id="cb338-3"><a href="импорт-и-экспорт-данных.html#cb338-3" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">pdf_ocr_text</span>(<span class="st">&quot;./files/German.pdf&quot;</span>, <span class="at">language =</span> <span class="st">&quot;deu&quot;</span>)</span>
+<span id="cb338-4"><a href="импорт-и-экспорт-данных.html#cb338-4" tabindex="-1"></a><span class="fu">cat</span>(text)</span></code></pre></div>
 </div>
-<div id="zip" class="section level3 hasAnchor" number="6.3.6">
-<h3><span class="header-section-number">6.3.6</span> zip<a href="импорт-и-экспорт-данных.html#zip" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="png" class="section level3 hasAnchor" number="6.3.6">
+<h3><span class="header-section-number">6.3.6</span> png<a href="импорт-и-экспорт-данных.html#png" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Тот же фокус сработает и с изображениями. Но точность распознавания сильно зависит от качества картинки.</p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="импорт-и-экспорт-данных.html#cb339-1" tabindex="-1"></a><span class="co"># tesseract_download(&quot;lat&quot;)</span></span>
+<span id="cb339-2"><a href="импорт-и-экспорт-данных.html#cb339-2" tabindex="-1"></a>lat <span class="ot">&lt;-</span> tesseract<span class="sc">::</span><span class="fu">tesseract</span>(<span class="st">&quot;lat&quot;</span>)</span>
+<span id="cb339-3"><a href="импорт-и-экспорт-данных.html#cb339-3" tabindex="-1"></a>text <span class="ot">&lt;-</span> tesseract<span class="sc">::</span><span class="fu">ocr</span>(<span class="st">&quot;./images/latin.png&quot;</span>, <span class="at">engine =</span> lat)</span>
+<span id="cb339-4"><a href="импорт-и-экспорт-данных.html#cb339-4" tabindex="-1"></a><span class="fu">cat</span>(text)</span></code></pre></div>
+<pre><code>## PROLEGOMENA
+## | OGN |
+## PHEILENEUM.. |
+## MPhilebum Platonis qui recte interpretari voluerint, iis
+## nostra sententia ante omnia duo sedulo agenda sunt.
+## Primum enim omnis disputationis ordinem rationemque
+## diligentissime debent considerare accurateque videre,
+## quidnam illud sit quod in eo libro exponatur et quo id
+## modo fiat. Quod quidem in hoc libro inprimis putamus
+## necessarium propterea, quod quae sit universae dispu-
+## tationis via et ratio, utique difficilius intellectu est.</code></pre>
+<p><img src="images/latin.png" /></p>
+</div>
+<div id="zip" class="section level3 hasAnchor" number="6.3.7">
+<h3><span class="header-section-number">6.3.7</span> zip<a href="импорт-и-экспорт-данных.html#zip" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Для работы с архивами есть функция <code>unzip()</code>. Полезно помнить, что большой архив не обязательно распечатывать полностью. Если выставить аргумент <code>list = TRUE</code>, то функция вернет список всех файлов в архиве, из которых можно прочитать в память лишь избранные:</p>
 <div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="импорт-и-экспорт-данных.html#cb341-1" tabindex="-1"></a>archive <span class="ot">&lt;-</span> <span class="fu">unzip</span>(<span class="st">&quot;files/archive.zip&quot;</span>, <span class="at">files =</span> <span class="cn">NULL</span>, <span class="at">list =</span> <span class="cn">TRUE</span>) </span>
 <span id="cb341-2"><a href="импорт-и-экспорт-данных.html#cb341-2" tabindex="-1"></a>archive</span></code></pre></div>
-<pre><code>##                       Name     Length                Date
-## 1 AmazonBooks - Sheet1.csv 4294967295 2021-02-18 19:58:00
-## 2         AmazonBooks.xlsx 4294967295 2021-02-18 19:58:00</code></pre>
+<pre><code>##                       Name Length                Date
+## 1 AmazonBooks - Sheet1.csv  55367 2021-02-18 19:58:00
+## 2         AmazonBooks.xlsx  36021 2021-02-18 19:58:00</code></pre>
 <p>Код ниже позволяет извлечь из архива только нужный файл:</p>
 <div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="импорт-и-экспорт-данных.html#cb343-1" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;files/archive.zip&quot;</span>, <span class="at">files =</span> <span class="st">&quot;AmazonBooks.xlsx&quot;</span>)</span></code></pre></div>
 <p>После этого файл можно прочитать в R, как указано выше.</p>
@@ -695,77 +725,117 @@ div.csl-indent {
 </div>
 <div id="json" class="section level2 hasAnchor" number="6.5">
 <h2><span class="header-section-number">6.5</span> json<a href="импорт-и-экспорт-данных.html#json" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To be supplied.</p>
+<p>Формат JSON (JavaScript Object Notation) предназначен для представления структурированных данных и представляет собой альтернативу формату XML.</p>
+<p>JSON имеет шесть основных типов данных<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>. Четыре из них - скаляры<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>:</p>
+<ul>
+<li>Самый простой тип - <code>null</code> (нуль), который играет ту же роль, что и <code>NA</code> в R. Он представляет собой отсутствие данных.</li>
+<li>Строка (string) похожа на строку в R, но в ней всегда должны использоваться двойные кавычки.</li>
+<li>Число аналогично числам в R: оно может использовать целочисленную (например, 123), десятичную (например, 123,45) или научную (например, 1,23e3) систему счисления. JSON не поддерживает <code>Inf</code>, <code>-Inf</code> или <code>NaN</code>.</li>
+<li>Логическое значение аналогично <code>TRUE</code> и <code>FALSE</code> в R, но использует строчные буквы <code>true</code> и <code>false</code>.</li>
+</ul>
+<p>Строки, числа и булевы в JSON очень похожи на символьные, числовые и логические векторы в R. Основное отличие заключается в том, что скаляры JSON могут представлять только одно значение. Для представления нескольких значений необходимо использовать один из двух оставшихся типов: массивы и объекты.</p>
+<p>И массивы, и объекты похожи на списки в R, разница заключается в том, именованы они или нет. Массив подобен безымянному списку и записывается через <code>[]</code>. Например, <code>[1, 2, 3]</code> - это массив, содержащий 3 числа, а <code>[null, 1, "string", false]</code> - массив, содержащий ноль, число, строку и булево значение. Объект подобен именованному списку и записывается через <code>{}</code>. Имена (ключи в терминологии JSON) являются строками, поэтому должны быть заключены в кавычки. Например, {“x”: 1, “y”: 2} - это объект, который сопоставляет x с 1, а y с 2.</p>
+<p>C Портала открытых данных Министерства культуры РФ скачаем <a href="https://opendata.mkrf.ru/opendata/7705851331-museums">каталог музеев</a> в формате json. Датасет содержит сведения о музеях, занесенных в информационную систему с описанием деятельности учреждения, его расположения, контактных данных, сайта учреждения и времени его работы.</p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="импорт-и-экспорт-данных.html#cb364-1" tabindex="-1"></a><span class="co"># install.packages(&quot;tidyjson&quot;)</span></span>
+<span id="cb364-2"><a href="импорт-и-экспорт-данных.html#cb364-2" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb364-3"><a href="импорт-и-экспорт-данных.html#cb364-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb364-4"><a href="импорт-и-экспорт-данных.html#cb364-4" tabindex="-1"></a></span>
+<span id="cb364-5"><a href="импорт-и-экспорт-данных.html#cb364-5" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;./files/data-19-structure-4.json&quot;</span></span>
+<span id="cb364-6"><a href="импорт-и-экспорт-данных.html#cb364-6" tabindex="-1"></a>museums <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="at">txt =</span>  path, </span>
+<span id="cb364-7"><a href="импорт-и-экспорт-данных.html#cb364-7" tabindex="-1"></a>                    <span class="at">simplifyVector =</span> T, </span>
+<span id="cb364-8"><a href="импорт-и-экспорт-данных.html#cb364-8" tabindex="-1"></a>                    <span class="at">flatten =</span> T)</span>
+<span id="cb364-9"><a href="импорт-и-экспорт-данных.html#cb364-9" tabindex="-1"></a><span class="fu">class</span>(museums)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="импорт-и-экспорт-данных.html#cb366-1" tabindex="-1"></a>museums_prunned <span class="ot">&lt;-</span> museums <span class="sc">%&gt;%</span> </span>
+<span id="cb366-2"><a href="импорт-и-экспорт-данных.html#cb366-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb366-3"><a href="импорт-и-экспорт-данных.html#cb366-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;data.general&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb366-4"><a href="импорт-и-экспорт-данных.html#cb366-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;general.name&quot;</span>) <span class="sc">|</span> <span class="fu">contains</span>(<span class="st">&quot;organization.locale.name&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb366-5"><a href="импорт-и-экспорт-данных.html#cb366-5" tabindex="-1"></a>  print</span></code></pre></div>
+<pre><code>## # A tibble: 5,853 × 2
+##    data.general.name                                      data.general.organiz…¹
+##    &lt;chr&gt;                                                  &lt;chr&gt;                 
+##  1 Музей-усадьба «Ботик Петра I»                          Переславль-Залесский  
+##  2 Молодежный центр-музей имени адмирала Нахимова         Смоленск              
+##  3 Мемориальный музей М. В. Исаковского                   Угранский район       
+##  4 Чувашский государственный художественный музей         Чебоксары             
+##  5 Ровеньский краеведческий музей                         Ровеньский район      
+##  6 Музейный комплекс «Спасо-Евфимиев монастырь»           Владимир              
+##  7 Воскресенский районный народный краеведческий музей    Воскресенский район   
+##  8 Историко-археологический и природный музей «Русенихин… Воскресенский район   
+##  9 Староустинский краеведческий музей                     Воскресенский район   
+## 10 Музей-усадьба Л. Н. Толстого «Ясная Поляна»            Щекинский район       
+## # ℹ 5,843 more rows
+## # ℹ abbreviated name: ¹​data.general.organization.locale.name</code></pre>
 </div>
 <div id="gutenbergr" class="section level2 hasAnchor" number="6.6">
 <h2><span class="header-section-number">6.6</span> GutenbergR<a href="импорт-и-экспорт-данных.html#gutenbergr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Для R существуют пакеты, позволяющие извлекать тексты из онлайн-библиотек. Пакет <code>GutenbergR</code><a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a> поможет достать тексты из библиотеки <a href="https://www.gutenberg.org/ebooks/">Gutenberg</a>, но будьте осторожны: распознаны они не всегда хорошо и порой содержат много разного шума, например примечания редактора, номера страниц и т.п. В билингвах источник и перевод могут идти вперемешку. И если в XML подобные элементы будут окружены соответствующими тегами, которые позволят их легко отбросить при анализе, то Gutenberg дает вам сырой текст. Часто его надо хорошенько чистить при помощи регулярных выражений или даже вручную. Поиск нужного текста лучше начать с изучения метаданных:</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="импорт-и-экспорт-данных.html#cb364-1" tabindex="-1"></a><span class="fu">library</span>(gutenbergr)</span>
-<span id="cb364-2"><a href="импорт-и-экспорт-данных.html#cb364-2" tabindex="-1"></a></span>
-<span id="cb364-3"><a href="импорт-и-экспорт-данных.html#cb364-3" tabindex="-1"></a><span class="do">## метаданные содержат множество NA </span></span>
-<span id="cb364-4"><a href="импорт-и-экспорт-данных.html#cb364-4" tabindex="-1"></a>gutenberg_authors</span></code></pre></div>
-<pre><code>## # A tibble: 21,323 × 7
+<p>Для R существуют пакеты, позволяющие извлекать тексты из онлайн-библиотек. Пакет <code>GutenbergR</code><a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a> поможет достать тексты из библиотеки <a href="https://www.gutenberg.org/ebooks/">Gutenberg</a>, но будьте осторожны: распознаны они не всегда хорошо и порой содержат много разного шума, например примечания редактора, номера страниц и т.п. В билингвах источник и перевод могут идти вперемешку. И если в XML подобные элементы будут окружены соответствующими тегами, которые позволят их легко отбросить при анализе, то Gutenberg дает вам сырой текст. Часто его надо хорошенько чистить при помощи регулярных выражений или даже вручную. Поиск нужного текста лучше начать с изучения метаданных:</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="импорт-и-экспорт-данных.html#cb368-1" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;ropensci/gutenbergr&quot;)</span></span>
+<span id="cb368-2"><a href="импорт-и-экспорт-данных.html#cb368-2" tabindex="-1"></a><span class="fu">library</span>(gutenbergr)</span>
+<span id="cb368-3"><a href="импорт-и-экспорт-данных.html#cb368-3" tabindex="-1"></a></span>
+<span id="cb368-4"><a href="импорт-и-экспорт-данных.html#cb368-4" tabindex="-1"></a><span class="co"># метаданные содержат множество NA </span></span>
+<span id="cb368-5"><a href="импорт-и-экспорт-данных.html#cb368-5" tabindex="-1"></a>gutenberg_authors</span></code></pre></div>
+<pre><code>## # A tibble: 23,980 × 7
 ##    gutenberg_author_id author        alias birthdate deathdate wikipedia aliases
 ##                  &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;     &lt;int&gt;     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  
-##  1                   1 United States U.S.…        NA        NA https://… &lt;NA&gt;   
+##  1                   1 United States U.S.…        NA        NA https://… U.S.A. 
 ##  2                   3 Lincoln, Abr… &lt;NA&gt;       1809      1865 https://… United…
 ##  3                   4 Henry, Patri… &lt;NA&gt;       1736      1799 https://… &lt;NA&gt;   
 ##  4                   5 Adam, Paul    &lt;NA&gt;       1849      1931 https://… &lt;NA&gt;   
-##  5                   7 Carroll, Lew… Dodg…      1832      1898 https://… &lt;NA&gt;   
+##  5                   7 Carroll, Lew… Dodg…      1832      1898 https://… Dodgso…
 ##  6                   8 United State… &lt;NA&gt;         NA        NA https://… Agency…
-##  7                   9 Melville, He… Melv…      1819      1891 https://… &lt;NA&gt;   
+##  7                   9 Melville, He… Melv…      1819      1891 https://… Melvil…
 ##  8                  10 Barrie, J. M… &lt;NA&gt;       1860      1937 https://… Barrie…
-##  9                  12 Smith, Josep… Smit…      1805      1844 https://… &lt;NA&gt;   
-## 10                  14 Madison, Jam… Unit…      1751      1836 https://… &lt;NA&gt;   
-## # ℹ 21,313 more rows</code></pre>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="импорт-и-экспорт-данных.html#cb366-1" tabindex="-1"></a>gutenberg_metadata</span></code></pre></div>
-<pre><code>## # A tibble: 69,199 × 8
+##  9                  11 Church of Je… &lt;NA&gt;         NA        NA https://… &lt;NA&gt;   
+## 10                  12 Smith, Josep… Smit…      1805      1844 https://… Smith,…
+## # ℹ 23,970 more rows</code></pre>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="импорт-и-экспорт-данных.html#cb370-1" tabindex="-1"></a>gutenberg_metadata</span></code></pre></div>
+<pre><code>## # A tibble: 72,569 × 8
 ##    gutenberg_id title    author gutenberg_author_id language gutenberg_bookshelf
 ##           &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;                &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;              
-##  1            1 &quot;The De… Jeffe…                1638 en       Politics/American …
-##  2            2 &quot;The Un… Unite…                   1 en       Politics/American …
-##  3            3 &quot;John F… Kenne…                1666 en       &lt;NA&gt;               
-##  4            4 &quot;Lincol… Linco…                   3 en       US Civil War       
-##  5            5 &quot;The Un… Unite…                   1 en       United States/Poli…
-##  6            6 &quot;Give M… Henry…                   4 en       American Revolutio…
-##  7            7 &quot;The Ma… &lt;NA&gt;                    NA en       &lt;NA&gt;               
-##  8            8 &quot;Abraha… Linco…                   3 en       US Civil War       
-##  9            9 &quot;Abraha… Linco…                   3 en       US Civil War       
-## 10           10 &quot;The Ki… &lt;NA&gt;                    NA en       Banned Books List …
-## # ℹ 69,189 more rows
+##  1            1 &quot;The De… Jeffe…                1638 en       &quot;Politics/American…
+##  2            2 &quot;The Un… Unite…                   1 en       &quot;Politics/American…
+##  3            3 &quot;John F… Kenne…                1666 en       &quot;&quot;                 
+##  4            4 &quot;Lincol… Linco…                   3 en       &quot;US Civil War&quot;     
+##  5            5 &quot;The Un… Unite…                   1 en       &quot;United States/Pol…
+##  6            6 &quot;Give M… Henry…                   4 en       &quot;American Revoluti…
+##  7            7 &quot;The Ma… &lt;NA&gt;                    NA en       &quot;&quot;                 
+##  8            8 &quot;Abraha… Linco…                   3 en       &quot;US Civil War&quot;     
+##  9            9 &quot;Abraha… Linco…                   3 en       &quot;US Civil War&quot;     
+## 10           10 &quot;The Ki… &lt;NA&gt;                    NA en       &quot;Banned Books List…
+## # ℹ 72,559 more rows
 ## # ℹ 2 more variables: rights &lt;chr&gt;, has_text &lt;lgl&gt;</code></pre>
 <p>Функция <code>gutenberg_works()</code> позволяет уточнить, какие столбцы необходимо вернуть:</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="импорт-и-экспорт-данных.html#cb368-1" tabindex="-1"></a>latin_works <span class="ot">&lt;-</span> <span class="fu">gutenberg_works</span>(<span class="at">languages =</span> <span class="st">&quot;la&quot;</span>) </span>
-<span id="cb368-2"><a href="импорт-и-экспорт-данных.html#cb368-2" tabindex="-1"></a></span>
-<span id="cb368-3"><a href="импорт-и-экспорт-данных.html#cb368-3" tabindex="-1"></a>latin_works</span></code></pre></div>
-<pre><code>## # A tibble: 92 × 8
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="импорт-и-экспорт-данных.html#cb372-1" tabindex="-1"></a>latin_works <span class="ot">&lt;-</span> <span class="fu">gutenberg_works</span>(<span class="at">languages =</span> <span class="st">&quot;la&quot;</span>) </span>
+<span id="cb372-2"><a href="импорт-и-экспорт-данных.html#cb372-2" tabindex="-1"></a></span>
+<span id="cb372-3"><a href="импорт-и-экспорт-данных.html#cb372-3" tabindex="-1"></a>latin_works</span></code></pre></div>
+<pre><code>## # A tibble: 53 × 8
 ##    gutenberg_id title    author gutenberg_author_id language gutenberg_bookshelf
 ##           &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;                &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;              
-##  1          218 C. Iuli… Caesa…                3621 la       Classical Antiquity
-##  2          226 Cicero&#39;… Cicer…                 128 la       Classical Antiquity
-##  3          227 Aeneidos Virgil                 129 la       Classical Antiquit…
-##  4          229 The Buc… Virgil                 129 la       Classical Antiquity
-##  5          231 Georgic… Virgil                 129 la       Classical Antiquity
-##  6          237 Sexti P… Prope…                 133 la       &lt;NA&gt;               
-##  7          825 Latin V… Anony…                 216 la       Christianity       
-##  8          826 Latin V… Anony…                 216 la       Christianity       
-##  9          828 Latin V… Anony…                 216 la       Christianity       
-## 10         4317 Prophet… Anony…                 216 la       &lt;NA&gt;               
-## # ℹ 82 more rows
+##  1          218 C. Iuli… Caesa…                3621 la       &quot;Classical Antiqui…
+##  2          226 Cicero&#39;… Cicer…                 128 la       &quot;Classical Antiqui…
+##  3          227 Aeneidos Virgil                 129 la       &quot;Classical Antiqui…
+##  4          229 The Buc… Virgil                 129 la       &quot;Classical Antiqui…
+##  5          231 Georgic… Virgil                 129 la       &quot;Classical Antiqui…
+##  6          237 Sexti P… Prope…                 133 la       &quot;&quot;                 
+##  7          825 Latin V… Anony…                 216 la       &quot;Christianity&quot;     
+##  8          826 Latin V… Anony…                 216 la       &quot;Christianity&quot;     
+##  9          828 Latin V… Anony…                 216 la       &quot;Christianity&quot;     
+## 10         4317 Prophet… Anony…                 216 la       &quot;&quot;                 
+## # ℹ 43 more rows
 ## # ℹ 2 more variables: rights &lt;chr&gt;, has_text &lt;lgl&gt;</code></pre>
 <p>Беглый взгляд на эту таблицу говорит о том, что в галактике Гутенберга царит полный хаос: например, в поле “название” хранится имя автора. Но после того, как нужный автор или нужное сочинение найдены, можно сделать так:</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="импорт-и-экспорт-данных.html#cb370-1" tabindex="-1"></a>caesar <span class="ot">&lt;-</span> <span class="fu">gutenberg_works</span>(author <span class="sc">==</span> <span class="st">&quot;Caesar, Julius&quot;</span>, <span class="at">languages =</span> <span class="st">&quot;la&quot;</span>) </span>
-<span id="cb370-2"><a href="импорт-и-экспорт-данных.html#cb370-2" tabindex="-1"></a>caesar </span></code></pre></div>
-<pre><code>## # A tibble: 3 × 8
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="импорт-и-экспорт-данных.html#cb374-1" tabindex="-1"></a>caesar <span class="ot">&lt;-</span> <span class="fu">gutenberg_works</span>(author <span class="sc">==</span> <span class="st">&quot;Caesar, Julius&quot;</span>, <span class="at">languages =</span> <span class="st">&quot;la&quot;</span>) </span>
+<span id="cb374-2"><a href="импорт-и-экспорт-данных.html#cb374-2" tabindex="-1"></a>caesar </span></code></pre></div>
+<pre><code>## # A tibble: 2 × 8
 ##   gutenberg_id title     author gutenberg_author_id language gutenberg_bookshelf
 ##          &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;                &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;              
 ## 1          218 C. Iuli … Caesa…                3621 la       Classical Antiquity
 ## 2        18837 Commenta… Caesa…                3621 la       Classical Antiquity
-## 3        29645 The Gate… Caesa…                3621 la       &lt;NA&gt;               
 ## # ℹ 2 more variables: rights &lt;chr&gt;, has_text &lt;lgl&gt;</code></pre>
 <p>Чтобы извлечь отдельный текст (тексты):</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="импорт-и-экспорт-данных.html#cb372-1" tabindex="-1"></a>de_bello_gallico <span class="ot">&lt;-</span> <span class="fu">gutenberg_download</span>(<span class="dv">218</span>, <span class="at">meta_fields =</span> <span class="st">&quot;title&quot;</span>, <span class="at">mirror =</span> <span class="st">&quot;ftp://mirrors.xmission.com/gutenberg/&quot;</span>)</span>
-<span id="cb372-2"><a href="импорт-и-экспорт-данных.html#cb372-2" tabindex="-1"></a>de_bello_gallico</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="импорт-и-экспорт-данных.html#cb376-1" tabindex="-1"></a>de_bello_gallico <span class="ot">&lt;-</span> <span class="fu">gutenberg_download</span>(<span class="dv">218</span>, <span class="at">meta_fields =</span> <span class="st">&quot;title&quot;</span>, <span class="at">mirror =</span> <span class="st">&quot;ftp://mirrors.xmission.com/gutenberg/&quot;</span>)</span>
+<span id="cb376-2"><a href="импорт-и-экспорт-данных.html#cb376-2" tabindex="-1"></a>de_bello_gallico</span></code></pre></div>
 <pre><code>## # A tibble: 2,552 × 3
 ##    gutenberg_id text                             title                          
 ##           &lt;int&gt; &lt;chr&gt;                            &lt;chr&gt;                          
@@ -795,11 +865,11 @@ div.csl-indent {
 <div id="экспорт" class="section level2 hasAnchor" number="6.9">
 <h2><span class="header-section-number">6.9</span> Экспорт<a href="импорт-и-экспорт-данных.html#экспорт" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To be supplied.</p>
-<div id="rdata" class="section level3 hasAnchor" number="6.9.1">
-<h3><span class="header-section-number">6.9.1</span> Rdata<a href="импорт-и-экспорт-данных.html#rdata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="rdata" class="section level2 hasAnchor" number="6.10">
+<h2><span class="header-section-number">6.10</span> Rdata<a href="импорт-и-экспорт-данных.html#rdata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To be supplied.</p>
 
-</div>
 </div>
 </div>
 <h3>Литература<a href="литература.html#литература" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -817,8 +887,10 @@ Nolan, D., and D. T. Lang. 2014. <em>XML and Web Technologies for Data Science w
 <li id="fn23"><p><a href="https://r4ds.had.co.nz/data-import.html" class="uri">https://r4ds.had.co.nz/data-import.html</a><a href="импорт-и-экспорт-данных.html#fnref23" class="footnote-back">↩︎</a></p></li>
 <li id="fn24"><p><a href="https://readxl.tidyverse.org/" class="uri">https://readxl.tidyverse.org/</a><a href="импорт-и-экспорт-данных.html#fnref24" class="footnote-back">↩︎</a></p></li>
 <li id="fn25"><p><a href="https://rpubs.com/kbodwin/pdftools" class="uri">https://rpubs.com/kbodwin/pdftools</a><a href="импорт-и-экспорт-данных.html#fnref25" class="footnote-back">↩︎</a></p></li>
-<li id="fn26"><p> <a href="https://xml2.r-lib.org/" class="uri">https://xml2.r-lib.org/</a><a href="импорт-и-экспорт-данных.html#fnref26" class="footnote-back">↩︎</a></p></li>
-<li id="fn27"><p><a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html" class="uri">https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html</a><a href="импорт-и-экспорт-данных.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p><a href="https://xml2.r-lib.org/" class="uri">https://xml2.r-lib.org/</a><a href="импорт-и-экспорт-данных.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn27"><p><a href="https://r4ds.hadley.nz/rectangling#json" class="uri">https://r4ds.hadley.nz/rectangling#json</a><a href="импорт-и-экспорт-данных.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn28"><p>Массив строк, который имеет только один элемент, также называется строковым скаляром<a href="импорт-и-экспорт-данных.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p><a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html" class="uri">https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html</a><a href="импорт-и-экспорт-данных.html#fnref29" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

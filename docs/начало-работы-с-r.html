@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Тема 2 Начало работы с R | Компьютерный анализ текста в R</title>
   <meta name="description" content="Все прекрасное трудно." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Тема 2 Начало работы с R | Компьютерный анализ текста в R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-09-01" />
+<meta name="date" content="2023-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,13 +54,13 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.27/datatables.js"></script>
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.29/datatables.js"></script>
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
@@ -133,6 +133,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -247,17 +251,16 @@ div.csl-indent {
 <li class="chapter" data-level="6.3.3" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#txt"><i class="fa fa-check"></i><b>6.3.3</b> txt</a></li>
 <li class="chapter" data-level="6.3.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#doc"><i class="fa fa-check"></i><b>6.3.4</b> doc</a></li>
 <li class="chapter" data-level="6.3.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#pdf"><i class="fa fa-check"></i><b>6.3.5</b> pdf</a></li>
-<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.6</b> zip</a></li>
+<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#png"><i class="fa fa-check"></i><b>6.3.6</b> png</a></li>
+<li class="chapter" data-level="6.3.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.7</b> zip</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#xml-и-html"><i class="fa fa-check"></i><b>6.4</b> xml и html</a></li>
 <li class="chapter" data-level="6.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#json"><i class="fa fa-check"></i><b>6.5</b> json</a></li>
 <li class="chapter" data-level="6.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#gutenbergr"><i class="fa fa-check"></i><b>6.6</b> GutenbergR</a></li>
 <li class="chapter" data-level="6.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rperseus"><i class="fa fa-check"></i><b>6.7</b> RPerseus</a></li>
 <li class="chapter" data-level="6.8" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-нескольких-файлов"><i class="fa fa-check"></i><b>6.8</b> Чтение нескольких файлов</a></li>
-<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a>
-<ul>
-<li class="chapter" data-level="6.9.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.9.1</b> Rdata</a></li>
-</ul></li>
+<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a></li>
+<li class="chapter" data-level="6.10" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.10</b> Rdata</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html"><i class="fa fa-check"></i><b>7</b> Воспроизводимые исследования</a>
 <ul>
@@ -309,7 +312,7 @@ div.csl-indent {
 <li class="chapter" data-level="9.6" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#эмотиконы"><i class="fa fa-check"></i><b>9.6</b> Эмотиконы</a></li>
 <li class="chapter" data-level="9.7" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#рутинная-уборка"><i class="fa fa-check"></i><b>9.7</b> Рутинная уборка</a></li>
 <li class="chapter" data-level="9.8" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#лемматизация"><i class="fa fa-check"></i><b>9.8</b> Лемматизация</a></li>
-<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#таблицы-html"><i class="fa fa-check"></i><b>9.9</b> Таблицы html</a></li>
+<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#html-таблицы"><i class="fa fa-check"></i><b>9.9</b> Html таблицы</a></li>
 <li class="chapter" data-level="9.10" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#wikisource"><i class="fa fa-check"></i><b>9.10</b> Wikisource</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html"><i class="fa fa-check"></i><b>10</b> Токенизация и лемматизация</a>
@@ -583,12 +586,12 @@ div.csl-indent {
 <p>Чтобы узнать, каких аргументов требует функция, надо вызывать <strong>help</strong>: <code>?mean()</code>. Также можно (и нужно) читать техническую документацию к пакетам.</p>
 <div class="ask question">
 <p>Сколько аргументов функции <code>mean()</code> имеют значения по умолчанию?</p>
-<form name="form_67245" onsubmit="return validate_form_67245()" method="post">
-<input type="text" name="answer_67245"><br><input type="submit" value="check">
+<form name="form_36089" onsubmit="return validate_form_36089()" method="post">
+<input type="text" placeholder="" name="answer_36089"/>
+<input type="submit" value="check"/>
+<div id="result_36089"></div>
 </form>
-<p id="result_67245">
-</p>
-<script> function validate_form_67245() {var x, text; var x = document.forms["form_67245"]["answer_67245"].value;if (x == "2"){text = 'Все верно!';} else {text = 'Не совсем. Значения по умолчанию стоят после знака <code>=</code>';} document.getElementById('result_67245').innerHTML = text; return false;} </script>
+<script>function validate_form_36089() {var x, text; var x = document.forms['form_36089']['answer_36089'].value;if (x == '2'){text = 'Все верно!';} else {text = 'Не совсем. Значения по умолчанию стоят после знака <code>=</code>';} document.getElementById('result_36089').innerHTML = text; return false;}</script>
 </div>
 <p></br>
 Уточнить свою <strong>рабочую директорию</strong> (в которой R будет искать и сохранять файлы) можно при помощи функции <code>getwd()</code> без аргументов. Установить рабочую директорию можно при помощи функции <code>setwd()</code>, указав в качестве аргумента путь к рабочей директории на вашем компьютере (в кавычках, так как это символьный вектор). В моем случае это выглядит так:</p>
@@ -609,21 +612,41 @@ div.csl-indent {
 <div class="ask question">
 <p>Какие действия в рабочей директории можно совершать из консоли?</p>
 </div>
-<form name="form_51056" onsubmit="return validate_form_51056()" method="post">
-<input type="checkbox" id="answer_51056_1" value="создать директорию"><label for="answer_51056_1">создать директорию</label><br><input type="checkbox" id="answer_51056_2" value="удалить директорию"><label for="answer_51056_2">удалить директорию</label><br><input type="checkbox" id="answer_51056_3" value="создать файл"><label for="answer_51056_3">создать файл</label><br><input type="checkbox" id="answer_51056_4" value="переименовать файл"><label for="answer_51056_4">переименовать файл</label><br><input type="checkbox" id="answer_51056_5" value="копировать файл"><label for="answer_51056_5">копировать файл</label><br><input type="checkbox" id="answer_51056_6" value="удалить файл"><label for="answer_51056_6">удалить файл</label><br><input type="submit" value="check">
+<form name="form_56391" onsubmit="return validate_form_56391()" method="post">
+<input type="checkbox" id="answer_56391_1" value="создать директорию"/>
+<label>создать директорию</label>
+<br/>
+<input type="checkbox" id="answer_56391_2" value="удалить директорию"/>
+<label>удалить директорию</label>
+<br/>
+<input type="checkbox" id="answer_56391_3" value="создать файл"/>
+<label>создать файл</label>
+<br/>
+<input type="checkbox" id="answer_56391_4" value="переименовать файл"/>
+<label>переименовать файл</label>
+<br/>
+<input type="checkbox" id="answer_56391_5" value="копировать файл"/>
+<label>копировать файл</label>
+<br/>
+<input type="checkbox" id="answer_56391_6" value="удалить файл"/>
+<label>удалить файл</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_56391"></div>
 </form>
-<p id="result_51056">
-</p>
-<script> function validate_form_51056() {var text;var x1 = document.getElementById("answer_51056_1");var x2 = document.getElementById("answer_51056_2");var x3 = document.getElementById("answer_51056_3");var x4 = document.getElementById("answer_51056_4");var x5 = document.getElementById("answer_51056_5");var x6 = document.getElementById("answer_51056_6");if (x1.checked == true&x2.checked == true&x3.checked == true&x4.checked == true&x5.checked == true&x6.checked == true){text = "Все возможно в дивном мире R!";} else {text = "Чего-то не хватает&hellip;";} document.getElementById("result_51056").innerHTML = text; return false;}</script>
+<script>function validate_form_56391() {var text; var x1 = document.getElementById('answer_56391_1'); var x2 = document.getElementById('answer_56391_2'); var x3 = document.getElementById('answer_56391_3'); var x4 = document.getElementById('answer_56391_4'); var x5 = document.getElementById('answer_56391_5'); var x6 = document.getElementById('answer_56391_6'); if (x1.checked == true&x2.checked == true&x3.checked == true&x4.checked == true&x5.checked == true&x6.checked == true){text = 'Все возможно в дивном мире R!';} else {text = 'Чего-то не хватает…';} document.getElementById('result_56391').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Чтобы создать вложенную директорию при помощи функции <code>dir.create()</code>, аргументу <code>recursive</code> следует задать значение…</p>
 </div>
-<form name="form_64628" onsubmit="return validate_form_64628()" method="post">
-<select name="answer_64628"><option> TRUE </option><option> FALSE </option></select><br><input type="submit" value="check">
+<form name="form_80562" onsubmit="return validate_form_80562()" method="post">
+<select name="answer_80562">
+<option>TRUE</option>
+<option>FALSE</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_80562"></div>
 </form>
-<p id="result_64628">
-</p>
-<script> function validate_form_64628() {var x, text; var x = document.forms["form_64628"]["answer_64628"].value;if (x == "TRUE"){text = 'Гениально!';} else {text = 'Подсказка: рекурсия — это определение, описание, изображение какого-либо объекта или процесса внутри самого этого объекта или процесса';} document.getElementById('result_64628').innerHTML = text; return false;} </script>
+<script>function validate_form_80562() {var x, text; var x = document.forms['form_80562']['answer_80562'].value;if (x == 'TRUE'){text = 'Гениально!';} else {text = 'Подсказка: рекурсия — это определение, описание, изображение какого-либо объекта или процесса внутри самого этого объекта или процесса';} document.getElementById('result_80562').innerHTML = text; return false;}</script>
 <p>Если все получилось, двигаемся дальше.</p>
 </div>
 <div id="r-как-калькулятор" class="section level2 hasAnchor" number="2.8">
@@ -664,30 +687,46 @@ div.csl-indent {
 <div class="ask question">
 <p>Что вычисляет функция <code>abs()</code>?</p>
 </div>
-<form name="form_77563" onsubmit="return validate_form_77563()" method="post">
-<input type="radio" name="answer_77563" id="77563_1" value="среднее"><label for="1">среднее</label><br><input type="radio" name="answer_77563" id="77563_2" value="модуль"><label for="2">модуль</label><br><input type="radio" name="answer_77563" id="77563_3" value="квадратный корень"><label for="3">квадратный корень</label><br><input type="submit" value="check">
+<form name="form_13254" onsubmit="return validate_form_13254()" method="post">
+<input type="radio" name="answer_13254" id="answer_13254_1" value="среднее"/>
+<label>среднее</label>
+<br/>
+<input type="radio" name="answer_13254" id="answer_13254_2" value="модуль"/>
+<label>модуль</label>
+<br/>
+<input type="radio" name="answer_13254" id="answer_13254_3" value="квадратный корень"/>
+<label>квадратный корень</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_13254"></div>
 </form>
-<p id="result_77563">
-</p>
-<script> function validate_form_77563() {var x, text; var x = document.forms["form_77563"]["answer_77563"].value;if (x == "модуль"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_77563').innerHTML = text; return false;} </script>
+<script>function validate_form_13254() {var x, text; var x = document.forms['form_13254']['answer_13254'].value;if (x == 'модуль'){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_13254').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Сколько значений вернет функция, если разделить <code>c(2, 4, 6)</code> на <code>2</code>?</p>
 </div>
-<form name="form_21567" onsubmit="return validate_form_21567()" method="post">
-<input type="text" name="answer_21567"><br><input type="submit" value="check">
+<form name="form_34502" onsubmit="return validate_form_34502()" method="post">
+<input type="text" placeholder="" name="answer_34502"/>
+<input type="submit" value="check"/>
+<div id="result_34502"></div>
 </form>
-<p id="result_21567">
-</p>
-<script> function validate_form_21567() {var x, text; var x = document.forms["form_21567"]["answer_21567"].value;if (x == "3"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_21567').innerHTML = text; return false;} </script>
+<script>function validate_form_34502() {var x, text; var x = document.forms['form_34502']['answer_34502'].value;if (x == '3'){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_34502').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Буква “c” в названии функции <code>c()</code> означает…</p>
 </div>
-<form name="form_40986" onsubmit="return validate_form_40986()" method="post">
-<input type="radio" name="answer_40986" id="40986_1" value="cover"><label for="1">cover</label><br><input type="radio" name="answer_40986" id="40986_2" value="collapse"><label for="2">collapse</label><br><input type="radio" name="answer_40986" id="40986_3" value="concatenate"><label for="3">concatenate</label><br><input type="submit" value="check">
+<form name="form_13145" onsubmit="return validate_form_13145()" method="post">
+<input type="radio" name="answer_13145" id="answer_13145_1" value="cover"/>
+<label>cover</label>
+<br/>
+<input type="radio" name="answer_13145" id="answer_13145_2" value="collapse"/>
+<label>collapse</label>
+<br/>
+<input type="radio" name="answer_13145" id="answer_13145_3" value="concatenate"/>
+<label>concatenate</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_13145"></div>
 </form>
-<p id="result_40986">
-</p>
-<script> function validate_form_40986() {var x, text; var x = document.forms["form_40986"]["answer_40986"].value;if (x == "concatenate"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_40986').innerHTML = text; return false;} </script>
+<script>function validate_form_13145() {var x, text; var x = document.forms['form_13145']['answer_13145'].value;if (x == 'concatenate'){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_13145').innerHTML = text; return false;}</script>
 </div>
 <div id="векторы" class="section level2 hasAnchor" number="2.10">
 <h2><span class="header-section-number">2.10</span> Векторы<a href="начало-работы-с-r.html#векторы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -725,30 +764,52 @@ div.csl-indent {
 <div class="ask question">
 <p>Какие числа вернет команда <code>pi:10</code>?</p>
 </div>
-<form name="form_17514" onsubmit="return validate_form_17514()" method="post">
-<input type="radio" name="answer_17514" id="17514_1" value="натуральные"><label for="1">натуральные</label><br><input type="radio" name="answer_17514" id="17514_2" value="целые"><label for="2">целые</label><br><input type="radio" name="answer_17514" id="17514_3" value="рациональные"><label for="3">рациональные</label><br><input type="radio" name="answer_17514" id="17514_4" value="вещественные"><label for="4">вещественные</label><br><input type="radio" name="answer_17514" id="17514_5" value="комплексные"><label for="5">комплексные</label><br><input type="submit" value="check">
+<form name="form_84390" onsubmit="return validate_form_84390()" method="post">
+<input type="radio" name="answer_84390" id="answer_84390_1" value="натуральные"/>
+<label>натуральные</label>
+<br/>
+<input type="radio" name="answer_84390" id="answer_84390_2" value="целые"/>
+<label>целые</label>
+<br/>
+<input type="radio" name="answer_84390" id="answer_84390_3" value="рациональные"/>
+<label>рациональные</label>
+<br/>
+<input type="radio" name="answer_84390" id="answer_84390_4" value="вещественные"/>
+<label>вещественные</label>
+<br/>
+<input type="radio" name="answer_84390" id="answer_84390_5" value="комплексные"/>
+<label>комплексные</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_84390"></div>
 </form>
-<p id="result_17514">
-</p>
-<script> function validate_form_17514() {var x, text; var x = document.forms["form_17514"]["answer_17514"].value;if (x == "вещественные"){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_17514').innerHTML = text; return false;} </script>
+<script>function validate_form_84390() {var x, text; var x = document.forms['form_84390']['answer_84390'].value;if (x == 'вещественные'){text = 'Все верно!';} else {text = 'Не совсем.';} document.getElementById('result_84390').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Какие функции могут использоваться для создания <em>символьных</em> векторов?</p>
 </div>
-<form name="form_17063" onsubmit="return validate_form_17063()" method="post">
-<input type="checkbox" id="answer_17063_1" value="seq()"><label for="answer_17063_1">seq()</label><br><input type="checkbox" id="answer_17063_2" value="rep()"><label for="answer_17063_2">rep()</label><br><input type="checkbox" id="answer_17063_3" value="c()"><label for="answer_17063_3">c()</label><br><input type="submit" value="check">
+<form name="form_13973" onsubmit="return validate_form_13973()" method="post">
+<input type="checkbox" id="answer_13973_1" value="seq()"/>
+<label>seq()</label>
+<br/>
+<input type="checkbox" id="answer_13973_2" value="rep()"/>
+<label>rep()</label>
+<br/>
+<input type="checkbox" id="answer_13973_3" value="c()"/>
+<label>c()</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_13973"></div>
 </form>
-<p id="result_17063">
-</p>
-<script> function validate_form_17063() {var text;var x1 = document.getElementById("answer_17063_1");var x2 = document.getElementById("answer_17063_2");var x3 = document.getElementById("answer_17063_3");if (x1.checked == false&x2.checked == true&x3.checked == true){text = "Ну это же просто фантастика!";} else {text = "Не совсем.";} document.getElementById("result_17063").innerHTML = text; return false;}</script>
+<script>function validate_form_13973() {var text; var x1 = document.getElementById('answer_13973_1'); var x2 = document.getElementById('answer_13973_2'); var x3 = document.getElementById('answer_13973_3'); if (x1.checked == false&x2.checked == true&x3.checked == true){text = 'Ну это же просто фантастика!';} else {text = 'Не совсем.';} document.getElementById('result_13973').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Сколько значений вернет команда <code>rep(c(0, 1, 2), times = 10)</code>? Посчитайте в уме, не выполняя код.</p>
 </div>
-<form name="form_58186" onsubmit="return validate_form_58186()" method="post">
-<input type="text" name="answer_58186"><br><input type="submit" value="check">
+<form name="form_4030" onsubmit="return validate_form_4030()" method="post">
+<input type="text" placeholder="" name="answer_4030"/>
+<input type="submit" value="check"/>
+<div id="result_4030"></div>
 </form>
-<p id="result_58186">
-</p>
-<script> function validate_form_58186() {var x, text; var x = document.forms["form_58186"]["answer_58186"].value;if (x == "30"){text = 'Ах, красота!';} else {text = 'Надо бы пересчитать.';} document.getElementById('result_58186').innerHTML = text; return false;} </script>
+<script>function validate_form_4030() {var x, text; var x = document.forms['form_4030']['answer_4030'].value;if (x == '30'){text = 'Ах, красота!';} else {text = 'Надо бы пересчитать.';} document.getElementById('result_4030').innerHTML = text; return false;}</script>
 <p></br>
 <strong>Факторы</strong> внешне похожи на строки, но в отличие от них хранят информацию об <em>уровнях</em> категориальных переменных. Уровень может обозначаться как числом (например, 1 и 0), так и строкой.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="начало-работы-с-r.html#cb31-1" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</span>
@@ -782,12 +843,23 @@ div.csl-indent {
 <div class="ask question">
 <p>Попробуйте посчитать в уме: какое из выражений ниже вернет значение <code>TRUE</code>?</p>
 </div>
-<form name="form_32000" onsubmit="return validate_form_32000()" method="post">
-<input type="radio" name="answer_32000" id="32000_1" value="7 == 9"><label for="1">7 == 9</label><br><input type="radio" name="answer_32000" id="32000_2" value="!(57 != 8)"><label for="2">!(57 != 8)</label><br><input type="radio" name="answer_32000" id="32000_3" value="9 >= 10"><label for="3">9 &gt;= 10</label><br><input type="radio" name="answer_32000" id="32000_4" value="-6 > -7"><label for="4">-6 &gt; -7</label><br><input type="submit" value="check">
+<form name="form_70172" onsubmit="return validate_form_70172()" method="post">
+<input type="radio" name="answer_70172" id="answer_70172_1" value="7 == 9"/>
+<label>7 == 9</label>
+<br/>
+<input type="radio" name="answer_70172" id="answer_70172_2" value="!(57 != 8)"/>
+<label>!(57 != 8)</label>
+<br/>
+<input type="radio" name="answer_70172" id="answer_70172_3" value="9 &gt;= 10"/>
+<label>9 &gt;= 10</label>
+<br/>
+<input type="radio" name="answer_70172" id="answer_70172_4" value="-6 &gt; -7"/>
+<label>-6 &gt; -7</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_70172"></div>
 </form>
-<p id="result_32000">
-</p>
-<script> function validate_form_32000() {var x, text; var x = document.forms["form_32000"]["answer_32000"].value;if (x == "-6 > -7"){text = 'Восторг!';} else {text = 'Посмотрите внимательнее.';} document.getElementById('result_32000').innerHTML = text; return false;} </script>
+<script>function validate_form_70172() {var x, text; var x = document.forms['form_70172']['answer_70172'].value;if (x == '-6 > -7'){text = 'Восторг!';} else {text = 'Посмотрите внимательнее.';} document.getElementById('result_70172').innerHTML = text; return false;}</script>
 <p>Функции <code>all()</code> и <code>any()</code> также возвращают логические значения:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="начало-работы-с-r.html#cb41-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span> </span>
 <span id="cb41-2"><a href="начало-работы-с-r.html#cb41-2" tabindex="-1"></a><span class="fu">any</span>(x <span class="sc">==</span> <span class="dv">15</span>)</span></code></pre></div>
@@ -801,30 +873,52 @@ div.csl-indent {
 <div class="ask question">
 <p>Какие значение вернет команда <code>(3 &gt; 5) &amp; (4 == 4)</code>?</p>
 </div>
-<form name="form_24124" onsubmit="return validate_form_24124()" method="post">
-<select name="answer_24124"><option> TRUE </option><option> FALSE </option><option> NA </option></select><br><input type="submit" value="check">
+<form name="form_12697" onsubmit="return validate_form_12697()" method="post">
+<select name="answer_12697">
+<option>TRUE</option>
+<option>FALSE</option>
+<option>NA</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_12697"></div>
 </form>
-<p id="result_24124">
-</p>
-<script> function validate_form_24124() {var x, text; var x = document.forms["form_24124"]["answer_24124"].value;if (x == "FALSE"){text = 'Железная логика!';} else {text = 'Нет, одно из условий невыполнимо';} document.getElementById('result_24124').innerHTML = text; return false;} </script>
+<script>function validate_form_12697() {var x, text; var x = document.forms['form_12697']['answer_12697'].value;if (x == 'FALSE'){text = 'Железная логика!';} else {text = 'Одно из условий невыполнимо';} document.getElementById('result_12697').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Какие значения вернет команда <code>(TRUE == TRUE) | (TRUE == FALSE)</code>?</p>
 </div>
-<form name="form_56246" onsubmit="return validate_form_56246()" method="post">
-<select name="answer_56246"><option> TRUE </option><option> FALSE </option><option> NA </option></select><br><input type="submit" value="check">
+<form name="form_42493" onsubmit="return validate_form_42493()" method="post">
+<select name="answer_42493">
+<option>TRUE</option>
+<option>FALSE</option>
+<option>NA</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_42493"></div>
 </form>
-<p id="result_56246">
-</p>
-<script> function validate_form_56246() {var x, text; var x = document.forms["form_56246"]["answer_56246"].value;if (x == "TRUE"){text = 'Восхищаемся вами';} else {text = 'Это дизъюнкция&hellip;';} document.getElementById('result_56246').innerHTML = text; return false;} </script>
+<script>function validate_form_42493() {var x, text; var x = document.forms['form_42493']['answer_42493'].value;if (x == 'TRUE'){text = 'Восхищаемся вами';} else {text = 'Это дизъюнкция…';} document.getElementById('result_42493').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Команда <code>paste(LETTERS, 1:4, sep = "-")</code> вернет…</p>
 </div>
-<form name="form_13498" onsubmit="return validate_form_13498()" method="post">
-<input type="radio" name="answer_13498" id="13498_1" value="числовой вектор длиной 26"><label for="1">числовой вектор длиной 26</label><br><input type="radio" name="answer_13498" id="13498_2" value="символьный вектор длиной 26"><label for="2">символьный вектор длиной 26</label><br><input type="radio" name="answer_13498" id="13498_3" value="числовой вектор длиной 4"><label for="3">числовой вектор длиной 4</label><br><input type="radio" name="answer_13498" id="13498_4" value="символьный вектор длиной 4"><label for="4">символьный вектор длиной 4</label><br><input type="radio" name="answer_13498" id="13498_5" value="ошибку"><label for="5">ошибку</label><br><input type="submit" value="check">
+<form name="form_71341" onsubmit="return validate_form_71341()" method="post">
+<input type="radio" name="answer_71341" id="answer_71341_1" value="числовой вектор длиной 26"/>
+<label>числовой вектор длиной 26</label>
+<br/>
+<input type="radio" name="answer_71341" id="answer_71341_2" value="символьный вектор длиной 26"/>
+<label>символьный вектор длиной 26</label>
+<br/>
+<input type="radio" name="answer_71341" id="answer_71341_3" value="числовой вектор длиной 4"/>
+<label>числовой вектор длиной 4</label>
+<br/>
+<input type="radio" name="answer_71341" id="answer_71341_4" value="символьный вектор длиной 4"/>
+<label>символьный вектор длиной 4</label>
+<br/>
+<input type="radio" name="answer_71341" id="answer_71341_5" value="ошибку"/>
+<label>ошибку</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_71341"></div>
 </form>
-<p id="result_13498">
-</p>
-<script> function validate_form_13498() {var x, text; var x = document.forms["form_13498"]["answer_13498"].value;if (x == "символьный вектор длиной 26"){text = 'Гениально💡';} else {text = 'Не совсем.';} document.getElementById('result_13498').innerHTML = text; return false;} </script>
+<script>function validate_form_71341() {var x, text; var x = document.forms['form_71341']['answer_71341'].value;if (x == 'символьный вектор длиной 26'){text = 'Гениально💡';} else {text = 'Не совсем.';} document.getElementById('result_71341').innerHTML = text; return false;}</script>
 <p></br>
 Над векторами можно совершать арифметические операции, но будьте внимательны, применяя операции к векторам разной длины: в этом случае более короткий вектор будет <strong>переработан</strong>, то есть повторен до тех пор, пока его длина не сравняется с длиной вектора большей длины.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="начало-работы-с-r.html#cb45-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span>; y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>); z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
@@ -845,22 +939,44 @@ div.csl-indent {
 <div class="ask question">
 <p>Если вектор <code>x</code> содержит числовые значения и некоторое количество NA, то что вернет команда <code>x[is.na(x)]</code>?</p>
 </div>
-<form name="form_46033" onsubmit="return validate_form_46033()" method="post">
-<input type="radio" name="answer_46033" id="46033_1" value="вектор длиной 0"><label for="1">вектор длиной 0</label><br><input type="radio" name="answer_46033" id="46033_2" value="вектор всех NA"><label for="2">вектор всех NA</label><br><input type="radio" name="answer_46033" id="46033_3" value="логический вектор"><label for="3">логический вектор</label><br><input type="radio" name="answer_46033" id="46033_4" value="вектор без NA"><label for="4">вектор без NA</label><br><input type="radio" name="answer_46033" id="46033_5" value="ошибку"><label for="5">ошибку</label><br><input type="submit" value="check">
+<form name="form_60541" onsubmit="return validate_form_60541()" method="post">
+<input type="radio" name="answer_60541" id="answer_60541_1" value="вектор длиной 0"/>
+<label>вектор длиной 0</label>
+<br/>
+<input type="radio" name="answer_60541" id="answer_60541_2" value="вектор всех NA"/>
+<label>вектор всех NA</label>
+<br/>
+<input type="radio" name="answer_60541" id="answer_60541_3" value="логический вектор"/>
+<label>логический вектор</label>
+<br/>
+<input type="radio" name="answer_60541" id="answer_60541_4" value="вектор без NA"/>
+<label>вектор без NA</label>
+<br/>
+<input type="radio" name="answer_60541" id="answer_60541_5" value="ошибку"/>
+<label>ошибку</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_60541"></div>
 </form>
-<p id="result_46033">
-</p>
-<script> function validate_form_46033() {var x, text; var x = document.forms["form_46033"]["answer_46033"].value;if (x == "вектор всех NA"){text = 'Зажигаете! 🔥';} else {text = 'Надо еще подумать';} document.getElementById('result_46033').innerHTML = text; return false;} </script>
+<script>function validate_form_60541() {var x, text; var x = document.forms['form_60541']['answer_60541'].value;if (x == 'вектор всех NA'){text = 'Зажигаете! 🔥';} else {text = 'Надо еще подумать';} document.getElementById('result_60541').innerHTML = text; return false;}</script>
 <p>Что надо изменить в этом коде, чтобы получить все, <em>кроме</em> NA?</p>
 <div class="ask question">
 <p>Дан именованный вектор: <code>vect &lt;- c(foo = 11, bar = 2, norf = NA)</code>. Как можно выбрать второй элемент?</p>
 </div>
-<form name="form_18052" onsubmit="return validate_form_18052()" method="post">
-<input type="radio" name="answer_18052" id="18052_1" value="vect[bar]"><label for="1">vect[bar]</label><br><input type="radio" name="answer_18052" id="18052_2" value="vect['2']"><label for="2">vect[‘2’]</label><br><input type="radio" name="answer_18052" id="18052_3" value="vect['bar']"><label for="3">vect[‘bar’]</label><br><input type="submit" value="check">
+<form name="form_10852" onsubmit="return validate_form_10852()" method="post">
+<input type="radio" name="answer_10852" id="answer_10852_1" value="vect[bar]"/>
+<label>vect[bar]</label>
+<br/>
+<input type="radio" name="answer_10852" id="answer_10852_2" value="vect[&#39;2&#39;]"/>
+<label>vect['2']</label>
+<br/>
+<input type="radio" name="answer_10852" id="answer_10852_3" value="vect[&#39;bar&#39;]"/>
+<label>vect['bar']</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_10852"></div>
 </form>
-<p id="result_18052">
-</p>
-<script> function validate_form_18052() {var x, text; var x = document.forms["form_18052"]["answer_18052"].value;if (x == "vect['bar']"){text = 'С вами явно пребывает сила.';} else {text = 'Что-то не так.';} document.getElementById('result_18052').innerHTML = text; return false;} </script>
+<script>function validate_form_10852() {var x, text; var x = document.forms['form_10852']['answer_10852'].value;if (x == 'vect['bar']'){text = 'С вами явно пребывает сила.';} else {text = 'Что-то не так.';} document.getElementById('result_10852').innerHTML = text; return false;}</script>
 </div>
 <div id="отсутствующие-значения" class="section level2 hasAnchor" number="2.11">
 <h2><span class="header-section-number">2.11</span> Отсутствующие значения<a href="начало-работы-с-r.html#отсутствующие-значения" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -904,12 +1020,12 @@ div.csl-indent {
 <div class="ask question">
 <p>Дан вектор <code>x &lt;- c(44, NA, 5, NA)</code>. Сколько <code>NA</code> вернет команда <code>x == NA</code>?</p>
 </div>
-<form name="form_7091" onsubmit="return validate_form_7091()" method="post">
-<input type="text" name="answer_7091"><br><input type="submit" value="check">
+<form name="form_9201" onsubmit="return validate_form_9201()" method="post">
+<input type="text" placeholder="" name="answer_9201"/>
+<input type="submit" value="check"/>
+<div id="result_9201"></div>
 </form>
-<p id="result_7091">
-</p>
-<script> function validate_form_7091() {var x, text; var x = document.forms["form_7091"]["answer_7091"].value;if (x == "4"){text = 'Красота!';} else {text = 'Надо еще подумать.';} document.getElementById('result_7091').innerHTML = text; return false;} </script>
+<script>function validate_form_9201() {var x, text; var x = document.forms['form_9201']['answer_9201'].value;if (x == '4'){text = 'Красота!';} else {text = 'Надо еще подумать.';} document.getElementById('result_9201').innerHTML = text; return false;}</script>
 <p></br></p>
 <div class="float">
 <img src="https://c.pxhere.com/photos/7f/cb/coffee_cup_drink_espresso_caffeine_cafe_breakfast_beverage-893387.jpg!d" style="width:60.0%" alt="Впереди еще списки, матрицы и таблицы. Не забывайте давать себе отдых!" />
@@ -958,30 +1074,30 @@ my_list &lt;-  corpora(&quot;foods/breads_and_pastries&quot;)</code></pre>
 <div class="ask question">
 <p>Узнайте длину <code>my_list</code> и введите ее в поле ниже.</p>
 </div>
-<form name="form_8152" onsubmit="return validate_form_8152()" method="post">
-<input type="text" name="answer_8152"><br><input type="submit" value="check">
+<form name="form_30966" onsubmit="return validate_form_30966()" method="post">
+<input type="text" placeholder="" name="answer_30966"/>
+<input type="submit" value="check"/>
+<div id="result_30966"></div>
 </form>
-<p id="result_8152">
-</p>
-<script> function validate_form_8152() {var x, text; var x = document.forms["form_8152"]["answer_8152"].value;if (x == "3"){text = 'Список вкусняшек в вашей власти!';} else {text = 'Нет, еще не все вкусняшки вы учли.';} document.getElementById('result_8152').innerHTML = text; return false;} </script>
+<script>function validate_form_30966() {var x, text; var x = document.forms['form_30966']['answer_30966'].value;if (x == '3'){text = 'Список вкусняшек в вашей власти!';} else {text = 'Нет, еще не все вкусняшки вы учли.';} document.getElementById('result_30966').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Достаньте из <code>my_list</code> элемент <code>pastries</code> и узнайте его длину.</p>
 </div>
-<form name="form_39004" onsubmit="return validate_form_39004()" method="post">
-<input type="text" name="answer_39004"><br><input type="submit" value="check">
+<form name="form_66494" onsubmit="return validate_form_66494()" method="post">
+<input type="text" placeholder="" name="answer_66494"/>
+<input type="submit" value="check"/>
+<div id="result_66494"></div>
 </form>
-<p id="result_39004">
-</p>
-<script> function validate_form_39004() {var x, text; var x = document.forms["form_39004"]["answer_39004"].value;if (x == "20"){text = 'Вот вам пончик в награду 🍩';} else {text = 'Нет, не все вкусняшки вы учли.';} document.getElementById('result_39004').innerHTML = text; return false;} </script>
+<script>function validate_form_66494() {var x, text; var x = document.forms['form_66494']['answer_66494'].value;if (x == '20'){text = 'Вот вам пончик в награду 🍩';} else {text = 'Нет, не все вкусняшки вы учли.';} document.getElementById('result_66494').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>А теперь извлеките пятый элемент из <code>pastries</code> и введите ниже его название.</p>
 </div>
-<form name="form_4372" onsubmit="return validate_form_4372()" method="post">
-<input type="text" name="answer_4372"><br><input type="submit" value="check">
+<form name="form_44241" onsubmit="return validate_form_44241()" method="post">
+<input type="text" placeholder="" name="answer_44241"/>
+<input type="submit" value="check"/>
+<div id="result_44241"></div>
 </form>
-<p id="result_4372">
-</p>
-<script> function validate_form_4372() {var x, text; var x = document.forms["form_4372"]["answer_4372"].value;if (x == "croissant"){text = 'Все 🥐🥐🥐 ваши!';} else {text = 'Это я не ем.';} document.getElementById('result_4372').innerHTML = text; return false;} </script>
+<script>function validate_form_44241() {var x, text; var x = document.forms['form_44241']['answer_44241'].value;if (x == 'croissant'){text = 'Все 🥐🥐🥐 ваши!';} else {text = 'Это я не ем.';} document.getElementById('result_44241').innerHTML = text; return false;}</script>
 <p>Со списками покончено. Теперь можно пойти выпить кофе с <code>my_list$pastries[13]</code>.</p>
 </div>
 <div id="матрицы" class="section level2 hasAnchor" number="2.13">
@@ -1136,6 +1252,7 @@ my_list &lt;-  corpora(&quot;foods/breads_and_pastries&quot;)</code></pre>
 <p>Запустите <code>swirl()</code> и пройдите урок 7 <code>Matrices and Data Frames</code>.</p>
 </div>
 <p>Напоследок небольшое практическое задание. Код для его выполнения сохраните в виде файла с расширением <code>.R</code>. Его надо будет отправить преподавателю.</p>
+<p></br></p>
 <div class="task code">
 <p>ПРАКТИЧЕСКОЕ ЗАДАНИЕ 1: ИСПАНСКИЕ ПИСАТЕЛИ</p>
 </div>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Тема 3 Визуализации | Компьютерный анализ текста в R</title>
   <meta name="description" content="Все прекрасное трудно." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Тема 3 Визуализации | Компьютерный анализ текста в R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-09-01" />
+<meta name="date" content="2023-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,13 +54,13 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.27/datatables.js"></script>
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.29/datatables.js"></script>
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
@@ -133,6 +133,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -247,17 +251,16 @@ div.csl-indent {
 <li class="chapter" data-level="6.3.3" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#txt"><i class="fa fa-check"></i><b>6.3.3</b> txt</a></li>
 <li class="chapter" data-level="6.3.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#doc"><i class="fa fa-check"></i><b>6.3.4</b> doc</a></li>
 <li class="chapter" data-level="6.3.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#pdf"><i class="fa fa-check"></i><b>6.3.5</b> pdf</a></li>
-<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.6</b> zip</a></li>
+<li class="chapter" data-level="6.3.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#png"><i class="fa fa-check"></i><b>6.3.6</b> png</a></li>
+<li class="chapter" data-level="6.3.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#zip"><i class="fa fa-check"></i><b>6.3.7</b> zip</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#xml-и-html"><i class="fa fa-check"></i><b>6.4</b> xml и html</a></li>
 <li class="chapter" data-level="6.5" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#json"><i class="fa fa-check"></i><b>6.5</b> json</a></li>
 <li class="chapter" data-level="6.6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#gutenbergr"><i class="fa fa-check"></i><b>6.6</b> GutenbergR</a></li>
 <li class="chapter" data-level="6.7" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rperseus"><i class="fa fa-check"></i><b>6.7</b> RPerseus</a></li>
 <li class="chapter" data-level="6.8" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#чтение-нескольких-файлов"><i class="fa fa-check"></i><b>6.8</b> Чтение нескольких файлов</a></li>
-<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a>
-<ul>
-<li class="chapter" data-level="6.9.1" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.9.1</b> Rdata</a></li>
-</ul></li>
+<li class="chapter" data-level="6.9" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#экспорт"><i class="fa fa-check"></i><b>6.9</b> Экспорт</a></li>
+<li class="chapter" data-level="6.10" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html#rdata"><i class="fa fa-check"></i><b>6.10</b> Rdata</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html"><i class="fa fa-check"></i><b>7</b> Воспроизводимые исследования</a>
 <ul>
@@ -309,7 +312,7 @@ div.csl-indent {
 <li class="chapter" data-level="9.6" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#эмотиконы"><i class="fa fa-check"></i><b>9.6</b> Эмотиконы</a></li>
 <li class="chapter" data-level="9.7" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#рутинная-уборка"><i class="fa fa-check"></i><b>9.7</b> Рутинная уборка</a></li>
 <li class="chapter" data-level="9.8" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#лемматизация"><i class="fa fa-check"></i><b>9.8</b> Лемматизация</a></li>
-<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#таблицы-html"><i class="fa fa-check"></i><b>9.9</b> Таблицы html</a></li>
+<li class="chapter" data-level="9.9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#html-таблицы"><i class="fa fa-check"></i><b>9.9</b> Html таблицы</a></li>
 <li class="chapter" data-level="9.10" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html#wikisource"><i class="fa fa-check"></i><b>9.10</b> Wikisource</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="токенизация-и-лемматизация.html"><a href="токенизация-и-лемматизация.html"><i class="fa fa-check"></i><b>10</b> Токенизация и лемматизация</a>
@@ -546,26 +549,38 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <p>Для каждого из графиков ниже укажите его тип.</p>
 </div>
 <p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="576" /></p>
-<form name="form_77028" onsubmit="return validate_form_77028()" method="post">
-<select name="answer_77028"><option> диаграмма размаха </option><option> гистограмма </option><option> диаграмма рассеяния </option></select><br><input type="submit" value="check">
+<form name="form_12570" onsubmit="return validate_form_12570()" method="post">
+<select name="answer_12570">
+<option>диаграмма размаха</option>
+<option>гистограмма</option>
+<option>диаграмма рассеяния</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_12570"></div>
 </form>
-<p id="result_77028">
-</p>
-<script> function validate_form_77028() {var x, text; var x = document.forms["form_77028"]["answer_77028"].value;if (x == "диаграмма рассеяния"){text = '✅';} else {text = '❌';} document.getElementById('result_77028').innerHTML = text; return false;} </script>
+<script>function validate_form_12570() {var x, text; var x = document.forms['form_12570']['answer_12570'].value;if (x == 'диаграмма рассеяния'){text = '✅';} else {text = '❌';} document.getElementById('result_12570').innerHTML = text; return false;}</script>
 <p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="576" /></p>
-<form name="form_44130" onsubmit="return validate_form_44130()" method="post">
-<select name="answer_44130"><option> диаграмма размаха </option><option> гистограмма </option><option> диаграмма рассеяния </option></select><br><input type="submit" value="check">
+<form name="form_64026" onsubmit="return validate_form_64026()" method="post">
+<select name="answer_64026">
+<option>диаграмма размаха</option>
+<option>гистограмма</option>
+<option>диаграмма рассеяния</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_64026"></div>
 </form>
-<p id="result_44130">
-</p>
-<script> function validate_form_44130() {var x, text; var x = document.forms["form_44130"]["answer_44130"].value;if (x == "гистограмма"){text = '✅';} else {text = '❌';} document.getElementById('result_44130').innerHTML = text; return false;} </script>
+<script>function validate_form_64026() {var x, text; var x = document.forms['form_64026']['answer_64026'].value;if (x == 'гистограмма'){text = '✅';} else {text = '❌';} document.getElementById('result_64026').innerHTML = text; return false;}</script>
 <p><img src="_main_files/figure-html/unnamed-chunk-71-1.png" width="576" /></p>
-<form name="form_46343" onsubmit="return validate_form_46343()" method="post">
-<select name="answer_46343"><option> диаграмма размаха </option><option> гистограмма </option><option> диаграмма рассеяния </option></select><br><input type="submit" value="check">
+<form name="form_77644" onsubmit="return validate_form_77644()" method="post">
+<select name="answer_77644">
+<option>диаграмма размаха</option>
+<option>гистограмма</option>
+<option>диаграмма рассеяния</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_77644"></div>
 </form>
-<p id="result_46343">
-</p>
-<script> function validate_form_46343() {var x, text; var x = document.forms["form_46343"]["answer_46343"].value;if (x == "диаграмма размаха"){text = '✅';} else {text = '❌';} document.getElementById('result_46343').innerHTML = text; return false;} </script>
+<script>function validate_form_77644() {var x, text; var x = document.forms['form_77644']['answer_77644'].value;if (x == 'диаграмма размаха'){text = '✅';} else {text = '❌';} document.getElementById('result_77644').innerHTML = text; return false;}</script>
 </div>
 <div id="lattice" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Lattice<a href="визуализации.html#lattice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -609,12 +624,12 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <div class="ask question">
 <p>Если нужная вам функция хранится в рабочей директории в файле <code>my_func.R</code>, какая встроенная функция R позволит его прочитать в глобальное окружение? Введите только название функции без скобок и аргументов.</p>
 </div>
-<form name="form_23792" onsubmit="return validate_form_23792()" method="post">
-<input type="text" name="answer_23792"><br><input type="submit" value="check">
+<form name="form_42805" onsubmit="return validate_form_42805()" method="post">
+<input type="text" placeholder="" name="answer_42805"/>
+<input type="submit" value="check"/>
+<div id="result_42805"></div>
 </form>
-<p id="result_23792">
-</p>
-<script> function validate_form_23792() {var x, text; var x = document.forms["form_23792"]["answer_23792"].value;if (x == "source"){text = 'Восхищаемся вами!';} else {text = 'Подсказка: файл - это <em>источник</em> кода.';} document.getElementById('result_23792').innerHTML = text; return false;} </script>
+<script>function validate_form_42805() {var x, text; var x = document.forms['form_42805']['answer_42805'].value;if (x == 'source'){text = 'Восхищаемся вами!';} else {text = 'Подсказка: файл - это <em>источник</em> кода.';} document.getElementById('result_42805').innerHTML = text; return false;}</script>
 <p>Время сделать перерыв, а потом можно двигаться дальше – к самому интересному.</p>
 </div>
 <div id="ggplot2" class="section level2 hasAnchor" number="3.3">
@@ -628,8 +643,8 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <span id="cb146-3"><a href="визуализации.html#cb146-3" tabindex="-1"></a><span class="fu">qplot</span>(words, hapax, <span class="at">data =</span> hapax_plato, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: `qplot()` was deprecated in
 ## ggplot2 3.4.0.
-## This warning is displayed once
-## every 8 hours.
+## This warning is displayed
+## once every 8 hours.
 ## Call
 ## `lifecycle::last_lifecycle_warnings()`
 ## to see where this warning was
@@ -655,12 +670,26 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <div class="ask question">
 <p>В уроке несколько раз встречалась функция <code>with()</code>. Что можно ей передать в качестве <em>второго</em> аргумента?</p>
 </div>
-<form name="form_37777" onsubmit="return validate_form_37777()" method="post">
-<input type="radio" name="answer_37777" id="37777_1" value="датафрейм"><label for="1">датафрейм</label><br><input type="radio" name="answer_37777" id="37777_2" value="вектор"><label for="2">вектор</label><br><input type="radio" name="answer_37777" id="37777_3" value="функцию"><label for="3">функцию</label><br><input type="radio" name="answer_37777" id="37777_4" value="матрицу"><label for="4">матрицу</label><br><input type="radio" name="answer_37777" id="37777_5" value="список"><label for="5">список</label><br><input type="submit" value="check">
+<form name="form_59718" onsubmit="return validate_form_59718()" method="post">
+<input type="radio" name="answer_59718" id="answer_59718_1" value="датафрейм"/>
+<label>датафрейм</label>
+<br/>
+<input type="radio" name="answer_59718" id="answer_59718_2" value="вектор"/>
+<label>вектор</label>
+<br/>
+<input type="radio" name="answer_59718" id="answer_59718_3" value="функцию"/>
+<label>функцию</label>
+<br/>
+<input type="radio" name="answer_59718" id="answer_59718_4" value="матрицу"/>
+<label>матрицу</label>
+<br/>
+<input type="radio" name="answer_59718" id="answer_59718_5" value="список"/>
+<label>список</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_59718"></div>
 </form>
-<p id="result_37777">
-</p>
-<script> function validate_form_37777() {var x, text; var x = document.forms["form_37777"]["answer_37777"].value;if (x == "функцию"){text = 'Продолжайте в том же духе!';} else {text = 'Попробуйте вызвать help.';} document.getElementById('result_37777').innerHTML = text; return false;} </script>
+<script>function validate_form_59718() {var x, text; var x = document.forms['form_59718']['answer_59718'].value;if (x == 'функцию'){text = 'Продолжайте в том же духе!';} else {text = 'Попробуйте вызвать help.';} document.getElementById('result_59718').innerHTML = text; return false;}</script>
 <p>Следующее задание позволит закрепить знания о функции <code>qplot()</code>.</p>
 <div class="task code">
 <p>Запустите <code>swirl()</code>, выберите курс “Exploratory Data Analysis” и пройдите из него урок 8 <code>GGPlot2 Part1</code>.</p>
@@ -669,19 +698,33 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <div class="ask question">
 <p>Какой график <em>нельзя</em> построить при помощи функции <code>qplot()</code>?</p>
 </div>
-<form name="form_486" onsubmit="return validate_form_486()" method="post">
-<input type="radio" name="answer_486" id="486_1" value="гистограмму"><label for="1">гистограмму</label><br><input type="radio" name="answer_486" id="486_2" value="диаграмму рассеяния"><label for="2">диаграмму рассеяния</label><br><input type="radio" name="answer_486" id="486_3" value="диаграмму размаха"><label for="3">диаграмму размаха</label><br><input type="radio" name="answer_486" id="486_4" value="нет верного ответа"><label for="4">нет верного ответа</label><br><input type="submit" value="check">
+<form name="form_55299" onsubmit="return validate_form_55299()" method="post">
+<input type="radio" name="answer_55299" id="answer_55299_1" value="гистограмму"/>
+<label>гистограмму</label>
+<br/>
+<input type="radio" name="answer_55299" id="answer_55299_2" value="диаграмму рассеяния"/>
+<label>диаграмму рассеяния</label>
+<br/>
+<input type="radio" name="answer_55299" id="answer_55299_3" value="диаграмму размаха"/>
+<label>диаграмму размаха</label>
+<br/>
+<input type="radio" name="answer_55299" id="answer_55299_4" value="нет верного ответа"/>
+<label>нет верного ответа</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_55299"></div>
 </form>
-<p id="result_486">
-</p>
-<script> function validate_form_486() {var x, text; var x = document.forms["form_486"]["answer_486"].value;if (x == "нет верного ответа"){text = 'Да, эта функция способна на многое!';} else {text = 'А вы точно прошли урок 8?';} document.getElementById('result_486').innerHTML = text; return false;} </script>
+<script>function validate_form_55299() {var x, text; var x = document.forms['form_55299']['answer_55299'].value;if (x == 'нет верного ответа'){text = 'Да, эта функция способна на многое!';} else {text = 'А вы точно прошли урок 8?';} document.getElementById('result_55299').innerHTML = text; return false;}</script>
 <p>Полурока позади, время сделать паузу и ответить на важнейший вопрос: чай или кофе?</p>
-<form name="form_80898" onsubmit="return validate_form_80898()" method="post">
-<select name="answer_80898"><option> чай </option><option> кофе </option></select><br><input type="submit" value="check">
+<form name="form_45558" onsubmit="return validate_form_45558()" method="post">
+<select name="answer_45558">
+<option>чай</option>
+<option>кофе</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_45558"></div>
 </form>
-<p id="result_80898">
-</p>
-<script> function validate_form_80898() {var x, text; var x = document.forms["form_80898"]["answer_80898"].value;if (x == "чай"|x == "кофе"){text = 'счастье &lt;- R + 🍪';} else {text = 'I have a different answer';} document.getElementById('result_80898').innerHTML = text; return false;} </script>
+<script>function validate_form_45558() {var x, text; var x = document.forms['form_45558']['answer_45558'].value;if (x == 'чай'|x == 'кофе'){text = 'счастье &lt;- R + 🍪';} else {text = 'I have a different answer';} document.getElementById('result_45558').innerHTML = text; return false;}</script>
 </div>
 <div id="слой-за-слоем-ggplot" class="section level3 hasAnchor" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Слой за слоем: ggplot()<a href="визуализации.html#слой-за-слоем-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -799,30 +842,53 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <div class="ask question">
 <p>На одном графике может быть несколько геомов.</p>
 </div>
-<form name="form_31581" onsubmit="return validate_form_31581()" method="post">
-<select name="answer_31581"><option> Правда </option><option> Ложь </option></select><br><input type="submit" value="check">
+<form name="form_28975" onsubmit="return validate_form_28975()" method="post">
+<select name="answer_28975">
+<option>Правда</option>
+<option>Ложь</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_28975"></div>
 </form>
-<p id="result_31581">
-</p>
-<script> function validate_form_31581() {var x, text; var x = document.forms["form_31581"]["answer_31581"].value;if (x == "Правда"){text = '✅';} else {text = '❌';} document.getElementById('result_31581').innerHTML = text; return false;} </script>
+<script>function validate_form_28975() {var x, text; var x = document.forms['form_28975']['answer_28975'].value;if (x == 'Правда'){text = '✅';} else {text = '❌';} document.getElementById('result_28975').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p><em>Все</em> эстетические атрибуты для <em>всех</em> геомов задаются при вызове <code>ggplot()</code>.</p>
 </div>
-<form name="form_35592" onsubmit="return validate_form_35592()" method="post">
-<select name="answer_35592"><option> Правда </option><option> Ложь </option></select><br><input type="submit" value="check">
+<form name="form_70150" onsubmit="return validate_form_70150()" method="post">
+<select name="answer_70150">
+<option>Правда</option>
+<option>Ложь</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_70150"></div>
 </form>
-<p id="result_35592">
-</p>
-<script> function validate_form_35592() {var x, text; var x = document.forms["form_35592"]["answer_35592"].value;if (x == "Ложь"){text = '✅';} else {text = '❌';} document.getElementById('result_35592').innerHTML = text; return false;} </script>
+<script>function validate_form_70150() {var x, text; var x = document.forms['form_70150']['answer_70150'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_70150').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Отметьте все термины “грамматики графических элементов” <code>ggplot2</code>.</p>
 </div>
-<form name="form_5357" onsubmit="return validate_form_5357()" method="post">
-<input type="checkbox" id="answer_5357_1" value="данные"><label for="answer_5357_1">данные</label><br><input type="checkbox" id="answer_5357_2" value="геометрические объекты"><label for="answer_5357_2">геометрические объекты</label><br><input type="checkbox" id="answer_5357_3" value="статистические преобразования"><label for="answer_5357_3">статистические преобразования</label><br><input type="checkbox" id="answer_5357_4" value="шкалы"><label for="answer_5357_4">шкалы</label><br><input type="checkbox" id="answer_5357_5" value="системы координат"><label for="answer_5357_5">системы координат</label><br><input type="checkbox" id="answer_5357_6" value="фасеты"><label for="answer_5357_6">фасеты</label><br><input type="submit" value="check">
+<form name="form_69057" onsubmit="return validate_form_69057()" method="post">
+<input type="checkbox" id="answer_69057_1" value="данные"/>
+<label>данные</label>
+<br/>
+<input type="checkbox" id="answer_69057_2" value="геометрические объекты"/>
+<label>геометрические объекты</label>
+<br/>
+<input type="checkbox" id="answer_69057_3" value="статистические преобразования"/>
+<label>статистические преобразования</label>
+<br/>
+<input type="checkbox" id="answer_69057_4" value="шкалы"/>
+<label>шкалы</label>
+<br/>
+<input type="checkbox" id="answer_69057_5" value="системы координат"/>
+<label>системы координат</label>
+<br/>
+<input type="checkbox" id="answer_69057_6" value="фасеты"/>
+<label>фасеты</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_69057"></div>
 </form>
-<p id="result_5357">
-</p>
-<script> function validate_form_5357() {var text;var x1 = document.getElementById("answer_5357_1");var x2 = document.getElementById("answer_5357_2");var x3 = document.getElementById("answer_5357_3");var x4 = document.getElementById("answer_5357_4");var x5 = document.getElementById("answer_5357_5");var x6 = document.getElementById("answer_5357_6");if (x1.checked == true&x2.checked == true&x3.checked == true&x4.checked == true&x5.checked == true&x6.checked == true){text = "Всемогущая гебдомада!";} else {text = "Это еще не все.";} document.getElementById("result_5357").innerHTML = text; return false;}</script>
+<script>function validate_form_69057() {var text; var x1 = document.getElementById('answer_69057_1'); var x2 = document.getElementById('answer_69057_2'); var x3 = document.getElementById('answer_69057_3'); var x4 = document.getElementById('answer_69057_4'); var x5 = document.getElementById('answer_69057_5'); var x6 = document.getElementById('answer_69057_6'); if (x1.checked == true&x2.checked == true&x3.checked == true&x4.checked == true&x5.checked == true&x6.checked == true){text = 'Всемогущая гебдомада!';} else {text = 'Это еще не все.';} document.getElementById('result_69057').innerHTML = text; return false;}</script>
 <p>Пока не расслабляемся, впереди еще один урок <code>swirl</code>.</p>
 <div class="task code">
 <p>Запустите <code>swirl()</code>, выберите курс “Exploratory Data Analysis” и пройдите из него урок 10 <code>GGPlot2 Extras</code>.</p>
@@ -831,30 +897,39 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <div class="ask question">
 <p>Чтобы построить диаграмму рассеяния, нужно добавить к графическому объекту, созданному функцией <code>ggplot</code>, геометрический объект под названием <code>geom_scatterplot</code>.</p>
 </div>
-<form name="form_43040" onsubmit="return validate_form_43040()" method="post">
-<select name="answer_43040"><option> Правда </option><option> Ложь </option></select><br><input type="submit" value="check">
+<form name="form_25575" onsubmit="return validate_form_25575()" method="post">
+<select name="answer_25575">
+<option>Правда</option>
+<option>Ложь</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_25575"></div>
 </form>
-<p id="result_43040">
-</p>
-<script> function validate_form_43040() {var x, text; var x = document.forms["form_43040"]["answer_43040"].value;if (x == "Ложь"){text = '✅';} else {text = '❌';} document.getElementById('result_43040').innerHTML = text; return false;} </script>
+<script>function validate_form_25575() {var x, text; var x = document.forms['form_25575']['answer_25575'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_25575').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Функция <code>cut()</code> позволяет преобразовать числовой вектор в фактор.</p>
 </div>
-<form name="form_25157" onsubmit="return validate_form_25157()" method="post">
-<select name="answer_25157"><option> Правда </option><option> Ложь </option></select><br><input type="submit" value="check">
+<form name="form_17528" onsubmit="return validate_form_17528()" method="post">
+<select name="answer_17528">
+<option>Правда</option>
+<option>Ложь</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_17528"></div>
 </form>
-<p id="result_25157">
-</p>
-<script> function validate_form_25157() {var x, text; var x = document.forms["form_25157"]["answer_25157"].value;if (x == "Правда"){text = '✅';} else {text = '❌';} document.getElementById('result_25157').innerHTML = text; return false;} </script>
+<script>function validate_form_17528() {var x, text; var x = document.forms['form_17528']['answer_17528'].value;if (x == 'Правда'){text = '✅';} else {text = '❌';} document.getElementById('result_17528').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Интервал <code>(0.2,0.5]</code> включает 0.2 и не включает 0.5.</p>
 </div>
-<form name="form_98750" onsubmit="return validate_form_98750()" method="post">
-<select name="answer_98750"><option> Правда </option><option> Ложь </option></select><br><input type="submit" value="check">
+<form name="form_91219" onsubmit="return validate_form_91219()" method="post">
+<select name="answer_91219">
+<option>Правда</option>
+<option>Ложь</option>
+</select>
+<input type="submit" value="check"/>
+<div id="result_91219"></div>
 </form>
-<p id="result_98750">
-</p>
-<script> function validate_form_98750() {var x, text; var x = document.forms["form_98750"]["answer_98750"].value;if (x == "Ложь"){text = '✅';} else {text = '❌';} document.getElementById('result_98750').innerHTML = text; return false;} </script>
+<script>function validate_form_91219() {var x, text; var x = document.forms['form_91219']['answer_91219'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_91219').innerHTML = text; return false;}</script>
 </div>
 </div>
 <div id="работа-с-цветом" class="section level2 hasAnchor" number="3.4">
@@ -868,22 +943,33 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <div class="ask question">
 <p>Сколько цветов содержит стандартная цветовая палитра R?</p>
 </div>
-<form name="form_88320" onsubmit="return validate_form_88320()" method="post">
-<input type="text" name="answer_88320"><br><input type="submit" value="check">
+<form name="form_87514" onsubmit="return validate_form_87514()" method="post">
+<input type="text" placeholder="" name="answer_87514"/>
+<input type="submit" value="check"/>
+<div id="result_87514"></div>
 </form>
-<p id="result_88320">
-</p>
-<script> function validate_form_88320() {var x, text; var x = document.forms["form_88320"]["answer_88320"].value;if (x == "657"){text = 'И все это для творчества 🎨';} else {text = 'Какой длины вектор вернет функция <code>colors()</code>?';} document.getElementById('result_88320').innerHTML = text; return false;} </script>
+<script>function validate_form_87514() {var x, text; var x = document.forms['form_87514']['answer_87514'].value;if (x == '657'){text = 'И все это для творчества 🎨';} else {text = 'Какой длины вектор вернет функция <code>colors()</code>?';} document.getElementById('result_87514').innerHTML = text; return false;}</script>
 <p></br></p>
 <div class="ask question">
 <p>Функция <code>rgb()</code> позволяет создать любой цвет путем “смешения” красного, синего и зеленого. А что регулирует ее аргумент <code>alpha</code>? (Вы встретите его и в других контекстах).</p>
 </div>
-<form name="form_4617" onsubmit="return validate_form_4617()" method="post">
-<select name="answer_4617"><option> шкалу </option><option> яркость </option><option> прозрачность </option><option> контраст </option></select><br><input type="submit" value="check">
+<form name="form_43844" onsubmit="return validate_form_43844()" method="post">
+<input type="radio" name="answer_43844" id="answer_43844_1" value="шкалу"/>
+<label>шкалу</label>
+<br/>
+<input type="radio" name="answer_43844" id="answer_43844_2" value="яркость"/>
+<label>яркость</label>
+<br/>
+<input type="radio" name="answer_43844" id="answer_43844_3" value="прозрачность"/>
+<label>прозрачность</label>
+<br/>
+<input type="radio" name="answer_43844" id="answer_43844_4" value="контраст"/>
+<label>контраст</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_43844"></div>
 </form>
-<p id="result_4617">
-</p>
-<script> function validate_form_4617() {var x, text; var x = document.forms["form_4617"]["answer_4617"].value;if (x == "прозрачность"){text = 'Тут все ясно';} else {text = 'Тут еще не все ясно';} document.getElementById('result_4617').innerHTML = text; return false;} </script>
+<script>function validate_form_43844() {var x, text; var x = document.forms['form_43844']['answer_43844'].value;if (x == 'прозрачность'){text = 'Тут все ясно';} else {text = 'Тут еще не все ясно';} document.getElementById('result_43844').innerHTML = text; return false;}</script>
 <p>В уроке упоминались различные виды палитр. Проверьте, все ли вы усвоили.</p>
 <div class="float">
 <img src="https://blog.datawrapper.de/wp-content/uploads/2021/03/full-210101_colorscales24-1536x356.png" alt="Источник." />
@@ -893,30 +979,54 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <div class="ask question">
 <p>Дана качественная переменная с упорядоченными уровнями (например, “холодный”, “теплый”, “горячий”) или количественная переменная. Необходимо подчеркнуть разницу между высокими и низкими значениями. Какая палитра подходит для визуализации?</p>
 </div>
-<form name="form_70601" onsubmit="return validate_form_70601()" method="post">
-<select name="answer_70601"><option> последовательная </option><option> расходящаяся </option><option> качественная </option></select><br><input type="submit" value="check">
+<form name="form_58702" onsubmit="return validate_form_58702()" method="post">
+<input type="radio" name="answer_58702" id="answer_58702_1" value="последовательная"/>
+<label>последовательная</label>
+<br/>
+<input type="radio" name="answer_58702" id="answer_58702_2" value="расходящаяся"/>
+<label>расходящаяся</label>
+<br/>
+<input type="radio" name="answer_58702" id="answer_58702_3" value="качественная"/>
+<label>качественная</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_58702"></div>
 </form>
-<p id="result_70601">
-</p>
-<script> function validate_form_70601() {var x, text; var x = document.forms["form_70601"]["answer_70601"].value;if (x == "последовательная"){text = 'Верно!';} else {text = 'Подсказка: переходы между уровнями происходят <em>последовательно</em>.';} document.getElementById('result_70601').innerHTML = text; return false;} </script>
+<script>function validate_form_58702() {var x, text; var x = document.forms['form_58702']['answer_58702'].value;if (x == 'последовательная'){text = 'Верно!';} else {text = 'Подсказка: переходы между уровнями происходят <em>последовательно</em>.';} document.getElementById('result_58702').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Дана количественная переменная с осмысленным средним значением, например нулем, 50%, медианой, целевым показателем и т.п. Какая палитра подходит для визуализации?</p>
 </div>
-<form name="form_85758" onsubmit="return validate_form_85758()" method="post">
-<select name="answer_85758"><option> последовательная </option><option> расходящаяся </option><option> качественная </option></select><br><input type="submit" value="check">
+<form name="form_93322" onsubmit="return validate_form_93322()" method="post">
+<input type="radio" name="answer_93322" id="answer_93322_1" value="последовательная"/>
+<label>последовательная</label>
+<br/>
+<input type="radio" name="answer_93322" id="answer_93322_2" value="расходящаяся"/>
+<label>расходящаяся</label>
+<br/>
+<input type="radio" name="answer_93322" id="answer_93322_3" value="качественная"/>
+<label>качественная</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_93322"></div>
 </form>
-<p id="result_85758">
-</p>
-<script> function validate_form_85758() {var x, text; var x = document.forms["form_85758"]["answer_85758"].value;if (x == "расходящаяся"){text = 'Отлично!';} else {text = 'Не совсем.';} document.getElementById('result_85758').innerHTML = text; return false;} </script>
+<script>function validate_form_93322() {var x, text; var x = document.forms['form_93322']['answer_93322'].value;if (x == 'расходящаяся'){text = 'Отлично!';} else {text = 'Не совсем.';} document.getElementById('result_93322').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Дана качественная переменная, уровни которой невозможно упорядочить (названия городов, имена авторов и т.п.). Какая палитра подойдет?</p>
 </div>
-<form name="form_52157" onsubmit="return validate_form_52157()" method="post">
-<select name="answer_52157"><option> последовательная </option><option> расходящаяся </option><option> качественная </option></select><br><input type="submit" value="check">
+<form name="form_27220" onsubmit="return validate_form_27220()" method="post">
+<input type="radio" name="answer_27220" id="answer_27220_1" value="последовательная"/>
+<label>последовательная</label>
+<br/>
+<input type="radio" name="answer_27220" id="answer_27220_2" value="расходящаяся"/>
+<label>расходящаяся</label>
+<br/>
+<input type="radio" name="answer_27220" id="answer_27220_3" value="качественная"/>
+<label>качественная</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_27220"></div>
 </form>
-<p id="result_52157">
-</p>
-<script> function validate_form_52157() {var x, text; var x = document.forms["form_52157"]["answer_52157"].value;if (x == "качественная"){text = 'Отлично!';} else {text = 'Не совсем.';} document.getElementById('result_52157').innerHTML = text; return false;} </script>
+<script>function validate_form_27220() {var x, text; var x = document.forms['form_27220']['answer_27220'].value;if (x == 'качественная'){text = 'Отлично!';} else {text = 'Не совсем.';} document.getElementById('result_27220').innerHTML = text; return false;}</script>
 </div>
 <div id="экспорт-графиков-из-среды-r" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> Экспорт графиков из среды R<a href="визуализации.html#экспорт-графиков-из-среды-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -945,9 +1055,6 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <span id="cb163-8"><a href="визуализации.html#cb163-8" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">&quot;px&quot;</span>,</span>
 <span id="cb163-9"><a href="визуализации.html#cb163-9" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
 <span id="cb163-10"><a href="визуализации.html#cb163-10" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>## Saving 2100 x 500 px image</code></pre>
-<pre><code>## Warning: ggrepel: 15 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps</code></pre>
 <div class="task code">
 <p>Запустите <code>swirl()</code>, выберите курс “Exploratory Data Analysis” и пройдите из него урок 3 <code>Graphics Devices in R</code>.</p>
 </div>
@@ -955,38 +1062,46 @@ NB: Этот курс <code>swirl</code> не позволяет отправл�
 <div class="ask question">
 <p>Что делает функция <code>dev.off()</code>?</p>
 </div>
-<form name="form_5419" onsubmit="return validate_form_5419()" method="post">
-<input type="radio" name="answer_5419" id="5419_1" value="вызывает дьявола"><label for="1">вызывает дьявола</label><br><input type="radio" name="answer_5419" id="5419_2" value="отгоняет дьявола"><label for="2">отгоняет дьявола</label><br><input type="radio" name="answer_5419" id="5419_3" value="отключает графическое устройство"><label for="3">отключает графическое устройство</label><br><input type="submit" value="check">
+<form name="form_99587" onsubmit="return validate_form_99587()" method="post">
+<input type="radio" name="answer_99587" id="answer_99587_1" value="вызывает дьявола"/>
+<label>вызывает дьявола</label>
+<br/>
+<input type="radio" name="answer_99587" id="answer_99587_2" value="отгоняет дьявола"/>
+<label>отгоняет дьявола</label>
+<br/>
+<input type="radio" name="answer_99587" id="answer_99587_3" value="отключает графическое устройство"/>
+<label>отключает графическое устройство</label>
+<br/>
+<input type="submit" value="check"/>
+<div id="result_99587"></div>
 </form>
-<p id="result_5419">
-</p>
-<script> function validate_form_5419() {var x, text; var x = document.forms["form_5419"]["answer_5419"].value;if (x == "отключает графическое устройство"){text = 'Все так, и никакого колдунства.';} else {text = 'Нет, это только на языке ЛАТЫНЬ.';} document.getElementById('result_5419').innerHTML = text; return false;} </script>
+<script>function validate_form_99587() {var x, text; var x = document.forms['form_99587']['answer_99587'].value;if (x == 'отключает графическое устройство'){text = 'Все так, и никакого колдунства.';} else {text = 'Нет, это только на языке ЛАТЫНЬ.';} document.getElementById('result_99587').innerHTML = text; return false;}</script>
 <div class="task code">
 <p>ПРАКТИЧЕСКОЕ ЗАДАНИЕ 2: СТАРОФРАНЦУЗСКАЯ ЛИТЕРАТУРА</p>
 </div>
 <p></br></p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="визуализации.html#cb166-1" tabindex="-1"></a><span class="co"># загружаем нужные пакеты</span></span>
-<span id="cb166-2"><a href="визуализации.html#cb166-2" tabindex="-1"></a><span class="fu">library</span>(languageR)</span>
-<span id="cb166-3"><a href="визуализации.html#cb166-3" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb166-4"><a href="визуализации.html#cb166-4" tabindex="-1"></a></span>
-<span id="cb166-5"><a href="визуализации.html#cb166-5" tabindex="-1"></a><span class="co"># загружаем датасет</span></span>
-<span id="cb166-6"><a href="визуализации.html#cb166-6" tabindex="-1"></a>meta <span class="ot">&lt;-</span> oldFrenchMeta</span>
-<span id="cb166-7"><a href="визуализации.html#cb166-7" tabindex="-1"></a></span>
-<span id="cb166-8"><a href="визуализации.html#cb166-8" tabindex="-1"></a><span class="co"># допишите ваш код ниже</span></span>
-<span id="cb166-9"><a href="визуализации.html#cb166-9" tabindex="-1"></a><span class="co"># постройте столбиковую диаграмму, </span></span>
-<span id="cb166-10"><a href="визуализации.html#cb166-10" tabindex="-1"></a><span class="co"># показывающую распределение произведений по темам; цветом закодируйте жанр; </span></span>
-<span id="cb166-11"><a href="визуализации.html#cb166-11" tabindex="-1"></a><span class="co"># уберите названия осей; </span></span>
-<span id="cb166-12"><a href="визуализации.html#cb166-12" tabindex="-1"></a><span class="co"># поверните координатную ось; </span></span>
-<span id="cb166-13"><a href="визуализации.html#cb166-13" tabindex="-1"></a><span class="co"># поменяйте тему оформления на черно-белую, </span></span>
-<span id="cb166-14"><a href="визуализации.html#cb166-14" tabindex="-1"></a><span class="co"># а шрифт -- на Palatino; </span></span>
-<span id="cb166-15"><a href="визуализации.html#cb166-15" tabindex="-1"></a><span class="co"># добавьте заголовок &quot;Plot by [Your Name]&quot;</span></span>
-<span id="cb166-16"><a href="визуализации.html#cb166-16" tabindex="-1"></a></span>
-<span id="cb166-17"><a href="визуализации.html#cb166-17" tabindex="-1"></a></span>
-<span id="cb166-18"><a href="визуализации.html#cb166-18" tabindex="-1"></a></span>
-<span id="cb166-19"><a href="визуализации.html#cb166-19" tabindex="-1"></a><span class="co">#  экспортируйте график в формате jpg </span></span>
-<span id="cb166-20"><a href="визуализации.html#cb166-20" tabindex="-1"></a><span class="co"># с раширением 300 dpi; </span></span>
-<span id="cb166-21"><a href="визуализации.html#cb166-21" tabindex="-1"></a><span class="co"># в названии файла должна быть </span></span>
-<span id="cb166-22"><a href="визуализации.html#cb166-22" tabindex="-1"></a><span class="co"># ваша фамилия и номер группы</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="визуализации.html#cb164-1" tabindex="-1"></a><span class="co"># загружаем нужные пакеты</span></span>
+<span id="cb164-2"><a href="визуализации.html#cb164-2" tabindex="-1"></a><span class="fu">library</span>(languageR)</span>
+<span id="cb164-3"><a href="визуализации.html#cb164-3" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb164-4"><a href="визуализации.html#cb164-4" tabindex="-1"></a></span>
+<span id="cb164-5"><a href="визуализации.html#cb164-5" tabindex="-1"></a><span class="co"># загружаем датасет</span></span>
+<span id="cb164-6"><a href="визуализации.html#cb164-6" tabindex="-1"></a>meta <span class="ot">&lt;-</span> oldFrenchMeta</span>
+<span id="cb164-7"><a href="визуализации.html#cb164-7" tabindex="-1"></a></span>
+<span id="cb164-8"><a href="визуализации.html#cb164-8" tabindex="-1"></a><span class="co"># допишите ваш код ниже</span></span>
+<span id="cb164-9"><a href="визуализации.html#cb164-9" tabindex="-1"></a><span class="co"># постройте столбиковую диаграмму, </span></span>
+<span id="cb164-10"><a href="визуализации.html#cb164-10" tabindex="-1"></a><span class="co"># показывающую распределение произведений по темам; цветом закодируйте жанр; </span></span>
+<span id="cb164-11"><a href="визуализации.html#cb164-11" tabindex="-1"></a><span class="co"># уберите названия осей; </span></span>
+<span id="cb164-12"><a href="визуализации.html#cb164-12" tabindex="-1"></a><span class="co"># поверните координатную ось; </span></span>
+<span id="cb164-13"><a href="визуализации.html#cb164-13" tabindex="-1"></a><span class="co"># поменяйте тему оформления на черно-белую, </span></span>
+<span id="cb164-14"><a href="визуализации.html#cb164-14" tabindex="-1"></a><span class="co"># а шрифт -- на Palatino; </span></span>
+<span id="cb164-15"><a href="визуализации.html#cb164-15" tabindex="-1"></a><span class="co"># добавьте заголовок &quot;Plot by [Your Name]&quot;</span></span>
+<span id="cb164-16"><a href="визуализации.html#cb164-16" tabindex="-1"></a></span>
+<span id="cb164-17"><a href="визуализации.html#cb164-17" tabindex="-1"></a></span>
+<span id="cb164-18"><a href="визуализации.html#cb164-18" tabindex="-1"></a></span>
+<span id="cb164-19"><a href="визуализации.html#cb164-19" tabindex="-1"></a><span class="co">#  экспортируйте график в формате jpg </span></span>
+<span id="cb164-20"><a href="визуализации.html#cb164-20" tabindex="-1"></a><span class="co"># с раширением 300 dpi; </span></span>
+<span id="cb164-21"><a href="визуализации.html#cb164-21" tabindex="-1"></a><span class="co"># в названии файла должна быть </span></span>
+<span id="cb164-22"><a href="визуализации.html#cb164-22" tabindex="-1"></a><span class="co"># ваша фамилия и номер группы</span></span></code></pre></div>
 
 </div>
 </div>

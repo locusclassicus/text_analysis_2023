@@ -1,4 +1,4 @@
-tab:unnamed-chunk-212
+tab:unnamed-chunk-215
 о-курсе
 благодарности
 начало-работы-с-r
@@ -56,6 +56,7 @@ xls-и-xlsx
 txt
 doc
 pdf
+png
 zip
 xml-и-html
 json
@@ -107,7 +108,7 @@ str_split
 эмотиконы
 рутинная-уборка
 лемматизация
-таблицы-html
+html-таблицы
 wikisource
 токенизация-и-лемматизация
 токенизация-в-tidytext

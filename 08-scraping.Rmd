@@ -427,44 +427,9 @@ text_tidy <- messages_signed %>%
 save(text_tidy, file = "data/AntibarbariTidy.Rdata")
 ```
 
-## Таблицы  html
+## Html таблицы
 
-Чуть более сложный пример: скрапинг html таблицы c фильмами IMDB.
-
-```{r}
-url <- "https://web.archive.org/web/20220201012049/https://www.imdb.com/chart/top/"
-html <- read_html(url)
-```
-
-```{r warning=FALSE}
-table <- html %>% 
-  html_element("table") %>% 
-  html_table()
-
-table
-```
-
-Чтобы было удобнее работать с этими данными, их стоит переименовать и трансформировать. 
-
-```{r}
-ratings <- table |>
-  select(
-    rank_title_year = `Rank & Title`,
-    rating = `IMDb Rating`
-  ) |> 
-  mutate(
-    rank_title_year = str_replace_all(rank_title_year, "\n +", " ")
-  ) |> 
-  separate_wider_regex(
-    rank_title_year,
-    patterns = c(
-      rank = "\\d+", "\\. ",
-      title = ".+", " +\\(",
-      year = "\\d+", "\\)"
-    )
-  )
-ratings
-```
+To be supplied.
 
 ## Wikisource
 

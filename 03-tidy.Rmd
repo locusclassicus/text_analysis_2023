@@ -80,14 +80,14 @@ tbl
 
 ```{r echo=FALSE, results='asis'}
 library(checkdown)
-check_question("тиббл", options = c("датафрейм", "тиббл"), right = "✅", wrong =  "❌")
+check_question("тиббл", options = c("датафрейм", "тиббл"), type = "radio", right = "✅", wrong =  "❌")
 ```
  
 ::::{.ask .question}
 Молчаливо исправляет некорректные названия столбцов.
 ::::
 ```{r echo=FALSE, results='asis'}
-check_question("датафрейм", options = c("датафрейм", "тиббл"), right = "✅", wrong =  "❌")
+check_question("датафрейм", options = c("датафрейм", "тиббл"), type = "radio", right = "✅", wrong =  "❌")
 ```
 
 ::::{.ask .question}
@@ -95,7 +95,7 @@ check_question("датафрейм", options = c("датафрейм", "тибб
 ::::
 
 ```{r echo=FALSE, results='asis'}
-check_question("датафрейм", options = c("датафрейм", "тиббл"), right = "✅", wrong =  "❌")
+check_question("датафрейм", options = c("датафрейм", "тиббл"), type = "radio", right = "✅", wrong =  "❌")
 ```
 
 ::::{.ask .question}
@@ -103,7 +103,7 @@ check_question("датафрейм", options = c("датафрейм", "тибб
 ::::
 
 ```{r echo=FALSE, results='asis'}
-check_question("тиббл", options = c("датафрейм", "тиббл"), right = "✅", wrong =  "❌")
+check_question("тиббл", options = c("датафрейм", "тиббл"), type = "radio", right = "✅", wrong =  "❌")
 ```
 
 Кстати, обратили внимание, как работает оператор `<=` с символьным вектором? 
@@ -158,7 +158,7 @@ head(diorisis_sort)
 ::::
 
 ```{r echo=FALSE, results='asis'}
-check_question("Ложь", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
+check_question("Ложь", type = "radio", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
 ```
 
 ::::{.ask .question}
@@ -166,14 +166,14 @@ check_question("Ложь", options = c("Правда", "Ложь"), right = "✅
 ::::
 
 ```{r echo=FALSE, results='asis'}
-check_question("Ложь", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
+check_question("Ложь", type = "radio", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
 ```
 
 :::spoiler
 Кванти́ль в математической статистике — значение, которое заданная случайная величина не превышает с фиксированной вероятностью. В нашем случае 90% данных ниже 90.1.
 :::
 
-Это было сложное задание, время сделать перерыв ☕
+Это было сложное задание, можно сделать перерыв ☕
 
 
 ## Опрятные данные
@@ -233,7 +233,7 @@ table4b
 ::::
 
 ```{r echo=FALSE, results='asis'}
-check_question("Ложь", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
+check_question("Ложь", options = c("Правда", "Ложь"), type = "select", right = "✅", wrong =  "❌")
 ```
 
 ::::{.ask .question}
@@ -241,7 +241,7 @@ check_question("Ложь", options = c("Правда", "Ложь"), right = "✅
 ::::
 
 ```{r echo=FALSE, results='asis'}
-check_question("Ложь", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
+check_question("Ложь", options = c("Правда", "Ложь"), type = "select", right = "✅", wrong =  "❌")
 ```
 
 ::::{.ask .question}
@@ -249,7 +249,7 @@ check_question("Ложь", options = c("Правда", "Ложь"), right = "✅
 ::::
 
 ```{r echo=FALSE, results='asis'}
-check_question("Ложь", options = c("Правда", "Ложь"), right = "✅", wrong =  "❌")
+check_question("Ложь", options = c("Правда", "Ложь"), type= "select", right = "✅", wrong =  "❌")
 ```
 
 Отличная работа! Больше `swirl` в этом уроке не будет, дальше -- только реальные данные.

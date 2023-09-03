@@ -409,7 +409,7 @@ all(x > 9)
 ::::
 
 ```{r results='asis', echo=F}
-check_question("FALSE", options = c("TRUE", "FALSE", "NA"), right = "Железная логика!", wrong = "Нет, одно из условий невыполнимо")
+check_question("FALSE", options = c("TRUE", "FALSE", "NA"), type = "select", right = "Железная логика!", wrong = "Одно из условий невыполнимо")
 ```
 
 ::::{.ask .question}
@@ -417,7 +417,7 @@ check_question("FALSE", options = c("TRUE", "FALSE", "NA"), right = "Желез�
 ::::
 
 ```{r results='asis', echo=F}
-check_question("TRUE", options = c("TRUE", "FALSE", "NA"), right = "Восхищаемся вами", wrong = "Это дизъюнкция...")
+check_question("TRUE", type = "select", options = c("TRUE", "FALSE", "NA"), right = "Восхищаемся вами", wrong = "Это дизъюнкция...")
 ```
 
 ::::{.ask .question}
