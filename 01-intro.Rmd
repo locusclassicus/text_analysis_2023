@@ -547,8 +547,6 @@ check_question(answer =  4, right = "Красота!", wrong = "Надо еще 
 
 </br> 
 
-![_Впереди еще списки, матрицы и таблицы. Не забывайте давать себе отдых!_](https://c.pxhere.com/photos/7f/cb/coffee_cup_drink_espresso_caffeine_cafe_breakfast_beverage-893387.jpg!d){width="60%"}
-
 ## Списки
 
 Списки, или рекурсивные векторы (в отличие от атомарных векторов), могут хранить данные разных типов.
@@ -769,6 +767,8 @@ summary(hapax_plato)
 ПРАКТИЧЕСКОЕ ЗАДАНИЕ 1: ИСПАНСКИЕ ПИСАТЕЛИ
 ::::
 
+</br>
+
 ```{r eval=FALSE}
 # устанавливаем и загружаем нужный пакет
 install.packages("languageR")
@@ -789,5 +789,6 @@ meta <- data("spanishMeta")
 
 
 Поздравляем! С этой главой вы справились. Дальше будет сложнее, но интереснее. 
+
 
 ![](https://thumbs.gfycat.com/TidyUnlawfulJunco-size_restricted.gif)

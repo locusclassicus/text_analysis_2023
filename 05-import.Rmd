@@ -84,6 +84,8 @@ amazon <- read_excel("files/AmazonBooks.xlsx")
 head(amazon)
 ```
 
+Можно указать отдельные листы, которые необходимо прочитать.^[https://r4ds.hadley.nz/spreadsheets]
+
 ### txt
 
 Для чтения текстовых файлов в базовом R есть функция `readlines()`.

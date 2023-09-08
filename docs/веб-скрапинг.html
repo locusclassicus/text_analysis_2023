@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-09-03" />
+<meta name="date" content="2023-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -491,10 +491,10 @@ div.csl-indent {
 <div class="infobox">
 <p>CSS (англ. Cascading Style Sheets «каскадные таблицы стилей») — формальный язык декорирования и описания внешнего вида документа (веб-страницы), написанного с использованием языка разметки (чаще всего HTML или XHTML).</p>
 </div>
-<p>У этого курса тоже есть свой css, в котором блок infobox (вы его видите как серый квадратик с определением) описано так:</p>
+<p>У этого курса тоже есть свой файл .css, в котором блок infobox (вы его видите как серый квадратик с определением) описан так:</p>
 <pre><code>.infobox {
-  padding: 1em;
-  background: #ededed;
+  padding: 1em 1em 1em 4em;
+  background: aliceblue 5px center/3em no-repeat;
   color: black;
 }</code></pre>
 <p>Проще говоря, это инструкция, что делать с тем или иным элементом. Каждое правило CSS имеет две основные части — <strong>селектор</strong> и <strong>блок объявлений</strong>. Селектор, расположенный в левой части правила до знака «{», определяет, на какие части документа (возможно, специально обозначенные) распространяется правило. Блок объявлений располагается в правой части правила. Он помещается в фигурные скобки, и, в свою очередь, состоит из одного или более объявлений, разделённых знаком «;».</p>
@@ -837,18 +837,39 @@ div.csl-indent {
 </div>
 <div id="html-таблицы" class="section level2 hasAnchor" number="9.9">
 <h2><span class="header-section-number">9.9</span> Html таблицы<a href="веб-скрапинг.html#html-таблицы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To be supplied.</p>
+<p>Если вам повезет, то ваши данные уже будут храниться в HTML-таблице, и их можно будет просто считать из этой таблицы<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>. Распознать таблицу в браузере обычно несложно: она имеет прямоугольную структуру из строк и столбцов, и ее можно скопировать и вставить в такой инструмент, как Excel.</p>
+<p>Таблицы HTML строятся из четырех основных элементов: <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> (строка таблицы), <code>&lt;th&gt;</code> (заголовок таблицы) и <code>&lt;td&gt;</code> (данные таблицы). Мы соберем информацию о <a href="https://hum.hse.ru/proj/project2022_2024">проектных группах</a> ФГН в 2022-2024 г.</p>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="веб-скрапинг.html#cb562-1" tabindex="-1"></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://hum.hse.ru/proj/project2022_2024&quot;</span>)</span>
+<span id="cb562-2"><a href="веб-скрапинг.html#cb562-2" tabindex="-1"></a>my_table <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span>  </span>
+<span id="cb562-3"><a href="веб-скрапинг.html#cb562-3" tabindex="-1"></a>  <span class="fu">html_element</span>(<span class="st">&quot;.bordered&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb562-4"><a href="веб-скрапинг.html#cb562-4" tabindex="-1"></a>  <span class="fu">html_table</span>()</span>
+<span id="cb562-5"><a href="веб-скрапинг.html#cb562-5" tabindex="-1"></a></span>
+<span id="cb562-6"><a href="веб-скрапинг.html#cb562-6" tabindex="-1"></a>my_table</span></code></pre></div>
+<pre><code>## # A tibble: 26 × 2
+##    X1                                                                      X2   
+##    &lt;chr&gt;                                                                   &lt;chr&gt;
+##  1 Название проекта                                                        Руко…
+##  2 Проекты Школы исторических наук                                         Прое…
+##  3 Восточноевропейские исследования в транснациональной перспективе        Гори…
+##  4 Россия и русские в корреспонденции и дневниках британских дипломатов п… Смил…
+##  5 Социальные и культурные исследования медицины XVIII-XXI вв.             Афан…
+##  6 Экономика строительства в России XVIII века                             Бори…
+##  7 Проекты Школы лингвистики                                               Прое…
+##  8 «Найти общий язык»: современные методы исследования языковых ситуаций … Влах…
+##  9 Дискурсивные формулы в турецком языке в общетеоретической и типологиче… Рыжо…
+## 10 Типологический конструктикон                                            Лету…
+## # ℹ 16 more rows</code></pre>
 </div>
 <div id="wikisource" class="section level2 hasAnchor" number="9.10">
 <h2><span class="header-section-number">9.10</span> Wikisource<a href="веб-скрапинг.html#wikisource" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Многие тексты доступны на сайте Wikisource.org. Попробуем извлечь все сказки Салтыкова-Щедрина.</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="веб-скрапинг.html#cb562-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://ru.wikisource.org/wiki/%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB_%D0%95%D0%B2%D0%B3%D1%80%D0%B0%D1%84%D0%BE%D0%B2%D0%B8%D1%87_%D0%A1%D0%B0%D0%BB%D1%82%D1%8B%D0%BA%D0%BE%D0%B2-%D0%A9%D0%B5%D0%B4%D1%80%D0%B8%D0%BD&quot;</span></span>
-<span id="cb562-2"><a href="веб-скрапинг.html#cb562-2" tabindex="-1"></a>html <span class="ot">=</span> <span class="fu">read_html</span>(url)</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="веб-скрапинг.html#cb564-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://ru.wikisource.org/wiki/%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB_%D0%95%D0%B2%D0%B3%D1%80%D0%B0%D1%84%D0%BE%D0%B2%D0%B8%D1%87_%D0%A1%D0%B0%D0%BB%D1%82%D1%8B%D0%BA%D0%BE%D0%B2-%D0%A9%D0%B5%D0%B4%D1%80%D0%B8%D0%BD&quot;</span></span>
+<span id="cb564-2"><a href="веб-скрапинг.html#cb564-2" tabindex="-1"></a>html <span class="ot">=</span> <span class="fu">read_html</span>(url)</span></code></pre></div>
 <p>Для того, чтобы справиться с такой страницей, пригодится Selector Gadget (расширение для Chrome). Вот <a href="https://youtu.be/oqNTfWrGdbk">тут</a> можно посмотреть короткое видео, как его установить. При помощи селектора выбираем нужные уровни.</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="веб-скрапинг.html#cb563-1" tabindex="-1"></a>toc <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
-<span id="cb563-2"><a href="веб-скрапинг.html#cb563-2" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;ul:nth-child(22) a&quot;</span>)</span>
-<span id="cb563-3"><a href="веб-скрапинг.html#cb563-3" tabindex="-1"></a></span>
-<span id="cb563-4"><a href="веб-скрапинг.html#cb563-4" tabindex="-1"></a><span class="fu">head</span>(toc)</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="веб-скрапинг.html#cb565-1" tabindex="-1"></a>toc <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb565-2"><a href="веб-скрапинг.html#cb565-2" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;ul:nth-child(22) a&quot;</span>)</span>
+<span id="cb565-3"><a href="веб-скрапинг.html#cb565-3" tabindex="-1"></a></span>
+<span id="cb565-4"><a href="веб-скрапинг.html#cb565-4" tabindex="-1"></a><span class="fu">head</span>(toc)</span></code></pre></div>
 <pre><code>## {xml_nodeset (6)}
 ## [1] &lt;a href=&quot;/wiki/%D0%9F%D0%BE%D0%B2%D0%B5%D1%81%D1%82%D1%8C_%D0%BE_%D1%82%D ...
 ## [2] &lt;a href=&quot;/wiki/%D0%93%D0%BE%D0%B4%D0%BE%D0%B2%D1%89%D0%B8%D0%BD%D0%B0_(%D ...
@@ -857,17 +878,17 @@ div.csl-indent {
 ## [5] &lt;a href=&quot;/wiki/%D0%9F%D1%80%D0%B5%D0%BC%D1%83%D0%B4%D1%80%D1%8B%D0%B9_%D0 ...
 ## [6] &lt;a href=&quot;/wiki/%D0%A1%D0%B0%D0%BC%D0%BE%D0%BE%D1%82%D0%B2%D0%B5%D1%80%D0% ...</code></pre>
 <p>Теперь у нас есть список ссылок.</p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="веб-скрапинг.html#cb565-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb565-2"><a href="веб-скрапинг.html#cb565-2" tabindex="-1"></a>  <span class="at">title =</span> toc <span class="sc">%&gt;%</span></span>
-<span id="cb565-3"><a href="веб-скрапинг.html#cb565-3" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;title&quot;</span>),</span>
-<span id="cb565-4"><a href="веб-скрапинг.html#cb565-4" tabindex="-1"></a>  <span class="at">href =</span> toc <span class="sc">%&gt;%</span> </span>
-<span id="cb565-5"><a href="веб-скрапинг.html#cb565-5" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>)</span>
-<span id="cb565-6"><a href="веб-скрапинг.html#cb565-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="веб-скрапинг.html#cb567-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb567-2"><a href="веб-скрапинг.html#cb567-2" tabindex="-1"></a>  <span class="at">title =</span> toc <span class="sc">%&gt;%</span></span>
+<span id="cb567-3"><a href="веб-скрапинг.html#cb567-3" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;title&quot;</span>),</span>
+<span id="cb567-4"><a href="веб-скрапинг.html#cb567-4" tabindex="-1"></a>  <span class="at">href =</span> toc <span class="sc">%&gt;%</span> </span>
+<span id="cb567-5"><a href="веб-скрапинг.html#cb567-5" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>)</span>
+<span id="cb567-6"><a href="веб-скрапинг.html#cb567-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>Данных о годе публикации под тегом <a> нет; надо подняться на уровень выше:</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="веб-скрапинг.html#cb566-1" tabindex="-1"></a>toc2 <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
-<span id="cb566-2"><a href="веб-скрапинг.html#cb566-2" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;ul:nth-child(22) li&quot;</span>)</span>
-<span id="cb566-3"><a href="веб-скрапинг.html#cb566-3" tabindex="-1"></a></span>
-<span id="cb566-4"><a href="веб-скрапинг.html#cb566-4" tabindex="-1"></a><span class="fu">head</span>(toc2)</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="веб-скрапинг.html#cb568-1" tabindex="-1"></a>toc2 <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb568-2"><a href="веб-скрапинг.html#cb568-2" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;ul:nth-child(22) li&quot;</span>)</span>
+<span id="cb568-3"><a href="веб-скрапинг.html#cb568-3" tabindex="-1"></a></span>
+<span id="cb568-4"><a href="веб-скрапинг.html#cb568-4" tabindex="-1"></a><span class="fu">head</span>(toc2)</span></code></pre></div>
 <pre><code>## {xml_nodeset (6)}
 ## [1] &lt;li&gt;\n&lt;a href=&quot;/wiki/%D0%9F%D0%BE%D0%B2%D0%B5%D1%81%D1%82%D1%8C_%D0%BE_%D ...
 ## [2] &lt;li&gt;\n&lt;a href=&quot;/wiki/%D0%93%D0%BE%D0%B4%D0%BE%D0%B2%D1%89%D0%B8%D0%BD%D0% ...
@@ -875,8 +896,8 @@ div.csl-indent {
 ## [4] &lt;li&gt;\n&lt;a href=&quot;/wiki/%D0%94%D0%B8%D0%BA%D0%B8%D0%B9_%D0%BF%D0%BE%D0%BC%D0 ...
 ## [5] &lt;li&gt;\n&lt;a href=&quot;/wiki/%D0%9F%D1%80%D0%B5%D0%BC%D1%83%D0%B4%D1%80%D1%8B%D0% ...
 ## [6] &lt;li&gt;\n&lt;a href=&quot;/wiki/%D0%A1%D0%B0%D0%BC%D0%BE%D0%BE%D1%82%D0%B2%D0%B5%D1% ...</code></pre>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="веб-скрапинг.html#cb568-1" tabindex="-1"></a>toc2 <span class="sc">%&gt;%</span></span>
-<span id="cb568-2"><a href="веб-скрапинг.html#cb568-2" tabindex="-1"></a>  <span class="fu">html_text2</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="веб-скрапинг.html#cb570-1" tabindex="-1"></a>toc2 <span class="sc">%&gt;%</span></span>
+<span id="cb570-2"><a href="веб-скрапинг.html#cb570-2" tabindex="-1"></a>  <span class="fu">html_text2</span>()</span></code></pre></div>
 <pre><code>##  [1] &quot;Повесть о том, как один мужик двух генералов прокормил, 1869&quot;
 ##  [2] &quot;Годовщина, 1869&quot;                                             
 ##  [3] &quot;Пропала совесть, 1869&quot;                                       
@@ -911,14 +932,14 @@ div.csl-indent {
 ## [32] &quot;Ворон-челобитчик, 1886&quot;                                      
 ## [33] &quot;Рождественская сказка, 1886&quot;</code></pre>
 <p>Соединяем:</p>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="веб-скрапинг.html#cb570-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb570-2"><a href="веб-скрапинг.html#cb570-2" tabindex="-1"></a>  <span class="at">title_year =</span> toc2 <span class="sc">%&gt;%</span></span>
-<span id="cb570-3"><a href="веб-скрапинг.html#cb570-3" tabindex="-1"></a>    <span class="fu">html_text2</span>(),</span>
-<span id="cb570-4"><a href="веб-скрапинг.html#cb570-4" tabindex="-1"></a>  <span class="at">href =</span> toc <span class="sc">%&gt;%</span> </span>
-<span id="cb570-5"><a href="веб-скрапинг.html#cb570-5" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>)</span>
-<span id="cb570-6"><a href="веб-скрапинг.html#cb570-6" tabindex="-1"></a>)</span>
-<span id="cb570-7"><a href="веб-скрапинг.html#cb570-7" tabindex="-1"></a></span>
-<span id="cb570-8"><a href="веб-скрапинг.html#cb570-8" tabindex="-1"></a>tales</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="веб-скрапинг.html#cb572-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb572-2"><a href="веб-скрапинг.html#cb572-2" tabindex="-1"></a>  <span class="at">title_year =</span> toc2 <span class="sc">%&gt;%</span></span>
+<span id="cb572-3"><a href="веб-скрапинг.html#cb572-3" tabindex="-1"></a>    <span class="fu">html_text2</span>(),</span>
+<span id="cb572-4"><a href="веб-скрапинг.html#cb572-4" tabindex="-1"></a>  <span class="at">href =</span> toc <span class="sc">%&gt;%</span> </span>
+<span id="cb572-5"><a href="веб-скрапинг.html#cb572-5" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>)</span>
+<span id="cb572-6"><a href="веб-скрапинг.html#cb572-6" tabindex="-1"></a>)</span>
+<span id="cb572-7"><a href="веб-скрапинг.html#cb572-7" tabindex="-1"></a></span>
+<span id="cb572-8"><a href="веб-скрапинг.html#cb572-8" tabindex="-1"></a>tales</span></code></pre></div>
 <pre><code>## # A tibble: 33 × 2
 ##    title_year                                                   href            
 ##    &lt;chr&gt;                                                        &lt;chr&gt;           
@@ -934,40 +955,40 @@ div.csl-indent {
 ## 10 Обманщик-газетчик и легковерный читатель, 1884               /wiki/%D0%9E%D0…
 ## # ℹ 23 more rows</code></pre>
 <p>Дальше можно достать текст для каждой сказки. Потренируемся на одной. Снова привлекаем Selector Gadget для составления правила.</p>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="веб-скрапинг.html#cb572-1" tabindex="-1"></a>url_test <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
-<span id="cb572-2"><a href="веб-скрапинг.html#cb572-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb572-3"><a href="веб-скрапинг.html#cb572-3" tabindex="-1"></a>  <span class="fu">pull</span>(href) <span class="sc">%&gt;%</span> </span>
-<span id="cb572-4"><a href="веб-скрапинг.html#cb572-4" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">&quot;https://ru.wikisource.org&quot;</span>, .)</span>
-<span id="cb572-5"><a href="веб-скрапинг.html#cb572-5" tabindex="-1"></a></span>
-<span id="cb572-6"><a href="веб-скрапинг.html#cb572-6" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url_test) <span class="sc">%&gt;%</span> </span>
-<span id="cb572-7"><a href="веб-скрапинг.html#cb572-7" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;.indent p&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb572-8"><a href="веб-скрапинг.html#cb572-8" tabindex="-1"></a>  <span class="fu">html_text2</span>() </span>
-<span id="cb572-9"><a href="веб-скрапинг.html#cb572-9" tabindex="-1"></a></span>
-<span id="cb572-10"><a href="веб-скрапинг.html#cb572-10" tabindex="-1"></a>text[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="веб-скрапинг.html#cb574-1" tabindex="-1"></a>url_test <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
+<span id="cb574-2"><a href="веб-скрапинг.html#cb574-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb574-3"><a href="веб-скрапинг.html#cb574-3" tabindex="-1"></a>  <span class="fu">pull</span>(href) <span class="sc">%&gt;%</span> </span>
+<span id="cb574-4"><a href="веб-скрапинг.html#cb574-4" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">&quot;https://ru.wikisource.org&quot;</span>, .)</span>
+<span id="cb574-5"><a href="веб-скрапинг.html#cb574-5" tabindex="-1"></a></span>
+<span id="cb574-6"><a href="веб-скрапинг.html#cb574-6" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url_test) <span class="sc">%&gt;%</span> </span>
+<span id="cb574-7"><a href="веб-скрапинг.html#cb574-7" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;.indent p&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb574-8"><a href="веб-скрапинг.html#cb574-8" tabindex="-1"></a>  <span class="fu">html_text2</span>() </span>
+<span id="cb574-9"><a href="веб-скрапинг.html#cb574-9" tabindex="-1"></a></span>
+<span id="cb574-10"><a href="веб-скрапинг.html#cb574-10" tabindex="-1"></a>text[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;Жили да были два генерала, и так как оба были легкомысленны, то в скором времени, по щучьему велению, по моему хотению, очутились на необитаемом острове.&quot;</code></pre>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="веб-скрапинг.html#cb574-1" tabindex="-1"></a>text[<span class="fu">length</span>(text)]</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="веб-скрапинг.html#cb576-1" tabindex="-1"></a>text[<span class="fu">length</span>(text)]</span></code></pre></div>
 <pre><code>## [1] &quot;Однако, и об мужике не забыли; выслали ему рюмку водки да пятак серебра: веселись, мужичина!&quot;</code></pre>
 <p>Первый и последний параграф достали верно; можно обобщать.</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="веб-скрапинг.html#cb576-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
-<span id="cb576-2"><a href="веб-скрапинг.html#cb576-2" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">href =</span> <span class="fu">paste0</span>(<span class="st">&quot;https://ru.wikisource.org&quot;</span>, href))</span></code></pre></div>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="веб-скрапинг.html#cb577-1" tabindex="-1"></a>urls <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
-<span id="cb577-2"><a href="веб-скрапинг.html#cb577-2" tabindex="-1"></a>  <span class="fu">pull</span>(href)</span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="веб-скрапинг.html#cb578-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
+<span id="cb578-2"><a href="веб-скрапинг.html#cb578-2" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">href =</span> <span class="fu">paste0</span>(<span class="st">&quot;https://ru.wikisource.org&quot;</span>, href))</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="веб-скрапинг.html#cb579-1" tabindex="-1"></a>urls <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
+<span id="cb579-2"><a href="веб-скрапинг.html#cb579-2" tabindex="-1"></a>  <span class="fu">pull</span>(href)</span></code></pre></div>
 <p>Функция для извлечения текстов.</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="веб-скрапинг.html#cb578-1" tabindex="-1"></a>get_text <span class="ot">&lt;-</span> <span class="cf">function</span>(url) {</span>
-<span id="cb578-2"><a href="веб-скрапинг.html#cb578-2" tabindex="-1"></a>  <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span> </span>
-<span id="cb578-3"><a href="веб-скрапинг.html#cb578-3" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;.indent p&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb578-4"><a href="веб-скрапинг.html#cb578-4" tabindex="-1"></a>  <span class="fu">html_text2</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb578-5"><a href="веб-скрапинг.html#cb578-5" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="at">collapse=</span> <span class="st">&quot; &quot;</span>)</span>
-<span id="cb578-6"><a href="веб-скрапинг.html#cb578-6" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="веб-скрапинг.html#cb579-1" tabindex="-1"></a>tales_text <span class="ot">&lt;-</span> <span class="fu">map</span>(urls, get_text)</span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="веб-скрапинг.html#cb580-1" tabindex="-1"></a>get_text <span class="ot">&lt;-</span> <span class="cf">function</span>(url) {</span>
+<span id="cb580-2"><a href="веб-скрапинг.html#cb580-2" tabindex="-1"></a>  <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span> </span>
+<span id="cb580-3"><a href="веб-скрапинг.html#cb580-3" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">&quot;.indent p&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb580-4"><a href="веб-скрапинг.html#cb580-4" tabindex="-1"></a>  <span class="fu">html_text2</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb580-5"><a href="веб-скрапинг.html#cb580-5" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="at">collapse=</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb580-6"><a href="веб-скрапинг.html#cb580-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="веб-скрапинг.html#cb581-1" tabindex="-1"></a>tales_text <span class="ot">&lt;-</span> <span class="fu">map</span>(urls, get_text)</span></code></pre></div>
 <p>Несколько сказок не выловились: там другая структура html, но в целом все получилось.</p>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="веб-скрапинг.html#cb580-1" tabindex="-1"></a>tales_text <span class="ot">&lt;-</span> tales_text <span class="sc">%&gt;%</span></span>
-<span id="cb580-2"><a href="веб-скрапинг.html#cb580-2" tabindex="-1"></a>  <span class="fu">flatten_chr</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb580-3"><a href="веб-скрапинг.html#cb580-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb580-4"><a href="веб-скрапинг.html#cb580-4" tabindex="-1"></a></span>
-<span id="cb580-5"><a href="веб-скрапинг.html#cb580-5" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
-<span id="cb580-6"><a href="веб-скрапинг.html#cb580-6" tabindex="-1"></a>  <span class="fu">bind_cols</span>(tales_text)</span></code></pre></div>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="веб-скрапинг.html#cb581-1" tabindex="-1"></a>tales</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="веб-скрапинг.html#cb582-1" tabindex="-1"></a>tales_text <span class="ot">&lt;-</span> tales_text <span class="sc">%&gt;%</span></span>
+<span id="cb582-2"><a href="веб-скрапинг.html#cb582-2" tabindex="-1"></a>  <span class="fu">flatten_chr</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb582-3"><a href="веб-скрапинг.html#cb582-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb582-4"><a href="веб-скрапинг.html#cb582-4" tabindex="-1"></a></span>
+<span id="cb582-5"><a href="веб-скрапинг.html#cb582-5" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
+<span id="cb582-6"><a href="веб-скрапинг.html#cb582-6" tabindex="-1"></a>  <span class="fu">bind_cols</span>(tales_text)</span></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="веб-скрапинг.html#cb583-1" tabindex="-1"></a>tales</span></code></pre></div>
 <pre><code>## # A tibble: 33 × 3
 ##    title_year                                                   href       value
 ##    &lt;chr&gt;                                                        &lt;chr&gt;      &lt;chr&gt;
@@ -983,11 +1004,11 @@ div.csl-indent {
 ## 10 Обманщик-газетчик и легковерный читатель, 1884               https://r… &quot;Жил…
 ## # ℹ 23 more rows</code></pre>
 <p>Дальше можно разделить столбец с названием и годом и, например, удалить ссылку, она больше не нужна. Разделить по запятой не получится, т.к. она есть в некоторых названиях.</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="веб-скрапинг.html#cb583-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
-<span id="cb583-2"><a href="веб-скрапинг.html#cb583-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>href) <span class="sc">%&gt;%</span> </span>
-<span id="cb583-3"><a href="веб-скрапинг.html#cb583-3" tabindex="-1"></a>  <span class="fu">separate</span>(title_year, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;title&quot;</span>, <span class="st">&quot;year&quot;</span>), <span class="at">sep =</span> <span class="sc">-</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb583-4"><a href="веб-скрапинг.html#cb583-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">title =</span> <span class="fu">str_remove</span>(title, <span class="st">&quot;,$&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="веб-скрапинг.html#cb584-1" tabindex="-1"></a>tales</span></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="веб-скрапинг.html#cb585-1" tabindex="-1"></a>tales <span class="ot">&lt;-</span> tales <span class="sc">%&gt;%</span> </span>
+<span id="cb585-2"><a href="веб-скрапинг.html#cb585-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>href) <span class="sc">%&gt;%</span> </span>
+<span id="cb585-3"><a href="веб-скрапинг.html#cb585-3" tabindex="-1"></a>  <span class="fu">separate</span>(title_year, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;title&quot;</span>, <span class="st">&quot;year&quot;</span>), <span class="at">sep =</span> <span class="sc">-</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb585-4"><a href="веб-скрапинг.html#cb585-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">title =</span> <span class="fu">str_remove</span>(title, <span class="st">&quot;,$&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="веб-скрапинг.html#cb586-1" tabindex="-1"></a>tales</span></code></pre></div>
 <pre><code>## # A tibble: 33 × 3
 ##    title                                                  year    value         
 ##    &lt;chr&gt;                                                  &lt;chr&gt;   &lt;chr&gt;         
@@ -1005,6 +1026,12 @@ div.csl-indent {
 <p>Недостающие две сказки я не буду пытаться извлечь, но логику вы поняли.</p>
 
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="41">
+<li id="fn41"><p><a href="https://r4ds.hadley.nz/webscraping#tables" class="uri">https://r4ds.hadley.nz/webscraping#tables</a><a href="веб-скрапинг.html#fnref41" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
