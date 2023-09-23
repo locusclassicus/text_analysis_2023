@@ -217,3 +217,9 @@ dracor
 модулярность
 алгоритмы-обнаружения-сообществ
 двудольные-графы-биграфы
+практическое-задание
+интерактивный-график
+r-markdown
+slide-with-bullets
+slide-with-r-output
+slide-with-plot

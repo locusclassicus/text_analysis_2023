@@ -352,7 +352,7 @@ messages_signed <- messages_signed %>%
 
 ```{r}
 messages_signed <- messages_signed %>% 
-  mutate(lemma = str_replace_all(lemma, "[[^\u0400-\u04FF]]", "")) %>% 
+  mutate(lemma = str_replace_all(lemma, "[[^\u0400-\u04FF]]", " ")) %>% 
   filter(nchar(lemma) > 0) 
 ```
 
