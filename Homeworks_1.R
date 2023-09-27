@@ -1,11 +1,4 @@
-# lesson 4 functions
-# "R Programming E"
-# 10: lapply and sapply
-# 
-
 swirl::install_course("Advanced R Programming")
-# 1: Setting Up Swirl
-# 2: Functions
 # 3: Functional Programming with purrr
 
 # lesson 5

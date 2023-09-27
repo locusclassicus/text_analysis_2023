@@ -299,13 +299,13 @@ my_data %>%
 Загрузим пример неопрятных данных и попробуем их преобразовать для анализа. [Book-Crossing](http://www2.informatik.uni-freiburg.de/~cziegler/BX/) -- датасет с рейтингами миллионов книг и обезличенными демографическими данными о более 250 тысячах их читателей. Этот датасет хранится в трех разных таблицах.
 
 ```{r eval=FALSE}
-ratings <- read_delim("files/BX-CSV-Dump/BX-Book-Ratings.csv", delim = ";")
+ratings <- read_delim("files/BX/BX-Book-Ratings.csv", delim = ";")
 ratings
 
-books <- read_delim("data_files/BX-CSV-Dump/BX-Books.csv", delim = ";")
+books <- read_delim("files/BX/BX-Books.csv", delim = ";")
 books
 
-users <- read_delim("data_files/BX-CSV-Dump/BX-Users.csv", delim = ";")
+users <- read_delim("files/BX/BX-Users.csv", delim = ";")
 users
 ```
 
