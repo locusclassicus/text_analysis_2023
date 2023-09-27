@@ -711,7 +711,7 @@ div.csl-indent {
 <span id="cb733-12"><a href="эмоциональная-тональность.html#cb733-12" tabindex="-1"></a>  <span class="fu">acast</span>(token <span class="sc">~</span> tone, <span class="at">value.var =</span> <span class="st">&quot;n&quot;</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb733-13"><a href="эмоциональная-тональность.html#cb733-13" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;grey20&quot;</span>, <span class="st">&quot;grey80&quot;</span>),</span>
 <span id="cb733-14"><a href="эмоциональная-тональность.html#cb733-14" tabindex="-1"></a>                   <span class="at">max.words =</span> <span class="dv">99</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-387-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-388-1.png" width="672" /></p>
 <p>Здесь видно, что негативная тональность в этой части не связана с судьбой героев: об этом говорят такие слова, как “лютый”, “враг”, “свирепый”. Рассказчик, глядя на заброшенный Симонов монастырь, вспоминает о “печальной истории” Москвы. Таким образом, <strong>с количественной точки зрения, самые мрачный фрагмент повести посвящен не судьбе бедной девушки, а “глухому стону времен”</strong>: Карамзин-историк уже переигрывает Карамзина-новелиста.</p>
 <p>Приведем небольшой отрывок из этой части повести:</p>
 <blockquote>
@@ -728,7 +728,7 @@ div.csl-indent {
 <span id="cb734-5"><a href="эмоциональная-тональность.html#cb734-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb734-6"><a href="эмоциональная-тональность.html#cb734-6" tabindex="-1"></a><span class="fu">ggplot</span>(liza_chunk_sent, <span class="fu">aes</span>(chunk, sum, <span class="at">fill =</span> tone)) <span class="sc">+</span></span>
 <span id="cb734-7"><a href="эмоциональная-тональность.html#cb734-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-388-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-389-1.png" width="672" /></p>
 <p>График получился весьма осмысленным. Мы уже сказали выше про отрывки 3-4. Дальше немного скорби в отрывке 8 посвящено покойному отцу Лизы. В 11-м отрывке отразилась тревога матери за судьбу дочери: “коварно”, “обидеть”, “дурной” вносят вклад в настроение этого фрагмента. Это достаточно характерно для сентиментальной прозы с ее противопоставлением пороков городской жизни и пасторальных добродетелей.</p>
 <blockquote>
 <p>У меня всегда сердце бывает не на своем месте, когда ты ходишь в город; я всегда ставлю свечу перед образ и молю господа бога, чтобы он сохранил тебя от всякой беды и напасти.</p>
@@ -749,7 +749,7 @@ div.csl-indent {
 <span id="cb735-6"><a href="эмоциональная-тональность.html#cb735-6" tabindex="-1"></a>  <span class="fu">filter</span>(tone <span class="sc">==</span> <span class="st">&quot;neg&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb735-7"><a href="эмоциональная-тональность.html#cb735-7" tabindex="-1"></a>  <span class="fu">count</span>(token, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
 <span id="cb735-8"><a href="эмоциональная-тональность.html#cb735-8" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(token, n, <span class="at">max.words =</span> <span class="dv">100</span>, <span class="at">colors =</span> pal))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-389-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-390-1.png" width="672" /></p>
 <p>Следует отметить, что часть этих слов относится не к самой девушке, а к ее матери.</p>
 </div>
 <div id="для-других-языков" class="section level2 hasAnchor" number="12.10">
@@ -836,7 +836,7 @@ div.csl-indent {
 <span id="cb756-3"><a href="эмоциональная-тональность.html#cb756-3" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Example Plot Trajectory&quot;</span>,</span>
 <span id="cb756-4"><a href="эмоциональная-тональность.html#cb756-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Narrative Time&quot;</span>,</span>
 <span id="cb756-5"><a href="эмоциональная-тональность.html#cb756-5" tabindex="-1"></a>     <span class="at">ylab=</span> <span class="st">&quot;Emotional Valence&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-397-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-398-1.png" width="672" /></p>
 <p>О других способах визуализировать результат можно узнать из <a href="https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html">виньетки к пакету</a>.</p>
 </div>
 <div id="виды-эмоций" class="section level2 hasAnchor" number="12.11">
@@ -867,7 +867,7 @@ div.csl-indent {
 <span id="cb760-5"><a href="эмоциональная-тональность.html#cb760-5" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>, </span>
 <span id="cb760-6"><a href="эмоциональная-тональность.html#cb760-6" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Emotions in Sample text&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Percentage&quot;</span></span>
 <span id="cb760-7"><a href="эмоциональная-тональность.html#cb760-7" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-400-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-401-1.png" width="672" /></p>
 <p>Сложно осуждать машину за не вполне верно считанную тональность: Фрост – сложный автор. Для отзывов на Tripadvisor это может сработать лучше.</p>
 
 </div>

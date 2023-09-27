@@ -672,7 +672,7 @@ div.csl-indent {
 <span id="cb782-4"><a href="тематическое-моделирование.html#cb782-4" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
 <span id="cb782-5"><a href="тематическое-моделирование.html#cb782-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">ncol=</span><span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb782-6"><a href="тематическое-моделирование.html#cb782-6" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-413-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-414-1.png" width="672" /></p>
 <p>В “огуречной” теме 1 обнаружились также “плод”, “тыква” и “мед”. Видимо, наш алгоритм вполне “узнал” плодово-овощную рубрику Ирины Макаровой, в которой она рассказывает, что и зачем выращивали древние греки и римляне. А вот “бобы” прибились к более философскому топику 4.</p>
 </div>
 <div id="сравнение-топиков" class="section level2 hasAnchor" number="13.8">
@@ -714,7 +714,7 @@ div.csl-indent {
 <span id="cb786-4"><a href="тематическое-моделирование.html#cb786-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;термин&quot;</span>) <span class="sc">+</span></span>
 <span id="cb786-5"><a href="тематическое-моделирование.html#cb786-5" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;log2 (beta_2 / beta_1)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb786-6"><a href="тематическое-моделирование.html#cb786-6" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-416-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-417-1.png" width="672" /></p>
 <p>В теме 1 видим и других обитателей садов и огородов.</p>
 </div>
 <div id="темы-и-документы" class="section level2 hasAnchor" number="13.9">
@@ -772,7 +772,7 @@ div.csl-indent {
 <span id="cb795-4"><a href="тематическое-моделирование.html#cb795-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">as.factor</span>(topic), gamma, <span class="at">color =</span> document)) <span class="sc">+</span> </span>
 <span id="cb795-5"><a href="тематическое-моделирование.html#cb795-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
 <span id="cb795-6"><a href="тематическое-моделирование.html#cb795-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>document)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-421-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-422-1.png" width="672" /></p>
 </div>
 <div id="распределения-вероятности-для-топиков" class="section level2 hasAnchor" number="13.10">
 <h2><span class="header-section-number">13.10</span> Распределения вероятности для топиков<a href="тематическое-моделирование.html#распределения-вероятности-для-топиков" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -784,7 +784,7 @@ div.csl-indent {
 <span id="cb796-6"><a href="тематическое-моделирование.html#cb796-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Распределение вероятностей для каждого топика&quot;</span>, </span>
 <span id="cb796-7"><a href="тематическое-моделирование.html#cb796-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Число документов&quot;</span>,</span>
 <span id="cb796-8"><a href="тематическое-моделирование.html#cb796-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">expression</span>(gamma))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-422-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-423-1.png" width="672" /></p>
 <p>Почти ни одна тема не распределена равномерно: гамма чаще всего принимает значения либо около нуля, либо в районе единицы. Тема 2, однако, отклоняется от этого правила.</p>
 <div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb797-1"><a href="тематическое-моделирование.html#cb797-1" tabindex="-1"></a>text_top_terms <span class="sc">%&gt;%</span> </span>
 <span id="cb797-2"><a href="тематическое-моделирование.html#cb797-2" tabindex="-1"></a>  <span class="fu">filter</span>(topic <span class="sc">==</span> <span class="dv">2</span>)</span></code></pre></div>

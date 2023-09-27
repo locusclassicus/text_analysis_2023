@@ -513,23 +513,23 @@ div.csl-indent {
 <div class="ask question">
 <p>Для просмотра исходного кода любой функции необходимо…</p>
 </div>
-<form name="form_26687" onsubmit="return validate_form_26687()" method="post">
-<input type="radio" name="answer_26687" id="answer_26687_1" value="набрать имя функции без аргументов и без скобок"/>
-<label>набрать имя функции без аргументов и без скобок</label>
+<form name="form_49855" onsubmit="return validate_form_49855()" method="post">
+<input type="radio" name="answer_49855" id="answer_49855_1" value="единственный способ — найти код функции в репозитории на GitHub"/>
+<label>единственный способ — найти код функции в репозитории на GitHub</label>
 <br/>
-<input type="radio" name="answer_26687" id="answer_26687_2" value="единственный способ -- найти код функции в репозитории на GitHub"/>
-<label>единственный способ -- найти код функции в репозитории на GitHub</label>
-<br/>
-<input type="radio" name="answer_26687" id="answer_26687_3" value="вызывать help к функции"/>
-<label>вызывать help к функции</label>
-<br/>
-<input type="radio" name="answer_26687" id="answer_26687_4" value="использовать специальную функцию для просмотра кода"/>
+<input type="radio" name="answer_49855" id="answer_49855_2" value="использовать специальную функцию для просмотра кода"/>
 <label>использовать специальную функцию для просмотра кода</label>
 <br/>
+<input type="radio" name="answer_49855" id="answer_49855_3" value="набрать имя функции без аргументов и без скобок"/>
+<label>набрать имя функции без аргументов и без скобок</label>
+<br/>
+<input type="radio" name="answer_49855" id="answer_49855_4" value="вызвать help к функции"/>
+<label>вызвать help к функции</label>
+<br/>
 <input type="submit" value="check"/>
-<div id="result_26687"></div>
+<div id="result_49855"></div>
 </form>
-<script>function validate_form_26687() {var x, text; var x = document.forms['form_26687']['answer_26687'].value;if (x == 'набрать имя функции без аргументов и без скобок'){text = 'Все верно!';} else {text = 'Не совсем…';} document.getElementById('result_26687').innerHTML = text; return false;}</script>
+<script>function validate_form_49855() {var x, text; var x = document.forms['form_49855']['answer_49855'].value;if (x == 'набрать имя функции без аргументов и без скобок'){text = 'Все верно!';} else {text = 'Не совсем…';} document.getElementById('result_49855').innerHTML = text; return false;}</script>
 </div>
 <div id="область-видимости-переменных" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Область видимости переменных<a href="функциональное-программирование.html#область-видимости-переменных" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -622,6 +622,10 @@ div.csl-indent {
 <span id="cb242-5"><a href="функциональное-программирование.html#cb242-5" tabindex="-1"></a></span>
 <span id="cb242-6"><a href="функциональное-программирование.html#cb242-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;the&quot;</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">&quot;if&quot;</span>, <span class="dv">5</span>))</span>
 <span id="cb242-7"><a href="функциональное-программирование.html#cb242-7" tabindex="-1"></a><span class="co"># is_article(x)</span></span></code></pre></div>
+<div class="task code">
+<p>Напишите функцию <code>awesome_plot</code>, которая будет принимать в качестве аргументов два вектора, трансформировать их в тиббл и строить диаграмму рассеяния при помощи ggplot(). Задайте цвет и прозрачность точек, а в подзаголовке выведите коеффицент корреляции.</p>
+</div>
+<p></br></p>
 </div>
 <div id="векторизованные-конструкции" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Векторизованные конструкции<a href="функциональное-программирование.html#векторизованные-конструкции" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -693,6 +697,7 @@ div.csl-indent {
 <div class="infobox">
 <p>Вы уже заметили, что в циклах часто используется буква <code>i</code>. Но никакой особой магии в ней нет!</p>
 </div>
+<p></br></p>
 </div>
 <div id="цикл-while" class="section level4 hasAnchor" number="5.5.1.2">
 <h4><span class="header-section-number">5.5.1.2</span> Цикл <code>while</code><a href="функциональное-программирование.html#цикл-while" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -713,13 +718,17 @@ div.csl-indent {
 <span id="cb261-2"><a href="функциональное-программирование.html#cb261-2" tabindex="-1"></a>y[<span class="fu">nchar</span>(y) <span class="sc">==</span> <span class="dv">6</span>][<span class="dv">1</span>] </span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
 <div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="функциональное-программирование.html#cb263-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0 sec elapsed</code></pre>
+<pre><code>## 0.001 sec elapsed</code></pre>
 <p>В целом, ничего незаконного в циклах нет, но</p>
 <ul>
 <li>множество вложенных друг в друга циклов сложно воспринимать;</li>
 <li>порой они могут замедлить выполнение кода.</li>
 </ul>
 <p>И в базовом R, и в диалекте tidyverse для этого есть несколько решений, о которых скажем чуть ниже. Сначала рассмотрим еще одну векторизованную конструкцию – условие.</p>
+<div class="task code">
+<p>Напишите цикл, который для каждого столбца в таблице считает число отсутствующих значений и выводит это число вместе с названием столбца. Возспользуйтесь датасетом <code>starwars</code> из пакета <code>dplyr</code>.</p>
+</div>
+<p></br></p>
 </div>
 </div>
 <div id="условия" class="section level3 hasAnchor" number="5.5.2">
@@ -744,14 +753,24 @@ div.csl-indent {
 <span id="cb271-2"><a href="функциональное-программирование.html#cb271-2" tabindex="-1"></a>x <span class="sc">&gt;=</span> <span class="dv">5</span></span></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 <p>Такое условие вернет ошибку.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="функциональное-программирование.html#cb273-1" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="fu">print</span>(<span class="st">&quot;все сработало&quot;</span>)</span></code></pre></div>
-<pre><code>## Error in if (x &gt;= 5) print(&quot;все сработало&quot;): the condition has length &gt; 1</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="функциональное-программирование.html#cb273-1" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="fu">print</span>(<span class="st">&quot;все сломалось&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in if (x &gt;= 5) print(&quot;все сломалось&quot;): the condition has length &gt; 1</code></pre>
 <p>Можно скорректировать код так:</p>
 <div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="функциональное-программирование.html#cb275-1" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(x <span class="sc">&gt;=</span> <span class="dv">5</span>)) <span class="fu">print</span>(<span class="st">&quot;все сработало&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;все сработало&quot;</code></pre>
 <p>По той же причине внутри условия не надо использовать логические операторы <code>|</code> (“или”) или <code>&amp;</code> (“и”), потому что они векторизованы:</p>
 <div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="функциональное-программирование.html#cb277-1" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">|</span> x <span class="sc">&gt;</span> <span class="dv">7</span></span></code></pre></div>
 <pre><code>##  [1]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
+<div class="task code">
+<p>Доработайте код из задания выше. Теперь цикл должен считать число отсутствующих значений и выводить название только тех столбцов, где число <code>NA</code> больше 5.</p>
+</div>
+<p>Сколько таких столбцов в датасете <code>starwars</code>?</p>
+<form name="form_13571" onsubmit="return validate_form_13571()" method="post">
+<input type="text" placeholder="" name="answer_13571"/>
+<input type="submit" value="check"/>
+<div id="result_13571"></div>
+</form>
+<script>function validate_form_13571() {var x, text; var x = document.forms['form_13571']['answer_13571'].value;if (x == '4'){text = 'С вами явно пребывает сила';} else {text = 'Можешь многое узнать ты еще';} document.getElementById('result_13571').innerHTML = text; return false;}</script>
 </div>
 </div>
 <div id="вместо-циклов-базовый-r-и-tidyverse" class="section level2 hasAnchor" number="5.6">
@@ -786,7 +805,7 @@ div.csl-indent {
 <span id="cb284-6"><a href="функциональное-программирование.html#cb284-6" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb284-7"><a href="функциональное-программирование.html#cb284-7" tabindex="-1"></a>hapax_plato<span class="ot">&lt;-</span> <span class="fu">apply</span>(hapax_plato, <span class="dv">2</span>, as.numeric)</span>
 <span id="cb284-8"><a href="функциональное-программирование.html#cb284-8" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0 sec elapsed</code></pre>
+<pre><code>## 0.001 sec elapsed</code></pre>
 <p>Сравните со скростью цикла, который мы написали выше:</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="функциональное-программирование.html#cb286-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/HapaxPlato.Rdata&quot;</span>)</span>
 <span id="cb286-2"><a href="функциональное-программирование.html#cb286-2" tabindex="-1"></a><span class="co"># избавляемся от факторов и строк</span></span>
@@ -856,7 +875,7 @@ div.csl-indent {
 ## [3,] &quot;гнев&quot;   &quot;вложила&quot;
 ## [4,] &quot;гнев&quot;   &quot;гера&quot;   
 ## [5,] &quot;гнев&quot;   &quot;мысли&quot;</code></pre>
-<p>Поскольку наш “корпус” – это список, то применить грамматику <code>dplyr</code> не очень удобно, списко легко превращается в таблицу:</p>
+<p>Поскольку наш “корпус” – это список, то применить грамматику <code>dplyr</code> не очень удобно, но списко легко превращается в таблицу:</p>
 <div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="функциональное-программирование.html#cb301-1" tabindex="-1"></a><span class="fu">stack</span>(corpus) <span class="co"># передвинуть и переименовать: `relocate()` и `rename()`</span></span></code></pre></div>
 <pre><code>##       values ind
 ## 1       гнев   x
@@ -889,6 +908,10 @@ div.csl-indent {
 ##  8 то        y    
 ##  9 мысли     y    
 ## 10 вложила   y</code></pre>
+<div class="task code">
+<p>Пройдите урок 10 <code>lapply and sapply</code> и урок 11 <code>vapply and tapply</code> из курса <code>R Programming E</code> в <code>swirl</code>.</p>
+</div>
+<p></br></p>
 </div>
 <div id="purrr" class="section level2 hasAnchor" number="5.7">
 <h2><span class="header-section-number">5.7</span> Purrr<a href="функциональное-программирование.html#purrr" class="anchor-section" aria-label="Anchor link to header"></a></h2>

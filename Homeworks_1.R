@@ -1,8 +1,7 @@
 # lesson 4 functions
 # "R Programming E"
-# 9: Functions
 # 10: lapply and sapply
-# 11: vapply and tapply
+# 
 
 swirl::install_course("Advanced R Programming")
 # 1: Setting Up Swirl

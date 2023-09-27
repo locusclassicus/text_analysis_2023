@@ -808,7 +808,7 @@ div.csl-indent {
 <span id="cb629-6"><a href="токенизация-и-лемматизация.html#cb629-6" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
 <span id="cb629-7"><a href="токенизация-и-лемматизация.html#cb629-7" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
 <span id="cb629-8"><a href="токенизация-и-лемматизация.html#cb629-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-329-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-330-1.png" width="672" /></p>
 <p>Обратите внимание на некоторое заметное число междометий. Какое междометие встречается здесь чаще всего, можно догадаться 😊</p>
 <p>Можно отобрать наиболее частотные слова для любой части речи.</p>
 <div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="токенизация-и-лемматизация.html#cb630-1" tabindex="-1"></a>nouns <span class="ot">&lt;-</span> liza_df <span class="sc">%&gt;%</span></span>
@@ -838,7 +838,7 @@ div.csl-indent {
 <span id="cb634-4"><a href="токенизация-и-лемматизация.html#cb634-4" tabindex="-1"></a></span>
 <span id="cb634-5"><a href="токенизация-и-лемматизация.html#cb634-5" tabindex="-1"></a>nouns <span class="sc">%&gt;%</span></span>
 <span id="cb634-6"><a href="токенизация-и-лемматизация.html#cb634-6" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(lemma, n, <span class="at">max.words =</span> <span class="dv">50</span>, <span class="at">colors =</span> pal))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-331-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-332-1.png" width="672" /></p>
 <p>Можно заметить, что в тексте часто встречаются слова “мать”, “матушка”, “старушка” (42 раза): Лизина мать упоминается в тексте так же часто, как Эраст, и чаще, чем слово “сердце” (24). В любовной повести Карамзин чуть ли не чаще говорит о матери героини, чем о её возлюбленном!</p>
 </div>
 <div id="совместная-встречаемость-слов" class="section level2 hasAnchor" number="10.7">
@@ -873,7 +873,7 @@ div.csl-indent {
 <span id="cb637-9"><a href="токенизация-и-лемматизация.html#cb637-9" tabindex="-1"></a>  <span class="fu">theme_graph</span>(<span class="at">base_family =</span> <span class="st">&quot;Arial Narrow&quot;</span>) <span class="sc">+</span></span>
 <span id="cb637-10"><a href="токенизация-и-лемматизация.html#cb637-10" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb637-11"><a href="токенизация-и-лемматизация.html#cb637-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Совместная встречаемость слов&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Существительные и прилагательные&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-333-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-334-1.png" width="672" /></p>
 <p>Милый друг, глубокий пруд. Грустная история!</p>
 <p>Чтобы узнать, какие слова чаще стоят рядом, используем ту же функцию, но с другими аргументами<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>:</p>
 <div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="токенизация-и-лемматизация.html#cb638-1" tabindex="-1"></a>cooc <span class="ot">&lt;-</span> <span class="fu">cooccurrence</span>(x<span class="sc">$</span>lemma, <span class="at">relevant =</span> x<span class="sc">$</span>upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NOUN&quot;</span>, <span class="st">&quot;ADJ&quot;</span>), <span class="at">skipgram =</span> <span class="dv">1</span>)</span>
@@ -893,7 +893,7 @@ div.csl-indent {
 <span id="cb640-6"><a href="токенизация-и-лемматизация.html#cb640-6" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">angle=</span><span class="dv">15</span>, <span class="at">repel =</span> T) <span class="sc">+</span></span>
 <span id="cb640-7"><a href="токенизация-и-лемматизация.html#cb640-7" tabindex="-1"></a>  <span class="fu">theme_graph</span>(<span class="at">base_family =</span> <span class="st">&quot;Arial Narrow&quot;</span>) <span class="sc">+</span></span>
 <span id="cb640-8"><a href="токенизация-и-лемматизация.html#cb640-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Слова, стоящие рядом в тексте&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Существительные и прилагательные&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-334-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-335-1.png" width="672" /></p>
 </div>
 <div id="синтаксическая-разметка" class="section level2 hasAnchor" number="10.8">
 <h2><span class="header-section-number">10.8</span> Синтаксическая разметка<a href="токенизация-и-лемматизация.html#синтаксическая-разметка" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -915,7 +915,7 @@ div.csl-indent {
 <p>Связь между токенами определяется в полях token_id и head_token_id, отношение зависимости определено в dep_rel. Корневой токен имеет значение 0, то есть ни от чего не зависит. Графически изобразить связи поможет пакет <code>textplot</code>.</p>
 <div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="токенизация-и-лемматизация.html#cb644-1" tabindex="-1"></a><span class="fu">library</span>(textplot)</span>
 <span id="cb644-2"><a href="токенизация-и-лемматизация.html#cb644-2" tabindex="-1"></a><span class="fu">textplot_dependencyparser</span>(liza_synt_sel)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-337-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-338-1.png" width="672" /></p>
 <p>Построить граф можно и при помощи библиотек igraph и ggraph:</p>
 <div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="токенизация-и-лемматизация.html#cb645-1" tabindex="-1"></a>liza_synt_sel <span class="ot">&lt;-</span> liza_synt <span class="sc">%&gt;%</span> </span>
 <span id="cb645-2"><a href="токенизация-и-лемматизация.html#cb645-2" tabindex="-1"></a>  <span class="fu">filter</span>(doc_id <span class="sc">==</span> <span class="st">&quot;doc17&quot;</span>, sentence_id <span class="sc">==</span> <span class="dv">1</span>)</span>
@@ -947,7 +947,7 @@ div.csl-indent {
 <span id="cb648-12"><a href="токенизация-и-лемматизация.html#cb648-12" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb648-13"><a href="токенизация-и-лемматизация.html#cb648-13" tabindex="-1"></a>  <span class="fu">theme_void</span>(<span class="at">base_family =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
 <span id="cb648-14"><a href="токенизация-и-лемматизация.html#cb648-14" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> token), <span class="at">nudge_y =</span> <span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-339-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-340-1.png" width="672" /></p>
 
 </div>
 </div>
