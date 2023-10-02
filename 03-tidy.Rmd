@@ -262,6 +262,7 @@ check_question("Ложь", options = c("Правда", "Ложь"), type= "selec
 </br>
 
 ```{r eval=FALSE}
+devtools::install_github("ropensci/gutenbergr")
 library(gutenbergr)
 library(dplyr)
 library(tidyr)

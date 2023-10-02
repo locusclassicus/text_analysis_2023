@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-09-27" />
+<meta name="date" content="2023-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -828,45 +828,46 @@ div.csl-indent {
 <p>ПРАКТИЧЕСКОЕ ЗАДАНИЕ 3: БИБЛИОТЕКА GUTENBERG</p>
 </div>
 <p></br></p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="опрятные-данные.html#cb189-1" tabindex="-1"></a><span class="fu">library</span>(gutenbergr)</span>
-<span id="cb189-2"><a href="опрятные-данные.html#cb189-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb189-3"><a href="опрятные-данные.html#cb189-3" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb189-4"><a href="опрятные-данные.html#cb189-4" tabindex="-1"></a></span>
-<span id="cb189-5"><a href="опрятные-данные.html#cb189-5" tabindex="-1"></a>works <span class="ot">&lt;-</span> <span class="fu">gutenberg_works</span>()</span>
-<span id="cb189-6"><a href="опрятные-данные.html#cb189-6" tabindex="-1"></a></span>
-<span id="cb189-7"><a href="опрятные-данные.html#cb189-7" tabindex="-1"></a><span class="co"># Отберите ряды, в которых gutenberg_author_id равен 65;</span></span>
-<span id="cb189-8"><a href="опрятные-данные.html#cb189-8" tabindex="-1"></a><span class="co"># после этого выберите два столбца: author, title</span></span>
-<span id="cb189-9"><a href="опрятные-данные.html#cb189-9" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> works <span class="sc">%&gt;%</span> </span>
-<span id="cb189-10"><a href="опрятные-данные.html#cb189-10" tabindex="-1"></a>  <span class="co"># ваш код здесь</span></span>
-<span id="cb189-11"><a href="опрятные-данные.html#cb189-11" tabindex="-1"></a>  </span>
-<span id="cb189-12"><a href="опрятные-данные.html#cb189-12" tabindex="-1"></a><span class="co"># Загрузите данные об авторах и выберите столбцы: author, deathdate</span></span>
-<span id="cb189-13"><a href="опрятные-данные.html#cb189-13" tabindex="-1"></a>authors <span class="ot">&lt;-</span> gutenberg_authors <span class="sc">%&gt;%</span> </span>
-<span id="cb189-14"><a href="опрятные-данные.html#cb189-14" tabindex="-1"></a>  <span class="co"># ваш код здесь</span></span>
-<span id="cb189-15"><a href="опрятные-данные.html#cb189-15" tabindex="-1"></a></span>
-<span id="cb189-16"><a href="опрятные-данные.html#cb189-16" tabindex="-1"></a><span class="co"># Соедините my_data с данными о смерти автора из authors, </span></span>
-<span id="cb189-17"><a href="опрятные-данные.html#cb189-17" tabindex="-1"></a><span class="co"># так чтобы к my_data добавился новый столбец. </span></span>
-<span id="cb189-18"><a href="опрятные-данные.html#cb189-18" tabindex="-1"></a><span class="co"># После этого используйте функцию separate, </span></span>
-<span id="cb189-19"><a href="опрятные-данные.html#cb189-19" tabindex="-1"></a><span class="co"># чтобы разделить столбец с именем и фамилией на два новых: author, name. </span></span>
-<span id="cb189-20"><a href="опрятные-данные.html#cb189-20" tabindex="-1"></a><span class="co"># Удалите столбец с именем автора, оставив только фамилию.</span></span>
-<span id="cb189-21"><a href="опрятные-данные.html#cb189-21" tabindex="-1"></a><span class="co"># Добавьте новый столбец century, </span></span>
-<span id="cb189-22"><a href="опрятные-данные.html#cb189-22" tabindex="-1"></a><span class="co"># используя функцию mutate и данные из столбца deathdate. </span></span>
-<span id="cb189-23"><a href="опрятные-данные.html#cb189-23" tabindex="-1"></a><span class="co"># Используйте оператор pipe, не сохраняйте промежуточные результаты!</span></span>
-<span id="cb189-24"><a href="опрятные-данные.html#cb189-24" tabindex="-1"></a></span>
-<span id="cb189-25"><a href="опрятные-данные.html#cb189-25" tabindex="-1"></a>my_data <span class="sc">%&gt;%</span> </span>
-<span id="cb189-26"><a href="опрятные-данные.html#cb189-26" tabindex="-1"></a>  <span class="co"># ваш код здесь</span></span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="опрятные-данные.html#cb189-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ropensci/gutenbergr&quot;</span>)</span>
+<span id="cb189-2"><a href="опрятные-данные.html#cb189-2" tabindex="-1"></a><span class="fu">library</span>(gutenbergr)</span>
+<span id="cb189-3"><a href="опрятные-данные.html#cb189-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb189-4"><a href="опрятные-данные.html#cb189-4" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb189-5"><a href="опрятные-данные.html#cb189-5" tabindex="-1"></a></span>
+<span id="cb189-6"><a href="опрятные-данные.html#cb189-6" tabindex="-1"></a>works <span class="ot">&lt;-</span> <span class="fu">gutenberg_works</span>()</span>
+<span id="cb189-7"><a href="опрятные-данные.html#cb189-7" tabindex="-1"></a></span>
+<span id="cb189-8"><a href="опрятные-данные.html#cb189-8" tabindex="-1"></a><span class="co"># Отберите ряды, в которых gutenberg_author_id равен 65;</span></span>
+<span id="cb189-9"><a href="опрятные-данные.html#cb189-9" tabindex="-1"></a><span class="co"># после этого выберите два столбца: author, title</span></span>
+<span id="cb189-10"><a href="опрятные-данные.html#cb189-10" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> works <span class="sc">%&gt;%</span> </span>
+<span id="cb189-11"><a href="опрятные-данные.html#cb189-11" tabindex="-1"></a>  <span class="co"># ваш код здесь</span></span>
+<span id="cb189-12"><a href="опрятные-данные.html#cb189-12" tabindex="-1"></a>  </span>
+<span id="cb189-13"><a href="опрятные-данные.html#cb189-13" tabindex="-1"></a><span class="co"># Загрузите данные об авторах и выберите столбцы: author, deathdate</span></span>
+<span id="cb189-14"><a href="опрятные-данные.html#cb189-14" tabindex="-1"></a>authors <span class="ot">&lt;-</span> gutenberg_authors <span class="sc">%&gt;%</span> </span>
+<span id="cb189-15"><a href="опрятные-данные.html#cb189-15" tabindex="-1"></a>  <span class="co"># ваш код здесь</span></span>
+<span id="cb189-16"><a href="опрятные-данные.html#cb189-16" tabindex="-1"></a></span>
+<span id="cb189-17"><a href="опрятные-данные.html#cb189-17" tabindex="-1"></a><span class="co"># Соедините my_data с данными о смерти автора из authors, </span></span>
+<span id="cb189-18"><a href="опрятные-данные.html#cb189-18" tabindex="-1"></a><span class="co"># так чтобы к my_data добавился новый столбец. </span></span>
+<span id="cb189-19"><a href="опрятные-данные.html#cb189-19" tabindex="-1"></a><span class="co"># После этого используйте функцию separate, </span></span>
+<span id="cb189-20"><a href="опрятные-данные.html#cb189-20" tabindex="-1"></a><span class="co"># чтобы разделить столбец с именем и фамилией на два новых: author, name. </span></span>
+<span id="cb189-21"><a href="опрятные-данные.html#cb189-21" tabindex="-1"></a><span class="co"># Удалите столбец с именем автора, оставив только фамилию.</span></span>
+<span id="cb189-22"><a href="опрятные-данные.html#cb189-22" tabindex="-1"></a><span class="co"># Добавьте новый столбец century, </span></span>
+<span id="cb189-23"><a href="опрятные-данные.html#cb189-23" tabindex="-1"></a><span class="co"># используя функцию mutate и данные из столбца deathdate. </span></span>
+<span id="cb189-24"><a href="опрятные-данные.html#cb189-24" tabindex="-1"></a><span class="co"># Используйте оператор pipe, не сохраняйте промежуточные результаты!</span></span>
+<span id="cb189-25"><a href="опрятные-данные.html#cb189-25" tabindex="-1"></a></span>
+<span id="cb189-26"><a href="опрятные-данные.html#cb189-26" tabindex="-1"></a>my_data <span class="sc">%&gt;%</span> </span>
+<span id="cb189-27"><a href="опрятные-данные.html#cb189-27" tabindex="-1"></a>  <span class="co"># ваш код здесь</span></span></code></pre></div>
 </div>
 <div id="пример-буккроссинг" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Пример: буккроссинг<a href="опрятные-данные.html#пример-буккроссинг" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="смотрим-на-данные" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Смотрим на данные<a href="опрятные-данные.html#смотрим-на-данные" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Загрузим пример неопрятных данных и попробуем их преобразовать для анализа. <a href="http://www2.informatik.uni-freiburg.de/~cziegler/BX/">Book-Crossing</a> – датасет с рейтингами миллионов книг и обезличенными демографическими данными о более 250 тысячах их читателей. Этот датасет хранится в трех разных таблицах.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="опрятные-данные.html#cb190-1" tabindex="-1"></a>ratings <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;files/BX-CSV-Dump/BX-Book-Ratings.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="опрятные-данные.html#cb190-1" tabindex="-1"></a>ratings <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;files/BX/BX-Book-Ratings.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span>
 <span id="cb190-2"><a href="опрятные-данные.html#cb190-2" tabindex="-1"></a>ratings</span>
 <span id="cb190-3"><a href="опрятные-данные.html#cb190-3" tabindex="-1"></a></span>
-<span id="cb190-4"><a href="опрятные-данные.html#cb190-4" tabindex="-1"></a>books <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;data_files/BX-CSV-Dump/BX-Books.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb190-4"><a href="опрятные-данные.html#cb190-4" tabindex="-1"></a>books <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;files/BX/BX-Books.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span>
 <span id="cb190-5"><a href="опрятные-данные.html#cb190-5" tabindex="-1"></a>books</span>
 <span id="cb190-6"><a href="опрятные-данные.html#cb190-6" tabindex="-1"></a></span>
-<span id="cb190-7"><a href="опрятные-данные.html#cb190-7" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;data_files/BX-CSV-Dump/BX-Users.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb190-7"><a href="опрятные-данные.html#cb190-7" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;files/BX/BX-Users.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span>
 <span id="cb190-8"><a href="опрятные-данные.html#cb190-8" tabindex="-1"></a>users</span></code></pre></div>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="опрятные-данные.html#cb191-1" tabindex="-1"></a><span class="fu">save</span>(users, <span class="at">file =</span> <span class="st">&quot;data/UsersBX.Rdata&quot;</span>)</span>
 <span id="cb191-2"><a href="опрятные-данные.html#cb191-2" tabindex="-1"></a><span class="fu">save</span>(books, <span class="at">file =</span> <span class="st">&quot;data/BooksBX.Rdata&quot;</span>)</span>

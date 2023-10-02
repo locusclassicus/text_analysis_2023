@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-09-27" />
+<meta name="date" content="2023-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -712,13 +712,13 @@ div.csl-indent {
 <span id="cb257-8"><a href="функциональное-программирование.html#cb257-8" tabindex="-1"></a>y[k]</span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
 <div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="функциональное-программирование.html#cb259-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.003 sec elapsed</code></pre>
+<pre><code>## 0.004 sec elapsed</code></pre>
 <p>То же самое можно сделать без цикла, причем быстрее!</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="функциональное-программирование.html#cb261-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb261-2"><a href="функциональное-программирование.html#cb261-2" tabindex="-1"></a>y[<span class="fu">nchar</span>(y) <span class="sc">==</span> <span class="dv">6</span>][<span class="dv">1</span>] </span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
 <div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="функциональное-программирование.html#cb263-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.001 sec elapsed</code></pre>
+<pre><code>## 0 sec elapsed</code></pre>
 <p>В целом, ничего незаконного в циклах нет, но</p>
 <ul>
 <li>множество вложенных друг в друга циклов сложно воспринимать;</li>
@@ -805,7 +805,7 @@ div.csl-indent {
 <span id="cb284-6"><a href="функциональное-программирование.html#cb284-6" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb284-7"><a href="функциональное-программирование.html#cb284-7" tabindex="-1"></a>hapax_plato<span class="ot">&lt;-</span> <span class="fu">apply</span>(hapax_plato, <span class="dv">2</span>, as.numeric)</span>
 <span id="cb284-8"><a href="функциональное-программирование.html#cb284-8" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.001 sec elapsed</code></pre>
+<pre><code>## 0 sec elapsed</code></pre>
 <p>Сравните со скростью цикла, который мы написали выше:</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="функциональное-программирование.html#cb286-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/HapaxPlato.Rdata&quot;</span>)</span>
 <span id="cb286-2"><a href="функциональное-программирование.html#cb286-2" tabindex="-1"></a><span class="co"># избавляемся от факторов и строк</span></span>
@@ -851,7 +851,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="функциональное-программирование.html#cb294-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;гнев&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;воспой&quot;</span>)</span>
 <span id="cb294-2"><a href="функциональное-программирование.html#cb294-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;в&quot;</span>, <span class="st">&quot;мысли&quot;</span>, <span class="st">&quot;ему&quot;</span>, <span class="st">&quot;то&quot;</span>, <span class="st">&quot;вложила&quot;</span>, <span class="st">&quot;богиня&quot;</span>, <span class="st">&quot;державная&quot;</span>, <span class="st">&quot;гера&quot;</span>)</span>
 <span id="cb294-3"><a href="функциональное-программирование.html#cb294-3" tabindex="-1"></a>corpus <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span></code></pre></div>
-<p>Наш условный корпус – это список из 2 элементов (текстов), а каждый текст хранится как символьный вектор. Допустим, мы хотим взять из каждого диалога выборку размером 5 слов, то есть применить функцию <code>sample()</code> к элементам списка. При помощи <code>lapply()</code> (l = list) это делается так:</p>
+<p>Наш условный корпус – это список из 2 элементов (текстов), а каждый текст хранится как символьный вектор. Допустим, мы хотим взять из каждого текста выборку размером 5 слов, то есть применить функцию <code>sample()</code> к элементам списка. При помощи <code>lapply()</code> (l = list) это делается так:</p>
 <div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="функциональное-программирование.html#cb295-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>) </span>
 <span id="cb295-2"><a href="функциональное-программирование.html#cb295-2" tabindex="-1"></a><span class="fu">lapply</span>(corpus, sample, <span class="dv">5</span>, <span class="at">replace =</span> T)</span></code></pre></div>
 <pre><code>## $x
@@ -962,13 +962,13 @@ div.csl-indent {
 <img src="https://d33wubrfki0l68.cloudfront.net/68a21c4a103426c3b311c9dcfad8fe379d4892f1/55c9d/diagrams/lists-map2.png" style="width:60.0%" alt="Как работает map2()" />
 <div class="figcaption">Как работает <code>map2()</code></div>
 </div>
-<p>Это можно обобщить следующим образом (<a href="https://adv-r.hadley.nz/functionals.html#map2">источник</a>){ width=60% }:</p>
+<p>Это можно обобщить следующим образом (<a href="https://adv-r.hadley.nz/functionals.html#map2" width="60%">источник</a>):</p>
 <p><img src="https://d33wubrfki0l68.cloudfront.net/7a545699ff7069a98329fcfbe6e42b734507eb16/211a5/diagrams/functionals/map2-arg.png" /></p>
 <p>Можно было бы предположить, что должны быть и map3(), map4() и т.д., но во всех случаеях, когда у функции больше двух аргументов, используется <code>pmap()</code>.</p>
 </div>
 <div id="пример-итерации" class="section level2 hasAnchor" number="5.8">
 <h2><span class="header-section-number">5.8</span> Пример итерации<a href="функциональное-программирование.html#пример-итерации" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Функция <code>map2()</code> в анализе текста: функция, которая принимает на входе список таблиц, созданных функцией <code>slide</code>, и назначает каждому окну id.<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>. Используется для создания скользящего окна при создании эмбеддингов.</p>
+<p>Функция <code>map2()</code> в анализе текста: функция, которая принимает на входе список таблиц, созданных функцией <code>slide</code>, и назначает каждому окну id.<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a> Используется для создания скользящего окна при создании эмбеддингов.</p>
 <div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="функциональное-программирование.html#cb311-1" tabindex="-1"></a>corpus_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">stack</span>(corpus))</span>
 <span id="cb311-2"><a href="функциональное-программирование.html#cb311-2" tabindex="-1"></a>windows <span class="ot">&lt;-</span> slider<span class="sc">::</span><span class="fu">slide</span>(corpus_tbl, <span class="sc">~</span>.x, <span class="at">.after =</span> <span class="dv">1</span>)</span>
 <span id="cb311-3"><a href="функциональное-программирование.html#cb311-3" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">map2</span>(<span class="at">.x =</span> windows, <span class="at">.y =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(windows), <span class="sc">~</span> <span class="fu">mutate</span>(.x, <span class="at">window_id =</span> .y)) <span class="co"># out is a list</span></span>
@@ -999,6 +999,47 @@ div.csl-indent {
 <div id="furrr" class="section level2 hasAnchor" number="5.9">
 <h2><span class="header-section-number">5.9</span> Furrr<a href="функциональное-программирование.html#furrr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Про параллельные вычисления, если останутся силы.</p>
+<p></br></p>
+<div class="task code">
+<p>ПРАКТИЧЕСКОЕ ЗАДАНИЕ 4: ГАРРИ ПОТТЕР</p>
+</div>
+<p></br></p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="функциональное-программирование.html#cb315-1" tabindex="-1"></a><span class="co"># скачайте с сайта Британской библиотеки датасет о Гарри Поттере</span></span>
+<span id="cb315-2"><a href="функциональное-программирование.html#cb315-2" tabindex="-1"></a>my_url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.bl.uk/bibliographic/downloads/HarryPotterResearcherFormat_202306_csv.zip&quot;</span></span>
+<span id="cb315-3"><a href="функциональное-программирование.html#cb315-3" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;HP&quot;</span>)</span>
+<span id="cb315-4"><a href="функциональное-программирование.html#cb315-4" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> my_url, <span class="at">destfile =</span> <span class="st">&quot;HP/HP.zip&quot;</span>)</span>
+<span id="cb315-5"><a href="функциональное-программирование.html#cb315-5" tabindex="-1"></a></span>
+<span id="cb315-6"><a href="функциональное-программирование.html#cb315-6" tabindex="-1"></a><span class="co"># после этого перейдите в директорию с архивом </span></span>
+<span id="cb315-7"><a href="функциональное-программирование.html#cb315-7" tabindex="-1"></a><span class="co"># и распакуйте его </span></span>
+<span id="cb315-8"><a href="функциональное-программирование.html#cb315-8" tabindex="-1"></a></span>
+<span id="cb315-9"><a href="функциональное-программирование.html#cb315-9" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;HP&quot;</span>)</span>
+<span id="cb315-10"><a href="функциональное-программирование.html#cb315-10" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;HP.zip&quot;</span>)</span>
+<span id="cb315-11"><a href="функциональное-программирование.html#cb315-11" tabindex="-1"></a></span>
+<span id="cb315-12"><a href="функциональное-программирование.html#cb315-12" tabindex="-1"></a><span class="co"># сохраните список всех файлов с расширением .csv, </span></span>
+<span id="cb315-13"><a href="функциональное-программирование.html#cb315-13" tabindex="-1"></a><span class="co"># используя подходящую функцию из base R</span></span>
+<span id="cb315-14"><a href="функциональное-программирование.html#cb315-14" tabindex="-1"></a></span>
+<span id="cb315-15"><a href="функциональное-программирование.html#cb315-15" tabindex="-1"></a><span class="co"># ваш код здесь</span></span>
+<span id="cb315-16"><a href="функциональное-программирование.html#cb315-16" tabindex="-1"></a><span class="co"># my_files &lt;- </span></span>
+<span id="cb315-17"><a href="функциональное-программирование.html#cb315-17" tabindex="-1"></a></span>
+<span id="cb315-18"><a href="функциональное-программирование.html#cb315-18" tabindex="-1"></a><span class="co"># напишите цикл, который:</span></span>
+<span id="cb315-19"><a href="функциональное-программирование.html#cb315-19" tabindex="-1"></a><span class="co"># 1) прочитает все файлы из my_files, используя для этого функцию read_csv() из пакета readr</span></span>
+<span id="cb315-20"><a href="функциональное-программирование.html#cb315-20" tabindex="-1"></a><span class="co"># (аргумент show_col_types установите на FALSE);</span></span>
+<span id="cb315-21"><a href="функциональное-программирование.html#cb315-21" tabindex="-1"></a><span class="co"># 2) для каждого датасета выяснит количество рядов _без_ NA в столбце BNB Number;</span></span>
+<span id="cb315-22"><a href="функциональное-программирование.html#cb315-22" tabindex="-1"></a><span class="co"># 3) разделит число таких рядов на общее число рядов;</span></span>
+<span id="cb315-23"><a href="функциональное-программирование.html#cb315-23" tabindex="-1"></a><span class="co"># 4) вернет таблицу c четырьми столбцами: </span></span>
+<span id="cb315-24"><a href="функциональное-программирование.html#cb315-24" tabindex="-1"></a><span class="do">## - название файла (id), </span></span>
+<span id="cb315-25"><a href="функциональное-программирование.html#cb315-25" tabindex="-1"></a><span class="do">## - число рядов (total), </span></span>
+<span id="cb315-26"><a href="функциональное-программирование.html#cb315-26" tabindex="-1"></a><span class="do">## - число рядов без NA (complete), </span></span>
+<span id="cb315-27"><a href="функциональное-программирование.html#cb315-27" tabindex="-1"></a><span class="do">## - доля полных рядов (ratio)</span></span>
+<span id="cb315-28"><a href="функциональное-программирование.html#cb315-28" tabindex="-1"></a></span>
+<span id="cb315-29"><a href="функциональное-программирование.html#cb315-29" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> my_files, </span>
+<span id="cb315-30"><a href="функциональное-программирование.html#cb315-30" tabindex="-1"></a>                    <span class="at">total =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(my_files)),</span>
+<span id="cb315-31"><a href="функциональное-программирование.html#cb315-31" tabindex="-1"></a>                    <span class="at">complete =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(my_files)),</span>
+<span id="cb315-32"><a href="функциональное-программирование.html#cb315-32" tabindex="-1"></a>                    <span class="at">ratio =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(my_files)))</span>
+<span id="cb315-33"><a href="функциональное-программирование.html#cb315-33" tabindex="-1"></a></span>
+<span id="cb315-34"><a href="функциональное-программирование.html#cb315-34" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(my_files)) {</span>
+<span id="cb315-35"><a href="функциональное-программирование.html#cb315-35" tabindex="-1"></a>  <span class="co"># ваш код здесь</span></span>
+<span id="cb315-36"><a href="функциональное-программирование.html#cb315-36" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>

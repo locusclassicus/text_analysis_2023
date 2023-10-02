@@ -59,14 +59,14 @@ head(Byron)
 
 ```{r warning=FALSE}
 library(readr)
-users <- read_csv("files/BX-CSV-Dump/BX-Users.csv")
+users <- read_csv("files/BX/BX-Users.csv")
 head(users)
 ```
 
 Чтобы исправить дело, воспользуемся другой функцией из того же пакета:
 
 ```{r warning=FALSE}
-users <- read_delim("files/BX-CSV-Dump/BX-Users.csv", delim = ";")
+users <- read_delim("files/BX/BX-Users.csv", delim = ";")
 users
 ```
 
