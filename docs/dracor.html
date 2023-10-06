@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-10-02" />
+<meta name="date" content="2023-10-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -492,9 +492,9 @@ div.csl-indent {
 <span id="cb1054-4"><a href="dracor.html#cb1054-4" tabindex="-1"></a></span>
 <span id="cb1054-5"><a href="dracor.html#cb1054-5" tabindex="-1"></a><span class="fu">get_dracor_meta</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb1054-6"><a href="dracor.html#cb1054-6" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
-<pre><code>## DraCor hosts 16 corpora comprising 3121 plays.
+<pre><code>## DraCor hosts 16 corpora comprising 3122 plays.
 ## 
-## The last updated corpus was German Drama Corpus (2023-09-13 15:13:02.258).</code></pre>
+## The last updated corpus was German Drama Corpus (2023-10-06 14:23:12.5).</code></pre>
 <p>Извлекаем метаданные.</p>
 <div class="sourceCode" id="cb1056"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1056-1"><a href="dracor.html#cb1056-1" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">get_dracor_meta</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb1056-2"><a href="dracor.html#cb1056-2" tabindex="-1"></a>  <span class="fu">select</span>(name, title, plays)</span>
@@ -504,7 +504,7 @@ div.csl-indent {
 ##    name  title                           plays
 ##    &lt;chr&gt; &lt;chr&gt;                           &lt;int&gt;
 ##  1 fre   French Drama Corpus              1560
-##  2 ger   German Drama Corpus               644
+##  2 ger   German Drama Corpus               645
 ##  3 rus   Russian Drama Corpus              212
 ##  4 cal   Calderón Drama Corpus             205
 ##  5 ita   Italian Drama Corpus              139
@@ -521,7 +521,7 @@ div.csl-indent {
 ## 16 tat   Tatar Drama Corpus                  3</code></pre>
 <div class="sourceCode" id="cb1058"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1058-1"><a href="dracor.html#cb1058-1" tabindex="-1"></a>meta <span class="sc">%&gt;%</span></span>
 <span id="cb1058-2"><a href="dracor.html#cb1058-2" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-573-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-575-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1059"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1059-1"><a href="dracor.html#cb1059-1" tabindex="-1"></a>shake <span class="ot">&lt;-</span> <span class="fu">get_dracor</span>(<span class="st">&quot;shake&quot;</span>)</span>
 <span id="cb1059-2"><a href="dracor.html#cb1059-2" tabindex="-1"></a><span class="fu">summary</span>(shake)</span></code></pre></div>
 <pre><code>## 37 plays in Shakespeare Drama Corpus 
@@ -605,7 +605,7 @@ div.csl-indent {
 ## output by &#39;year&#39;. You can
 ## override using the `.groups`
 ## argument.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-578-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-580-1.png" width="672" /></p>
 </div>
 <div id="сети-dracor" class="section level2 hasAnchor" number="18.3">
 <h2><span class="header-section-number">18.3</span> Сети Dracor<a href="dracor.html#сети-dracor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -614,12 +614,12 @@ div.csl-indent {
 <span id="cb1069-2"><a href="dracor.html#cb1069-2" tabindex="-1"></a>                                 <span class="at">play =</span> <span class="st">&quot;the-taming-of-the-shrew&quot;</span>)</span>
 <span id="cb1069-3"><a href="dracor.html#cb1069-3" tabindex="-1"></a></span>
 <span id="cb1069-4"><a href="dracor.html#cb1069-4" tabindex="-1"></a>taming</span></code></pre></div>
-<pre><code>## IGRAPH 1707a80 UNW- 38 222 -- 
+<pre><code>## IGRAPH c1539c3 UNW- 38 222 -- 
 ## + attr: name (v/c), isGroup (v/l), gender (v/c), numOfScenes (v/n),
 ## | numOfSpeechActs (v/n), numOfWords (v/n), degree (v/n), weightedDegree
 ## | (v/n), closeness (v/n), betweenness (v/n), eigenvector (v/n), weight
 ## | (e/n)
-## + edges from 1707a80 (vertex names):
+## + edges from c1539c3 (vertex names):
 ## [1] Christopher Sly--characters in the Induction
 ## [2] Christopher Sly--characters in the Induction
 ## [3] Christopher Sly--characters in the Induction
@@ -636,7 +636,7 @@ div.csl-indent {
 <span id="cb1071-8"><a href="dracor.html#cb1071-8" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb1071-9"><a href="dracor.html#cb1071-9" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1071-10"><a href="dracor.html#cb1071-10" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-580-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-582-1.png" width="672" /></p>
 <p>Для удобства я удалю некоторые узлы. Например, можно удалить групповых персонажей. В “Укрощении” это некие лица из “индукции” Вместе с ними удалю Кристофера Слая, который появляется только в <a href="http://www.w-shakespeare.ru/library/shekspir-remeslo-dramaturga16.html">“индукции”</a>.</p>
 <div class="sourceCode" id="cb1072"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1072-1"><a href="dracor.html#cb1072-1" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
 <span id="cb1072-2"><a href="dracor.html#cb1072-2" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">get.vertex.attribute</span>(taming)<span class="sc">$</span>isGroup</span>
@@ -654,7 +654,7 @@ div.csl-indent {
 <span id="cb1074-7"><a href="dracor.html#cb1074-7" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb1074-8"><a href="dracor.html#cb1074-8" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1074-9"><a href="dracor.html#cb1074-9" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-582-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-584-1.png" width="672" /></p>
 <p>Теперь на примере этих данных исследуем такую характеристику сети, как модулярность.</p>
 </div>
 <div id="модулярность" class="section level2 hasAnchor" number="18.4">
@@ -670,7 +670,7 @@ div.csl-indent {
 <span id="cb1075-4"><a href="dracor.html#cb1075-4" tabindex="-1"></a><span class="fu">data</span>(Moreno)</span>
 <span id="cb1075-5"><a href="dracor.html#cb1075-5" tabindex="-1"></a>Moreno_graph <span class="ot">&lt;-</span> intergraph<span class="sc">::</span><span class="fu">asIgraph</span>(Moreno)</span>
 <span id="cb1075-6"><a href="dracor.html#cb1075-6" tabindex="-1"></a><span class="fu">plot.igraph</span>(Moreno_graph, <span class="at">vertex.color =</span><span class="dv">1</span><span class="sc">+</span> <span class="fu">V</span>(Moreno_graph)<span class="sc">$</span>gender)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-583-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-585-1.png" width="672" /></p>
 <p>Метрика модулярности подтверждает, что пол учеников действительно объясняет наблюдаемую кластеризацию.</p>
 <div class="sourceCode" id="cb1076"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1076-1"><a href="dracor.html#cb1076-1" tabindex="-1"></a><span class="fu">modularity</span>(Moreno_graph, <span class="fu">V</span>(Moreno_graph)<span class="sc">$</span>gender)</span></code></pre></div>
 <pre><code>## [1] 0.4761342</code></pre>
@@ -704,12 +704,12 @@ div.csl-indent {
 <p><img src="images/communities-detection.png" /></p>
 <p>У нас ненаправленная взвешенная сеть.</p>
 <div class="sourceCode" id="cb1083"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1083-1"><a href="dracor.html#cb1083-1" tabindex="-1"></a>taming_sub</span></code></pre></div>
-<pre><code>## IGRAPH 89a2cfa UNW- 23 128 -- 
+<pre><code>## IGRAPH 642ebfa UNW- 23 128 -- 
 ## + attr: name (v/c), isGroup (v/l), gender (v/c), numOfScenes (v/n),
 ## | numOfSpeechActs (v/n), numOfWords (v/n), degree (v/n), weightedDegree
 ## | (v/n), closeness (v/n), betweenness (v/n), eigenvector (v/n), weight
 ## | (e/n)
-## + edges from 89a2cfa (vertex names):
+## + edges from 642ebfa (vertex names):
 ##  [1] Lucentio--Tranio                  Lucentio--Baptista Minola        
 ##  [3] Lucentio--Gremio                  Lucentio--Katherine              
 ##  [5] Lucentio--Hortensio               Lucentio--Bianca                 
@@ -744,7 +744,7 @@ div.csl-indent {
 ##                  Widow_Shr 
 ##                          2</code></pre>
 <div class="sourceCode" id="cb1087"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1087-1"><a href="dracor.html#cb1087-1" tabindex="-1"></a><span class="fu">plot</span>(cw, taming_sub)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-589-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-591-1.png" width="672" /></p>
 <p>Значение модулярности положительное, но не очень высокое.</p>
 <div class="sourceCode" id="cb1088"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1088-1"><a href="dracor.html#cb1088-1" tabindex="-1"></a><span class="fu">modularity</span>(cw)</span></code></pre></div>
 <pre><code>## [1] 0.1489342</code></pre>
@@ -777,14 +777,14 @@ div.csl-indent {
 ##                          1</code></pre>
 <p>На графе видно, что почти все слуги, портной и галантерейщик оказались в отдельном кластере, что вполне осмысленно. Но есть два кластера с одним элементом (вдова и слуги Баптисты), всего 4.</p>
 <div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1092-1"><a href="dracor.html#cb1092-1" tabindex="-1"></a><span class="fu">plot</span>(csg, taming_sub)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-592-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-594-1.png" width="672" /></p>
 <p>Показатели модулярности чуть выше, чем для предыдущего разбиения.</p>
 <div class="sourceCode" id="cb1093"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1093-1"><a href="dracor.html#cb1093-1" tabindex="-1"></a><span class="fu">modularity</span>(csg)</span></code></pre></div>
 <pre><code>## [1] 0.2373678</code></pre>
 <p>Также используем алгоритм под названием “главный собственный вектор”. Он выделяет всего две группы, но показатели модулярности ниже, чем для предыдущего.</p>
 <div class="sourceCode" id="cb1095"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1095-1"><a href="dracor.html#cb1095-1" tabindex="-1"></a>cev <span class="ot">&lt;-</span> <span class="fu">cluster_leading_eigen</span>(taming_sub)</span>
 <span id="cb1095-2"><a href="dracor.html#cb1095-2" tabindex="-1"></a><span class="fu">plot</span>(cev, taming_sub)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-594-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-596-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1096"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1096-1"><a href="dracor.html#cb1096-1" tabindex="-1"></a><span class="fu">modularity</span>(cev)</span></code></pre></div>
 <pre><code>## [1] 0.1664325</code></pre>
 </div>

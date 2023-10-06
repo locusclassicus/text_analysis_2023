@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-10-02" />
+<meta name="date" content="2023-10-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -497,20 +497,19 @@ div.csl-indent {
 ##  [3] &quot;AmazonBooks.xlsx&quot;             &quot;antibarbari_archive&quot;         
 ##  [5] &quot;archive&quot;                      &quot;archive.zip&quot;                 
 ##  [7] &quot;augustinus&quot;                   &quot;BX&quot;                          
-##  [9] &quot;BX.zip&quot;                       &quot;Byron.tab&quot;                   
-## [11] &quot;CiceroOff.txt&quot;                &quot;data-19-structure-4.json&quot;    
-## [13] &quot;German.pdf&quot;                   &quot;HP&quot;                          
-## [15] &quot;karamzin_liza.pdf&quot;            &quot;karamzin_liza.txt&quot;           
-## [17] &quot;lesson.yaml&quot;                  &quot;names.txt&quot;                   
-## [19] &quot;Persons_EDGES.csv&quot;            &quot;template.docx&quot;               
-## [21] &quot;War_and_Peace.xml&quot;</code></pre>
+##  [9] &quot;Byron.tab&quot;                    &quot;CiceroOff.txt&quot;               
+## [11] &quot;data-19-structure-4.json&quot;     &quot;German.pdf&quot;                  
+## [13] &quot;HP&quot;                           &quot;karamzin_liza.pdf&quot;           
+## [15] &quot;karamzin_liza.txt&quot;            &quot;lesson.yaml&quot;                 
+## [17] &quot;names.txt&quot;                    &quot;Persons_EDGES.csv&quot;           
+## [19] &quot;template.docx&quot;                &quot;War_and_Peace.xml&quot;</code></pre>
 </div>
 <div id="чтение-локальных-файлов" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Чтение локальных файлов<a href="импорт-и-экспорт-данных.html#чтение-локальных-файлов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Основные функции для чтения локальных файлов в базовом R:</p>
 <ul>
 <li><code>read.table()</code></li>
-<li>`read.csv()``</li>
+<li><code>read.csv()</code></li>
 </ul>
 <div id="csv-и-tsv" class="section level3 hasAnchor" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> csv и tsv<a href="импорт-и-экспорт-данных.html#csv-и-tsv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -523,7 +522,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="импорт-и-экспорт-данных.html#cb321-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb321-2"><a href="импорт-и-экспорт-данных.html#cb321-2" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;files/BX/BX-Users.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 278858 Columns: 1
-## ── Column specification ───────
+## ── Column specification ──────
 ## Delimiter: &quot;,&quot;
 ## chr (1): User-ID;Location;Age
 ## 
@@ -542,7 +541,7 @@ div.csl-indent {
 <p>Чтобы исправить дело, воспользуемся другой функцией из того же пакета:</p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="импорт-и-экспорт-данных.html#cb325-1" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;files/BX/BX-Users.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 246666 Columns: 3
-## ── Column specification ───────
+## ── Column specification ──────
 ## Delimiter: &quot;;&quot;
 ## chr (2): Location, Age
 ## dbl (1): User-ID

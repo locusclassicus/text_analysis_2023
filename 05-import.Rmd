@@ -38,7 +38,7 @@ list.files("./files")
 Основные функции для чтения локальных файлов в базовом R:
 
 -   `read.table()`
--   \`read.csv()\`\`
+-   `read.csv()`
 
 ### csv и tsv
 
