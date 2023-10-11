@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-10-06" />
+<meta name="date" content="2023-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -236,10 +236,13 @@ div.csl-indent {
 <li class="chapter" data-level="5.5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#циклы"><i class="fa fa-check"></i><b>5.5.1</b> Циклы</a></li>
 <li class="chapter" data-level="5.5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#условия"><i class="fa fa-check"></i><b>5.5.2</b> Условия</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#вместо-циклов-базовый-r-и-tidyverse"><i class="fa fa-check"></i><b>5.6</b> Вместо циклов: базовый R и tidyverse</a></li>
-<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.7</b> Purrr</a></li>
-<li class="chapter" data-level="5.8" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#пример-итерации"><i class="fa fa-check"></i><b>5.8</b> Пример итерации</a></li>
-<li class="chapter" data-level="5.9" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#furrr"><i class="fa fa-check"></i><b>5.9</b> Furrr</a></li>
+<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#вместо-циклов-семейство-_apply"><i class="fa fa-check"></i><b>5.6</b> Вместо циклов: семейство <code>_apply</code></a></li>
+<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.7</b> Purrr</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#map"><i class="fa fa-check"></i><b>5.7.1</b> <code>map()</code></a></li>
+<li class="chapter" data-level="5.7.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#map2"><i class="fa fa-check"></i><b>5.7.2</b> <code>map2()</code></a></li>
+<li class="chapter" data-level="5.7.3" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#дополнительные-возможности-purrr"><i class="fa fa-check"></i><b>5.7.3</b> Дополнительные возможности purrr</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html"><i class="fa fa-check"></i><b>6</b> Импорт и экспорт данных</a>
 <ul>
@@ -562,59 +565,59 @@ div.csl-indent {
 <div class="ask question">
 <p>По умолчанию распечатывает только первые 10 рядов в консоль.</p>
 </div>
-<form name="form_43009" onsubmit="return validate_form_43009()" method="post">
-<input type="radio" name="answer_43009" id="answer_43009_1" value="датафрейм"/>
+<form name="form_89185" onsubmit="return validate_form_89185()" method="post">
+<input type="radio" name="answer_89185" id="answer_89185_1" value="датафрейм"/>
 <label>датафрейм</label>
 <br/>
-<input type="radio" name="answer_43009" id="answer_43009_2" value="тиббл"/>
+<input type="radio" name="answer_89185" id="answer_89185_2" value="тиббл"/>
 <label>тиббл</label>
 <br/>
 <input type="submit" value="check"/>
-<div id="result_43009"></div>
+<div id="result_89185"></div>
 </form>
-<script>function validate_form_43009() {var x, text; var x = document.forms['form_43009']['answer_43009'].value;if (x == 'тиббл'){text = '✅';} else {text = '❌';} document.getElementById('result_43009').innerHTML = text; return false;}</script>
+<script>function validate_form_89185() {var x, text; var x = document.forms['form_89185']['answer_89185'].value;if (x == 'тиббл'){text = '✅';} else {text = '❌';} document.getElementById('result_89185').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Молчаливо исправляет некорректные названия столбцов.</p>
 </div>
-<form name="form_70981" onsubmit="return validate_form_70981()" method="post">
-<input type="radio" name="answer_70981" id="answer_70981_1" value="датафрейм"/>
+<form name="form_31039" onsubmit="return validate_form_31039()" method="post">
+<input type="radio" name="answer_31039" id="answer_31039_1" value="датафрейм"/>
 <label>датафрейм</label>
 <br/>
-<input type="radio" name="answer_70981" id="answer_70981_2" value="тиббл"/>
+<input type="radio" name="answer_31039" id="answer_31039_2" value="тиббл"/>
 <label>тиббл</label>
 <br/>
 <input type="submit" value="check"/>
-<div id="result_70981"></div>
+<div id="result_31039"></div>
 </form>
-<script>function validate_form_70981() {var x, text; var x = document.forms['form_70981']['answer_70981'].value;if (x == 'датафрейм'){text = '✅';} else {text = '❌';} document.getElementById('result_70981').innerHTML = text; return false;}</script>
+<script>function validate_form_31039() {var x, text; var x = document.forms['form_31039']['answer_31039'].value;if (x == 'датафрейм'){text = '✅';} else {text = '❌';} document.getElementById('result_31039').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>По умолчанию конвертирует строки в факторы при импорте данных.</p>
 </div>
-<form name="form_47491" onsubmit="return validate_form_47491()" method="post">
-<input type="radio" name="answer_47491" id="answer_47491_1" value="датафрейм"/>
+<form name="form_15150" onsubmit="return validate_form_15150()" method="post">
+<input type="radio" name="answer_15150" id="answer_15150_1" value="датафрейм"/>
 <label>датафрейм</label>
 <br/>
-<input type="radio" name="answer_47491" id="answer_47491_2" value="тиббл"/>
+<input type="radio" name="answer_15150" id="answer_15150_2" value="тиббл"/>
 <label>тиббл</label>
 <br/>
 <input type="submit" value="check"/>
-<div id="result_47491"></div>
+<div id="result_15150"></div>
 </form>
-<script>function validate_form_47491() {var x, text; var x = document.forms['form_47491']['answer_47491'].value;if (x == 'датафрейм'){text = '✅';} else {text = '❌';} document.getElementById('result_47491').innerHTML = text; return false;}</script>
+<script>function validate_form_15150() {var x, text; var x = document.forms['form_15150']['answer_15150'].value;if (x == 'датафрейм'){text = '✅';} else {text = '❌';} document.getElementById('result_15150').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Не имеет названий рядов.</p>
 </div>
-<form name="form_31783" onsubmit="return validate_form_31783()" method="post">
-<input type="radio" name="answer_31783" id="answer_31783_1" value="датафрейм"/>
+<form name="form_57069" onsubmit="return validate_form_57069()" method="post">
+<input type="radio" name="answer_57069" id="answer_57069_1" value="датафрейм"/>
 <label>датафрейм</label>
 <br/>
-<input type="radio" name="answer_31783" id="answer_31783_2" value="тиббл"/>
+<input type="radio" name="answer_57069" id="answer_57069_2" value="тиббл"/>
 <label>тиббл</label>
 <br/>
 <input type="submit" value="check"/>
-<div id="result_31783"></div>
+<div id="result_57069"></div>
 </form>
-<script>function validate_form_31783() {var x, text; var x = document.forms['form_31783']['answer_31783'].value;if (x == 'тиббл'){text = '✅';} else {text = '❌';} document.getElementById('result_31783').innerHTML = text; return false;}</script>
+<script>function validate_form_57069() {var x, text; var x = document.forms['form_57069']['answer_57069'].value;if (x == 'тиббл'){text = '✅';} else {text = '❌';} document.getElementById('result_57069').innerHTML = text; return false;}</script>
 <p>Кстати, обратили внимание, как работает оператор <code>&lt;=</code> с символьным вектором?</p>
 </div>
 <div id="dplyr" class="section level3 hasAnchor" number="4.1.2">
@@ -682,31 +685,31 @@ div.csl-indent {
 <div class="ask question">
 <p>Функция <code>n_distinct()</code> возвращает все уникальные значения.</p>
 </div>
-<form name="form_20581" onsubmit="return validate_form_20581()" method="post">
-<input type="radio" name="answer_20581" id="answer_20581_1" value="Правда"/>
+<form name="form_27622" onsubmit="return validate_form_27622()" method="post">
+<input type="radio" name="answer_27622" id="answer_27622_1" value="Правда"/>
 <label>Правда</label>
 <br/>
-<input type="radio" name="answer_20581" id="answer_20581_2" value="Ложь"/>
+<input type="radio" name="answer_27622" id="answer_27622_2" value="Ложь"/>
 <label>Ложь</label>
 <br/>
 <input type="submit" value="check"/>
-<div id="result_20581"></div>
+<div id="result_27622"></div>
 </form>
-<script>function validate_form_20581() {var x, text; var x = document.forms['form_20581']['answer_20581'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_20581').innerHTML = text; return false;}</script>
+<script>function validate_form_27622() {var x, text; var x = document.forms['form_27622']['answer_27622'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_27622').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Если <code>x &lt;- 1:100</code>, то функция <code>quantile(x, probs = 0.9)</code> вернет значения от 91 до 100.</p>
 </div>
-<form name="form_9532" onsubmit="return validate_form_9532()" method="post">
-<input type="radio" name="answer_9532" id="answer_9532_1" value="Правда"/>
+<form name="form_69704" onsubmit="return validate_form_69704()" method="post">
+<input type="radio" name="answer_69704" id="answer_69704_1" value="Правда"/>
 <label>Правда</label>
 <br/>
-<input type="radio" name="answer_9532" id="answer_9532_2" value="Ложь"/>
+<input type="radio" name="answer_69704" id="answer_69704_2" value="Ложь"/>
 <label>Ложь</label>
 <br/>
 <input type="submit" value="check"/>
-<div id="result_9532"></div>
+<div id="result_69704"></div>
 </form>
-<script>function validate_form_9532() {var x, text; var x = document.forms['form_9532']['answer_9532'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_9532').innerHTML = text; return false;}</script>
+<script>function validate_form_69704() {var x, text; var x = document.forms['form_69704']['answer_69704'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_69704').innerHTML = text; return false;}</script>
 <div class="spoiler">
 <p>Кванти́ль в математической статистике — значение, которое заданная случайная величина не превышает с фиксированной вероятностью. В нашем случае 90% данных ниже 90.1.</p>
 </div>
@@ -790,39 +793,39 @@ div.csl-indent {
 <div class="ask question">
 <p>Функция <code>separate()</code> обязательно требует указать разделитель.</p>
 </div>
-<form name="form_88494" onsubmit="return validate_form_88494()" method="post">
-<select name="answer_88494">
+<form name="form_51804" onsubmit="return validate_form_51804()" method="post">
+<select name="answer_51804">
 <option>Правда</option>
 <option>Ложь</option>
 </select>
 <input type="submit" value="check"/>
-<div id="result_88494"></div>
+<div id="result_51804"></div>
 </form>
-<script>function validate_form_88494() {var x, text; var x = document.forms['form_88494']['answer_88494'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_88494').innerHTML = text; return false;}</script>
+<script>function validate_form_51804() {var x, text; var x = document.forms['form_51804']['answer_51804'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_51804').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Принципы опрятных данных требуют, чтобы одному наблюдению соответствовал один столбец.</p>
 </div>
-<form name="form_78828" onsubmit="return validate_form_78828()" method="post">
-<select name="answer_78828">
+<form name="form_95708" onsubmit="return validate_form_95708()" method="post">
+<select name="answer_95708">
 <option>Правда</option>
 <option>Ложь</option>
 </select>
 <input type="submit" value="check"/>
-<div id="result_78828"></div>
+<div id="result_95708"></div>
 </form>
-<script>function validate_form_78828() {var x, text; var x = document.forms['form_78828']['answer_78828'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_78828').innerHTML = text; return false;}</script>
+<script>function validate_form_95708() {var x, text; var x = document.forms['form_95708']['answer_95708'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_95708').innerHTML = text; return false;}</script>
 <div class="ask question">
 <p>Функция <code>contains()</code> используется вместе с <code>filter()</code> для выбора рядов.</p>
 </div>
-<form name="form_25863" onsubmit="return validate_form_25863()" method="post">
-<select name="answer_25863">
+<form name="form_8027" onsubmit="return validate_form_8027()" method="post">
+<select name="answer_8027">
 <option>Правда</option>
 <option>Ложь</option>
 </select>
 <input type="submit" value="check"/>
-<div id="result_25863"></div>
+<div id="result_8027"></div>
 </form>
-<script>function validate_form_25863() {var x, text; var x = document.forms['form_25863']['answer_25863'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_25863').innerHTML = text; return false;}</script>
+<script>function validate_form_8027() {var x, text; var x = document.forms['form_8027']['answer_8027'].value;if (x == 'Ложь'){text = '✅';} else {text = '❌';} document.getElementById('result_8027').innerHTML = text; return false;}</script>
 <p>Отличная работа! Прежде чем двигаться дальше, приведите в порядок table2, 3, 4a-4b (последние две также объедините) в единый датасет.</p>
 <div class="task code">
 <p>ПРАКТИЧЕСКОЕ ЗАДАНИЕ 3: БИБЛИОТЕКА GUTENBERG</p>

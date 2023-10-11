@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-10-06" />
+<meta name="date" content="2023-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -236,10 +236,13 @@ div.csl-indent {
 <li class="chapter" data-level="5.5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#циклы"><i class="fa fa-check"></i><b>5.5.1</b> Циклы</a></li>
 <li class="chapter" data-level="5.5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#условия"><i class="fa fa-check"></i><b>5.5.2</b> Условия</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#вместо-циклов-базовый-r-и-tidyverse"><i class="fa fa-check"></i><b>5.6</b> Вместо циклов: базовый R и tidyverse</a></li>
-<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.7</b> Purrr</a></li>
-<li class="chapter" data-level="5.8" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#пример-итерации"><i class="fa fa-check"></i><b>5.8</b> Пример итерации</a></li>
-<li class="chapter" data-level="5.9" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#furrr"><i class="fa fa-check"></i><b>5.9</b> Furrr</a></li>
+<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#вместо-циклов-семейство-_apply"><i class="fa fa-check"></i><b>5.6</b> Вместо циклов: семейство <code>_apply</code></a></li>
+<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.7</b> Purrr</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#map"><i class="fa fa-check"></i><b>5.7.1</b> <code>map()</code></a></li>
+<li class="chapter" data-level="5.7.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#map2"><i class="fa fa-check"></i><b>5.7.2</b> <code>map2()</code></a></li>
+<li class="chapter" data-level="5.7.3" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#дополнительные-возможности-purrr"><i class="fa fa-check"></i><b>5.7.3</b> Дополнительные возможности purrr</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html"><i class="fa fa-check"></i><b>6</b> Импорт и экспорт данных</a>
 <ul>
@@ -481,12 +484,12 @@ div.csl-indent {
 <div id="базовое-описание" class="section level2 hasAnchor" number="16.1">
 <h2><span class="header-section-number">16.1</span> Базовое описание<a href="сетевые-данные-и-графы.html#базовое-описание" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Мы начнем работу с сетями на небольшом датасете, опубликованном Якобом Морено в 1930-х гг. Этот датасет содержит сеть дружеских отношений между учениками 4-го класса.</p>
-<div class="sourceCode" id="cb934"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb934-1"><a href="сетевые-данные-и-графы.html#cb934-1" tabindex="-1"></a><span class="fu">library</span>(network)</span>
-<span id="cb934-2"><a href="сетевые-данные-и-графы.html#cb934-2" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
-<span id="cb934-3"><a href="сетевые-данные-и-графы.html#cb934-3" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;DougLuke/UserNetR&quot;)</span></span>
-<span id="cb934-4"><a href="сетевые-данные-и-графы.html#cb934-4" tabindex="-1"></a><span class="fu">library</span>(UserNetR)</span>
-<span id="cb934-5"><a href="сетевые-данные-и-графы.html#cb934-5" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Moreno&quot;</span>)</span>
-<span id="cb934-6"><a href="сетевые-данные-и-графы.html#cb934-6" tabindex="-1"></a><span class="fu">summary</span>(Moreno, <span class="at">print.adj =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="сетевые-данные-и-графы.html#cb955-1" tabindex="-1"></a><span class="fu">library</span>(network)</span>
+<span id="cb955-2"><a href="сетевые-данные-и-графы.html#cb955-2" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb955-3"><a href="сетевые-данные-и-графы.html#cb955-3" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;DougLuke/UserNetR&quot;)</span></span>
+<span id="cb955-4"><a href="сетевые-данные-и-графы.html#cb955-4" tabindex="-1"></a><span class="fu">library</span>(UserNetR)</span>
+<span id="cb955-5"><a href="сетевые-данные-и-графы.html#cb955-5" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Moreno&quot;</span>)</span>
+<span id="cb955-6"><a href="сетевые-данные-и-графы.html#cb955-6" tabindex="-1"></a><span class="fu">summary</span>(Moreno, <span class="at">print.adj =</span> F)</span></code></pre></div>
 <pre><code>## Network attributes:
 ##   vertices = 33
 ##   directed = FALSE
@@ -511,23 +514,23 @@ div.csl-indent {
 ##    33 valid vertex names
 ## 
 ## No edge attributes</code></pre>
-<div class="sourceCode" id="cb936"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb936-1"><a href="сетевые-данные-и-графы.html#cb936-1" tabindex="-1"></a><span class="fu">plot</span>(Moreno)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-505-1.png" width="672" /></p>
+<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb957-1"><a href="сетевые-данные-и-графы.html#cb957-1" tabindex="-1"></a><span class="fu">plot</span>(Moreno)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-515-1.png" width="672" /></p>
 <p>Самая главная характеристика сети – это ее <strong>размер</strong>. Размер – это количество <strong>участников</strong> (members), которые называются <strong>узлами</strong> (nodes), <strong>вершинами</strong> (vertices) или акторами.</p>
-<div class="sourceCode" id="cb937"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb937-1"><a href="сетевые-данные-и-графы.html#cb937-1" tabindex="-1"></a><span class="fu">network.size</span>(Moreno)</span></code></pre></div>
+<div class="sourceCode" id="cb958"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb958-1"><a href="сетевые-данные-и-графы.html#cb958-1" tabindex="-1"></a><span class="fu">network.size</span>(Moreno)</span></code></pre></div>
 <pre><code>## [1] 33</code></pre>
 <p>Еще одна важная характеристика сети – это ее <strong>плотность</strong>.</p>
-<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb939-1"><a href="сетевые-данные-и-графы.html#cb939-1" tabindex="-1"></a><span class="fu">gden</span>(Moreno)</span></code></pre></div>
+<div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb960-1"><a href="сетевые-данные-и-графы.html#cb960-1" tabindex="-1"></a><span class="fu">gden</span>(Moreno)</span></code></pre></div>
 <pre><code>## [1] 0.08712121</code></pre>
 <p>Плотность – это доля имеющихся связей по отношению к максимально возможному количеству связей. Формула плотности будет отличаться для <strong>направленных</strong> (<span class="math inline">\(\frac{L}{k(k - 1)}\)</span>) и <strong>ненаправленных</strong> (<span class="math inline">\(\frac{2L}{k(k-1)}\)</span>) сетей (где <span class="math inline">\(k(k-1)\)</span> – это максимально возможное число связей).</p>
 <p><strong>Компонента</strong> сети – это подгруппа, где все акторы связаны между собой прямо или косвенно. На графе выше видно две компоненты.</p>
 <p><strong>Диаметр</strong> сети – количество шагов, которые нужно пройти, чтобы попасть из узла А в узел B; для сетей с несколькими компонентами учитывается та, что больше. <strong>Геодезическое расстояние</strong> – это кратчайший путь между двумя узлами; диаметром считается максимальное расстояние для двух узлов.</p>
-<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb941-1"><a href="сетевые-данные-и-графы.html#cb941-1" tabindex="-1"></a>lgc <span class="ot">&lt;-</span> <span class="fu">component.largest</span>(Moreno, <span class="at">result =</span> <span class="st">&quot;graph&quot;</span>)</span>
-<span id="cb941-2"><a href="сетевые-данные-и-графы.html#cb941-2" tabindex="-1"></a>gd <span class="ot">&lt;-</span> <span class="fu">geodist</span>(lgc)</span>
-<span id="cb941-3"><a href="сетевые-данные-и-графы.html#cb941-3" tabindex="-1"></a><span class="fu">max</span>(gd<span class="sc">$</span>gdist)</span></code></pre></div>
+<div class="sourceCode" id="cb962"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb962-1"><a href="сетевые-данные-и-графы.html#cb962-1" tabindex="-1"></a>lgc <span class="ot">&lt;-</span> <span class="fu">component.largest</span>(Moreno, <span class="at">result =</span> <span class="st">&quot;graph&quot;</span>)</span>
+<span id="cb962-2"><a href="сетевые-данные-и-графы.html#cb962-2" tabindex="-1"></a>gd <span class="ot">&lt;-</span> <span class="fu">geodist</span>(lgc)</span>
+<span id="cb962-3"><a href="сетевые-данные-и-графы.html#cb962-3" tabindex="-1"></a><span class="fu">max</span>(gd<span class="sc">$</span>gdist)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <p>Коэффициент <strong>кластеризации</strong>, или <strong>транзитивность</strong>, отражает тенденцию к созданию закрытых треугольников, т.е. к замыканию. Транзитивность определяется как доля закрытых треугольников по отношению к общему количеству открытых и закрытых треугольников.</p>
-<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb943-1"><a href="сетевые-данные-и-графы.html#cb943-1" tabindex="-1"></a><span class="fu">gtrans</span>(Moreno, <span class="at">mode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb964"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb964-1"><a href="сетевые-данные-и-графы.html#cb964-1" tabindex="-1"></a><span class="fu">gtrans</span>(Moreno, <span class="at">mode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 0.2857143</code></pre>
 </div>
 <div id="создание-сетевых-данных" class="section level2 hasAnchor" number="16.2">
@@ -535,17 +538,17 @@ div.csl-indent {
 <div id="социоматрица" class="section level3 hasAnchor" number="16.2.1">
 <h3><span class="header-section-number">16.2.1</span> Социоматрица<a href="сетевые-данные-и-графы.html#социоматрица" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Матрица, хранящая информацию о сети, называется <strong>социоматрицей</strong> (или матрицей смежности). Ее можно создать вручную.</p>
-<div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb945-1"><a href="сетевые-данные-и-графы.html#cb945-1" tabindex="-1"></a>netmat1 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
-<span id="cb945-2"><a href="сетевые-данные-и-графы.html#cb945-2" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb945-3"><a href="сетевые-данные-и-графы.html#cb945-3" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
-<span id="cb945-4"><a href="сетевые-данные-и-графы.html#cb945-4" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
-<span id="cb945-5"><a href="сетевые-данные-и-графы.html#cb945-5" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb945-6"><a href="сетевые-данные-и-графы.html#cb945-6" tabindex="-1"></a><span class="fu">rownames</span>(netmat1) <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb945-7"><a href="сетевые-данные-и-графы.html#cb945-7" tabindex="-1"></a><span class="fu">colnames</span>(netmat1) <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb945-8"><a href="сетевые-данные-и-графы.html#cb945-8" tabindex="-1"></a>net1 <span class="ot">&lt;-</span> <span class="fu">network</span>(netmat1, <span class="at">matrix.type =</span><span class="st">&quot;adjacency&quot;</span>)</span>
-<span id="cb945-9"><a href="сетевые-данные-и-графы.html#cb945-9" tabindex="-1"></a><span class="fu">class</span>(net1)</span></code></pre></div>
+<div class="sourceCode" id="cb966"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb966-1"><a href="сетевые-данные-и-графы.html#cb966-1" tabindex="-1"></a>netmat1 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb966-2"><a href="сетевые-данные-и-графы.html#cb966-2" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb966-3"><a href="сетевые-данные-и-графы.html#cb966-3" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb966-4"><a href="сетевые-данные-и-графы.html#cb966-4" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb966-5"><a href="сетевые-данные-и-графы.html#cb966-5" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb966-6"><a href="сетевые-данные-и-графы.html#cb966-6" tabindex="-1"></a><span class="fu">rownames</span>(netmat1) <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb966-7"><a href="сетевые-данные-и-графы.html#cb966-7" tabindex="-1"></a><span class="fu">colnames</span>(netmat1) <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb966-8"><a href="сетевые-данные-и-графы.html#cb966-8" tabindex="-1"></a>net1 <span class="ot">&lt;-</span> <span class="fu">network</span>(netmat1, <span class="at">matrix.type =</span><span class="st">&quot;adjacency&quot;</span>)</span>
+<span id="cb966-9"><a href="сетевые-данные-и-графы.html#cb966-9" tabindex="-1"></a><span class="fu">class</span>(net1)</span></code></pre></div>
 <pre><code>## [1] &quot;network&quot;</code></pre>
-<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="сетевые-данные-и-графы.html#cb947-1" tabindex="-1"></a><span class="fu">summary</span>(net1)</span></code></pre></div>
+<div class="sourceCode" id="cb968"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb968-1"><a href="сетевые-данные-и-графы.html#cb968-1" tabindex="-1"></a><span class="fu">summary</span>(net1)</span></code></pre></div>
 <pre><code>## Network attributes:
 ##   vertices = 5
 ##   directed = TRUE
@@ -573,21 +576,21 @@ div.csl-indent {
 ## d 0 0 0 0 0
 ## e 0 0 1 0 0</code></pre>
 <p>Функция gplot из пакета sna позволяет визуализировать эту матрицу в виде графа.</p>
-<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb949-1"><a href="сетевые-данные-и-графы.html#cb949-1" tabindex="-1"></a><span class="fu">gplot</span>(net1, <span class="at">vertex.col =</span> <span class="dv">3</span>, <span class="at">displaylabels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-511-1.png" width="672" /></p>
+<div class="sourceCode" id="cb970"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb970-1"><a href="сетевые-данные-и-графы.html#cb970-1" tabindex="-1"></a><span class="fu">gplot</span>(net1, <span class="at">vertex.col =</span> <span class="dv">3</span>, <span class="at">displaylabels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-521-1.png" width="672" /></p>
 </div>
 <div id="список-ребер" class="section level3 hasAnchor" number="16.2.2">
 <h3><span class="header-section-number">16.2.2</span> Список ребер<a href="сетевые-данные-и-графы.html#список-ребер" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ту же матрицу можно построить при помощи <strong>списка ребер</strong>. Списки ребер меньше по размеру, и собирать сетевые данные в таком формате проще.</p>
-<div class="sourceCode" id="cb950"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb950-1"><a href="сетевые-данные-и-графы.html#cb950-1" tabindex="-1"></a>netmat2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
-<span id="cb950-2"><a href="сетевые-данные-и-графы.html#cb950-2" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),</span>
-<span id="cb950-3"><a href="сетевые-данные-и-графы.html#cb950-3" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),</span>
-<span id="cb950-4"><a href="сетевые-данные-и-графы.html#cb950-4" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>),</span>
-<span id="cb950-5"><a href="сетевые-данные-и-графы.html#cb950-5" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>),</span>
-<span id="cb950-6"><a href="сетевые-данные-и-графы.html#cb950-6" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>))</span>
-<span id="cb950-7"><a href="сетевые-данные-и-графы.html#cb950-7" tabindex="-1"></a>net2 <span class="ot">&lt;-</span> <span class="fu">network</span>(netmat2, <span class="at">matrix.type =</span> <span class="st">&quot;edgelist&quot;</span>)</span>
-<span id="cb950-8"><a href="сетевые-данные-и-графы.html#cb950-8" tabindex="-1"></a><span class="fu">network.vertex.names</span>(net2) <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb950-9"><a href="сетевые-данные-и-графы.html#cb950-9" tabindex="-1"></a><span class="fu">summary</span>(net2)</span></code></pre></div>
+<div class="sourceCode" id="cb971"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb971-1"><a href="сетевые-данные-и-графы.html#cb971-1" tabindex="-1"></a>netmat2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb971-2"><a href="сетевые-данные-и-графы.html#cb971-2" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),</span>
+<span id="cb971-3"><a href="сетевые-данные-и-графы.html#cb971-3" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),</span>
+<span id="cb971-4"><a href="сетевые-данные-и-графы.html#cb971-4" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>),</span>
+<span id="cb971-5"><a href="сетевые-данные-и-графы.html#cb971-5" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>),</span>
+<span id="cb971-6"><a href="сетевые-данные-и-графы.html#cb971-6" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>))</span>
+<span id="cb971-7"><a href="сетевые-данные-и-графы.html#cb971-7" tabindex="-1"></a>net2 <span class="ot">&lt;-</span> <span class="fu">network</span>(netmat2, <span class="at">matrix.type =</span> <span class="st">&quot;edgelist&quot;</span>)</span>
+<span id="cb971-8"><a href="сетевые-данные-и-графы.html#cb971-8" tabindex="-1"></a><span class="fu">network.vertex.names</span>(net2) <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb971-9"><a href="сетевые-данные-и-графы.html#cb971-9" tabindex="-1"></a><span class="fu">summary</span>(net2)</span></code></pre></div>
 <pre><code>## Network attributes:
 ##   vertices = 5
 ##   directed = TRUE
@@ -615,33 +618,33 @@ div.csl-indent {
 ## d 0 0 0 0 0
 ## e 0 0 1 0 0</code></pre>
 <p>Граф будет выглядеть точно так же.</p>
-<div class="sourceCode" id="cb952"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb952-1"><a href="сетевые-данные-и-графы.html#cb952-1" tabindex="-1"></a><span class="fu">gplot</span>(net2, <span class="at">vertex.col =</span> <span class="dv">4</span>, <span class="at">displaylabels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-513-1.png" width="672" /></p>
+<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb973-1"><a href="сетевые-данные-и-графы.html#cb973-1" tabindex="-1"></a><span class="fu">gplot</span>(net2, <span class="at">vertex.col =</span> <span class="dv">4</span>, <span class="at">displaylabels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-523-1.png" width="672" /></p>
 </div>
 <div id="формула" class="section level3 hasAnchor" number="16.2.3">
 <h3><span class="header-section-number">16.2.3</span> Формула<a href="сетевые-данные-и-графы.html#формула" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Пакет <code>igraph</code> дает возможность создать сеть разными способами, в том числе с использованием формулы. Перед использованием пакета лучше отвязать <code>statnet</code>. Для ненаправленных графов используется <code>--</code>, для направленных <code>-+</code>.</p>
-<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb953-1"><a href="сетевые-данные-и-графы.html#cb953-1" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>sna)</span>
-<span id="cb953-2"><a href="сетевые-данные-и-графы.html#cb953-2" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>network)</span></code></pre></div>
-<div class="sourceCode" id="cb954"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb954-1"><a href="сетевые-данные-и-графы.html#cb954-1" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
-<span id="cb954-2"><a href="сетевые-данные-и-графы.html#cb954-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph.formula</span>(a<span class="sc">--</span>c, a<span class="sc">--</span>b, b<span class="sc">--</span>d, b<span class="sc">--</span>c, e<span class="sc">--</span>c)</span>
-<span id="cb954-3"><a href="сетевые-данные-и-графы.html#cb954-3" tabindex="-1"></a>g</span></code></pre></div>
-<pre><code>## IGRAPH 189001c UN-- 5 5 -- 
+<div class="sourceCode" id="cb974"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb974-1"><a href="сетевые-данные-и-графы.html#cb974-1" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>sna)</span>
+<span id="cb974-2"><a href="сетевые-данные-и-графы.html#cb974-2" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>network)</span></code></pre></div>
+<div class="sourceCode" id="cb975"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb975-1"><a href="сетевые-данные-и-графы.html#cb975-1" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb975-2"><a href="сетевые-данные-и-графы.html#cb975-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph.formula</span>(a<span class="sc">--</span>c, a<span class="sc">--</span>b, b<span class="sc">--</span>d, b<span class="sc">--</span>c, e<span class="sc">--</span>c)</span>
+<span id="cb975-3"><a href="сетевые-данные-и-графы.html#cb975-3" tabindex="-1"></a>g</span></code></pre></div>
+<pre><code>## IGRAPH 0e49896 UN-- 5 5 -- 
 ## + attr: name (v/c)
-## + edges from 189001c (vertex names):
+## + edges from 0e49896 (vertex names):
 ## [1] a--c a--b c--b c--e b--d</code></pre>
 <p>Объекты <code>igraph</code> можно передать напрямую <code>plot</code><a href="#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a>, но ниже мы рассмотрим и другие возможности.</p>
-<div class="sourceCode" id="cb956"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb956-1"><a href="сетевые-данные-и-графы.html#cb956-1" tabindex="-1"></a><span class="fu">plot</span>(g)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-516-1.png" width="672" /></p>
+<div class="sourceCode" id="cb977"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb977-1"><a href="сетевые-данные-и-графы.html#cb977-1" tabindex="-1"></a><span class="fu">plot</span>(g)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-526-1.png" width="672" /></p>
 </div>
 <div id="импорт-данных" class="section level3 hasAnchor" number="16.2.4">
 <h3><span class="header-section-number">16.2.4</span> Импорт данных<a href="сетевые-данные-и-графы.html#импорт-данных" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Также данные можно импортировать. Мы воспользуемся датасетом, опубликованном на сайте Пушкинского дома, <a href="https://dataverse.pushdom.ru/dataset.xhtml?persistentId=doi:10.31860/openlit-2022.1-B002">“Словарь русских писателей XVIII века: сеть персоналий”</a>.</p>
 <p>Датасет представляет собой осмысленные в терминах сетевого анализа междустатейные ссылки в Словаре русских писателей XVIII века (1988–2010. Вып. 1–3). Узлами сети выступают посвященные персоналиям статьи словаря, а ребрами — ссылки на другие статьи в том же словаре.</p>
-<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb957-1"><a href="сетевые-данные-и-графы.html#cb957-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb957-2"><a href="сетевые-данные-и-графы.html#cb957-2" tabindex="-1"></a>dict_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&quot;files/Persons_EDGES.csv&quot;</span>)</span>
-<span id="cb957-3"><a href="сетевые-данные-и-графы.html#cb957-3" tabindex="-1"></a></span>
-<span id="cb957-4"><a href="сетевые-данные-и-графы.html#cb957-4" tabindex="-1"></a>dict_data</span></code></pre></div>
+<div class="sourceCode" id="cb978"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb978-1"><a href="сетевые-данные-и-графы.html#cb978-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb978-2"><a href="сетевые-данные-и-графы.html#cb978-2" tabindex="-1"></a>dict_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&quot;files/Persons_EDGES.csv&quot;</span>)</span>
+<span id="cb978-3"><a href="сетевые-данные-и-графы.html#cb978-3" tabindex="-1"></a></span>
+<span id="cb978-4"><a href="сетевые-данные-и-графы.html#cb978-4" tabindex="-1"></a>dict_data</span></code></pre></div>
 <pre><code>## # A tibble: 4,440 × 4
 ##    Source       Target            Weight Type    
 ##    &lt;chr&gt;        &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   
@@ -657,10 +660,10 @@ div.csl-indent {
 ## 10 А.Д.Кантемир В.К.Тредиаковский      1 directed
 ## # ℹ 4,430 more rows</code></pre>
 <p>Эту таблицу можно преобразовать в сеть несколькими способами. Функция <code>graph_from_edgelist()</code> ожидает на входе матрицу с двумя столбцами.</p>
-<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="сетевые-данные-и-графы.html#cb959-1" tabindex="-1"></a>dict_graph <span class="ot">&lt;-</span> <span class="fu">graph_from_edgelist</span>(<span class="fu">as.matrix</span>(dict_data[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
-<span id="cb959-2"><a href="сетевые-данные-и-графы.html#cb959-2" tabindex="-1"></a></span>
-<span id="cb959-3"><a href="сетевые-данные-и-графы.html#cb959-3" tabindex="-1"></a><span class="fu">summary</span>(dict_graph, <span class="at">print.adj =</span> F)</span></code></pre></div>
-<pre><code>## IGRAPH c51ed8c DN-- 780 4440 -- 
+<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb980-1"><a href="сетевые-данные-и-графы.html#cb980-1" tabindex="-1"></a>dict_graph <span class="ot">&lt;-</span> <span class="fu">graph_from_edgelist</span>(<span class="fu">as.matrix</span>(dict_data[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
+<span id="cb980-2"><a href="сетевые-данные-и-графы.html#cb980-2" tabindex="-1"></a></span>
+<span id="cb980-3"><a href="сетевые-данные-и-графы.html#cb980-3" tabindex="-1"></a><span class="fu">summary</span>(dict_graph, <span class="at">print.adj =</span> F)</span></code></pre></div>
+<pre><code>## IGRAPH a5e8e01 DN-- 780 4440 -- 
 ## + attr: name (v/c)</code></pre>
 <p>Описание позволяет понять, что граф является направленным (D), а его узлы имеют имена (N). Всего в графе 780 вершин и 4440 связей. Демонстрационная версия интерактивного приложения, построенного на сетевых данных, размещена <a href="https://nevmenandr.github.io/rus-dict18-persons/">здесь</a>. Приложение позволяет работать с отдельными узлами сети, изучать их соседей и количественные характеристики. Мы же выведем лишь небольшую часть узлов.</p>
 </div>
@@ -668,21 +671,21 @@ div.csl-indent {
 <div id="атрибуты-вершин-узлов" class="section level2 hasAnchor" number="16.3">
 <h2><span class="header-section-number">16.3</span> Атрибуты вершин (узлов)<a href="сетевые-данные-и-графы.html#атрибуты-вершин-узлов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>В том же объекте-сети можно хранить дополнительные данные об узлах. В датасете “Словарь…” в качестве такого атрибута хранятся данные об имени автора:</p>
-<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="сетевые-данные-и-графы.html#cb961-1" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">V</span>(dict_graph))</span>
-<span id="cb961-2"><a href="сетевые-данные-и-графы.html#cb961-2" tabindex="-1"></a>names[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb982"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb982-1"><a href="сетевые-данные-и-графы.html#cb982-1" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">V</span>(dict_graph))</span>
+<span id="cb982-2"><a href="сетевые-данные-и-графы.html#cb982-2" tabindex="-1"></a>names[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>]</span></code></pre></div>
 <pre><code>##  [1] &quot;Н.И.Ахвердов&quot;   &quot;П.И.Богданович&quot; &quot;А.Д.Байбаков&quot;   &quot;А.А.Барсов&quot;    
 ##  [5] &quot;А.Д.Кантемир&quot;   &quot;А.К.Барсов&quot;     &quot;С.С.Волчков&quot;    &quot;И.И.Ильинский&quot; 
 ##  [9] &quot;Ф.Кролик&quot;       &quot;М.В.Ломоносов&quot;  &quot;Е.Прокопович&quot;   &quot;А.П.Сумароков&quot;</code></pre>
 <p>Атрибуты вершин можно использовать для того, чтобы задать новую подсеть для анализа. Например, выбрать только некоторых авторов из “Словаря…”.</p>
-<div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb963-1"><a href="сетевые-данные-и-графы.html#cb963-1" tabindex="-1"></a>vert <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">names</span>(<span class="fu">V</span>(dict_graph)) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Д.И.Фонвизин&quot;</span>, <span class="st">&quot;А.Д.Кантемир&quot;</span>, <span class="st">&quot;В.К.Тредиаковский&quot;</span>, <span class="st">&quot;Е.Р.Дашкова&quot;</span>, <span class="st">&quot;Н.М.Карамзин&quot;</span>))</span>
-<span id="cb963-2"><a href="сетевые-данные-и-графы.html#cb963-2" tabindex="-1"></a></span>
-<span id="cb963-3"><a href="сетевые-данные-и-графы.html#cb963-3" tabindex="-1"></a>dict_sub <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(dict_graph, </span>
-<span id="cb963-4"><a href="сетевые-данные-и-графы.html#cb963-4" tabindex="-1"></a>                             <span class="at">vids =</span> vert)</span>
-<span id="cb963-5"><a href="сетевые-данные-и-графы.html#cb963-5" tabindex="-1"></a></span>
-<span id="cb963-6"><a href="сетевые-данные-и-графы.html#cb963-6" tabindex="-1"></a>dict_sub</span></code></pre></div>
-<pre><code>## IGRAPH aad442f DN-- 5 8 -- 
+<div class="sourceCode" id="cb984"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb984-1"><a href="сетевые-данные-и-графы.html#cb984-1" tabindex="-1"></a>vert <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">names</span>(<span class="fu">V</span>(dict_graph)) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Д.И.Фонвизин&quot;</span>, <span class="st">&quot;А.Д.Кантемир&quot;</span>, <span class="st">&quot;В.К.Тредиаковский&quot;</span>, <span class="st">&quot;Е.Р.Дашкова&quot;</span>, <span class="st">&quot;Н.М.Карамзин&quot;</span>))</span>
+<span id="cb984-2"><a href="сетевые-данные-и-графы.html#cb984-2" tabindex="-1"></a></span>
+<span id="cb984-3"><a href="сетевые-данные-и-графы.html#cb984-3" tabindex="-1"></a>dict_sub <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(dict_graph, </span>
+<span id="cb984-4"><a href="сетевые-данные-и-графы.html#cb984-4" tabindex="-1"></a>                             <span class="at">vids =</span> vert)</span>
+<span id="cb984-5"><a href="сетевые-данные-и-графы.html#cb984-5" tabindex="-1"></a></span>
+<span id="cb984-6"><a href="сетевые-данные-и-графы.html#cb984-6" tabindex="-1"></a>dict_sub</span></code></pre></div>
+<pre><code>## IGRAPH 3b539b7 DN-- 5 8 -- 
 ## + attr: name (v/c)
-## + edges from aad442f (vertex names):
+## + edges from 3b539b7 (vertex names):
 ## [1] А.Д.Кантемир     -&gt;В.К.Тредиаковский В.К.Тредиаковский-&gt;А.Д.Кантемир     
 ## [3] В.К.Тредиаковский-&gt;Н.М.Карамзин      В.К.Тредиаковский-&gt;Д.И.Фонвизин     
 ## [5] Н.М.Карамзин     -&gt;В.К.Тредиаковский Д.И.Фонвизин     -&gt;В.К.Тредиаковский
@@ -691,42 +694,42 @@ div.csl-indent {
 <div id="фильтрация-по-узлу" class="section level2 hasAnchor" number="16.4">
 <h2><span class="header-section-number">16.4</span> Фильтрация по узлу<a href="сетевые-данные-и-графы.html#фильтрация-по-узлу" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Для визуализации таких объектов подходит функция <code>ggraph()</code> из одноименного пакета, которая основана на грамматике <code>ggplot</code>.</p>
-<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb965-1"><a href="сетевые-данные-и-графы.html#cb965-1" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
-<span id="cb965-2"><a href="сетевые-данные-и-графы.html#cb965-2" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">V</span>(dict_sub))</span>
-<span id="cb965-3"><a href="сетевые-данные-и-графы.html#cb965-3" tabindex="-1"></a></span>
-<span id="cb965-4"><a href="сетевые-данные-и-графы.html#cb965-4" tabindex="-1"></a><span class="fu">ggraph</span>(dict_sub, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span></span>
-<span id="cb965-5"><a href="сетевые-данные-и-графы.html#cb965-5" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">&quot;cadetblue3&quot;</span>) <span class="sc">+</span></span>
-<span id="cb965-6"><a href="сетевые-данные-и-графы.html#cb965-6" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">&quot;bisque4&quot;</span>, <span class="at">shape =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb965-7"><a href="сетевые-данные-и-графы.html#cb965-7" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names), <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb965-8"><a href="сетевые-данные-и-графы.html#cb965-8" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-521-1.png" width="672" /></p>
+<div class="sourceCode" id="cb986"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb986-1"><a href="сетевые-данные-и-графы.html#cb986-1" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb986-2"><a href="сетевые-данные-и-графы.html#cb986-2" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">V</span>(dict_sub))</span>
+<span id="cb986-3"><a href="сетевые-данные-и-графы.html#cb986-3" tabindex="-1"></a></span>
+<span id="cb986-4"><a href="сетевые-данные-и-графы.html#cb986-4" tabindex="-1"></a><span class="fu">ggraph</span>(dict_sub, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span></span>
+<span id="cb986-5"><a href="сетевые-данные-и-графы.html#cb986-5" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">&quot;cadetblue3&quot;</span>) <span class="sc">+</span></span>
+<span id="cb986-6"><a href="сетевые-данные-и-графы.html#cb986-6" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">&quot;bisque4&quot;</span>, <span class="at">shape =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb986-7"><a href="сетевые-данные-и-графы.html#cb986-7" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names), <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb986-8"><a href="сетевые-данные-и-графы.html#cb986-8" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-531-1.png" width="672" /></p>
 <p>Немного баловства (но лучше, конечно, другие картинки использовать).</p>
-<div class="sourceCode" id="cb966"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb966-1"><a href="сетевые-данные-и-графы.html#cb966-1" tabindex="-1"></a><span class="fu">library</span>(ggimage)</span></code></pre></div>
+<div class="sourceCode" id="cb987"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb987-1"><a href="сетевые-данные-и-графы.html#cb987-1" tabindex="-1"></a><span class="fu">library</span>(ggimage)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;ggimage&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:cowplot&#39;:
 ## 
 ##     theme_nothing</code></pre>
-<div class="sourceCode" id="cb969"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb969-1"><a href="сетевые-данные-и-графы.html#cb969-1" tabindex="-1"></a><span class="do">## получаем координаты</span></span>
-<span id="cb969-2"><a href="сетевые-данные-и-графы.html#cb969-2" tabindex="-1"></a>subgraph.layout <span class="ot">&lt;-</span> <span class="fu">layout.fruchterman.reingold</span>(dict_sub)</span>
-<span id="cb969-3"><a href="сетевые-данные-и-графы.html#cb969-3" tabindex="-1"></a>x <span class="ot">&lt;-</span>  subgraph.layout[,<span class="dv">1</span>]</span>
-<span id="cb969-4"><a href="сетевые-данные-и-графы.html#cb969-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> subgraph.layout[,<span class="dv">2</span>]</span>
-<span id="cb969-5"><a href="сетевые-данные-и-графы.html#cb969-5" tabindex="-1"></a></span>
-<span id="cb969-6"><a href="сетевые-данные-и-графы.html#cb969-6" tabindex="-1"></a><span class="fu">ggraph</span>(dict_sub, <span class="at">layout =</span> subgraph.layout) <span class="sc">+</span></span>
-<span id="cb969-7"><a href="сетевые-данные-и-графы.html#cb969-7" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">&quot;cadetblue3&quot;</span>) <span class="sc">+</span></span>
-<span id="cb969-8"><a href="сетевые-данные-и-графы.html#cb969-8" tabindex="-1"></a>  <span class="fu">geom_pokemon</span>(<span class="fu">aes</span>(x, y), <span class="at">image=</span><span class="st">&quot;pikachu&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb969-9"><a href="сетевые-данные-и-графы.html#cb969-9" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names), <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb969-10"><a href="сетевые-данные-и-графы.html#cb969-10" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-522-1.png" width="672" /></p>
+<div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="сетевые-данные-и-графы.html#cb990-1" tabindex="-1"></a><span class="do">## получаем координаты</span></span>
+<span id="cb990-2"><a href="сетевые-данные-и-графы.html#cb990-2" tabindex="-1"></a>subgraph.layout <span class="ot">&lt;-</span> <span class="fu">layout.fruchterman.reingold</span>(dict_sub)</span>
+<span id="cb990-3"><a href="сетевые-данные-и-графы.html#cb990-3" tabindex="-1"></a>x <span class="ot">&lt;-</span>  subgraph.layout[,<span class="dv">1</span>]</span>
+<span id="cb990-4"><a href="сетевые-данные-и-графы.html#cb990-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> subgraph.layout[,<span class="dv">2</span>]</span>
+<span id="cb990-5"><a href="сетевые-данные-и-графы.html#cb990-5" tabindex="-1"></a></span>
+<span id="cb990-6"><a href="сетевые-данные-и-графы.html#cb990-6" tabindex="-1"></a><span class="fu">ggraph</span>(dict_sub, <span class="at">layout =</span> subgraph.layout) <span class="sc">+</span></span>
+<span id="cb990-7"><a href="сетевые-данные-и-графы.html#cb990-7" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">&quot;cadetblue3&quot;</span>) <span class="sc">+</span></span>
+<span id="cb990-8"><a href="сетевые-данные-и-графы.html#cb990-8" tabindex="-1"></a>  <span class="fu">geom_pokemon</span>(<span class="fu">aes</span>(x, y), <span class="at">image=</span><span class="st">&quot;pikachu&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb990-9"><a href="сетевые-данные-и-графы.html#cb990-9" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names), <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb990-10"><a href="сетевые-данные-и-графы.html#cb990-10" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-532-1.png" width="672" /></p>
 <p>Теперь выберем отдельный узел <em>вместе</em> с его соседями.</p>
-<div class="sourceCode" id="cb970"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb970-1"><a href="сетевые-данные-и-графы.html#cb970-1" tabindex="-1"></a>vert <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">names</span>(<span class="fu">V</span>(dict_graph))<span class="sc">==</span><span class="st">&quot;А.Д.Кантемир&quot;</span>)</span>
-<span id="cb970-2"><a href="сетевые-данные-и-графы.html#cb970-2" tabindex="-1"></a></span>
-<span id="cb970-3"><a href="сетевые-данные-и-графы.html#cb970-3" tabindex="-1"></a>dict_sub <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(dict_graph, </span>
-<span id="cb970-4"><a href="сетевые-данные-и-графы.html#cb970-4" tabindex="-1"></a>                             <span class="at">vids =</span> <span class="fu">c</span>(vert, <span class="fu">neighbors</span>(dict_graph, <span class="st">&quot;А.Д.Кантемир&quot;</span>)))</span></code></pre></div>
-<div class="sourceCode" id="cb971"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb971-1"><a href="сетевые-данные-и-графы.html#cb971-1" tabindex="-1"></a>dict_sub</span></code></pre></div>
-<pre><code>## IGRAPH 725de20 DN-- 9 30 -- 
+<div class="sourceCode" id="cb991"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb991-1"><a href="сетевые-данные-и-графы.html#cb991-1" tabindex="-1"></a>vert <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">names</span>(<span class="fu">V</span>(dict_graph))<span class="sc">==</span><span class="st">&quot;А.Д.Кантемир&quot;</span>)</span>
+<span id="cb991-2"><a href="сетевые-данные-и-графы.html#cb991-2" tabindex="-1"></a></span>
+<span id="cb991-3"><a href="сетевые-данные-и-графы.html#cb991-3" tabindex="-1"></a>dict_sub <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(dict_graph, </span>
+<span id="cb991-4"><a href="сетевые-данные-и-графы.html#cb991-4" tabindex="-1"></a>                             <span class="at">vids =</span> <span class="fu">c</span>(vert, <span class="fu">neighbors</span>(dict_graph, <span class="st">&quot;А.Д.Кантемир&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb992"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb992-1"><a href="сетевые-данные-и-графы.html#cb992-1" tabindex="-1"></a>dict_sub</span></code></pre></div>
+<pre><code>## IGRAPH 84872fa DN-- 9 30 -- 
 ## + attr: name (v/c)
-## + edges from 725de20 (vertex names):
+## + edges from 84872fa (vertex names):
 ##  [1] А.Д.Кантемир -&gt;А.К.Барсов        А.Д.Кантемир -&gt;С.С.Волчков      
 ##  [3] А.Д.Кантемир -&gt;И.И.Ильинский     А.Д.Кантемир -&gt;Ф.Кролик         
 ##  [5] А.Д.Кантемир -&gt;М.В.Ломоносов     А.Д.Кантемир -&gt;Е.Прокопович     
@@ -737,37 +740,37 @@ div.csl-indent {
 ## [15] М.В.Ломоносов-&gt;А.П.Сумароков     М.В.Ломоносов-&gt;В.К.Тредиаковский
 ## + ... omitted several edges</code></pre>
 <p>Используем другую укладку, также повернем и сдвинем подписи.</p>
-<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb973-1"><a href="сетевые-данные-и-графы.html#cb973-1" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">V</span>(dict_sub))</span>
-<span id="cb973-2"><a href="сетевые-данные-и-графы.html#cb973-2" tabindex="-1"></a></span>
-<span id="cb973-3"><a href="сетевые-данные-и-графы.html#cb973-3" tabindex="-1"></a><span class="fu">ggraph</span>(dict_sub, <span class="at">layout =</span> <span class="st">&quot;linear&quot;</span>) <span class="sc">+</span></span>
-<span id="cb973-4"><a href="сетевые-данные-и-графы.html#cb973-4" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>(<span class="at">color =</span> <span class="st">&quot;cadetblue3&quot;</span>) <span class="sc">+</span></span>
-<span id="cb973-5"><a href="сетевые-данные-и-графы.html#cb973-5" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">&quot;bisque4&quot;</span>, <span class="at">shape =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb973-6"><a href="сетевые-данные-и-графы.html#cb973-6" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names), <span class="at">angle =</span> <span class="dv">60</span>, <span class="at">nudge_x =</span> <span class="fl">0.1</span>, <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb973-7"><a href="сетевые-данные-и-графы.html#cb973-7" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-525-1.png" width="672" /></p>
+<div class="sourceCode" id="cb994"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb994-1"><a href="сетевые-данные-и-графы.html#cb994-1" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">V</span>(dict_sub))</span>
+<span id="cb994-2"><a href="сетевые-данные-и-графы.html#cb994-2" tabindex="-1"></a></span>
+<span id="cb994-3"><a href="сетевые-данные-и-графы.html#cb994-3" tabindex="-1"></a><span class="fu">ggraph</span>(dict_sub, <span class="at">layout =</span> <span class="st">&quot;linear&quot;</span>) <span class="sc">+</span></span>
+<span id="cb994-4"><a href="сетевые-данные-и-графы.html#cb994-4" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>(<span class="at">color =</span> <span class="st">&quot;cadetblue3&quot;</span>) <span class="sc">+</span></span>
+<span id="cb994-5"><a href="сетевые-данные-и-графы.html#cb994-5" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">&quot;bisque4&quot;</span>, <span class="at">shape =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb994-6"><a href="сетевые-данные-и-графы.html#cb994-6" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names), <span class="at">angle =</span> <span class="dv">60</span>, <span class="at">nudge_x =</span> <span class="fl">0.1</span>, <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb994-7"><a href="сетевые-данные-и-графы.html#cb994-7" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-535-1.png" width="672" /></p>
 </div>
 <div id="атрибуты-ребер" class="section level2 hasAnchor" number="16.5">
 <h2><span class="header-section-number">16.5</span> Атрибуты ребер<a href="сетевые-данные-и-графы.html#атрибуты-ребер" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>В данных из “Словаря…” у ребер нет атрибутов, в чем легко убедиться.</p>
-<div class="sourceCode" id="cb974"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb974-1"><a href="сетевые-данные-и-графы.html#cb974-1" tabindex="-1"></a><span class="fu">get.edge.attribute</span>(dict_sub)</span></code></pre></div>
+<div class="sourceCode" id="cb995"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb995-1"><a href="сетевые-данные-и-графы.html#cb995-1" tabindex="-1"></a><span class="fu">get.edge.attribute</span>(dict_sub)</span></code></pre></div>
 <pre><code>## named list()</code></pre>
 <p>В некоторых случаях бывает полезно эти атрибуты назначить: например, если вы провели дополнительное исследование и хотите добавить данные.</p>
-<div class="sourceCode" id="cb976"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb976-1"><a href="сетевые-данные-и-графы.html#cb976-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb976-2"><a href="сетевые-данные-и-графы.html#cb976-2" tabindex="-1"></a>dict_sub <span class="ot">&lt;-</span> <span class="fu">set_edge_attr</span>(dict_sub, <span class="st">&quot;value&quot;</span>, <span class="at">index =</span> <span class="fu">E</span>(dict_sub), <span class="at">value =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">length</span>(<span class="fu">E</span>(dict_sub)), <span class="at">replace =</span> T))</span></code></pre></div>
+<div class="sourceCode" id="cb997"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb997-1"><a href="сетевые-данные-и-графы.html#cb997-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb997-2"><a href="сетевые-данные-и-графы.html#cb997-2" tabindex="-1"></a>dict_sub <span class="ot">&lt;-</span> <span class="fu">set_edge_attr</span>(dict_sub, <span class="st">&quot;value&quot;</span>, <span class="at">index =</span> <span class="fu">E</span>(dict_sub), <span class="at">value =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">length</span>(<span class="fu">E</span>(dict_sub)), <span class="at">replace =</span> T))</span></code></pre></div>
 <p>Назначенный атрибут (сейчас это случайное число) можно закодировать на графе:</p>
-<div class="sourceCode" id="cb977"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb977-1"><a href="сетевые-данные-и-графы.html#cb977-1" tabindex="-1"></a><span class="fu">ggraph</span>(dict_sub, <span class="at">layout =</span> <span class="st">&quot;linear&quot;</span>) <span class="sc">+</span></span>
-<span id="cb977-2"><a href="сетевые-данные-и-графы.html#cb977-2" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>(<span class="fu">aes</span>(<span class="at">width =</span> value), <span class="at">color =</span> <span class="st">&quot;cadetblue3&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb977-3"><a href="сетевые-данные-и-графы.html#cb977-3" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">&quot;bisque4&quot;</span>, <span class="at">shape =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb977-4"><a href="сетевые-данные-и-графы.html#cb977-4" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names), <span class="at">angle =</span> <span class="dv">60</span>, <span class="at">nudge_x =</span> <span class="fl">0.1</span>, <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb977-5"><a href="сетевые-данные-и-графы.html#cb977-5" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-528-1.png" width="672" /></p>
+<div class="sourceCode" id="cb998"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb998-1"><a href="сетевые-данные-и-графы.html#cb998-1" tabindex="-1"></a><span class="fu">ggraph</span>(dict_sub, <span class="at">layout =</span> <span class="st">&quot;linear&quot;</span>) <span class="sc">+</span></span>
+<span id="cb998-2"><a href="сетевые-данные-и-графы.html#cb998-2" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>(<span class="fu">aes</span>(<span class="at">width =</span> value), <span class="at">color =</span> <span class="st">&quot;cadetblue3&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb998-3"><a href="сетевые-данные-и-графы.html#cb998-3" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">&quot;bisque4&quot;</span>, <span class="at">shape =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb998-4"><a href="сетевые-данные-и-графы.html#cb998-4" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names), <span class="at">angle =</span> <span class="dv">60</span>, <span class="at">nudge_x =</span> <span class="fl">0.1</span>, <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb998-5"><a href="сетевые-данные-и-графы.html#cb998-5" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-538-1.png" width="672" /></p>
 </div>
 <div id="импорт-из-gexf" class="section level2 hasAnchor" number="16.6">
 <h2><span class="header-section-number">16.6</span> Импорт из gexf<a href="сетевые-данные-и-графы.html#импорт-из-gexf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Датасет <a href="https://dataverse.pushdom.ru/dataset.xhtml?persistentId=doi:10.31860/openlit-2020.05-B001">“«Камер-фурьерский журнал» В. Ходасевича”</a> хранит информацию о встречах, которые В. Ходасевич фиксировал в своем камер-фурьерском журнале, начиная с 1922 года. Данные за каждый месяц хранятся отдельно в файлах формата <code>gexf</code> (Graph Exchange XML Format)), для их чтения нужен особый пакет.</p>
-<div class="sourceCode" id="cb978"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb978-1"><a href="сетевые-данные-и-графы.html#cb978-1" tabindex="-1"></a><span class="fu">library</span>(rgexf)</span>
-<span id="cb978-2"><a href="сетевые-данные-и-графы.html#cb978-2" tabindex="-1"></a>kfj <span class="ot">&lt;-</span> <span class="fu">read.gexf</span>(<span class="st">&quot;files/1922_Июль_.gexf&quot;</span>)</span>
-<span id="cb978-3"><a href="сетевые-данные-и-графы.html#cb978-3" tabindex="-1"></a><span class="fu">head</span>(kfj)</span></code></pre></div>
+<div class="sourceCode" id="cb999"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb999-1"><a href="сетевые-данные-и-графы.html#cb999-1" tabindex="-1"></a><span class="fu">library</span>(rgexf)</span>
+<span id="cb999-2"><a href="сетевые-данные-и-графы.html#cb999-2" tabindex="-1"></a>kfj <span class="ot">&lt;-</span> <span class="fu">read.gexf</span>(<span class="st">&quot;files/1922_Июль_.gexf&quot;</span>)</span>
+<span id="cb999-3"><a href="сетевые-данные-и-графы.html#cb999-3" tabindex="-1"></a><span class="fu">head</span>(kfj)</span></code></pre></div>
 <pre><code>## &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 ## &lt;gexf xmlns=&quot;http://www.gexf.net/1.1draft&quot; xmlns:viz=&quot;http://www.gexf.net/1.1draft/viz&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; version=&quot;1.1&quot; xsi:schemaLocation=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
 ##   &lt;graph defaultedgetype=&quot;undirected&quot; mode=&quot;static&quot;&gt;
@@ -828,11 +831,11 @@ div.csl-indent {
 ##   &lt;/graph&gt;
 ## &lt;/gexf&gt;</code></pre>
 <p>Трансформируем в формат <code>igraph</code>.</p>
-<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb980-1"><a href="сетевые-данные-и-графы.html#cb980-1" tabindex="-1"></a>kfj_graph <span class="ot">&lt;-</span> <span class="fu">gexf.to.igraph</span>(kfj)</span>
-<span id="cb980-2"><a href="сетевые-данные-и-графы.html#cb980-2" tabindex="-1"></a>kfj_graph</span></code></pre></div>
-<pre><code>## IGRAPH ccfe165 UNW- 42 86 -- 
+<div class="sourceCode" id="cb1001"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1001-1"><a href="сетевые-данные-и-графы.html#cb1001-1" tabindex="-1"></a>kfj_graph <span class="ot">&lt;-</span> <span class="fu">gexf.to.igraph</span>(kfj)</span>
+<span id="cb1001-2"><a href="сетевые-данные-и-графы.html#cb1001-2" tabindex="-1"></a>kfj_graph</span></code></pre></div>
+<pre><code>## IGRAPH 145bd15 UNW- 42 86 -- 
 ## + attr: layout (g/n), name (v/c), color (v/c), size (v/n), weight (e/n)
-## + edges from ccfe165 (vertex names):
+## + edges from 145bd15 (vertex names):
 ##  [1] Толстой             --Туся      Кусиков             --Минский  
 ##  [3] Минский             --Юренева   Минский             --Эренбург 
 ##  [5] Минский             --Шкловский Минский             --Постников
@@ -844,9 +847,9 @@ div.csl-indent {
 ## + ... omitted several edges</code></pre>
 <p>В данном случае U означает ненаправленный граф, а N говорит о том, что вершины имеют имена. Буква W указывает на то, что ребрам присвоены веса. Далее приводится информация о количестве вершин (42) и ребер (86).</p>
 <p>Заглянем в атрибуты.</p>
-<div class="sourceCode" id="cb982"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb982-1"><a href="сетевые-данные-и-графы.html#cb982-1" tabindex="-1"></a><span class="co"># имена узлов </span></span>
-<span id="cb982-2"><a href="сетевые-данные-и-графы.html#cb982-2" tabindex="-1"></a><span class="fu">V</span>(kfj_graph) </span></code></pre></div>
-<pre><code>## + 42/42 vertices, named, from ccfe165:
+<div class="sourceCode" id="cb1003"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1003-1"><a href="сетевые-данные-и-графы.html#cb1003-1" tabindex="-1"></a><span class="co"># имена узлов </span></span>
+<span id="cb1003-2"><a href="сетевые-данные-и-графы.html#cb1003-2" tabindex="-1"></a><span class="fu">V</span>(kfj_graph) </span></code></pre></div>
+<pre><code>## + 42/42 vertices, named, from 145bd15:
 ##  [1] Алянский             Амфитеатров          Андреева            
 ##  [4] Ася                  Багратион-Мухранская Белый               
 ##  [7] Берберов             Берберов_Л           Венгерова           
@@ -859,10 +862,10 @@ div.csl-indent {
 ## [28] Пешков_М             Постников            Пуни                
 ## + ... omitted several vertices</code></pre>
 <p>Сохраним имена узлов как вектор.</p>
-<div class="sourceCode" id="cb984"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb984-1"><a href="сетевые-данные-и-графы.html#cb984-1" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">get.vertex.attribute</span>(kfj_graph)<span class="sc">$</span>name</span></code></pre></div>
+<div class="sourceCode" id="cb1005"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1005-1"><a href="сетевые-данные-и-графы.html#cb1005-1" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">get.vertex.attribute</span>(kfj_graph)<span class="sc">$</span>name</span></code></pre></div>
 <p>Зачем-то в объекте хранится еще и цвет узлов (один для всех).</p>
-<div class="sourceCode" id="cb985"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb985-1"><a href="сетевые-данные-и-графы.html#cb985-1" tabindex="-1"></a>color <span class="ot">&lt;-</span> <span class="fu">V</span>(kfj_graph)<span class="sc">$</span>color</span>
-<span id="cb985-2"><a href="сетевые-данные-и-графы.html#cb985-2" tabindex="-1"></a>color</span></code></pre></div>
+<div class="sourceCode" id="cb1006"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1006-1"><a href="сетевые-данные-и-графы.html#cb1006-1" tabindex="-1"></a>color <span class="ot">&lt;-</span> <span class="fu">V</span>(kfj_graph)<span class="sc">$</span>color</span>
+<span id="cb1006-2"><a href="сетевые-данные-и-графы.html#cb1006-2" tabindex="-1"></a>color</span></code></pre></div>
 <pre><code>##  [1] &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot;
 ##  [7] &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot;
 ## [13] &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot;
@@ -871,8 +874,8 @@ div.csl-indent {
 ## [31] &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot;
 ## [37] &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot; &quot;#FF6347FF&quot;</code></pre>
 <p>Атбрибуты ребер.</p>
-<div class="sourceCode" id="cb987"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb987-1"><a href="сетевые-данные-и-графы.html#cb987-1" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">get.edge.attribute</span>(kfj_graph)<span class="sc">$</span>weight</span>
-<span id="cb987-2"><a href="сетевые-данные-и-графы.html#cb987-2" tabindex="-1"></a>weight</span></code></pre></div>
+<div class="sourceCode" id="cb1008"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1008-1"><a href="сетевые-данные-и-графы.html#cb1008-1" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">get.edge.attribute</span>(kfj_graph)<span class="sc">$</span>weight</span>
+<span id="cb1008-2"><a href="сетевые-данные-и-графы.html#cb1008-2" tabindex="-1"></a>weight</span></code></pre></div>
 <pre><code>##  [1] 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1
 ## [39] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1
 ## [77] 1 1 1 1 1 1 1 1 1 1</code></pre>
@@ -880,38 +883,38 @@ div.csl-indent {
 <div id="визуализация-с-ggraph" class="section level2 hasAnchor" number="16.7">
 <h2><span class="header-section-number">16.7</span> Визуализация с ggraph<a href="сетевые-данные-и-графы.html#визуализация-с-ggraph" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ширину ребра отрегулируем в зависимости от веса, который отражает частоту контактов. Мы уже видели, что эти данные хранятся в атрибутах ребер. Функция <code>as.factor</code> препятствует дроблению чисел, т.к. в нашем случае это не имеет смысла.</p>
-<div class="sourceCode" id="cb989"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb989-1"><a href="сетевые-данные-и-графы.html#cb989-1" tabindex="-1"></a><span class="fu">ggraph</span>(kfj_graph) <span class="sc">+</span></span>
-<span id="cb989-2"><a href="сетевые-данные-и-графы.html#cb989-2" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>, </span>
-<span id="cb989-3"><a href="сетевые-данные-и-графы.html#cb989-3" tabindex="-1"></a>                   <span class="fu">aes</span>(<span class="at">width =</span> <span class="fu">as.factor</span>(weight)), </span>
-<span id="cb989-4"><a href="сетевые-данные-и-графы.html#cb989-4" tabindex="-1"></a>                   <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb989-5"><a href="сетевые-данные-и-графы.html#cb989-5" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> color, <span class="at">show.legend =</span> F, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb989-6"><a href="сетевые-данные-и-графы.html#cb989-6" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names),  <span class="at">repel =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb989-7"><a href="сетевые-данные-и-графы.html#cb989-7" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-535-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1010"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1010-1"><a href="сетевые-данные-и-графы.html#cb1010-1" tabindex="-1"></a><span class="fu">ggraph</span>(kfj_graph) <span class="sc">+</span></span>
+<span id="cb1010-2"><a href="сетевые-данные-и-графы.html#cb1010-2" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>, </span>
+<span id="cb1010-3"><a href="сетевые-данные-и-графы.html#cb1010-3" tabindex="-1"></a>                   <span class="fu">aes</span>(<span class="at">width =</span> <span class="fu">as.factor</span>(weight)), </span>
+<span id="cb1010-4"><a href="сетевые-данные-и-графы.html#cb1010-4" tabindex="-1"></a>                   <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb1010-5"><a href="сетевые-данные-и-графы.html#cb1010-5" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> color, <span class="at">show.legend =</span> F, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb1010-6"><a href="сетевые-данные-и-графы.html#cb1010-6" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names),  <span class="at">repel =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb1010-7"><a href="сетевые-данные-и-графы.html#cb1010-7" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-545-1.png" width="672" /></p>
 </div>
 <div id="фильтрация-по-атрибутам-ребер" class="section level2 hasAnchor" number="16.8">
 <h2><span class="header-section-number">16.8</span> Фильтрация по атрибутам ребер<a href="сетевые-данные-и-графы.html#фильтрация-по-атрибутам-ребер" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Атрибуты ребер, как и атрибуты имен, можно использовать для создания подсети. Например, мы можем отобрать только имена тех людей, с которыми Ходасевич встречался больше одного раза в месяц (это август 1922 г.).</p>
-<div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="сетевые-данные-и-графы.html#cb990-1" tabindex="-1"></a><span class="fu">E</span>(kfj_graph)[weight <span class="sc">&gt;</span> <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## + 6/86 edges from ccfe165 (vertex names):
+<div class="sourceCode" id="cb1011"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1011-1"><a href="сетевые-данные-и-графы.html#cb1011-1" tabindex="-1"></a><span class="fu">E</span>(kfj_graph)[weight <span class="sc">&gt;</span> <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## + 6/86 edges from 145bd15 (vertex names):
 ## [1] Венгерова--Минский    Женя     --Нина       Женя     --Шкловский 
 ## [4] Ася      --Нина       Зайцев_Б --Зайцева_В  Берберов --Берберов_Л</code></pre>
 <p>Визуализируем подсеть. Цветовая раскраска в данном случае ничего не добавляет, просто показываю красивое. Подписи можно добавить не только к узлам, но и к ребрам.</p>
-<div class="sourceCode" id="cb992"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb992-1"><a href="сетевые-данные-и-графы.html#cb992-1" tabindex="-1"></a>kfj_sub <span class="ot">&lt;-</span> <span class="fu">subgraph.edges</span>(kfj_graph, <span class="fu">E</span>(kfj_graph)[weight <span class="sc">&gt;</span> <span class="dv">1</span>])</span>
-<span id="cb992-2"><a href="сетевые-данные-и-графы.html#cb992-2" tabindex="-1"></a>names_sub <span class="ot">&lt;-</span> <span class="fu">get.vertex.attribute</span>(kfj_sub)<span class="sc">$</span>name</span>
-<span id="cb992-3"><a href="сетевые-данные-и-графы.html#cb992-3" tabindex="-1"></a>weight_sub <span class="ot">&lt;-</span> <span class="fu">get.edge.attribute</span>(kfj_sub)<span class="sc">$</span>weight</span>
-<span id="cb992-4"><a href="сетевые-данные-и-графы.html#cb992-4" tabindex="-1"></a></span>
-<span id="cb992-5"><a href="сетевые-данные-и-графы.html#cb992-5" tabindex="-1"></a><span class="fu">ggraph</span>(kfj_sub, <span class="at">layout =</span> <span class="st">&quot;kk&quot;</span>) <span class="sc">+</span></span>
-<span id="cb992-6"><a href="сетевые-данные-и-графы.html#cb992-6" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>, </span>
-<span id="cb992-7"><a href="сетевые-данные-и-графы.html#cb992-7" tabindex="-1"></a>                 <span class="at">linetype =</span> <span class="dv">2</span>, </span>
-<span id="cb992-8"><a href="сетевые-данные-и-графы.html#cb992-8" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">label =</span> weight_sub), </span>
-<span id="cb992-9"><a href="сетевые-данные-и-графы.html#cb992-9" tabindex="-1"></a>                 <span class="at">label_colour =</span> <span class="st">&quot;sienna&quot;</span>, </span>
-<span id="cb992-10"><a href="сетевые-данные-и-графы.html#cb992-10" tabindex="-1"></a>                 <span class="at">label_dodge =</span> <span class="fu">unit</span>(<span class="fl">2.5</span>, <span class="st">&#39;mm&#39;</span>),</span>
-<span id="cb992-11"><a href="сетевые-данные-и-графы.html#cb992-11" tabindex="-1"></a>                 <span class="at">angle_calc =</span> <span class="st">&#39;along&#39;</span>) <span class="sc">+</span></span>
-<span id="cb992-12"><a href="сетевые-данные-и-графы.html#cb992-12" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="fu">aes</span>(<span class="at">color =</span> names_sub), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb992-13"><a href="сетевые-данные-и-графы.html#cb992-13" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names_sub),  <span class="at">repel =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb992-14"><a href="сетевые-данные-и-графы.html#cb992-14" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-537-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1013"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1013-1"><a href="сетевые-данные-и-графы.html#cb1013-1" tabindex="-1"></a>kfj_sub <span class="ot">&lt;-</span> <span class="fu">subgraph.edges</span>(kfj_graph, <span class="fu">E</span>(kfj_graph)[weight <span class="sc">&gt;</span> <span class="dv">1</span>])</span>
+<span id="cb1013-2"><a href="сетевые-данные-и-графы.html#cb1013-2" tabindex="-1"></a>names_sub <span class="ot">&lt;-</span> <span class="fu">get.vertex.attribute</span>(kfj_sub)<span class="sc">$</span>name</span>
+<span id="cb1013-3"><a href="сетевые-данные-и-графы.html#cb1013-3" tabindex="-1"></a>weight_sub <span class="ot">&lt;-</span> <span class="fu">get.edge.attribute</span>(kfj_sub)<span class="sc">$</span>weight</span>
+<span id="cb1013-4"><a href="сетевые-данные-и-графы.html#cb1013-4" tabindex="-1"></a></span>
+<span id="cb1013-5"><a href="сетевые-данные-и-графы.html#cb1013-5" tabindex="-1"></a><span class="fu">ggraph</span>(kfj_sub, <span class="at">layout =</span> <span class="st">&quot;kk&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1013-6"><a href="сетевые-данные-и-графы.html#cb1013-6" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>, </span>
+<span id="cb1013-7"><a href="сетевые-данные-и-графы.html#cb1013-7" tabindex="-1"></a>                 <span class="at">linetype =</span> <span class="dv">2</span>, </span>
+<span id="cb1013-8"><a href="сетевые-данные-и-графы.html#cb1013-8" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">label =</span> weight_sub), </span>
+<span id="cb1013-9"><a href="сетевые-данные-и-графы.html#cb1013-9" tabindex="-1"></a>                 <span class="at">label_colour =</span> <span class="st">&quot;sienna&quot;</span>, </span>
+<span id="cb1013-10"><a href="сетевые-данные-и-графы.html#cb1013-10" tabindex="-1"></a>                 <span class="at">label_dodge =</span> <span class="fu">unit</span>(<span class="fl">2.5</span>, <span class="st">&#39;mm&#39;</span>),</span>
+<span id="cb1013-11"><a href="сетевые-данные-и-графы.html#cb1013-11" tabindex="-1"></a>                 <span class="at">angle_calc =</span> <span class="st">&#39;along&#39;</span>) <span class="sc">+</span></span>
+<span id="cb1013-12"><a href="сетевые-данные-и-графы.html#cb1013-12" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="fu">aes</span>(<span class="at">color =</span> names_sub), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb1013-13"><a href="сетевые-данные-и-графы.html#cb1013-13" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names_sub),  <span class="at">repel =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb1013-14"><a href="сетевые-данные-и-графы.html#cb1013-14" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-547-1.png" width="672" /></p>
 </div>
 <div id="укладка-сети" class="section level2 hasAnchor" number="16.9">
 <h2><span class="header-section-number">16.9</span> Укладка сети<a href="сетевые-данные-и-графы.html#укладка-сети" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -940,28 +943,28 @@ div.csl-indent {
 <li>layout_nicely</li>
 </ul>
 <p>Можно выбрать укладку, не вызывая отдельную функцию:</p>
-<div class="sourceCode" id="cb993"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb993-1"><a href="сетевые-данные-и-графы.html#cb993-1" tabindex="-1"></a><span class="fu">ggraph</span>(kfj_graph, <span class="at">layout =</span> <span class="st">&quot;kk&quot;</span>) <span class="sc">+</span></span>
-<span id="cb993-2"><a href="сетевые-данные-и-графы.html#cb993-2" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
-<span id="cb993-3"><a href="сетевые-данные-и-графы.html#cb993-3" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> color, <span class="at">show.legend =</span> F, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb993-4"><a href="сетевые-данные-и-графы.html#cb993-4" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names),  <span class="at">repel =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb993-5"><a href="сетевые-данные-и-графы.html#cb993-5" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-538-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1014"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1014-1"><a href="сетевые-данные-и-графы.html#cb1014-1" tabindex="-1"></a><span class="fu">ggraph</span>(kfj_graph, <span class="at">layout =</span> <span class="st">&quot;kk&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1014-2"><a href="сетевые-данные-и-графы.html#cb1014-2" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb1014-3"><a href="сетевые-данные-и-графы.html#cb1014-3" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> color, <span class="at">show.legend =</span> F, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb1014-4"><a href="сетевые-данные-и-графы.html#cb1014-4" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names),  <span class="at">repel =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb1014-5"><a href="сетевые-данные-и-графы.html#cb1014-5" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-548-1.png" width="672" /></p>
 <p>Поменяем укладку и цвета:</p>
-<div class="sourceCode" id="cb994"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb994-1"><a href="сетевые-данные-и-графы.html#cb994-1" tabindex="-1"></a><span class="fu">ggraph</span>(kfj_graph, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span></span>
-<span id="cb994-2"><a href="сетевые-данные-и-графы.html#cb994-2" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;sienna&quot;</span>), </span>
-<span id="cb994-3"><a href="сетевые-данные-и-графы.html#cb994-3" tabindex="-1"></a>                <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb994-4"><a href="сетевые-данные-и-графы.html#cb994-4" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;olivedrab&quot;</span>) <span class="sc">+</span></span>
-<span id="cb994-5"><a href="сетевые-данные-и-графы.html#cb994-5" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names),  <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>) <span class="sc">+</span></span>
-<span id="cb994-6"><a href="сетевые-данные-и-графы.html#cb994-6" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-539-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1015"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1015-1"><a href="сетевые-данные-и-графы.html#cb1015-1" tabindex="-1"></a><span class="fu">ggraph</span>(kfj_graph, <span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1015-2"><a href="сетевые-данные-и-графы.html#cb1015-2" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;sienna&quot;</span>), </span>
+<span id="cb1015-3"><a href="сетевые-данные-и-графы.html#cb1015-3" tabindex="-1"></a>                <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb1015-4"><a href="сетевые-данные-и-графы.html#cb1015-4" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;olivedrab&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1015-5"><a href="сетевые-данные-и-графы.html#cb1015-5" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names),  <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1015-6"><a href="сетевые-данные-и-графы.html#cb1015-6" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-549-1.png" width="672" /></p>
 <p>Не все укладки одинаково хороши.</p>
-<div class="sourceCode" id="cb995"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb995-1"><a href="сетевые-данные-и-графы.html#cb995-1" tabindex="-1"></a><span class="fu">ggraph</span>(kfj_graph, <span class="at">layout =</span> <span class="st">&quot;linear&quot;</span>, <span class="at">circular =</span> T) <span class="sc">+</span></span>
-<span id="cb995-2"><a href="сетевые-данные-и-графы.html#cb995-2" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;sienna&quot;</span>), </span>
-<span id="cb995-3"><a href="сетевые-данные-и-графы.html#cb995-3" tabindex="-1"></a>                <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb995-4"><a href="сетевые-данные-и-графы.html#cb995-4" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;olivedrab&quot;</span>) <span class="sc">+</span></span>
-<span id="cb995-5"><a href="сетевые-данные-и-графы.html#cb995-5" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names),  <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>) <span class="sc">+</span></span>
-<span id="cb995-6"><a href="сетевые-данные-и-графы.html#cb995-6" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-540-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1016"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1016-1"><a href="сетевые-данные-и-графы.html#cb1016-1" tabindex="-1"></a><span class="fu">ggraph</span>(kfj_graph, <span class="at">layout =</span> <span class="st">&quot;linear&quot;</span>, <span class="at">circular =</span> T) <span class="sc">+</span></span>
+<span id="cb1016-2"><a href="сетевые-данные-и-графы.html#cb1016-2" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;sienna&quot;</span>), </span>
+<span id="cb1016-3"><a href="сетевые-данные-и-графы.html#cb1016-3" tabindex="-1"></a>                <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb1016-4"><a href="сетевые-данные-и-графы.html#cb1016-4" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;olivedrab&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1016-5"><a href="сетевые-данные-и-графы.html#cb1016-5" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> names),  <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1016-6"><a href="сетевые-данные-и-графы.html#cb1016-6" tabindex="-1"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-550-1.png" width="672" /></p>
 <p>Подробнее см.: <a href="https://www.data-imaginist.com/2017/ggraph-introduction-edges/" class="uri">https://www.data-imaginist.com/2017/ggraph-introduction-edges/</a></p>
 <p><img src="https://d33wubrfki0l68.cloudfront.net/3773270e1c9c69a0762e26ff76b8cdd40c09f127/1fef0/assets/images/edge_meme_wide.jpg" /></p>
 

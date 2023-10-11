@@ -179,17 +179,23 @@ x <- c("the", "just")
 is_article(x) # взрыв мозга
 ```
 
-Подумайте, вектор какого типа и какой длины вернет код ниже.
+</br>
 
-```{r}
+:::{.ask .question}
+Подумайте, вектор какого типа и какой длины вернет код ниже.
+:::
+
+```{r eval=FALSE}
 is_article <- function(x) { 
   articles <- c("a", "the")
   x %in% articles
 }
 
 x <- c(rep("the", 5), rep("if", 5))
-# is_article(x)
+is_article(x)
 ```
+
+</br>
 
 ::: {.task .code}
 Напишите функцию `awesome_plot`, которая будет принимать в качестве аргументов два вектора, трансформировать их в тиббл и строить диаграмму рассеяния при помощи ggplot(). Задайте цвет и прозрачность точек, а в подзаголовке выведите коеффицент корреляции.
@@ -211,7 +217,8 @@ x <- c(rep("the", 5), rep("if", 5))
 
 #### Цикл `for`
 
-Цикл ниже считает количество букв для каждого слова в векторе.
+Цикл ниже считает количество букв для каждого слова в векторе. Вы можете заметить, что в циклах часто используется буква `i`. Но никакой особой магии в ней нет, имя переменной можно изменить.
+
 
 ```{r}
 y <- c("в", "мысли", "ему", "то", "вложила", "богиня", "державная", "гера")
@@ -241,18 +248,18 @@ load("./data/HapaxPlato.Rdata")
 ```{r}
 rownames(hapax_plato) <- hapax_plato$dialogue 
 
-hapax_plato <- hapax_plato %>% select(-group, -dialogue) # 
-str(hapax_plato)
+hapax_plato_num <- hapax_plato %>% select(-group, -dialogue) # 
+str(hapax_plato_num)
 ```
 
 Сейчас все данные в нашей таблице имеют тип `chr`, то есть строка, и при помощи цикла мы можем их трансформировать.
 
 ```{r}
-for (i in seq_along(hapax_plato)) {  # seq_along ≈ 1:length(x)
-  hapax_plato[,i] <- as.numeric(hapax_plato[,i])
+for (i in seq_along(hapax_plato_num)) {  # seq_along ≈ 1:length(x)
+  hapax_plato_num[,i] <- as.numeric(hapax_plato_num[,i])
 }
 
-str(hapax_plato) # убеждаемся, что все получилось
+str(hapax_plato_num) # убеждаемся, что все получилось
 ```
 
 При помощи циклов можно не только трансформировать данные, но и создавать новые. Чтобы посчитать среднее для столбца, цикл писать не надо: для этого есть функция `colSums()` (или, для других задач, `rowSums()`). А вот посчитать медиану таким образом не получится, тут может пригодиться цикл.
@@ -262,8 +269,8 @@ library(tictoc)
 
 tic()
 medians <- c()
-for (i in seq_along(hapax_plato)) { 
-  m <- median(hapax_plato[,i])
+for (i in seq_along(hapax_plato_num)) { 
+  m <- median(hapax_plato_num[,i])
   medians <- c(medians, m)
 }
 toc()
@@ -271,72 +278,20 @@ toc()
 medians
 ```
 
-Мы сохранили результат, инициировав пустой вектор, к которому затем привязали данные по каждому столбцу. Это не всегда хорошая идея, поскольку для больших данных может сильно замедлить цикл[^04-iterate-1]. Еще один способ -- сразу инициировать вектор нужной длины. Сравнить скорость можно при помощи пакета `tictoc`.
+Мы сохранили результат, инициировав пустой вектор, к которому затем привязали данные по каждому столбцу. Это не всегда хорошая идея, поскольку для больших данных может сильно замедлить цикл[^04-iterate-1]. Еще один способ -- сразу инициировать вектор нужной длины. Сравнить скорость можно при помощи функций из пакета `tictoc`.
 
 [^04-iterate-1]: <https://r4ds.had.co.nz/iteration.html>
 
 ```{r}
 tic()
-medians <- vector("double", ncol(hapax_plato))
-for (i in seq_along(hapax_plato)) { 
-  medians[i] <- median(hapax_plato[,i])
+medians <- vector("double", ncol(hapax_plato_num))
+for (i in seq_along(hapax_plato_num)) { 
+  medians[i] <- median(hapax_plato_num[,i])
 }
 toc()
 ```
 
-Второй способ чуть быстрее, и для больших данных это может быть существенно (знала бы я это раньше).
-
-::: infobox
-Вы уже заметили, что в циклах часто используется буква `i`. Но никакой особой магии в ней нет!
-:::
-
-</br>
-
-::: {.task .code}
-ПРАКТИЧЕСКОЕ ЗАДАНИЕ 4: ГАРРИ ПОТТЕР
-:::
-
-</br>
-
-```{r eval=FALSE}
-# скачайте с сайта Британской библиотеки датасет о Гарри Поттере
-my_url <- "https://www.bl.uk/bibliographic/downloads/HarryPotterResearcherFormat_202306_csv.zip"
-dir.create("HP")
-download.file(url = my_url, destfile = "HP/HP.zip")
-
-# после этого перейдите в директорию с архивом 
-# и распакуйте его 
-
-setwd("HP")
-unzip("HP.zip")
-
-# сохраните список всех файлов с расширением .csv, 
-# используя подходящую функцию из base R
-
-# ваш код здесь
-# my_files <- 
-
-# напишите цикл, который:
-# 1) прочитает все файлы из my_files, используя для этого функцию read_csv() из пакета readr
-# (аргумент show_col_types установите на FALSE);
-# 2) для каждого датасета выяснит количество рядов _без_ NA в столбце BNB Number;
-# 3) разделит число таких рядов на общее число рядов;
-# 4) вернет таблицу c четырьми столбцами: 
-# - название файла (id), 
-# - число рядов (total), 
-# - число рядов без NA (complete), 
-# - доля полных рядов (ratio)
-
-my_df <- data.frame(id = my_files, 
-                    total = rep(0, length(my_files)),
-                    complete = rep(0, length(my_files)),
-                    ratio = rep(0, length(my_files)))
-
-for (i in 1:length(my_files)) {
-  # ваш код здесь
-}
-
-```
+Второй способ чуть быстрее, и для больших данных это может быть существенно.
 
 #### Цикл `while`
 
@@ -421,19 +376,58 @@ if (any(x >= 5)) print("все сработало")
 x < 3 | x > 7
 ```
 
-Сколько таких столбцов в датасете `starwars`?
+</br>
 
-```{r echo=FALSE}
-check_question(answer=4, right="С вами явно пребывает сила", wrong = "Можешь многое узнать ты еще")
+::: {.task .code}
+ПРАКТИЧЕСКОЕ ЗАДАНИЕ 4: ГАРРИ ПОТТЕР
+:::
+
+</br>
+
+```{r eval=FALSE}
+# скачайте с сайта Британской библиотеки датасет о Гарри Поттере
+my_url <- "https://www.bl.uk/bibliographic/downloads/HarryPotterResearcherFormat_202306_csv.zip"
+dir.create("HP")
+download.file(url = my_url, destfile = "HP/HP.zip")
+
+# после этого перейдите в директорию с архивом 
+# и распакуйте его 
+
+setwd("HP")
+unzip("HP.zip")
+
+# сохраните список всех файлов с расширением .csv, 
+# используя подходящую функцию из base R
+
+# ваш код здесь
+# my_files <- 
+
+# напишите цикл, который:
+# 1) прочитает все файлы из my_files, используя для этого функцию read_csv() из пакета readr
+# (аргумент show_col_types установите на FALSE);
+# 2) для каждого датасета выяснит количество рядов _без_ NA в столбце BNB Number;
+# 3) разделит число таких рядов на общее число рядов;
+# 4) вернет таблицу c четырьми столбцами: 
+# - название файла (id), 
+# - число рядов (total), 
+# - число рядов без NA (complete), 
+# - доля полных рядов (ratio)
+
+my_df <- data.frame(id = my_files, 
+                    total = rep(0, length(my_files)),
+                    complete = rep(0, length(my_files)),
+                    ratio = rep(0, length(my_files)))
+
+for (i in 1:length(my_files)) {
+  # ваш код здесь
+}
+
 ```
 
-## Вместо циклов: базовый R и tidyverse
 
-Функция **`tapply()`** из базового R принимает на входе вектор, фактор (или список факторов) и функцию. Каждый фактор должен быть той же длины, что и вектор. Код ниже считает средний процент гапаксов по группам диалогов:
+## Вместо циклов: семейство `_apply`
 
-```{r}
-load("./data/HapaxPlato.Rdata")
-```
+Функция **`tapply()`** из базового R принимает на входе вектор, фактор (или список факторов) и функцию. Каждый фактор должен быть той же длины, что и вектор. Код ниже считает среднюю долю гапаксов по группам диалогов:
 
 ```{r}
 # подготавливаем векторы 
@@ -443,60 +437,51 @@ my_vct <- as.numeric(hapax_plato$ratio)
 # применяем к ним функцию mean()
 tapply(my_vct, my_fct, mean)
 ```
+</br>
 
-На диалекте tidyverse эта задача решается так:
+:::{.ask .question}
+Подумайте, как решить эту задачу на диалекте tidyverse.
+:::
 
-```{r}
-hapax_plato %>% 
-  mutate(ratio = as.numeric(ratio)) %>% 
-  group_by(group) %>% 
-  summarise(mean = mean(ratio))
-```
+</br>
 
-Функция **`apply()`** вызывает функцию для каждой строки или столбца матрицы или датафрейма.
+Если группировка не нужна, то подойдет функция **`apply()`**: она вызывает функцию для каждого ряда или столбца матрицы или датафрейма. В качестве второго аргумента функция принимает `1` (для вычислений по рядам) или `2` (для вычислений по столбцам).
 
 ```{r}
-# избавляемся от факторов и строк
-rownames(hapax_plato) <- hapax_plato$dialogue
-hapax_plato <- subset(hapax_plato, select = -c(dialogue, group)) 
-
-# преобразуем столбцы в числовой формат при помощи apply
 tic()
-hapax_plato<- apply(hapax_plato, 2, as.numeric)
+round(apply(hapax_plato_num, 2, mean), 3)
 toc()
 ```
 
-Сравните со скростью цикла, который мы написали выше:
-
-```{r}
-load("./data/HapaxPlato.Rdata")
-# избавляемся от факторов и строк
-rownames(hapax_plato) <- hapax_plato$dialogue
-hapax_plato <- subset(hapax_plato, select = -c(dialogue, group)) 
-```
+Эти функции работают быстрее циклов. Сравните:
 
 ```{r}
 tic()
-for (i in seq_along(hapax_plato)) {  
-  hapax_plato[,i] <- as.numeric(hapax_plato[,i])
+my_means <- c()
+for (i in seq_along(hapax_plato_num)) {  
+  m <- round(mean(hapax_plato_num[,i]), 3)
+  my_means <- c(my_means, m)
 }
+my_means
 toc()
 ```
 
 Функция `apply()` позволяет применять к данным собственные функции, в том числе анонимные.
 
 ```{r}
-hapax_centered <- apply(hapax_plato, 2, function(x) x - mean(x))
+hapax_centered <- apply(hapax_plato_num, 2, function(x) x - mean(x))
 head(hapax_centered)
 ```
 
-Опять-таки, все это решается (даже проще) в грамматике dplyr:
+Также можно использовать грамматику трансформации данных dplyr:
 
 ```{r eval=F}
-as_tibble(hapax_plato) %>% 
+tic()
+as_tibble(hapax_plato_num) %>% 
   mutate(words = words - mean(words), 
          hapax = hapax - mean(hapax),
          ratio = ratio - mean(ratio))
+toc()
 ```
 
 Видно, что по времени мы при этом сильно не выигрываем; к тому же, нам пришлось повторить один код три раза. Значит, надо что-то менять. Например, так[^04-iterate-2]:
@@ -505,7 +490,7 @@ as_tibble(hapax_plato) %>%
 
 ```{r eval=F}
 tic()
-as_tibble(hapax_plato) %>% 
+as_tibble(hapax_plato_num) %>% 
   mutate_all(function(x) x - mean(x))
 toc()
 ```
@@ -516,8 +501,9 @@ toc()
 
 ```{r}
 fn <- function(x) x - mean(x)
-as_tibble(hapax_plato) %>%
-  mutate(across(1:3, fn)) %>% invisible()
+as_tibble(hapax_plato_num) %>%
+  mutate(across(1:3, fn)) %>% 
+  invisible()
 ```
 
 В любом случае, нам удалось обойтись без цикла, код понятен и хорошо читается.
@@ -527,10 +513,10 @@ as_tibble(hapax_plato) %>%
 Чтобы понять, как они работают, сначала создадим список.
 
 ::: infobox
-При анализе текста со списками приходится иметь дело достаточно часто: объекты типа `stylo.corpus`, которые создает пакет [`stylo`](https://rdrr.io/cran/stylo), по сути являются списками.
+При анализе текста со списками приходится иметь дело достаточно часто: объекты типа `stylo.corpus`, которые создает пакет [`stylo`](https://rdrr.io/cran/stylo) по сути являются списками.
 :::
 
-Создадим игрушечный корпус из двух игрушечных текстов.
+Создадим игрушечный корпус из двух текстов.
 
 ```{r}
 x <- c("гнев", "богиня", "воспой")
@@ -557,20 +543,31 @@ sapply(corpus, sample, 5, replace = T)
 vapply(corpus, sample, size = 5, replace = T, character(5))
 ```
 
-Поскольку наш "корпус" -- это список, то применить грамматику `dplyr` не очень удобно, но списко легко превращается в таблицу:
+Поскольку наш "корпус" -- это список, применять грамматику `dplyr` не очень удобно. Но списко легко превращается в таблицу:
 
 ```{r}
-stack(corpus) # передвинуть и переименовать: `relocate()` и `rename()`
+corpus_tbl <- stack(corpus) %>% 
+  as_tibble()
+corpus_tbl
 ```
 
-Теперь повторные выборки можно делать так:
+
+:::{.task .code}
+Используйте `relocate()` и `rename()`, чтобы поменять столбцы местами и переименовать их.
+:::
+
+</br>
+
+Повторные выборки из тиббла можно делать так:
 
 ```{r}
 set.seed(0211)
-stack(corpus) %>% 
+corpus_tbl %>% 
   group_by(ind) %>% 
   sample_n(size = 5, replace = T)
 ```
+
+</br>
 
 ::: {.task .code}
 Пройдите урок 10 `lapply and sapply` и урок 11 `vapply and tapply` из курса `R Programming E` в `swirl`.
@@ -579,6 +576,8 @@ stack(corpus) %>%
 </br>
 
 ## Purrr
+
+### `map()`
 
 По-настоящему мощный инструмент для итераций -- это пакет `purrr` из семейства `tidyverse`[^04-iterate-4]. Разработчики предупреждают, что потребуется время, чтобы овладеть этим инструментом [@wickham2016].
 
@@ -598,20 +597,71 @@ stack(corpus) %>%
 -   `map_dbl()`
 -   `map_chr()`
 
-Все они принимают на входе данные и функцию, которую следует к ним применить, и возвращают результат в том виде, который указан после подчеркивания. Просто `map()` вернет список, а `map_df()` -- таблицу:
+Все они принимают на входе данные и функцию (или формулу), которую следует к ним применить, и возвращают результат в том виде, который указан после подчеркивания. Просто `map()` вернет список, а `map_int()` -- целочисленный вектор, и т.д. 
+
+Воспользуемся возможностями `purrr`, чтобы исследовать датасет `starwars` из пакета `dplyr`. Для начала узнаем число отсутствующих значений в каждом столбце. Тильда (`~`) указывает на то, что мы используем формулу.
 
 ```{r}
-hapax_plato  %>%
-  as_tibble() %>%
-  map_df(center) %>% 
-  head()
+library(purrr)
+data(starwars)
+map_int(starwars, ~sum(is.na(.)))
 ```
 
-Если на выходе требуется числовой вектор, то используем суффикс `dbl`:
+Обратите внимание, что `map_int`, как и `map_dbl` возвращает именованный вектор. Чтобы избавиться от имен, можно использовать `unname()`:
 
 ```{r}
-round(map_dbl(hapax_plato, mean), 3) # это именованный вектор!
+unname(map_chr(starwars, class))
 ```
+</br>
+
+:::{.task .code}
+Используйте `map_dbl` и `n_distinct`, чтобы узнать число уникальных наблюдений в каждом столбце.
+:::
+
+</br>
+
+Если функция принимает дополнительные аргументы, их можно задать после названия функции. В таком случае для _каждого_ вызова функции будет использовано это значение аргумента. В примере ниже это аргумент `na.rm`. Заметьте, что `map` можно использовать с оператором pipe `%>%`:
+
+```{r}
+starwars %>% 
+  select(mass, height) %>% 
+  map(mean, na.rm = TRUE)
+```
+При вызове `map_df` есть дополнительная возможность сохранить названия столбцов, используя аргумент `.id`:
+
+```{r}
+starwars %>% 
+  map_df(~data.frame(distinct = n_distinct(.x),
+                     class = class(.x)),
+         .id = "variable"
+         )
+```
+
+Функции `map` можно передать пользовательскую функцию. 
+Для примера создадим функцию `describe_vec()`, которая возвращает строку с длиной и классом вектора, и применим ее к игрушечному корпусу, который мы создали выше.
+
+```{r}
+# пользовательская функция
+describe_vec <- function(vec){
+  l = paste("Длина вектора: ", length(vec))
+  c = paste("Класс вектора: ", class(vec))
+  result = paste(l, c, sep = " | ")
+  return(result)
+}
+
+unname(map_chr(corpus, describe_vec))
+```
+
+Кроме того, мы можем передать `map` анонимную функцию:
+
+```{r}
+map_chr(corpus, 
+        function(x) paste("Длина вектора: ", length(x))
+        )
+```
+
+
+### `map2()`
 
 Если необходимо несколько раз вызывать одну и ту же функцию с двумя аргументами, используется функция `map2()` [^04-iterate-6]. Аргументы, которые меняются при каждом вызове, пишутся до функции; аргументы, которые остаются неизменны, -- после.
 
@@ -623,7 +673,11 @@ sd = list(1, 5, 50)
 map2(mean, sd, rnorm, n = 5)
 ```
 
-![Как работает `map2()`](https://d33wubrfki0l68.cloudfront.net/68a21c4a103426c3b311c9dcfad8fe379d4892f1/55c9d/diagrams/lists-map2.png){width="60%"}
+</br>
+
+![_Как работает `map2()_`](https://d33wubrfki0l68.cloudfront.net/68a21c4a103426c3b311c9dcfad8fe379d4892f1/55c9d/diagrams/lists-map2.png){width="60%"}
+
+</br>
 
 Это можно обобщить следующим образом ([источник](https://adv-r.hadley.nz/functionals.html#map2){width="60%"}):
 
@@ -631,11 +685,35 @@ map2(mean, sd, rnorm, n = 5)
 
 Можно было бы предположить, что должны быть и map3(), map4() и т.д., но во всех случаеях, когда у функции больше двух аргументов, используется `pmap()`.
 
+В анализе текстовых данных функция `map2()` применяется, например, при создании скользящего окна. Такие окна используются при создании эмбеддингов.[^04-iterate-7]  
+
+[^04-iterate-7]: Пример отсюда, с некоторыми упрощениями: <https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself>. Подробный разбор в [видео](https://vk.com/video-211800158_456239215)
+
+Разделим наш игрушечный корпус на окна. Функция вернет список с тибблами, число рядов в каждом из которых соответствует заданному размеру окна.
+
+```{r}
+windows <- slider::slide(corpus_tbl, ~.x, .after = 1)
+windows[[1]]
+```
+Для анализа этих данных каждому окну следует присвоить id. Здесь пригодится `map2()`.
+
+```{r}
+out <- map2(.x = windows, .y = 1:length(windows), ~ mutate(.x, window_id = .y)) # out  -- это список
+out[[1]]
+```
+
+Поскольку аргумент `.y` -- это, по сути, индекс, можно было бы использовать функцию `imap()`:
+
+```{r}
+out <- imap(.x = windows, ~ mutate(.x, window_id = .y))
+out[[1]]
+```
+
 ::: {.task .code}
 Установите курс `swirl::install_course("Advanced R Programming")` и пройдите из него урок 3 `Functional Programming with purrr`.
 :::
 
-Вопросы!
+Несколько вопросов для самопроверки.
 
 ::: {.ask .question}
 Функции-предикаты (predicate functions) возвращают `TRUE` или `FALSE`. Выберите из списка все функции-предикаты.
@@ -665,33 +743,168 @@ check_question(options = c("every()", "some()", "none()", "has_element()", "is.f
 
 </br>
 
-::: {.task .code}
-1. Напишите цикл, который для каждого столбца в таблице `starwars` из пакета `dplyr` считает число отсутствующих значений. 
+### Дополнительные возможности purrr
 
-2. Решите ту же задачу при помощи пакета `purrr`. Выберите из таблицы только те столбцы, где число `NA` не больше 0.5.
+Вы уже поняли, что благодаря циклам можно прочитать сразу несколько файлов (см. Практическое задание выше). Та же задача решается и при помощи `map`. Рассмотрим на том же примере с датасетом Британской библиотеки про Гарри Поттера. Если вы еще не скачали архив, посмотрите выше, как это сделать.
+
+Узнаем имена файлов в директории и прочитаем их все одним вызовом функции (подробнее про формат .csv будет рассказано в следующем уроке).
+
+```{r}
+# чтение файлов 
+library(readr)
+
+files <- list.files("./files/HP", pattern = ".csv", full.names = TRUE)
+
+HP <- map(files, read_csv, col_types = cols())
+```
+
+Объект `full` -- это список. В нем пять элементов, так как на входе у нас было пять файлов. Для удобства назначим имена элементам списка. Пока можно не вникать, что здесь происходит -- регулярные выражения мы рассмотрим в одном из следующих уроков.
+
+```{r}
+library(stringr)
+names(HP) <- str_extract(files, "\\w+(?=.csv)")
+names(HP)
+```
+
+Начнем с простого: при помощи `map` можно извлечь столбцы (по имени) или ряды (по условию) из всех пяти таблиц. Прежде чем выполнить код ниже, подумайте, как будет выглядеть результат. 
+
+```{r eval=FALSE}
+# извлечь столбцы
+map(HP, select, `BNB number`)
+
+# извлечь ряды
+map(HP, filter, !(is.na(`BNB number`)))
+```
+
+</br>
+
+:::{.task .code}
+Извлеките все уникальные названия (столбец `Title`) из всех пяти таблиц в `full`. Используйте функцию `distinct`. 
 :::
 
+Что, если мы не знаем заранее, какие столбцы есть во всех пяти таблицах, и хотим это выяснить? Для этого подойдет функция `reduce()` из того же `purrr`. Она принимает на входе вектор (или список) и  функцию и применяет функцию последовательно к каждой паре значений.
 
-## Пример итерации
+![[_Источник_.](https://adv-r.hadley.nz/functionals.html#reduce)](https://d33wubrfki0l68.cloudfront.net/9c239e1227c69b7a2c9c2df234c21f3e1c74dd57/eec0e/diagrams/functionals/reduce.png){ width="60%" }
 
-Функция `map2()` в анализе текста: функция, которая принимает на входе список таблиц, созданных функцией `slide`, и назначает каждому окну id.[^04-iterate-7] Используется для создания скользящего окна при создании эмбеддингов.
+</br>
 
-[^04-iterate-7]: Пример отсюда, с некоторыми упрощениями: <https://smltar.com/embeddings.html#understand-word-embeddings-by-finding-them-yourself>. Подробный разбор в [видео](https://vk.com/video-211800158_456239215)
-
-```{r}
-corpus_tbl <- as_tibble(stack(corpus))
-windows <- slider::slide(corpus_tbl, ~.x, .after = 1)
-out <- map2(.x = windows, .y = 1:length(windows), ~ mutate(.x, window_id = .y)) # out is a list
-out[2]
-```
-
-Поскольку второй аргумент -- это, по сути, индекс, можно было бы использовать функцию `imap()`:
+Воспользуемся этим, чтобы найти общие для всех таблиц имена столбцов.
 
 ```{r}
-out <- imap(.x = windows, ~ mutate(.x, window_id = .y))
-out[2:3]
+map(HP, colnames) %>% 
+  reduce(intersect)
 ```
 
-## Furrr
+Еще одна неочевидная возможность функции `reduce` - объединение нескольких таблиц в одну одним вызовом. Например, так:
 
-Про параллельные вычисления, если останутся силы.
+```{r message=FALSE}
+HP_joined <- HP %>% 
+  reduce(left_join)
+```
+
+Теперь можно почистить данные и построить несколько разведывательных графиков.
+
+```{r warning=FALSE, message=FALSE}
+library(ggplot2)
+library(tidyr)
+data_sum <- HP_joined %>% 
+  separate(`Date of publication`, into = c("year", NA)) %>% 
+  separate(`Country of publication`, into = c("country", NA), sep = ";") %>%
+  mutate(country = str_squish(country)) %>% 
+  mutate(country = 
+           case_when(country == "England" ~ "United Kingdom",
+                     country == "Scotland" ~ "United Kingdom",
+                     TRUE ~ country)) %>% 
+  group_by(year, country) %>% 
+  summarise(n = n()) %>% 
+  filter(!is.na(year)) %>% 
+  filter(!is.na(country)) 
+  
+
+# график
+data_sum %>% 
+  ggplot(aes(year, n, fill = country)) + 
+  geom_col() + 
+  xlab(NULL) +
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+В качестве небольшого бонуса к этому уроку построим облако слов. Вектор слов возьмем из столбца `Topic`. 
+
+```{r warning=FALSE}
+library(tidyr)
+data_topics <- data_joined %>% 
+  filter(!is.na(Topics)) %>% 
+  separate(Topics, into = c("topic", NA)) %>% 
+  mutate(topic = tolower(topic)) %>% 
+  group_by(topic) %>% 
+  summarise(n = n()) %>% 
+  filter(!topic %in% c("harry", "rowling", "potter", "children", "literary"))
+
+
+pal <- c("#f1c40f", "#34495e", 
+         "#8e44ad", "#3498db",
+         "#2ecc71")
+
+library(wordcloud)
+par(mar = c(1, 1, 1, 1))
+wordcloud(data_topics$topic, 
+          data_topics$n,
+          min.freq = 3,
+          #max.words = 50, 
+          scale = c(3, 0.8),
+          colors = pal, 
+          random.color = T, 
+          rot.per = .2,
+          vfont=c("script","plain")
+          )
+```
+
+Интерактивное облако слов можно построить с использованием пакета `wordcloud2`. Сделаем облако в форме шляпы волшебника!
+
+```{r eval=FALSE}
+# devtools::install_github("lchiffon/wordcloud2")
+library(wordcloud2)
+
+
+wordcloud2(data_topics, 
+           figPath = "./images/hat.png",
+           size = 1.5,
+           color="random-light", 
+           fontWeight = "normal",
+           backgroundColor="black"
+           )
+```
+
+![](./images/hat_wordcloud.jpg)
+
+</br>
+
+::: {.task .code}
+ПРАКТИЧЕСКОЕ ЗАДАНИЕ 5: АЛИСА В СТРАНЕ ЧУДЕС
+:::
+
+</br>
+
+```{r eval=FALSE}
+# постройте облако слов для "Алисы в стране чудес"
+
+library(languageR)
+library(dplyr)
+library(tidytext)
+
+# вектор с "Алисой"
+alice <- tolower(alice)
+
+# частотности для слов
+freq <- as_tibble(table(alice)) %>% 
+  rename(word = alice)
+
+# удалить стоп-слова
+freq_tidy <- freq %>% 
+  anti_join(stop_words) 
+# возможно, вы захотите произвести и другие преобразования
+
+# облако можно строить в любой библиотеке
+```
+

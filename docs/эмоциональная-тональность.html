@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-10-06" />
+<meta name="date" content="2023-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -236,10 +236,13 @@ div.csl-indent {
 <li class="chapter" data-level="5.5.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#циклы"><i class="fa fa-check"></i><b>5.5.1</b> Циклы</a></li>
 <li class="chapter" data-level="5.5.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#условия"><i class="fa fa-check"></i><b>5.5.2</b> Условия</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#вместо-циклов-базовый-r-и-tidyverse"><i class="fa fa-check"></i><b>5.6</b> Вместо циклов: базовый R и tidyverse</a></li>
-<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.7</b> Purrr</a></li>
-<li class="chapter" data-level="5.8" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#пример-итерации"><i class="fa fa-check"></i><b>5.8</b> Пример итерации</a></li>
-<li class="chapter" data-level="5.9" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#furrr"><i class="fa fa-check"></i><b>5.9</b> Furrr</a></li>
+<li class="chapter" data-level="5.6" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#вместо-циклов-семейство-_apply"><i class="fa fa-check"></i><b>5.6</b> Вместо циклов: семейство <code>_apply</code></a></li>
+<li class="chapter" data-level="5.7" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#purrr"><i class="fa fa-check"></i><b>5.7</b> Purrr</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#map"><i class="fa fa-check"></i><b>5.7.1</b> <code>map()</code></a></li>
+<li class="chapter" data-level="5.7.2" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#map2"><i class="fa fa-check"></i><b>5.7.2</b> <code>map2()</code></a></li>
+<li class="chapter" data-level="5.7.3" data-path="функциональное-программирование.html"><a href="функциональное-программирование.html#дополнительные-возможности-purrr"><i class="fa fa-check"></i><b>5.7.3</b> Дополнительные возможности purrr</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="импорт-и-экспорт-данных.html"><a href="импорт-и-экспорт-данных.html"><i class="fa fa-check"></i><b>6</b> Импорт и экспорт данных</a>
 <ul>
@@ -503,17 +506,17 @@ div.csl-indent {
 <div id="лексиконы-для-русского-языка" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> Лексиконы для русского языка<a href="эмоциональная-тональность.html#лексиконы-для-русского-языка" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Установка пакета с лексиконами.</p>
-<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="эмоциональная-тональность.html#cb714-1" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;dmafanasyev/rulexicon&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="эмоциональная-тональность.html#cb735-1" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;dmafanasyev/rulexicon&quot;</span>)</span></code></pre></div>
 <p>Начало работы.</p>
-<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="эмоциональная-тональность.html#cb715-1" tabindex="-1"></a><span class="fu">library</span>(rulexicon)</span>
-<span id="cb715-2"><a href="эмоциональная-тональность.html#cb715-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb715-3"><a href="эмоциональная-тональность.html#cb715-3" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span></code></pre></div>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="эмоциональная-тональность.html#cb736-1" tabindex="-1"></a><span class="fu">library</span>(rulexicon)</span>
+<span id="cb736-2"><a href="эмоциональная-тональность.html#cb736-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb736-3"><a href="эмоциональная-тональность.html#cb736-3" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span></code></pre></div>
 <div id="chen-skiena" class="section level3 hasAnchor" number="12.4.1">
 <h3><span class="header-section-number">12.4.1</span> Chen &amp; Skiena<a href="эмоциональная-тональность.html#chen-skiena" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Русский язык входит в языков, для которых Й. Чен и С. Скиена собрали оценочную лексику <span class="citation">(<a href="#ref-skiena2014">Chen and Skiena 2014</a>)</span>. Их лексикон построен на основе графа знаний, связывающего слова на разных языках (на основе Wiktionary, Google Translate, транслитерационных ссылок и WordNet). Слова оцениваются по бинарной шкале ( -1 / 1).</p>
-<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="эмоциональная-тональность.html#cb716-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>)</span>
-<span id="cb716-2"><a href="эмоциональная-тональность.html#cb716-2" tabindex="-1"></a>chen_skiena <span class="ot">&lt;-</span> hash_sentiment_chen_skiena</span>
-<span id="cb716-3"><a href="эмоциональная-тональность.html#cb716-3" tabindex="-1"></a><span class="fu">sample_n</span>(chen_skiena, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="эмоциональная-тональность.html#cb737-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>)</span>
+<span id="cb737-2"><a href="эмоциональная-тональность.html#cb737-2" tabindex="-1"></a>chen_skiena <span class="ot">&lt;-</span> hash_sentiment_chen_skiena</span>
+<span id="cb737-3"><a href="эмоциональная-тональность.html#cb737-3" tabindex="-1"></a><span class="fu">sample_n</span>(chen_skiena, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##               token score
 ##  1:         пустошь    -1
 ##  2:   революционный     1
@@ -529,9 +532,9 @@ div.csl-indent {
 <div id="rusentlex-2016" class="section level3 hasAnchor" number="12.4.2">
 <h3><span class="header-section-number">12.4.2</span> RuSentLex 2016<a href="эмоциональная-тональность.html#rusentlex-2016" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Для русского языка в свободном доступе находится РуСентиЛекс <span class="citation">(<a href="#ref-lukashevich2016"><span>“<span class="nocase">Создание лексикона оценочных слов русского языка РуСентилекс</span>”</span> 2016</a>)</span>. Он содержит около 15000 уникальных слов или фраз, среди которых оценочные слова, а также слова и выражения, не передающие оценочное отношения автора, но имеющие положительную или отрицательную ассоциацию (коннотацию). Возможные значения переменной <code>sentiment</code>: neutral, positive, negative, positive/negative.</p>
-<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="эмоциональная-тональность.html#cb718-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1102</span>)</span>
-<span id="cb718-2"><a href="эмоциональная-тональность.html#cb718-2" tabindex="-1"></a>rusenti2016 <span class="ot">&lt;-</span> hash_rusentilex_2016</span>
-<span id="cb718-3"><a href="эмоциональная-тональность.html#cb718-3" tabindex="-1"></a><span class="fu">sample_n</span>(rusenti2016, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="эмоциональная-тональность.html#cb739-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1102</span>)</span>
+<span id="cb739-2"><a href="эмоциональная-тональность.html#cb739-2" tabindex="-1"></a>rusenti2016 <span class="ot">&lt;-</span> hash_rusentilex_2016</span>
+<span id="cb739-3"><a href="эмоциональная-тональность.html#cb739-3" tabindex="-1"></a><span class="fu">sample_n</span>(rusenti2016, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##            token speech.part         lemma         sentiment  source
 ## 1         любить        Verb        любить           neutral    fact
 ## 2  самозабвенный         Adj самозабвенный          positive feeling
@@ -555,8 +558,8 @@ div.csl-indent {
 ## 9                                                     
 ## 10 ДЕРЕВЕНЕТЬ, КОСТЕНЕТЬ (НЕМЕТЬ, ВОЗМОЖНО ОТВЕРДЕВАЯ)</code></pre>
 <p>При работе с этим лексиконом следует учитывать, что для отдельных слов он содержит несколько вхождений, как положительных, так и отрицательных, например:</p>
-<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="эмоциональная-тональность.html#cb720-1" tabindex="-1"></a>rusenti2016 <span class="sc">%&gt;%</span> </span>
-<span id="cb720-2"><a href="эмоциональная-тональность.html#cb720-2" tabindex="-1"></a>  <span class="fu">filter</span>(token <span class="sc">==</span> <span class="st">&quot;нежный&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb741-1"><a href="эмоциональная-тональность.html#cb741-1" tabindex="-1"></a>rusenti2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb741-2"><a href="эмоциональная-тональность.html#cb741-2" tabindex="-1"></a>  <span class="fu">filter</span>(token <span class="sc">==</span> <span class="st">&quot;нежный&quot;</span>)</span></code></pre></div>
 <pre><code>##    token speech.part  lemma sentiment  source                        ambiguity
 ## 1 нежный         Adj нежный  negative opinion ХРУПКИЙ (СЛИШКОМ СЛАБЫЙ, НЕЖНЫЙ)
 ## 2 нежный         Adj нежный  positive opinion                        ЛАСКОВЫЙ 
@@ -566,9 +569,9 @@ div.csl-indent {
 <div id="afinn" class="section level3 hasAnchor" number="12.4.3">
 <h3><span class="header-section-number">12.4.3</span> AFINN<a href="эмоциональная-тональность.html#afinn" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Словарь AFINN содержит 7268 оценочных слов. Их тональность оценивается по шкале от -5 (крайне негативная) до 5 (в высшей степени положительная). Например, слово “адский” имеет оценку -5, а слово “ангельский” – +5.</p>
-<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="эмоциональная-тональность.html#cb722-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>)</span>
-<span id="cb722-2"><a href="эмоциональная-тональность.html#cb722-2" tabindex="-1"></a>afinn <span class="ot">&lt;-</span> hash_sentiment_afinn_ru</span>
-<span id="cb722-3"><a href="эмоциональная-тональность.html#cb722-3" tabindex="-1"></a><span class="fu">sample_n</span>(afinn, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="эмоциональная-тональность.html#cb743-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>)</span>
+<span id="cb743-2"><a href="эмоциональная-тональность.html#cb743-2" tabindex="-1"></a>afinn <span class="ot">&lt;-</span> hash_sentiment_afinn_ru</span>
+<span id="cb743-3"><a href="эмоциональная-тональность.html#cb743-3" tabindex="-1"></a><span class="fu">sample_n</span>(afinn, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##              token score
 ##  1:  экстатический   1.7
 ##  2:       знаковый   1.7
@@ -584,9 +587,9 @@ div.csl-indent {
 <div id="nrc" class="section level3 hasAnchor" number="12.4.4">
 <h3><span class="header-section-number">12.4.4</span> NRC<a href="эмоциональная-тональность.html#nrc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Переведенная версия списка положительных и отрицательных слов Mohammad &amp; Turney (2010)<a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a>. Таблица содержит 5179 слов с не нейтральными оценками. Бинарная шкала: -1 / 1.</p>
-<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="эмоциональная-тональность.html#cb724-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1102</span>)</span>
-<span id="cb724-2"><a href="эмоциональная-тональность.html#cb724-2" tabindex="-1"></a>nrc <span class="ot">&lt;-</span> hash_sentiment_nrc_emolex_ru</span>
-<span id="cb724-3"><a href="эмоциональная-тональность.html#cb724-3" tabindex="-1"></a><span class="fu">sample_n</span>(nrc, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="эмоциональная-тональность.html#cb745-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1102</span>)</span>
+<span id="cb745-2"><a href="эмоциональная-тональность.html#cb745-2" tabindex="-1"></a>nrc <span class="ot">&lt;-</span> hash_sentiment_nrc_emolex_ru</span>
+<span id="cb745-3"><a href="эмоциональная-тональность.html#cb745-3" tabindex="-1"></a><span class="fu">sample_n</span>(nrc, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##                   token score
 ##  1:        энциклопедия     1
 ##  2:          подходящий     1
@@ -609,23 +612,23 @@ div.csl-indent {
 <div id="подготовка-текста" class="section level2 hasAnchor" number="12.6">
 <h2><span class="header-section-number">12.6</span> Подготовка текста<a href="эмоциональная-тональность.html#подготовка-текста" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Прежде всего текст необходимо токенизировать, лемматизировать и привести в опрятный формат, как мы делали в предыдущем уроке.</p>
-<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="эмоциональная-тональность.html#cb726-1" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
-<span id="cb726-2"><a href="эмоциональная-тональность.html#cb726-2" tabindex="-1"></a>liza <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="at">con =</span> <span class="st">&quot;files/karamzin_liza.txt&quot;</span>)</span>
-<span id="cb726-3"><a href="эмоциональная-тональность.html#cb726-3" tabindex="-1"></a></span>
-<span id="cb726-4"><a href="эмоциональная-тональность.html#cb726-4" tabindex="-1"></a>russian_syntagrus <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(<span class="at">file =</span> <span class="st">&quot;russian-syntagrus-ud-2.5-191206.udpipe&quot;</span>)</span>
-<span id="cb726-5"><a href="эмоциональная-тональность.html#cb726-5" tabindex="-1"></a></span>
-<span id="cb726-6"><a href="эмоциональная-тональность.html#cb726-6" tabindex="-1"></a>liza_ann <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(russian_syntagrus, liza)</span>
-<span id="cb726-7"><a href="эмоциональная-тональность.html#cb726-7" tabindex="-1"></a></span>
-<span id="cb726-8"><a href="эмоциональная-тональность.html#cb726-8" tabindex="-1"></a>liza_df <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(liza_ann) <span class="sc">%&gt;%</span> </span>
-<span id="cb726-9"><a href="эмоциональная-тональность.html#cb726-9" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>paragraph_id, <span class="sc">-</span>sentence, <span class="sc">-</span>xpos)</span></code></pre></div>
+<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="эмоциональная-тональность.html#cb747-1" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
+<span id="cb747-2"><a href="эмоциональная-тональность.html#cb747-2" tabindex="-1"></a>liza <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="at">con =</span> <span class="st">&quot;files/karamzin_liza.txt&quot;</span>)</span>
+<span id="cb747-3"><a href="эмоциональная-тональность.html#cb747-3" tabindex="-1"></a></span>
+<span id="cb747-4"><a href="эмоциональная-тональность.html#cb747-4" tabindex="-1"></a>russian_syntagrus <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(<span class="at">file =</span> <span class="st">&quot;russian-syntagrus-ud-2.5-191206.udpipe&quot;</span>)</span>
+<span id="cb747-5"><a href="эмоциональная-тональность.html#cb747-5" tabindex="-1"></a></span>
+<span id="cb747-6"><a href="эмоциональная-тональность.html#cb747-6" tabindex="-1"></a>liza_ann <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(russian_syntagrus, liza)</span>
+<span id="cb747-7"><a href="эмоциональная-тональность.html#cb747-7" tabindex="-1"></a></span>
+<span id="cb747-8"><a href="эмоциональная-тональность.html#cb747-8" tabindex="-1"></a>liza_df <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(liza_ann) <span class="sc">%&gt;%</span> </span>
+<span id="cb747-9"><a href="эмоциональная-тональность.html#cb747-9" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>paragraph_id, <span class="sc">-</span>sentence, <span class="sc">-</span>xpos)</span></code></pre></div>
 <p>Разделим весь текст “Лизы” на отрывки по 100 слов: это позволит проверить, как меняется эмоциональная тональность произведения по мере развития сюжета.</p>
-<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="эмоциональная-тональность.html#cb727-1" tabindex="-1"></a>liza_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(liza_ann) <span class="sc">%&gt;%</span> </span>
-<span id="cb727-2"><a href="эмоциональная-тональность.html#cb727-2" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">!=</span> <span class="st">&quot;PUNCT&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb727-3"><a href="эмоциональная-тональность.html#cb727-3" tabindex="-1"></a>  <span class="fu">select</span>(lemma) <span class="sc">%&gt;%</span> </span>
-<span id="cb727-4"><a href="эмоциональная-тональность.html#cb727-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">token =</span> lemma) <span class="sc">%&gt;%</span> </span>
-<span id="cb727-5"><a href="эмоциональная-тональность.html#cb727-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chunk =</span> <span class="fu">round</span>(((<span class="fu">row_number</span>() <span class="sc">+</span> <span class="dv">50</span>) <span class="sc">/</span> <span class="dv">100</span>), <span class="dv">0</span>))</span>
-<span id="cb727-6"><a href="эмоциональная-тональность.html#cb727-6" tabindex="-1"></a></span>
-<span id="cb727-7"><a href="эмоциональная-тональность.html#cb727-7" tabindex="-1"></a>liza_tbl</span></code></pre></div>
+<div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb748-1"><a href="эмоциональная-тональность.html#cb748-1" tabindex="-1"></a>liza_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(liza_ann) <span class="sc">%&gt;%</span> </span>
+<span id="cb748-2"><a href="эмоциональная-тональность.html#cb748-2" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">!=</span> <span class="st">&quot;PUNCT&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb748-3"><a href="эмоциональная-тональность.html#cb748-3" tabindex="-1"></a>  <span class="fu">select</span>(lemma) <span class="sc">%&gt;%</span> </span>
+<span id="cb748-4"><a href="эмоциональная-тональность.html#cb748-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">token =</span> lemma) <span class="sc">%&gt;%</span> </span>
+<span id="cb748-5"><a href="эмоциональная-тональность.html#cb748-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chunk =</span> <span class="fu">round</span>(((<span class="fu">row_number</span>() <span class="sc">+</span> <span class="dv">50</span>) <span class="sc">/</span> <span class="dv">100</span>), <span class="dv">0</span>))</span>
+<span id="cb748-6"><a href="эмоциональная-тональность.html#cb748-6" tabindex="-1"></a></span>
+<span id="cb748-7"><a href="эмоциональная-тональность.html#cb748-7" tabindex="-1"></a>liza_tbl</span></code></pre></div>
 <pre><code>## # A tibble: 5,049 × 2
 ##    token  chunk
 ##    &lt;chr&gt;  &lt;dbl&gt;
@@ -646,22 +649,22 @@ div.csl-indent {
 <h2><span class="header-section-number">12.7</span> Модификация лексикона<a href="эмоциональная-тональность.html#модификация-лексикона" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Для анализа эмоциональной тональности возьмем лексикон AFINN, доступный в пакете <code>rulexicon</code>. Слово “старый” имеет в этом лексиконе отрицательную оценку, что не соответствует словоупотреблению Карамзина, и мы его удалили; слову “чувствительный” поменяли знак с минуса на плюс, поскольку для автора “Бедной Лизы” это скорее положительное качество.</p>
 <p>Код ниже показывает, как вносятся подобные изменения:</p>
-<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="эмоциональная-тональность.html#cb729-1" tabindex="-1"></a>lex <span class="ot">&lt;-</span> hash_sentiment_afinn_ru</span>
-<span id="cb729-2"><a href="эмоциональная-тональность.html#cb729-2" tabindex="-1"></a></span>
-<span id="cb729-3"><a href="эмоциональная-тональность.html#cb729-3" tabindex="-1"></a>lex <span class="ot">&lt;-</span> lex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(token <span class="sc">!=</span> <span class="st">&quot;старый&quot;</span>)</span>
-<span id="cb729-4"><a href="эмоциональная-тональность.html#cb729-4" tabindex="-1"></a></span>
-<span id="cb729-5"><a href="эмоциональная-тональность.html#cb729-5" tabindex="-1"></a>lex <span class="ot">&lt;-</span> lex <span class="sc">%&gt;%</span> <span class="fu">mutate_at</span>(<span class="fu">vars</span>(score), <span class="sc">~</span></span>
-<span id="cb729-6"><a href="эмоциональная-тональность.html#cb729-6" tabindex="-1"></a>       <span class="fu">case_when</span>(token <span class="sc">==</span> <span class="st">&quot;чувствительный&quot;</span> <span class="sc">~</span>  <span class="fl">1.7</span>,</span>
-<span id="cb729-7"><a href="эмоциональная-тональность.html#cb729-7" tabindex="-1"></a>                 <span class="cn">TRUE</span> <span class="sc">~</span> .))</span></code></pre></div>
+<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb750-1"><a href="эмоциональная-тональность.html#cb750-1" tabindex="-1"></a>lex <span class="ot">&lt;-</span> hash_sentiment_afinn_ru</span>
+<span id="cb750-2"><a href="эмоциональная-тональность.html#cb750-2" tabindex="-1"></a></span>
+<span id="cb750-3"><a href="эмоциональная-тональность.html#cb750-3" tabindex="-1"></a>lex <span class="ot">&lt;-</span> lex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(token <span class="sc">!=</span> <span class="st">&quot;старый&quot;</span>)</span>
+<span id="cb750-4"><a href="эмоциональная-тональность.html#cb750-4" tabindex="-1"></a></span>
+<span id="cb750-5"><a href="эмоциональная-тональность.html#cb750-5" tabindex="-1"></a>lex <span class="ot">&lt;-</span> lex <span class="sc">%&gt;%</span> <span class="fu">mutate_at</span>(<span class="fu">vars</span>(score), <span class="sc">~</span></span>
+<span id="cb750-6"><a href="эмоциональная-тональность.html#cb750-6" tabindex="-1"></a>       <span class="fu">case_when</span>(token <span class="sc">==</span> <span class="st">&quot;чувствительный&quot;</span> <span class="sc">~</span>  <span class="fl">1.7</span>,</span>
+<span id="cb750-7"><a href="эмоциональная-тональность.html#cb750-7" tabindex="-1"></a>                 <span class="cn">TRUE</span> <span class="sc">~</span> .))</span></code></pre></div>
 </div>
 <div id="соединение-лексикона-и-текста" class="section level2 hasAnchor" number="12.8">
 <h2><span class="header-section-number">12.8</span> Соединение лексикона и текста<a href="эмоциональная-тональность.html#соединение-лексикона-и-текста" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Стоп-слова, то есть слова, не несущие никакой смысловой нагрузки, нам не нужны, но удалять их отдельно нет смысла: мы соединим, при помощи функции <code>inner_join()</code> (см. предыдущие уроки), наш текст с одним из лексиконов, и это само по себе отфильтрует ту лексику, которая может быть потенциально интересна. Напомню, что <code>inner_join()</code> работает так:</p>
 <p><img src="https://d33wubrfki0l68.cloudfront.net/3abea0b730526c3f053a3838953c35a0ccbe8980/7f29b/diagrams/join-inner.png" style="width:70.0%" /></p>
-<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="эмоциональная-тональность.html#cb730-1" tabindex="-1"></a>liza_sent <span class="ot">&lt;-</span> liza_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb730-2"><a href="эмоциональная-тональность.html#cb730-2" tabindex="-1"></a>  <span class="fu">inner_join</span>(lex)</span>
-<span id="cb730-3"><a href="эмоциональная-тональность.html#cb730-3" tabindex="-1"></a></span>
-<span id="cb730-4"><a href="эмоциональная-тональность.html#cb730-4" tabindex="-1"></a>liza_sent</span></code></pre></div>
+<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="эмоциональная-тональность.html#cb751-1" tabindex="-1"></a>liza_sent <span class="ot">&lt;-</span> liza_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb751-2"><a href="эмоциональная-тональность.html#cb751-2" tabindex="-1"></a>  <span class="fu">inner_join</span>(lex)</span>
+<span id="cb751-3"><a href="эмоциональная-тональность.html#cb751-3" tabindex="-1"></a></span>
+<span id="cb751-4"><a href="эмоциональная-тональность.html#cb751-4" tabindex="-1"></a>liza_sent</span></code></pre></div>
 <pre><code>## # A tibble: 461 × 3
 ##    token          chunk score
 ##    &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;
@@ -677,12 +680,12 @@ div.csl-indent {
 ## 10 величественный     1   3.3
 ## # ℹ 451 more rows</code></pre>
 <p>Сложив положительно и отрицательно окрашенную лексику для каждого отрывка, получаем значение, позволяющее судить о доминирующей тональности:</p>
-<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="эмоциональная-тональность.html#cb732-1" tabindex="-1"></a>liza_chunk_sent <span class="ot">&lt;-</span> liza_sent <span class="sc">%&gt;%</span> </span>
-<span id="cb732-2"><a href="эмоциональная-тональность.html#cb732-2" tabindex="-1"></a>  <span class="fu">group_by</span>(chunk) <span class="sc">%&gt;%</span> </span>
-<span id="cb732-3"><a href="эмоциональная-тональность.html#cb732-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sum =</span> <span class="fu">sum</span>(score)) <span class="sc">%&gt;%</span> </span>
-<span id="cb732-4"><a href="эмоциональная-тональность.html#cb732-4" tabindex="-1"></a>  <span class="fu">arrange</span>(sum)</span>
-<span id="cb732-5"><a href="эмоциональная-тональность.html#cb732-5" tabindex="-1"></a></span>
-<span id="cb732-6"><a href="эмоциональная-тональность.html#cb732-6" tabindex="-1"></a><span class="fu">head</span>(liza_chunk_sent, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb753-1"><a href="эмоциональная-тональность.html#cb753-1" tabindex="-1"></a>liza_chunk_sent <span class="ot">&lt;-</span> liza_sent <span class="sc">%&gt;%</span> </span>
+<span id="cb753-2"><a href="эмоциональная-тональность.html#cb753-2" tabindex="-1"></a>  <span class="fu">group_by</span>(chunk) <span class="sc">%&gt;%</span> </span>
+<span id="cb753-3"><a href="эмоциональная-тональность.html#cb753-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sum =</span> <span class="fu">sum</span>(score)) <span class="sc">%&gt;%</span> </span>
+<span id="cb753-4"><a href="эмоциональная-тональность.html#cb753-4" tabindex="-1"></a>  <span class="fu">arrange</span>(sum)</span>
+<span id="cb753-5"><a href="эмоциональная-тональность.html#cb753-5" tabindex="-1"></a></span>
+<span id="cb753-6"><a href="эмоциональная-тональность.html#cb753-6" tabindex="-1"></a><span class="fu">head</span>(liza_chunk_sent, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 2
 ##    chunk   sum
 ##    &lt;dbl&gt; &lt;dbl&gt;
@@ -697,21 +700,21 @@ div.csl-indent {
 ##  9     4 -14.2
 ## 10    46 -13.3</code></pre>
 <p>Довольно неожиданно, что самый негативный отрывок находится не в конце повести, ближе к трагической ее развязке, а почти в начале (отрывок 5, ср. отрывки 3 и 4 рядом). Представим эмоционально окрашенную лексику отрывков 3-5 в виде сравнительного облака слов:</p>
-<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="эмоциональная-тональность.html#cb734-1" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb734-2"><a href="эмоциональная-тональность.html#cb734-2" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
-<span id="cb734-3"><a href="эмоциональная-тональность.html#cb734-3" tabindex="-1"></a></span>
-<span id="cb734-4"><a href="эмоциональная-тональность.html#cb734-4" tabindex="-1"></a><span class="co"># добавляем новый столбец для удобства визуализации</span></span>
-<span id="cb734-5"><a href="эмоциональная-тональность.html#cb734-5" tabindex="-1"></a>liza_sent_class <span class="ot">&lt;-</span> liza_sent <span class="sc">%&gt;%</span> </span>
-<span id="cb734-6"><a href="эмоциональная-тональность.html#cb734-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tone =</span> <span class="fu">case_when</span>( score <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;pos&quot;</span>,</span>
-<span id="cb734-7"><a href="эмоциональная-тональность.html#cb734-7" tabindex="-1"></a>                           score <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;neg&quot;</span>))</span>
-<span id="cb734-8"><a href="эмоциональная-тональность.html#cb734-8" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>)</span>
-<span id="cb734-9"><a href="эмоциональная-тональность.html#cb734-9" tabindex="-1"></a>liza_sent_class <span class="sc">%&gt;%</span> </span>
-<span id="cb734-10"><a href="эмоциональная-тональность.html#cb734-10" tabindex="-1"></a>  <span class="fu">filter</span>(chunk <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb734-11"><a href="эмоциональная-тональность.html#cb734-11" tabindex="-1"></a>  <span class="fu">count</span>(token, tone, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb734-12"><a href="эмоциональная-тональность.html#cb734-12" tabindex="-1"></a>  <span class="fu">acast</span>(token <span class="sc">~</span> tone, <span class="at">value.var =</span> <span class="st">&quot;n&quot;</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb734-13"><a href="эмоциональная-тональность.html#cb734-13" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;grey20&quot;</span>, <span class="st">&quot;grey80&quot;</span>),</span>
-<span id="cb734-14"><a href="эмоциональная-тональность.html#cb734-14" tabindex="-1"></a>                   <span class="at">max.words =</span> <span class="dv">99</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-391-1.png" width="672" /></p>
+<div class="sourceCode" id="cb755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb755-1"><a href="эмоциональная-тональность.html#cb755-1" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb755-2"><a href="эмоциональная-тональность.html#cb755-2" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
+<span id="cb755-3"><a href="эмоциональная-тональность.html#cb755-3" tabindex="-1"></a></span>
+<span id="cb755-4"><a href="эмоциональная-тональность.html#cb755-4" tabindex="-1"></a><span class="co"># добавляем новый столбец для удобства визуализации</span></span>
+<span id="cb755-5"><a href="эмоциональная-тональность.html#cb755-5" tabindex="-1"></a>liza_sent_class <span class="ot">&lt;-</span> liza_sent <span class="sc">%&gt;%</span> </span>
+<span id="cb755-6"><a href="эмоциональная-тональность.html#cb755-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tone =</span> <span class="fu">case_when</span>( score <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;pos&quot;</span>,</span>
+<span id="cb755-7"><a href="эмоциональная-тональность.html#cb755-7" tabindex="-1"></a>                           score <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;neg&quot;</span>))</span>
+<span id="cb755-8"><a href="эмоциональная-тональность.html#cb755-8" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0211</span>)</span>
+<span id="cb755-9"><a href="эмоциональная-тональность.html#cb755-9" tabindex="-1"></a>liza_sent_class <span class="sc">%&gt;%</span> </span>
+<span id="cb755-10"><a href="эмоциональная-тональность.html#cb755-10" tabindex="-1"></a>  <span class="fu">filter</span>(chunk <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb755-11"><a href="эмоциональная-тональность.html#cb755-11" tabindex="-1"></a>  <span class="fu">count</span>(token, tone, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb755-12"><a href="эмоциональная-тональность.html#cb755-12" tabindex="-1"></a>  <span class="fu">acast</span>(token <span class="sc">~</span> tone, <span class="at">value.var =</span> <span class="st">&quot;n&quot;</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb755-13"><a href="эмоциональная-тональность.html#cb755-13" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;grey20&quot;</span>, <span class="st">&quot;grey80&quot;</span>),</span>
+<span id="cb755-14"><a href="эмоциональная-тональность.html#cb755-14" tabindex="-1"></a>                   <span class="at">max.words =</span> <span class="dv">99</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-401-1.png" width="672" /></p>
 <p>Здесь видно, что негативная тональность в этой части не связана с судьбой героев: об этом говорят такие слова, как “лютый”, “враг”, “свирепый”. Рассказчик, глядя на заброшенный Симонов монастырь, вспоминает о “печальной истории” Москвы. Таким образом, <strong>с количественной точки зрения, самые мрачный фрагмент повести посвящен не судьбе бедной девушки, а “глухому стону времен”</strong>: Карамзин-историк уже переигрывает Карамзина-новелиста.</p>
 <p>Приведем небольшой отрывок из этой части повести:</p>
 <blockquote>
@@ -721,14 +724,14 @@ div.csl-indent {
 <div id="тональность-на-оси-времени" class="section level2 hasAnchor" number="12.9">
 <h2><span class="header-section-number">12.9</span> Тональность на оси времени<a href="эмоциональная-тональность.html#тональность-на-оси-времени" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Таблица, которую мы подготовили, позволяет наглядно показать, как меняется тональность во времени – разумеется, речь идет о повествовательном времени, которое измеряется не в минутах, а в словах. Каждый отрывок, напомню, – это 100 слов.</p>
-<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="эмоциональная-тональность.html#cb735-1" tabindex="-1"></a>liza_chunk_sent <span class="ot">&lt;-</span> liza_chunk_sent <span class="sc">%&gt;%</span> </span>
-<span id="cb735-2"><a href="эмоциональная-тональность.html#cb735-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tone =</span> <span class="fu">case_when</span>( sum <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;pos&quot;</span>,</span>
-<span id="cb735-3"><a href="эмоциональная-тональность.html#cb735-3" tabindex="-1"></a>                           sum <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;neg&quot;</span>))</span>
-<span id="cb735-4"><a href="эмоциональная-тональность.html#cb735-4" tabindex="-1"></a></span>
-<span id="cb735-5"><a href="эмоциональная-тональность.html#cb735-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb735-6"><a href="эмоциональная-тональность.html#cb735-6" tabindex="-1"></a><span class="fu">ggplot</span>(liza_chunk_sent, <span class="fu">aes</span>(chunk, sum, <span class="at">fill =</span> tone)) <span class="sc">+</span></span>
-<span id="cb735-7"><a href="эмоциональная-тональность.html#cb735-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-392-1.png" width="672" /></p>
+<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb756-1"><a href="эмоциональная-тональность.html#cb756-1" tabindex="-1"></a>liza_chunk_sent <span class="ot">&lt;-</span> liza_chunk_sent <span class="sc">%&gt;%</span> </span>
+<span id="cb756-2"><a href="эмоциональная-тональность.html#cb756-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tone =</span> <span class="fu">case_when</span>( sum <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;pos&quot;</span>,</span>
+<span id="cb756-3"><a href="эмоциональная-тональность.html#cb756-3" tabindex="-1"></a>                           sum <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;neg&quot;</span>))</span>
+<span id="cb756-4"><a href="эмоциональная-тональность.html#cb756-4" tabindex="-1"></a></span>
+<span id="cb756-5"><a href="эмоциональная-тональность.html#cb756-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb756-6"><a href="эмоциональная-тональность.html#cb756-6" tabindex="-1"></a><span class="fu">ggplot</span>(liza_chunk_sent, <span class="fu">aes</span>(chunk, sum, <span class="at">fill =</span> tone)) <span class="sc">+</span></span>
+<span id="cb756-7"><a href="эмоциональная-тональность.html#cb756-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-402-1.png" width="672" /></p>
 <p>График получился весьма осмысленным. Мы уже сказали выше про отрывки 3-4. Дальше немного скорби в отрывке 8 посвящено покойному отцу Лизы. В 11-м отрывке отразилась тревога матери за судьбу дочери: “коварно”, “обидеть”, “дурной” вносят вклад в настроение этого фрагмента. Это достаточно характерно для сентиментальной прозы с ее противопоставлением пороков городской жизни и пасторальных добродетелей.</p>
 <blockquote>
 <p>У меня всегда сердце бывает не на своем месте, когда ты ходишь в город; я всегда ставлю свечу перед образ и молю господа бога, чтобы он сохранил тебя от всякой беды и напасти.</p>
@@ -741,110 +744,110 @@ div.csl-indent {
 <p>На графике видно, что <strong>это место гораздо более эмоционально, чем эпизод самоубийства Лизы</strong>: именно после знаменитых карамзинских многоточий и тире события устремляются к трагическому финалу. О самой смерти девушки Карамзин говорит, конечно, с грустью, но без надрыва: “Тут она бросилась в воду”.</p>
 <p>38, 39, 42 – Эраст отправляется на войну. Все, как это принято у Карамзина, плачут, что зафиксировал и наш график.</p>
 <p>Наконец, в отрывках 49-51 доминирует тема смерти:</p>
-<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="эмоциональная-тональность.html#cb736-1" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb736-2"><a href="эмоциональная-тональность.html#cb736-2" tabindex="-1"></a>pal <span class="ot">&lt;-</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="dv">5</span>, <span class="st">&quot;Dark2&quot;</span>)</span>
-<span id="cb736-3"><a href="эмоциональная-тональность.html#cb736-3" tabindex="-1"></a></span>
-<span id="cb736-4"><a href="эмоциональная-тональность.html#cb736-4" tabindex="-1"></a>liza_sent_class <span class="sc">%&gt;%</span> </span>
-<span id="cb736-5"><a href="эмоциональная-тональность.html#cb736-5" tabindex="-1"></a>  <span class="fu">filter</span>(chunk <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">49</span><span class="sc">:</span><span class="dv">51</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb736-6"><a href="эмоциональная-тональность.html#cb736-6" tabindex="-1"></a>  <span class="fu">filter</span>(tone <span class="sc">==</span> <span class="st">&quot;neg&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb736-7"><a href="эмоциональная-тональность.html#cb736-7" tabindex="-1"></a>  <span class="fu">count</span>(token, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb736-8"><a href="эмоциональная-тональность.html#cb736-8" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(token, n, <span class="at">max.words =</span> <span class="dv">100</span>, <span class="at">colors =</span> pal))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-393-1.png" width="672" /></p>
+<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="эмоциональная-тональность.html#cb757-1" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb757-2"><a href="эмоциональная-тональность.html#cb757-2" tabindex="-1"></a>pal <span class="ot">&lt;-</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="dv">5</span>, <span class="st">&quot;Dark2&quot;</span>)</span>
+<span id="cb757-3"><a href="эмоциональная-тональность.html#cb757-3" tabindex="-1"></a></span>
+<span id="cb757-4"><a href="эмоциональная-тональность.html#cb757-4" tabindex="-1"></a>liza_sent_class <span class="sc">%&gt;%</span> </span>
+<span id="cb757-5"><a href="эмоциональная-тональность.html#cb757-5" tabindex="-1"></a>  <span class="fu">filter</span>(chunk <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">49</span><span class="sc">:</span><span class="dv">51</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb757-6"><a href="эмоциональная-тональность.html#cb757-6" tabindex="-1"></a>  <span class="fu">filter</span>(tone <span class="sc">==</span> <span class="st">&quot;neg&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb757-7"><a href="эмоциональная-тональность.html#cb757-7" tabindex="-1"></a>  <span class="fu">count</span>(token, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb757-8"><a href="эмоциональная-тональность.html#cb757-8" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(token, n, <span class="at">max.words =</span> <span class="dv">100</span>, <span class="at">colors =</span> pal))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-403-1.png" width="672" /></p>
 <p>Следует отметить, что часть этих слов относится не к самой девушке, а к ее матери.</p>
 </div>
 <div id="для-других-языков" class="section level2 hasAnchor" number="12.10">
 <h2><span class="header-section-number">12.10</span> Для других языков<a href="эмоциональная-тональность.html#для-других-языков" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Для языков, которые используют латиницу, в R есть отличный пакет под названием <code>syuzhet</code>. Его разработал известный цифровой литературовед Мэтью Джокерс<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>. Название пакета, как говорит его разработчик, подсмотрено у русских формалистов Виктора Шкловского и Владимира Проппа. Возможности и ограничения этого пакета обсуждались в специальной литературе<a href="#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a>.</p>
 <p>Для анализа возьмем стихотворение Роберта Фроста “Медведи” (<a href="https://t.me/antibarbari/1098">перевод</a>).</p>
-<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="эмоциональная-тональность.html#cb737-1" tabindex="-1"></a><span class="fu">library</span>(syuzhet)</span></code></pre></div>
+<div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb758-1"><a href="эмоциональная-тональность.html#cb758-1" tabindex="-1"></a><span class="fu">library</span>(syuzhet)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;syuzhet&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:scales&#39;:
 ## 
 ##     rescale</code></pre>
-<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="эмоциональная-тональность.html#cb740-1" tabindex="-1"></a>my_example_text <span class="ot">&lt;-</span> <span class="st">&quot;The bear puts both arms around the tree above her</span></span>
-<span id="cb740-2"><a href="эмоциональная-тональность.html#cb740-2" tabindex="-1"></a><span class="st">And draws it down as if it were a lover</span></span>
-<span id="cb740-3"><a href="эмоциональная-тональность.html#cb740-3" tabindex="-1"></a><span class="st">And its choke cherries lips to kiss good-bye,</span></span>
-<span id="cb740-4"><a href="эмоциональная-тональность.html#cb740-4" tabindex="-1"></a><span class="st">Then lets it snap back upright in the sky.</span></span>
-<span id="cb740-5"><a href="эмоциональная-тональность.html#cb740-5" tabindex="-1"></a><span class="st">Her next step rocks a boulder on the wall</span></span>
-<span id="cb740-6"><a href="эмоциональная-тональность.html#cb740-6" tabindex="-1"></a><span class="st">(She&#39;s making her cross-country in the fall).</span></span>
-<span id="cb740-7"><a href="эмоциональная-тональность.html#cb740-7" tabindex="-1"></a><span class="st">Her great weight creaks the barbed-wire in its staples</span></span>
-<span id="cb740-8"><a href="эмоциональная-тональность.html#cb740-8" tabindex="-1"></a><span class="st">As she flings over and off down through the maples,</span></span>
-<span id="cb740-9"><a href="эмоциональная-тональность.html#cb740-9" tabindex="-1"></a><span class="st">Leaving on one wire moth a lock of hair.</span></span>
-<span id="cb740-10"><a href="эмоциональная-тональность.html#cb740-10" tabindex="-1"></a><span class="st">Such is the uncaged progress of the bear.</span></span>
-<span id="cb740-11"><a href="эмоциональная-тональность.html#cb740-11" tabindex="-1"></a><span class="st">The world has room to make a bear feel free;</span></span>
-<span id="cb740-12"><a href="эмоциональная-тональность.html#cb740-12" tabindex="-1"></a><span class="st">The universe seems cramped to you and me.</span></span>
-<span id="cb740-13"><a href="эмоциональная-тональность.html#cb740-13" tabindex="-1"></a><span class="st">Man acts more like the poor bear in a cage</span></span>
-<span id="cb740-14"><a href="эмоциональная-тональность.html#cb740-14" tabindex="-1"></a><span class="st">That all day fights a nervous inward rage - </span></span>
-<span id="cb740-15"><a href="эмоциональная-тональность.html#cb740-15" tabindex="-1"></a><span class="st">His mood rejecting all his mind suggests.</span></span>
-<span id="cb740-16"><a href="эмоциональная-тональность.html#cb740-16" tabindex="-1"></a><span class="st">He paces back and forth and never rests</span></span>
-<span id="cb740-17"><a href="эмоциональная-тональность.html#cb740-17" tabindex="-1"></a><span class="st">The toe-nail click and shuffle of his feet,</span></span>
-<span id="cb740-18"><a href="эмоциональная-тональность.html#cb740-18" tabindex="-1"></a><span class="st">The telescope at one end of his beat -</span></span>
-<span id="cb740-19"><a href="эмоциональная-тональность.html#cb740-19" tabindex="-1"></a><span class="st">And at the other end the microscope,</span></span>
-<span id="cb740-20"><a href="эмоциональная-тональность.html#cb740-20" tabindex="-1"></a><span class="st">Two instruments of nearly equal hope,</span></span>
-<span id="cb740-21"><a href="эмоциональная-тональность.html#cb740-21" tabindex="-1"></a><span class="st">And in conjunction giving quite a spread.</span></span>
-<span id="cb740-22"><a href="эмоциональная-тональность.html#cb740-22" tabindex="-1"></a><span class="st">Or if he rests from scientific tread,</span></span>
-<span id="cb740-23"><a href="эмоциональная-тональность.html#cb740-23" tabindex="-1"></a><span class="st">&#39;Tis only to sit back and sway his head</span></span>
-<span id="cb740-24"><a href="эмоциональная-тональность.html#cb740-24" tabindex="-1"></a><span class="st">Through ninety odd degrees of arc, it seems,</span></span>
-<span id="cb740-25"><a href="эмоциональная-тональность.html#cb740-25" tabindex="-1"></a><span class="st">Between two metaphysical extremes.</span></span>
-<span id="cb740-26"><a href="эмоциональная-тональность.html#cb740-26" tabindex="-1"></a><span class="st">He sits back on his fundamental butt</span></span>
-<span id="cb740-27"><a href="эмоциональная-тональность.html#cb740-27" tabindex="-1"></a><span class="st">With lifted snout and eyes (if any) shut,</span></span>
-<span id="cb740-28"><a href="эмоциональная-тональность.html#cb740-28" tabindex="-1"></a><span class="st">(he almost looks religious but he&#39;s not),</span></span>
-<span id="cb740-29"><a href="эмоциональная-тональность.html#cb740-29" tabindex="-1"></a><span class="st">And back and forth he sways from cheek to cheek,</span></span>
-<span id="cb740-30"><a href="эмоциональная-тональность.html#cb740-30" tabindex="-1"></a><span class="st">At one extreme agreeing with one Greek -</span></span>
-<span id="cb740-31"><a href="эмоциональная-тональность.html#cb740-31" tabindex="-1"></a><span class="st">At the other agreeing with another Greek</span></span>
-<span id="cb740-32"><a href="эмоциональная-тональность.html#cb740-32" tabindex="-1"></a><span class="st">Which may be thought, but only so to speak.</span></span>
-<span id="cb740-33"><a href="эмоциональная-тональность.html#cb740-33" tabindex="-1"></a><span class="st">A baggy figure, equally pathetic</span></span>
-<span id="cb740-34"><a href="эмоциональная-тональность.html#cb740-34" tabindex="-1"></a><span class="st">When sedentary and when peripatetic.&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb761"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb761-1"><a href="эмоциональная-тональность.html#cb761-1" tabindex="-1"></a>my_example_text <span class="ot">&lt;-</span> <span class="st">&quot;The bear puts both arms around the tree above her</span></span>
+<span id="cb761-2"><a href="эмоциональная-тональность.html#cb761-2" tabindex="-1"></a><span class="st">And draws it down as if it were a lover</span></span>
+<span id="cb761-3"><a href="эмоциональная-тональность.html#cb761-3" tabindex="-1"></a><span class="st">And its choke cherries lips to kiss good-bye,</span></span>
+<span id="cb761-4"><a href="эмоциональная-тональность.html#cb761-4" tabindex="-1"></a><span class="st">Then lets it snap back upright in the sky.</span></span>
+<span id="cb761-5"><a href="эмоциональная-тональность.html#cb761-5" tabindex="-1"></a><span class="st">Her next step rocks a boulder on the wall</span></span>
+<span id="cb761-6"><a href="эмоциональная-тональность.html#cb761-6" tabindex="-1"></a><span class="st">(She&#39;s making her cross-country in the fall).</span></span>
+<span id="cb761-7"><a href="эмоциональная-тональность.html#cb761-7" tabindex="-1"></a><span class="st">Her great weight creaks the barbed-wire in its staples</span></span>
+<span id="cb761-8"><a href="эмоциональная-тональность.html#cb761-8" tabindex="-1"></a><span class="st">As she flings over and off down through the maples,</span></span>
+<span id="cb761-9"><a href="эмоциональная-тональность.html#cb761-9" tabindex="-1"></a><span class="st">Leaving on one wire moth a lock of hair.</span></span>
+<span id="cb761-10"><a href="эмоциональная-тональность.html#cb761-10" tabindex="-1"></a><span class="st">Such is the uncaged progress of the bear.</span></span>
+<span id="cb761-11"><a href="эмоциональная-тональность.html#cb761-11" tabindex="-1"></a><span class="st">The world has room to make a bear feel free;</span></span>
+<span id="cb761-12"><a href="эмоциональная-тональность.html#cb761-12" tabindex="-1"></a><span class="st">The universe seems cramped to you and me.</span></span>
+<span id="cb761-13"><a href="эмоциональная-тональность.html#cb761-13" tabindex="-1"></a><span class="st">Man acts more like the poor bear in a cage</span></span>
+<span id="cb761-14"><a href="эмоциональная-тональность.html#cb761-14" tabindex="-1"></a><span class="st">That all day fights a nervous inward rage - </span></span>
+<span id="cb761-15"><a href="эмоциональная-тональность.html#cb761-15" tabindex="-1"></a><span class="st">His mood rejecting all his mind suggests.</span></span>
+<span id="cb761-16"><a href="эмоциональная-тональность.html#cb761-16" tabindex="-1"></a><span class="st">He paces back and forth and never rests</span></span>
+<span id="cb761-17"><a href="эмоциональная-тональность.html#cb761-17" tabindex="-1"></a><span class="st">The toe-nail click and shuffle of his feet,</span></span>
+<span id="cb761-18"><a href="эмоциональная-тональность.html#cb761-18" tabindex="-1"></a><span class="st">The telescope at one end of his beat -</span></span>
+<span id="cb761-19"><a href="эмоциональная-тональность.html#cb761-19" tabindex="-1"></a><span class="st">And at the other end the microscope,</span></span>
+<span id="cb761-20"><a href="эмоциональная-тональность.html#cb761-20" tabindex="-1"></a><span class="st">Two instruments of nearly equal hope,</span></span>
+<span id="cb761-21"><a href="эмоциональная-тональность.html#cb761-21" tabindex="-1"></a><span class="st">And in conjunction giving quite a spread.</span></span>
+<span id="cb761-22"><a href="эмоциональная-тональность.html#cb761-22" tabindex="-1"></a><span class="st">Or if he rests from scientific tread,</span></span>
+<span id="cb761-23"><a href="эмоциональная-тональность.html#cb761-23" tabindex="-1"></a><span class="st">&#39;Tis only to sit back and sway his head</span></span>
+<span id="cb761-24"><a href="эмоциональная-тональность.html#cb761-24" tabindex="-1"></a><span class="st">Through ninety odd degrees of arc, it seems,</span></span>
+<span id="cb761-25"><a href="эмоциональная-тональность.html#cb761-25" tabindex="-1"></a><span class="st">Between two metaphysical extremes.</span></span>
+<span id="cb761-26"><a href="эмоциональная-тональность.html#cb761-26" tabindex="-1"></a><span class="st">He sits back on his fundamental butt</span></span>
+<span id="cb761-27"><a href="эмоциональная-тональность.html#cb761-27" tabindex="-1"></a><span class="st">With lifted snout and eyes (if any) shut,</span></span>
+<span id="cb761-28"><a href="эмоциональная-тональность.html#cb761-28" tabindex="-1"></a><span class="st">(he almost looks religious but he&#39;s not),</span></span>
+<span id="cb761-29"><a href="эмоциональная-тональность.html#cb761-29" tabindex="-1"></a><span class="st">And back and forth he sways from cheek to cheek,</span></span>
+<span id="cb761-30"><a href="эмоциональная-тональность.html#cb761-30" tabindex="-1"></a><span class="st">At one extreme agreeing with one Greek -</span></span>
+<span id="cb761-31"><a href="эмоциональная-тональность.html#cb761-31" tabindex="-1"></a><span class="st">At the other agreeing with another Greek</span></span>
+<span id="cb761-32"><a href="эмоциональная-тональность.html#cb761-32" tabindex="-1"></a><span class="st">Which may be thought, but only so to speak.</span></span>
+<span id="cb761-33"><a href="эмоциональная-тональность.html#cb761-33" tabindex="-1"></a><span class="st">A baggy figure, equally pathetic</span></span>
+<span id="cb761-34"><a href="эмоциональная-тональность.html#cb761-34" tabindex="-1"></a><span class="st">When sedentary and when peripatetic.&quot;</span></span></code></pre></div>
 <p>Пакет позволяет разделить текст на предложения:</p>
-<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb741-1"><a href="эмоциональная-тональность.html#cb741-1" tabindex="-1"></a>sent_vec <span class="ot">&lt;-</span> <span class="fu">get_sentences</span>(my_example_text)</span>
-<span id="cb741-2"><a href="эмоциональная-тональность.html#cb741-2" tabindex="-1"></a>sent_vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="эмоциональная-тональность.html#cb762-1" tabindex="-1"></a>sent_vec <span class="ot">&lt;-</span> <span class="fu">get_sentences</span>(my_example_text)</span>
+<span id="cb762-2"><a href="эмоциональная-тональность.html#cb762-2" tabindex="-1"></a>sent_vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;The bear puts both arms around the tree above her\nAnd draws it down as if it were a lover\nAnd its choke cherries lips to kiss good-bye,\nThen lets it snap back upright in the sky.&quot;
 ## [2] &quot;Her next step rocks a boulder on the wall\n(She&#39;s making her cross-country in the fall).&quot;</code></pre>
 <p>Воспользуемся регулярными выражениями, чтобы удалить переносы строк:</p>
-<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="эмоциональная-тональность.html#cb743-1" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb743-2"><a href="эмоциональная-тональность.html#cb743-2" tabindex="-1"></a>sent_vec <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(sent_vec, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">n&quot;</span>, <span class="st">&quot; &quot;</span>)</span>
-<span id="cb743-3"><a href="эмоциональная-тональность.html#cb743-3" tabindex="-1"></a>sent_vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb764"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb764-1"><a href="эмоциональная-тональность.html#cb764-1" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb764-2"><a href="эмоциональная-тональность.html#cb764-2" tabindex="-1"></a>sent_vec <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(sent_vec, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">n&quot;</span>, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb764-3"><a href="эмоциональная-тональность.html#cb764-3" tabindex="-1"></a>sent_vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;The bear puts both arms around the tree above her And draws it down as if it were a lover And its choke cherries lips to kiss good-bye, Then lets it snap back upright in the sky.&quot;
 ## [2] &quot;Her next step rocks a boulder on the wall (She&#39;s making her cross-country in the fall).&quot;</code></pre>
 <p>Если вы хотите прочитать в R большой файл, для этого есть функция <code>get_text_as_string</code>, который необходимо указать путь к файлу на компьютере или url.</p>
 <p>Функция <code>get_sentiment</code> принимает в качестве аргументов вектор и метод (о методах можно подробнее узнать, вызвав помощь).</p>
-<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="эмоциональная-тональность.html#cb745-1" tabindex="-1"></a>bing_vector <span class="ot">&lt;-</span> <span class="fu">get_sentiment</span>(sent_vec, <span class="at">method=</span><span class="st">&quot;bing&quot;</span>)</span>
-<span id="cb745-2"><a href="эмоциональная-тональность.html#cb745-2" tabindex="-1"></a></span>
-<span id="cb745-3"><a href="эмоциональная-тональность.html#cb745-3" tabindex="-1"></a>bing_vector</span></code></pre></div>
+<div class="sourceCode" id="cb766"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb766-1"><a href="эмоциональная-тональность.html#cb766-1" tabindex="-1"></a>bing_vector <span class="ot">&lt;-</span> <span class="fu">get_sentiment</span>(sent_vec, <span class="at">method=</span><span class="st">&quot;bing&quot;</span>)</span>
+<span id="cb766-2"><a href="эмоциональная-тональность.html#cb766-2" tabindex="-1"></a></span>
+<span id="cb766-3"><a href="эмоциональная-тональность.html#cb766-3" tabindex="-1"></a>bing_vector</span></code></pre></div>
 <pre><code>##  [1]  1 -1  0  1  0 -3  0 -1  0 -2</code></pre>
 <p>Как видно, не очень радостное стихотворение. Взглянем на самое мрачное предложение:</p>
-<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="эмоциональная-тональность.html#cb747-1" tabindex="-1"></a>sent_vec[<span class="fu">which.min</span>(bing_vector)]</span></code></pre></div>
+<div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb768-1"><a href="эмоциональная-тональность.html#cb768-1" tabindex="-1"></a>sent_vec[<span class="fu">which.min</span>(bing_vector)]</span></code></pre></div>
 <pre><code>## [1] &quot;Man acts more like the poor bear in a cage That all day fights a nervous inward rage -  His mood rejecting all his mind suggests.&quot;</code></pre>
 <p>Результат применения различных методов может несколько отличаться.</p>
-<div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb749-1"><a href="эмоциональная-тональность.html#cb749-1" tabindex="-1"></a>afinn_vector <span class="ot">&lt;-</span> <span class="fu">get_sentiment</span>(sent_vec, <span class="at">method=</span><span class="st">&quot;afinn&quot;</span>)</span>
-<span id="cb749-2"><a href="эмоциональная-тональность.html#cb749-2" tabindex="-1"></a></span>
-<span id="cb749-3"><a href="эмоциональная-тональность.html#cb749-3" tabindex="-1"></a>afinn_vector</span></code></pre></div>
+<div class="sourceCode" id="cb770"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb770-1"><a href="эмоциональная-тональность.html#cb770-1" tabindex="-1"></a>afinn_vector <span class="ot">&lt;-</span> <span class="fu">get_sentiment</span>(sent_vec, <span class="at">method=</span><span class="st">&quot;afinn&quot;</span>)</span>
+<span id="cb770-2"><a href="эмоциональная-тональность.html#cb770-2" tabindex="-1"></a></span>
+<span id="cb770-3"><a href="эмоциональная-тональность.html#cb770-3" tabindex="-1"></a>afinn_vector</span></code></pre></div>
 <pre><code>##  [1]  3  0  3  2  1 -5  2 -2  0 -2</code></pre>
-<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="эмоциональная-тональность.html#cb751-1" tabindex="-1"></a>sent_vec[<span class="fu">which.min</span>(afinn_vector)]</span></code></pre></div>
+<div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb772-1"><a href="эмоциональная-тональность.html#cb772-1" tabindex="-1"></a>sent_vec[<span class="fu">which.min</span>(afinn_vector)]</span></code></pre></div>
 <pre><code>## [1] &quot;Man acts more like the poor bear in a cage That all day fights a nervous inward rage -  His mood rejecting all his mind suggests.&quot;</code></pre>
 <p>Но в нашем случае методы согласны: сравнение человека с беспокойным медведем в клетке – эмоциональный минимум стихотворения.</p>
 <p>Эмоциональная валентность произведения в целом вычисляется либо как сумма, либо как среднее всех значений:</p>
-<div class="sourceCode" id="cb753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb753-1"><a href="эмоциональная-тональность.html#cb753-1" tabindex="-1"></a><span class="fu">sum</span>(afinn_vector)</span></code></pre></div>
+<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb774-1"><a href="эмоциональная-тональность.html#cb774-1" tabindex="-1"></a><span class="fu">sum</span>(afinn_vector)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb755-1"><a href="эмоциональная-тональность.html#cb755-1" tabindex="-1"></a><span class="fu">mean</span>(afinn_vector)</span></code></pre></div>
+<div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb776-1"><a href="эмоциональная-тональность.html#cb776-1" tabindex="-1"></a><span class="fu">mean</span>(afinn_vector)</span></code></pre></div>
 <pre><code>## [1] 0.2</code></pre>
 <p>Не так уж плохо: за счет первой части про медведицу, с удовольствием поедающую черемуху, общая тональность скорее положительная (хотя ваш читательский опыт может говорить об обратном).</p>
 <p>Результат можно передать функции <code>plot()</code>:</p>
-<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="эмоциональная-тональность.html#cb757-1" tabindex="-1"></a><span class="fu">plot</span>(afinn_vector, </span>
-<span id="cb757-2"><a href="эмоциональная-тональность.html#cb757-2" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>, </span>
-<span id="cb757-3"><a href="эмоциональная-тональность.html#cb757-3" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Example Plot Trajectory&quot;</span>,</span>
-<span id="cb757-4"><a href="эмоциональная-тональность.html#cb757-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Narrative Time&quot;</span>,</span>
-<span id="cb757-5"><a href="эмоциональная-тональность.html#cb757-5" tabindex="-1"></a>     <span class="at">ylab=</span> <span class="st">&quot;Emotional Valence&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-401-1.png" width="672" /></p>
+<div class="sourceCode" id="cb778"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb778-1"><a href="эмоциональная-тональность.html#cb778-1" tabindex="-1"></a><span class="fu">plot</span>(afinn_vector, </span>
+<span id="cb778-2"><a href="эмоциональная-тональность.html#cb778-2" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>, </span>
+<span id="cb778-3"><a href="эмоциональная-тональность.html#cb778-3" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Example Plot Trajectory&quot;</span>,</span>
+<span id="cb778-4"><a href="эмоциональная-тональность.html#cb778-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Narrative Time&quot;</span>,</span>
+<span id="cb778-5"><a href="эмоциональная-тональность.html#cb778-5" tabindex="-1"></a>     <span class="at">ylab=</span> <span class="st">&quot;Emotional Valence&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-411-1.png" width="672" /></p>
 <p>О других способах визуализировать результат можно узнать из <a href="https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html">виньетки к пакету</a>.</p>
 </div>
 <div id="виды-эмоций" class="section level2 hasAnchor" number="12.11">
 <h2><span class="header-section-number">12.11</span> Виды эмоций<a href="эмоциональная-тональность.html#виды-эмоций" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Лексикон NRC дает возможность позволяет не просто оценить эмоциональную валентность, но и выявить конкретные эмоции:</p>
-<div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb758-1"><a href="эмоциональная-тональность.html#cb758-1" tabindex="-1"></a>nrc_data <span class="ot">&lt;-</span> <span class="fu">get_nrc_sentiment</span>(sent_vec)</span>
-<span id="cb758-2"><a href="эмоциональная-тональность.html#cb758-2" tabindex="-1"></a></span>
-<span id="cb758-3"><a href="эмоциональная-тональность.html#cb758-3" tabindex="-1"></a>nrc_data</span></code></pre></div>
+<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb779-1"><a href="эмоциональная-тональность.html#cb779-1" tabindex="-1"></a>nrc_data <span class="ot">&lt;-</span> <span class="fu">get_nrc_sentiment</span>(sent_vec)</span>
+<span id="cb779-2"><a href="эмоциональная-тональность.html#cb779-2" tabindex="-1"></a></span>
+<span id="cb779-3"><a href="эмоциональная-тональность.html#cb779-3" tabindex="-1"></a>nrc_data</span></code></pre></div>
 <pre><code>##    anger anticipation disgust fear joy sadness surprise trust negative positive
 ## 1      3            5       1    1   4       1        3     4        1        6
 ## 2      1            0       0    1   0       2        0     0        2        0
@@ -857,17 +860,17 @@ div.csl-indent {
 ## 9      0            1       0    0   0       0        0     2        1        2
 ## 10     0            0       1    0   0       1        0     0        1        1</code></pre>
 <p>Выбрать конкретные эмоции можно так (но результат в нашем случае не очень осмысленный):</p>
-<div class="sourceCode" id="cb760"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb760-1"><a href="эмоциональная-тональность.html#cb760-1" tabindex="-1"></a>joy_items <span class="ot">&lt;-</span> <span class="fu">which</span>(nrc_data<span class="sc">$</span>joy <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb760-2"><a href="эмоциональная-тональность.html#cb760-2" tabindex="-1"></a>sent_vec[joy_items]</span></code></pre></div>
+<div class="sourceCode" id="cb781"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb781-1"><a href="эмоциональная-тональность.html#cb781-1" tabindex="-1"></a>joy_items <span class="ot">&lt;-</span> <span class="fu">which</span>(nrc_data<span class="sc">$</span>joy <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb781-2"><a href="эмоциональная-тональность.html#cb781-2" tabindex="-1"></a>sent_vec[joy_items]</span></code></pre></div>
 <p>На графике это можно отразить при помощи базовой <code>barplot</code>:</p>
-<div class="sourceCode" id="cb761"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb761-1"><a href="эмоциональная-тональность.html#cb761-1" tabindex="-1"></a><span class="fu">barplot</span>(</span>
-<span id="cb761-2"><a href="эмоциональная-тональность.html#cb761-2" tabindex="-1"></a>  <span class="fu">sort</span>(<span class="fu">colSums</span>(<span class="fu">prop.table</span>(nrc_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]))), </span>
-<span id="cb761-3"><a href="эмоциональная-тональность.html#cb761-3" tabindex="-1"></a>  <span class="at">horiz =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb761-4"><a href="эмоциональная-тональность.html#cb761-4" tabindex="-1"></a>  <span class="at">cex.names =</span> <span class="fl">0.7</span>, </span>
-<span id="cb761-5"><a href="эмоциональная-тональность.html#cb761-5" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>, </span>
-<span id="cb761-6"><a href="эмоциональная-тональность.html#cb761-6" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Emotions in Sample text&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Percentage&quot;</span></span>
-<span id="cb761-7"><a href="эмоциональная-тональность.html#cb761-7" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-404-1.png" width="672" /></p>
+<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="эмоциональная-тональность.html#cb782-1" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb782-2"><a href="эмоциональная-тональность.html#cb782-2" tabindex="-1"></a>  <span class="fu">sort</span>(<span class="fu">colSums</span>(<span class="fu">prop.table</span>(nrc_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]))), </span>
+<span id="cb782-3"><a href="эмоциональная-тональность.html#cb782-3" tabindex="-1"></a>  <span class="at">horiz =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb782-4"><a href="эмоциональная-тональность.html#cb782-4" tabindex="-1"></a>  <span class="at">cex.names =</span> <span class="fl">0.7</span>, </span>
+<span id="cb782-5"><a href="эмоциональная-тональность.html#cb782-5" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>, </span>
+<span id="cb782-6"><a href="эмоциональная-тональность.html#cb782-6" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Emotions in Sample text&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Percentage&quot;</span></span>
+<span id="cb782-7"><a href="эмоциональная-тональность.html#cb782-7" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-414-1.png" width="672" /></p>
 <p>Сложно осуждать машину за не вполне верно считанную тональность: Фрост – сложный автор. Для отзывов на Tripadvisor это может сработать лучше.</p>
 
 </div>
