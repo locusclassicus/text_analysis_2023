@@ -1,4 +1,4 @@
-tab:unnamed-chunk-234
+tab:unnamed-chunk-249
 о-курсе
 благодарности
 начало-работы-с-r
@@ -60,6 +60,7 @@ txt
 doc
 pdf
 png
+архивы
 zip
 структурированные-данные
 json

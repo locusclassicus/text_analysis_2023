@@ -663,6 +663,25 @@
             "publisher": "Springer",
             "title": "Machine learning methods for stylometry",
             "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Скоринкин",
+                    "given": "Даниил"
+                }
+            ],
+            "id": "skorinkin2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "page": "90-108",
+            "title": "Электронное представление текста с помощью стандарта разметки TEI",
+            "type": "article-journal"
         }
     ],
     "project_biblios": [
