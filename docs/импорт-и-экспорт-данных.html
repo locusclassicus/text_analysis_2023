@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-10-20" />
+<meta name="date" content="2023-11-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -290,10 +290,11 @@ div.csl-indent {
 <li class="chapter" data-level="7.3.11" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#внутренние-ссылки"><i class="fa fa-check"></i><b>7.3.11</b> Внутренние ссылки</a></li>
 <li class="chapter" data-level="7.3.12" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#графики"><i class="fa fa-check"></i><b>7.3.12</b> Графики</a></li>
 <li class="chapter" data-level="7.3.13" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#математические-формулы"><i class="fa fa-check"></i><b>7.3.13</b> Математические формулы</a></li>
-<li class="chapter" data-level="7.3.14" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#библиография"><i class="fa fa-check"></i><b>7.3.14</b> Библиография</a></li>
-<li class="chapter" data-level="7.3.15" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#смайлы"><i class="fa fa-check"></i><b>7.3.15</b> Смайлы</a></li>
+<li class="chapter" data-level="7.3.14" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#смайлы"><i class="fa fa-check"></i><b>7.3.14</b> Смайлы</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#публикация-html"><i class="fa fa-check"></i><b>7.4</b> Публикация html</a></li>
+<li class="chapter" data-level="7.4" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#библиография"><i class="fa fa-check"></i><b>7.4</b> Библиография</a></li>
+<li class="chapter" data-level="7.5" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#интерактивные-упражнения"><i class="fa fa-check"></i><b>7.5</b> Интерактивные упражнения</a></li>
+<li class="chapter" data-level="7.6" data-path="воспроизводимые-исследования.html"><a href="воспроизводимые-исследования.html#публикация-html"><i class="fa fa-check"></i><b>7.6</b> Публикация html</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html"><i class="fa fa-check"></i><b>8</b> Регулярные выражения</a>
 <ul>
@@ -836,6 +837,7 @@ div.csl-indent {
 <div class="infobox info">
 <p>В большинстве случаев функция <code>getNodeSet()</code> требует задать <strong>пространство имен</strong> (namespace), но в нашем случае оно не определено, поэтому пока передаем только дерево и путь до узла. С пространством имен встретимся чуть позже!</p>
 </div>
+<p></br></p>
 <p>Синтаксис XPath позволяет отбирать узлы с определенными атрибутами. Допустим, нам нужны только те узлы, где значение атрибута unit = “стакан”:</p>
 <div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="импорт-и-экспорт-данных.html#cb399-1" tabindex="-1"></a><span class="fu">getNodeSet</span>(rootnode, <span class="st">&quot;//composition//ingredient[@unit=&#39;стакан&#39;]&quot;</span>)</span></code></pre></div>
 <pre><code>## [[1]]
@@ -952,9 +954,9 @@ div.csl-indent {
 </div>
 <div id="gutenbergr" class="section level2 hasAnchor" number="6.6">
 <h2><span class="header-section-number">6.6</span> GutenbergR<a href="импорт-и-экспорт-данных.html#gutenbergr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Пакет <code>GutenbergR</code>[^05-import-7] поможет достать тексты из библиотеки <a href="https://www.gutenberg.org/ebooks/">Gutenberg</a>, но будьте осторожны: распознаны они не всегда хорошо и порой содержат много разного шума, например примечания редактора, номера страниц и т.п. В билингвах источник и перевод могут идти вперемешку. И если в XML подобные элементы будут окружены соответствующими тегами, которые позволят их легко отбросить при анализе, то Gutenberg дает вам сырой текст. Часто его надо хорошенько чистить при помощи регулярных выражений или даже вручную.</p>
+<p>Пакет <code>GutenbergR</code> поможет достать тексты из библиотеки <a href="https://www.gutenberg.org/ebooks/">Gutenberg</a>, но будьте осторожны: распознаны они не всегда хорошо и порой содержат много разного шума, например примечания редактора, номера страниц и т.п. В билингвах источник и перевод могут идти вперемешку. И если в XML подобные элементы будут окружены соответствующими тегами, которые позволят их легко отбросить при анализе, то Gutenberg дает вам сырой текст. Часто его надо хорошенько чистить при помощи регулярных выражений или даже вручную.</p>
 <p>Работать с метаданными GutenbergR вы уже научились, теперь можете пользоваться пакетом и для скачивания текстов. Сначала узнаем id нужных текстов
-[^05-import-7]: <a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html" class="uri">https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html</a></p>
+[^https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html]</p>
 <div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="импорт-и-экспорт-данных.html#cb426-1" tabindex="-1"></a><span class="fu">library</span>(gutenbergr)</span>
 <span id="cb426-2"><a href="импорт-и-экспорт-данных.html#cb426-2" tabindex="-1"></a></span>
 <span id="cb426-3"><a href="импорт-и-экспорт-данных.html#cb426-3" tabindex="-1"></a>caesar <span class="ot">&lt;-</span> <span class="fu">gutenberg_works</span>(author <span class="sc">==</span> <span class="st">&quot;Caesar, Julius&quot;</span>, <span class="at">languages =</span> <span class="st">&quot;la&quot;</span>) </span>
