@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-11-03" />
+<meta name="date" content="2023-11-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -307,10 +307,9 @@ div.csl-indent {
 <li class="chapter" data-level="8.7" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#жадная-и-ленивая-квантификация"><i class="fa fa-check"></i><b>8.7</b> Жадная и ленивая квантификация</a></li>
 <li class="chapter" data-level="8.8" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#regex-в-stringr-основы"><i class="fa fa-check"></i><b>8.8</b> Regex в stringr: основы</a></li>
 <li class="chapter" data-level="8.9" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_detect-и-str_count"><i class="fa fa-check"></i><b>8.9</b> str_detect() и str_count()</a></li>
-<li class="chapter" data-level="8.10" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_extract"><i class="fa fa-check"></i><b>8.10</b> str_extract()</a></li>
-<li class="chapter" data-level="8.11" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_subset-и-str_match"><i class="fa fa-check"></i><b>8.11</b> str_subset() и str_match()</a></li>
-<li class="chapter" data-level="8.12" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_replace"><i class="fa fa-check"></i><b>8.12</b> str_replace</a></li>
-<li class="chapter" data-level="8.13" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_split"><i class="fa fa-check"></i><b>8.13</b> str_split</a></li>
+<li class="chapter" data-level="8.10" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_extract-str_subset-и-str_match"><i class="fa fa-check"></i><b>8.10</b> str_extract(), str_subset() и str_match()</a></li>
+<li class="chapter" data-level="8.11" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_replace"><i class="fa fa-check"></i><b>8.11</b> str_replace</a></li>
+<li class="chapter" data-level="8.12" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_split"><i class="fa fa-check"></i><b>8.12</b> str_split</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html"><i class="fa fa-check"></i><b>9</b> Веб-скрапинг</a>
 <ul>
@@ -522,23 +521,23 @@ div.csl-indent {
 <div class="ask question">
 <p>Для просмотра исходного кода любой функции необходимо…</p>
 </div>
-<form name="form_27600" onsubmit="return validate_form_27600()" method="post">
-<input type="radio" name="answer_27600" id="answer_27600_1" value="единственный способ — найти код функции в репозитории на GitHub"/>
-<label>единственный способ — найти код функции в репозитории на GitHub</label>
-<br/>
-<input type="radio" name="answer_27600" id="answer_27600_2" value="вызвать help к функции"/>
-<label>вызвать help к функции</label>
-<br/>
-<input type="radio" name="answer_27600" id="answer_27600_3" value="набрать имя функции без аргументов и без скобок"/>
+<form name="form_31510" onsubmit="return validate_form_31510()" method="post">
+<input type="radio" name="answer_31510" id="answer_31510_1" value="набрать имя функции без аргументов и без скобок"/>
 <label>набрать имя функции без аргументов и без скобок</label>
 <br/>
-<input type="radio" name="answer_27600" id="answer_27600_4" value="использовать специальную функцию для просмотра кода"/>
+<input type="radio" name="answer_31510" id="answer_31510_2" value="вызвать help к функции"/>
+<label>вызвать help к функции</label>
+<br/>
+<input type="radio" name="answer_31510" id="answer_31510_3" value="использовать специальную функцию для просмотра кода"/>
 <label>использовать специальную функцию для просмотра кода</label>
 <br/>
+<input type="radio" name="answer_31510" id="answer_31510_4" value="единственный способ — найти код функции в репозитории на GitHub"/>
+<label>единственный способ — найти код функции в репозитории на GitHub</label>
+<br/>
 <input type="submit" value="check"/>
-<div id="result_27600"></div>
+<div id="result_31510"></div>
 </form>
-<script>function validate_form_27600() {var x, text; var x = document.forms['form_27600']['answer_27600'].value;if (x == 'набрать имя функции без аргументов и без скобок'){text = 'Все верно!';} else {text = 'Не совсем…';} document.getElementById('result_27600').innerHTML = text; return false;}</script>
+<script>function validate_form_31510() {var x, text; var x = document.forms['form_31510']['answer_31510'].value;if (x == 'набрать имя функции без аргументов и без скобок'){text = 'Все верно!';} else {text = 'Не совсем…';} document.getElementById('result_31510').innerHTML = text; return false;}</script>
 </div>
 <div id="область-видимости-переменных" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Область видимости переменных<a href="функциональное-программирование.html#область-видимости-переменных" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -695,7 +694,7 @@ div.csl-indent {
 <span id="cb251-7"><a href="функциональное-программирование.html#cb251-7" tabindex="-1"></a>  medians <span class="ot">&lt;-</span> <span class="fu">c</span>(medians, m)</span>
 <span id="cb251-8"><a href="функциональное-программирование.html#cb251-8" tabindex="-1"></a>}</span>
 <span id="cb251-9"><a href="функциональное-программирование.html#cb251-9" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.002 sec elapsed</code></pre>
+<pre><code>## 0.003 sec elapsed</code></pre>
 <div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="функциональное-программирование.html#cb253-1" tabindex="-1"></a>medians</span></code></pre></div>
 <pre><code>## [1] 15589.500    94.500     0.007</code></pre>
 <p>Мы сохранили результат, инициировав пустой вектор, к которому затем привязали данные по каждому столбцу. Это не всегда хорошая идея, поскольку для больших данных может сильно замедлить цикл<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>. Еще один способ – сразу инициировать вектор нужной длины. Сравнить скорость можно при помощи функций из пакета <code>tictoc</code>.</p>
@@ -721,7 +720,7 @@ div.csl-indent {
 <span id="cb257-8"><a href="функциональное-программирование.html#cb257-8" tabindex="-1"></a>y[k]</span></code></pre></div>
 <pre><code>## [1] &quot;богиня&quot;</code></pre>
 <div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="функциональное-программирование.html#cb259-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0.003 sec elapsed</code></pre>
+<pre><code>## 0.002 sec elapsed</code></pre>
 <p>То же самое можно сделать без цикла, причем быстрее!</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="функциональное-программирование.html#cb261-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb261-2"><a href="функциональное-программирование.html#cb261-2" tabindex="-1"></a>y[<span class="fu">nchar</span>(y) <span class="sc">==</span> <span class="dv">6</span>][<span class="dv">1</span>] </span></code></pre></div>
@@ -831,7 +830,7 @@ div.csl-indent {
 <pre><code>##     words     hapax     ratio 
 ## 19364.423   146.692     0.007</code></pre>
 <div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="функциональное-программирование.html#cb284-1" tabindex="-1"></a><span class="fu">toc</span>()</span></code></pre></div>
-<pre><code>## 0 sec elapsed</code></pre>
+<pre><code>## 0.001 sec elapsed</code></pre>
 <p>Эти функции работают быстрее циклов. Сравните:</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="функциональное-программирование.html#cb286-1" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb286-2"><a href="функциональное-программирование.html#cb286-2" tabindex="-1"></a>my_means <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>

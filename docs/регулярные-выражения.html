@@ -23,7 +23,7 @@
 <meta name="author" content="Ольга Алиева" />
 
 
-<meta name="date" content="2023-11-03" />
+<meta name="date" content="2023-11-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -307,10 +307,9 @@ div.csl-indent {
 <li class="chapter" data-level="8.7" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#жадная-и-ленивая-квантификация"><i class="fa fa-check"></i><b>8.7</b> Жадная и ленивая квантификация</a></li>
 <li class="chapter" data-level="8.8" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#regex-в-stringr-основы"><i class="fa fa-check"></i><b>8.8</b> Regex в stringr: основы</a></li>
 <li class="chapter" data-level="8.9" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_detect-и-str_count"><i class="fa fa-check"></i><b>8.9</b> str_detect() и str_count()</a></li>
-<li class="chapter" data-level="8.10" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_extract"><i class="fa fa-check"></i><b>8.10</b> str_extract()</a></li>
-<li class="chapter" data-level="8.11" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_subset-и-str_match"><i class="fa fa-check"></i><b>8.11</b> str_subset() и str_match()</a></li>
-<li class="chapter" data-level="8.12" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_replace"><i class="fa fa-check"></i><b>8.12</b> str_replace</a></li>
-<li class="chapter" data-level="8.13" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_split"><i class="fa fa-check"></i><b>8.13</b> str_split</a></li>
+<li class="chapter" data-level="8.10" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_extract-str_subset-и-str_match"><i class="fa fa-check"></i><b>8.10</b> str_extract(), str_subset() и str_match()</a></li>
+<li class="chapter" data-level="8.11" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_replace"><i class="fa fa-check"></i><b>8.11</b> str_replace</a></li>
+<li class="chapter" data-level="8.12" data-path="регулярные-выражения.html"><a href="регулярные-выражения.html#str_split"><i class="fa fa-check"></i><b>8.12</b> str_split</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="веб-скрапинг.html"><a href="веб-скрапинг.html"><i class="fa fa-check"></i><b>9</b> Веб-скрапинг</a>
 <ul>
@@ -541,7 +540,7 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td>[:word:]</td>
-<td>[[:alnum:]_], т. е. </td>
+<td>[[:alnum:]_], т. е. \w</td>
 <td>Символы, образующие «слово»</td>
 </tr>
 <tr class="odd">
@@ -580,6 +579,11 @@ div.csl-indent {
 <div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="регулярные-выражения.html#cb462-1" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;жираф&quot;</span>, <span class="st">&quot;верблюд1&quot;</span>, <span class="st">&quot;0зебра&quot;</span>)</span>
 <span id="cb462-2"><a href="регулярные-выражения.html#cb462-2" tabindex="-1"></a><span class="fu">gsub</span>( <span class="st">&quot;[[:digit:]]&quot;</span>,  <span class="st">&quot;&quot;</span>, vec)</span></code></pre></div>
 <pre><code>## [1] &quot;жираф&quot;   &quot;верблюд&quot; &quot;зебра&quot;</code></pre>
+<p></br></p>
+<div class="task code">
+<p>В пакете <code>stringr</code> есть небольшой датасет <code>words</code>. Найдите все слова с последовательностью символов wh. Сколько слов содержат два гласных после w?</p>
+</div>
+<p></br></p>
 <p>В качестве классов можно рассматривать и следующие обозначения:</p>
 <table>
 <colgroup>
@@ -632,6 +636,11 @@ div.csl-indent {
 <p>Внутри квадратных скобор знак <code>^</code> означает отрицание:</p>
 <div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="регулярные-выражения.html#cb466-1" tabindex="-1"></a><span class="fu">gsub</span>( <span class="st">&quot;[^[:digit:]]&quot;</span>,  <span class="st">&quot;&quot;</span>, vec) </span></code></pre></div>
 <pre><code>## [1] &quot;&quot;  &quot;1&quot; &quot;0&quot;</code></pre>
+<p></br></p>
+<div class="task code">
+<p>Найдите все слова в <code>words</code>, в которых за w следует согласный. Замените всю пунктуацию в строке “tomorrow?and-tomorrow_and!tomorrow” на пробелы.</p>
+</div>
+<p></br></p>
 </div>
 <div id="якоря" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Якоря<a href="регулярные-выражения.html#якоря" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -640,6 +649,11 @@ div.csl-indent {
 <span id="cb468-2"><a href="регулярные-выражения.html#cb468-2" tabindex="-1"></a>         <span class="st">&quot;Fall is a time of peace&quot;</span>)</span>
 <span id="cb468-3"><a href="регулярные-выражения.html#cb468-3" tabindex="-1"></a><span class="fu">grepl</span>(<span class="st">&quot;time$&quot;</span>, vec)</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE</code></pre>
+<p></br></p>
+<div class="task code">
+<p>Найдите все слова в <code>words</code>, которые заканчиваются на x. Найдите все слова, которые начинаются на b или на g.</p>
+</div>
+<p></br></p>
 </div>
 <div id="метасимволы" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Метасимволы<a href="регулярные-выражения.html#метасимволы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -710,10 +724,15 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p>Квадратные скобки используются для создания классов, карет и знак доллара – это якоря, но карет внутри квадратных скобор может также быть отрицанием. Точка – это любой знак.</p>
+<p>Квадратные скобки используются для создания классов, карет и знак доллара – это якоря, но карет внутри квадратных скобок может также быть отрицанием. Точка – это любой знак.</p>
 <div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="регулярные-выражения.html#cb470-1" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;жираф&quot;</span>, <span class="st">&quot;верблюд1&quot;</span>, <span class="st">&quot;0зебра&quot;</span>)</span>
 <span id="cb470-2"><a href="регулярные-выражения.html#cb470-2" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">&quot;.б&quot;</span>, vec) </span></code></pre></div>
 <pre><code>## [1] 2 3</code></pre>
+<p></br></p>
+<div class="task code">
+<p>Найдите все слова в <code>words</code>, в которых есть любые два символа между b и k.</p>
+</div>
+<p></br></p>
 </div>
 <div id="экранирование" class="section level2 hasAnchor" number="8.5">
 <h2><span class="header-section-number">8.5</span> Экранирование<a href="регулярные-выражения.html#экранирование" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -723,6 +742,11 @@ div.csl-indent {
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="регулярные-выражения.html#cb474-1" tabindex="-1"></a><span class="fu">grepl</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, vec)</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE FALSE</code></pre>
+<p></br></p>
+<div class="task code">
+<p>Узнайте, все ли предложения в sentences (входит в stringr) кончаются на точку.</p>
+</div>
+<p></br></p>
 </div>
 <div id="квантификация" class="section level2 hasAnchor" number="8.6">
 <h2><span class="header-section-number">8.6</span> Квантификация<a href="регулярные-выражения.html#квантификация" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -796,6 +820,9 @@ div.csl-indent {
 <div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="регулярные-выражения.html#cb486-1" tabindex="-1"></a><span class="fu">grepl</span>(<span class="st">&quot;ou{,2}r&quot;</span>, vec) <span class="co"># это включает и ноль!</span></span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE  TRUE FALSE</code></pre>
 <p>Часто используется последовательность <code>.*</code> для обозначения любого количества любых символов между двумя частями регулярного выражения.</p>
+<div class="task code">
+<p>Узнайте, в каких предложениях в sentences за пробелом следует ровно три согласных.</p>
+</div>
 </div>
 <div id="жадная-и-ленивая-квантификация" class="section level2 hasAnchor" number="8.7">
 <h2><span class="header-section-number">8.7</span> Жадная и ленивая квантификация<a href="регулярные-выражения.html#жадная-и-ленивая-квантификация" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -833,6 +860,9 @@ div.csl-indent {
 <p>Пример:</p>
 <div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="регулярные-выражения.html#cb490-1" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&quot;&lt;.*?&gt;&quot;</span>, <span class="st">&quot;&quot;</span>, vec) <span class="co"># все получилось!</span></span></code></pre></div>
 <pre><code>## [1] &quot;Википедия — свободная энциклопедия, в которой каждый может изменить или дополнить любую статью.&quot;</code></pre>
+<div class="task code">
+<p>Дана строка “tomorrow (and) tomorrow (and) tomorrow”. Необходимо удалить первые скобки с их содержанием.</p>
+</div>
 </div>
 <div id="regex-в-stringr-основы" class="section level2 hasAnchor" number="8.8">
 <h2><span class="header-section-number">8.8</span> Regex в stringr: основы<a href="регулярные-выражения.html#regex-в-stringr-основы" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -868,6 +898,11 @@ div.csl-indent {
 <div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="регулярные-выражения.html#cb511-1" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">&quot;grey&quot;</span>, <span class="st">&quot;gray&quot;</span>), <span class="st">&quot;gr(e|a)y&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] │ &lt;grey&gt;
 ## [2] │ &lt;gray&gt;</code></pre>
+<p></br></p>
+<div class="task code">
+<p>Создайте тиббл с двумя столбцами: letters и numbers (1:26). Преобразуйте, чтобы в третьем столбце появился результат соединения первых двух через подчеркивание, например a_1. Отфильтруйте, чтобы остались только ряды, где есть цифра 3 или буква x.</p>
+</div>
+<p></br></p>
 </div>
 <div id="str_detect-и-str_count" class="section level2 hasAnchor" number="8.9">
 <h2><span class="header-section-number">8.9</span> str_detect() и str_count()<a href="регулярные-выражения.html#str_detect-и-str_count" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -951,40 +986,30 @@ div.csl-indent {
 ##  9 Hephaestus     9      4          6
 ## 10 Hera          10      2          2
 ## # ℹ 21 more rows</code></pre>
+<div class="task code">
+<p>Преобразуйте sentences из пакета <code>stringr</code> в тиббл; в новом столбце сохраните количество пробелов в каждом предложении.</p>
 </div>
-<div id="str_extract" class="section level2 hasAnchor" number="8.10">
-<h2><span class="header-section-number">8.10</span> str_extract()<a href="регулярные-выражения.html#str_extract" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Функция <code>str_extract()</code> извлекает совпадения<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>. Рассмотрим ее работу на примере небольшого датасета из пакета <code>stringr</code>.</p>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="регулярные-выражения.html#cb531-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;sentences&quot;</span>)</span>
-<span id="cb531-2"><a href="регулярные-выражения.html#cb531-2" tabindex="-1"></a><span class="fu">length</span>(sentences)</span></code></pre></div>
-<pre><code>## [1] 720</code></pre>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="регулярные-выражения.html#cb533-1" tabindex="-1"></a><span class="fu">head</span>(sentences)</span></code></pre></div>
-<pre><code>## [1] &quot;The birch canoe slid on the smooth planks.&quot; 
-## [2] &quot;Glue the sheet to the dark blue background.&quot;
-## [3] &quot;It&#39;s easy to tell the depth of a well.&quot;     
-## [4] &quot;These days a chicken leg is a rare dish.&quot;   
-## [5] &quot;Rice is often served in round bowls.&quot;       
-## [6] &quot;The juice of lemons makes fine punch.&quot;</code></pre>
+</div>
+<div id="str_extract-str_subset-и-str_match" class="section level2 hasAnchor" number="8.10">
+<h2><span class="header-section-number">8.10</span> str_extract(), str_subset() и str_match()<a href="регулярные-выражения.html#str_extract-str_subset-и-str_match" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Функция <code>str_extract()</code> извлекает совпадения<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>.</p>
 <p>Сначала зададим паттерн для поиска.</p>
-<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="регулярные-выражения.html#cb535-1" tabindex="-1"></a>colours <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot; red&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>)</span>
-<span id="cb535-2"><a href="регулярные-выражения.html#cb535-2" tabindex="-1"></a>colour_match <span class="ot">&lt;-</span> <span class="fu">str_c</span>(colours, <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>)</span>
-<span id="cb535-3"><a href="регулярные-выражения.html#cb535-3" tabindex="-1"></a>colour_match</span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="регулярные-выражения.html#cb531-1" tabindex="-1"></a>colours <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot; red&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>)</span>
+<span id="cb531-2"><a href="регулярные-выражения.html#cb531-2" tabindex="-1"></a>colour_match <span class="ot">&lt;-</span> <span class="fu">str_c</span>(colours, <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>)</span>
+<span id="cb531-3"><a href="регулярные-выражения.html#cb531-3" tabindex="-1"></a>colour_match</span></code></pre></div>
 <pre><code>## [1] &quot; red|orange|yellow|green|blue|purple&quot;</code></pre>
 <p>И применим к предложениями. Используем <code>str_extract_all()</code>, т.к. <code>str_extract()</code> возвращает только первое вхождение.</p>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="регулярные-выражения.html#cb537-1" tabindex="-1"></a>has_colour <span class="ot">&lt;-</span> <span class="fu">str_subset</span>(sentences, colour_match)</span>
-<span id="cb537-2"><a href="регулярные-выражения.html#cb537-2" tabindex="-1"></a>matches <span class="ot">&lt;-</span> <span class="fu">str_extract_all</span>(has_colour, colour_match)</span>
-<span id="cb537-3"><a href="регулярные-выражения.html#cb537-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">unlist</span>(matches))</span></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="регулярные-выражения.html#cb533-1" tabindex="-1"></a>has_colour <span class="ot">&lt;-</span> <span class="fu">str_subset</span>(sentences, colour_match)</span>
+<span id="cb533-2"><a href="регулярные-выражения.html#cb533-2" tabindex="-1"></a>matches <span class="ot">&lt;-</span> <span class="fu">str_extract_all</span>(has_colour, colour_match)</span>
+<span id="cb533-3"><a href="регулярные-выражения.html#cb533-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">unlist</span>(matches))</span></code></pre></div>
 <pre><code>## [1] &quot;blue&quot;   &quot;blue&quot;   &quot;blue&quot;   &quot;yellow&quot; &quot;green&quot;  &quot; red&quot;</code></pre>
-</div>
-<div id="str_subset-и-str_match" class="section level2 hasAnchor" number="8.11">
-<h2><span class="header-section-number">8.11</span> str_subset() и str_match()<a href="регулярные-выражения.html#str_subset-и-str_match" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Круглые скобки используются для группировки. Например, мы можем задать шаблон для поиска существительного или прилагательного с артиклем.</p>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="регулярные-выражения.html#cb539-1" tabindex="-1"></a>noun <span class="ot">&lt;-</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span> <span class="co"># как минимум один непробельный символ после пробела</span></span>
-<span id="cb539-2"><a href="регулярные-выражения.html#cb539-2" tabindex="-1"></a></span>
-<span id="cb539-3"><a href="регулярные-выражения.html#cb539-3" tabindex="-1"></a>has_noun <span class="ot">&lt;-</span> sentences <span class="sc">%&gt;%</span></span>
-<span id="cb539-4"><a href="регулярные-выражения.html#cb539-4" tabindex="-1"></a>  <span class="fu">str_subset</span>(noun) <span class="sc">%&gt;%</span></span>
-<span id="cb539-5"><a href="регулярные-выражения.html#cb539-5" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb539-6"><a href="регулярные-выражения.html#cb539-6" tabindex="-1"></a>has_noun</span></code></pre></div>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="регулярные-выражения.html#cb535-1" tabindex="-1"></a>noun <span class="ot">&lt;-</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span> <span class="co"># как минимум один непробельный символ после пробела</span></span>
+<span id="cb535-2"><a href="регулярные-выражения.html#cb535-2" tabindex="-1"></a></span>
+<span id="cb535-3"><a href="регулярные-выражения.html#cb535-3" tabindex="-1"></a>has_noun <span class="ot">&lt;-</span> sentences <span class="sc">%&gt;%</span></span>
+<span id="cb535-4"><a href="регулярные-выражения.html#cb535-4" tabindex="-1"></a>  <span class="fu">str_subset</span>(noun) <span class="sc">%&gt;%</span></span>
+<span id="cb535-5"><a href="регулярные-выражения.html#cb535-5" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb535-6"><a href="регулярные-выражения.html#cb535-6" tabindex="-1"></a>has_noun</span></code></pre></div>
 <pre><code>##  [1] &quot;The birch canoe slid on the smooth planks.&quot;       
 ##  [2] &quot;Glue the sheet to the dark blue background.&quot;      
 ##  [3] &quot;It&#39;s easy to tell the depth of a well.&quot;           
@@ -996,12 +1021,12 @@ div.csl-indent {
 ##  [9] &quot;Help the woman get back to her feet.&quot;             
 ## [10] &quot;A pot of tea helps to pass the evening.&quot;</code></pre>
 <p>Дальше можно воспользоваться уже известной функцией <code>str_extract()</code> или применить <code>str_match</code>. Результат будет немного отличаться: вторая функция вернет матрицу, в которой хранится не только сочетание слов, но и каждый компонент отдельно.</p>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="регулярные-выражения.html#cb541-1" tabindex="-1"></a>has_noun <span class="sc">%&gt;%</span> </span>
-<span id="cb541-2"><a href="регулярные-выражения.html#cb541-2" tabindex="-1"></a>  <span class="fu">str_extract</span>(noun)</span></code></pre></div>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="регулярные-выражения.html#cb537-1" tabindex="-1"></a>has_noun <span class="sc">%&gt;%</span> </span>
+<span id="cb537-2"><a href="регулярные-выражения.html#cb537-2" tabindex="-1"></a>  <span class="fu">str_extract</span>(noun)</span></code></pre></div>
 <pre><code>##  [1] &quot;the smooth&quot; &quot;the sheet&quot;  &quot;the depth&quot;  &quot;a chicken&quot;  &quot;the parked&quot;
 ##  [6] &quot;the sun&quot;    &quot;the huge&quot;   &quot;the ball&quot;   &quot;the woman&quot;  &quot;a helps&quot;</code></pre>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="регулярные-выражения.html#cb543-1" tabindex="-1"></a>has_noun <span class="sc">%&gt;%</span> </span>
-<span id="cb543-2"><a href="регулярные-выражения.html#cb543-2" tabindex="-1"></a>  <span class="fu">str_match</span>(noun)</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="регулярные-выражения.html#cb539-1" tabindex="-1"></a>has_noun <span class="sc">%&gt;%</span> </span>
+<span id="cb539-2"><a href="регулярные-выражения.html#cb539-2" tabindex="-1"></a>  <span class="fu">str_match</span>(noun)</span></code></pre></div>
 <pre><code>##       [,1]         [,2]  [,3]     
 ##  [1,] &quot;the smooth&quot; &quot;the&quot; &quot;smooth&quot; 
 ##  [2,] &quot;the sheet&quot;  &quot;the&quot; &quot;sheet&quot;  
@@ -1014,11 +1039,11 @@ div.csl-indent {
 ##  [9,] &quot;the woman&quot;  &quot;the&quot; &quot;woman&quot;  
 ## [10,] &quot;a helps&quot;    &quot;a&quot;   &quot;helps&quot;</code></pre>
 <p>Функция tidyr::extract работает похожим образом, но требует дать имена для каждого элемента группы. Этим удобно пользоваться, если ваши данные хранятся в виде тиббла.</p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="регулярные-выражения.html#cb545-1" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">sentence =</span> sentences) <span class="sc">%&gt;%</span> </span>
-<span id="cb545-2"><a href="регулярные-выражения.html#cb545-2" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">extract</span>(</span>
-<span id="cb545-3"><a href="регулярные-выражения.html#cb545-3" tabindex="-1"></a>    sentence, <span class="fu">c</span>(<span class="st">&quot;article&quot;</span>, <span class="st">&quot;noun&quot;</span>), <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>, </span>
-<span id="cb545-4"><a href="регулярные-выражения.html#cb545-4" tabindex="-1"></a>    <span class="at">remove =</span> <span class="cn">FALSE</span></span>
-<span id="cb545-5"><a href="регулярные-выражения.html#cb545-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="регулярные-выражения.html#cb541-1" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">sentence =</span> sentences) <span class="sc">%&gt;%</span> </span>
+<span id="cb541-2"><a href="регулярные-выражения.html#cb541-2" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">extract</span>(</span>
+<span id="cb541-3"><a href="регулярные-выражения.html#cb541-3" tabindex="-1"></a>    sentence, <span class="fu">c</span>(<span class="st">&quot;article&quot;</span>, <span class="st">&quot;noun&quot;</span>), <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>, </span>
+<span id="cb541-4"><a href="регулярные-выражения.html#cb541-4" tabindex="-1"></a>    <span class="at">remove =</span> <span class="cn">FALSE</span></span>
+<span id="cb541-5"><a href="регулярные-выражения.html#cb541-5" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 720 × 3
 ##    sentence                                    article noun   
 ##    &lt;chr&gt;                                       &lt;chr&gt;   &lt;chr&gt;  
@@ -1033,39 +1058,49 @@ div.csl-indent {
 ##  9 Four hours of steady work faced us.         &lt;NA&gt;    &lt;NA&gt;   
 ## 10 A large size in stockings is hard to sell.  &lt;NA&gt;    &lt;NA&gt;   
 ## # ℹ 710 more rows</code></pre>
+<p></br></p>
+<div class="task code">
+<p>Найдите в sentences все предложения, где есть to, и выберите следующее за этим слово. Переведите в нижний регистр. Узнайте, сколько всего уникальных сочетаний.</p>
 </div>
-<div id="str_replace" class="section level2 hasAnchor" number="8.12">
-<h2><span class="header-section-number">8.12</span> str_replace<a href="регулярные-выражения.html#str_replace" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p></br></p>
+</div>
+<div id="str_replace" class="section level2 hasAnchor" number="8.11">
+<h2><span class="header-section-number">8.11</span> str_replace<a href="регулярные-выражения.html#str_replace" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Функции <code>str_replace()</code> и <code>str_replace_all()</code> позволяют заменять совпадения на новые символы.</p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="регулярные-выражения.html#cb547-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;banana&quot;</span>)</span>
-<span id="cb547-2"><a href="регулярные-выражения.html#cb547-2" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;-&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="регулярные-выражения.html#cb543-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;banana&quot;</span>)</span>
+<span id="cb543-2"><a href="регулярные-выражения.html#cb543-2" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;-&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;-pple&quot;  &quot;p-ar&quot;   &quot;b-nana&quot;</code></pre>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="регулярные-выражения.html#cb549-1" tabindex="-1"></a><span class="fu">str_replace_all</span>(x, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;-&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="регулярные-выражения.html#cb545-1" tabindex="-1"></a><span class="fu">str_replace_all</span>(x, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;-&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;-ppl-&quot;  &quot;p--r&quot;   &quot;b-n-n-&quot;</code></pre>
 <p>Этим можно воспользоваться, если вы хотите, например, удалить из текста все греческие символы. Для стандартного греческого алфавита хватит <code>[Α-Ωα-ω]</code>, но для древнегреческого этого, например, не хватит. Попробуем на отрывке из письма Цицерона Аттику, которое содержит греческий текст.</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="регулярные-выражения.html#cb551-1" tabindex="-1"></a>cicero <span class="ot">&lt;-</span> <span class="st">&quot;nihil hāc sōlitūdine iūcundius, nisi paulum interpellāsset Amyntae fīlius. ὢ ἀπεραντολογίας ἀηδοῦς! &quot;</span></span>
-<span id="cb551-2"><a href="регулярные-выражения.html#cb551-2" tabindex="-1"></a></span>
-<span id="cb551-3"><a href="регулярные-выражения.html#cb551-3" tabindex="-1"></a><span class="fu">str_replace_all</span>(cicero, <span class="st">&quot;[Α-Ωα-ω]&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="регулярные-выражения.html#cb547-1" tabindex="-1"></a>cicero <span class="ot">&lt;-</span> <span class="st">&quot;nihil hāc sōlitūdine iūcundius, nisi paulum interpellāsset Amyntae fīlius. ὢ ἀπεραντολογίας ἀηδοῦς! &quot;</span></span>
+<span id="cb547-2"><a href="регулярные-выражения.html#cb547-2" tabindex="-1"></a></span>
+<span id="cb547-3"><a href="регулярные-выражения.html#cb547-3" tabindex="-1"></a><span class="fu">str_replace_all</span>(cicero, <span class="st">&quot;[Α-Ωα-ω]&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;nihil hāc sōlitūdine iūcundius, nisi paulum interpellāsset Amyntae fīlius. ὢ ἀί ἀῦ! &quot;</code></pre>
 <p>ὢ ἀί ἀῦ! Не все у нас получилось гладко. Попробуем иначе:</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="регулярные-выражения.html#cb553-1" tabindex="-1"></a><span class="fu">str_replace_all</span>(cicero, <span class="st">&quot;[\u0370-\u03FF]&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="регулярные-выражения.html#cb549-1" tabindex="-1"></a><span class="fu">str_replace_all</span>(cicero, <span class="st">&quot;[\u0370-\u03FF]&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;nihil hāc sōlitūdine iūcundius, nisi paulum interpellāsset Amyntae fīlius. ὢ ἀ ἀῦ! &quot;</code></pre>
 <p>Удалилась (буквально была заменена на пустое место) та диакритика, которая есть в новогреческом (ί). Но остались еще буквы со сложной диакритикой, которой современные греки не пользуются.</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="регулярные-выражения.html#cb555-1" tabindex="-1"></a>no_greek <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(cicero, <span class="st">&quot;[[\u0370-\u03FF][\U1F00-\U1FFF]]&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
-<span id="cb555-2"><a href="регулярные-выражения.html#cb555-2" tabindex="-1"></a>no_greek</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="регулярные-выражения.html#cb551-1" tabindex="-1"></a>no_greek <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(cicero, <span class="st">&quot;[[\u0370-\u03FF][\U1F00-\U1FFF]]&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb551-2"><a href="регулярные-выражения.html#cb551-2" tabindex="-1"></a>no_greek</span></code></pre></div>
 <pre><code>## [1] &quot;nihil hāc sōlitūdine iūcundius, nisi paulum interpellāsset Amyntae fīlius.   ! &quot;</code></pre>
 <p>! Мы молодцы. Избавились от этого непонятного греческого.</p>
 <p>На самом деле, конечно, <code>str_replace</code> хорош тем, что он позволяет производить осмысленные замены. Например, мы можем в оставшемся латинском текст заменить гласные с макроном (черточка, означающая долготу) на обычные гласные.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="регулярные-выражения.html#cb557-1" tabindex="-1"></a><span class="fu">str_replace_all</span>(no_greek, <span class="fu">c</span>(<span class="st">&quot;ā&quot;</span> <span class="ot">=</span> <span class="st">&quot;a&quot;</span>, <span class="st">&quot;ū&quot;</span> <span class="ot">=</span> <span class="st">&quot;u&quot;</span>, <span class="st">&quot;ī&quot;</span> <span class="ot">=</span> <span class="st">&quot;i&quot;</span>, <span class="st">&quot;ō&quot;</span> <span class="ot">=</span> <span class="st">&quot;o&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="регулярные-выражения.html#cb553-1" tabindex="-1"></a><span class="fu">str_replace_all</span>(no_greek, <span class="fu">c</span>(<span class="st">&quot;ā&quot;</span> <span class="ot">=</span> <span class="st">&quot;a&quot;</span>, <span class="st">&quot;ū&quot;</span> <span class="ot">=</span> <span class="st">&quot;u&quot;</span>, <span class="st">&quot;ī&quot;</span> <span class="ot">=</span> <span class="st">&quot;i&quot;</span>, <span class="st">&quot;ō&quot;</span> <span class="ot">=</span> <span class="st">&quot;o&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;nihil hac solitudine iucundius, nisi paulum interpellasset Amyntae filius.   ! &quot;</code></pre>
 <p>Красота. О более сложных заменах с перемещением групп можно посмотреть видео <a href="https://vk.com/video-211800158_456239296">здесь</a> и <a href="https://vk.com/video-211800158_456239297">здесь</a>. Это помогает даже в таком скорбном деле, как переоформление библиографии.</p>
+<div class="task code">
+<p>Дана библиографическая запись:</p>
+<p>Ast, Friedrich. 1816. Platon’s Leben und Schriften. Leipzig, Weidmann.</p>
+<p>Используя регулярные выражения, замените полное имя на инициал. Запятую перед инициалом удалите. Уберите название издательства. Год поставьте в круглые скобки.</p>
 </div>
-<div id="str_split" class="section level2 hasAnchor" number="8.13">
-<h2><span class="header-section-number">8.13</span> str_split<a href="регулярные-выражения.html#str_split" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="str_split" class="section level2 hasAnchor" number="8.12">
+<h2><span class="header-section-number">8.12</span> str_split<a href="регулярные-выражения.html#str_split" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Функция <code>str_split()</code> помогает разбить текст на предложения, слова или просто на бессмысленные наборы символов. Это важный этап подготовки текста для анализа, и проводится он нередко именно с применением регулярных выражений.</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="регулярные-выражения.html#cb559-1" tabindex="-1"></a>sentences <span class="sc">%&gt;%</span></span>
-<span id="cb559-2"><a href="регулярные-выражения.html#cb559-2" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb559-3"><a href="регулярные-выражения.html#cb559-3" tabindex="-1"></a>  <span class="fu">str_split</span>(<span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="регулярные-выражения.html#cb555-1" tabindex="-1"></a>sentences <span class="sc">%&gt;%</span></span>
+<span id="cb555-2"><a href="регулярные-выражения.html#cb555-2" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb555-3"><a href="регулярные-выражения.html#cb555-3" tabindex="-1"></a>  <span class="fu">str_split</span>(<span class="st">&quot; &quot;</span>)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;The&quot;     &quot;birch&quot;   &quot;canoe&quot;   &quot;slid&quot;    &quot;on&quot;      &quot;the&quot;     &quot;smooth&quot; 
 ## [8] &quot;planks.&quot;
@@ -1074,25 +1109,15 @@ div.csl-indent {
 ## [1] &quot;Glue&quot;        &quot;the&quot;         &quot;sheet&quot;       &quot;to&quot;          &quot;the&quot;        
 ## [6] &quot;dark&quot;        &quot;blue&quot;        &quot;background.&quot;</code></pre>
 <p>Но можно обойтись и без регулярных выражений.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="регулярные-выражения.html#cb561-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;This is a sentence.  This is another sentence.&quot;</span></span>
-<span id="cb561-2"><a href="регулярные-выражения.html#cb561-2" tabindex="-1"></a><span class="fu">str_view_all</span>(x, <span class="fu">boundary</span>(<span class="st">&quot;word&quot;</span>))</span></code></pre></div>
-<pre><code>## Warning: `str_view()` was deprecated in
-## stringr 1.5.0.
-## ℹ Please use `str_view_all()`
-##   instead.
-## This warning is displayed once every
-## 8 hours.
-## Call
-## `lifecycle::last_lifecycle_warnings()`
-## to see where this warning was
-## generated.</code></pre>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="регулярные-выражения.html#cb557-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;This is a sentence.  This is another sentence.&quot;</span></span>
+<span id="cb557-2"><a href="регулярные-выражения.html#cb557-2" tabindex="-1"></a><span class="fu">str_view_all</span>(x, <span class="fu">boundary</span>(<span class="st">&quot;word&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] │ &lt;This&gt; &lt;is&gt; &lt;a&gt; &lt;sentence&gt;.  &lt;This&gt; &lt;is&gt; &lt;another&gt; &lt;sentence&gt;.</code></pre>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="регулярные-выражения.html#cb564-1" tabindex="-1"></a><span class="fu">str_view_all</span>(x, <span class="fu">boundary</span>(<span class="st">&quot;sentence&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="регулярные-выражения.html#cb559-1" tabindex="-1"></a><span class="fu">str_view_all</span>(x, <span class="fu">boundary</span>(<span class="st">&quot;sentence&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] │ &lt;This is a sentence.  &gt;&lt;This is another sentence.&gt;</code></pre>
 <p>Очень удобно, но убедитесь, что в вашем языке границы слов и предложения выглядят как у людей. С древнегреческим эта штука не справится (как делить на предложения греческие и латинские тексты, я рассказывала <a href="https://vk.com/video-211800158_456239226">здесь</a>):</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="регулярные-выражения.html#cb566-1" tabindex="-1"></a>apology <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;νῦν δ&#39; ἐπειδὴ ἀνθρώπω ἐστόν, τίνα αὐτοῖν ἐν νῷ ἔχεις ἐπιστάτην λαβεῖν; τίς τῆς τοιαύτης ἀρετῆς, τῆς ἀνθρωπίνης τε καὶ πολιτικῆς, ἐπιστήμων ἐστίν; οἶμαι γάρ σε ἐσκέφθαι διὰ τὴν τῶν ὑέων κτῆσιν. ἔστιν τις,” ἔφην ἐγώ, “ἢ οὔ;” “Πάνυ γε,” ἦ δ&#39; ὅς. “Τίς,” ἦν δ&#39; ἐγώ, “καὶ ποδαπός, καὶ πόσου διδάσκει;&quot;</span>)</span>
-<span id="cb566-2"><a href="регулярные-выражения.html#cb566-2" tabindex="-1"></a></span>
-<span id="cb566-3"><a href="регулярные-выражения.html#cb566-3" tabindex="-1"></a><span class="fu">str_view_all</span>(apology, <span class="fu">boundary</span>(<span class="st">&quot;sentence&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="регулярные-выражения.html#cb561-1" tabindex="-1"></a>apology <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;νῦν δ&#39; ἐπειδὴ ἀνθρώπω ἐστόν, τίνα αὐτοῖν ἐν νῷ ἔχεις ἐπιστάτην λαβεῖν; τίς τῆς τοιαύτης ἀρετῆς, τῆς ἀνθρωπίνης τε καὶ πολιτικῆς, ἐπιστήμων ἐστίν; οἶμαι γάρ σε ἐσκέφθαι διὰ τὴν τῶν ὑέων κτῆσιν. ἔστιν τις,” ἔφην ἐγώ, “ἢ οὔ;” “Πάνυ γε,” ἦ δ&#39; ὅς. “Τίς,” ἦν δ&#39; ἐγώ, “καὶ ποδαπός, καὶ πόσου διδάσκει;&quot;</span>)</span>
+<span id="cb561-2"><a href="регулярные-выражения.html#cb561-2" tabindex="-1"></a></span>
+<span id="cb561-3"><a href="регулярные-выражения.html#cb561-3" tabindex="-1"></a><span class="fu">str_view_all</span>(apology, <span class="fu">boundary</span>(<span class="st">&quot;sentence&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] │ &lt;νῦν δ&#39; ἐπειδὴ ἀνθρώπω ἐστόν, τίνα αὐτοῖν ἐν νῷ ἔχεις ἐπιστάτην λαβεῖν; τίς τῆς τοιαύτης ἀρετῆς, τῆς ἀνθρωπίνης τε καὶ πολιτικῆς, ἐπιστήμων ἐστίν; οἶμαι γάρ σε ἐσκέφθαι διὰ τὴν τῶν ὑέων κτῆσιν. ἔστιν τις,” ἔφην ἐγώ, “ἢ οὔ;” “Πάνυ γε,” ἦ δ&#39; ὅς. &gt;&lt;“Τίς,” ἦν δ&#39; ἐγώ, “καὶ ποδαπός, καὶ πόσου διδάσκει;&gt;</code></pre>
 <p>Полный крах 💩</p>
 

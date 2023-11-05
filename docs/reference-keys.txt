@@ -97,8 +97,7 @@ regex-в-базовом-r
 жадная-и-ленивая-квантификация
 regex-в-stringr-основы
 str_detect-и-str_count
-str_extract
-str_subset-и-str_match
+str_extract-str_subset-и-str_match
 str_replace
 str_split
 веб-скрапинг
