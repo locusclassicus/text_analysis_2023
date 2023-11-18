@@ -194,7 +194,7 @@ messages_tbl <- messages_tbl %>%
 </br>
 
 :::{.task .code}
-
+Извлеките [из архива антиварваров](https://github.com/locusclassicus/text_analysis_2023/blob/main/files/antibarbari_archive/messages.html) дату публикации для каждого поста.
 :::
 
 ##  Эмотиконы
@@ -445,6 +445,22 @@ my_table <- html %>%
 
 DT::datatable(my_table)
 ```
+</br>
+
+:::{.task .code}
+С сайта [Новой философской энциклопедии](https://iphlib.ru/library/collection/newphilenc/browse/CL1/21) извлеките список слов на букву П. Используйте `map_df()` для объединения таблиц.
+:::
+
+</br>
+
+:::{.ask .question}
+Сколько всего слов на букву П в НФЭ?
+:::
+
+```{r echo=FALSE, results='asis'}
+check_question("267", right = "ПППравильно✅", wrong =  "ППодумайте еще❌")
+```
+
 
 ## Wikisource
 
