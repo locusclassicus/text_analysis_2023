@@ -528,20 +528,20 @@ div.csl-indent {
 ## 4 Augustinus_Confessiones_Liber1-1
 ## 5 Augustinus_Confessiones_Liber1-1
 ## 6 Augustinus_Confessiones_Liber1-1
-##                                     sentence token_id  token   lemma
-## 1 magnus es , domine , et laudabilis valde .        1 magnus  magnus
-## 2 magnus es , domine , et laudabilis valde .        2     es     sum
-## 3 magnus es , domine , et laudabilis valde .        3      ,       ,
-## 4 magnus es , domine , et laudabilis valde .        4 domine dominus
-## 5 magnus es , domine , et laudabilis valde .        5      ,       ,
-## 6 magnus es , domine , et laudabilis valde .        6     et      et
-##    upos
-## 1   ADJ
-## 2   AUX
-## 3 PUNCT
-## 4  NOUN
-## 5 PUNCT
-## 6 CCONJ</code></pre>
+##                                     sentence token_id
+## 1 magnus es , domine , et laudabilis valde .        1
+## 2 magnus es , domine , et laudabilis valde .        2
+## 3 magnus es , domine , et laudabilis valde .        3
+## 4 magnus es , domine , et laudabilis valde .        4
+## 5 magnus es , domine , et laudabilis valde .        5
+## 6 magnus es , domine , et laudabilis valde .        6
+##    token   lemma  upos
+## 1 magnus  magnus   ADJ
+## 2     es     sum   AUX
+## 3      ,       , PUNCT
+## 4 domine dominus  NOUN
+## 5      ,       , PUNCT
+## 6     et      et CCONJ</code></pre>
 <p>Теперь можно посчитать совместную встречаемость, например, в рамках одного предложения. Для удобства визуализации я выберу только существительные, которые встречаются чаще 5 раз.</p>
 <div class="sourceCode" id="cb1041"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1041-1"><a href="анализ-сетей.html#cb1041-1" tabindex="-1"></a>confessions_words <span class="ot">&lt;-</span> confessions_ann <span class="sc">%&gt;%</span></span>
 <span id="cb1041-2"><a href="анализ-сетей.html#cb1041-2" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span>) <span class="sc">%&gt;%</span> </span>
@@ -553,18 +553,18 @@ div.csl-indent {
 <span id="cb1041-8"><a href="анализ-сетей.html#cb1041-8" tabindex="-1"></a>confessions_words</span></code></pre></div>
 <pre><code>## # A tibble: 11,274 × 6
 ## # Groups:   lemma [431]
-##    sentence_id                      sentence  token_id token lemma upos 
-##    &lt;chr&gt;                            &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
-##  1 Augustinus_Confessiones_Liber1-1 magnus e… 4        domi… domi… NOUN 
-##  2 Augustinus_Confessiones_Liber1-2 magna vi… 2        virt… uirt… NOUN 
-##  3 Augustinus_Confessiones_Liber1-2 magna vi… 5        sapi… sapi… NOUN 
-##  4 Augustinus_Confessiones_Liber1-2 magna vi… 9        nume… nume… NOUN 
-##  5 Augustinus_Confessiones_Liber1-3 et lauda… 5        homo  homo  NOUN 
-##  6 Augustinus_Confessiones_Liber1-3 et lauda… 9        crea… crea… NOUN 
-##  7 Augustinus_Confessiones_Liber1-3 et lauda… 13       homo  homo  NOUN 
-##  8 Augustinus_Confessiones_Liber1-3 et lauda… 19       test… test… NOUN 
-##  9 Augustinus_Confessiones_Liber1-3 et lauda… 20       pecc… pecc… NOUN 
-## 10 Augustinus_Confessiones_Liber1-3 et lauda… 23       test… test… NOUN 
+##    sentence_id          sentence token_id token lemma upos 
+##    &lt;chr&gt;                &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 Augustinus_Confessi… magnus … 4        domi… domi… NOUN 
+##  2 Augustinus_Confessi… magna v… 2        virt… uirt… NOUN 
+##  3 Augustinus_Confessi… magna v… 5        sapi… sapi… NOUN 
+##  4 Augustinus_Confessi… magna v… 9        nume… nume… NOUN 
+##  5 Augustinus_Confessi… et laud… 5        homo  homo  NOUN 
+##  6 Augustinus_Confessi… et laud… 9        crea… crea… NOUN 
+##  7 Augustinus_Confessi… et laud… 13       homo  homo  NOUN 
+##  8 Augustinus_Confessi… et laud… 19       test… test… NOUN 
+##  9 Augustinus_Confessi… et laud… 20       pecc… pecc… NOUN 
+## 10 Augustinus_Confessi… et laud… 23       test… test… NOUN 
 ## # ℹ 11,264 more rows</code></pre>
 <p>Теперь можно составить матрицу совместной встречаемости (и убрать редкие пары).</p>
 <div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1043-1"><a href="анализ-сетей.html#cb1043-1" tabindex="-1"></a>cooc <span class="ot">&lt;-</span> <span class="fu">cooccurrence</span>(confessions_words, <span class="at">term =</span> <span class="st">&quot;lemma&quot;</span>, <span class="at">group =</span> <span class="st">&quot;sentence_id&quot;</span>)</span></code></pre></div>
@@ -594,9 +594,9 @@ div.csl-indent {
 <div class="sourceCode" id="cb1046"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1046-1"><a href="анализ-сетей.html#cb1046-1" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
 <span id="cb1046-2"><a href="анализ-сетей.html#cb1046-2" tabindex="-1"></a>confessions_graph <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(cooc, <span class="at">directed =</span> F)</span>
 <span id="cb1046-3"><a href="анализ-сетей.html#cb1046-3" tabindex="-1"></a>confessions_graph</span></code></pre></div>
-<pre><code>## IGRAPH e9cd672 UN-- 102 264 -- 
+<pre><code>## IGRAPH b7a1a0c UN-- 102 264 -- 
 ## + attr: name (v/c), value (e/n)
-## + edges from e9cd672 (vertex names):
+## + edges from b7a1a0c (vertex names):
 ##  [1] caelum    --terra      animus    --memoria   
 ##  [3] dies      --nox        caelum    --principium
 ##  [5] dominus   --homo       spatium   --tempus    
@@ -613,7 +613,7 @@ div.csl-indent {
 <span id="cb1048-4"><a href="анализ-сетей.html#cb1048-4" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color=</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
 <span id="cb1048-5"><a href="анализ-сетей.html#cb1048-5" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">repel=</span>T), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1048-6"><a href="анализ-сетей.html#cb1048-6" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-586-1.png" width="672" />
+<p><img src="_main_files/figure-html/unnamed-chunk-580-1.png" width="672" />
 ## Интерактивный график</p>
 <p>Очень просто, но не очень смотрибельно.</p>
 <div class="sourceCode" id="cb1049"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1049-1"><a href="анализ-сетей.html#cb1049-1" tabindex="-1"></a><span class="co"># install.packages(&quot;networkD3&quot;)</span></span>
@@ -623,7 +623,7 @@ div.csl-indent {
 <script type="application/json" data-for="htmlwidget-068505e60049b774755e">{"x":{"links":{"source":[10,6,22,10,23,85,64,5,34,73,10,18,49,32,0,21,5,10,32,8,10,8,20,22,50,18,10,5,90,10,10,18,22,21,62,91,5,6,25,32,22,47,85,32,89,23,6,53,32,23,18,32,17,10,35,6,0,32,23,45,13,10,32,10,18,11,61,0,63,7,32,34,10,41,10,23,23,91,18,18,13,3,18,57,78,74,5,5,10,18,18,74,83,10,86,10,95,18,10,6,10,37,18,32,53,12,72,38,20,23,94,10,5,5,10,13,19,6,13,8,18,5,25,32,18,32,26,74,77,5,60,89,91,2,10,14,28,23,32,57,20,28,57,23,89,9,15,22,20,30,5,23,6,22,18,17,32,64,32,73,10,74,23,1,69,53,80,21,94,32,9,5,8,17,22,6,32,10,18,32,32,22,18,49,6,23,53,22,10,13,5,19,28,32,86,41,58,22,39,57,73,32,27,20,17,81,85,4,6,13,10,23,23,21,32,32,24,55,41,23,44,17,18,85,29,54,53,29,56,75,5,10,13,17,18,31,32,26,23,5,0,25,32,48,10,17,5,42,6,34,10,18,41,50,45,65,87,32,30,55,94,25,57,89],"target":[91,53,65,73,32,89,91,18,53,91,64,79,91,99,91,23,99,49,94,10,20,91,91,91,91,99,22,91,91,23,26,41,83,32,91,94,32,18,32,37,89,91,96,91,91,25,74,74,87,89,91,95,23,62,91,93,10,51,64,90,94,47,55,63,69,84,89,90,91,22,34,74,77,85,89,91,99,99,28,32,79,89,89,89,91,94,13,23,43,55,67,89,89,90,91,94,99,34,35,36,50,52,53,56,66,85,85,94,95,95,95,99,8,17,18,18,20,32,32,47,52,55,70,71,74,88,91,91,91,94,99,101,101,7,32,32,32,56,74,74,89,91,91,94,94,101,22,26,32,32,45,48,57,59,61,67,68,74,75,77,78,79,87,91,91,93,94,99,99,100,17,21,26,32,33,34,52,55,57,57,60,61,62,64,67,74,79,85,87,87,89,89,89,89,89,91,91,94,94,94,94,97,99,100,101,101,101,6,23,23,28,29,30,37,39,40,53,63,69,71,83,87,87,88,95,95,98,99,99,99,100,101,16,21,23,32,42,43,45,46,50,64,67,70,74,74,76,77,79,82,83,85,89,90,91,91,91,92,94,95,97,99,99,100],"value":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"colour":["#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["abyssus","aer","aetas","aeternitas","affectio","anima","animus","annus","aqua","auris","caelum","cantus","carmen","caro","causa","circuitus","concupiscentia","cor","corpus","creator","creatura","deus","dies","dominus","exspectatio","filius","firmamentum","fons","forma","gaudium","genus","gratia","homo","hora","imago","informitas","laetitia","lex","liber","lingua","littera","locus","lumen","luminare","luna","lux","manus","mare","mater","materia","materies","mediator","membrum","memoria","mendacium","mens","misericordia","modus","moles","mora","mors","motus","mundus","natura","nomen","nox","obliuio","oculus","pactum","pars","pater","peccatum","pes","principium","res","saeculum","salus","sapientia","scriptura","sensus","sententia","silentium","similitudo","sol","sonus","spatium","species","spiritus","syllaba","tempus","tenebra","terra","testimonium","tristitia","uerbum","ueritas","uersus","uia","uis","uita","uoluntas","uox"],"group":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"nodesize":[8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8]},"options":{"NodeID":"name","Group":"group","colourScale":"d3.scaleOrdinal(['#3182bd'])","fontSize":7,"fontFamily":"serif","clickTextSize":17.5,"linkDistance":50,"linkWidth":"'1.5px'.toString()","charge":-30,"opacity":0.6,"zoom":false,"legend":false,"arrows":false,"nodesize":true,"radiusCalculation":"d.nodesize","bounded":false,"opacityNoHover":1,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb1050"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1050-1"><a href="анализ-сетей.html#cb1050-1" tabindex="-1"></a><span class="co"># conf_net &lt;- simpleNetwork(cooc)</span></span>
 <span id="cb1050-2"><a href="анализ-сетей.html#cb1050-2" tabindex="-1"></a><span class="co"># saveNetwork(conf_net, file=&quot;Conf_net.html&quot;, selfcontained = T)</span></span></code></pre></div>
-<p>Можно чуть усложнить<a href="#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a>; код ниже, а результат смотрим <a href="https://locusclassicus.github.io/confessiones/">здесь</a>.</p>
+<p>Можно чуть усложнить<a href="#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>; код ниже, а результат смотрим <a href="https://locusclassicus.github.io/confessiones/">здесь</a>.</p>
 </div>
 <div id="важность-узлов" class="section level2 hasAnchor" number="17.3">
 <h2><span class="header-section-number">17.3</span> Важность узлов<a href="анализ-сетей.html#важность-узлов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -631,18 +631,20 @@ div.csl-indent {
 <p><strong>Центральность по степени</strong> (degree centrality) определяется количеством связи: чем больше прямых связей, тем более важным является узел.</p>
 <div class="sourceCode" id="cb1051"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1051-1"><a href="анализ-сетей.html#cb1051-1" tabindex="-1"></a>degrees <span class="ot">&lt;-</span> <span class="fu">degree</span>(confessions_graph)</span>
 <span id="cb1051-2"><a href="анализ-сетей.html#cb1051-2" tabindex="-1"></a><span class="fu">sort</span>(degrees, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
-<pre><code>##    homo   terra  caelum  corpus dominus  tempus  uerbum   anima    uita 
-##      40      36      30      24      23      21      18      16      16 
-##     res 
-##      14</code></pre>
+<pre><code>##    homo   terra  caelum  corpus dominus  tempus  uerbum 
+##      40      36      30      24      23      21      18 
+##   anima    uita     res 
+##      16      16      14</code></pre>
 <p>Центральным понятием по степени для “Исповеди” является “человек”. Это слово имеет максимальное число связей.</p>
 <p><strong>Центральность по близости</strong> (closeness centrality) говорит о том, насколько близко узел расположен к другим узлам сети. Центральность по близости – это величина, обратная сумме расстояний от узла i до всех остальных узлов сети.</p>
 <div class="sourceCode" id="cb1053"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1053-1"><a href="анализ-сетей.html#cb1053-1" tabindex="-1"></a>closeness <span class="ot">&lt;-</span> <span class="fu">closeness</span>(confessions_graph)</span>
 <span id="cb1053-2"><a href="анализ-сетей.html#cb1053-2" tabindex="-1"></a><span class="fu">sort</span>(closeness, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
-<pre><code>##      cantus       sonus        homo       terra      caelum      corpus 
-## 1.000000000 1.000000000 0.005813953 0.005649718 0.005434783 0.005347594 
-##      tempus     dominus      uerbum         res 
-## 0.005291005 0.005263158 0.005128205 0.004975124</code></pre>
+<pre><code>##      cantus       sonus        homo       terra 
+## 1.000000000 1.000000000 0.005813953 0.005649718 
+##      caelum      corpus      tempus     dominus 
+## 0.005434783 0.005347594 0.005291005 0.005263158 
+##      uerbum         res 
+## 0.005128205 0.004975124</code></pre>
 <p>Если обратиться к интерактивному графу, можно заметить, что cantus и sonus представляют собой отдельную компоненту. Собственно, только они туда и входят.</p>
 <div class="sourceCode" id="cb1055"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1055-1"><a href="анализ-сетей.html#cb1055-1" tabindex="-1"></a>membership <span class="ot">&lt;-</span> <span class="fu">components</span>(confessions_graph)<span class="sc">$</span>membership</span>
 <span id="cb1055-2"><a href="анализ-сетей.html#cb1055-2" tabindex="-1"></a><span class="fu">table</span>(membership)</span></code></pre></div>
@@ -654,18 +656,20 @@ div.csl-indent {
 <span id="cb1057-2"><a href="анализ-сетей.html#cb1057-2" tabindex="-1"></a>    <span class="fu">which</span>(membership <span class="sc">==</span> <span class="dv">1</span>))</span>
 <span id="cb1057-3"><a href="анализ-сетей.html#cb1057-3" tabindex="-1"></a>closeness <span class="ot">&lt;-</span> <span class="fu">closeness</span>(confessions_subgraph)</span>
 <span id="cb1057-4"><a href="анализ-сетей.html#cb1057-4" tabindex="-1"></a><span class="fu">sort</span>(closeness, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
-<pre><code>##        homo       terra      caelum      corpus      tempus     dominus 
-## 0.005813953 0.005649718 0.005434783 0.005347594 0.005291005 0.005263158 
-##      uerbum         res       anima        uita 
-## 0.005128205 0.004975124 0.004926108 0.004901961</code></pre>
+<pre><code>##        homo       terra      caelum      corpus 
+## 0.005813953 0.005649718 0.005434783 0.005347594 
+##      tempus     dominus      uerbum         res 
+## 0.005291005 0.005263158 0.005128205 0.004975124 
+##       anima        uita 
+## 0.004926108 0.004901961</code></pre>
 <p>И снова на первом месте “человек”.</p>
 <p><strong>Центральность по посредничеству</strong> (betweenness centrality) характеризует, насколько важную роль данный узел играет на пути “между” парами других узлов сети.</p>
 <div class="sourceCode" id="cb1059"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1059-1"><a href="анализ-сетей.html#cb1059-1" tabindex="-1"></a>betweenness <span class="ot">&lt;-</span> <span class="fu">betweenness</span>(confessions_graph)</span>
 <span id="cb1059-2"><a href="анализ-сетей.html#cb1059-2" tabindex="-1"></a><span class="fu">sort</span>(betweenness, <span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
-<pre><code>##      homo     terra    caelum    corpus      dies    tempus   dominus 
-## 1476.0830 1055.3757  740.4504  619.8684  548.6346  515.2094  439.5217 
-##    uerbum   spatium   memoria 
-##  414.5475  325.8159  312.0012</code></pre>
+<pre><code>##      homo     terra    caelum    corpus      dies 
+## 1476.0830 1055.3757  740.4504  619.8684  548.6346 
+##    tempus   dominus    uerbum   spatium   memoria 
+##  515.2094  439.5217  414.5475  325.8159  312.0012</code></pre>
 <blockquote>
 <p>Хороший пример персонажа с высокой степенью посредничества в корпусе русской драмы — второстепенный персонаж Гаврила Пушкин из пьесы «Борис Годунов» А.С. Пушкина. …По сюжету, он является связующим персонажем между приближёнными Бориса и Григорием. При прочтении легко не заметить важность этого персонажа, однако на визуализации сети пьесы хорошо видно, что Гаврила связывает два кластера — персонажей в Москве и в Польше.</p>
 <p><a href="https://sysblok.ru/philology/socseti-russkoj-dramy-chast-i-osnovy-setevogo-analiza/">Источник</a></p>
@@ -681,7 +685,7 @@ div.csl-indent {
 <span id="cb1061-4"><a href="анализ-сетей.html#cb1061-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
 <span id="cb1061-5"><a href="анализ-сетей.html#cb1061-5" tabindex="-1"></a><span class="fu">plot</span>(circle_g, <span class="at">vertex.color=</span><span class="dv">2</span>)</span>
 <span id="cb1061-6"><a href="анализ-сетей.html#cb1061-6" tabindex="-1"></a><span class="fu">plot</span>(star_g, <span class="at">vertex.color=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-593-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-587-1.png" width="672" /></p>
 <p>В случае звездчатого графа централизация максимальна, а для отдельных узлов наблюдается разброс центральности.</p>
 <div class="sourceCode" id="cb1062"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1062-1"><a href="анализ-сетей.html#cb1062-1" tabindex="-1"></a><span class="fu">centralization.closeness</span>(star_g)</span></code></pre></div>
 <pre><code>## $res
@@ -720,9 +724,9 @@ div.csl-indent {
 <span id="cb1070-7"><a href="анализ-сетей.html#cb1070-7" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb1070-8"><a href="анализ-сетей.html#cb1070-8" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">repel=</span>T), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1070-9"><a href="анализ-сетей.html#cb1070-9" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<pre><code>## Warning in geom_node_text(aes(label = name, repel = T), vjust = 1,
-## hjust = 1): Ignoring unknown aesthetics: repel</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-597-1.png" width="672" /></p>
+<pre><code>## Warning in geom_node_text(aes(label = name, repel = T),
+## vjust = 1, hjust = 1): Ignoring unknown aesthetics: repel</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-591-1.png" width="672" /></p>
 </div>
 <div id="интерактивный-граф" class="section level2 hasAnchor" number="17.6">
 <h2><span class="header-section-number">17.6</span> Интерактивный граф<a href="анализ-сетей.html#интерактивный-граф" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -747,9 +751,10 @@ div.csl-indent {
 <h2><span class="header-section-number">17.7</span> Точки сочленения<a href="анализ-сетей.html#точки-сочленения" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Точка сочленения – это узел, при удалении которого увеличивается число компонент связности. Таким образом, они соединяют разные части сети. При их удалении акторы (узлы, вершины) не могут взаимодействовать друг с другом.</p>
 <div class="sourceCode" id="cb1074"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1074-1"><a href="анализ-сетей.html#cb1074-1" tabindex="-1"></a><span class="fu">articulation_points</span>(confessions_graph)</span></code></pre></div>
-<pre><code>## + 16/102 vertices, named, from e9cd672:
-##  [1] uita    uox     caro    uerbum  ueritas tempus  sol     memoria
-##  [9] imago   homo    anima   terra   animus  spatium annus   dies</code></pre>
+<pre><code>## + 16/102 vertices, named, from b7a1a0c:
+##  [1] uita    uox     caro    uerbum  ueritas tempus 
+##  [7] sol     memoria imago   homo    anima   terra  
+## [13] animus  spatium annus   dies</code></pre>
 <p>Например, oblivio и expectatio связаны с остальным графом только через “память”.</p>
 </div>
 <div id="подгруппы" class="section level2 hasAnchor" number="17.8">
@@ -766,20 +771,20 @@ div.csl-indent {
 <pre><code>## [1] 7</code></pre>
 <div class="sourceCode" id="cb1078"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1078-1"><a href="анализ-сетей.html#cb1078-1" tabindex="-1"></a><span class="fu">cliques</span>(confessions_graph, <span class="at">min=</span><span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## [[1]]
-## + 7/102 vertices, named, from e9cd672:
+## + 7/102 vertices, named, from b7a1a0c:
 ## [1] caelum  dominus homo    terra   tempus  res     uerbum 
 ## 
 ## [[2]]
-## + 7/102 vertices, named, from e9cd672:
+## + 7/102 vertices, named, from b7a1a0c:
 ## [1] caelum  dominus corpus  homo    terra   tempus  res</code></pre>
 <p>Или, что то же самое:</p>
 <div class="sourceCode" id="cb1080"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1080-1"><a href="анализ-сетей.html#cb1080-1" tabindex="-1"></a><span class="fu">largest_cliques</span>(confessions_graph)</span></code></pre></div>
 <pre><code>## [[1]]
-## + 7/102 vertices, named, from e9cd672:
+## + 7/102 vertices, named, from b7a1a0c:
 ## [1] uerbum  homo    terra   tempus  res     dominus caelum 
 ## 
 ## [[2]]
-## + 7/102 vertices, named, from e9cd672:
+## + 7/102 vertices, named, from b7a1a0c:
 ## [1] res     corpus  tempus  terra   homo    dominus caelum</code></pre>
 <p>Но клика – это очень строгое определение сплоченной группы. Например, чтобы подграф, состоящий из 7 вершин, считался кликой, нужно, чтобы между ними было проведено <span class="math inline">\((7 \cdot 6) / 2 = 21\)</span> связей. Если хотя бы одно ребро отсутствует, то условие не выполняется. Такие клики просто очень редко встречаются.</p>
 </div>
@@ -822,7 +827,7 @@ div.csl-indent {
 <span id="cb1090-7"><a href="анализ-сетей.html#cb1090-7" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb1090-8"><a href="анализ-сетей.html#cb1090-8" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1090-9"><a href="анализ-сетей.html#cb1090-9" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-608-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-602-1.png" width="672" /></p>
 <p>Сейчас граф не очень читается, но видно, что в центре находятся ядра наивысшей степени. В данном случае речь идет о 7-ядре, которому принадлежит 11 узлов. Т.е. из этих 11 узлов каждое связано не менее чем с 7 другими участниками группы.</p>
 <p>Чтобы глубже исследовать подгруппы, последовательно удаляют k-ядра более низкой степени. Для этого можно воспользоваться функцией <code>induced_subgraph()</code>.</p>
 <div class="sourceCode" id="cb1091"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1091-1"><a href="анализ-сетей.html#cb1091-1" tabindex="-1"></a>confessions3_7 <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(confessions_graph, <span class="at">vids=</span><span class="fu">which</span>(coreness <span class="sc">&gt;</span> <span class="dv">2</span>))</span>
@@ -836,7 +841,7 @@ div.csl-indent {
 <span id="cb1091-9"><a href="анализ-сетей.html#cb1091-9" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb1091-10"><a href="анализ-сетей.html#cb1091-10" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1091-11"><a href="анализ-сетей.html#cb1091-11" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-609-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-603-1.png" width="672" /></p>
 <p>При интерпретации важно помнить, что ядра являются вложенными. Чем выше степень ядра, тем больше узлы связаны между собой.</p>
 <div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1092-1"><a href="анализ-сетей.html#cb1092-1" tabindex="-1"></a>confessions6_7 <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(confessions_graph, <span class="at">vids=</span><span class="fu">which</span>(coreness <span class="sc">&gt;</span> <span class="dv">5</span>))</span>
 <span id="cb1092-2"><a href="анализ-сетей.html#cb1092-2" tabindex="-1"></a></span>
@@ -849,7 +854,7 @@ div.csl-indent {
 <span id="cb1092-9"><a href="анализ-сетей.html#cb1092-9" tabindex="-1"></a>                  <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
 <span id="cb1092-10"><a href="анализ-сетей.html#cb1092-10" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb1092-11"><a href="анализ-сетей.html#cb1092-11" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-610-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-604-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -862,8 +867,8 @@ div.csl-indent {
 </div>
 <div class="footnotes">
 <hr />
-<ol start="58">
-<li id="fn58"><p><a href="https://datastorm-open.github.io/visNetwork/physic.html" class="uri">https://datastorm-open.github.io/visNetwork/physic.html</a><a href="анализ-сетей.html#fnref58" class="footnote-back">↩︎</a></p></li>
+<ol start="57">
+<li id="fn57"><p><a href="https://datastorm-open.github.io/visNetwork/physic.html" class="uri">https://datastorm-open.github.io/visNetwork/physic.html</a><a href="анализ-сетей.html#fnref57" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

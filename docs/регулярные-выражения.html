@@ -965,7 +965,8 @@ div.csl-indent {
 ## 18 Nemesis       31</code></pre>
 <p>Вариацией этой функции является <code>str_count()</code>:</p>
 <div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="регулярные-выражения.html#cb527-1" tabindex="-1"></a><span class="fu">str_count</span>(<span class="fu">as.character</span>(gods<span class="sc">$</span>greek_gods), <span class="st">&quot;[Aa]&quot;</span>)</span></code></pre></div>
-<pre><code>##  [1] 1 1 1 1 2 0 0 1 1 1 0 1 0 0 1 2 1 0 0 0 0 1 2 1 0 2 3 2 1 0 0</code></pre>
+<pre><code>##  [1] 1 1 1 1 2 0 0 1 1 1 0 1 0 0 1 2 1 0 0 0 0 1 2 1 0 2 3
+## [28] 2 1 0 0</code></pre>
 <p>Эту функцию удобно использовать вместе с <code>mutate()</code> из <code>dplyr</code>:</p>
 <div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="регулярные-выражения.html#cb529-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
 <span id="cb529-2"><a href="регулярные-выражения.html#cb529-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -1023,8 +1024,9 @@ div.csl-indent {
 <p>Дальше можно воспользоваться уже известной функцией <code>str_extract()</code> или применить <code>str_match</code>. Результат будет немного отличаться: вторая функция вернет матрицу, в которой хранится не только сочетание слов, но и каждый компонент отдельно.</p>
 <div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="регулярные-выражения.html#cb537-1" tabindex="-1"></a>has_noun <span class="sc">%&gt;%</span> </span>
 <span id="cb537-2"><a href="регулярные-выражения.html#cb537-2" tabindex="-1"></a>  <span class="fu">str_extract</span>(noun)</span></code></pre></div>
-<pre><code>##  [1] &quot;the smooth&quot; &quot;the sheet&quot;  &quot;the depth&quot;  &quot;a chicken&quot;  &quot;the parked&quot;
-##  [6] &quot;the sun&quot;    &quot;the huge&quot;   &quot;the ball&quot;   &quot;the woman&quot;  &quot;a helps&quot;</code></pre>
+<pre><code>##  [1] &quot;the smooth&quot; &quot;the sheet&quot;  &quot;the depth&quot;  &quot;a chicken&quot; 
+##  [5] &quot;the parked&quot; &quot;the sun&quot;    &quot;the huge&quot;   &quot;the ball&quot;  
+##  [9] &quot;the woman&quot;  &quot;a helps&quot;</code></pre>
 <div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="регулярные-выражения.html#cb539-1" tabindex="-1"></a>has_noun <span class="sc">%&gt;%</span> </span>
 <span id="cb539-2"><a href="регулярные-выражения.html#cb539-2" tabindex="-1"></a>  <span class="fu">str_match</span>(noun)</span></code></pre></div>
 <pre><code>##       [,1]         [,2]  [,3]     
@@ -1045,18 +1047,18 @@ div.csl-indent {
 <span id="cb541-4"><a href="регулярные-выражения.html#cb541-4" tabindex="-1"></a>    <span class="at">remove =</span> <span class="cn">FALSE</span></span>
 <span id="cb541-5"><a href="регулярные-выражения.html#cb541-5" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 720 × 3
-##    sentence                                    article noun   
-##    &lt;chr&gt;                                       &lt;chr&gt;   &lt;chr&gt;  
-##  1 The birch canoe slid on the smooth planks.  the     smooth 
-##  2 Glue the sheet to the dark blue background. the     sheet  
-##  3 It&#39;s easy to tell the depth of a well.      the     depth  
-##  4 These days a chicken leg is a rare dish.    a       chicken
-##  5 Rice is often served in round bowls.        &lt;NA&gt;    &lt;NA&gt;   
-##  6 The juice of lemons makes fine punch.       &lt;NA&gt;    &lt;NA&gt;   
-##  7 The box was thrown beside the parked truck. the     parked 
-##  8 The hogs were fed chopped corn and garbage. &lt;NA&gt;    &lt;NA&gt;   
-##  9 Four hours of steady work faced us.         &lt;NA&gt;    &lt;NA&gt;   
-## 10 A large size in stockings is hard to sell.  &lt;NA&gt;    &lt;NA&gt;   
+##    sentence                                   article noun 
+##    &lt;chr&gt;                                      &lt;chr&gt;   &lt;chr&gt;
+##  1 The birch canoe slid on the smooth planks. the     smoo…
+##  2 Glue the sheet to the dark blue backgroun… the     sheet
+##  3 It&#39;s easy to tell the depth of a well.     the     depth
+##  4 These days a chicken leg is a rare dish.   a       chic…
+##  5 Rice is often served in round bowls.       &lt;NA&gt;    &lt;NA&gt; 
+##  6 The juice of lemons makes fine punch.      &lt;NA&gt;    &lt;NA&gt; 
+##  7 The box was thrown beside the parked truc… the     park…
+##  8 The hogs were fed chopped corn and garbag… &lt;NA&gt;    &lt;NA&gt; 
+##  9 Four hours of steady work faced us.        &lt;NA&gt;    &lt;NA&gt; 
+## 10 A large size in stockings is hard to sell. &lt;NA&gt;    &lt;NA&gt; 
 ## # ℹ 710 more rows</code></pre>
 <p></br></p>
 <div class="task code">
@@ -1102,8 +1104,8 @@ div.csl-indent {
 <span id="cb555-2"><a href="регулярные-выражения.html#cb555-2" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb555-3"><a href="регулярные-выражения.html#cb555-3" tabindex="-1"></a>  <span class="fu">str_split</span>(<span class="st">&quot; &quot;</span>)</span></code></pre></div>
 <pre><code>## [[1]]
-## [1] &quot;The&quot;     &quot;birch&quot;   &quot;canoe&quot;   &quot;slid&quot;    &quot;on&quot;      &quot;the&quot;    
-## [7] &quot;smooth&quot;  &quot;planks.&quot;
+## [1] &quot;The&quot;     &quot;birch&quot;   &quot;canoe&quot;   &quot;slid&quot;    &quot;on&quot;     
+## [6] &quot;the&quot;     &quot;smooth&quot;  &quot;planks.&quot;
 ## 
 ## [[2]]
 ## [1] &quot;Glue&quot;        &quot;the&quot;         &quot;sheet&quot;       &quot;to&quot;         

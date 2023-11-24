@@ -540,17 +540,28 @@ div.csl-indent {
 <div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="эмоциональная-тональность.html#cb757-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1102</span>)</span>
 <span id="cb757-2"><a href="эмоциональная-тональность.html#cb757-2" tabindex="-1"></a>rusenti2016 <span class="ot">&lt;-</span> hash_rusentilex_2016</span>
 <span id="cb757-3"><a href="эмоциональная-тональность.html#cb757-3" tabindex="-1"></a><span class="fu">sample_n</span>(rusenti2016, <span class="dv">10</span>)</span></code></pre></div>
-<pre><code>##            token speech.part         lemma         sentiment  source
-## 1         любить        Verb        любить           neutral    fact
-## 2  самозабвенный         Adj самозабвенный          positive feeling
-## 3       потянуть        Verb      потянуть           neutral    fact
-## 4           рожа        Noun          рожа          negative opinion
-## 5  острозаразный         Adj острозаразный          negative    fact
-## 6          тюфяк        Noun         тюфяк           neutral    fact
-## 7   просчитаться        Verb  просчитаться          negative    fact
-## 8  перехлестнуть        Verb перехлестнуть positive/negative opinion
-## 9    беспокойный         Adj   беспокойный          negative feeling
-## 10  задеревенеть        Verb  задеревенеть          negative opinion
+<pre><code>##            token speech.part         lemma
+## 1         любить        Verb        любить
+## 2  самозабвенный         Adj самозабвенный
+## 3       потянуть        Verb      потянуть
+## 4           рожа        Noun          рожа
+## 5  острозаразный         Adj острозаразный
+## 6          тюфяк        Noun         тюфяк
+## 7   просчитаться        Verb  просчитаться
+## 8  перехлестнуть        Verb перехлестнуть
+## 9    беспокойный         Adj   беспокойный
+## 10  задеревенеть        Verb  задеревенеть
+##            sentiment  source
+## 1            neutral    fact
+## 2           positive feeling
+## 3            neutral    fact
+## 4           negative opinion
+## 5           negative    fact
+## 6            neutral    fact
+## 7           negative    fact
+## 8  positive/negative opinion
+## 9           negative feeling
+## 10          negative opinion
 ##                                              ambiguity
 ## 1                       ЛЮБИТЬ (НУЖДАТЬСЯ В УСЛОВИЯХ) 
 ## 2                                                     
@@ -596,7 +607,7 @@ div.csl-indent {
 </div>
 <div id="nrc" class="section level3 hasAnchor" number="12.4.4">
 <h3><span class="header-section-number">12.4.4</span> NRC<a href="эмоциональная-тональность.html#nrc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Переведенная версия списка положительных и отрицательных слов Mohammad &amp; Turney (2010)<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a>. Таблица содержит 5179 слов с не нейтральными оценками. Бинарная шкала: -1 / 1.</p>
+<p>Переведенная версия списка положительных и отрицательных слов Mohammad &amp; Turney (2010)<a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a>. Таблица содержит 5179 слов с не нейтральными оценками. Бинарная шкала: -1 / 1.</p>
 <div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb763-1"><a href="эмоциональная-тональность.html#cb763-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1102</span>)</span>
 <span id="cb763-2"><a href="эмоциональная-тональность.html#cb763-2" tabindex="-1"></a>nrc <span class="ot">&lt;-</span> hash_sentiment_nrc_emolex_ru</span>
 <span id="cb763-3"><a href="эмоциональная-тональность.html#cb763-3" tabindex="-1"></a><span class="fu">sample_n</span>(nrc, <span class="dv">10</span>)</span></code></pre></div>
@@ -724,7 +735,7 @@ div.csl-indent {
 <span id="cb773-12"><a href="эмоциональная-тональность.html#cb773-12" tabindex="-1"></a>  <span class="fu">acast</span>(token <span class="sc">~</span> tone, <span class="at">value.var =</span> <span class="st">&quot;n&quot;</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb773-13"><a href="эмоциональная-тональность.html#cb773-13" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;grey20&quot;</span>, <span class="st">&quot;grey80&quot;</span>),</span>
 <span id="cb773-14"><a href="эмоциональная-тональность.html#cb773-14" tabindex="-1"></a>                   <span class="at">max.words =</span> <span class="dv">99</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-429-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-423-1.png" width="672" /></p>
 <p>Здесь видно, что негативная тональность в этой части не связана с судьбой героев: об этом говорят такие слова, как “лютый”, “враг”, “свирепый”. Рассказчик, глядя на заброшенный Симонов монастырь, вспоминает о “печальной истории” Москвы. Таким образом, <strong>с количественной точки зрения, самые мрачный фрагмент повести посвящен не судьбе бедной девушки, а “глухому стону времен”</strong>: Карамзин-историк уже переигрывает Карамзина-новелиста.</p>
 <p>Приведем небольшой отрывок из этой части повести:</p>
 <blockquote>
@@ -741,7 +752,7 @@ div.csl-indent {
 <span id="cb774-5"><a href="эмоциональная-тональность.html#cb774-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb774-6"><a href="эмоциональная-тональность.html#cb774-6" tabindex="-1"></a><span class="fu">ggplot</span>(liza_chunk_sent, <span class="fu">aes</span>(chunk, sum, <span class="at">fill =</span> tone)) <span class="sc">+</span></span>
 <span id="cb774-7"><a href="эмоциональная-тональность.html#cb774-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-430-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-424-1.png" width="672" /></p>
 <p>График получился весьма осмысленным. Мы уже сказали выше про отрывки 3-4. Дальше немного скорби в отрывке 8 посвящено покойному отцу Лизы. В 11-м отрывке отразилась тревога матери за судьбу дочери: “коварно”, “обидеть”, “дурной” вносят вклад в настроение этого фрагмента. Это достаточно характерно для сентиментальной прозы с ее противопоставлением пороков городской жизни и пасторальных добродетелей.</p>
 <blockquote>
 <p>У меня всегда сердце бывает не на своем месте, когда ты ходишь в город; я всегда ставлю свечу перед образ и молю господа бога, чтобы он сохранил тебя от всякой беды и напасти.</p>
@@ -762,12 +773,12 @@ div.csl-indent {
 <span id="cb775-6"><a href="эмоциональная-тональность.html#cb775-6" tabindex="-1"></a>  <span class="fu">filter</span>(tone <span class="sc">==</span> <span class="st">&quot;neg&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb775-7"><a href="эмоциональная-тональность.html#cb775-7" tabindex="-1"></a>  <span class="fu">count</span>(token, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
 <span id="cb775-8"><a href="эмоциональная-тональность.html#cb775-8" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(token, n, <span class="at">max.words =</span> <span class="dv">100</span>, <span class="at">colors =</span> pal))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-431-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-425-1.png" width="672" /></p>
 <p>Следует отметить, что часть этих слов относится не к самой девушке, а к ее матери.</p>
 </div>
 <div id="для-других-языков" class="section level2 hasAnchor" number="12.10">
 <h2><span class="header-section-number">12.10</span> Для других языков<a href="эмоциональная-тональность.html#для-других-языков" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Для языков, которые используют латиницу, в R есть отличный пакет под названием <code>syuzhet</code>. Его разработал известный цифровой литературовед Мэтью Джокерс<a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a>. Название пакета, как говорит его разработчик, подсмотрено у русских формалистов Виктора Шкловского и Владимира Проппа. Возможности и ограничения этого пакета обсуждались в специальной литературе<a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a>.</p>
+<p>Для языков, которые используют латиницу, в R есть отличный пакет под названием <code>syuzhet</code>. Его разработал известный цифровой литературовед Мэтью Джокерс<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a>. Название пакета, как говорит его разработчик, подсмотрено у русских формалистов Виктора Шкловского и Владимира Проппа. Возможности и ограничения этого пакета обсуждались в специальной литературе<a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a>.</p>
 <p>Для анализа возьмем стихотворение Роберта Фроста “Медведи” (<a href="https://t.me/antibarbari/1098">перевод</a>).</p>
 <div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb776-1"><a href="эмоциональная-тональность.html#cb776-1" tabindex="-1"></a><span class="fu">library</span>(syuzhet)</span></code></pre></div>
 <pre><code>## 
@@ -849,7 +860,7 @@ div.csl-indent {
 <span id="cb796-3"><a href="эмоциональная-тональность.html#cb796-3" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Example Plot Trajectory&quot;</span>,</span>
 <span id="cb796-4"><a href="эмоциональная-тональность.html#cb796-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Narrative Time&quot;</span>,</span>
 <span id="cb796-5"><a href="эмоциональная-тональность.html#cb796-5" tabindex="-1"></a>     <span class="at">ylab=</span> <span class="st">&quot;Emotional Valence&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-439-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-433-1.png" width="672" /></p>
 <p>О других способах визуализировать результат можно узнать из <a href="https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html">виньетки к пакету</a>.</p>
 </div>
 <div id="виды-эмоций" class="section level2 hasAnchor" number="12.11">
@@ -858,28 +869,28 @@ div.csl-indent {
 <div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb797-1"><a href="эмоциональная-тональность.html#cb797-1" tabindex="-1"></a>nrc_data <span class="ot">&lt;-</span> <span class="fu">get_nrc_sentiment</span>(sent_vec)</span>
 <span id="cb797-2"><a href="эмоциональная-тональность.html#cb797-2" tabindex="-1"></a></span>
 <span id="cb797-3"><a href="эмоциональная-тональность.html#cb797-3" tabindex="-1"></a>nrc_data</span></code></pre></div>
-<pre><code>##    anger anticipation disgust fear joy sadness surprise trust negative
-## 1      3            5       1    1   4       1        3     4        1
-## 2      1            0       0    1   0       2        0     0        2
-## 3      0            1       1    1   1       1        1     1        1
-## 4      1            1       0    1   1       0        0     0        0
-## 5      1            0       0    1   0       0        0     0        1
-## 6      2            1       0    2   0       1        0     0        3
-## 7      0            1       0    0   1       0        1     2        0
-## 8      0            0       0    0   0       0        0     1        0
-## 9      0            1       0    0   0       0        0     2        1
-## 10     0            0       1    0   0       1        0     0        1
-##    positive
-## 1         6
-## 2         0
-## 3         1
-## 4         1
-## 5         0
-## 6         0
-## 7         2
-## 8         1
-## 9         2
-## 10        1</code></pre>
+<pre><code>##    anger anticipation disgust fear joy sadness surprise
+## 1      3            5       1    1   4       1        3
+## 2      1            0       0    1   0       2        0
+## 3      0            1       1    1   1       1        1
+## 4      1            1       0    1   1       0        0
+## 5      1            0       0    1   0       0        0
+## 6      2            1       0    2   0       1        0
+## 7      0            1       0    0   1       0        1
+## 8      0            0       0    0   0       0        0
+## 9      0            1       0    0   0       0        0
+## 10     0            0       1    0   0       1        0
+##    trust negative positive
+## 1      4        1        6
+## 2      0        2        0
+## 3      1        1        1
+## 4      0        0        1
+## 5      0        1        0
+## 6      0        3        0
+## 7      2        0        2
+## 8      1        0        1
+## 9      2        1        2
+## 10     0        1        1</code></pre>
 <p>Выбрать конкретные эмоции можно так (но результат в нашем случае не очень осмысленный):</p>
 <div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="эмоциональная-тональность.html#cb799-1" tabindex="-1"></a>joy_items <span class="ot">&lt;-</span> <span class="fu">which</span>(nrc_data<span class="sc">$</span>joy <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
 <span id="cb799-2"><a href="эмоциональная-тональность.html#cb799-2" tabindex="-1"></a>sent_vec[joy_items]</span></code></pre></div>
@@ -891,7 +902,7 @@ div.csl-indent {
 <span id="cb800-5"><a href="эмоциональная-тональность.html#cb800-5" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>, </span>
 <span id="cb800-6"><a href="эмоциональная-тональность.html#cb800-6" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Emotions in Sample text&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Percentage&quot;</span></span>
 <span id="cb800-7"><a href="эмоциональная-тональность.html#cb800-7" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-442-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-436-1.png" width="672" /></p>
 <p>Сложно осуждать машину за не вполне верно считанную тональность: Фрост – сложный автор. Для отзывов на Tripadvisor это может сработать лучше.</p>
 
 </div>
@@ -910,10 +921,10 @@ Silge, Julia, and David Robinson. 2017. <em>Text Mining with r</em>. O’Reilly.
 </div>
 <div class="footnotes">
 <hr />
-<ol start="49">
-<li id="fn49"><p><a href="https://aclanthology.org/W10-0204/" class="uri">https://aclanthology.org/W10-0204/</a><a href="эмоциональная-тональность.html#fnref49" class="footnote-back">↩︎</a></p></li>
-<li id="fn50"><p><a href="https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html" class="uri">https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html</a><a href="эмоциональная-тональность.html#fnref50" class="footnote-back">↩︎</a></p></li>
-<li id="fn51"><p><a href="http://www.digitalhumanities.org/dhq/vol/16/2/000612/000612.html" class="uri">http://www.digitalhumanities.org/dhq/vol/16/2/000612/000612.html</a><a href="эмоциональная-тональность.html#fnref51" class="footnote-back">↩︎</a></p></li>
+<ol start="48">
+<li id="fn48"><p><a href="https://aclanthology.org/W10-0204/" class="uri">https://aclanthology.org/W10-0204/</a><a href="эмоциональная-тональность.html#fnref48" class="footnote-back">↩︎</a></p></li>
+<li id="fn49"><p><a href="https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html" class="uri">https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html</a><a href="эмоциональная-тональность.html#fnref49" class="footnote-back">↩︎</a></p></li>
+<li id="fn50"><p><a href="http://www.digitalhumanities.org/dhq/vol/16/2/000612/000612.html" class="uri">http://www.digitalhumanities.org/dhq/vol/16/2/000612/000612.html</a><a href="эмоциональная-тональность.html#fnref50" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

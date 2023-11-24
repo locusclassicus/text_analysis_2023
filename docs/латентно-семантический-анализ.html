@@ -676,7 +676,7 @@ div.csl-indent {
 ## 13 d5            -0.327 -0.46  doc  
 ## 14 q_doc         -1.10   0.124 doc</code></pre>
 <p>Теперь строим график.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-481-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-475-1.png" width="672" /></p>
 <p>Как видно, поисковый запрос оказался ближе к d2, чем к d4, хотя в каждом из документов было одно слово из запроса. Более того: он оказался ближе к d1, в котором не было ни одного слова из запроса! Наш алгоритм оказался достаточно умен, чтобы понять, что d1 более релевантен, хотя и не содержит точных совпадений с поисковыми словами. Возможно, человек дал бы такую же рекомендацию.</p>
 <p>Мы исследовали наш небольшой корпус графически, теперь посчитаем косинусное расстояние.</p>
 <div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb864-1"><a href="латентно-семантический-анализ.html#cb864-1" tabindex="-1"></a>dist_mx <span class="ot">&lt;-</span> all_df <span class="sc">%&gt;%</span> </span>
@@ -684,20 +684,20 @@ div.csl-indent {
 <span id="cb864-3"><a href="латентно-семантический-анализ.html#cb864-3" tabindex="-1"></a>  philentropy<span class="sc">::</span><span class="fu">distance</span>(<span class="at">method =</span> <span class="st">&quot;cosine&quot;</span>, <span class="at">use.row.names =</span> T) </span></code></pre></div>
 <pre><code>## Metric: &#39;cosine&#39;; comparing: 6 vectors.</code></pre>
 <div class="sourceCode" id="cb866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb866-1"><a href="латентно-семантический-анализ.html#cb866-1" tabindex="-1"></a>dist_mx</span></code></pre></div>
-<pre><code>##                d1          d2        d3          d4         d5
-## d1     1.00000000  0.99792078 0.8724625 -0.02002992 -0.1796188
-## d2     0.99792078  1.00000000 0.8391517 -0.08442786 -0.2426496
-## d3     0.87246248  0.83915171 1.0000000  0.47110771  0.3240227
-## d4    -0.02002992 -0.08442786 0.4711077  1.00000000  0.9871367
-## d5    -0.17961877 -0.24264957 0.3240227  0.98713669  1.0000000
-## q_doc  0.77364153  0.73119433 0.9846131  0.61800043  0.4843579
-##           q_doc
-## d1    0.7736415
-## d2    0.7311943
-## d3    0.9846131
-## d4    0.6180004
-## d5    0.4843579
-## q_doc 1.0000000</code></pre>
+<pre><code>##                d1          d2        d3          d4
+## d1     1.00000000  0.99792078 0.8724625 -0.02002992
+## d2     0.99792078  1.00000000 0.8391517 -0.08442786
+## d3     0.87246248  0.83915171 1.0000000  0.47110771
+## d4    -0.02002992 -0.08442786 0.4711077  1.00000000
+## d5    -0.17961877 -0.24264957 0.3240227  0.98713669
+## q_doc  0.77364153  0.73119433 0.9846131  0.61800043
+##               d5     q_doc
+## d1    -0.1796188 0.7736415
+## d2    -0.2426496 0.7311943
+## d3     0.3240227 0.9846131
+## d4     0.9871367 0.6180004
+## d5     1.0000000 0.4843579
+## q_doc  0.4843579 1.0000000</code></pre>
 </div>
 <div id="векторы-слов" class="section level2 hasAnchor" number="14.5">
 <h2><span class="header-section-number">14.5</span> Векторы слов<a href="латентно-семантический-анализ.html#векторы-слов" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -923,7 +923,7 @@ div.csl-indent {
 <span id="cb893-9"><a href="латентно-семантический-анализ.html#cb893-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dimension, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">ncol=</span><span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb893-10"><a href="латентно-семантический-анализ.html#cb893-10" tabindex="-1"></a>  <span class="fu">scale_x_reordered</span>() <span class="sc">+</span></span>
 <span id="cb893-11"><a href="латентно-семантический-анализ.html#cb893-11" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-501-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-495-1.png" width="672" /></p>
 <p>Имея эмбеддинги слов и матрицу документ-термин, можно создать пространство документов той же размерности. Для этого перемножаем две матрицы.</p>
 <div class="sourceCode" id="cb894"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb894-1"><a href="латентно-семантический-анализ.html#cb894-1" tabindex="-1"></a>word_mx <span class="ot">&lt;-</span> text_pruned <span class="sc">%&gt;%</span></span>
 <span id="cb894-2"><a href="латентно-семантический-анализ.html#cb894-2" tabindex="-1"></a>  <span class="fu">count</span>(doc_id, lemma) <span class="sc">%&gt;%</span></span>
@@ -949,17 +949,28 @@ div.csl-indent {
 <pre><code>## Metric: &#39;cosine&#39;; comparing: 719 vectors.</code></pre>
 <p>Небольшой фрагмент этой матрицы.</p>
 <div class="sourceCode" id="cb904"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb904-1"><a href="латентно-семантический-анализ.html#cb904-1" tabindex="-1"></a>dist_mx[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
-<pre><code>##             doc1     doc10    doc100    doc101    doc102    doc103
-## doc1   1.0000000 0.7605686 0.7745078 0.7564402 0.8680997 0.6893900
-## doc10  0.7605686 1.0000000 0.7793400 0.7294682 0.8687391 0.7985651
-## doc100 0.7745078 0.7793400 1.0000000 0.8741178 0.8483274 0.7927676
-## doc101 0.7564402 0.7294682 0.8741178 1.0000000 0.8428310 0.7821788
-## doc102 0.8680997 0.8687391 0.8483274 0.8428310 1.0000000 0.7901311
-## doc103 0.6893900 0.7985651 0.7927676 0.7821788 0.7901311 1.0000000
-## doc104 0.6680614 0.7093569 0.8846958 0.8617179 0.8061694 0.8180705
-## doc105 0.7110572 0.7250496 0.8507740 0.8965854 0.8352048 0.8029635
-## doc106 0.4115312 0.4874521 0.6176151 0.6926529 0.6055048 0.5170057
-## doc107 0.3091917 0.3801341 0.5143291 0.5547815 0.4564905 0.5198729</code></pre>
+<pre><code>##             doc1     doc10    doc100    doc101    doc102
+## doc1   1.0000000 0.7605686 0.7745078 0.7564402 0.8680997
+## doc10  0.7605686 1.0000000 0.7793400 0.7294682 0.8687391
+## doc100 0.7745078 0.7793400 1.0000000 0.8741178 0.8483274
+## doc101 0.7564402 0.7294682 0.8741178 1.0000000 0.8428310
+## doc102 0.8680997 0.8687391 0.8483274 0.8428310 1.0000000
+## doc103 0.6893900 0.7985651 0.7927676 0.7821788 0.7901311
+## doc104 0.6680614 0.7093569 0.8846958 0.8617179 0.8061694
+## doc105 0.7110572 0.7250496 0.8507740 0.8965854 0.8352048
+## doc106 0.4115312 0.4874521 0.6176151 0.6926529 0.6055048
+## doc107 0.3091917 0.3801341 0.5143291 0.5547815 0.4564905
+##           doc103
+## doc1   0.6893900
+## doc10  0.7985651
+## doc100 0.7927676
+## doc101 0.7821788
+## doc102 0.7901311
+## doc103 1.0000000
+## doc104 0.8180705
+## doc105 0.8029635
+## doc106 0.5170057
+## doc107 0.5198729</code></pre>
 <p>Теперь нам нужна функция для поиска ближайших соседей.</p>
 <div class="sourceCode" id="cb906"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb906-1"><a href="латентно-семантический-анализ.html#cb906-1" tabindex="-1"></a>nearest_doc <span class="ot">&lt;-</span> <span class="cf">function</span>(dist_mx, doc, n) {</span>
 <span id="cb906-2"><a href="латентно-семантический-анализ.html#cb906-2" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">rownames</span>(dist_mx) <span class="sc">==</span> doc) </span>

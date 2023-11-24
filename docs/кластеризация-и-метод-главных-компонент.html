@@ -518,19 +518,20 @@ div.csl-indent {
 <div class="sourceCode" id="cb911"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb911-1"><a href="кластеризация-и-метод-главных-компонент.html#cb911-1" tabindex="-1"></a>km.out <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(x, <span class="at">centers =</span> <span class="dv">2</span>, <span class="at">nstart =</span> <span class="dv">20</span>)</span>
 <span id="cb911-2"><a href="кластеризация-и-метод-главных-компонент.html#cb911-2" tabindex="-1"></a></span>
 <span id="cb911-3"><a href="кластеризация-и-метод-главных-компонент.html#cb911-3" tabindex="-1"></a>km.out<span class="sc">$</span>cluster</span></code></pre></div>
-<pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2
-## [35] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</code></pre>
+<pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2
+## [28] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</code></pre>
 <p>Наблюдения разделились идеально. Вот так выглядят наши центроиды:</p>
 <div class="sourceCode" id="cb913"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb913-1"><a href="кластеризация-и-метод-главных-компонент.html#cb913-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb913-2"><a href="кластеризация-и-метод-главных-компонент.html#cb913-2" tabindex="-1"></a></span>
 <span id="cb913-3"><a href="кластеризация-и-метод-главных-компонент.html#cb913-3" tabindex="-1"></a>centers <span class="ot">&lt;-</span> km.out<span class="sc">$</span>centers <span class="sc">%&gt;%</span> </span>
 <span id="cb913-4"><a href="кластеризация-и-метод-главных-компонент.html#cb913-4" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code></pre></div>
-<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names
-## if `.name_repair` is omitted as of tibble 2.0.0.
+<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique
+## column names if `.name_repair` is omitted as of tibble
+## 2.0.0.
 ## ℹ Using compatibility `.name_repair`.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning
-## was generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where
+## this warning was generated.</code></pre>
 <div class="sourceCode" id="cb915"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb915-1"><a href="кластеризация-и-метод-главных-компонент.html#cb915-1" tabindex="-1"></a>centers</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##       V1    V2
@@ -544,7 +545,7 @@ div.csl-indent {
 <span id="cb917-5"><a href="кластеризация-и-метод-главных-компонент.html#cb917-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
 <span id="cb917-6"><a href="кластеризация-и-метод-главных-компонент.html#cb917-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> centers, <span class="at">color =</span> <span class="st">&quot;deeppink3&quot;</span>, </span>
 <span id="cb917-7"><a href="кластеризация-и-метод-главных-компонент.html#cb917-7" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-510-1.png" width="672" />
+<p><img src="_main_files/figure-html/unnamed-chunk-504-1.png" width="672" />
 Аргумент <code>nstart</code> позволяет запустить алгоритм функции несколько раз с разными начальными метками кластеров; функциия вернет наилучший результат.</p>
 </div>
 <div id="k-means-для-кластеризации-текстов" class="section level2 hasAnchor" number="15.4">
@@ -554,35 +555,50 @@ div.csl-indent {
 <span id="cb918-2"><a href="кластеризация-и-метод-главных-компонент.html#cb918-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;galbraith&quot;</span>)</span>
 <span id="cb918-3"><a href="кластеризация-и-метод-главных-компонент.html#cb918-3" tabindex="-1"></a></span>
 <span id="cb918-4"><a href="кластеризация-и-метод-главных-компонент.html#cb918-4" tabindex="-1"></a>galbraith[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
-<pre><code>##                           the      and       to       of        a
-## coben_breaker        3.592199 1.175108 2.162724 1.375736 2.518600
-## coben_dropshot       3.587836 1.178543 2.122161 1.268598 2.375359
-## coben_fadeaway       3.931392 1.445498 2.200406 1.213044 2.306477
-## coben_falsemove      3.625411 1.613339 2.133533 1.236688 2.400991
-## coben_goneforgood    3.834031 1.816723 2.152941 1.175808 1.961908
-## coben_nosecondchance 4.098293 1.588967 2.271255 1.205863 1.992137</code></pre>
+<pre><code>##                           the      and       to       of
+## coben_breaker        3.592199 1.175108 2.162724 1.375736
+## coben_dropshot       3.587836 1.178543 2.122161 1.268598
+## coben_fadeaway       3.931392 1.445498 2.200406 1.213044
+## coben_falsemove      3.625411 1.613339 2.133533 1.236688
+## coben_goneforgood    3.834031 1.816723 2.152941 1.175808
+## coben_nosecondchance 4.098293 1.588967 2.271255 1.205863
+##                             a
+## coben_breaker        2.518600
+## coben_dropshot       2.375359
+## coben_fadeaway       2.306477
+## coben_falsemove      2.400991
+## coben_goneforgood    1.961908
+## coben_nosecondchance 1.992137</code></pre>
 <p>Применим к этим данным функцию <code>kmeans</code>. Этот датасет имеет формат <code>stylo.data</code>, поэтому сначала его трансформируем. Также уменьшим число переменных с 3000 до 200.</p>
 <div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb920-1"><a href="кластеризация-и-метод-главных-компонент.html#cb920-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
 <span id="cb920-2"><a href="кластеризация-и-метод-главных-компонент.html#cb920-2" tabindex="-1"></a>galbraith <span class="ot">&lt;-</span> <span class="fu">as.data.frame.matrix</span>(galbraith)[,<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>]</span>
 <span id="cb920-3"><a href="кластеризация-и-метод-главных-компонент.html#cb920-3" tabindex="-1"></a>km.out <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(galbraith, <span class="at">centers =</span> <span class="dv">5</span>, <span class="at">nstart =</span> <span class="dv">20</span>)</span>
 <span id="cb920-4"><a href="кластеризация-и-метод-главных-компонент.html#cb920-4" tabindex="-1"></a></span>
 <span id="cb920-5"><a href="кластеризация-и-метод-главных-компонент.html#cb920-5" tabindex="-1"></a>km.out<span class="sc">$</span>cluster</span></code></pre></div>
-<pre><code>##        coben_breaker       coben_dropshot       coben_fadeaway 
-##                    5                    5                    5 
-##      coben_falsemove    coben_goneforgood coben_nosecondchance 
-##                    5                    1                    1 
-##      coben_tellnoone    galbraith_cuckoos         lewis_battle 
-##                    1                    4                    3 
-##        lewis_caspian          lewis_chair          lewis_horse 
-##                    3                    3                    3 
-##           lewis_lion         lewis_nephew         lewis_voyage 
-##                    3                    3                    3 
-##       rowling_casual      rowling_chamber       rowling_goblet 
-##                    4                    2                    2 
-##      rowling_hallows        rowling_order       rowling_prince 
-##                    2                    2                    2 
-##     rowling_prisoner        rowling_stone        tolkien_lord1 
-##                    2                    2                    3 
+<pre><code>##        coben_breaker       coben_dropshot 
+##                    5                    5 
+##       coben_fadeaway      coben_falsemove 
+##                    5                    5 
+##    coben_goneforgood coben_nosecondchance 
+##                    1                    1 
+##      coben_tellnoone    galbraith_cuckoos 
+##                    1                    4 
+##         lewis_battle        lewis_caspian 
+##                    3                    3 
+##          lewis_chair          lewis_horse 
+##                    3                    3 
+##           lewis_lion         lewis_nephew 
+##                    3                    3 
+##         lewis_voyage       rowling_casual 
+##                    3                    4 
+##      rowling_chamber       rowling_goblet 
+##                    2                    2 
+##      rowling_hallows        rowling_order 
+##                    2                    2 
+##       rowling_prince     rowling_prisoner 
+##                    2                    2 
+##        rowling_stone        tolkien_lord1 
+##                    2                    3 
 ##        tolkien_lord2        tolkien_lord3 
 ##                    3                    3</code></pre>
 <div class="sourceCode" id="cb922"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb922-1"><a href="кластеризация-и-метод-главных-компонент.html#cb922-1" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
@@ -674,7 +690,7 @@ div.csl-indent {
 <p>Применим алгоритм к симулированным данным, которые мы создали выше. Функция <code>dist()</code> по умолчанию считает евклидово расстояние.</p>
 <div class="sourceCode" id="cb929"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb929-1"><a href="кластеризация-и-метод-главных-компонент.html#cb929-1" tabindex="-1"></a>hc.complete <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(x), <span class="at">method =</span> <span class="st">&quot;complete&quot;</span>)</span>
 <span id="cb929-2"><a href="кластеризация-и-метод-главных-компонент.html#cb929-2" tabindex="-1"></a><span class="fu">plot</span>(hc.complete)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-517-1.png" width="672" />
+<p><img src="_main_files/figure-html/unnamed-chunk-511-1.png" width="672" />
 На картинке видно, что наблюдения из верхих и нижних рядов почти идеально разделились на два кластера.</p>
 </div>
 <div id="иерархическая-кластеризация-текстов" class="section level2 hasAnchor" number="15.9">
@@ -688,25 +704,33 @@ div.csl-indent {
 <span id="cb932-2"><a href="кластеризация-и-метод-главных-компонент.html#cb932-2" tabindex="-1"></a>hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_mx)</span>
 <span id="cb932-3"><a href="кластеризация-и-метод-главных-компонент.html#cb932-3" tabindex="-1"></a></span>
 <span id="cb932-4"><a href="кластеризация-и-метод-главных-компонент.html#cb932-4" tabindex="-1"></a><span class="fu">plot</span>(hc)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-519-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-513-1.png" width="672" /></p>
 <p>Для получения меток кластеров, возникающих в результате рассечения дендрограммы на той или иной высоте, можно воспользоваться функцией <code>cutree()</code>.</p>
 <div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb933-1"><a href="кластеризация-и-метод-главных-компонент.html#cb933-1" tabindex="-1"></a><span class="fu">cutree</span>(hc, <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>##        coben_breaker       coben_dropshot       coben_fadeaway 
-##                    1                    1                    1 
-##      coben_falsemove    coben_goneforgood coben_nosecondchance 
-##                    1                    1                    1 
-##      coben_tellnoone    galbraith_cuckoos         lewis_battle 
-##                    1                    2                    3 
-##        lewis_caspian          lewis_chair          lewis_horse 
-##                    3                    3                    3 
-##           lewis_lion         lewis_nephew         lewis_voyage 
-##                    3                    3                    3 
-##       rowling_casual      rowling_chamber       rowling_goblet 
-##                    2                    4                    4 
-##      rowling_hallows        rowling_order       rowling_prince 
-##                    4                    4                    4 
-##     rowling_prisoner        rowling_stone        tolkien_lord1 
-##                    4                    4                    5 
+<pre><code>##        coben_breaker       coben_dropshot 
+##                    1                    1 
+##       coben_fadeaway      coben_falsemove 
+##                    1                    1 
+##    coben_goneforgood coben_nosecondchance 
+##                    1                    1 
+##      coben_tellnoone    galbraith_cuckoos 
+##                    1                    2 
+##         lewis_battle        lewis_caspian 
+##                    3                    3 
+##          lewis_chair          lewis_horse 
+##                    3                    3 
+##           lewis_lion         lewis_nephew 
+##                    3                    3 
+##         lewis_voyage       rowling_casual 
+##                    3                    2 
+##      rowling_chamber       rowling_goblet 
+##                    4                    4 
+##      rowling_hallows        rowling_order 
+##                    4                    4 
+##       rowling_prince     rowling_prisoner 
+##                    4                    4 
+##        rowling_stone        tolkien_lord1 
+##                    4                    5 
 ##        tolkien_lord2        tolkien_lord3 
 ##                    5                    5</code></pre>
 <p>Этим меткам можно назначить свой цвет.</p>
@@ -718,7 +742,7 @@ div.csl-indent {
 <span id="cb935-6"><a href="кластеризация-и-метод-главных-компонент.html#cb935-6" tabindex="-1"></a>  <span class="fu">set</span>(<span class="st">&quot;labels_col&quot;</span>, <span class="at">k=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb935-7"><a href="кластеризация-и-метод-главных-компонент.html#cb935-7" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">horiz =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb935-8"><a href="кластеризация-и-метод-главных-компонент.html#cb935-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.8</span>, <span class="at">col=</span><span class="st">&quot;pink4&quot;</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-521-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-515-1.png" width="672" /></p>
 <p>Результат как иерархической кластеризации, так и кластеризации по методу K средних многомерных данных можно визуализировать в двумерном пространстве, если предварительно применить к данным метод главных компонент.</p>
 </div>
 <div id="метод-главных-компонент" class="section level2 hasAnchor" number="15.10">
@@ -734,40 +758,49 @@ div.csl-indent {
 <pre><code>## [1] &quot;sdev&quot;     &quot;rotation&quot; &quot;center&quot;   &quot;scale&quot;    &quot;x&quot;</code></pre>
 <p>Первый элемент хранит данные о стандартном отклонении, соответствующем каждой компоненте.</p>
 <div class="sourceCode" id="cb938"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb938-1"><a href="кластеризация-и-метод-главных-компонент.html#cb938-1" tabindex="-1"></a><span class="fu">round</span>(pca_fit<span class="sc">$</span>sdev, <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>##  [1] 8.118 6.282 4.816 3.480 3.218 2.660 2.236 2.042 1.975 1.875 1.811
-## [12] 1.681 1.555 1.514 1.478 1.339 1.288 1.266 1.173 1.122 1.104 1.031
-## [23] 0.985 0.900 0.747 0.000</code></pre>
+<pre><code>##  [1] 8.118 6.282 4.816 3.480 3.218 2.660 2.236 2.042 1.975
+## [10] 1.875 1.811 1.681 1.555 1.514 1.478 1.339 1.288 1.266
+## [19] 1.173 1.122 1.104 1.031 0.985 0.900 0.747 0.000</code></pre>
 <p>Это можно узнать также, вызвав функцию summary.</p>
 <div class="sourceCode" id="cb940"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb940-1"><a href="кластеризация-и-метод-главных-компонент.html#cb940-1" tabindex="-1"></a><span class="fu">summary</span>(pca_fit)</span></code></pre></div>
 <pre><code>## Importance of components:
-##                           PC1    PC2    PC3     PC4     PC5     PC6
-## Standard deviation     8.1180 6.2824 4.8161 3.47962 3.21811 2.65990
-## Proportion of Variance 0.3295 0.1973 0.1160 0.06054 0.05178 0.03538
-## Cumulative Proportion  0.3295 0.5269 0.6428 0.70336 0.75514 0.79052
-##                           PC7     PC8    PC9    PC10    PC11    PC12
-## Standard deviation     2.2362 2.04233 1.9748 1.87495 1.81070 1.68115
-## Proportion of Variance 0.0250 0.02086 0.0195 0.01758 0.01639 0.01413
-## Cumulative Proportion  0.8155 0.83638 0.8559 0.87345 0.88985 0.90398
-##                           PC13    PC14    PC15    PC16   PC17    PC18
-## Standard deviation     1.55528 1.51356 1.47822 1.33897 1.2882 1.26627
-## Proportion of Variance 0.01209 0.01145 0.01093 0.00896 0.0083 0.00802
-## Cumulative Proportion  0.91607 0.92753 0.93845 0.94742 0.9557 0.96373
-##                           PC19    PC20   PC21    PC22    PC23    PC24
-## Standard deviation     1.17319 1.12184 1.1044 1.03061 0.98464 0.89953
-## Proportion of Variance 0.00688 0.00629 0.0061 0.00531 0.00485 0.00405
-## Cumulative Proportion  0.97061 0.97690 0.9830 0.98831 0.99316 0.99721
+##                           PC1    PC2    PC3     PC4
+## Standard deviation     8.1180 6.2824 4.8161 3.47962
+## Proportion of Variance 0.3295 0.1973 0.1160 0.06054
+## Cumulative Proportion  0.3295 0.5269 0.6428 0.70336
+##                            PC5     PC6    PC7     PC8
+## Standard deviation     3.21811 2.65990 2.2362 2.04233
+## Proportion of Variance 0.05178 0.03538 0.0250 0.02086
+## Cumulative Proportion  0.75514 0.79052 0.8155 0.83638
+##                           PC9    PC10    PC11    PC12
+## Standard deviation     1.9748 1.87495 1.81070 1.68115
+## Proportion of Variance 0.0195 0.01758 0.01639 0.01413
+## Cumulative Proportion  0.8559 0.87345 0.88985 0.90398
+##                           PC13    PC14    PC15    PC16
+## Standard deviation     1.55528 1.51356 1.47822 1.33897
+## Proportion of Variance 0.01209 0.01145 0.01093 0.00896
+## Cumulative Proportion  0.91607 0.92753 0.93845 0.94742
+##                          PC17    PC18    PC19    PC20
+## Standard deviation     1.2882 1.26627 1.17319 1.12184
+## Proportion of Variance 0.0083 0.00802 0.00688 0.00629
+## Cumulative Proportion  0.9557 0.96373 0.97061 0.97690
+##                          PC21    PC22    PC23    PC24
+## Standard deviation     1.1044 1.03061 0.98464 0.89953
+## Proportion of Variance 0.0061 0.00531 0.00485 0.00405
+## Cumulative Proportion  0.9830 0.98831 0.99316 0.99721
 ##                           PC25                 PC26
 ## Standard deviation     0.74739 0.000000000000007723
 ## Proportion of Variance 0.00279 0.000000000000000000
 ## Cumulative Proportion  1.00000 1.000000000000000000</code></pre>
 <p>Доля дисперсии – это стандартное отклонение в квадрате, деленное на сумму стандартных отклонений в квадрате. Проверим:</p>
 <div class="sourceCode" id="cb942"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb942-1"><a href="кластеризация-и-метод-главных-компонент.html#cb942-1" tabindex="-1"></a><span class="fu">round</span>(pca_fit<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sum</span>(pca_fit<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span>), <span class="dv">4</span>)</span></code></pre></div>
-<pre><code>##  [1] 0.3295 0.1973 0.1160 0.0605 0.0518 0.0354 0.0250 0.0209 0.0195
-## [10] 0.0176 0.0164 0.0141 0.0121 0.0115 0.0109 0.0090 0.0083 0.0080
-## [19] 0.0069 0.0063 0.0061 0.0053 0.0048 0.0040 0.0028 0.0000</code></pre>
+<pre><code>##  [1] 0.3295 0.1973 0.1160 0.0605 0.0518 0.0354 0.0250
+##  [8] 0.0209 0.0195 0.0176 0.0164 0.0141 0.0121 0.0115
+## [15] 0.0109 0.0090 0.0083 0.0080 0.0069 0.0063 0.0061
+## [22] 0.0053 0.0048 0.0040 0.0028 0.0000</code></pre>
 <p>Таким образом, первые две компоненты объясняют почти половину дисперсии, а последняя почти не имеет объяснительной ценности.</p>
 <div class="sourceCode" id="cb944"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb944-1"><a href="кластеризация-и-метод-главных-компонент.html#cb944-1" tabindex="-1"></a><span class="fu">plot</span>(pca_fit)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-526-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-520-1.png" width="672" /></p>
 <p>Координаты текстов в новом двумерном пространстве, определяемом первыми двумя компонентами, хранятся в элементе под названием <code>x</code>.</p>
 <div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb945-1"><a href="кластеризация-и-метод-главных-компонент.html#cb945-1" tabindex="-1"></a><span class="fu">head</span>(pca_fit<span class="sc">$</span>x[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span></code></pre></div>
 <pre><code>##                             PC1      PC2
@@ -791,7 +824,7 @@ div.csl-indent {
 <pre><code>## [1] 200   3</code></pre>
 <p>Изобразить вместе главные компоненты и тексты позволяет функция <code>biplot()</code> (на нормализованных данных получается совсем не читаемо, поэтому демонстрирую на исходных).</p>
 <div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb951-1"><a href="кластеризация-и-метод-главных-компонент.html#cb951-1" tabindex="-1"></a><span class="fu">biplot</span>(<span class="fu">prcomp</span>(galbraith), <span class="at">scale=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-530-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-524-1.png" width="672" /></p>
 </div>
 <div id="pca-для-визуализации-кластеров-k-means" class="section level2 hasAnchor" number="15.11">
 <h2><span class="header-section-number">15.11</span> PCA для визуализации кластеров K-means<a href="кластеризация-и-метод-главных-компонент.html#pca-для-визуализации-кластеров-k-means" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -803,7 +836,7 @@ div.csl-indent {
 <span id="cb952-5"><a href="кластеризация-и-метод-главных-компонент.html#cb952-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(.fittedPC1, .fittedPC2, </span>
 <span id="cb952-6"><a href="кластеризация-и-метод-главных-компонент.html#cb952-6" tabindex="-1"></a>             <span class="at">color =</span> expected, <span class="at">shape =</span> <span class="fu">as.factor</span>(km.out<span class="sc">$</span>cluster))) <span class="sc">+</span></span>
 <span id="cb952-7"><a href="кластеризация-и-метод-главных-компонент.html#cb952-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-531-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-525-1.png" width="672" /></p>
 <p>В таком же “опрятном” виде можем представить и нагрузки компонент. Для наглядности вывожу только первые 30 слов.</p>
 <div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb953-1"><a href="кластеризация-и-метод-главных-компонент.html#cb953-1" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code></pre></div>
 <pre><code>## 
@@ -836,7 +869,7 @@ div.csl-indent {
 <span id="cb959-17"><a href="кластеризация-и-метод-главных-компонент.html#cb959-17" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb959-18"><a href="кластеризация-и-метод-главных-компонент.html#cb959-18" tabindex="-1"></a>  <span class="fu">theme_minimal_grid</span>(<span class="dv">10</span>) <span class="sc">+</span></span>
 <span id="cb959-19"><a href="кластеризация-и-метод-главных-компонент.html#cb959-19" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-532-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-526-1.png" width="672" /></p>
 </div>
 <div id="pca-и-иерархическая-кластеризация" class="section level2 hasAnchor" number="15.12">
 <h2><span class="header-section-number">15.12</span> PCA и иерархическая кластеризация<a href="кластеризация-и-метод-главных-компонент.html#pca-и-иерархическая-кластеризация" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -846,7 +879,7 @@ div.csl-indent {
 <span id="cb960-3"><a href="кластеризация-и-метод-главных-компонент.html#cb960-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(.fittedPC1, .fittedPC2, </span>
 <span id="cb960-4"><a href="кластеризация-и-метод-главных-компонент.html#cb960-4" tabindex="-1"></a>             <span class="at">color =</span> expected, <span class="at">shape =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(hc, <span class="dv">5</span>)))) <span class="sc">+</span></span>
 <span id="cb960-5"><a href="кластеризация-и-метод-главных-компонент.html#cb960-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-533-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-527-1.png" width="672" /></p>
 </div>
 <div id="многомерное-шкалирование" class="section level2 hasAnchor" number="15.13">
 <h2><span class="header-section-number">15.13</span> Многомерное шкалирование<a href="кластеризация-и-метод-главных-компонент.html#многомерное-шкалирование" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -867,7 +900,7 @@ div.csl-indent {
 <span id="cb963-3"><a href="кластеризация-и-метод-главных-компонент.html#cb963-3" tabindex="-1"></a>             <span class="at">color =</span> expected, </span>
 <span id="cb963-4"><a href="кластеризация-и-метод-главных-компонент.html#cb963-4" tabindex="-1"></a>             <span class="at">shape =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(hc, <span class="dv">5</span>)))) <span class="sc">+</span></span>
 <span id="cb963-5"><a href="кластеризация-и-метод-главных-компонент.html#cb963-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-535-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-529-1.png" width="672" /></p>
 <p>Многомерное шкалирование стремится отразить <em>расстояния</em> между наблюдениями.</p>
 </div>
 <div id="pca-с-factominer" class="section level2 hasAnchor" number="15.14">
@@ -880,22 +913,38 @@ div.csl-indent {
 ## The analysis was performed on 26 individuals, described by 10 variables
 ## *The results are available in the following objects:
 ## 
-##    name               description                          
-## 1  &quot;$eig&quot;             &quot;eigenvalues&quot;                        
-## 2  &quot;$var&quot;             &quot;results for the variables&quot;          
-## 3  &quot;$var$coord&quot;       &quot;coord. for the variables&quot;           
-## 4  &quot;$var$cor&quot;         &quot;correlations variables - dimensions&quot;
-## 5  &quot;$var$cos2&quot;        &quot;cos2 for the variables&quot;             
-## 6  &quot;$var$contrib&quot;     &quot;contributions of the variables&quot;     
-## 7  &quot;$ind&quot;             &quot;results for the individuals&quot;        
-## 8  &quot;$ind$coord&quot;       &quot;coord. for the individuals&quot;         
-## 9  &quot;$ind$cos2&quot;        &quot;cos2 for the individuals&quot;           
-## 10 &quot;$ind$contrib&quot;     &quot;contributions of the individuals&quot;   
-## 11 &quot;$call&quot;            &quot;summary statistics&quot;                 
-## 12 &quot;$call$centre&quot;     &quot;mean of the variables&quot;              
-## 13 &quot;$call$ecart.type&quot; &quot;standard error of the variables&quot;    
-## 14 &quot;$call$row.w&quot;      &quot;weights for the individuals&quot;        
-## 15 &quot;$call$col.w&quot;      &quot;weights for the variables&quot;</code></pre>
+##    name              
+## 1  &quot;$eig&quot;            
+## 2  &quot;$var&quot;            
+## 3  &quot;$var$coord&quot;      
+## 4  &quot;$var$cor&quot;        
+## 5  &quot;$var$cos2&quot;       
+## 6  &quot;$var$contrib&quot;    
+## 7  &quot;$ind&quot;            
+## 8  &quot;$ind$coord&quot;      
+## 9  &quot;$ind$cos2&quot;       
+## 10 &quot;$ind$contrib&quot;    
+## 11 &quot;$call&quot;           
+## 12 &quot;$call$centre&quot;    
+## 13 &quot;$call$ecart.type&quot;
+## 14 &quot;$call$row.w&quot;     
+## 15 &quot;$call$col.w&quot;     
+##    description                          
+## 1  &quot;eigenvalues&quot;                        
+## 2  &quot;results for the variables&quot;          
+## 3  &quot;coord. for the variables&quot;           
+## 4  &quot;correlations variables - dimensions&quot;
+## 5  &quot;cos2 for the variables&quot;             
+## 6  &quot;contributions of the variables&quot;     
+## 7  &quot;results for the individuals&quot;        
+## 8  &quot;coord. for the individuals&quot;         
+## 9  &quot;cos2 for the individuals&quot;           
+## 10 &quot;contributions of the individuals&quot;   
+## 11 &quot;summary statistics&quot;                 
+## 12 &quot;mean of the variables&quot;              
+## 13 &quot;standard error of the variables&quot;    
+## 14 &quot;weights for the individuals&quot;        
+## 15 &quot;weights for the variables&quot;</code></pre>
 <p>Первый элемент списка указывает, какие компоненты наиболее важны.</p>
 <div class="sourceCode" id="cb966"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb966-1"><a href="кластеризация-и-метод-главных-компонент.html#cb966-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">round</span>(pca_object<span class="sc">$</span>eig, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>##        eigenvalue percentage of variance
@@ -913,10 +962,10 @@ div.csl-indent {
 ## comp 5                             94.36
 ## comp 6                             96.84</code></pre>
 <div class="sourceCode" id="cb968"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb968-1"><a href="кластеризация-и-метод-главных-компонент.html#cb968-1" tabindex="-1"></a><span class="fu">barplot</span>(pca_object<span class="sc">$</span>eig[,<span class="dv">1</span>], <span class="at">names.arg =</span> <span class="fu">paste</span>(<span class="st">&quot;comp &quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(pca_object<span class="sc">$</span>eig)))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-538-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-532-1.png" width="672" /></p>
 <p>При визуализации аргументы <code>shadow</code> и <code>autoLab</code> отвечают за то, чтобы график хорошо читался.</p>
 <div class="sourceCode" id="cb969"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb969-1"><a href="кластеризация-и-метод-главных-компонент.html#cb969-1" tabindex="-1"></a><span class="fu">plot</span>(pca_object, <span class="at">shadow=</span>T, <span class="at">autoLab =</span> <span class="st">&quot;yes&quot;</span>, <span class="at">choix =</span> <span class="st">&quot;var&quot;</span>, <span class="at">new.plot =</span> F, <span class="at">title =</span> <span class="st">&quot;&quot;</span>, <span class="at">col.var =</span> <span class="st">&quot;grey40&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-539-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-533-1.png" width="672" /></p>
 <p>Получившийся график называется <em>круг корреляции</em>, и его следует понимать так:</p>
 <ul>
 <li>положительно коррелированные переменные находятся рядом;</li>
@@ -937,7 +986,7 @@ div.csl-indent {
 ## said  0.3317503 -0.5806990</code></pre>
 <p>Построим графикк с наблюдениями, а не с переменными:</p>
 <div class="sourceCode" id="cb972"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb972-1"><a href="кластеризация-и-метод-главных-компонент.html#cb972-1" tabindex="-1"></a><span class="fu">plot</span>(pca_object, <span class="at">shadow =</span> T, <span class="at">autoLab =</span> <span class="st">&quot;yes&quot;</span>, <span class="at">title =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-541-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-535-1.png" width="672" /></p>
 
 </div>
 </div>
