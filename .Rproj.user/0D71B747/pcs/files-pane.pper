@@ -2,7 +2,7 @@
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": true
+            "ascending": false
         },
         {
             "columnIndex": 4,
@@ -17,5 +17,5 @@
             "ascending": true
         }
     ],
-    "path": "~/R_Workflow/Text_Analysis_2023"
+    "path": "~/R_Workflow/Text_Analysis_2023/docs"
 }
