@@ -71,7 +71,8 @@ sample_n(chen_skiena, 10)
 ```{r}
 set.seed(1102)
 rusenti2017 <- hash_rusentilex_2017
-sample_n(rusenti2017, 10)
+sample_n(rusenti2017, 10) %>% 
+  select(-source, -token)
 ```
 
 При работе с этим лексиконом следует учитывать, что для отдельных слов он содержит несколько вхождений, как положительных, так и отрицательных, например:
@@ -325,9 +326,9 @@ sent_vec[1:2]
 
 Воспользуемся регулярными выражениями, чтобы удалить переносы строк:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(stringr)
-sent_vec <- str_replace_all(sent_vec, "\\n", " ")
+sent_vec <- str_replace_all(pluck(sent_vec, 1), "\\n", " ")
 sent_vec[1:2]
 ```
 
