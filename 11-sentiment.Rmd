@@ -15,7 +15,7 @@
 - машинное обучение с учителем;
 - машинное обучение без учителя.
     
-В этом уроке мы будем работать только со словарями. Подробнее о других подходах можно прочитать [здесь](https://shorturl.at/cFKW1).
+В этом уроке мы будем работать только со словарями. Подробнее о других подходах можно прочитать [здесь](https://neerc.ifmo.ru/wiki/index.php?title=%D0%9A%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F_%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%BE%D0%B2_%D0%B8_%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7_%D1%82%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8).
 
 ## Тезаурусы 
 
@@ -30,6 +30,13 @@
 - ранжированную: например, от -5 до 5
 
 В некоторых случаях дополнительно вводятся различия между оценочной лексикой ("неряшливый") и негативным фактом ("кража") и т.п. 
+
+</br>
+
+:::{.task .code}
+Загрузите библиотеки `library(tidytext)` и 
+`library(textdata)`. При помощи функции `get_sentiments()` выясните, какую шкалу использует каждый из лексиконов. Какой из них позволяет анализировать конкретные эмоции? Какие уникальные эмоции он содержит? 
+:::
 
 
 ## Лексиконы для русского языка
@@ -49,9 +56,7 @@ library(tidytext)
 ```
 
 
-### Chen & Skiena
-
-Русский язык входит в языков, для которых Й. Чен и С. Скиена собрали оценочную лексику [@skiena2014]. Их лексикон построен на основе графа знаний, связывающего слова на разных языках (на основе Wiktionary, Google Translate, транслитерационных ссылок и WordNet). Слова оцениваются по бинарной шкале ( -1 / 1).
+Русский язык входит в языков, для которых **Й. Чен и С. Скиена** собрали оценочную лексику [@skiena2014]. Их лексикон построен на основе графа знаний, связывающего слова на разных языках (на основе Wiktionary, Google Translate, транслитерационных ссылок и WordNet). Слова оцениваются по бинарной шкале ( -1 / 1).
 
 
 ```{r}
@@ -60,26 +65,24 @@ chen_skiena <- hash_sentiment_chen_skiena
 sample_n(chen_skiena, 10)
 ```
 
-### RuSentLex 2016
 
-Для русского языка в свободном доступе находится РуСентиЛекс [@lukashevich2016]. Он содержит около 15000 уникальных слов или фраз, среди которых оценочные слова, а также слова и выражения, не передающие оценочное отношения автора, но имеющие положительную или отрицательную ассоциацию (коннотацию). Возможные значения переменной `sentiment`: neutral, positive, negative, positive/negative. 
+Для русского языка в свободном доступе находится **РуСентиЛекс** [@lukashevich2016]. Он содержит около 15000 уникальных слов или фраз, среди которых оценочные слова, а также слова и выражения, не передающие оценочное отношения автора, но имеющие положительную или отрицательную ассоциацию (коннотацию). Возможные значения переменной `sentiment`: neutral, positive, negative, positive/negative. 
 
 ```{r}
 set.seed(1102)
-rusenti2016 <- hash_rusentilex_2016
-sample_n(rusenti2016, 10)
+rusenti2017 <- hash_rusentilex_2017
+sample_n(rusenti2017, 10)
 ```
 
 При работе с этим лексиконом следует учитывать, что для отдельных слов он содержит несколько вхождений, как положительных, так и отрицательных, например:
 
 ```{r}
-rusenti2016 %>% 
-  filter(token == "нежный")
+rusenti2017 %>% 
+  filter(token == "нежный") %>% 
+  select(-source, -token)
 ```
 
-### AFINN 
-
-Словарь AFINN содержит  7268 оценочных слов. Их тональность оценивается по шкале от -5 (крайне негативная) до 5 (в высшей степени положительная). Например, слово "адский" имеет оценку -5, а слово "ангельский" -- +5.
+**Словарь AFINN** содержит  7268 оценочных слов. Их тональность оценивается по шкале от -5 (крайне негативная) до 5 (в высшей степени положительная). Например, слово "адский" имеет оценку -5, а слово "ангельский" -- +5.
 
 ```{r}
 set.seed(0211)
@@ -87,16 +90,13 @@ afinn <- hash_sentiment_afinn_ru
 sample_n(afinn, 10)
 ```
 
-### NRC
-
-Переведенная версия списка положительных и отрицательных слов Mohammad & Turney (2010)^[https://aclanthology.org/W10-0204/]. Таблица содержит 5179 слов с не нейтральными оценками. Бинарная шкала: -1 / 1.
+**NRC** для русского языка -- это переведенная версия списка положительных и отрицательных слов Mohammad & Turney (2010)^[https://aclanthology.org/W10-0204/]. Таблица содержит 5179 слов с не нейтральными оценками. Бинарная шкала: -1 / 1.
 
 ```{r}
 set.seed(1102)
 nrc <- hash_sentiment_nrc_emolex_ru
 sample_n(nrc, 10)
 ```
-
 
 
 ## Анализ тональности с Tidy Data
@@ -155,7 +155,7 @@ lex <- lex %>% mutate_at(vars(score), ~
 
 ## Соединение лексикона и текста
 
-Стоп-слова, то есть слова, не несущие никакой смысловой нагрузки, нам не нужны, но удалять их отдельно нет смысла: мы соединим, при помощи функции `inner_join()` (см. предыдущие уроки), наш текст с одним из лексиконов, и это само по себе отфильтрует ту лексику, которая может быть потенциально интересна. Напомню, что `inner_join()` работает так:
+Стоп-слова, то есть слова, не несущие никакой смысловой нагрузки, нам не нужны, но удалять их отдельно нет смысла: мы соединим, при помощи функции `inner_join()` (см. предыдущие уроки), наш текст с одним из лексиконов, а там не будет стоп-слов. Напомню, что `inner_join()` работает так:
 
 ![](https://d33wubrfki0l68.cloudfront.net/3abea0b730526c3f053a3838953c35a0ccbe8980/7f29b/diagrams/join-inner.png){ width=70% }
 
@@ -166,6 +166,8 @@ liza_sent <- liza_tbl %>%
 
 liza_sent
 ```
+
+Здесь "горе" -- ошибка лемматизации ("стоя на сей горе...").
 
 Сложив положительно и отрицательно окрашенную лексику для каждого отрывка, получаем значение, позволяющее судить о доминирующей тональности:
 
@@ -178,7 +180,7 @@ liza_chunk_sent <- liza_sent %>%
 head(liza_chunk_sent, 10)
 ```
 
-Довольно неожиданно, что самый негативный отрывок находится не в конце повести, ближе к трагической ее развязке, а почти в начале (отрывок 5, ср. отрывки 3 и 4 рядом). Представим эмоционально окрашенную лексику отрывков 3-5 в виде сравнительного облака слов:
+Довольно неожиданно, что самый негативный отрывок находится не в конце повести, ближе к трагической развязке, а почти в начале (отрывок 5, ср. отрывки 3 и 4 рядом). Представим эмоционально окрашенную лексику отрывков 3-5 в виде сравнительного облака слов:
 
 ```{r warning=FALSE, message=FALSE}
 library(reshape2)
@@ -202,6 +204,61 @@ liza_sent_class %>%
 Приведем небольшой отрывок из этой части повести:
 
 > Иногда на вратах храма рассматриваю изображение чудес, в сем монастыре случившихся, там рыбы падают с неба для насыщения жителей монастыря, осажденного многочисленными врагами; тут образ богоматери обращает неприятелей в бегство. Все сие обновляет в моей памяти историю нашего отечества — печальную историю тех времен, когда свирепые татары и литовцы огнем и мечом опустошали окрестности российской столицы и когда несчастная Москва, как беззащитная вдовица, от одного бога ожидала помощи в лютых своих бедствиях.
+
+
+</br>
+
+:::{.task .code}
+Сохраните текст ниже и извлеките из него все радостные (или нерадостные)  слова. 
+:::
+
+</br>
+
+```{r}
+bear <- tibble (text = "The bear puts both arms around the tree above her
+And draws it down as if it were a lover
+And its choke cherries lips to kiss good-bye,
+Then lets it snap back upright in the sky.
+Her next step rocks a boulder on the wall
+(She's making her cross-country in the fall).
+Her great weight creaks the barbed-wire in its staples
+As she flings over and off down through the maples,
+Leaving on one wire moth a lock of hair.
+Such is the uncaged progress of the bear.
+The world has room to make a bear feel free;
+The universe seems cramped to you and me.
+Man acts more like the poor bear in a cage
+That all day fights a nervous inward rage - 
+His mood rejecting all his mind suggests.
+He paces back and forth and never rests
+The toe-nail click and shuffle of his feet,
+The telescope at one end of his beat -
+And at the other end the microscope,
+Two instruments of nearly equal hope,
+And in conjunction giving quite a spread.
+Or if he rests from scientific tread,
+'Tis only to sit back and sway his head
+Through ninety odd degrees of arc, it seems,
+Between two metaphysical extremes.
+He sits back on his fundamental butt
+With lifted snout and eyes (if any) shut,
+(he almost looks religious but he's not),
+And back and forth he sways from cheek to cheek,
+At one extreme agreeing with one Greek -
+At the other agreeing with another Greek
+Which may be thought, but only so to speak.
+A baggy figure, equally pathetic
+When sedentary and when peripatetic.")
+```
+
+</br>
+
+:::{.task .code}
+Разделите стихотворение выше на предложения. Найдите самое позитивное и самое негативное предложение в тексте. Как влияет на результат использование различных лексиконов? Какое негативное слово встречается чаще всего?
+:::
+
+</br>
+
 
 ## Тональность на оси времени
 
@@ -253,51 +310,19 @@ liza_sent_class %>%
 
 Для анализа возьмем стихотворение Роберта Фроста "Медведи" ([перевод](https://t.me/antibarbari/1098)).
 
-```{r}
+```{r message=FALSE}
 library(syuzhet)
 
-my_example_text <- "The bear puts both arms around the tree above her
-And draws it down as if it were a lover
-And its choke cherries lips to kiss good-bye,
-Then lets it snap back upright in the sky.
-Her next step rocks a boulder on the wall
-(She's making her cross-country in the fall).
-Her great weight creaks the barbed-wire in its staples
-As she flings over and off down through the maples,
-Leaving on one wire moth a lock of hair.
-Such is the uncaged progress of the bear.
-The world has room to make a bear feel free;
-The universe seems cramped to you and me.
-Man acts more like the poor bear in a cage
-That all day fights a nervous inward rage - 
-His mood rejecting all his mind suggests.
-He paces back and forth and never rests
-The toe-nail click and shuffle of his feet,
-The telescope at one end of his beat -
-And at the other end the microscope,
-Two instruments of nearly equal hope,
-And in conjunction giving quite a spread.
-Or if he rests from scientific tread,
-'Tis only to sit back and sway his head
-Through ninety odd degrees of arc, it seems,
-Between two metaphysical extremes.
-He sits back on his fundamental butt
-With lifted snout and eyes (if any) shut,
-(he almost looks religious but he's not),
-And back and forth he sways from cheek to cheek,
-At one extreme agreeing with one Greek -
-At the other agreeing with another Greek
-Which may be thought, but only so to speak.
-A baggy figure, equally pathetic
-When sedentary and when peripatetic."
+bear_vec <- bear$text
 ```
 
 Пакет позволяет разделить текст на предложения:
 
 ```{r}
-sent_vec <- get_sentences(my_example_text)
+sent_vec <- get_sentences(bear_vec)
 sent_vec[1:2]
 ```
+
 Воспользуемся регулярными выражениями, чтобы удалить переносы строк:
 
 ```{r}
@@ -305,6 +330,7 @@ library(stringr)
 sent_vec <- str_replace_all(sent_vec, "\\n", " ")
 sent_vec[1:2]
 ```
+
 Если вы хотите прочитать в R большой файл, для этого есть функция `get_text_as_string`, который необходимо указать путь к файлу на компьютере или url. 
 
 Функция `get_sentiment` принимает в качестве аргументов вектор и метод (о методах можно подробнее узнать, вызвав помощь). 
@@ -336,7 +362,9 @@ sent_vec[which.min(afinn_vector)]
 ```{r}
 sum(afinn_vector)
 mean(afinn_vector)
+summary(afinn_vector)
 ```
+
 
 Не так уж плохо: за счет первой части про медведицу, с удовольствием поедающую черемуху, общая тональность скорее положительная (хотя ваш читательский опыт может говорить об обратном). 
 
@@ -348,9 +376,18 @@ plot(afinn_vector,
      main="Example Plot Trajectory",
      xlab = "Narrative Time",
      ylab= "Emotional Valence")
+abline(h = 0, col = "red", lty = 2)
 ```
 
 О других способах визуализировать результат можно узнать из [виньетки к пакету](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html).
+
+</br>
+
+:::{.task .code}
+Постройте сравнительное облако слов (негативная и позитивная лексика) для стихотворения Фроста.
+:::
+
+</br>
 
 ## Виды эмоций
 
@@ -382,6 +419,28 @@ barplot(
 ```
 
 Сложно осуждать машину за не вполне верно считанную тональность: Фрост -- сложный автор. Для отзывов на Tripadvisor это может сработать лучше.
+
+## Sentimentr
+
+В заключение еще несколько фокусов. 
+
+```{r message=FALSE}
+library(sentimentr)
+bear %>% 
+  get_sentences() %>% 
+  sentiment_by(by=c('sentence_id'))
+```
+
+```{r eval=FALSE}
+bear %>% 
+  get_sentences() %>% 
+  sentiment_by(by=c('sentence_id')) %>% 
+  highlight(file = "polarity.html")
+```
+
+</br>
+
+![](./images/polarity.png)
 
 
 
